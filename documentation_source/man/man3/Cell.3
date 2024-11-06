@@ -1,0 +1,1386 @@
+.TH "Cell" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Cell
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBAlgorithms\&.WeightCell\fP, and IFloodCell\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetPoint\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetSharedPoint\fP ()"
+.br
+.ti -1c
+.RI "bool \fBCanSuffocate\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHasObstacle\fP ()"
+.br
+.ti -1c
+.RI "bool \fBCanBuildRamp\fP (int dir)"
+.br
+.ti -1c
+.RI "void \fBRefresh\fP ()"
+.br
+.ti -1c
+.RI "void \fBRotateBlock\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBRotateFloor\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBRotateObj\fP (bool reverse=false, bool useBlockDir=false)"
+.br
+.ti -1c
+.RI "void \fBRotateAll\fP ()"
+.br
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.ti -1c
+.RI "\fBCellDetail\fP \fBGetOrCreateDetail\fP ()"
+.br
+.ti -1c
+.RI "void \fBTryDespawnDetail\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddCard\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "void \fBRemoveCard\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "string \fBGetBlockName\fP ()"
+.br
+.ti -1c
+.RI "string \fBGetFloorName\fP ()"
+.br
+.ti -1c
+.RI "string \fBGetBridgeName\fP ()"
+.br
+.ti -1c
+.RI "string \fBGetObjName\fP ()"
+.br
+.ti -1c
+.RI "string \fBGetLiquidName\fP ()"
+.br
+.ti -1c
+.RI "bool \fBCanGrow\fP (\fBSourceObj\&.Row\fP obj, \fBVirtualDate\fP date)"
+.br
+.ti -1c
+.RI "void \fBTryGrow\fP (\fBVirtualDate\fP date=null)"
+.br
+.ti -1c
+.RI "bool \fBCanHarvest\fP ()"
+.br
+.ti -1c
+.RI "bool \fBCanReapSeed\fP ()"
+.br
+.ti -1c
+.RI "bool \fBCanMakeStraw\fP ()"
+.br
+.ti -1c
+.RI "\fBPlantData\fP \fBTryGetPlant\fP ()"
+.br
+.ti -1c
+.RI "float \fBGetSurfaceHeight\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHasZoneStairs\fP (bool includeLocked=true)"
+.br
+.ti -1c
+.RI "override bool \fBIsPathBlocked\fP (PathManager\&.MoveType moveType)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBAlgorithms\&.WeightCell\fP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "byte \fB_dirs\fP"
+.br
+.ti -1c
+.RI "byte \fB_block\fP"
+.br
+.ti -1c
+.RI "byte \fB_blockMat\fP"
+.br
+.ti -1c
+.RI "byte \fB_floor\fP"
+.br
+.ti -1c
+.RI "byte \fB_floorMat\fP"
+.br
+.ti -1c
+.RI "byte \fBobj\fP"
+.br
+.ti -1c
+.RI "byte \fBobjVal\fP"
+.br
+.ti -1c
+.RI "byte \fBobjMat\fP"
+.br
+.ti -1c
+.RI "byte \fBdecal\fP"
+.br
+.ti -1c
+.RI "byte \fB_bridge\fP"
+.br
+.ti -1c
+.RI "byte \fB_bridgeMat\fP"
+.br
+.ti -1c
+.RI "byte \fB_roofBlock\fP"
+.br
+.ti -1c
+.RI "byte \fB_roofBlockMat\fP"
+.br
+.ti -1c
+.RI "byte \fB_roofBlockDir\fP"
+.br
+.ti -1c
+.RI "byte \fBx\fP"
+.br
+.ti -1c
+.RI "byte \fBz\fP"
+.br
+.ti -1c
+.RI "byte \fBlight\fP"
+.br
+.ti -1c
+.RI "byte \fBautotile\fP"
+.br
+.ti -1c
+.RI "byte \fBautotileBridge\fP"
+.br
+.ti -1c
+.RI "byte \fBautotileObj\fP"
+.br
+.ti -1c
+.RI "byte \fBshore\fP"
+.br
+.ti -1c
+.RI "byte \fBshadow\fP"
+.br
+.ti -1c
+.RI "byte \fBheight\fP"
+.br
+.ti -1c
+.RI "byte \fBbridgeHeight\fP"
+.br
+.ti -1c
+.RI "byte \fBshadowMod\fP"
+.br
+.ti -1c
+.RI "byte \fBtopHeight\fP"
+.br
+.ti -1c
+.RI "byte \fBminHeight\fP"
+.br
+.ti -1c
+.RI "byte \fBbridgePillar\fP"
+.br
+.ti -1c
+.RI "byte \fBhighlight\fP"
+.br
+.ti -1c
+.RI "ushort \fBlightR\fP"
+.br
+.ti -1c
+.RI "ushort \fBlightG\fP"
+.br
+.ti -1c
+.RI "ushort \fBlightB\fP"
+.br
+.ti -1c
+.RI "\fBCellDetail\fP \fBdetail\fP"
+.br
+.ti -1c
+.RI "\fBCellEffect\fP \fBeffect\fP"
+.br
+.ti -1c
+.RI "\fBCritter\fP \fBcritter\fP"
+.br
+.ti -1c
+.RI "BitArray32 \fBbits\fP"
+.br
+.ti -1c
+.RI "BitArray32 \fBbits2\fP"
+.br
+.ti -1c
+.RI "\fBRoom\fP \fBroom\fP"
+.br
+.ti -1c
+.RI "bool \fBpcSync\fP"
+.br
+.in -1c
+
+Public Attributes inherited from \fBAlgorithms\&.WeightCell\fP
+.in +1c
+.ti -1c
+.RI "bool \fBblocked\fP"
+.br
+.ti -1c
+.RI "byte[] \fBweights\fP = new byte[4]"
+.br
+.ti -1c
+.RI "byte \fBbaseWeight\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static \fBMap\fP \fBmap\fP"
+.br
+.ti -1c
+.RI "static \fBCell\fP \fBVoid\fP = new \fBCell\fP()"
+.br
+.ti -1c
+.RI "static List< \fBSourceMaterial\&.Row\fP > \fBmatList\fP"
+.br
+.ti -1c
+.RI "static List< \fBSourceBlock\&.Row\fP > \fBblockList\fP"
+.br
+.ti -1c
+.RI "static List< \fBSourceFloor\&.Row\fP > \fBfloorList\fP"
+.br
+.ti -1c
+.RI "static List< \fBSourceCellEffect\&.Row\fP > \fBeffectList\fP"
+.br
+.ti -1c
+.RI "static List< \fBSourceObj\&.Row\fP > \fBobjList\fP"
+.br
+.ti -1c
+.RI "static int \fBSize\fP"
+.br
+.ti -1c
+.RI "static \fBCell\fP[,] \fBcells\fP"
+.br
+.ti -1c
+.RI "const int \fBDivAutotile\fP = 12"
+.br
+.ti -1c
+.RI "const int \fBDIV_LIQUID\fP = 10"
+.br
+.ti -1c
+.RI "const int \fBDivStage\fP = 30"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBindex\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "byte \fBTopHeight\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBFront\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBRight\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBBack\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBLeft\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBFrontRight\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBFrontLeft\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBBackRight\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBBackLeft\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBGrowSystem\fP \fBgrowth\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBisSurrounded\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisShadowed\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBhasDoor\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBskipRender\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisSeen\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisSurrounded4d\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisForceFloat\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBblockSight\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisHarvested\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisWatered\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisSlopeEdge\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisBridgeEdge\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBignoreObjShadow\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBnonGradient\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBimpassable\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBoutOfBounds\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisWallEdge\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisModified\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisClearSnow\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBfullWall\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisFloating\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBlotWall\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBhasDoorBoat\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisDeck\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBcastFloorShadow\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBlotShade\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisShoreSand\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisToggleWallPillar\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBhasWindow\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisCurtainClosed\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisSkyFloor\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisClearArea\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisObjDyed\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasObj\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasFloor\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasRoof\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasFloorOrBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasBridge\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasLiquid\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasFire\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsNotWaterEdge\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsTopWater\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsTopWaterAndNoSnow\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFloorWater\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFarmField\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBCanGrowWeed\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsBridgeWater\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSnowTile\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDeepWater\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsIceTile\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasFullBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasFullBlockOrWallOrFence\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasWallOrFence\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasWall\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasFence\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasRamp\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasLadder\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasRampOrLadder\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasSlope\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasStairs\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasHalfBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasBlockOrRamp\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBUseLowBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBCastShadow\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBCastAmbientShadow\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsRoomEdge\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsLotEdge\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsBlocked\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBblockDir\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBobjDir\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBfloorDir\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSky\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBliquidLv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBfireAmount\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsVoid\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFirstThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBInstalled\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "List< \fBThing\fP > \fBThings\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBCharas\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBgatherCount\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasFloodBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmatRoofBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmatBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmatFloor\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmatBridge\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmatObj\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmatObj_fixed\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceBlock\&.Row\fP \fBsourceRoofBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceBlock\&.Row\fP \fBsourceBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceFloor\&.Row\fP \fBsourceFloor\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceFloor\&.Row\fP \fBsourceBridge\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceFloor\&.Row\fP \fBsourceSurface\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceCellEffect\&.Row\fP \fBsourceEffect\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceObj\&.Row\fP \fBsourceObj\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBBiomeProfile\fP \fBbiome\fP\fR [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB9\fP of file \fBCell\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Cell\&.AddCard (\fBCard\fP c)"
+
+.PP
+Definition at line \fB1833\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.CanBuildRamp (int dir)"
+
+.PP
+Definition at line \fB1108\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.CanGrow (\fBSourceObj\&.Row\fP obj, \fBVirtualDate\fP date)"
+
+.PP
+Definition at line \fB1943\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.CanHarvest ()"
+
+.PP
+Definition at line \fB1962\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.CanMakeStraw ()"
+
+.PP
+Definition at line \fB1976\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.CanReapSeed ()"
+
+.PP
+Definition at line \fB1969\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.CanSuffocate ()"
+
+.PP
+Definition at line \fB891\fP of file \fBCell\&.cs\fP\&.
+.SS "override bool Cell\&.Equals (object obj)"
+
+.PP
+Definition at line \fB12\fP of file \fBCell\&.cs\fP\&.
+.SS "string Cell\&.GetBlockName ()"
+
+.PP
+Definition at line \fB1874\fP of file \fBCell\&.cs\fP\&.
+.SS "string Cell\&.GetBridgeName ()"
+
+.PP
+Definition at line \fB1886\fP of file \fBCell\&.cs\fP\&.
+.SS "string Cell\&.GetFloorName ()"
+
+.PP
+Definition at line \fB1880\fP of file \fBCell\&.cs\fP\&.
+.SS "override int Cell\&.GetHashCode ()"
+
+.PP
+Definition at line \fB40\fP of file \fBCell\&.cs\fP\&.
+.SS "string Cell\&.GetLiquidName ()"
+
+.PP
+Definition at line \fB1937\fP of file \fBCell\&.cs\fP\&.
+.SS "string Cell\&.GetObjName ()"
+
+.PP
+Definition at line \fB1892\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBCellDetail\fP Cell\&.GetOrCreateDetail ()"
+
+.PP
+Definition at line \fB1814\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBPoint\fP Cell\&.GetPoint ()"
+
+.PP
+Definition at line \fB70\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBPoint\fP Cell\&.GetSharedPoint ()"
+
+.PP
+Definition at line \fB76\fP of file \fBCell\&.cs\fP\&.
+.SS "float Cell\&.GetSurfaceHeight ()"
+
+.PP
+Definition at line \fB1988\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasObstacle ()"
+
+.PP
+Definition at line \fB1102\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasZoneStairs (bool includeLocked = \fRtrue\fP)"
+
+.PP
+Definition at line \fB2017\fP of file \fBCell\&.cs\fP\&.
+.SS "override bool Cell\&.IsPathBlocked (PathManager\&.MoveType moveType)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBAlgorithms\&.WeightCell\fP\&.
+.PP
+Definition at line \fB2034\fP of file \fBCell\&.cs\fP\&.
+.SS "void Cell\&.Refresh ()"
+
+.PP
+Definition at line \fB1451\fP of file \fBCell\&.cs\fP\&.
+.SS "void Cell\&.RemoveCard (\fBCard\fP c)"
+
+.PP
+Definition at line \fB1850\fP of file \fBCell\&.cs\fP\&.
+.SS "void Cell\&.Reset ()"
+
+.PP
+Definition at line \fB1806\fP of file \fBCell\&.cs\fP\&.
+.SS "void Cell\&.RotateAll ()"
+
+.PP
+Definition at line \fB1772\fP of file \fBCell\&.cs\fP\&.
+.SS "void Cell\&.RotateBlock (int a)"
+
+.PP
+Definition at line \fB1711\fP of file \fBCell\&.cs\fP\&.
+.SS "void Cell\&.RotateFloor (int a)"
+
+.PP
+Definition at line \fB1728\fP of file \fBCell\&.cs\fP\&.
+.SS "void Cell\&.RotateObj (bool reverse = \fRfalse\fP, bool useBlockDir = \fRfalse\fP)"
+
+.PP
+Definition at line \fB1744\fP of file \fBCell\&.cs\fP\&.
+.SS "override string Cell\&.ToString ()"
+
+.PP
+Definition at line \fB18\fP of file \fBCell\&.cs\fP\&.
+.SS "void Cell\&.TryDespawnDetail ()"
+
+.PP
+Definition at line \fB1824\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBPlantData\fP Cell\&.TryGetPlant ()"
+
+.PP
+Definition at line \fB1982\fP of file \fBCell\&.cs\fP\&.
+.SS "void Cell\&.TryGrow (\fBVirtualDate\fP date = \fRnull\fP)"
+
+.PP
+Definition at line \fB1951\fP of file \fBCell\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "byte Cell\&._block"
+
+.PP
+Definition at line \fB2098\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&._blockMat"
+
+.PP
+Definition at line \fB2101\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&._bridge"
+
+.PP
+Definition at line \fB2122\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&._bridgeMat"
+
+.PP
+Definition at line \fB2125\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&._dirs"
+
+.PP
+Definition at line \fB2095\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&._floor"
+
+.PP
+Definition at line \fB2104\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&._floorMat"
+
+.PP
+Definition at line \fB2107\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&._roofBlock"
+
+.PP
+Definition at line \fB2128\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&._roofBlockDir"
+
+.PP
+Definition at line \fB2134\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&._roofBlockMat"
+
+.PP
+Definition at line \fB2131\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.autotile"
+
+.PP
+Definition at line \fB2146\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.autotileBridge"
+
+.PP
+Definition at line \fB2149\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.autotileObj"
+
+.PP
+Definition at line \fB2152\fP of file \fBCell\&.cs\fP\&.
+.SS "BitArray32 Cell\&.bits"
+
+.PP
+Definition at line \fB2200\fP of file \fBCell\&.cs\fP\&.
+.SS "BitArray32 Cell\&.bits2"
+
+.PP
+Definition at line \fB2203\fP of file \fBCell\&.cs\fP\&.
+.SS "List<\fBSourceBlock\&.Row\fP> Cell\&.blockList\fR [static]\fP"
+
+.PP
+Definition at line \fB2074\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.bridgeHeight"
+
+.PP
+Definition at line \fB2164\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.bridgePillar"
+
+.PP
+Definition at line \fB2176\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBCell\fP [,] Cell\&.cells\fR [static]\fP"
+
+.PP
+Definition at line \fB2089\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBCritter\fP Cell\&.critter"
+
+.PP
+Definition at line \fB2197\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.decal"
+
+.PP
+Definition at line \fB2119\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBCellDetail\fP Cell\&.detail"
+
+.PP
+Definition at line \fB2191\fP of file \fBCell\&.cs\fP\&.
+.SS "const int Cell\&.DIV_LIQUID = 10\fR [static]\fP"
+
+.PP
+Definition at line \fB2212\fP of file \fBCell\&.cs\fP\&.
+.SS "const int Cell\&.DivAutotile = 12\fR [static]\fP"
+
+.PP
+Definition at line \fB2092\fP of file \fBCell\&.cs\fP\&.
+.SS "const int Cell\&.DivStage = 30\fR [static]\fP"
+
+.PP
+Definition at line \fB2221\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBCellEffect\fP Cell\&.effect"
+
+.PP
+Definition at line \fB2194\fP of file \fBCell\&.cs\fP\&.
+.SS "List<\fBSourceCellEffect\&.Row\fP> Cell\&.effectList\fR [static]\fP"
+
+.PP
+Definition at line \fB2080\fP of file \fBCell\&.cs\fP\&.
+.SS "List<\fBSourceFloor\&.Row\fP> Cell\&.floorList\fR [static]\fP"
+
+.PP
+Definition at line \fB2077\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.height"
+
+.PP
+Definition at line \fB2161\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.highlight"
+
+.PP
+Definition at line \fB2179\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.light"
+
+.PP
+Definition at line \fB2143\fP of file \fBCell\&.cs\fP\&.
+.SS "ushort Cell\&.lightB"
+
+.PP
+Definition at line \fB2188\fP of file \fBCell\&.cs\fP\&.
+.SS "ushort Cell\&.lightG"
+
+.PP
+Definition at line \fB2185\fP of file \fBCell\&.cs\fP\&.
+.SS "ushort Cell\&.lightR"
+
+.PP
+Definition at line \fB2182\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBMap\fP Cell\&.map\fR [static]\fP"
+
+.PP
+Definition at line \fB2065\fP of file \fBCell\&.cs\fP\&.
+.SS "List<\fBSourceMaterial\&.Row\fP> Cell\&.matList\fR [static]\fP"
+
+.PP
+Definition at line \fB2071\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.minHeight"
+
+.PP
+Definition at line \fB2173\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.obj"
+
+.PP
+Definition at line \fB2110\fP of file \fBCell\&.cs\fP\&.
+.SS "List<\fBSourceObj\&.Row\fP> Cell\&.objList\fR [static]\fP"
+
+.PP
+Definition at line \fB2083\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.objMat"
+
+.PP
+Definition at line \fB2116\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.objVal"
+
+.PP
+Definition at line \fB2113\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.pcSync"
+
+.PP
+Definition at line \fB2209\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBRoom\fP Cell\&.room"
+
+.PP
+Definition at line \fB2206\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.shadow"
+
+.PP
+Definition at line \fB2158\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.shadowMod"
+
+.PP
+Definition at line \fB2167\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.shore"
+
+.PP
+Definition at line \fB2155\fP of file \fBCell\&.cs\fP\&.
+.SS "int Cell\&.Size\fR [static]\fP"
+
+.PP
+Definition at line \fB2086\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.topHeight"
+
+.PP
+Definition at line \fB2170\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBCell\fP Cell\&.Void = new \fBCell\fP()\fR [static]\fP"
+
+.PP
+Definition at line \fB2068\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.x"
+
+.PP
+Definition at line \fB2137\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.z"
+
+.PP
+Definition at line \fB2140\fP of file \fBCell\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBCell\fP Cell\&.Back\fR [get]\fP"
+
+.PP
+Definition at line \fB111\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBCell\fP Cell\&.BackLeft\fR [get]\fP"
+
+.PP
+Definition at line \fB181\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBCell\fP Cell\&.BackRight\fR [get]\fP"
+
+.PP
+Definition at line \fB167\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBBiomeProfile\fP Cell\&.biome\fR [get]\fP"
+
+.PP
+Definition at line \fB1438\fP of file \fBCell\&.cs\fP\&.
+.SS "int Cell\&.blockDir\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1116\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.blockSight\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB312\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.CanGrowWeed\fR [get]\fP"
+
+.PP
+Definition at line \fB840\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.CastAmbientShadow\fR [get]\fP"
+
+.PP
+Definition at line \fB1063\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.castFloorShadow\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB567\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.CastShadow\fR [get]\fP"
+
+.PP
+Definition at line \fB1053\fP of file \fBCell\&.cs\fP\&.
+.SS "List<\fBChara\fP> Cell\&.Charas\fR [get]\fP"
+
+.PP
+Definition at line \fB1249\fP of file \fBCell\&.cs\fP\&.
+.SS "int Cell\&.fireAmount\fR [get]\fP"
+
+.PP
+Definition at line \fB1185\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBThing\fP Cell\&.FirstThing\fR [get]\fP"
+
+.PP
+Definition at line \fB1210\fP of file \fBCell\&.cs\fP\&.
+.SS "int Cell\&.floorDir\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1146\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBCell\fP Cell\&.Front\fR [get]\fP"
+
+.PP
+Definition at line \fB83\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBCell\fP Cell\&.FrontLeft\fR [get]\fP"
+
+.PP
+Definition at line \fB153\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBCell\fP Cell\&.FrontRight\fR [get]\fP"
+
+.PP
+Definition at line \fB139\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.fullWall\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB492\fP of file \fBCell\&.cs\fP\&.
+.SS "int Cell\&.gatherCount\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1260\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBGrowSystem\fP Cell\&.growth\fR [get]\fP"
+
+.PP
+Definition at line \fB195\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB711\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasBlockOrRamp\fR [get]\fP"
+
+.PP
+Definition at line \fB1033\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasBridge\fR [get]\fP"
+
+.PP
+Definition at line \fB751\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.hasDoor\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB237\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.hasDoorBoat\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB537\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasFence\fR [get]\fP"
+
+.PP
+Definition at line \fB963\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasFire\fR [get]\fP"
+
+.PP
+Definition at line \fB772\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasFloodBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB1289\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasFloor\fR [get]\fP"
+
+.PP
+Definition at line \fB721\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasFloorOrBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB741\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasFullBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB923\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasFullBlockOrWallOrFence\fR [get]\fP"
+
+.PP
+Definition at line \fB933\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasHalfBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB1023\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasLadder\fR [get]\fP"
+
+.PP
+Definition at line \fB983\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasLiquid\fR [get]\fP"
+
+.PP
+Definition at line \fB761\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasObj\fR [get]\fP"
+
+.PP
+Definition at line \fB701\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasRamp\fR [get]\fP"
+
+.PP
+Definition at line \fB973\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasRampOrLadder\fR [get]\fP"
+
+.PP
+Definition at line \fB993\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasRoof\fR [get]\fP"
+
+.PP
+Definition at line \fB731\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasSlope\fR [get]\fP"
+
+.PP
+Definition at line \fB1003\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasStairs\fR [get]\fP"
+
+.PP
+Definition at line \fB1013\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasWall\fR [get]\fP"
+
+.PP
+Definition at line \fB953\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.HasWallOrFence\fR [get]\fP"
+
+.PP
+Definition at line \fB943\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.hasWindow\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB627\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.ignoreObjShadow\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB387\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.impassable\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB417\fP of file \fBCell\&.cs\fP\&.
+.SS "int Cell\&.index\fR [get]\fP"
+
+.PP
+Definition at line \fB47\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBThing\fP Cell\&.Installed\fR [get]\fP"
+
+.PP
+Definition at line \fB1225\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.IsBlocked\fR [get]\fP"
+
+.PP
+Definition at line \fB1093\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isBridgeEdge\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB372\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.IsBridgeWater\fR [get]\fP"
+
+.PP
+Definition at line \fB862\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isClearArea\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB672\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isClearSnow\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB477\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isCurtainClosed\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB642\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isDeck\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB552\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.IsDeepWater\fR [get]\fP"
+
+.PP
+Definition at line \fB882\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.IsFarmField\fR [get]\fP"
+
+.PP
+Definition at line \fB826\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isFloating\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB507\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.IsFloorWater\fR [get]\fP"
+
+.PP
+Definition at line \fB816\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isForceFloat\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB297\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isHarvested\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB327\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.IsIceTile\fR [get]\fP"
+
+.PP
+Definition at line \fB913\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.IsLotEdge\fR [get]\fP"
+
+.PP
+Definition at line \fB1083\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isModified\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB462\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.IsNotWaterEdge\fR [get]\fP"
+
+.PP
+Definition at line \fB782\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isObjDyed\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB687\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.IsRoomEdge\fR [get]\fP"
+
+.PP
+Definition at line \fB1073\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isSeen\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB267\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isShadowed\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB222\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isShoreSand\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB597\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.IsSky\fR [get]\fP"
+
+.PP
+Definition at line \fB1160\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isSkyFloor\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB657\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isSlopeEdge\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB357\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.IsSnowTile\fR [get]\fP"
+
+.PP
+Definition at line \fB872\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isSurrounded\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB207\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isSurrounded4d\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB282\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isToggleWallPillar\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB612\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.IsTopWater\fR [get]\fP"
+
+.PP
+Definition at line \fB792\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.IsTopWaterAndNoSnow\fR [get]\fP"
+
+.PP
+Definition at line \fB806\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.IsVoid\fR [get]\fP"
+
+.PP
+Definition at line \fB1200\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isWallEdge\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB447\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.isWatered\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB342\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBCell\fP Cell\&.Left\fR [get]\fP"
+
+.PP
+Definition at line \fB125\fP of file \fBCell\&.cs\fP\&.
+.SS "int Cell\&.liquidLv\fR [get]\fP"
+
+.PP
+Definition at line \fB1170\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.lotShade\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB582\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.lotWall\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB522\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBSourceMaterial\&.Row\fP Cell\&.matBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB1309\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBSourceMaterial\&.Row\fP Cell\&.matBridge\fR [get]\fP"
+
+.PP
+Definition at line \fB1329\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBSourceMaterial\&.Row\fP Cell\&.matFloor\fR [get]\fP"
+
+.PP
+Definition at line \fB1319\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBSourceMaterial\&.Row\fP Cell\&.matObj\fR [get]\fP"
+
+.PP
+Definition at line \fB1339\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBSourceMaterial\&.Row\fP Cell\&.matObj_fixed\fR [get]\fP"
+
+.PP
+Definition at line \fB1349\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBSourceMaterial\&.Row\fP Cell\&.matRoofBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB1299\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.nonGradient\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB402\fP of file \fBCell\&.cs\fP\&.
+.SS "int Cell\&.objDir\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1131\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.outOfBounds\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB432\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBCell\fP Cell\&.Right\fR [get]\fP"
+
+.PP
+Definition at line \fB97\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.skipRender\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB252\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBSourceBlock\&.Row\fP Cell\&.sourceBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB1373\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBSourceFloor\&.Row\fP Cell\&.sourceBridge\fR [get]\fP"
+
+.PP
+Definition at line \fB1393\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBSourceCellEffect\&.Row\fP Cell\&.sourceEffect\fR [get]\fP"
+
+.PP
+Definition at line \fB1417\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBSourceFloor\&.Row\fP Cell\&.sourceFloor\fR [get]\fP"
+
+.PP
+Definition at line \fB1383\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBSourceObj\&.Row\fP Cell\&.sourceObj\fR [get]\fP"
+
+.PP
+Definition at line \fB1428\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBSourceBlock\&.Row\fP Cell\&.sourceRoofBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB1363\fP of file \fBCell\&.cs\fP\&.
+.SS "\fBSourceFloor\&.Row\fP Cell\&.sourceSurface\fR [get]\fP"
+
+.PP
+Definition at line \fB1403\fP of file \fBCell\&.cs\fP\&.
+.SS "List<\fBThing\fP> Cell\&.Things\fR [get]\fP"
+
+.PP
+Definition at line \fB1239\fP of file \fBCell\&.cs\fP\&.
+.SS "byte Cell\&.TopHeight\fR [get]\fP"
+
+.PP
+Definition at line \fB57\fP of file \fBCell\&.cs\fP\&.
+.SS "bool Cell\&.UseLowBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB1043\fP of file \fBCell\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

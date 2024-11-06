@@ -1,0 +1,155 @@
+\doxysection{Layer\+Collectible.\+cs}
+\hypertarget{_layer_collectible_8cs_source}{}\label{_layer_collectible_8cs_source}\index{Elin/LayerCollectible.cs@{Elin/LayerCollectible.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x02000526\ RID:\ 1318}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00006}\mbox{\hyperlink{class_layer_collectible}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_layer_collectible}{LayerCollectible}}\ :\ \mbox{\hyperlink{class_e_layer}{ELayer}}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000B16\ RID:\ 2838}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600235A\ RID:\ 9050\ RVA:\ 0x000C6E6F\ File\ Offset:\ 0x000C506F}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_hoard}{Hoard}}\ hoard}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_layer}{ELayer}}.player.hoard;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00016}00016\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600235B\ RID:\ 9051\ RVA:\ 0x000C6E7B\ File\ Offset:\ 0x000C507B}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnAfterInit()}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.hoard.items.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ this.hoard.Add(\textcolor{stringliteral}{"{}gold"{}},\ 1,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ this.Refresh();}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600235C\ RID:\ 9052\ RVA:\ 0x000C6EA8\ File\ Offset:\ 0x000C50A8}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Refresh()}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00030}00030\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.GetLayer<\mbox{\hyperlink{class_layer_hoard}{LayerHoard}}>(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ this.list.callbacks\ =\ \textcolor{keyword}{new}\ UIList.Callback<\mbox{\hyperlink{class_hoard}{Hoard}}.\mbox{\hyperlink{class_hoard_1_1_item}{Item}},\ UIButton>}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ onClick\ =\ delegate(\mbox{\hyperlink{class_hoard}{Hoard}}.\mbox{\hyperlink{class_hoard_1_1_item}{Item}}\ a,\ UIButton\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.selected\ =\ b;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.onClick\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.onClick(a))}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Close();}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UIContextMenu\ uicontextMenu\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.contextMenu.Create(\textcolor{stringliteral}{"{}ContextHoard"{}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ max\ =\ a.num;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ >\ 1\ \&\&\ a.IsUnique)}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uicontextMenu.AddSlider(\textcolor{stringliteral}{"{}display"{}},\ (\textcolor{keywordtype}{float}\ n)\ =>\ n.ToString()\ +\ \textcolor{stringliteral}{"{}\ /\ "{}}\ +\ max.ToString(),\ (\textcolor{keywordtype}{float})a.show,\ delegate(\textcolor{keywordtype}{float}\ v)}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a.show\ =\ (int)v;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.SetButton(a,\ b);}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.RefreshInfo(b,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ 0f,\ (float)max,\ \textcolor{keyword}{true},\ \textcolor{keyword}{false},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uicontextMenu.AddToggle(\textcolor{stringliteral}{"{}displayRandom"{}},\ a.random,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a.random\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uicontextMenu.Show(EInput.uiMousePosition\ +\ \textcolor{keyword}{this}.contextFix);}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ onInstantiate\ =\ delegate(\mbox{\hyperlink{class_hoard}{Hoard}}.\mbox{\hyperlink{class_hoard_1_1_item}{Item}}\ a,\ UIButton\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.SetButton(a,\ b);}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_source_collectible}{SourceCollectible}}.\mbox{\hyperlink{class_source_collectible_1_1_row}{Row}}\ row\ in\ \mbox{\hyperlink{class_e_layer}{ELayer}}.sources.collectibles.rows)}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.hoard.items.ContainsKey(row.id))}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.list.Add(this.hoard.items[row.id]);}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ this.list.Refresh(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ this.selected\ =\ (this.list.buttons[0].component\ as\ UIButton);}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ this.RefreshInfo(this.selected,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600235D\ RID:\ 9053\ RVA:\ 0x000C6FB0\ File\ Offset:\ 0x000C51B0}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00081}00081\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00082}00082\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ UIButton\ componentOf\ =\ InputModuleEX.GetComponentOf<UIButton>();}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (componentOf\ \&\&\ componentOf.refObj\ is\ \mbox{\hyperlink{class_hoard}{Hoard}}.\mbox{\hyperlink{class_hoard_1_1_item}{Item}})}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ this.RefreshInfo(componentOf,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ this.RefreshInfo(this.selected,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600235E\ RID:\ 9054\ RVA:\ 0x000C6FF0\ File\ Offset:\ 0x000C51F0}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00093}00093\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetButton(\mbox{\hyperlink{class_hoard}{Hoard}}.\mbox{\hyperlink{class_hoard_1_1_item}{Item}}\ a,\ UIButton\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00094}00094\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ a.num.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a.num\ !=\ a.show)}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ text\ =\ text\ +\ \textcolor{stringliteral}{"{}\ ("{}}\ +\ a.show.ToString()\ +\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ b.mainText.text\ =\ text;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ b.icon.sprite\ =\ this.hoard.GetSprite(a.id);}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ b.icon.SetNativeSize();}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ b.refObj\ =\ a;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00106}00106\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600235F\ RID:\ 9055\ RVA:\ 0x000C707C\ File\ Offset:\ 0x000C527C}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00107}00107\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshInfo(UIButton\ button,\ \textcolor{keywordtype}{bool}\ force\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00108}00108\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!force\ \&\&\ (this.lastShown\ ==\ button\ ||\ !button))}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_hoard_1_1_item}{Hoard.Item}}\ item\ =\ button.refObj\ as\ \mbox{\hyperlink{class_hoard}{Hoard}}.\mbox{\hyperlink{class_hoard_1_1_item}{Item}};}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ \textcolor{stringliteral}{"{}collectibleTitle"{}}.lang(item.Source.GetName(),\ item.num.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ item.show.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (item.IsUnique)}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ text\ +=\ \textcolor{stringliteral}{"{}\ UNIQUE"{}};}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ this.textName.text\ =\ text;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ this.textDetail.text\ =\ item.Source.GetText(\textcolor{stringliteral}{"{}detail"{}},\ \textcolor{keyword}{true}).IsEmpty(\textcolor{stringliteral}{"{}none"{}}.lang());}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ this.imageItem.sprite\ =\ this.hoard.GetSprite(item.id);}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ this.imageItem.SetNativeSize();}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ this.lastShown\ =\ button;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00124}00124\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00126}00126\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012CC\ RID:\ 4812}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00127}00127\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ list;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00129}00129\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012CD\ RID:\ 4813}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00130}00130\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textName;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00132}00132\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012CE\ RID:\ 4814}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00133}00133\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textDetail;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00135}00135\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012CF\ RID:\ 4815}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00136}00136\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ selected;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00138}00138\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012D0\ RID:\ 4816}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00139}00139\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ lastShown;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00141}00141\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012D1\ RID:\ 4817}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00142}00142\ \ \ \ \ \textcolor{keyword}{public}\ Image\ imageItem;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00144}00144\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012D2\ RID:\ 4818}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00145}00145\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ contextFix;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00147}00147\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012D3\ RID:\ 4819}}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00148}00148\ \ \ \ \ \textcolor{keyword}{public}\ Func<\mbox{\hyperlink{class_hoard}{Hoard}}.\mbox{\hyperlink{class_hoard_1_1_item}{Item}},\ \textcolor{keywordtype}{bool}>\ onClick;}
+\DoxyCodeLine{\Hypertarget{_layer_collectible_8cs_source_l00149}00149\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,647 @@
+.TH "WidgetHotbar" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WidgetHotbar
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBWidget\fP, and IDragParent\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBExtra\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override object \fBCreateExtra\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBCanShowContextMenu\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnActivate\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnChangeActionMode\fP ()"
+.br
+.ti -1c
+.RI "void \fBRebuild\fP ()"
+.br
+.ti -1c
+.RI "void \fBRebuildPage\fP (int page=\-1)"
+.br
+.ti -1c
+.RI "void \fBSwitchPage\fP ()"
+.br
+.ti -1c
+.RI "\fBHotItem\fP \fBGetItem\fP (int index)"
+.br
+.ti -1c
+.RI "void \fBTryUse\fP (int index)"
+.br
+.ti -1c
+.RI "void \fBOnClickEmptyItem\fP (\fBButtonHotItem\fP b)"
+.br
+.ti -1c
+.RI "override void \fBOnSetContextMenu\fP (UIContextMenu m)"
+.br
+.ti -1c
+.RI "void \fBSetShortcutMenu\fP (\fBButtonHotItem\fP b, UIContextMenu m)"
+.br
+.ti -1c
+.RI "void \fBSetItem\fP (\fBButtonHotItem\fP b, \fBHotItem\fP item)"
+.br
+.ti -1c
+.RI "bool \fBRefreshHighlight\fP ()"
+.br
+.ti -1c
+.RI "void \fB_OnDirtyInventory\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetVisible\fP ()"
+.br
+.ti -1c
+.RI "void \fBToggleVisible\fP ()"
+.br
+.ti -1c
+.RI "void \fBCheckAutoHide\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnStartDrag\fP (UIButton b)"
+.br
+.ti -1c
+.RI "void \fBOnDrag\fP (UIButton b)"
+.br
+.ti -1c
+.RI "\fBButtonHotItem\fP \fBGetSwapButton\fP (UIButton b)"
+.br
+.ti -1c
+.RI "void \fBOnEndDrag\fP (UIButton b, bool cancel=false)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBWidget\fP
+.in +1c
+.ti -1c
+.RI "void \fBTest\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsInRightMode\fP ()"
+.br
+.ti -1c
+.RI "void \fBActivate\fP ()"
+.br
+.ti -1c
+.RI "void \fBDeactivate\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnDeactivate\fP ()"
+.br
+.ti -1c
+.RI "void \fBClose\fP ()"
+.br
+.ti -1c
+.RI "void \fBReactivate\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnManagerActivate\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnManagerDeactivate\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetAnchor\fP (RectPosition p)"
+.br
+.ti -1c
+.RI "void \fBSetPivot\fP (RectPosition p)"
+.br
+.ti -1c
+.RI "virtual void \fBOnChangePivot\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateConfig\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnUpdateConfig\fP ()"
+.br
+.ti -1c
+.RI "void \fBClampToScreen\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnChangeResolution\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnChangePosition\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnFlip\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsAlignTop\fP ()"
+.br
+.ti -1c
+.RI "Layer \fBAddLayer\fP (Layer l, Transform trans)"
+.br
+.ti -1c
+.RI "void \fBRefreshTipPivotPosition\fP ()"
+.br
+.ti -1c
+.RI "SkinSet \fBGetSkin\fP ()"
+.br
+.ti -1c
+.RI "SkinConfig \fBGetSkinConfig\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetSkin\fP (int id, int v=0)"
+.br
+.ti -1c
+.RI "void \fBTestSkin\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBApplySkin\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnApplySkin\fP ()"
+.br
+.ti -1c
+.RI "void \fBInstantiateDeco\fP (SkinDeco deco)"
+.br
+.ti -1c
+.RI "void \fBAddDeco\fP (SkinDeco deco)"
+.br
+.ti -1c
+.RI "void \fBRemoveDeco\fP (SkinDeco deco)"
+.br
+.ti -1c
+.RI "void \fBShowContextMenu\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetBaseContextMenu\fP (UIContextMenu m)"
+.br
+.ti -1c
+.RI "void \fBSetGridContextMenu\fP (UIContextMenu m)"
+.br
+.ti -1c
+.RI "void \fBSoundActivate\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBRebuildPages\fP ()"
+.br
+.ti -1c
+.RI "static void \fBRefreshHighlights\fP ()"
+.br
+.ti -1c
+.RI "static void \fBRefreshButtons\fP ()"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBEMono\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBidHotbar\fP"
+.br
+.ti -1c
+.RI "GridLayoutGroup \fBlayout\fP"
+.br
+.ti -1c
+.RI "\fBButtonHotItem\fP \fBmold\fP"
+.br
+.ti -1c
+.RI "RawImage \fBimageGrid\fP"
+.br
+.ti -1c
+.RI "Image \fBimageSelect\fP"
+.br
+.ti -1c
+.RI "Hotbar\&.Type \fBtype\fP"
+.br
+.ti -1c
+.RI "bool \fBuseMask\fP"
+.br
+.ti -1c
+.RI "List< \fBButtonHotItem\fP > \fBbuttons\fP = new List<\fBButtonHotItem\fP>()"
+.br
+.in -1c
+
+Public Attributes inherited from \fBWidget\fP
+.in +1c
+.ti -1c
+.RI "Image \fBimageBG\fP"
+.br
+.ti -1c
+.RI "SoundData \fBsoundActivate\fP"
+.br
+.ti -1c
+.RI "UIDragPanel \fBdragPanel\fP"
+.br
+.ti -1c
+.RI "RectTransform \fBtipPivotLeft\fP"
+.br
+.ti -1c
+.RI "RectTransform \fBtipPivotRight\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBregistering\fP"
+.br
+.ti -1c
+.RI "static bool \fBdirtyCurrentItem\fP"
+.br
+.ti -1c
+.RI "static \fBHotItem\fP \fBregisteringItem\fP"
+.br
+.ti -1c
+.RI "static \fBWidgetHotbar\fP \fBHotbarBuild\fP"
+.br
+.ti -1c
+.RI "static \fBWidgetHotbar\fP \fBHotBarMainMenu\fP"
+.br
+.ti -1c
+.RI "static \fBWidgetHotbar\fP \fBHotbarExtra\fP"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEMono\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBWidgetHotbar\&.Extra\fP \fBextra\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBHotbar\fP \fBhotbar\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBVisible\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "override bool \fBShowInBuildMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsHotbarSpeed\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBCanRegisterItem\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBWidget\fP
+.in +1c
+.ti -1c
+.RI "string \fBID\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBWidget\&.Config\fP \fBconfig\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "SkinRoot \fBskinRoot\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSealed\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowStyleMenu\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBAlwaysTop\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsStaticPosition\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBAlwaysBottom\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual Type \fBSetSiblingAfter\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowInBuildMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBRightClickToClose\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBAllowRightClickToClose\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEMono\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Public Types inherited from \fBWidget\fP
+.in +1c
+.ti -1c
+.RI "enum \fBWidgetType\fP { \fBDefault\fP, \fBZoomMenu\fP }"
+.br
+.ti -1c
+.RI "enum \fBState\fP { \fBActive\fP, \fBInactive\fP }"
+.br
+.in -1c
+
+Protected Member Functions inherited from \fBWidget\fP
+.in +1c
+.ti -1c
+.RI "void \fBClampToScreenEnsured\fP (Component c, Vector2 anchoredPos)"
+.br
+.ti -1c
+.RI "void \fBClampToScreen\fP (RectTransform rect, float margin=10f)"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBWidget\fP
+.in +1c
+.ti -1c
+.RI "bool \fBflip\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB10\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void WidgetHotbar\&._OnDirtyInventory ()"
+
+.PP
+Definition at line \fB532\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "override bool WidgetHotbar\&.CanShowContextMenu ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBWidget\fP\&.
+.PP
+Definition at line \fB84\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "void WidgetHotbar\&.CheckAutoHide ()"
+
+.PP
+Definition at line \fB612\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "override object WidgetHotbar\&.CreateExtra ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBWidget\fP\&.
+.PP
+Definition at line \fB13\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "\fBHotItem\fP WidgetHotbar\&.GetItem (int index)"
+
+.PP
+Definition at line \fB208\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "\fBButtonHotItem\fP WidgetHotbar\&.GetSwapButton (UIButton b)"
+
+.PP
+Definition at line \fB665\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "override void WidgetHotbar\&.OnActivate ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBWidget\fP\&.
+.PP
+Definition at line \fB98\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "override void WidgetHotbar\&.OnChangeActionMode ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBWidget\fP\&.
+.PP
+Definition at line \fB122\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "void WidgetHotbar\&.OnClickEmptyItem (\fBButtonHotItem\fP b)"
+
+.PP
+Definition at line \fB226\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "void WidgetHotbar\&.OnDrag (UIButton b)"
+
+.PP
+Definition at line \fB650\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "void WidgetHotbar\&.OnEndDrag (UIButton b, bool cancel = \fRfalse\fP)"
+
+.PP
+Definition at line \fB685\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "override void WidgetHotbar\&.OnSetContextMenu (UIContextMenu m)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBWidget\fP\&.
+.PP
+Definition at line \fB234\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "void WidgetHotbar\&.OnStartDrag (UIButton b)"
+
+.PP
+Definition at line \fB644\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "void WidgetHotbar\&.Rebuild ()"
+
+.PP
+Definition at line \fB134\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "void WidgetHotbar\&.RebuildPage (int page = \fR\-1\fP)"
+
+.PP
+Definition at line \fB175\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "static void WidgetHotbar\&.RebuildPages ()\fR [static]\fP"
+
+.PP
+Definition at line \fB188\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "static void WidgetHotbar\&.RefreshButtons ()\fR [static]\fP"
+
+.PP
+Definition at line \fB478\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "bool WidgetHotbar\&.RefreshHighlight ()"
+
+.PP
+Definition at line \fB494\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "static void WidgetHotbar\&.RefreshHighlights ()\fR [static]\fP"
+
+.PP
+Definition at line \fB465\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "void WidgetHotbar\&.SetItem (\fBButtonHotItem\fP b, \fBHotItem\fP item)"
+
+.PP
+Definition at line \fB456\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "void WidgetHotbar\&.SetShortcutMenu (\fBButtonHotItem\fP b, UIContextMenu m)"
+
+.PP
+Definition at line \fB337\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "void WidgetHotbar\&.SetVisible ()"
+
+.PP
+Definition at line \fB544\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "void WidgetHotbar\&.SwitchPage ()"
+
+.PP
+Definition at line \fB201\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "void WidgetHotbar\&.ToggleVisible ()"
+
+.PP
+Definition at line \fB585\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "void WidgetHotbar\&.TryUse (int index)"
+
+.PP
+Definition at line \fB214\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "List<\fBButtonHotItem\fP> WidgetHotbar\&.buttons = new List<\fBButtonHotItem\fP>()"
+
+.PP
+Definition at line \fB763\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "bool WidgetHotbar\&.dirtyCurrentItem\fR [static]\fP"
+
+.PP
+Definition at line \fB726\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "\fBWidgetHotbar\fP WidgetHotbar\&.HotbarBuild\fR [static]\fP"
+
+.PP
+Definition at line \fB732\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "\fBWidgetHotbar\fP WidgetHotbar\&.HotbarExtra\fR [static]\fP"
+
+.PP
+Definition at line \fB738\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "\fBWidgetHotbar\fP WidgetHotbar\&.HotBarMainMenu\fR [static]\fP"
+
+.PP
+Definition at line \fB735\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "int WidgetHotbar\&.idHotbar"
+
+.PP
+Definition at line \fB741\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "RawImage WidgetHotbar\&.imageGrid"
+
+.PP
+Definition at line \fB750\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "Image WidgetHotbar\&.imageSelect"
+
+.PP
+Definition at line \fB753\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "GridLayoutGroup WidgetHotbar\&.layout"
+
+.PP
+Definition at line \fB744\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "\fBButtonHotItem\fP WidgetHotbar\&.mold"
+
+.PP
+Definition at line \fB747\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "bool WidgetHotbar\&.registering\fR [static]\fP"
+
+.PP
+Definition at line \fB723\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "\fBHotItem\fP WidgetHotbar\&.registeringItem\fR [static]\fP"
+
+.PP
+Definition at line \fB729\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "Hotbar\&.Type WidgetHotbar\&.type"
+
+.PP
+Definition at line \fB756\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "bool WidgetHotbar\&.useMask"
+
+.PP
+Definition at line \fB759\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool WidgetHotbar\&.CanRegisterItem\fR [get]\fP"
+
+.PP
+Definition at line \fB75\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "\fBWidgetHotbar\&.Extra\fP WidgetHotbar\&.extra\fR [get]\fP"
+
+.PP
+Definition at line \fB20\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "\fBHotbar\fP WidgetHotbar\&.hotbar\fR [get]\fP"
+
+.PP
+Definition at line \fB30\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "bool WidgetHotbar\&.IsHotbarSpeed\fR [get]\fP"
+
+.PP
+Definition at line \fB65\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "override bool WidgetHotbar\&.ShowInBuildMode\fR [get]\fP"
+
+.PP
+Definition at line \fB55\fP of file \fBWidgetHotbar\&.cs\fP\&.
+.SS "bool WidgetHotbar\&.Visible\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB41\fP of file \fBWidgetHotbar\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

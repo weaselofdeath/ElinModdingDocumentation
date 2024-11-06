@@ -1,0 +1,143 @@
+\doxysection{Ranked\+Zone\+Manager.\+cs}
+\hypertarget{_ranked_zone_manager_8cs_source}{}\label{_ranked_zone_manager_8cs_source}\index{Elin/RankedZoneManager.cs@{Elin/RankedZoneManager.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Runtime.CompilerServices;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00006}00006\ \textcolor{comment}{//\ Token:\ 0x020006E7\ RID:\ 1767}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00007}\mbox{\hyperlink{class_ranked_zone_manager}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ranked_zone_manager}{RankedZoneManager}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060032FF\ RID:\ 13055\ RVA:\ 0x00117F74\ File\ Offset:\ 0x00116174}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ GetIncome(\mbox{\hyperlink{class_zone}{Zone}}\ z)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ List<FactionBranch>\ children\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.faction.GetChildren();}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ children.Sort((\mbox{\hyperlink{class_faction_branch}{FactionBranch}}\ a,\ \mbox{\hyperlink{class_faction_branch}{FactionBranch}}\ b)\ =>\ this.GetRank(a.owner)\ -\/\ \textcolor{keyword}{this}.GetRank(b.owner));}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ children.IndexOf(z.branch);}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.<GetIncome>g\_\_CalcIncome|0\_0(z)\ *\ 100\ /\ (100\ +\ num\ *\ 40);}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00016}00016\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003300\ RID:\ 13056\ RVA:\ 0x00117FC0\ File\ Offset:\ 0x001161C0}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ GetRankText(\mbox{\hyperlink{class_zone}{Zone}}\ z)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rank\ =\ this.GetRank(z);}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}[]\ list\ =\ Lang.GetList(\textcolor{stringliteral}{"{}num\_rank"{}});}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ rank\ \%\ 10;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ >=\ list.Length)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rank.ToString()\ +\ list[num];}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003301\ RID:\ 13057\ RVA:\ 0x00117FFC\ File\ Offset:\ 0x001161FC}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ GetRank(\mbox{\hyperlink{class_zone}{Zone}}\ z)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_ranked_zone}{RankedZone}}\ rankedZone\ \textcolor{keywordflow}{in}\ this.GetList())}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rankedZone.z\ ==\ z)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rankedZone.rank;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00044}00044\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003302\ RID:\ 13058\ RVA:\ 0x00118060\ File\ Offset:\ 0x00116260}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{public}\ List<RankedZone>\ GetList()}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00046}00046\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ List<RankedZone>\ list\ =\ \textcolor{keyword}{new}\ List<RankedZone>();}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (Dictionary<int,\ Spatial>.ValueCollection.Enumerator\ enumerator\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.game.spatials.map.Values.GetEnumerator())}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (enumerator.MoveNext())}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_spatial}{Spatial}}\ z\ =\ enumerator.Current;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((z.source.value\ >\ 0\ \&\&\ z.lv\ ==\ 0)\ ||\ z.IsPlayerFaction)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ v\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (z.IsPlayerFaction)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v\ =\ (z\ as\ \mbox{\hyperlink{class_zone}{Zone}}).branch.Worth;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v\ =\ z.source.value;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Rand.UseSeed(z.uid,\ delegate}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v\ =\ z.source.value\ +\ EClass.rnd(z.source.value\ /\ 10);}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list.Add(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_ranked_zone}{RankedZone}}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ (z\ as\ \mbox{\hyperlink{class_zone}{Zone}}),}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\ =\ v}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ list.Sort((\mbox{\hyperlink{class_ranked_zone}{RankedZone}}\ a,\ \mbox{\hyperlink{class_ranked_zone}{RankedZone}}\ b)\ =>\ b.Value\ -\/\ a.Value);}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_ranked_zone}{RankedZone}}\ rankedZone\ \textcolor{keywordflow}{in}\ list)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num3\ =\ num2\ -\/\ rankedZone.value;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num4;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rankedZone.value\ >=\ 100000000)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num4\ =\ 100000000;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (rankedZone.value\ >=\ 10000000)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num4\ =\ 5000000;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (rankedZone.value\ >=\ 5000000)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num4\ =\ 1000000;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (rankedZone.value\ >=\ 1000000)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num4\ =\ 500000;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (rankedZone.value\ >=\ 500000)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num4\ =\ 50000;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (rankedZone.value\ >=\ 100000)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num4\ =\ 10000;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (rankedZone.value\ >=\ 50000)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num4\ =\ 5000;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (rankedZone.value\ >=\ 10000)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num4\ =\ 2000;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num4\ =\ 1000;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ num\ +=\ Mathf.Max(num3\ /\ num4,\ 1);}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ rankedZone.rank\ =\ num;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ num2\ =\ rankedZone.Value;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00124}00124\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00126}00126\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003304\ RID:\ 13060\ RVA:\ 0x00118318\ File\ Offset:\ 0x00116518}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00127}00127\ \ \ \ \ [CompilerGenerated]}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00128}00128\ \ \ \ \ \textcolor{keyword}{private}\ int\ <GetIncome>g\_\_CalcIncome|0\_0(\mbox{\hyperlink{class_zone}{Zone}}\ \_z)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00129}00129\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rank\ =\ this.GetRank(\_z);}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rank\ >\ 125)}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (126\ -\/\ rank)\ *\ 100;}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00136}00136\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ranked_zone_manager_8cs_source_l00137}00137\ \}}
+
+\end{DoxyCode}

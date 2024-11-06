@@ -1,0 +1,79 @@
+\doxysection{TCExtra\+Progress.\+cs}
+\hypertarget{_t_c_extra_progress_8cs_source}{}\label{_t_c_extra_progress_8cs_source}\index{Elin/TCExtraProgress.cs@{Elin/TCExtraProgress.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x0200017B\ RID:\ 379}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00006}\mbox{\hyperlink{class_t_c_extra_progress}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_t_c_extra_progress}{TCExtraProgress}}\ :\ \mbox{\hyperlink{class_t_c_extra_u_i}{TCExtraUI}}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000B02\ RID:\ 2818\ RVA:\ 0x00044953\ File\ Offset:\ 0x00042B53}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnSetOwner()}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ this.Refresh();}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000B03\ RID:\ 2819\ RVA:\ 0x0004495B\ File\ Offset:\ 0x00042B5B}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ this.timer\ -\/=\ Core.delta;}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.timer\ <\ 0f)}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ this.timer\ +=\ this.refreshInterval;}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ this.Refresh();}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000B04\ RID:\ 2820\ RVA:\ 0x00044998\ File\ Offset:\ 0x00042B98}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Refresh()}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00027}00027\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (base.owner\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_trait_gene_machine}{TraitGeneMachine}}\ traitGeneMachine\ =\ base.owner.trait\ as\ \mbox{\hyperlink{class_trait_gene_machine}{TraitGeneMachine}};}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ base.owner.isOn\ \&\&\ base.owner.IsInstalled\ \&\&\ traitGeneMachine.IsTargetUsingGene();}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ this.goBar.SetActive(flag);}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flag)}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ progress\ =\ traitGeneMachine.GetProgress();}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ this.bar.rectTransform.sizeDelta\ =\ \textcolor{keyword}{new}\ Vector2(progress\ *\ this.bgBar.rectTransform.sizeDelta.x,\ \textcolor{keyword}{this}.bgBar.rectTransform.sizeDelta.y);}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.textProgress)}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.textProgress.text\ =\ traitGeneMachine.GetProgressText();}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A13\ RID:\ 2579}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{public}\ TCExtraProgress.ProgressType\ progressType;}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A14\ RID:\ 2580}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00050}00050\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ goBar;}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A15\ RID:\ 2581}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{public}\ Image\ bar;}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A16\ RID:\ 2582}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{public}\ Image\ bgBar;}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A17\ RID:\ 2583}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textProgress;}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A18\ RID:\ 2584}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ refreshInterval;}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A19\ RID:\ 2585}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ timer;}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000886\ RID:\ 2182}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00068}00068\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ ProgressType}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00069}00069\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002478\ RID:\ 9336}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ Gene}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00072}00072\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_extra_progress_8cs_source_l00073}00073\ \}}
+
+\end{DoxyCode}

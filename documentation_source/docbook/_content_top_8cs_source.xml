@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__content_top_8cs_source" xml:lang="en-US">
+<title>ContentTop.cs</title>
+<indexterm><primary>Elin/ContentTop.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__content_top_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__content_top_8cs_source_1l00002"/>00002 
+<anchor xml:id="__content_top_8cs_source_1l00003"/>00003 <emphasis role="comment">//&#32;Token:&#32;0x02000594&#32;RID:&#32;1428</emphasis>
+<anchor xml:id="__content_top_8cs_source_1l00004"/><link linkend="_class_content_top">00004</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_content_top">ContentTop</link>&#32;:&#32;<link linkend="_class_e_content">EContent</link>
+<anchor xml:id="__content_top_8cs_source_1l00005"/>00005 {
+<anchor xml:id="__content_top_8cs_source_1l00006"/>00006 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002737&#32;RID:&#32;10039&#32;RVA:&#32;0x000DE278&#32;File&#32;Offset:&#32;0x000DC478</emphasis>
+<anchor xml:id="__content_top_8cs_source_1l00007"/>00007 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnSwitchContent(<emphasis role="keywordtype">int</emphasis>&#32;idTab)
+<anchor xml:id="__content_top_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_top_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textHomeName.text&#32;=&#32;Lang.Parse(<emphasis role="stringliteral">&quot;journalTitle&quot;</emphasis>,&#32;<link linkend="_class_e_class">EClass</link>.Home.name,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__content_top_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.player.notices.Refresh();
+<anchor xml:id="__content_top_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BaseList&#32;baseList&#32;=&#32;this.list2;
+<anchor xml:id="__content_top_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIList.Callback&lt;<link linkend="_class_schedule">Schedule</link>.<link linkend="_class_schedule_1_1_item">Item</link>,&#32;UIItem&gt;&#32;callback&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;UIList.Callback&lt;<link linkend="_class_schedule">Schedule</link>.<link linkend="_class_schedule_1_1_item">Item</link>,&#32;UIItem&gt;();
+<anchor xml:id="__content_top_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onInstantiate&#32;=&#32;delegate(<link linkend="_class_schedule">Schedule</link>.<link linkend="_class_schedule_1_1_item">Item</link>&#32;a,&#32;UIItem&#32;b)
+<anchor xml:id="__content_top_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_top_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.text1.text&#32;=&#32;a.Name;
+<anchor xml:id="__content_top_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.text2.text&#32;=&#32;((a.date&#32;==&#32;<emphasis role="keyword">null</emphasis>)&#32;?&#32;<emphasis role="stringliteral">&quot;????&quot;</emphasis>&#32;:&#32;a.date.GetText(<link linkend="_class_date">Date</link>.TextFormat.Schedule));
+<anchor xml:id="__content_top_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__content_top_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;baseList.callbacks&#32;=&#32;callback;
+<anchor xml:id="__content_top_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list2.Clear();
+<anchor xml:id="__content_top_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_schedule">Schedule</link>.<link linkend="_class_schedule_1_1_item">Item</link>&#32;o&#32;in&#32;<link linkend="_class_e_class">EClass</link>.world.schedule.list)
+<anchor xml:id="__content_top_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_top_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list2.Add(o);
+<anchor xml:id="__content_top_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_top_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list2.Refresh(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__content_top_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_top_8cs_source_1l00026"/>00026 
+<anchor xml:id="__content_top_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040015B1&#32;RID:&#32;5553</emphasis>
+<anchor xml:id="__content_top_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textHomeName;
+<anchor xml:id="__content_top_8cs_source_1l00029"/>00029 
+<anchor xml:id="__content_top_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040015B2&#32;RID:&#32;5554</emphasis>
+<anchor xml:id="__content_top_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIList&#32;list1;
+<anchor xml:id="__content_top_8cs_source_1l00032"/>00032 
+<anchor xml:id="__content_top_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040015B3&#32;RID:&#32;5555</emphasis>
+<anchor xml:id="__content_top_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIList&#32;list2;
+<anchor xml:id="__content_top_8cs_source_1l00035"/>00035 }
+</programlisting></section>

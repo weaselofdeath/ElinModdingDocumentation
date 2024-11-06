@@ -1,0 +1,803 @@
+\doxysection{Core.\+cs}
+\hypertarget{_core_8cs_source}{}\label{_core_8cs_source}\index{Elin/Core.cs@{Elin/Core.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.IO;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }AeLa.EasyFeedback.FormFields;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }DG.Tweening;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }DG.Tweening.Core;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }DG.Tweening.Plugins.Options;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }ReflexCLI;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }Steamworks;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00013}00013\ \textcolor{comment}{//\ Token:\ 0x02000002\ RID:\ 2}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00014}\mbox{\hyperlink{class_core}{00014}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }Core\ :\ BaseCore}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00015}00015\ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000001\ RID:\ 1}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000001\ RID:\ 1\ RVA:\ 0x00002050\ File\ Offset:\ 0x00000250}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsGameStarted}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.game\ !=\ \textcolor{keyword}{null}\ \&\&\ this.game.activeZone\ !=\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000002\ RID:\ 2}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000002\ RID:\ 2\ RVA:\ 0x0000206A\ File\ Offset:\ 0x0000026A}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00028}00028\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{float}\ uiScale}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.ui.canvasScaler.scaleFactor;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000003\ RID:\ 3\ RVA:\ 0x0000207C\ File\ Offset:\ 0x0000027C}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ Awake()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00038}00038\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ base.Awake();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ Application.targetFrameRate\ =\ 60;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ IO.CreateDirectory(CorePath.Temp);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ Core.SetCurrent(\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ Lang.langCode\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Application.isEditor\ \&\&\ \textcolor{keyword}{this}.debug.langCode\ !=\ Lang.LangCode.None)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ this.forceLangCode\ =\ this.debug.langCode.ToString();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\textcolor{keywordtype}{string}\ text\ \textcolor{keywordflow}{in}\ Application.isEditor\ ?\ \textcolor{keyword}{this}.debug.command.Split(\textcolor{charliteral}{','},\ StringSplitOptions.None)\ :\ Environment.GetCommandLineArgs())}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ text\ =\ text.Replace(\textcolor{stringliteral}{"{}-\/"{}},\ \textcolor{stringliteral}{"{}"{}}).ToUpper();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Commandline\ args:"{}}\ +\ text);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (text.StartsWith(\textcolor{stringliteral}{"{}LANG\_"{}}))}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.forceLangCode\ =\ text.Replace(\textcolor{stringliteral}{"{}LANG\_"{}},\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (text\ ==\ \textcolor{stringliteral}{"{}DEV"{}})}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.releaseMode\ =\ ReleaseMode.Debug;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ NewsList.dict\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ InvOwner.Trader\ =\ (InvOwner.Main\ =\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ SpriteSheet.dict.Clear();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ SpriteSheet.loadedPath.Clear();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ SpriteReplacerAnimation.dict.Clear();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ LayerDrama.haltPlaylist\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ LayerDrama.keepBGM\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ BaseModManager.isInitialized\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ Net.isUploading\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ MapPiece.initialized\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ ActPlan.warning\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ Game.isPaused\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Application.isEditor\ \&\&\ BaseCore.resetRuntime)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ this.ResetRuntime();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ Window.dictData.Clear();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_inventory}{LayerInventory}}.listInv.Clear();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ this.debug\ =\ Resources.Load<\mbox{\hyperlink{class_core_debug}{CoreDebug}}>(\textcolor{stringliteral}{"{}\_Debug\ "{}}\ +\ this.releaseMode.ToString());}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ this.debug.enable\ =\ (this.releaseMode\ >\ ReleaseMode.Public);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.useUImat)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ Canvas.GetDefaultCanvasMaterial().CopyPropertiesFromMaterial(this.matUI);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ Canvas.GetDefaultCanvasMaterial().shader\ =\ this.matUI.shader;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.ui)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ this.ui\ =\ Util.Instantiate<UI>(\textcolor{stringliteral}{"{}UI/UI"{}},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.scene)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ this.scene\ =\ Util.Instantiate<\mbox{\hyperlink{class_scene}{Scene}}>(\textcolor{stringliteral}{"{}Scene/Scene"{}},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ this.scene.screenNoMap.Activate();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ this.ui.ShowCover(0f,\ 1f,\ \textcolor{keyword}{null},\ \textcolor{keywordflow}{default}(Color));}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ this.canvas\ =\ this.ui.canvas;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ this.ui.OnCoreStart();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ BaseCore.BlockInput\ =\ (()\ =>\ this.ui.IsDragging);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ CommandRegistry.assemblies.Add(typeof(Core).Assembly);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ SoundData.EditorPlaySpatial\ =\ delegate(SoundData\ a)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ this.game.player.chara.PlaySound(a.name,\ 1f,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ SoundManager.funcCanPlayBGM\ =\ (()\ =>\ !LayerDrama.haltPlaylist\ \&\&\ !\mbox{\hyperlink{class_layer_drama}{LayerDrama}}.keepBGM);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ FileDragAndDrop.onDrop\ =\ \textcolor{keyword}{new}\ Action<List<string>>(this.textures.OnDropFile);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ MOD.langs.Clear();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ MOD.OnAddPcc\ =\ \textcolor{keyword}{new}\ Action<DirectoryInfo>(this.pccs.Add);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ MOD.listTalk\ =\ \textcolor{keyword}{new}\ TalkDataList();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ MOD.tones\ =\ \textcolor{keyword}{new}\ ToneDataList();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ MOD.listMaps.Clear();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ MOD.listPartialMaps.Clear();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ Portrait.modPortraitBGFs\ =\ \textcolor{keyword}{new}\ ModItemList<Sprite>(0);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ Portrait.modPortraitBGs\ =\ \textcolor{keyword}{new}\ ModItemList<Sprite>(0);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ Portrait.modPortraits\ =\ \textcolor{keyword}{new}\ ModItemList<Sprite>(0);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ Portrait.modOverlays\ =\ \textcolor{keyword}{new}\ ModItemList<Sprite>(0);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ Portrait.modFull\ =\ \textcolor{keyword}{new}\ ModItemList<Sprite>(0);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ Portrait.dictList\ =\ \textcolor{keyword}{new}\ Dictionary<string,\ List<ModItem<Sprite>>>();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tile_type}{TileType}}.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ this.screen.tileMap.rendererObjDummy.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Core\ Awake"{}});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ Debug.Log(this.steam.steamworks.settings.applicationId);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00122}00122\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00124}00124\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000004\ RID:\ 4\ RVA:\ 0x00002428\ File\ Offset:\ 0x00000628}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00125}00125\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00126}00126\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ TextField.onAddEmail\ =\ delegate()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (BaseModPackage\ baseModPackage\ \textcolor{keywordflow}{in}\ this.mods.packages)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!baseModPackage.builtin)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text\ =\ \textcolor{keywordtype}{string}.Concat(\textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text,}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ baseModPackage.id,}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}/"{}},}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ baseModPackage.activated.ToString(),}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Environment.NewLine}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!text.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Environment.NewLine\ +\ Environment.NewLine\ +\ text;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ this.config\ =\ \mbox{\hyperlink{class_core_config}{CoreConfig}}.TryLoadConfig();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str\ =\ \textcolor{stringliteral}{"{}Loading\ Config:"{}};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ path\ =\ \mbox{\hyperlink{class_core_config}{CoreConfig}}.path;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str2\ =\ \textcolor{stringliteral}{"{}\ -\/\ "{}};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_core_config}{CoreConfig}}\ coreConfig\ =\ this.config;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ Debug.Log(str\ +\ path\ +\ str2\ +\ ((coreConfig\ !=\ \textcolor{keyword}{null})\ ?\ coreConfig.ToString()\ :\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ this.steam.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ this.StartCase();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00164}00164\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00166}00166\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000005\ RID:\ 5\ RVA:\ 0x000024A4\ File\ Offset:\ 0x000006A4}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00167}00167\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ StartCase()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00168}00168\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}StartCase:"{}}\ +\ \mbox{\hyperlink{class_mod_manager}{ModManager}}.IsInitialized.ToString());}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_mod_manager}{ModManager}}.IsInitialized)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ this.mods.Init(CorePath.rootMod,\ \textcolor{stringliteral}{"{}\_Elona"{}});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ base.StartCoroutine(this.mods.RefreshMods(delegate}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MOD.actorSources.Initialize();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.StartCase();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \},\ !BaseCore.IsOffline\ \&\&\ !\textcolor{keyword}{this}.debug.skipModSync\ \&\&\ (\textcolor{keyword}{this}.config\ ==\ \textcolor{keyword}{null}\ ||\ \textcolor{keyword}{this}.config.other.syncMods)));}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Plugins:"{}}\ +\ \mbox{\hyperlink{class_mod_manager}{ModManager}}.ListPluginObject.Count.ToString());}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\textcolor{keywordtype}{object}\ obj\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_mod_manager}{ModManager}}.ListPluginObject)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ Component\ component\ =\ obj\ as\ Component;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (component)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GameObject\ gameObject\ =\ component.gameObject;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameObject.SendMessage(\textcolor{stringliteral}{"{}OnStartCore"{}});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (Component\ component2\ \textcolor{keywordflow}{in}\ gameObject.GetComponentsInChildren<Component>())}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(component2.GetType().Assembly.GetName().Name);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ClassCache.assemblies.Add(component2.GetType().Assembly.GetName().Name);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}no\ go"{}});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ this.sources.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.forceLangCode.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ this.langCode\ =\ this.forceLangCode;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (this.config\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Config\ doesn't\ exist."{}});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.debug.enable\ ||\ !SteamAPI.IsSteamRunning())}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BookList.dict\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.ui.ShowLang();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ currentGameLanguage\ =\ SteamApps.GetCurrentGameLanguage();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(currentGameLanguage\ ==\ \textcolor{stringliteral}{"{}chinese"{}}))}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(currentGameLanguage\ ==\ \textcolor{stringliteral}{"{}japanese"{}}))}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BookList.dict\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.ui.ShowLang();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.langCode\ =\ \textcolor{stringliteral}{"{}JP"{}};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.langCode\ =\ \textcolor{stringliteral}{"{}CN"{}};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.debug.showSceneSelector\ ||\ (Input.GetKey(KeyCode.LeftShift)\ \&\&\ \textcolor{keyword}{this}.debug.enable))}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ this.ui.ShowSceneSelector();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ this.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00233}00233\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00235}00235\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000006\ RID:\ 6\ RVA:\ 0x00002710\ File\ Offset:\ 0x00000910}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00236}00236\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00237}00237\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ SoundManager.requestCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ InputModuleEX.UpdateEventData();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ EInput.uiMousePosition\ =\ Input.mousePosition\ /\ this.ui.canvasScaler.scaleFactor;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.initialized)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ this.ui.OnUpdate();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ this.debug.UpdateAlways();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ PoolManager.ignorePool\ =\ this.debug.ignorePool;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.screen.tileMap\ \&\&\ !\textcolor{keyword}{this}.screen.tileMap.passBlock.mat.mainTexture)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ this.textures.RefreshTextures();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.useUImat)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ Canvas.GetDefaultCanvasMaterial().CopyPropertiesFromMaterial(this.matUI);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ Core.avgDelta\ +=\ (Time.smoothDeltaTime\ -\/\ Core.delta)\ *\ 0.1f;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ Core.delta\ =\ Time.smoothDeltaTime;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ EInput.delta\ =\ (ButtonState.delta\ =\ Core.delta);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}?\ flag\ =\ this.lastFullScreen;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ fullScreen\ =\ Screen.fullScreen;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(flag.GetValueOrDefault()\ ==\ fullScreen\ \&\ flag\ !=\ \textcolor{keyword}{null}))}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width\ =\ Display.main.systemWidth;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ height\ =\ Display.main.systemHeight;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.config\ !=\ \textcolor{keyword}{null}\ \&\&\ this.config.graphic.fixedResolution)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ width\ =\ this.config.graphic.w;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ height\ =\ this.config.graphic.h;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Screen.fullScreen)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Screen.SetResolution(width,\ height,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ this.lastFullScreen\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{bool}?(Screen.fullScreen);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ this.nextResolutionUpdate\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.nextResolutionUpdate\ <=\ 0f)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.config\ !=\ \textcolor{keyword}{null}\ \&\&\ this.config.graphic.fixedResolution)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ w\ =\ this.config.graphic.w;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ h\ =\ this.config.graphic.h;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Screen.width\ !=\ w\ ||\ Screen.height\ !=\ h)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Screen.SetResolution(w,\ h,\ Screen.fullScreen);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Screen.width\ !=\ \textcolor{keyword}{this}.lastScreenWidth\ ||\ Screen.height\ !=\ \textcolor{keyword}{this}.lastScreenHeight)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.OnChangeResolution();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ this.nextResolutionUpdate\ =\ 0.1f;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00293}00293\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00295}00295\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ this.nextResolutionUpdate\ -\/=\ Core.delta;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.IsGameStarted)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ this.game.OnUpdate();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ Core.gameDeltaNoPause\ =\ Core.delta\ *\ this.scene.actionMode.gameSpeed;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ Core.gameDelta\ =\ (FlockChild.delta\ =\ (this.ui.IsPauseGame\ ?\ 0f\ :\ Core.gameDeltaNoPause));}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00303}00303\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00304}00304\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00305}00305\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ Core.gameDelta\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00307}00307\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00308}00308\ \ \ \ \ \ \ \ \ this.scene.OnUpdate();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.actionsNextFrame.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00310}00310\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ this.actionsNextFrame.Count\ -\/\ 1;\ i\ >=\ 0;\ i-\/-\/)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.actionsNextFrame[i]();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.actionsNextFrame.RemoveAt(i);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00316}00316\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00317}00317\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00319}00319\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000007\ RID:\ 7\ RVA:\ 0x00002A00\ File\ Offset:\ 0x00000C00}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00320}00320\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ LateUpdate()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00321}00321\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.initialized)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00323}00323\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00325}00325\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00326}00326\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.actionsLateUpdate.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00327}00327\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ this.actionsLateUpdate.Count\ -\/\ 1;\ i\ >=\ 0;\ i-\/-\/)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.actionsLateUpdate[i]();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.actionsLateUpdate.RemoveAt(i);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00333}00333\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00334}00334\ \ \ \ \ \ \ \ \ this.scene.OnLateUpdate();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00335}00335\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00337}00337\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000008\ RID:\ 8\ RVA:\ 0x00002A64\ File\ Offset:\ 0x00000C64}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00338}00338\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnApplicationFocus(\textcolor{keywordtype}{bool}\ focus)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00339}00339\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00340}00340\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (focus\ \&\&\ Core.Instance)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00341}00341\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ this.actionsNextFrame.Add(delegate}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.textures.RefreshTextures();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.actionsNextFrame.Add(delegate}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.IsGameStarted)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Application.isEditor\ \&\&\ \mbox{\hyperlink{class_widget_minimap}{WidgetMinimap}}.Instance)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_widget_minimap}{WidgetMinimap}}.Instance.Reload();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_card_row}{CardRow}}\ cardRow\ \textcolor{keywordflow}{in}\ this.sources.cards.rows)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cardRow.replacer.hasChacked\ \&\&\ cardRow.replacer.data\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cardRow.replacer.data.GetSprite(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00358}00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.IsGameStarted\ \&\&\ this.debug.enable)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (PCC.Part\ part\ in\ \textcolor{keyword}{this}.pccs.allParts.Values)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (ModItem<Texture2D>\ modItem\ \textcolor{keywordflow}{in}\ part.modTextures.Values)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ modItem.ClearCache();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chara_actor_p_c_c}{CharaActorPCC}}[]\ array\ =\ UnityEngine.Object.FindObjectsOfType<\mbox{\hyperlink{class_chara_actor_p_c_c}{CharaActorPCC}}>();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ array.Length;\ i++)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ array[i].provider.Rebuild(PCCState.Normal);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00378}00378\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00379}00379\ \ \ \ \ \ \ \ \ EInput.Consume(\textcolor{keyword}{false},\ 1);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00380}00380\ \ \ \ \ \ \ \ \ EInput.dragHack\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00381}00381\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00382}00382\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00383}00383\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000009\ RID:\ 9\ RVA:\ 0x00002B78\ File\ Offset:\ 0x00000D78}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00384}00384\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnApplicationQuit()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00385}00385\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00386}00386\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00387}00387\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_widget}{Widget}}\ widget\ \textcolor{keywordflow}{in}\ this.ui.widgets.GetComponentsInChildren<\mbox{\hyperlink{class_widget}{Widget}}>(\textcolor{keyword}{true}))}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (widget.gameObject\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00392}00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UnityEngine.Object.Destroy(widget.gameObject);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00393}00393\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00394}00394\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ IO.PrintLog();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00396}00396\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00397}00397\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00398}00398\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00399}00399\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str\ =\ \textcolor{stringliteral}{"{}Exception:"{}};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ Exception\ ex2\ =\ ex;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(str\ +\ ((ex2\ !=\ \textcolor{keyword}{null})\ ?\ ex2.ToString()\ :\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00402}00402\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00403}00403\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00404}00404\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00405}00405\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (SteamAPI.IsSteamRunning())}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00406}00406\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SteamAPI.Shutdown();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00408}00408\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00409}00409\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00410}00410\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex3)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00411}00411\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00412}00412\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str2\ =\ \textcolor{stringliteral}{"{}Exception:"{}};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00413}00413\ \ \ \ \ \ \ \ \ \ \ \ \ Exception\ ex4\ =\ ex3;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00414}00414\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(str2\ +\ ((ex4\ !=\ \textcolor{keyword}{null})\ ?\ ex4.ToString()\ :\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00415}00415\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00416}00416\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00417}00417\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00418}00418\ \ \ \ \ \ \ \ \ \ \ \ \ IO.DeleteDirectory(CorePath.Temp);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00419}00419\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_i_o}{GameIO}}.DeleteEmptyGameFolders();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00420}00420\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00421}00421\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex5)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00422}00422\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str3\ =\ \textcolor{stringliteral}{"{}Exception:"{}};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00424}00424\ \ \ \ \ \ \ \ \ \ \ \ \ Exception\ ex6\ =\ ex5;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00425}00425\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(str3\ +\ ((ex6\ !=\ \textcolor{keyword}{null})\ ?\ ex6.ToString()\ :\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00426}00426\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00427}00427\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00428}00428\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00429}00429\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600000A\ RID:\ 10\ RVA:\ 0x00002C74\ File\ Offset:\ 0x00000E74}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00430}00430\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ ResetRuntime()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00431}00431\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00432}00432\ \ \ \ \ \ \ \ \ BaseCore.resetRuntime\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00433}00433\ \ \ \ \ \ \ \ \ BiomeProfile.forceInitialize\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00434}00434\ \ \ \ \ \ \ \ \ WidgetHotbar.registering\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00435}00435\ \ \ \ \ \ \ \ \ WidgetHotbar.registeringItem\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00436}00436\ \ \ \ \ \ \ \ \ WordGen.initialized\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00437}00437\ \ \ \ \ \ \ \ \ RecipeManager.rebuild\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00438}00438\ \ \ \ \ \ \ \ \ BookList.dict\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00439}00439\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_spawn_list}{SpawnList}}.allList.Clear();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00440}00440\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00441}00441\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00442}00442\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600000B\ RID:\ 11\ RVA:\ 0x00002CAC\ File\ Offset:\ 0x00000EAC}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00443}00443\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Init()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00444}00444\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00445}00445\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Initializing:"{}}\ +\ this.langCode\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ this.forceLangCode);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00446}00446\ \ \ \ \ \ \ \ \ base.StartCoroutine(\textcolor{stringliteral}{"{}OnEndOfFrame"{}});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00447}00447\ \ \ \ \ \ \ \ \ base.InvokeRepeating(\textcolor{stringliteral}{"{}Update100ms"{}},\ 0.1f,\ 0.1f);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00448}00448\ \ \ \ \ \ \ \ \ UnityEngine.Object.DestroyImmediate(this.ui.layoutLang.gameObject);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00449}00449\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_core_config}{CoreConfig}}.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00450}00450\ \ \ \ \ \ \ \ \ this.SetLang(this.config.lang,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00451}00451\ \ \ \ \ \ \ \ \ this.refs.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00452}00452\ \ \ \ \ \ \ \ \ this.debug.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00453}00453\ \ \ \ \ \ \ \ \ SpriteSheet.Add(\textcolor{stringliteral}{"{}Media/Graphics/Icon/icons\_48"{}});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00454}00454\ \ \ \ \ \ \ \ \ Cal.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00455}00455\ \ \ \ \ \ \ \ \ this.Colors.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00456}00456\ \ \ \ \ \ \ \ \ this.gameSetting.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00457}00457\ \ \ \ \ \ \ \ \ this.mods.InitLang();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00458}00458\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!Lang.isBuiltin)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00459}00459\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00460}00460\ \ \ \ \ \ \ \ \ \ \ \ \ this.sources.ImportSourceTexts();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00461}00461\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00462}00462\ \ \ \ \ \ \ \ \ PCCManager.current.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00463}00463\ \ \ \ \ \ \ \ \ SpriteVariationManager.current.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00464}00464\ \ \ \ \ \ \ \ \ this.scene.InitPass();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00465}00465\ \ \ \ \ \ \ \ \ this.textures.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00466}00466\ \ \ \ \ \ \ \ \ this.textures.RefreshTextures();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00467}00467\ \ \ \ \ \ \ \ \ SoundManager.current.Reset();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00468}00468\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.debug.validatePref)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00469}00469\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_source_pref_inspector}{SourcePrefInspector}}.Instance.ValidatePrefs();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00471}00471\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00472}00472\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.debug.startScene\ ==\ \mbox{\hyperlink{class_core_debug}{CoreDebug}}.StartScene.Title)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00473}00473\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ this.scene.Init(\mbox{\hyperlink{class_scene}{Scene}}.Mode.Title);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00475}00475\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00476}00476\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00477}00477\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00478}00478\ \ \ \ \ \ \ \ \ \ \ \ \ this.debug.QuickStart();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00479}00479\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00480}00480\ \ \ \ \ \ \ \ \ this.ui.HideCover(2f,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00481}00481\ \ \ \ \ \ \ \ \ this.initialized\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00482}00482\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00483}00483\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00484}00484\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600000C\ RID:\ 12\ RVA:\ 0x00002E12\ File\ Offset:\ 0x00001012}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00485}00485\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Quit()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00486}00486\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00487}00487\ \ \ \ \ \ \ \ \ Application.Quit();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00488}00488\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Quit"{}});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00489}00489\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00490}00490\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00491}00491\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600000D\ RID:\ 13\ RVA:\ 0x00002E23\ File\ Offset:\ 0x00001023}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00492}00492\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ ConsumeInput()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00493}00493\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00494}00494\ \ \ \ \ \ \ \ \ EInput.Consume(\textcolor{keyword}{false},\ 1);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00495}00495\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00496}00496\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00497}00497\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600000E\ RID:\ 14\ RVA:\ 0x00002E2C\ File\ Offset:\ 0x0000102C}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00498}00498\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ Core\ SetCurrent(Core\ \_current\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00499}00499\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00500}00500\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.Instance)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00501}00501\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Core.Instance;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00503}00503\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00504}00504\ \ \ \ \ \ \ \ \ Core.Instance\ =\ (\_current\ ??\ UnityEngine.Object.FindObjectOfType<Core>());}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00505}00505\ \ \ \ \ \ \ \ \ BaseCore.Instance\ =\ Core.Instance;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00506}00506\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.Instance)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00507}00507\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00508}00508\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Instance.SetReferences();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00509}00509\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00510}00510\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Core.Instance;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00511}00511\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00512}00512\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00513}00513\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600000F\ RID:\ 15\ RVA:\ 0x00002E7F\ File\ Offset:\ 0x0000107F}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00514}00514\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ Core\ GetCurrent()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00515}00515\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00516}00516\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Core.Instance\ ??\ Core.SetCurrent(\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00517}00517\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00518}00518\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00519}00519\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000010\ RID:\ 16\ RVA:\ 0x00002E90\ File\ Offset:\ 0x00001090}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00520}00520\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetReferences()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00521}00521\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00522}00522\ \ \ \ \ \ \ \ \ CorePath.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00523}00523\ \ \ \ \ \ \ \ \ SourceData.dataPath\ =\ CorePath.packageCore\ +\ \textcolor{stringliteral}{"{}/Data/Source/"{}};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00524}00524\ \ \ \ \ \ \ \ \ EMono.core\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00525}00525\ \ \ \ \ \ \ \ \ EClass.core\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00526}00526\ \ \ \ \ \ \ \ \ Core.Instance\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00527}00527\ \ \ \ \ \ \ \ \ SkinManager.\_Instance\ =\ this.skins;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00528}00528\ \ \ \ \ \ \ \ \ PathManager.Instance\ =\ this.pathManager;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00529}00529\ \ \ \ \ \ \ \ \ EffectManager.Instance\ =\ this.effects;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00530}00530\ \ \ \ \ \ \ \ \ this.sources.InitLang();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00531}00531\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00532}00532\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00533}00533\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000011\ RID:\ 17\ RVA:\ 0x00002EF4\ File\ Offset:\ 0x000010F4}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00534}00534\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetReleaseMode(ReleaseMode\ m)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00535}00535\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00536}00536\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.releaseMode\ ==\ m)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00537}00537\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00538}00538\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00539}00539\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00540}00540\ \ \ \ \ \ \ \ \ this.releaseMode\ =\ m;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00541}00541\ \ \ \ \ \ \ \ \ this.debug\ =\ Resources.Load<\mbox{\hyperlink{class_core_debug}{CoreDebug}}>(\textcolor{stringliteral}{"{}\_Debug\ "{}}\ +\ this.releaseMode.ToString());}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00542}00542\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00543}00543\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00544}00544\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000012\ RID:\ 18\ RVA:\ 0x00002F2D\ File\ Offset:\ 0x0000112D}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00545}00545\ \ \ \ \ \textcolor{keyword}{private}\ IEnumerator\ OnEndOfFrame()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00546}00546\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00547}00547\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (;;)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00548}00548\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00549}00549\ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ WaitForEndOfFrame();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.screen.guide)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00551}00551\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00552}00552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.screen.guide.OnEndOfFrame();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00553}00553\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00554}00554\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00555}00555\ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00556}00556\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00557}00557\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00558}00558\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000013\ RID:\ 19\ RVA:\ 0x00002F3C\ File\ Offset:\ 0x0000113C}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00559}00559\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Update100ms()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00560}00560\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00561}00561\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.IsGameStarted)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00562}00562\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00563}00563\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00564}00564\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00565}00565\ \ \ \ \ \ \ \ \ this.game.updater.Update100ms();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00566}00566\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00567}00567\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00568}00568\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000014\ RID:\ 20\ RVA:\ 0x00002F58\ File\ Offset:\ 0x00001158}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00569}00569\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnChangeResolution()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00570}00570\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00571}00571\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.config\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00572}00572\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00573}00573\ \ \ \ \ \ \ \ \ \ \ \ \ this.config.OnChangeResolution();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00574}00574\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00575}00575\ \ \ \ \ \ \ \ \ this.screen.RefreshScreenSize();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00576}00576\ \ \ \ \ \ \ \ \ this.lastScreenWidth\ =\ Screen.width;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00577}00577\ \ \ \ \ \ \ \ \ this.lastScreenHeight\ =\ Screen.height;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00578}00578\ \ \ \ \ \ \ \ \ IChangeResolution[]\ componentsInChildren\ =\ this.ui.GetComponentsInChildren<IChangeResolution>();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00579}00579\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ componentsInChildren.Length;\ i++)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00580}00580\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00581}00581\ \ \ \ \ \ \ \ \ \ \ \ \ componentsInChildren[i].OnChangeResolution();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00582}00582\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00583}00583\ \ \ \ \ \ \ \ \ this.scene.camSupport.OnChangeResolution();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00584}00584\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00585}00585\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00586}00586\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000015\ RID:\ 21\ RVA:\ 0x00002FCB\ File\ Offset:\ 0x000011CB}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00587}00587\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Halt()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00588}00588\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00589}00589\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00590}00590\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00591}00591\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000016\ RID:\ 22\ RVA:\ 0x00002FCD\ File\ Offset:\ 0x000011CD}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00592}00592\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ FreezeScreen(\textcolor{keywordtype}{float}\ duration)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00593}00593\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00594}00594\ \ \ \ \ \ \ \ \ this.ui.FreezeScreen(duration);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00595}00595\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00596}00596\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00597}00597\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000017\ RID:\ 23\ RVA:\ 0x00002FDB\ File\ Offset:\ 0x000011DB}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00598}00598\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ UnfreezeScreen()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00599}00599\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00600}00600\ \ \ \ \ \ \ \ \ this.ui.UnfreezeScreen();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00601}00601\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00602}00602\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00603}00603\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000018\ RID:\ 24\ RVA:\ 0x00002FE8\ File\ Offset:\ 0x000011E8}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00604}00604\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ RebuildBGMList()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00605}00605\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00606}00606\ \ \ \ \ \ \ \ \ this.refs.RebuildBGMList();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00607}00607\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00608}00608\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00609}00609\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000019\ RID:\ 25\ RVA:\ 0x00002FF8\ File\ Offset:\ 0x000011F8}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00610}00610\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ StopEventSystem(Component\ c,\ Action\ action,\ \textcolor{keywordtype}{float}\ duration\ =\ 0.12f)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00611}00611\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00612}00612\ \ \ \ \ \ \ \ \ this.eventSystem.enabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00613}00613\ \ \ \ \ \ \ \ \ c.transform.DOScale(\textcolor{keyword}{new}\ Vector3(1f,\ 0f,\ 1f),\ duration).OnKill(delegate}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00614}00614\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00615}00615\ \ \ \ \ \ \ \ \ \ \ \ \ this.eventSystem.enabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00616}00616\ \ \ \ \ \ \ \ \ \}).OnComplete(delegate}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00617}00617\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00618}00618\ \ \ \ \ \ \ \ \ \ \ \ \ action();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00619}00619\ \ \ \ \ \ \ \ \ \}).SetEase(Ease.Linear);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00620}00620\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00621}00621\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00622}00622\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600001A\ RID:\ 26\ RVA:\ 0x0000306E\ File\ Offset:\ 0x0000126E}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00623}00623\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ StopEventSystem(\textcolor{keywordtype}{float}\ duration\ =\ 0.2f)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00624}00624\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00625}00625\ \ \ \ \ \ \ \ \ this.eventSystem.enabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00626}00626\ \ \ \ \ \ \ \ \ TweenUtil.Tween(duration,\ \textcolor{keyword}{null},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00627}00627\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00628}00628\ \ \ \ \ \ \ \ \ \ \ \ \ this.eventSystem.enabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00629}00629\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00630}00630\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00631}00631\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00632}00632\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600001B\ RID:\ 27\ RVA:\ 0x00003090\ File\ Offset:\ 0x00001290}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00633}00633\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetLang(\textcolor{keywordtype}{string}\ langCode,\ \textcolor{keywordtype}{bool}\ force\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00634}00634\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00635}00635\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Lang.langCode\ ==\ langCode\ \&\&\ \textcolor{keyword}{this}.sources\ \&\&\ \textcolor{keyword}{this}.sources.langGeneral)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00636}00636\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00637}00637\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00638}00638\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00639}00639\ \ \ \ \ \ \ \ \ Lang.Init(langCode);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00640}00640\ \ \ \ \ \ \ \ \ AliasGen.list\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00641}00641\ \ \ \ \ \ \ \ \ NameGen.list\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00642}00642\ \ \ \ \ \ \ \ \ WordGen.initialized\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00643}00643\ \ \ \ \ \ \ \ \ this.sources.OnChangeLang();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00644}00644\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.game\ !=\ \textcolor{keyword}{null}\ \&\&\ !this.IsGameStarted)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00645}00645\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00646}00646\ \ \ \ \ \ \ \ \ \ \ \ \ this.game.Kill();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00647}00647\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00648}00648\ \ \ \ \ \ \ \ \ this.config.OnSetLang();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00649}00649\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00650}00650\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00651}00651\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600001C\ RID:\ 28\ RVA:\ 0x00003114\ File\ Offset:\ 0x00001314}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00652}00652\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}[]\ ParseElements(\textcolor{keywordtype}{string}\ str)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00653}00653\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00654}00654\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrEmpty(str))}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00655}00655\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00656}00656\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{int}[0];}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00657}00657\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00658}00658\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}[]\ array\ =\ str.Replace(\textcolor{stringliteral}{"{}\(\backslash\)n"{}},\ \textcolor{stringliteral}{"{}"{}}).Split(\textcolor{charliteral}{','},\ StringSplitOptions.None);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00659}00659\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}[]\ array2\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{int}[array.Length\ *\ 2];}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00660}00660\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ array.Length;\ i++)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00661}00661\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00662}00662\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}[]\ array3\ =\ array[i].Split(\textcolor{charliteral}{'/'},\ StringSplitOptions.None);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00663}00663\ \ \ \ \ \ \ \ \ \ \ \ \ array2[i\ *\ 2]\ =\ Core.GetElement(array3[0]);}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00664}00664\ \ \ \ \ \ \ \ \ \ \ \ \ array2[i\ *\ 2\ +\ 1]\ =\ ((array3.Length\ ==\ 1)\ ?\ 1\ :\ \textcolor{keywordtype}{int}.Parse(array3[1]));}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00665}00665\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00666}00666\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ array2;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00667}00667\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00668}00668\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00669}00669\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600001D\ RID:\ 29\ RVA:\ 0x00003194\ File\ Offset:\ 0x00001394}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00670}00670\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ GetElement(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00671}00671\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00672}00672\ \ \ \ \ \ \ \ \ Core.SetCurrent(\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00673}00673\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.sourceElement\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00674}00674\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00675}00675\ \ \ \ \ \ \ \ \ \ \ \ \ Core.sourceElement\ =\ UnityEngine.Object.FindObjectOfType<\mbox{\hyperlink{class_source_manager}{SourceManager}}>().GetComponent<SourceManager>().elements;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00676}00676\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00677}00677\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!Core.sourceElement.initialized)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00678}00678\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00679}00679\ \ \ \ \ \ \ \ \ \ \ \ \ Core.sourceElement.Init();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00680}00680\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00681}00681\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_source_element_1_1_row}{SourceElement.Row}}\ row;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00682}00682\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!Core.sourceElement.alias.TryGetValue(\textcolor{keywordtype}{id}\ ??\ \textcolor{stringliteral}{"{}\_void"{}},\ out\ row))}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00683}00683\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00684}00684\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}exception:"{}}\ +\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00685}00685\ \ \ \ \ \ \ \ \ \ \ \ \ row\ =\ Core.sourceElement.rows[0];}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00686}00686\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00687}00687\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ row.id;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00688}00688\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00689}00689\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00690}00690\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600001E\ RID:\ 30\ RVA:\ 0x00003224\ File\ Offset:\ 0x00001424}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00691}00691\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ ApplySkins()}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00692}00692\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00693}00693\ \ \ \ \ \ \ \ \ IUISkin[]\ componentsInChildren\ =\ this.ui.GetComponentsInChildren<IUISkin>(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00694}00694\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ componentsInChildren.Length;\ i++)}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00695}00695\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00696}00696\ \ \ \ \ \ \ \ \ \ \ \ \ componentsInChildren[i].ApplySkin();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00697}00697\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00698}00698\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00699}00699\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00700}00700\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000001\ RID:\ 1}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00701}00701\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{new}\ \textcolor{keyword}{static}\ Core\ Instance;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00702}00702\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00703}00703\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000002\ RID:\ 2}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00704}00704\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ delta;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00705}00705\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00706}00706\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000003\ RID:\ 3}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00707}00707\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ avgDelta;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00708}00708\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00709}00709\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000004\ RID:\ 4}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00710}00710\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ gameDelta;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00711}00711\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00712}00712\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000005\ RID:\ 5}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00713}00713\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ gameDeltaNoPause;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00714}00714\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00715}00715\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000006\ RID:\ 6}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00716}00716\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ spiked;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00717}00717\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00718}00718\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000007\ RID:\ 7}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00719}00719\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_source_element}{SourceElement}}\ sourceElement;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00720}00720\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00721}00721\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000008\ RID:\ 8}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00722}00722\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_core_debug}{CoreDebug}}\ debug;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00723}00723\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00724}00724\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000009\ RID:\ 9}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00725}00725\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source_manager}{SourceManager}}\ sources;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00726}00726\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00727}00727\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400000A\ RID:\ 10}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00728}00728\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_path_manager}{PathManager}}\ pathManager;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00729}00729\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00730}00730\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400000B\ RID:\ 11}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00731}00731\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_effect_manager}{EffectManager}}\ effects;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00732}00732\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00733}00733\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400000C\ RID:\ 12}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00734}00734\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_mod_manager}{ModManager}}\ mods\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_mod_manager}{ModManager}}();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00735}00735\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00736}00736\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400000D\ RID:\ 13}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00737}00737\ \ \ \ \ \textcolor{keyword}{public}\ PCCManager\ pccs;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00738}00738\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00739}00739\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400000E\ RID:\ 14}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00740}00740\ \ \ \ \ \textcolor{keyword}{public}\ SkinManager\ skins;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00741}00741\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00742}00742\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400000F\ RID:\ 15}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00743}00743\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_texture_manager}{TextureManager}}\ textures\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_texture_manager}{TextureManager}}();}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00744}00744\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00745}00745\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000010\ RID:\ 16}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00746}00746\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_game_setting}{GameSetting}}\ gameSetting;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00747}00747\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00748}00748\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000011\ RID:\ 17}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00749}00749\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_game_data}{GameData}}\ gamedata;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00750}00750\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00751}00751\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000012\ RID:\ 18}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00752}00752\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_core_ref}{CoreRef}}\ refs;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00753}00753\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00754}00754\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000013\ RID:\ 19}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00755}00755\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_color_profile}{ColorProfile}}\ Colors;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00756}00756\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00757}00757\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000014\ RID:\ 20}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00758}00758\ \ \ \ \ \textcolor{keyword}{public}\ Material\ matUI;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00759}00759\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00760}00760\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000015\ RID:\ 21}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00761}00761\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_steam}{Steam}}\ steam;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00762}00762\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00763}00763\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000016\ RID:\ 22}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00764}00764\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ useUImat;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00765}00765\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00766}00766\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000017\ RID:\ 23}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00767}00767\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ trial;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00768}00768\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00769}00769\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000018\ RID:\ 24}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00770}00770\ \ \ \ \ \textcolor{keyword}{public}\ UI\ ui;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00771}00771\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00772}00772\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000019\ RID:\ 25}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00773}00773\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_scene}{Scene}}\ scene;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00774}00774\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00775}00775\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400001A\ RID:\ 26}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00776}00776\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_base_game_screen}{BaseGameScreen}}\ screen;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00777}00777\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00778}00778\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400001B\ RID:\ 27}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00779}00779\ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00780}00780\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_core_config}{CoreConfig}}\ config;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00781}00781\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00782}00782\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400001C\ RID:\ 28}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00783}00783\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_game}{Game}}\ game;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00784}00784\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00785}00785\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400001D\ RID:\ 29}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00786}00786\ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00787}00787\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ initialized;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00788}00788\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00789}00789\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400001E\ RID:\ 30}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00790}00790\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}?\ lastFullScreen;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00791}00791\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00792}00792\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400001F\ RID:\ 31}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00793}00793\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ nextResolutionUpdate;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00794}00794\ }
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00795}00795\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000020\ RID:\ 32}}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00796}00796\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ skinTimer;}
+\DoxyCodeLine{\Hypertarget{_core_8cs_source_l00797}00797\ \}}
+
+\end{DoxyCode}

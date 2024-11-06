@@ -1,0 +1,562 @@
+.TH "ElementContainer" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ElementContainer
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBEClass\fP\&.
+.PP
+Inherited by \fBElementContainerCard\fP, \fBElementContainerFaction\fP, and \fBElementContainerZone\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBNoteMode\fP { \fBDefault\fP, \fBCharaMake\fP, \fBCharaMakeAttributes\fP, \fBDomain\fP, \fBTrait\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBApplyElementMap\fP (int uid, SourceValueType type, Dictionary< int, int > map, int lv, bool invert=false, bool applyFeat=false)"
+.br
+.ti -1c
+.RI "void \fBApplyMaterialElementMap\fP (\fBThing\fP t, bool invert=false)"
+.br
+.ti -1c
+.RI "void \fBImportElementMap\fP (Dictionary< int, int > map)"
+.br
+.ti -1c
+.RI "\fBElementContainer\fP \fBImportElementMap\fP (int[] ints)"
+.br
+.ti -1c
+.RI "void \fBApplyPotential\fP (int mode=0)"
+.br
+.ti -1c
+.RI "int \fBValue\fP (int ele)"
+.br
+.ti -1c
+.RI "virtual int \fBValueBonus\fP (\fBElement\fP e)"
+.br
+.ti -1c
+.RI "int \fBValueWithoutLink\fP (int ele)"
+.br
+.ti -1c
+.RI "int \fBValueWithoutLink\fP (string alias)"
+.br
+.ti -1c
+.RI "int \fBGetFeatRef\fP (int ele, int idx=0)"
+.br
+.ti -1c
+.RI "int \fBExp\fP (int ele)"
+.br
+.ti -1c
+.RI "bool \fBHas\fP (int ele)"
+.br
+.ti -1c
+.RI "bool \fBHas\fP (\fBSourceElement\&.Row\fP row)"
+.br
+.ti -1c
+.RI "bool \fBHas\fP (string alias)"
+.br
+.ti -1c
+.RI "bool \fBHasBase\fP (int ele)"
+.br
+.ti -1c
+.RI "int \fBBase\fP (int ele)"
+.br
+.ti -1c
+.RI "void \fBLearn\fP (int ele, int v=1)"
+.br
+.ti -1c
+.RI "void \fBTrain\fP (int ele, int a=10)"
+.br
+.ti -1c
+.RI "void \fBModExp\fP (int ele, int a, bool chain=false)"
+.br
+.ti -1c
+.RI "virtual void \fBOnLearn\fP (int ele)"
+.br
+.ti -1c
+.RI "virtual void \fBOnTrain\fP (int ele)"
+.br
+.ti -1c
+.RI "virtual void \fBOnLevelUp\fP (\fBElement\fP e, int lastValue)"
+.br
+.ti -1c
+.RI "virtual void \fBOnLevelDown\fP (\fBElement\fP e, int lastValue)"
+.br
+.ti -1c
+.RI "\fBElement\fP \fBSetBase\fP (string alias, int v, int potential=0)"
+.br
+.ti -1c
+.RI "\fBElement\fP \fBSetBase\fP (int id, int v, int potential=0)"
+.br
+.ti -1c
+.RI "void \fBSetTo\fP (int id, int v)"
+.br
+.ti -1c
+.RI "void \fBRemove\fP (int id)"
+.br
+.ti -1c
+.RI "\fBElement\fP \fBModBase\fP (int ele, int v)"
+.br
+.ti -1c
+.RI "virtual void \fBOnChangeValue\fP ()"
+.br
+.ti -1c
+.RI "\fBElement\fP \fBModPotential\fP (int ele, int v)"
+.br
+.ti -1c
+.RI "\fBElement\fP \fBModTempPotential\fP (int ele, int v, int threshMsg=0)"
+.br
+.ti -1c
+.RI "virtual void \fBOnModTempPotential\fP (\fBElement\fP e, int v, int threshMsg)"
+.br
+.ti -1c
+.RI "int \fBGetSpellExp\fP (\fBChara\fP c, \fBElement\fP e, int costMod=100)"
+.br
+.ti -1c
+.RI "\fBElement\fP \fBGetElement\fP (string alias)"
+.br
+.ti -1c
+.RI "\fBElement\fP \fBGetElement\fP (int id)"
+.br
+.ti -1c
+.RI "\fBElement\fP \fBCreateElement\fP (int id)"
+.br
+.ti -1c
+.RI "\fBElement\fP \fBGetOrCreateElement\fP (\fBElement\fP ele)"
+.br
+.ti -1c
+.RI "\fBElement\fP \fBGetOrCreateElement\fP (string alias)"
+.br
+.ti -1c
+.RI "\fBElement\fP \fBGetOrCreateElement\fP (int id)"
+.br
+.ti -1c
+.RI "void \fBSetParent\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "void \fBSetParent\fP (\fBElementContainer\fP newParent=null)"
+.br
+.ti -1c
+.RI "List< \fBElement\fP > \fBListElements\fP (Func< \fBElement\fP, bool > shoudList=null, Comparison< \fBElement\fP > comparison=null)"
+.br
+.ti -1c
+.RI "List< \fBElement\fP > \fBListBestAttributes\fP ()"
+.br
+.ti -1c
+.RI "List< \fBElement\fP > \fBListBestSkills\fP ()"
+.br
+.ti -1c
+.RI "List< \fBElement\fP > \fBListGeneFeats\fP ()"
+.br
+.ti -1c
+.RI "List< \fBElement\fP > \fBListLearnable\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "void \fBCopyTo\fP (\fBElementContainer\fP container)"
+.br
+.ti -1c
+.RI "void \fBAddNote\fP (UINote n, Func< \fBElement\fP, bool > isValid=null, Action onAdd=null, ElementContainer\&.NoteMode mode=ElementContainer\&.NoteMode\&.Default, bool addRaceFeat=false, Func< \fBElement\fP, string, string > funcText=null, Action< UINote, \fBElement\fP > onAddNote=null)"
+.br
+.ti -1c
+.RI "void \fBAddNoteAll\fP (UINote n)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static int \fBGetSortVal\fP (\fBElement\fP a)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "Dictionary< int, \fBElement\fP > \fBdict\fP = new Dictionary<int, \fBElement\fP>()"
+.br
+.ti -1c
+.RI "\fBElementContainer\fP \fBparent\fP"
+.br
+.ti -1c
+.RI "List< int > \fBlist\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBsizeElement\fP = 5"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBCard\fP \fBCard\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBChara\fP \fBChara\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsMeleeWeapon\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB11\fP of file \fBElementContainer\&.cs\fP\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum ElementContainer\&.NoteMode"
+
+.PP
+Definition at line \fB958\fP of file \fBElementContainer\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ElementContainer\&.AddNote (UINote n, Func< \fBElement\fP, bool > isValid = \fRnull\fP, Action onAdd = \fRnull\fP, ElementContainer\&.NoteMode mode = \fRElementContainer::NoteMode::Default\fP, bool addRaceFeat = \fRfalse\fP, Func< \fBElement\fP, string, string > funcText = \fRnull\fP, Action< UINote, \fBElement\fP > onAddNote = \fRnull\fP)"
+
+.PP
+Definition at line \fB735\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "void ElementContainer\&.AddNoteAll (UINote n)"
+
+.PP
+Definition at line \fB899\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "void ElementContainer\&.ApplyElementMap (int uid, SourceValueType type, Dictionary< int, int > map, int lv, bool invert = \fRfalse\fP, bool applyFeat = \fRfalse\fP)"
+
+.PP
+Definition at line \fB90\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "void ElementContainer\&.ApplyMaterialElementMap (\fBThing\fP t, bool invert = \fRfalse\fP)"
+
+.PP
+Definition at line \fB116\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "void ElementContainer\&.ApplyPotential (int mode = \fR0\fP)"
+
+.PP
+Definition at line \fB168\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "int ElementContainer\&.Base (int ele)"
+
+.PP
+Definition at line \fB294\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "void ElementContainer\&.CopyTo (\fBElementContainer\fP container)"
+
+.PP
+Definition at line \fB703\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "\fBElement\fP ElementContainer\&.CreateElement (int id)"
+
+.PP
+Definition at line \fB571\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "int ElementContainer\&.Exp (int ele)"
+
+.PP
+Definition at line \fB239\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "\fBElement\fP ElementContainer\&.GetElement (int id)"
+
+.PP
+Definition at line \fB565\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "\fBElement\fP ElementContainer\&.GetElement (string alias)"
+
+.PP
+Definition at line \fB559\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "int ElementContainer\&.GetFeatRef (int ele, int idx = \fR0\fP)"
+
+.PP
+Definition at line \fB227\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "\fBElement\fP ElementContainer\&.GetOrCreateElement (\fBElement\fP ele)"
+
+.PP
+Definition at line \fB584\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "\fBElement\fP ElementContainer\&.GetOrCreateElement (int id)"
+
+.PP
+Definition at line \fB596\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "\fBElement\fP ElementContainer\&.GetOrCreateElement (string alias)"
+
+.PP
+Definition at line \fB590\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "static int ElementContainer\&.GetSortVal (\fBElement\fP a)\fR [static]\fP"
+
+.PP
+Definition at line \fB716\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "int ElementContainer\&.GetSpellExp (\fBChara\fP c, \fBElement\fP e, int costMod = \fR100\fP)"
+
+.PP
+Definition at line \fB534\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "bool ElementContainer\&.Has (int ele)"
+
+.PP
+Definition at line \fB250\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "bool ElementContainer\&.Has (\fBSourceElement\&.Row\fP row)"
+
+.PP
+Definition at line \fB257\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "bool ElementContainer\&.Has (string alias)"
+
+.PP
+Definition at line \fB263\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "bool ElementContainer\&.HasBase (int ele)"
+
+.PP
+Definition at line \fB269\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "void ElementContainer\&.ImportElementMap (Dictionary< int, int > map)"
+
+.PP
+Definition at line \fB149\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "\fBElementContainer\fP ElementContainer\&.ImportElementMap (int[] ints)"
+
+.PP
+Definition at line \fB158\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "void ElementContainer\&.Learn (int ele, int v = \fR1\fP)"
+
+.PP
+Definition at line \fB305\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "List< \fBElement\fP > ElementContainer\&.ListBestAttributes ()"
+
+.PP
+Definition at line \fB667\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "List< \fBElement\fP > ElementContainer\&.ListBestSkills ()"
+
+.PP
+Definition at line \fB675\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "List< \fBElement\fP > ElementContainer\&.ListElements (Func< \fBElement\fP, bool > shoudList = \fRnull\fP, Comparison< \fBElement\fP > comparison = \fRnull\fP)"
+
+.PP
+Definition at line \fB639\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "List< \fBElement\fP > ElementContainer\&.ListGeneFeats ()"
+
+.PP
+Definition at line \fB683\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "List< \fBElement\fP > ElementContainer\&.ListLearnable (\fBChara\fP c)"
+
+.PP
+Definition at line \fB689\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "\fBElement\fP ElementContainer\&.ModBase (int ele, int v)"
+
+.PP
+Definition at line \fB468\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "void ElementContainer\&.ModExp (int ele, int a, bool chain = \fRfalse\fP)"
+
+.PP
+Definition at line \fB319\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "\fBElement\fP ElementContainer\&.ModPotential (int ele, int v)"
+
+.PP
+Definition at line \fB491\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "\fBElement\fP ElementContainer\&.ModTempPotential (int ele, int v, int threshMsg = \fR0\fP)"
+
+.PP
+Definition at line \fB503\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "virtual void ElementContainer\&.OnChangeValue ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB486\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "virtual void ElementContainer\&.OnLearn (int ele)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB393\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "virtual void ElementContainer\&.OnLevelDown (\fBElement\fP e, int lastValue)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB408\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "virtual void ElementContainer\&.OnLevelUp (\fBElement\fP e, int lastValue)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB403\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "virtual void ElementContainer\&.OnModTempPotential (\fBElement\fP e, int v, int threshMsg)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB516\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "virtual void ElementContainer\&.OnTrain (int ele)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB398\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "void ElementContainer\&.Remove (int id)"
+
+.PP
+Definition at line \fB453\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "\fBElement\fP ElementContainer\&.SetBase (int id, int v, int potential = \fR0\fP)"
+
+.PP
+Definition at line \fB419\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "\fBElement\fP ElementContainer\&.SetBase (string alias, int v, int potential = \fR0\fP)"
+
+.PP
+Definition at line \fB413\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "void ElementContainer\&.SetParent (\fBCard\fP c)"
+
+.PP
+Definition at line \fB607\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "void ElementContainer\&.SetParent (\fBElementContainer\fP newParent = \fRnull\fP)"
+
+.PP
+Definition at line \fB613\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "void ElementContainer\&.SetTo (int id, int v)"
+
+.PP
+Definition at line \fB438\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "void ElementContainer\&.Train (int ele, int a = \fR10\fP)"
+
+.PP
+Definition at line \fB312\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "int ElementContainer\&.Value (int ele)"
+
+.PP
+Definition at line \fB180\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "virtual int ElementContainer\&.ValueBonus (\fBElement\fP e)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB199\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "int ElementContainer\&.ValueWithoutLink (int ele)"
+
+.PP
+Definition at line \fB205\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "int ElementContainer\&.ValueWithoutLink (string alias)"
+
+.PP
+Definition at line \fB216\fP of file \fBElementContainer\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "Dictionary<int, \fBElement\fP> ElementContainer\&.dict = new Dictionary<int, \fBElement\fP>()"
+
+.PP
+Definition at line \fB945\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "List<int> ElementContainer\&.list"
+
+.PP
+Definition at line \fB955\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "\fBElementContainer\fP ElementContainer\&.parent"
+
+.PP
+Definition at line \fB948\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "const int ElementContainer\&.sizeElement = 5\fR [static]\fP"
+
+.PP
+Definition at line \fB951\fP of file \fBElementContainer\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual \fBCard\fP ElementContainer\&.Card\fR [get]\fP"
+
+.PP
+Definition at line \fB15\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "virtual \fBChara\fP ElementContainer\&.Chara\fR [get]\fP"
+
+.PP
+Definition at line \fB25\fP of file \fBElementContainer\&.cs\fP\&.
+.SS "virtual bool ElementContainer\&.IsMeleeWeapon\fR [get]\fP"
+
+.PP
+Definition at line \fB35\fP of file \fBElementContainer\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

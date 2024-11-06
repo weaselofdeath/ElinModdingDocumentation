@@ -1,0 +1,587 @@
+.TH "InvOwnerDraglet" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+InvOwnerDraglet
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBInvOwner\fP\&.
+.PP
+Inherited by \fBInvOwnerBlend\fP, \fBInvOwnerCraft\fP, \fBInvOwnerDeliver\fP, \fBInvOwnerDeliverBox\fP, \fBInvOwnerEffect\fP, \fBInvOwnerGacha\fP, \fBInvOwnerGene\fP, \fBInvOwnerGive\fP, \fBInvOwnerMod\fP, \fBInvOwnerOffering\fP, \fBInvOwnerRecycle\fP, and \fBInvOwnerRefuel\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBProcessType\fP { \fBNone\fP, \fBConsume\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBAllowHold\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "\fBInvOwnerDraglet\fP (\fBCard\fP owner=null, \fBCard\fP container=null, CurrencyType _currency=CurrencyType\&.Money)"
+.br
+.ti -1c
+.RI "override void \fBOnInit\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnClick\fP (\fBButtonGrid\fP button)"
+.br
+.ti -1c
+.RI "override void \fBOnRightClick\fP (\fBButtonGrid\fP button)"
+.br
+.ti -1c
+.RI "override int \fBGetPrice\fP (\fBThing\fP t, CurrencyType currency, int num, bool sell)"
+.br
+.ti -1c
+.RI "override string \fBGetTextDetail\fP (\fBThing\fP t, CurrencyType currency, int num, bool sell)"
+.br
+.ti -1c
+.RI "override void \fBOnProcess\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "virtual void \fB_OnProcess\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "virtual void \fBOnAfterRefuel\fP ()"
+.br
+.ti -1c
+.RI "void \fBRedrawButton\fP ()"
+.br
+.ti -1c
+.RI "override void \fBBuildUICurrency\fP (\fBUICurrency\fP uiCurrency, bool canReroll=false)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBInvOwner\fP
+.in +1c
+.ti -1c
+.RI "virtual bool \fBAllowMoved\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "virtual bool \fBShouldShowGuide\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "virtual bool \fBAllowDrop\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "virtual \fBThing\fP \fBCreateDefaultContainer\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsWeightOver\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "\fBInvOwner\fP (\fBCard\fP owner, \fBCard\fP container=null, CurrencyType _currency=CurrencyType\&.None, PriceType _price=PriceType\&.Default)"
+.br
+.ti -1c
+.RI "void \fBInit\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnRightPressed\fP (\fBButtonGrid\fP button)"
+.br
+.ti -1c
+.RI "\fBInvOwner\fP \fBGetShitDestOwner\fP (\fBButtonGrid\fP b, bool rightMouse=false)"
+.br
+.ti -1c
+.RI "virtual void \fBOnShiftClick\fP (\fBButtonGrid\fP b, bool rightMouse=false)"
+.br
+.ti -1c
+.RI "virtual bool \fBCanShiftClick\fP (\fBButtonGrid\fP b, bool rightMouse=false)"
+.br
+.ti -1c
+.RI "virtual string \fBGetTextShiftClick\fP (\fBButtonGrid\fP b)"
+.br
+.ti -1c
+.RI "virtual void \fBOnCtrlClick\fP (\fBButtonGrid\fP button)"
+.br
+.ti -1c
+.RI "virtual bool \fBCanCtrlClick\fP (\fBButtonGrid\fP b)"
+.br
+.ti -1c
+.RI "virtual string \fBGetTextCtrlClick\fP (\fBButtonGrid\fP b)"
+.br
+.ti -1c
+.RI "virtual void \fBOnAltClick\fP (\fBButtonGrid\fP button)"
+.br
+.ti -1c
+.RI "virtual bool \fBCanAltClick\fP (\fBButtonGrid\fP b)"
+.br
+.ti -1c
+.RI "virtual string \fBGetTextAltClick\fP (\fBButtonGrid\fP b)"
+.br
+.ti -1c
+.RI "void \fBGrab\fP (\fBDragItemCard\&.DragInfo\fP from)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBPutBack\fP (\fBDragItemCard\&.DragInfo\fP from)"
+.br
+.ti -1c
+.RI "void \fBOnStartDrag\fP (\fBDragItemCard\&.DragInfo\fP from)"
+.br
+.ti -1c
+.RI "virtual bool \fBOnCancelDrag\fP (\fBDragItemCard\&.DragInfo\fP from)"
+.br
+.ti -1c
+.RI "bool \fBOnDrag\fP (\fBDragItemCard\&.DragInfo\fP from, \fBDragItemCard\&.DragInfo\fP to, bool execute, bool cancel=false)"
+.br
+.ti -1c
+.RI "bool \fBCanOpenContainer\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "\fBInvOwner\&.ListInteraction\fP \fBListInteractions\fP (\fBButtonGrid\fP b, bool context)"
+.br
+.ti -1c
+.RI "bool \fBTryHold\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "virtual void \fBListInteractions\fP (\fBInvOwner\&.ListInteraction\fP list, \fBThing\fP t, \fBTrait\fP trait, \fBButtonGrid\fP b, bool context)"
+.br
+.ti -1c
+.RI "virtual string \fBGetAutoUseLang\fP (\fBButtonGrid\fP button)"
+.br
+.ti -1c
+.RI "void \fBAutoUse\fP (\fBButtonGrid\fP button, bool repeat=false)"
+.br
+.ti -1c
+.RI "void \fBShowContextMenu\fP (\fBButtonGrid\fP button)"
+.br
+.ti -1c
+.RI "virtual void \fBOnWriteNote\fP (\fBButtonGrid\fP button, UINote n)"
+.br
+.ti -1c
+.RI "virtual string \fBIDCostIcon\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "virtual bool \fBIsFailByCurse\fP (\fBThing\fP t)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBcount\fP = \-1"
+.br
+.ti -1c
+.RI "BlessedState \fBstate\fP"
+.br
+.ti -1c
+.RI "int \fBprice\fP"
+.br
+.in -1c
+
+Public Attributes inherited from \fBInvOwner\fP
+.in +1c
+.ti -1c
+.RI "bool \fBincludeChildren\fP"
+.br
+.ti -1c
+.RI "CurrencyType \fBcurrency\fP"
+.br
+.ti -1c
+.RI "PriceType \fBpriceType\fP"
+.br
+.ti -1c
+.RI "\fBHomeResource\fP \fBhomeResource\fP"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBowner\fP"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBContainer\fP"
+.br
+.ti -1c
+.RI "List< \fBButtonGrid\fP > \fBbuttons\fP = new List<\fBButtonGrid\fP>()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual InvOwnerDraglet\&.ProcessType \fBprocessType\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowFuel\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanTargetAlly\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBlangWhat\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBAllowTransfer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBAllowAutouse\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBAllowContext\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBUseGuide\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBCopyOnTransfer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBInvertSell\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBDenyImportant\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBLayerDragGrid\fP \fBdragGrid\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBInvOwner\fP
+.in +1c
+.ti -1c
+.RI "static bool \fBHasTrader\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBFreeTransfer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBAllowAutouse\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBAllowContext\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBAllowSell\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBAlwaysShowTooltip\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBUseGuide\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBAllowTransfer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBAllowDropOnDrag\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBlangTransfer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBdestInvY\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasTransaction\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCopyOnTransfer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBSingleTarget\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBUseHomeResource\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMagicChest\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "List< \fBThing\fP > \fBThings\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBChara\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "ContainerType \fBContainerType\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBInvertSell\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBnumDragGrid\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowNew\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBDenyImportant\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBInvOwner\fP \fBdestInvOwner\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBIDCurrency\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBInvOwner\fP
+.in +1c
+.ti -1c
+.RI "static \fBInvOwner\&.ForceGiveData\fP \fBforceGive\fP = new \fBInvOwner\&.ForceGiveData\fP()"
+.br
+.ti -1c
+.RI "static \fBInvOwner\fP \fBTrader\fP"
+.br
+.ti -1c
+.RI "static \fBInvOwner\fP \fBMain\fP"
+.br
+.ti -1c
+.RI "static float \fBclickTimer\fP"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB9\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum InvOwnerDraglet\&.ProcessType"
+
+.PP
+Definition at line \fB281\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "InvOwnerDraglet\&.InvOwnerDraglet (\fBCard\fP owner = \fRnull\fP, \fBCard\fP container = \fRnull\fP, CurrencyType _currency = \fRCurrencyType::Money\fP)"
+
+.PP
+Definition at line \fB138\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void InvOwnerDraglet\&._OnProcess (\fBThing\fP t)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB248\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "override bool InvOwnerDraglet\&.AllowHold (\fBThing\fP t)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBInvOwner\fP\&.
+.PP
+Definition at line \fB82\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "override void InvOwnerDraglet\&.BuildUICurrency (\fBUICurrency\fP uiCurrency, bool canReroll = \fRfalse\fP)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBInvOwner\fP\&.
+.PP
+Definition at line \fB265\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "override int InvOwnerDraglet\&.GetPrice (\fBThing\fP t, CurrencyType currency, int num, bool sell)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBInvOwner\fP\&.
+.PP
+Definition at line \fB184\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "override string InvOwnerDraglet\&.GetTextDetail (\fBThing\fP t, CurrencyType currency, int num, bool sell)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBInvOwner\fP\&.
+.PP
+Definition at line \fB190\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "virtual void InvOwnerDraglet\&.OnAfterRefuel ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB253\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "override void InvOwnerDraglet\&.OnClick (\fBButtonGrid\fP button)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBInvOwner\fP\&.
+.PP
+Definition at line \fB156\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "override void InvOwnerDraglet\&.OnInit ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBInvOwner\fP\&.
+.PP
+Definition at line \fB143\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "override void InvOwnerDraglet\&.OnProcess (\fBThing\fP t)\fR [sealed]\fP, \fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBInvOwner\fP\&.
+.PP
+Definition at line \fB197\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "override void InvOwnerDraglet\&.OnRightClick (\fBButtonGrid\fP button)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBInvOwner\fP\&.
+.PP
+Definition at line \fB178\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "void InvOwnerDraglet\&.RedrawButton ()"
+
+.PP
+Definition at line \fB258\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int InvOwnerDraglet\&.count = \-1"
+
+.PP
+Definition at line \fB272\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "int InvOwnerDraglet\&.price"
+
+.PP
+Definition at line \fB278\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "BlessedState InvOwnerDraglet\&.state"
+
+.PP
+Definition at line \fB275\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool InvOwnerDraglet\&.AllowAutouse\fR [get]\fP"
+
+.PP
+Definition at line \fB63\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "override bool InvOwnerDraglet\&.AllowContext\fR [get]\fP"
+
+.PP
+Definition at line \fB73\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "override bool InvOwnerDraglet\&.AllowTransfer\fR [get]\fP"
+
+.PP
+Definition at line \fB53\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "virtual bool InvOwnerDraglet\&.CanTargetAlly\fR [get]\fP"
+
+.PP
+Definition at line \fB33\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "override bool InvOwnerDraglet\&.CopyOnTransfer\fR [get]\fP"
+
+.PP
+Definition at line \fB99\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "override bool InvOwnerDraglet\&.DenyImportant\fR [get]\fP"
+
+.PP
+Definition at line \fB119\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "\fBLayerDragGrid\fP InvOwnerDraglet\&.dragGrid\fR [get]\fP"
+
+.PP
+Definition at line \fB129\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "override bool InvOwnerDraglet\&.InvertSell\fR [get]\fP"
+
+.PP
+Definition at line \fB109\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "virtual string InvOwnerDraglet\&.langWhat\fR [get]\fP"
+
+.PP
+Definition at line \fB43\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "virtual InvOwnerDraglet\&.ProcessType InvOwnerDraglet\&.processType\fR [get]\fP"
+
+.PP
+Definition at line \fB13\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "virtual bool InvOwnerDraglet\&.ShowFuel\fR [get]\fP"
+
+.PP
+Definition at line \fB23\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+.SS "override bool InvOwnerDraglet\&.UseGuide\fR [get]\fP"
+
+.PP
+Definition at line \fB89\fP of file \fBInvOwnerDraglet\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

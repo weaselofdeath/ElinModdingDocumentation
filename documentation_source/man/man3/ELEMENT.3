@@ -1,0 +1,791 @@
+.TH "Element" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Element
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBEClass\fP\&.
+.PP
+Inherited by \fBAct\fP, \fBAttbMain\fP, \fBAttbSpecial\fP, \fBAttbWeapon\fP, \fBCulture\fP, \fBFeat\fP, \fBLevel\fP, \fBPiety\fP, \fBRaceBonus\fP, \fBResistance\fP, and \fBSkill\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBSourceElement\&.Row\fP \fBGetSource\fP ()"
+.br
+.ti -1c
+.RI "virtual int \fBGetSourcePotential\fP (int v)"
+.br
+.ti -1c
+.RI "virtual Sprite \fBGetSprite\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetMaterialSourceValue\fP (\fBThing\fP t, int v)"
+.br
+.ti -1c
+.RI "virtual int \fBGetSourceValue\fP (int v, int lv, SourceValueType type)"
+.br
+.ti -1c
+.RI "virtual Sprite \fBGetIcon\fP (string suffix='')"
+.br
+.ti -1c
+.RI "int \fBSortVal\fP (bool charaSheet=false)"
+.br
+.ti -1c
+.RI "virtual bool \fBCanLink\fP (\fBElementContainer\fP owner)"
+.br
+.ti -1c
+.RI "bool \fBHasTag\fP (string tag)"
+.br
+.ti -1c
+.RI "void \fBSetImage\fP (Image i)"
+.br
+.ti -1c
+.RI "virtual string \fBGetDetail\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsFactionElement\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "\fBElement\fP \fBGetParent\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "void \fBWriteNote\fP (UINote n, \fBElementContainer\fP owner=null, Action< UINote > onWriteNote=null)"
+.br
+.ti -1c
+.RI "void \fBWriteNoteWithRef\fP (UINote n, \fBElementContainer\fP owner, Action< UINote > onWriteNote, \fBElement\fP refEle)"
+.br
+.ti -1c
+.RI "void \fB_WriteNote\fP (UINote n, \fBChara\fP c, \fBAct\fP act)"
+.br
+.ti -1c
+.RI "void \fB_WriteNote\fP (UINote n, \fBElementContainer\fP owner, Action< UINote > onWriteNote, bool isRef, bool addHeader=true)"
+.br
+.ti -1c
+.RI "virtual void \fBOnWriteNote\fP (UINote n, \fBElementContainer\fP owner)"
+.br
+.ti -1c
+.RI "virtual void \fBOnChangeValue\fP ()"
+.br
+.ti -1c
+.RI "void \fBCheckLevelBonus\fP (\fBElementContainer\fP owner, UINote n=null)"
+.br
+.ti -1c
+.RI "int \fBGetSortVal\fP (UIList\&.SortMode m)"
+.br
+.ti -1c
+.RI "virtual \fBAct\&.Cost\fP \fBGetCost\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "virtual int \fBGetPower\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "virtual void \fBSetTextValue\fP (UIText text)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBGetName\fP (string alias)"
+.br
+.ti -1c
+.RI "static \fBSourceElement\&.Row\fP \fBGet\fP (int id)"
+.br
+.ti -1c
+.RI "static Dictionary< int, int > \fBGetElementMap\fP (int[] list)"
+.br
+.ti -1c
+.RI "static Dictionary< int, int > \fBGetElementMap\fP (int[] list, Dictionary< int, int > map)"
+.br
+.ti -1c
+.RI "static \fBSourceElement\&.Row\fP \fBGetRandomElement\fP (int lv=1)"
+.br
+.ti -1c
+.RI "static \fBElement\fP \fBCreate\fP (int id, int v=0)"
+.br
+.ti -1c
+.RI "static \fBElement\fP \fBCreate\fP (string id, int v=1)"
+.br
+.ti -1c
+.RI "static int \fBGetId\fP (string alias)"
+.br
+.ti -1c
+.RI "static int \fBGetResistLv\fP (int v)"
+.br
+.ti -1c
+.RI "static int \fBGetResistDamage\fP (int dmg, int v)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBSourceElement\&.Row\fP \fB_source\fP"
+.br
+.ti -1c
+.RI "int \fBid\fP"
+.br
+.ti -1c
+.RI "int \fBvBase\fP"
+.br
+.ti -1c
+.RI "int \fBvExp\fP"
+.br
+.ti -1c
+.RI "int \fBvPotential\fP"
+.br
+.ti -1c
+.RI "int \fBvTempPotential\fP"
+.br
+.ti -1c
+.RI "int \fBvLink\fP"
+.br
+.ti -1c
+.RI "int \fBvSource\fP"
+.br
+.ti -1c
+.RI "int \fBvSourcePotential\fP"
+.br
+.ti -1c
+.RI "\fBElementContainer\fP \fBowner\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBDiv\fP = 5"
+.br
+.ti -1c
+.RI "static \fBElement\fP \fBVoid\fP = new \fBElement\fP()"
+.br
+.ti -1c
+.RI "static int[] \fBList_MainAttributes\fP"
+.br
+.ti -1c
+.RI "static int[] \fBList_MainAttributesMajor\fP"
+.br
+.ti -1c
+.RI "static int[] \fBList_Body\fP"
+.br
+.ti -1c
+.RI "static int[] \fBList_Mind\fP"
+.br
+.ti -1c
+.RI "static List< \fBSourceElement\&.Row\fP > \fBListElements\fP = new List<\fBSourceElement\&.Row\fP>()"
+.br
+.ti -1c
+.RI "static List< \fBSourceElement\&.Row\fP > \fBListAttackElements\fP = new List<\fBSourceElement\&.Row\fP>()"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBSourceElement\&.Row\fP \fBsource\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBDisplayValue\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBMinValue\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBValue\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBValueWithoutLink\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBMinPotential\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBPotential\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanGainExp\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFlag\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBFullName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBExpToNext\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBUseExpMod\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBCostTrain\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBCostLearn\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowXP\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowMsgOnValueChanged\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowValue\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowPotential\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBUsePotential\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBPotentialAsStock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowRelativeAttribute\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBShortName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsGlobalElement\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFactionWideElement\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsPartyWideElement\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowEncNumber\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsTrait\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFoodTrait\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFoodTraitMain\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMainAttribute\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBAct\fP \fBact\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB8\fP of file \fBElement\&.2\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Element\&._WriteNote (UINote n, \fBChara\fP c, \fBAct\fP act)"
+
+.PP
+Definition at line \fB554\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "void Element\&._WriteNote (UINote n, \fBElementContainer\fP owner, Action< UINote > onWriteNote, bool isRef, bool addHeader = \fRtrue\fP)"
+
+.PP
+Definition at line \fB629\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual bool Element\&.CanLink (\fBElementContainer\fP owner)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB356\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "void Element\&.CheckLevelBonus (\fBElementContainer\fP owner, UINote n = \fRnull\fP)"
+
+.PP
+Definition at line \fB721\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "static \fBElement\fP Element\&.Create (int id, int v = \fR0\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB856\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "static \fBElement\fP Element\&.Create (string id, int v = \fR1\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB871\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "static \fBSourceElement\&.Row\fP Element\&.Get (int id)\fR [static]\fP"
+
+.PP
+Definition at line \fB17\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual \fBAct\&.Cost\fP Element\&.GetCost (\fBChara\fP c)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB793\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual string Element\&.GetDetail ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB439\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "static Dictionary< int, int > Element\&.GetElementMap (int[] list)\fR [static]\fP"
+
+.PP
+Definition at line \fB485\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "static Dictionary< int, int > Element\&.GetElementMap (int[] list, Dictionary< int, int > map)\fR [static]\fP"
+
+.PP
+Definition at line \fB499\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual Sprite Element\&.GetIcon (string suffix = \fR''\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB188\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "static int Element\&.GetId (string alias)\fR [static]\fP"
+
+.PP
+Definition at line \fB877\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int Element\&.GetMaterialSourceValue (\fBThing\fP t, int v)"
+
+.PP
+Definition at line \fB136\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "static string Element\&.GetName (string alias)\fR [static]\fP"
+
+.PP
+Definition at line \fB11\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "\fBElement\fP Element\&.GetParent (\fBCard\fP c)"
+
+.PP
+Definition at line \fB475\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual int Element\&.GetPower (\fBCard\fP c)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB826\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "static \fBSourceElement\&.Row\fP Element\&.GetRandomElement (int lv = \fR1\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB512\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "static int Element\&.GetResistDamage (int dmg, int v)\fR [static]\fP"
+
+.PP
+Definition at line \fB894\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "static int Element\&.GetResistLv (int v)\fR [static]\fP"
+
+.PP
+Definition at line \fB883\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int Element\&.GetSortVal (UIList\&.SortMode m)"
+
+.PP
+Definition at line \fB771\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual \fBSourceElement\&.Row\fP Element\&.GetSource ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB23\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual int Element\&.GetSourcePotential (int v)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB124\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual int Element\&.GetSourceValue (int v, int lv, SourceValueType type)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB154\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual Sprite Element\&.GetSprite ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB130\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "bool Element\&.HasTag (string tag)"
+
+.PP
+Definition at line \fB422\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "bool Element\&.IsFactionElement (\fBChara\fP c)"
+
+.PP
+Definition at line \fB445\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual void Element\&.OnChangeValue ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB716\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual void Element\&.OnWriteNote (UINote n, \fBElementContainer\fP owner)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB711\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "void Element\&.SetImage (Image i)"
+
+.PP
+Definition at line \fB428\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual void Element\&.SetTextValue (UIText text)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB832\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int Element\&.SortVal (bool charaSheet = \fRfalse\fP)"
+
+.PP
+Definition at line \fB349\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "void Element\&.WriteNote (UINote n, \fBElementContainer\fP owner = \fRnull\fP, Action< UINote > onWriteNote = \fRnull\fP)"
+
+.PP
+Definition at line \fB537\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "void Element\&.WriteNoteWithRef (UINote n, \fBElementContainer\fP owner, Action< UINote > onWriteNote, \fBElement\fP refEle)"
+
+.PP
+Definition at line \fB545\fP of file \fBElement\&.2\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBSourceElement\&.Row\fP Element\&._source"
+
+.PP
+Definition at line \fB981\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "const int Element\&.Div = 5\fR [static]\fP"
+
+.PP
+Definition at line \fB930\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int Element\&.id"
+
+.PP
+Definition at line \fB984\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int [] Element\&.List_Body\fR [static]\fP"
+\fBInitial value:\fP
+.nf
+= new int[]
+    {
+        70,
+        72,
+        71,
+        77
+    }
+.PP
+.fi
+
+.PP
+Definition at line \fB963\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int [] Element\&.List_MainAttributes\fR [static]\fP"
+\fBInitial value:\fP
+.nf
+= new int[]
+    {
+        70,
+        72,
+        71,
+        77,
+        74,
+        75,
+        76,
+        73,
+        79
+    }
+.PP
+.fi
+
+.PP
+Definition at line \fB936\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int [] Element\&.List_MainAttributesMajor\fR [static]\fP"
+\fBInitial value:\fP
+.nf
+= new int[]
+    {
+        70,
+        72,
+        71,
+        77,
+        74,
+        75,
+        76,
+        73
+    }
+.PP
+.fi
+
+.PP
+Definition at line \fB950\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int [] Element\&.List_Mind\fR [static]\fP"
+\fBInitial value:\fP
+.nf
+= new int[]
+    {
+        74,
+        75,
+        76,
+        73
+    }
+.PP
+.fi
+
+.PP
+Definition at line \fB972\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "List<\fBSourceElement\&.Row\fP> Element\&.ListAttackElements = new List<\fBSourceElement\&.Row\fP>()\fR [static]\fP"
+
+.PP
+Definition at line \fB1014\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "List<\fBSourceElement\&.Row\fP> Element\&.ListElements = new List<\fBSourceElement\&.Row\fP>()\fR [static]\fP"
+
+.PP
+Definition at line \fB1011\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "\fBElementContainer\fP Element\&.owner"
+
+.PP
+Definition at line \fB1008\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int Element\&.vBase"
+
+.PP
+Definition at line \fB987\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int Element\&.vExp"
+
+.PP
+Definition at line \fB990\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int Element\&.vLink"
+
+.PP
+Definition at line \fB999\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "\fBElement\fP Element\&.Void = new \fBElement\fP()\fR [static]\fP"
+
+.PP
+Definition at line \fB933\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int Element\&.vPotential"
+
+.PP
+Definition at line \fB993\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int Element\&.vSource"
+
+.PP
+Definition at line \fB1002\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int Element\&.vSourcePotential"
+
+.PP
+Definition at line \fB1005\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int Element\&.vTempPotential"
+
+.PP
+Definition at line \fB996\fP of file \fBElement\&.2\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBAct\fP Element\&.act\fR [get]\fP"
+
+.PP
+Definition at line \fB413\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual bool Element\&.CanGainExp\fR [get]\fP"
+
+.PP
+Definition at line \fB105\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual int Element\&.CostLearn\fR [get]\fP"
+
+.PP
+Definition at line \fB230\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual int Element\&.CostTrain\fR [get]\fP"
+
+.PP
+Definition at line \fB220\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual int Element\&.DisplayValue\fR [get]\fP"
+
+.PP
+Definition at line \fB45\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual int Element\&.ExpToNext\fR [get]\fP"
+
+.PP
+Definition at line \fB200\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual string Element\&.FullName\fR [get]\fP"
+
+.PP
+Definition at line \fB179\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "bool Element\&.IsFactionWideElement\fR [get]\fP"
+
+.PP
+Definition at line \fB330\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "bool Element\&.IsFlag\fR [get]\fP"
+
+.PP
+Definition at line \fB115\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "bool Element\&.IsFoodTrait\fR [get]\fP"
+
+.PP
+Definition at line \fB383\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "bool Element\&.IsFoodTraitMain\fR [get]\fP"
+
+.PP
+Definition at line \fB393\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "bool Element\&.IsGlobalElement\fR [get]\fP"
+
+.PP
+Definition at line \fB320\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "bool Element\&.IsMainAttribute\fR [get]\fP"
+
+.PP
+Definition at line \fB403\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "bool Element\&.IsPartyWideElement\fR [get]\fP"
+
+.PP
+Definition at line \fB340\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "bool Element\&.IsTrait\fR [get]\fP"
+
+.PP
+Definition at line \fB373\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual int Element\&.MinPotential\fR [get]\fP"
+
+.PP
+Definition at line \fB85\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual int Element\&.MinValue\fR [get]\fP"
+
+.PP
+Definition at line \fB55\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual string Element\&.Name\fR [get]\fP"
+
+.PP
+Definition at line \fB169\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int Element\&.Potential\fR [get]\fP"
+
+.PP
+Definition at line \fB95\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual bool Element\&.PotentialAsStock\fR [get]\fP"
+
+.PP
+Definition at line \fB290\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual string Element\&.ShortName\fR [get]\fP"
+
+.PP
+Definition at line \fB310\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual bool Element\&.ShowEncNumber\fR [get]\fP"
+
+.PP
+Definition at line \fB363\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual bool Element\&.ShowMsgOnValueChanged\fR [get]\fP"
+
+.PP
+Definition at line \fB250\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual bool Element\&.ShowPotential\fR [get]\fP"
+
+.PP
+Definition at line \fB270\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual bool Element\&.ShowRelativeAttribute\fR [get]\fP"
+
+.PP
+Definition at line \fB300\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual bool Element\&.ShowValue\fR [get]\fP"
+
+.PP
+Definition at line \fB260\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual bool Element\&.ShowXP\fR [get]\fP"
+
+.PP
+Definition at line \fB240\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "\fBSourceElement\&.Row\fP Element\&.source\fR [get]\fP"
+
+.PP
+Definition at line \fB30\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual bool Element\&.UseExpMod\fR [get]\fP"
+
+.PP
+Definition at line \fB210\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "virtual bool Element\&.UsePotential\fR [get]\fP"
+
+.PP
+Definition at line \fB280\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int Element\&.Value\fR [get]\fP"
+
+.PP
+Definition at line \fB65\fP of file \fBElement\&.2\&.cs\fP\&.
+.SS "int Element\&.ValueWithoutLink\fR [get]\fP"
+
+.PP
+Definition at line \fB75\fP of file \fBElement\&.2\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

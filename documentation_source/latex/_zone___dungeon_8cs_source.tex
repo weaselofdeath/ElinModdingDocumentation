@@ -1,0 +1,351 @@
+\doxysection{Zone\+\_\+\+Dungeon.\+cs}
+\hypertarget{_zone___dungeon_8cs_source}{}\label{_zone___dungeon_8cs_source}\index{Elin/Zone\_Dungeon.cs@{Elin/Zone\_Dungeon.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Runtime.CompilerServices;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_algorithms}{Algorithms}};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00007}00007\ \textcolor{comment}{//\ Token:\ 0x0200072B\ RID:\ 1835}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00008}\mbox{\hyperlink{class_zone___dungeon}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_zone___dungeon}{Zone\_Dungeon}}\ :\ \mbox{\hyperlink{class_zone}{Zone}}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000FF2\ RID:\ 4082}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06003498\ RID:\ 13464\ RVA:\ 0x0011C837\ File\ Offset:\ 0x0011AA37}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{string}\ IDGenerator}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00013}00013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Dungeon"{}};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000FF3\ RID:\ 4083}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06003499\ RID:\ 13465\ RVA:\ 0x0011C83E\ File\ Offset:\ 0x0011AA3E}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ DisableRooms}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !base.IsPCFaction;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000FF4\ RID:\ 4084}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600349A\ RID:\ 13466\ RVA:\ 0x0011C849\ File\ Offset:\ 0x0011AA49}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ UseFog}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000FF5\ RID:\ 4085}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600349B\ RID:\ 13467\ RVA:\ 0x0011C84C\ File\ Offset:\ 0x0011AA4C}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ ShowDangerLv}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00043}00043\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000FF6\ RID:\ 4086}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600349C\ RID:\ 13468\ RVA:\ 0x0011C84F\ File\ Offset:\ 0x0011AA4F}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00052}00052\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{float}\ PrespawnRate}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00053}00053\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.idExport.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0f;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1f;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000FF7\ RID:\ 4087}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00065}00065\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600349D\ RID:\ 13469\ RVA:\ 0x0011C869\ File\ Offset:\ 0x0011AA69}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00066}00066\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ IsReturnLocation}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00067}00067\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ base.GetDeepestLv()\ ==\ base.lv;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00072}00072\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000FF8\ RID:\ 4088}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600349E\ RID:\ 13470\ RVA:\ 0x0011C879\ File\ Offset:\ 0x0011AA79}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00076}00076\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{int}\ StartLV}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00084}00084\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000FF9\ RID:\ 4089}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600349F\ RID:\ 13471\ RVA:\ 0x0011C87C\ File\ Offset:\ 0x0011AA7C}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00086}00086\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ BlockBorderExit}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00087}00087\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00094}00094\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000FFA\ RID:\ 4090}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00095}00095\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060034A0\ RID:\ 13472\ RVA:\ 0x0011C87F\ File\ Offset:\ 0x0011AA7F}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00096}00096\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{float}\ EvolvedChance}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00097}00097\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.debug.test)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0.08f;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1f;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000FFB\ RID:\ 4091}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00109}00109\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060034A1\ RID:\ 13473\ RVA:\ 0x0011C898\ File\ Offset:\ 0x0011AA98}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00110}00110\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{float}\ BigDaddyChance}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00111}00111\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.debug.test)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0.08f;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1f;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00120}00120\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00122}00122\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000FFC\ RID:\ 4092}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00123}00123\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060034A2\ RID:\ 13474\ RVA:\ 0x0011C8B1\ File\ Offset:\ 0x0011AAB1}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00124}00124\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{float}\ ShrineChance}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00125}00125\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.debug.test)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0.35f;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1f;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00134}00134\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00136}00136\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000FFD\ RID:\ 4093}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00137}00137\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060034A3\ RID:\ 13475\ RVA:\ 0x0011C8CA\ File\ Offset:\ 0x0011AACA}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00138}00138\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ IsSnowCovered}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00139}00139\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00144}00144\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00146}00146\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000FFE\ RID:\ 4094}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00147}00147\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060034A4\ RID:\ 13476\ RVA:\ 0x0011C8CD\ File\ Offset:\ 0x0011AACD}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00148}00148\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ GrowPlant}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00149}00149\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00154}00154\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00156}00156\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000FFF\ RID:\ 4095}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00157}00157\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060034A5\ RID:\ 13477\ RVA:\ 0x0011C8D0\ File\ Offset:\ 0x0011AAD0}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00158}00158\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ GrowWeed}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00159}00159\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00164}00164\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00166}00166\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17001000\ RID:\ 4096}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00167}00167\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060034A6\ RID:\ 13478\ RVA:\ 0x0011C8D3\ File\ Offset:\ 0x0011AAD3}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00168}00168\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ CountDeepestLevel}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00169}00169\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00174}00174\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00176}00176\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17001001\ RID:\ 4097}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00177}00177\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060034A7\ RID:\ 13479\ RVA:\ 0x0011C8D6\ File\ Offset:\ 0x0011AAD6}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00178}00178\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ ZoneTransition.EnterState\ RegionEnterState}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00179}00179\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_zone_transition}{ZoneTransition}}.EnterState.Down;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00184}00184\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00186}00186\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060034A8\ RID:\ 13480\ RVA:\ 0x0011C8DA\ File\ Offset:\ 0x0011AADA}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00187}00187\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{string}\ GetDungenID()}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00188}00188\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(2)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}DungeonRuins"{}};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(4)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Cavern"{}};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(8)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}RoundRooms"{}};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Dungeon"{}};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00202}00202\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00204}00204\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060034A9\ RID:\ 13481\ RVA:\ 0x0011C90B\ File\ Offset:\ 0x0011AB0B}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00205}00205\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnGenerateMap()}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00206}00206\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.idExport.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ base.TryGenerateOre();}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ base.TryGenerateBigDaddy();}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ base.TryGenerateEvolved(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ base.TryGenerateShrine();}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00215}00215\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00217}00217\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060034AA\ RID:\ 13482\ RVA:\ 0x0011C934\ File\ Offset:\ 0x0011AB34}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00218}00218\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ PlaceRail(\mbox{\hyperlink{class_zone___dungeon}{Zone\_Dungeon}}.RailType\ railType\ =\ \mbox{\hyperlink{class_zone___dungeon}{Zone\_Dungeon}}.RailType.Mine)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00219}00219\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_zone___dungeon}{Zone\_Dungeon}}.<>c\_\_DisplayClass35\_0\ CS\$<>8\_\_locals1;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.idRail\ =\ 31;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.idTrolley\ =\ \textcolor{stringliteral}{"{}390"{}};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.placeStopper\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ 8;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (railType\ ==\ \mbox{\hyperlink{class_zone___dungeon}{Zone\_Dungeon}}.RailType.Factoy)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.idRail\ =\ 110;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.placeStopper\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(4)\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ PathManager.Instance.\_pathfinder.PunishChangeDirection\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ PathManager.Instance.\_pathfinder.Diagonals\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_trait_stairs_down}{TraitStairsDown}}\ traitStairsDown\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.FindThing<\mbox{\hyperlink{class_trait_stairs_down}{TraitStairsDown}}>();}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_trait_stairs_up}{TraitStairsUp}}\ traitStairsUp\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.FindThing<\mbox{\hyperlink{class_trait_stairs_up}{TraitStairsUp}}>();}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (traitStairsDown\ !=\ \textcolor{keyword}{null}\ \&\&\ traitStairsUp\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_zone___dungeon}{Zone\_Dungeon}}.<PlaceRail>g\_\_TryPlaceRail|35\_0(traitStairsDown.owner.pos,\ traitStairsUp.owner.pos,\ ref\ CS\$<>8\_\_locals1);}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 200;\ i++)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_zone___dungeon}{Zone\_Dungeon}}.<PlaceRail>g\_\_TryPlaceRail|35\_0(\mbox{\hyperlink{class_e_class}{EClass}}.\_map.bounds.GetRandomSurface(\textcolor{keyword}{false},\ \textcolor{keyword}{true},\ \textcolor{keyword}{false}),\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.bounds.GetRandomSurface(\textcolor{keyword}{false},\ \textcolor{keyword}{true},\ \textcolor{keyword}{false}),\ ref\ CS\$<>8\_\_locals1))}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num2++;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num2\ >\ num)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ PathManager.Instance.\_pathfinder.Diagonals\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00252}00252\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00254}00254\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060034AC\ RID:\ 13484\ RVA:\ 0x0011CA40\ File\ Offset:\ 0x0011AC40}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00255}00255\ \ \ \ \ [CompilerGenerated]}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00256}00256\ \ \ \ \ \textcolor{keyword}{internal}\ \textcolor{keyword}{static}\ bool\ <PlaceRail>g\_\_TryPlaceRail|35\_0(\mbox{\hyperlink{class_point}{Point}}\ p1,\ \mbox{\hyperlink{class_point}{Point}}\ p2,\ ref\ \mbox{\hyperlink{class_zone___dungeon}{Zone\_Dungeon}}.<>c\_\_DisplayClass35\_0\ A\_2)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00257}00257\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p1.Distance(p2)\ <\ 20)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_path_progress}{PathProgress}}\ pathProgress\ =\ \mbox{\hyperlink{class_path_manager}{PathManager}}.Instance.RequestPathImmediate(p1,\ p2,\ \mbox{\hyperlink{class_e_class}{EClass}}.pc,\ \mbox{\hyperlink{class_path_manager}{PathManager}}.MoveType.Default,\ -\/1,\ 0);}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!pathProgress.HasPath)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ point\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_point}{Point}}();}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00268}00268\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ point2\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_point}{Point}}();}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00269}00269\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00271}00271\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{struct_algorithms_1_1_path_finder_node}{PathFinderNode}}\ pathFinderNode\ \textcolor{keywordflow}{in}\ pathProgress.nodes)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ shared\ =\ \mbox{\hyperlink{class_point}{Point}}.GetShared(pathFinderNode.X,\ pathFinderNode.Z);}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ -\/1;\ i\ <\ 2;\ i++)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ j\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (j\ <\ 2)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ point2.Set(shared.x\ +\ j,\ shared.z\ +\ i);}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((Mathf.Abs(j)\ !=\ 1\ ||\ Mathf.Abs(i)\ !=\ 1)\ \&\&\ point2.IsValid\ \&\&\ point2.sourceObj.id\ ==\ 31\ \&\&\ !point2.Equals(point))}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flag\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j++;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (shared.sourceObj.id\ ==\ A\_2.idRail)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ shared.SetBlock(0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ shared.SetObj(A\_2.idRail,\ 1,\ 0);}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ shared.Things.ForeachReverse(delegate(\mbox{\hyperlink{class_thing}{Thing}}\ t)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!t.trait.CanBeDestroyed)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t.Destroy();}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flag)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ num++;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ point.Set(shared);}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00315}00315\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00316}00316\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!flag\ \&\ A\_2.placeStopper)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00317}00317\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ shared2\ =\ \mbox{\hyperlink{class_point}{Point}}.GetShared(pathProgress.nodes.LastItem<\mbox{\hyperlink{struct_algorithms_1_1_path_finder_node}{PathFinderNode}}>().X,\ pathProgress.nodes.LastItem<\mbox{\hyperlink{struct_algorithms_1_1_path_finder_node}{PathFinderNode}}>().Z);}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_cell}{Cell}}\ cell\ =\ shared2.cell;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ dir\ =\ (cell.Front.obj\ ==\ 31)\ ?\ 0\ :\ ((cell.Right.obj\ ==\ 31)\ ?\ 1\ :\ ((cell.Back.obj\ ==\ 31)\ ?\ 2\ :\ 3));}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!shared2.HasThing)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_zone.AddCard(\mbox{\hyperlink{class_thing_gen}{ThingGen}}.Create(\textcolor{stringliteral}{"{}1208"{}},\ -\/1,\ -\/1),\ shared2).Install().dir\ =\ dir;}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00325}00325\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00326}00326\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ >\ 2)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00327}00327\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ shared3\ =\ \mbox{\hyperlink{class_point}{Point}}.GetShared(pathProgress.nodes.First<\mbox{\hyperlink{struct_algorithms_1_1_path_finder_node}{PathFinderNode}}>().X,\ pathProgress.nodes.First<\mbox{\hyperlink{struct_algorithms_1_1_path_finder_node}{PathFinderNode}}>().Z);}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!shared3.HasThing)}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_zone.AddCard(\mbox{\hyperlink{class_thing_gen}{ThingGen}}.Create(A\_2.idTrolley,\ -\/1,\ -\/1),\ shared3).Install();}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00333}00333\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00334}00334\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00335}00335\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00337}00337\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000C1A\ RID:\ 3098}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00338}00338\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ RailType}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00339}00339\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00340}00340\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04003026\ RID:\ 12326}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00341}00341\ \ \ \ \ \ \ \ \ Mine,}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00342}00342\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04003027\ RID:\ 12327}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00343}00343\ \ \ \ \ \ \ \ \ Factoy}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00344}00344\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone___dungeon_8cs_source_l00345}00345\ \}}
+
+\end{DoxyCode}

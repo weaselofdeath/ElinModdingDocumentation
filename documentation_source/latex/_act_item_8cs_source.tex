@@ -1,0 +1,60 @@
+\doxysection{Act\+Item.\+cs}
+\hypertarget{_act_item_8cs_source}{}\label{_act_item_8cs_source}\index{Elin/ActItem.cs@{Elin/ActItem.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00003}00003\ \textcolor{comment}{//\ Token:\ 0x020001C2\ RID:\ 450}}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00004}\mbox{\hyperlink{class_act_item}{00004}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_act_item}{ActItem}}\ :\ \mbox{\hyperlink{class_act}{Act}}}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000D06\ RID:\ 3334\ RVA:\ 0x00067104\ File\ Offset:\ 0x00065304}}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00007}00007\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ CanPerform()}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00008}00008\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.\_act\ !=\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00010}00010\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000D07\ RID:\ 3335\ RVA:\ 0x00067110\ File\ Offset:\ 0x00065310}}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ BuildAct(\mbox{\hyperlink{class_chara}{Chara}}\ c)}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ this.\_act\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ p\ =\ 110\ -\/\ 110\ *\ c.hp\ /\ c.MaxHP;}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c.hp\ <\ c.MaxHP\ *\ 2\ /\ 3)}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_thing}{Thing}}\ thing\ \textcolor{keywordflow}{in}\ c.things)}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (thing.IsIdentified)}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Action\ healAction\ =\ thing.trait.GetHealAction(c);}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (healAction\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.ReturnAct(healAction,\ p);}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000D08\ RID:\ 3336\ RVA:\ 0x000671B4\ File\ Offset:\ 0x000653B4}}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ ReturnAct(Action\ a,\ \textcolor{keywordtype}{int}\ p)}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00037}00037\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ this.\_act\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_dynamic_act}{DynamicAct}}(\textcolor{stringliteral}{"{}ActItem"{}},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ a();}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ p;}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000D09\ RID:\ 3337\ RVA:\ 0x000671EC\ File\ Offset:\ 0x000653EC}}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ Perform()}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.\_act.Perform(\mbox{\hyperlink{class_act}{Act}}.CC,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000D00\ RID:\ 3328}}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_act}{Act}}\ \_act;}
+\DoxyCodeLine{\Hypertarget{_act_item_8cs_source_l00054}00054\ \}}
+
+\end{DoxyCode}

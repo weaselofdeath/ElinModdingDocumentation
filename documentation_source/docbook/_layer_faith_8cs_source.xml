@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__layer_faith_8cs_source" xml:lang="en-US">
+<title>LayerFaith.cs</title>
+<indexterm><primary>Elin/LayerFaith.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__layer_faith_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__layer_faith_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__layer_faith_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>DG.Tweening;
+<anchor xml:id="__layer_faith_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>DG.Tweening.Core;
+<anchor xml:id="__layer_faith_8cs_source_1l00005"/>00005 <emphasis role="keyword">using&#32;</emphasis>DG.Tweening.Plugins.Options;
+<anchor xml:id="__layer_faith_8cs_source_1l00006"/>00006 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__layer_faith_8cs_source_1l00007"/>00007 <emphasis role="keyword">using&#32;</emphasis>UnityEngine.UI;
+<anchor xml:id="__layer_faith_8cs_source_1l00008"/>00008 
+<anchor xml:id="__layer_faith_8cs_source_1l00009"/>00009 <emphasis role="comment">//&#32;Token:&#32;0x02000545&#32;RID:&#32;1349</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00010"/><link linkend="_class_layer_faith">00010</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_layer_faith">LayerFaith</link>&#32;:&#32;<link linkend="_class_e_layer">ELayer</link>
+<anchor xml:id="__layer_faith_8cs_source_1l00011"/>00011 {
+<anchor xml:id="__layer_faith_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024A6&#32;RID:&#32;9382&#32;RVA:&#32;0x000CE8BC&#32;File&#32;Offset:&#32;0x000CCABC</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Activate(<link linkend="_class_religion">Religion</link>&#32;r,&#32;Action&lt;Religion&gt;&#32;_onWorship)
+<anchor xml:id="__layer_faith_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.onWorship&#32;=&#32;_onWorship;
+<anchor xml:id="__layer_faith_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(r&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__layer_faith_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_religion">Religion</link>&#32;religion&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_e_layer">ELayer</link>.game.religions.list)
+<anchor xml:id="__layer_faith_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!religion.IsMinorGod)
+<anchor xml:id="__layer_faith_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.AddReligion(religion);
+<anchor xml:id="__layer_faith_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.isBranchFaith&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__layer_faith_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.AddReligion(r);
+<anchor xml:id="__layer_faith_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;TweenUtil.Tween(this.startDelay,&#32;<emphasis role="keyword">new</emphasis>&#32;Action(this.RefreshSlots),&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__layer_faith_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.Play(<emphasis role="stringliteral">&quot;zoomIn&quot;</emphasis>);
+<anchor xml:id="__layer_faith_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00034"/>00034 
+<anchor xml:id="__layer_faith_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024A7&#32;RID:&#32;9383&#32;RVA:&#32;0x000CE960&#32;File&#32;Offset:&#32;0x000CCB60</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Update()
+<anchor xml:id="__layer_faith_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(EInput.wheel&#32;!=&#32;0)
+<anchor xml:id="__layer_faith_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Move((EInput.wheel&#32;&gt;&#32;0)&#32;?&#32;1&#32;:&#32;-1);
+<anchor xml:id="__layer_faith_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00043"/>00043 
+<anchor xml:id="__layer_faith_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024A8&#32;RID:&#32;9384&#32;RVA:&#32;0x000CE97C&#32;File&#32;Offset:&#32;0x000CCB7C</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Move(<emphasis role="keywordtype">int</emphasis>&#32;a)
+<anchor xml:id="__layer_faith_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.index&#32;+=&#32;a;
+<anchor xml:id="__layer_faith_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.index&#32;&gt;=&#32;this.items.Count)
+<anchor xml:id="__layer_faith_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.index&#32;=&#32;0;
+<anchor xml:id="__layer_faith_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.index&#32;&lt;&#32;0)
+<anchor xml:id="__layer_faith_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.index&#32;=&#32;this.items.Count&#32;-&#32;1;
+<anchor xml:id="__layer_faith_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshSlots();
+<anchor xml:id="__layer_faith_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.Play(<emphasis role="stringliteral">&quot;zoomOut&quot;</emphasis>);
+<anchor xml:id="__layer_faith_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00059"/>00059 
+<anchor xml:id="__layer_faith_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024A9&#32;RID:&#32;9385&#32;RVA:&#32;0x000CE9E0&#32;File&#32;Offset:&#32;0x000CCBE0</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshSlots()
+<anchor xml:id="__layer_faith_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.orders.Clear();
+<anchor xml:id="__layer_faith_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;this.index;
+<anchor xml:id="__layer_faith_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;this.items.Count;&#32;i++)
+<anchor xml:id="__layer_faith_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;&gt;=&#32;this.items.Count)
+<anchor xml:id="__layer_faith_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num&#32;=&#32;0;
+<anchor xml:id="__layer_faith_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.orders.Add(this.items[num]);
+<anchor xml:id="__layer_faith_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num++;
+<anchor xml:id="__layer_faith_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j&#32;=&#32;0;&#32;j&#32;&lt;&#32;this.items.Count;&#32;j++)
+<anchor xml:id="__layer_faith_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_layer_faith_1_1_slot">LayerFaith.Slot</link>&#32;slot&#32;=&#32;(j&#32;&gt;=&#32;this.slots.Count)&#32;?&#32;this.slotVoid&#32;:&#32;this.slots[j];
+<anchor xml:id="__layer_faith_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIItem&#32;item&#32;=&#32;this.orders[j];
+<anchor xml:id="__layer_faith_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;flag&#32;=&#32;j&#32;==&#32;2;
+<anchor xml:id="__layer_faith_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.items.Count&#32;==&#32;1)
+<anchor xml:id="__layer_faith_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;flag&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__layer_faith_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;slot&#32;=&#32;this.slots[2];
+<anchor xml:id="__layer_faith_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.button1.icon.raycastTarget&#32;=&#32;!flag;
+<anchor xml:id="__layer_faith_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(j&#32;==&#32;1)
+<anchor xml:id="__layer_faith_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.button1.SetOnClick(delegate
+<anchor xml:id="__layer_faith_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Move(-1);
+<anchor xml:id="__layer_faith_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__layer_faith_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(j&#32;==&#32;3)
+<anchor xml:id="__layer_faith_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.button1.SetOnClick(delegate
+<anchor xml:id="__layer_faith_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Move(1);
+<anchor xml:id="__layer_faith_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__layer_faith_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.button2.SetOnClick(delegate
+<anchor xml:id="__layer_faith_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_religion">Religion</link>&#32;religion&#32;=&#32;item.refObj&#32;as&#32;<link linkend="_class_religion">Religion</link>;
+<anchor xml:id="__layer_faith_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(religion.IsAvailable&#32;||&#32;!<emphasis role="keyword">this</emphasis>.isBranchFaith)
+<anchor xml:id="__layer_faith_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Close();
+<anchor xml:id="__layer_faith_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.onWorship(religion);
+<anchor xml:id="__layer_faith_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__layer_faith_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.Beep();
+<anchor xml:id="__layer_faith_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__layer_faith_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.button3.SetOnClick(delegate
+<anchor xml:id="__layer_faith_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Close();
+<anchor xml:id="__layer_faith_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__layer_faith_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.button2.GetComponent&lt;CanvasGroup&gt;().DOFade(flag&#32;?&#32;1f&#32;:&#32;0f,&#32;this.time).SetEase(slot.ease);
+<anchor xml:id="__layer_faith_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.button3.GetComponent&lt;CanvasGroup&gt;().DOFade(flag&#32;?&#32;1f&#32;:&#32;0f,&#32;this.time).SetEase(slot.ease);
+<anchor xml:id="__layer_faith_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.text1.DOFade(flag&#32;?&#32;1f&#32;:&#32;0f,&#32;this.time).SetEase(slot.ease);
+<anchor xml:id="__layer_faith_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.text3.DOFade(flag&#32;?&#32;1f&#32;:&#32;0f,&#32;this.time).SetEase(slot.ease);
+<anchor xml:id="__layer_faith_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.image2.DOFade(flag&#32;?&#32;this.bgAlpha&#32;:&#32;0f,&#32;this.time).SetEase(slot.ease);
+<anchor xml:id="__layer_faith_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.Rect().DOAnchorPos(slot.position,&#32;<emphasis role="keyword">this</emphasis>.time,&#32;<emphasis role="keyword">false</emphasis>).SetEase(slot.ease);
+<anchor xml:id="__layer_faith_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.Rect().DOScale(slot.scale,&#32;<emphasis role="keyword">this</emphasis>.time).SetEase(slot.ease);
+<anchor xml:id="__layer_faith_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.GetComponent&lt;CanvasGroup&gt;().DOFade(slot.alpha,&#32;<emphasis role="keyword">this</emphasis>.time).SetEase(slot.ease);
+<anchor xml:id="__layer_faith_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00124"/>00124 
+<anchor xml:id="__layer_faith_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024AA&#32;RID:&#32;9386&#32;RVA:&#32;0x000CECE0&#32;File&#32;Offset:&#32;0x000CCEE0</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddReligion(<link linkend="_class_religion">Religion</link>&#32;r)
+<anchor xml:id="__layer_faith_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIItem&#32;uiitem&#32;=&#32;Util.Instantiate&lt;UIItem&gt;(this.moldItem,&#32;this.layout);
+<anchor xml:id="__layer_faith_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uiitem.text1.SetText(r.source.GetDetail());
+<anchor xml:id="__layer_faith_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uiitem.text2.SetText(r.Name);
+<anchor xml:id="__layer_faith_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uiitem.button1.icon.sprite&#32;=&#32;Resources.Load&lt;Sprite&gt;(<emphasis role="stringliteral">&quot;Media/Graphics/Image/Faction/&quot;</emphasis>&#32;+&#32;r.source.id);
+<anchor xml:id="__layer_faith_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.isBranchFaith&#32;&amp;&amp;&#32;!r.IsAvailable)
+<anchor xml:id="__layer_faith_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uiitem.button2.mainText.SetText(<emphasis role="stringliteral">&quot;faithUnavailable&quot;</emphasis>.lang());
+<anchor xml:id="__layer_faith_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uiitem.refObj&#32;=&#32;r;
+<anchor xml:id="__layer_faith_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.items.Add(uiitem);
+<anchor xml:id="__layer_faith_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uiitem.Rect().anchoredPosition&#32;=&#32;this.startPos;
+<anchor xml:id="__layer_faith_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00140"/>00140 
+<anchor xml:id="__layer_faith_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001419&#32;RID:&#32;5145</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Vector2&#32;startPos;
+<anchor xml:id="__layer_faith_8cs_source_1l00143"/>00143 
+<anchor xml:id="__layer_faith_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400141A&#32;RID:&#32;5146</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;time;
+<anchor xml:id="__layer_faith_8cs_source_1l00146"/>00146 
+<anchor xml:id="__layer_faith_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400141B&#32;RID:&#32;5147</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;bgAlpha;
+<anchor xml:id="__layer_faith_8cs_source_1l00149"/>00149 
+<anchor xml:id="__layer_faith_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400141C&#32;RID:&#32;5148</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;startDelay;
+<anchor xml:id="__layer_faith_8cs_source_1l00152"/>00152 
+<anchor xml:id="__layer_faith_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400141D&#32;RID:&#32;5149</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_layer_faith_1_1_slot">LayerFaith.Slot</link>&#32;slotVoid;
+<anchor xml:id="__layer_faith_8cs_source_1l00155"/>00155 
+<anchor xml:id="__layer_faith_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400141E&#32;RID:&#32;5150</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00157"/>00157 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;<link linkend="_class_layer_faith">LayerFaith</link>.<link linkend="_class_layer_faith_1_1_slot">Slot</link>&gt;&#32;slots;
+<anchor xml:id="__layer_faith_8cs_source_1l00158"/>00158 
+<anchor xml:id="__layer_faith_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400141F&#32;RID:&#32;5151</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIItem&#32;moldItem;
+<anchor xml:id="__layer_faith_8cs_source_1l00161"/>00161 
+<anchor xml:id="__layer_faith_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001420&#32;RID:&#32;5152</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;LayoutGroup&#32;layout;
+<anchor xml:id="__layer_faith_8cs_source_1l00164"/>00164 
+<anchor xml:id="__layer_faith_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001421&#32;RID:&#32;5153</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Action&lt;Religion&gt;&#32;onWorship;
+<anchor xml:id="__layer_faith_8cs_source_1l00167"/>00167 
+<anchor xml:id="__layer_faith_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001422&#32;RID:&#32;5154</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;[NonSerialized]
+<anchor xml:id="__layer_faith_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isBranchFaith;
+<anchor xml:id="__layer_faith_8cs_source_1l00171"/>00171 
+<anchor xml:id="__layer_faith_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001423&#32;RID:&#32;5155</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;[NonSerialized]
+<anchor xml:id="__layer_faith_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;index;
+<anchor xml:id="__layer_faith_8cs_source_1l00175"/>00175 
+<anchor xml:id="__layer_faith_8cs_source_1l00176"/>00176 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001424&#32;RID:&#32;5156</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;[NonSerialized]
+<anchor xml:id="__layer_faith_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;UIItem&gt;&#32;items&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;UIItem&gt;();
+<anchor xml:id="__layer_faith_8cs_source_1l00179"/>00179 
+<anchor xml:id="__layer_faith_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001425&#32;RID:&#32;5157</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;[NonSerialized]
+<anchor xml:id="__layer_faith_8cs_source_1l00182"/>00182 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;UIItem&gt;&#32;orders&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;UIItem&gt;();
+<anchor xml:id="__layer_faith_8cs_source_1l00183"/>00183 
+<anchor xml:id="__layer_faith_8cs_source_1l00184"/>00184 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x02000A63&#32;RID:&#32;2659</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00185"/>00185 &#32;&#32;&#32;&#32;[Serializable]
+<anchor xml:id="__layer_faith_8cs_source_1l00186"/><link linkend="_class_layer_faith_1_1_slot">00186</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_layer_faith_1_1_slot">Slot</link>
+<anchor xml:id="__layer_faith_8cs_source_1l00187"/>00187 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_faith_8cs_source_1l00188"/>00188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002A93&#32;RID:&#32;10899</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;scale;
+<anchor xml:id="__layer_faith_8cs_source_1l00190"/>00190 
+<anchor xml:id="__layer_faith_8cs_source_1l00191"/>00191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002A94&#32;RID:&#32;10900</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;alpha;
+<anchor xml:id="__layer_faith_8cs_source_1l00193"/>00193 
+<anchor xml:id="__layer_faith_8cs_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002A95&#32;RID:&#32;10901</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Vector2&#32;position;
+<anchor xml:id="__layer_faith_8cs_source_1l00196"/>00196 
+<anchor xml:id="__layer_faith_8cs_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002A96&#32;RID:&#32;10902</emphasis>
+<anchor xml:id="__layer_faith_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Ease&#32;ease;
+<anchor xml:id="__layer_faith_8cs_source_1l00199"/>00199 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_faith_8cs_source_1l00200"/>00200 }
+</programlisting></section>

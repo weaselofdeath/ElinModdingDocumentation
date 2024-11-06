@@ -1,0 +1,1038 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__tile_type_8cs_source" xml:lang="en-US">
+<title>TileType.cs</title>
+<indexterm><primary>Elin/TileType.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__tile_type_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__tile_type_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__tile_type_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>System.Reflection;
+<anchor xml:id="__tile_type_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__tile_type_8cs_source_1l00005"/>00005 
+<anchor xml:id="__tile_type_8cs_source_1l00006"/>00006 <emphasis role="comment">//&#32;Token:&#32;0x020006B1&#32;RID:&#32;1713</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00007"/><link linkend="_class_tile_type">00007</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_tile_type">TileType</link>&#32;:&#32;<link linkend="_class_e_class">EClass</link>
+<anchor xml:id="__tile_type_8cs_source_1l00008"/>00008 {
+<anchor xml:id="__tile_type_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06003195&#32;RID:&#32;12693&#32;RVA:&#32;0x00116414&#32;File&#32;Offset:&#32;0x00114614</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Init()
+<anchor xml:id="__tile_type_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tile_type">TileType</link>.dict.Clear();
+<anchor xml:id="__tile_type_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(FieldInfo&#32;fieldInfo&#32;<emphasis role="keywordflow">in</emphasis>&#32;typeof(<link linkend="_class_tile_type">TileType</link>).GetFields(BindingFlags.Static&#32;|&#32;BindingFlags.Public))
+<anchor xml:id="__tile_type_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(typeof(<link linkend="_class_tile_type">TileType</link>).IsAssignableFrom(fieldInfo.FieldType))
+<anchor xml:id="__tile_type_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tile_type">TileType</link>.dict[fieldInfo.Name]&#32;=&#32;(<link linkend="_class_tile_type">TileType</link>)fieldInfo.GetValue(<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__tile_type_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00021"/>00021 
+<anchor xml:id="__tile_type_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E37&#32;RID:&#32;3639</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06003196&#32;RID:&#32;12694&#32;RVA:&#32;0x00116482&#32;File&#32;Offset:&#32;0x00114682</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;LangPlaceType
+<anchor xml:id="__tile_type_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;place_Obj&quot;</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00031"/>00031 
+<anchor xml:id="__tile_type_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E38&#32;RID:&#32;3640</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06003197&#32;RID:&#32;12695&#32;RVA:&#32;0x00116489&#32;File&#32;Offset:&#32;0x00114689</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanStack
+<anchor xml:id="__tile_type_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00041"/>00041 
+<anchor xml:id="__tile_type_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06003198&#32;RID:&#32;12696&#32;RVA:&#32;0x0011648C&#32;File&#32;Offset:&#32;0x0011468C</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanRotate(<emphasis role="keywordtype">bool</emphasis>&#32;buildMode)
+<anchor xml:id="__tile_type_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00047"/>00047 
+<anchor xml:id="__tile_type_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E39&#32;RID:&#32;3641</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06003199&#32;RID:&#32;12697&#32;RVA:&#32;0x0011648F&#32;File&#32;Offset:&#32;0x0011468F</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ChangeBlockDir
+<anchor xml:id="__tile_type_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00057"/>00057 
+<anchor xml:id="__tile_type_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E3A&#32;RID:&#32;3642</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x0600319A&#32;RID:&#32;12698&#32;RVA:&#32;0x00116492&#32;File&#32;Offset:&#32;0x00114692</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsSkipLowBlock
+<anchor xml:id="__tile_type_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00067"/>00067 
+<anchor xml:id="__tile_type_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E3B&#32;RID:&#32;3643</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x0600319B&#32;RID:&#32;12699&#32;RVA:&#32;0x00116495&#32;File&#32;Offset:&#32;0x00114695</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsSkipFloor
+<anchor xml:id="__tile_type_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00077"/>00077 
+<anchor xml:id="__tile_type_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E3C&#32;RID:&#32;3644</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x0600319C&#32;RID:&#32;12700&#32;RVA:&#32;0x00116498&#32;File&#32;Offset:&#32;0x00114698</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsUseBlockDir
+<anchor xml:id="__tile_type_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00087"/>00087 
+<anchor xml:id="__tile_type_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E3D&#32;RID:&#32;3645</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x0600319D&#32;RID:&#32;12701&#32;RVA:&#32;0x0011649B&#32;File&#32;Offset:&#32;0x0011469B</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsFloorOrBridge
+<anchor xml:id="__tile_type_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00097"/>00097 
+<anchor xml:id="__tile_type_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E3E&#32;RID:&#32;3646</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x0600319E&#32;RID:&#32;12702&#32;RVA:&#32;0x0011649E&#32;File&#32;Offset:&#32;0x0011469E</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsWall
+<anchor xml:id="__tile_type_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00107"/>00107 
+<anchor xml:id="__tile_type_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E3F&#32;RID:&#32;3647</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x0600319F&#32;RID:&#32;12703&#32;RVA:&#32;0x001164A1&#32;File&#32;Offset:&#32;0x001146A1</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsFloor
+<anchor xml:id="__tile_type_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00117"/>00117 
+<anchor xml:id="__tile_type_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E40&#32;RID:&#32;3648</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031A0&#32;RID:&#32;12704&#32;RVA:&#32;0x001164A4&#32;File&#32;Offset:&#32;0x001146A4</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsBridge
+<anchor xml:id="__tile_type_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00127"/>00127 
+<anchor xml:id="__tile_type_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E41&#32;RID:&#32;3649</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031A1&#32;RID:&#32;12705&#32;RVA:&#32;0x001164A7&#32;File&#32;Offset:&#32;0x001146A7</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsWallOrFence
+<anchor xml:id="__tile_type_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00137"/>00137 
+<anchor xml:id="__tile_type_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E42&#32;RID:&#32;3650</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031A2&#32;RID:&#32;12706&#32;RVA:&#32;0x001164AA&#32;File&#32;Offset:&#32;0x001146AA</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsWallOrFullBlock
+<anchor xml:id="__tile_type_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00147"/>00147 
+<anchor xml:id="__tile_type_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E43&#32;RID:&#32;3651</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031A3&#32;RID:&#32;12707&#32;RVA:&#32;0x001164AD&#32;File&#32;Offset:&#32;0x001146AD</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsRamp
+<anchor xml:id="__tile_type_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.Ramp&#32;&gt;&#32;<link linkend="_class_tile_type">TileType</link>.RampType.None;
+<anchor xml:id="__tile_type_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00157"/>00157 
+<anchor xml:id="__tile_type_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E44&#32;RID:&#32;3652</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031A4&#32;RID:&#32;12708&#32;RVA:&#32;0x001164B8&#32;File&#32;Offset:&#32;0x001146B8</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;TileType.RampType&#32;Ramp
+<anchor xml:id="__tile_type_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_tile_type">TileType</link>.RampType.None;
+<anchor xml:id="__tile_type_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00167"/>00167 
+<anchor xml:id="__tile_type_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E45&#32;RID:&#32;3653</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031A5&#32;RID:&#32;12709&#32;RVA:&#32;0x001164BB&#32;File&#32;Offset:&#32;0x001146BB</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsLadder
+<anchor xml:id="__tile_type_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00176"/>00176 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00177"/>00177 
+<anchor xml:id="__tile_type_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E46&#32;RID:&#32;3654</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00179"/>00179 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031A6&#32;RID:&#32;12710&#32;RVA:&#32;0x001164BE&#32;File&#32;Offset:&#32;0x001146BE</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsBlockPass
+<anchor xml:id="__tile_type_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00185"/>00185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00187"/>00187 
+<anchor xml:id="__tile_type_8cs_source_1l00188"/>00188 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E47&#32;RID:&#32;3655</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031A7&#32;RID:&#32;12711&#32;RVA:&#32;0x001164C1&#32;File&#32;Offset:&#32;0x001146C1</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00190"/>00190 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsOccupyCell
+<anchor xml:id="__tile_type_8cs_source_1l00191"/>00191 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00193"/>00193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00196"/>00196 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00197"/>00197 
+<anchor xml:id="__tile_type_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E48&#32;RID:&#32;3656</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00199"/>00199 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031A8&#32;RID:&#32;12712&#32;RVA:&#32;0x001164C4&#32;File&#32;Offset:&#32;0x001146C4</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00200"/>00200 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsBlockSight
+<anchor xml:id="__tile_type_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00202"/>00202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00203"/>00203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00204"/>00204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00206"/>00206 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00207"/>00207 
+<anchor xml:id="__tile_type_8cs_source_1l00208"/>00208 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E49&#32;RID:&#32;3657</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00209"/>00209 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031A9&#32;RID:&#32;12713&#32;RVA:&#32;0x001164C7&#32;File&#32;Offset:&#32;0x001146C7</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00210"/>00210 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsOpenSight
+<anchor xml:id="__tile_type_8cs_source_1l00211"/>00211 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00216"/>00216 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00217"/>00217 
+<anchor xml:id="__tile_type_8cs_source_1l00218"/>00218 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E4A&#32;RID:&#32;3658</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00219"/>00219 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031AA&#32;RID:&#32;12714&#32;RVA:&#32;0x001164CA&#32;File&#32;Offset:&#32;0x001146CA</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00220"/>00220 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsBlockLiquid
+<anchor xml:id="__tile_type_8cs_source_1l00221"/>00221 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00226"/>00226 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00227"/>00227 
+<anchor xml:id="__tile_type_8cs_source_1l00228"/>00228 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E4B&#32;RID:&#32;3659</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00229"/>00229 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031AB&#32;RID:&#32;12715&#32;RVA:&#32;0x001164CD&#32;File&#32;Offset:&#32;0x001146CD</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00230"/>00230 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsWater
+<anchor xml:id="__tile_type_8cs_source_1l00231"/>00231 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00233"/>00233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00234"/>00234 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00235"/>00235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00236"/>00236 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00237"/>00237 
+<anchor xml:id="__tile_type_8cs_source_1l00238"/>00238 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E4C&#32;RID:&#32;3660</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00239"/>00239 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031AC&#32;RID:&#32;12716&#32;RVA:&#32;0x001164D0&#32;File&#32;Offset:&#32;0x001146D0</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00240"/>00240 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsDeepWater
+<anchor xml:id="__tile_type_8cs_source_1l00241"/>00241 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00242"/>00242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00246"/>00246 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00247"/>00247 
+<anchor xml:id="__tile_type_8cs_source_1l00248"/>00248 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E4D&#32;RID:&#32;3661</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00249"/>00249 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031AD&#32;RID:&#32;12717&#32;RVA:&#32;0x001164D3&#32;File&#32;Offset:&#32;0x001146D3</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00250"/>00250 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsBlockMount
+<anchor xml:id="__tile_type_8cs_source_1l00251"/>00251 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00253"/>00253 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00256"/>00256 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00257"/>00257 
+<anchor xml:id="__tile_type_8cs_source_1l00258"/>00258 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E4E&#32;RID:&#32;3662</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00259"/>00259 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031AE&#32;RID:&#32;12718&#32;RVA:&#32;0x001164D6&#32;File&#32;Offset:&#32;0x001146D6</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00260"/>00260 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsFullBlock
+<anchor xml:id="__tile_type_8cs_source_1l00261"/>00261 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00266"/>00266 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00267"/>00267 
+<anchor xml:id="__tile_type_8cs_source_1l00268"/>00268 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E4F&#32;RID:&#32;3663</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00269"/>00269 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031AF&#32;RID:&#32;12719&#32;RVA:&#32;0x001164D9&#32;File&#32;Offset:&#32;0x001146D9</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00270"/>00270 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsFence
+<anchor xml:id="__tile_type_8cs_source_1l00271"/>00271 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00276"/>00276 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00277"/>00277 
+<anchor xml:id="__tile_type_8cs_source_1l00278"/>00278 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E50&#32;RID:&#32;3664</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00279"/>00279 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031B0&#32;RID:&#32;12720&#32;RVA:&#32;0x001164DC&#32;File&#32;Offset:&#32;0x001146DC</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00280"/>00280 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsFloodBlock
+<anchor xml:id="__tile_type_8cs_source_1l00281"/>00281 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00282"/>00282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00283"/>00283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00284"/>00284 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00285"/>00285 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00286"/>00286 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00287"/>00287 
+<anchor xml:id="__tile_type_8cs_source_1l00288"/>00288 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E51&#32;RID:&#32;3665</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00289"/>00289 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031B1&#32;RID:&#32;12721&#32;RVA:&#32;0x001164DF&#32;File&#32;Offset:&#32;0x001146DF</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00290"/>00290 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsPlayFootSound
+<anchor xml:id="__tile_type_8cs_source_1l00291"/>00291 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00295"/>00295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00296"/>00296 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00297"/>00297 
+<anchor xml:id="__tile_type_8cs_source_1l00298"/>00298 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E52&#32;RID:&#32;3666</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00299"/>00299 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031B2&#32;RID:&#32;12722&#32;RVA:&#32;0x001164E2&#32;File&#32;Offset:&#32;0x001146E2</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00300"/>00300 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanSpawnOnWater
+<anchor xml:id="__tile_type_8cs_source_1l00301"/>00301 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00306"/>00306 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00307"/>00307 
+<anchor xml:id="__tile_type_8cs_source_1l00308"/>00308 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E53&#32;RID:&#32;3667</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00309"/>00309 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031B3&#32;RID:&#32;12723&#32;RVA:&#32;0x001164E5&#32;File&#32;Offset:&#32;0x001146E5</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00310"/>00310 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsWaterTop
+<anchor xml:id="__tile_type_8cs_source_1l00311"/>00311 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00312"/>00312 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00313"/>00313 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00314"/>00314 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00315"/>00315 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00316"/>00316 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00317"/>00317 
+<anchor xml:id="__tile_type_8cs_source_1l00318"/>00318 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E54&#32;RID:&#32;3668</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00319"/>00319 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031B4&#32;RID:&#32;12724&#32;RVA:&#32;0x001164E8&#32;File&#32;Offset:&#32;0x001146E8</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00320"/>00320 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CastShadowSelf
+<anchor xml:id="__tile_type_8cs_source_1l00321"/>00321 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00323"/>00323 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00324"/>00324 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00325"/>00325 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00326"/>00326 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00327"/>00327 
+<anchor xml:id="__tile_type_8cs_source_1l00328"/>00328 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E55&#32;RID:&#32;3669</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00329"/>00329 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031B5&#32;RID:&#32;12725&#32;RVA:&#32;0x001164EB&#32;File&#32;Offset:&#32;0x001146EB</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00330"/>00330 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CastShadowBack
+<anchor xml:id="__tile_type_8cs_source_1l00331"/>00331 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00332"/>00332 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00333"/>00333 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00334"/>00334 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00335"/>00335 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00336"/>00336 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00337"/>00337 
+<anchor xml:id="__tile_type_8cs_source_1l00338"/>00338 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E56&#32;RID:&#32;3670</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00339"/>00339 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031B6&#32;RID:&#32;12726&#32;RVA:&#32;0x001164EE&#32;File&#32;Offset:&#32;0x001146EE</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00340"/>00340 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CastAmbientShadow
+<anchor xml:id="__tile_type_8cs_source_1l00341"/>00341 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00342"/>00342 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00343"/>00343 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00344"/>00344 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00345"/>00345 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00346"/>00346 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00347"/>00347 
+<anchor xml:id="__tile_type_8cs_source_1l00348"/>00348 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E57&#32;RID:&#32;3671</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00349"/>00349 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031B7&#32;RID:&#32;12727&#32;RVA:&#32;0x001164F1&#32;File&#32;Offset:&#32;0x001146F1</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00350"/>00350 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CastAmbientShadowBack
+<anchor xml:id="__tile_type_8cs_source_1l00351"/>00351 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00352"/>00352 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00353"/>00353 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00354"/>00354 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00355"/>00355 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00356"/>00356 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00357"/>00357 
+<anchor xml:id="__tile_type_8cs_source_1l00358"/>00358 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E58&#32;RID:&#32;3672</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00359"/>00359 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031B8&#32;RID:&#32;12728&#32;RVA:&#32;0x001164F4&#32;File&#32;Offset:&#32;0x001146F4</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00360"/>00360 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanBuiltOnArea
+<anchor xml:id="__tile_type_8cs_source_1l00361"/>00361 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00362"/>00362 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00363"/>00363 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00364"/>00364 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00365"/>00365 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00366"/>00366 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00367"/>00367 
+<anchor xml:id="__tile_type_8cs_source_1l00368"/>00368 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E59&#32;RID:&#32;3673</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00369"/>00369 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031B9&#32;RID:&#32;12729&#32;RVA:&#32;0x001164F7&#32;File&#32;Offset:&#32;0x001146F7</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00370"/>00370 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanBuiltOnWater
+<anchor xml:id="__tile_type_8cs_source_1l00371"/>00371 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00372"/>00372 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00373"/>00373 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00374"/>00374 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00375"/>00375 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00376"/>00376 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00377"/>00377 
+<anchor xml:id="__tile_type_8cs_source_1l00378"/>00378 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E5A&#32;RID:&#32;3674</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00379"/>00379 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031BA&#32;RID:&#32;12730&#32;RVA:&#32;0x001164FA&#32;File&#32;Offset:&#32;0x001146FA</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00380"/>00380 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanBuiltOnThing
+<anchor xml:id="__tile_type_8cs_source_1l00381"/>00381 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00382"/>00382 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00383"/>00383 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00384"/>00384 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00385"/>00385 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00386"/>00386 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00387"/>00387 
+<anchor xml:id="__tile_type_8cs_source_1l00388"/>00388 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E5B&#32;RID:&#32;3675</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00389"/>00389 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031BB&#32;RID:&#32;12731&#32;RVA:&#32;0x001164FD&#32;File&#32;Offset:&#32;0x001146FD</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00390"/>00390 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanBuiltOnBlock
+<anchor xml:id="__tile_type_8cs_source_1l00391"/>00391 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00392"/>00392 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00393"/>00393 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00394"/>00394 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00395"/>00395 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00396"/>00396 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00397"/>00397 
+<anchor xml:id="__tile_type_8cs_source_1l00398"/>00398 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E5C&#32;RID:&#32;3676</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00399"/>00399 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031BC&#32;RID:&#32;12732&#32;RVA:&#32;0x00116500&#32;File&#32;Offset:&#32;0x00114700</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00400"/>00400 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsDoor
+<anchor xml:id="__tile_type_8cs_source_1l00401"/>00401 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00402"/>00402 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00403"/>00403 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00404"/>00404 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00405"/>00405 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00406"/>00406 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00407"/>00407 
+<anchor xml:id="__tile_type_8cs_source_1l00408"/>00408 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E5D&#32;RID:&#32;3677</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00409"/>00409 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031BD&#32;RID:&#32;12733&#32;RVA:&#32;0x00116503&#32;File&#32;Offset:&#32;0x00114703</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00410"/>00410 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanBuiltOnFloor
+<anchor xml:id="__tile_type_8cs_source_1l00411"/>00411 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00412"/>00412 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00413"/>00413 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00414"/>00414 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00415"/>00415 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00416"/>00416 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00417"/>00417 
+<anchor xml:id="__tile_type_8cs_source_1l00418"/>00418 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E5E&#32;RID:&#32;3678</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00419"/>00419 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031BE&#32;RID:&#32;12734&#32;RVA:&#32;0x00116506&#32;File&#32;Offset:&#32;0x00114706</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00420"/>00420 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanBuiltOnBridge
+<anchor xml:id="__tile_type_8cs_source_1l00421"/>00421 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00422"/>00422 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00423"/>00423 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00424"/>00424 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00425"/>00425 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00426"/>00426 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00427"/>00427 
+<anchor xml:id="__tile_type_8cs_source_1l00428"/>00428 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E5F&#32;RID:&#32;3679</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00429"/>00429 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031BF&#32;RID:&#32;12735&#32;RVA:&#32;0x00116509&#32;File&#32;Offset:&#32;0x00114709</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00430"/>00430 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanInstaComplete
+<anchor xml:id="__tile_type_8cs_source_1l00431"/>00431 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00432"/>00432 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00433"/>00433 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00434"/>00434 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00435"/>00435 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00436"/>00436 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00437"/>00437 
+<anchor xml:id="__tile_type_8cs_source_1l00438"/>00438 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E60&#32;RID:&#32;3680</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00439"/>00439 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031C0&#32;RID:&#32;12736&#32;RVA:&#32;0x0011650C&#32;File&#32;Offset:&#32;0x0011470C</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00440"/>00440 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;MinAltitude
+<anchor xml:id="__tile_type_8cs_source_1l00441"/>00441 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00442"/>00442 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00443"/>00443 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00444"/>00444 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;1;
+<anchor xml:id="__tile_type_8cs_source_1l00445"/>00445 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00446"/>00446 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00447"/>00447 
+<anchor xml:id="__tile_type_8cs_source_1l00448"/>00448 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E61&#32;RID:&#32;3681</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00449"/>00449 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031C1&#32;RID:&#32;12737&#32;RVA:&#32;0x0011650F&#32;File&#32;Offset:&#32;0x0011470F</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00450"/>00450 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;MaxAltitude
+<anchor xml:id="__tile_type_8cs_source_1l00451"/>00451 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00452"/>00452 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00453"/>00453 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00454"/>00454 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;10;
+<anchor xml:id="__tile_type_8cs_source_1l00455"/>00455 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00456"/>00456 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00457"/>00457 
+<anchor xml:id="__tile_type_8cs_source_1l00458"/>00458 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E62&#32;RID:&#32;3682</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00459"/>00459 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031C2&#32;RID:&#32;12738&#32;RVA:&#32;0x00116513&#32;File&#32;Offset:&#32;0x00114713</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00460"/>00460 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AltitudeAsDir
+<anchor xml:id="__tile_type_8cs_source_1l00461"/>00461 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00462"/>00462 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00463"/>00463 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00464"/>00464 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00465"/>00465 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00466"/>00466 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00467"/>00467 
+<anchor xml:id="__tile_type_8cs_source_1l00468"/>00468 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E63&#32;RID:&#32;3683</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00469"/>00469 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031C3&#32;RID:&#32;12739&#32;RVA:&#32;0x00116516&#32;File&#32;Offset:&#32;0x00114716</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00470"/>00470 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;UseLowWallTiles
+<anchor xml:id="__tile_type_8cs_source_1l00471"/>00471 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00472"/>00472 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00473"/>00473 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00474"/>00474 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00475"/>00475 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00476"/>00476 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00477"/>00477 
+<anchor xml:id="__tile_type_8cs_source_1l00478"/>00478 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E64&#32;RID:&#32;3684</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00479"/>00479 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031C4&#32;RID:&#32;12740&#32;RVA:&#32;0x00116519&#32;File&#32;Offset:&#32;0x00114719</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00480"/>00480 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;UseMountHeight
+<anchor xml:id="__tile_type_8cs_source_1l00481"/>00481 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00482"/>00482 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00483"/>00483 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00484"/>00484 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00485"/>00485 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00486"/>00486 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00487"/>00487 
+<anchor xml:id="__tile_type_8cs_source_1l00488"/>00488 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E65&#32;RID:&#32;3685</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00489"/>00489 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031C5&#32;RID:&#32;12741&#32;RVA:&#32;0x0011651C&#32;File&#32;Offset:&#32;0x0011471C</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00490"/>00490 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;UseHangZFix
+<anchor xml:id="__tile_type_8cs_source_1l00491"/>00491 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00492"/>00492 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00493"/>00493 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00494"/>00494 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00495"/>00495 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00496"/>00496 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00497"/>00497 
+<anchor xml:id="__tile_type_8cs_source_1l00498"/>00498 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E66&#32;RID:&#32;3686</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00499"/>00499 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031C6&#32;RID:&#32;12742&#32;RVA:&#32;0x0011651F&#32;File&#32;Offset:&#32;0x0011471F</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00500"/>00500 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;UseLowBlock
+<anchor xml:id="__tile_type_8cs_source_1l00501"/>00501 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00502"/>00502 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00503"/>00503 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00504"/>00504 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00505"/>00505 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00506"/>00506 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00507"/>00507 
+<anchor xml:id="__tile_type_8cs_source_1l00508"/>00508 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E67&#32;RID:&#32;3687</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00509"/>00509 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031C7&#32;RID:&#32;12743&#32;RVA:&#32;0x00116522&#32;File&#32;Offset:&#32;0x00114722</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00510"/>00510 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;RemoveOnFloorChange
+<anchor xml:id="__tile_type_8cs_source_1l00511"/>00511 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00512"/>00512 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00513"/>00513 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00514"/>00514 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00515"/>00515 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00516"/>00516 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00517"/>00517 
+<anchor xml:id="__tile_type_8cs_source_1l00518"/>00518 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E68&#32;RID:&#32;3688</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00519"/>00519 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031C8&#32;RID:&#32;12744&#32;RVA:&#32;0x00116525&#32;File&#32;Offset:&#32;0x00114725</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00520"/>00520 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AllowObj
+<anchor xml:id="__tile_type_8cs_source_1l00521"/>00521 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00522"/>00522 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00523"/>00523 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00524"/>00524 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00525"/>00525 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00526"/>00526 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00527"/>00527 
+<anchor xml:id="__tile_type_8cs_source_1l00528"/>00528 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E69&#32;RID:&#32;3689</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00529"/>00529 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031C9&#32;RID:&#32;12745&#32;RVA:&#32;0x00116528&#32;File&#32;Offset:&#32;0x00114728</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00530"/>00530 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AllowMultiInstall
+<anchor xml:id="__tile_type_8cs_source_1l00531"/>00531 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00532"/>00532 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00533"/>00533 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00534"/>00534 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00535"/>00535 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00536"/>00536 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00537"/>00537 
+<anchor xml:id="__tile_type_8cs_source_1l00538"/>00538 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E6A&#32;RID:&#32;3690</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00539"/>00539 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031CA&#32;RID:&#32;12746&#32;RVA:&#32;0x0011652B&#32;File&#32;Offset:&#32;0x0011472B</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00540"/>00540 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;FreeStyle
+<anchor xml:id="__tile_type_8cs_source_1l00541"/>00541 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00542"/>00542 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00543"/>00543 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00544"/>00544 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00545"/>00545 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00546"/>00546 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00547"/>00547 
+<anchor xml:id="__tile_type_8cs_source_1l00548"/>00548 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E6B&#32;RID:&#32;3691</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00549"/>00549 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031CB&#32;RID:&#32;12747&#32;RVA:&#32;0x0011652E&#32;File&#32;Offset:&#32;0x0011472E</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00550"/>00550 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">byte</emphasis>&#32;slopeHeight
+<anchor xml:id="__tile_type_8cs_source_1l00551"/>00551 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00552"/>00552 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00553"/>00553 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00554"/>00554 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__tile_type_8cs_source_1l00555"/>00555 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00556"/>00556 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00557"/>00557 
+<anchor xml:id="__tile_type_8cs_source_1l00558"/>00558 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E6C&#32;RID:&#32;3692</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00559"/>00559 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031CC&#32;RID:&#32;12748&#32;RVA:&#32;0x00116531&#32;File&#32;Offset:&#32;0x00114731</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00560"/>00560 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;MountHeight
+<anchor xml:id="__tile_type_8cs_source_1l00561"/>00561 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00562"/>00562 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00563"/>00563 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00564"/>00564 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0f;
+<anchor xml:id="__tile_type_8cs_source_1l00565"/>00565 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00566"/>00566 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00567"/>00567 
+<anchor xml:id="__tile_type_8cs_source_1l00568"/>00568 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E6D&#32;RID:&#32;3693</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00569"/>00569 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031CD&#32;RID:&#32;12749&#32;RVA:&#32;0x00116538&#32;File&#32;Offset:&#32;0x00114738</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00570"/>00570 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;FloorHeight
+<anchor xml:id="__tile_type_8cs_source_1l00571"/>00571 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00572"/>00572 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00573"/>00573 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00574"/>00574 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0f;
+<anchor xml:id="__tile_type_8cs_source_1l00575"/>00575 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00576"/>00576 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00577"/>00577 
+<anchor xml:id="__tile_type_8cs_source_1l00578"/>00578 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E6E&#32;RID:&#32;3694</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00579"/>00579 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031CE&#32;RID:&#32;12750&#32;RVA:&#32;0x0011653F&#32;File&#32;Offset:&#32;0x0011473F</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00580"/>00580 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;RepeatSize
+<anchor xml:id="__tile_type_8cs_source_1l00581"/>00581 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00582"/>00582 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00583"/>00583 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00584"/>00584 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;1f;
+<anchor xml:id="__tile_type_8cs_source_1l00585"/>00585 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00586"/>00586 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00587"/>00587 
+<anchor xml:id="__tile_type_8cs_source_1l00588"/>00588 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E6F&#32;RID:&#32;3695</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00589"/>00589 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031CF&#32;RID:&#32;12751&#32;RVA:&#32;0x00116546&#32;File&#32;Offset:&#32;0x00114746</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00590"/>00590 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;FloorAltitude
+<anchor xml:id="__tile_type_8cs_source_1l00591"/>00591 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00592"/>00592 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00593"/>00593 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00594"/>00594 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__tile_type_8cs_source_1l00595"/>00595 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00596"/>00596 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00597"/>00597 
+<anchor xml:id="__tile_type_8cs_source_1l00598"/>00598 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E70&#32;RID:&#32;3696</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00599"/>00599 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031D0&#32;RID:&#32;12752&#32;RVA:&#32;0x00116549&#32;File&#32;Offset:&#32;0x00114749</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00600"/>00600 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;LiquidLV
+<anchor xml:id="__tile_type_8cs_source_1l00601"/>00601 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00602"/>00602 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00603"/>00603 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00604"/>00604 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__tile_type_8cs_source_1l00605"/>00605 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00606"/>00606 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00607"/>00607 
+<anchor xml:id="__tile_type_8cs_source_1l00608"/>00608 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E71&#32;RID:&#32;3697</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00609"/>00609 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031D1&#32;RID:&#32;12753&#32;RVA:&#32;0x0011654C&#32;File&#32;Offset:&#32;0x0011474C</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00610"/>00610 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AllowLitter
+<anchor xml:id="__tile_type_8cs_source_1l00611"/>00611 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00612"/>00612 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00613"/>00613 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00614"/>00614 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00615"/>00615 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00616"/>00616 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00617"/>00617 
+<anchor xml:id="__tile_type_8cs_source_1l00618"/>00618 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E72&#32;RID:&#32;3698</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00619"/>00619 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031D2&#32;RID:&#32;12754&#32;RVA:&#32;0x0011654F&#32;File&#32;Offset:&#32;0x0011474F</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00620"/>00620 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AllowBlood
+<anchor xml:id="__tile_type_8cs_source_1l00621"/>00621 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00622"/>00622 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00623"/>00623 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00624"/>00624 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00625"/>00625 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00626"/>00626 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00627"/>00627 
+<anchor xml:id="__tile_type_8cs_source_1l00628"/>00628 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E73&#32;RID:&#32;3699</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00629"/>00629 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031D3&#32;RID:&#32;12755&#32;RVA:&#32;0x00116552&#32;File&#32;Offset:&#32;0x00114752</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00630"/>00630 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ShowPillar
+<anchor xml:id="__tile_type_8cs_source_1l00631"/>00631 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00632"/>00632 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00633"/>00633 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00634"/>00634 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00635"/>00635 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00636"/>00636 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00637"/>00637 
+<anchor xml:id="__tile_type_8cs_source_1l00638"/>00638 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E74&#32;RID:&#32;3700</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00639"/>00639 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031D4&#32;RID:&#32;12756&#32;RVA:&#32;0x00116555&#32;File&#32;Offset:&#32;0x00114755</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00640"/>00640 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AlwaysShowShadow
+<anchor xml:id="__tile_type_8cs_source_1l00641"/>00641 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00642"/>00642 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00643"/>00643 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00644"/>00644 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00645"/>00645 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00646"/>00646 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00647"/>00647 
+<anchor xml:id="__tile_type_8cs_source_1l00648"/>00648 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E75&#32;RID:&#32;3701</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00649"/>00649 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031D5&#32;RID:&#32;12757&#32;RVA:&#32;0x00116558&#32;File&#32;Offset:&#32;0x00114758</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00650"/>00650 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;RepeatBlock
+<anchor xml:id="__tile_type_8cs_source_1l00651"/>00651 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00652"/>00652 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00653"/>00653 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00654"/>00654 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00655"/>00655 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00656"/>00656 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00657"/>00657 
+<anchor xml:id="__tile_type_8cs_source_1l00658"/>00658 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E76&#32;RID:&#32;3702</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00659"/>00659 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031D6&#32;RID:&#32;12758&#32;RVA:&#32;0x0011655B&#32;File&#32;Offset:&#32;0x0011475B</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00660"/>00660 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ForceRpeatBlock
+<anchor xml:id="__tile_type_8cs_source_1l00661"/>00661 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00662"/>00662 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00663"/>00663 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00664"/>00664 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00665"/>00665 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00666"/>00666 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00667"/>00667 
+<anchor xml:id="__tile_type_8cs_source_1l00668"/>00668 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E77&#32;RID:&#32;3703</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00669"/>00669 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031D7&#32;RID:&#32;12759&#32;RVA:&#32;0x0011655E&#32;File&#32;Offset:&#32;0x0011475E</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00670"/>00670 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanBeHeld
+<anchor xml:id="__tile_type_8cs_source_1l00671"/>00671 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00672"/>00672 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00673"/>00673 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00674"/>00674 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00675"/>00675 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00676"/>00676 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00677"/>00677 
+<anchor xml:id="__tile_type_8cs_source_1l00678"/>00678 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E78&#32;RID:&#32;3704</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00679"/>00679 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031D8&#32;RID:&#32;12760&#32;RVA:&#32;0x00116561&#32;File&#32;Offset:&#32;0x00114761</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00680"/>00680 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;EditorTile
+<anchor xml:id="__tile_type_8cs_source_1l00681"/>00681 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00682"/>00682 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00683"/>00683 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00684"/>00684 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00685"/>00685 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00686"/>00686 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00687"/>00687 
+<anchor xml:id="__tile_type_8cs_source_1l00688"/>00688 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E79&#32;RID:&#32;3705</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00689"/>00689 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031D9&#32;RID:&#32;12761&#32;RVA:&#32;0x00116564&#32;File&#32;Offset:&#32;0x00114764</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00690"/>00690 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsFloodDoor
+<anchor xml:id="__tile_type_8cs_source_1l00691"/>00691 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00692"/>00692 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00693"/>00693 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00694"/>00694 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00695"/>00695 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00696"/>00696 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00697"/>00697 
+<anchor xml:id="__tile_type_8cs_source_1l00698"/>00698 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E7A&#32;RID:&#32;3706</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00699"/>00699 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031DA&#32;RID:&#32;12762&#32;RVA:&#32;0x00116567&#32;File&#32;Offset:&#32;0x00114767</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00700"/>00700 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Invisible
+<anchor xml:id="__tile_type_8cs_source_1l00701"/>00701 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00702"/>00702 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00703"/>00703 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00704"/>00704 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00705"/>00705 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00706"/>00706 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00707"/>00707 
+<anchor xml:id="__tile_type_8cs_source_1l00708"/>00708 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E7B&#32;RID:&#32;3707</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00709"/>00709 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031DB&#32;RID:&#32;12763&#32;RVA:&#32;0x0011656A&#32;File&#32;Offset:&#32;0x0011476A</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00710"/>00710 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IgnoreBuildRule
+<anchor xml:id="__tile_type_8cs_source_1l00711"/>00711 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00712"/>00712 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00713"/>00713 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00714"/>00714 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00715"/>00715 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00716"/>00716 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00717"/>00717 
+<anchor xml:id="__tile_type_8cs_source_1l00718"/>00718 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E7C&#32;RID:&#32;3708</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00719"/>00719 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031DC&#32;RID:&#32;12764&#32;RVA:&#32;0x0011656D&#32;File&#32;Offset:&#32;0x0011476D</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00720"/>00720 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;RenderWaterBlock
+<anchor xml:id="__tile_type_8cs_source_1l00721"/>00721 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00722"/>00722 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00723"/>00723 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00724"/>00724 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__tile_type_8cs_source_1l00725"/>00725 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00726"/>00726 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00727"/>00727 
+<anchor xml:id="__tile_type_8cs_source_1l00728"/>00728 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E7D&#32;RID:&#32;3709</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00729"/>00729 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031DD&#32;RID:&#32;12765&#32;RVA:&#32;0x00116570&#32;File&#32;Offset:&#32;0x00114770</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00730"/>00730 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;BaseTileSelector.SelectType&#32;SelectType
+<anchor xml:id="__tile_type_8cs_source_1l00731"/>00731 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00732"/>00732 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00733"/>00733 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00734"/>00734 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_base_tile_selector">BaseTileSelector</link>.SelectType.Single;
+<anchor xml:id="__tile_type_8cs_source_1l00735"/>00735 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00736"/>00736 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00737"/>00737 
+<anchor xml:id="__tile_type_8cs_source_1l00738"/>00738 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E7E&#32;RID:&#32;3710</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00739"/>00739 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031DE&#32;RID:&#32;12766&#32;RVA:&#32;0x00116573&#32;File&#32;Offset:&#32;0x00114773</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00740"/>00740 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;BaseTileSelector.BoxType&#32;BoxType
+<anchor xml:id="__tile_type_8cs_source_1l00741"/>00741 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00742"/>00742 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00743"/>00743 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00744"/>00744 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_base_tile_selector">BaseTileSelector</link>.BoxType.Box;
+<anchor xml:id="__tile_type_8cs_source_1l00745"/>00745 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00746"/>00746 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00747"/>00747 
+<anchor xml:id="__tile_type_8cs_source_1l00748"/>00748 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E7F&#32;RID:&#32;3711</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00749"/>00749 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031DF&#32;RID:&#32;12767&#32;RVA:&#32;0x00116576&#32;File&#32;Offset:&#32;0x00114776</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00750"/>00750 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;BaseTileSelector.HitType&#32;HitType
+<anchor xml:id="__tile_type_8cs_source_1l00751"/>00751 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00752"/>00752 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00753"/>00753 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00754"/>00754 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_base_tile_selector">BaseTileSelector</link>.HitType.Block;
+<anchor xml:id="__tile_type_8cs_source_1l00755"/>00755 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00756"/>00756 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00757"/>00757 
+<anchor xml:id="__tile_type_8cs_source_1l00758"/>00758 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E80&#32;RID:&#32;3712</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00759"/>00759 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031E0&#32;RID:&#32;12768&#32;RVA:&#32;0x00116579&#32;File&#32;Offset:&#32;0x00114779</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00760"/>00760 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;BlockRenderMode&#32;blockRenderMode
+<anchor xml:id="__tile_type_8cs_source_1l00761"/>00761 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00762"/>00762 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00763"/>00763 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00764"/>00764 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;BlockRenderMode.Default;
+<anchor xml:id="__tile_type_8cs_source_1l00765"/>00765 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00766"/>00766 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00767"/>00767 
+<anchor xml:id="__tile_type_8cs_source_1l00768"/>00768 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000E81&#32;RID:&#32;3713</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00769"/>00769 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060031E1&#32;RID:&#32;12769&#32;RVA:&#32;0x0011657C&#32;File&#32;Offset:&#32;0x0011477C</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00770"/>00770 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsMountBlock
+<anchor xml:id="__tile_type_8cs_source_1l00771"/>00771 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00772"/>00772 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00773"/>00773 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00774"/>00774 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.MountHeight&#32;&gt;&#32;0f;
+<anchor xml:id="__tile_type_8cs_source_1l00775"/>00775 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00776"/>00776 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00777"/>00777 
+<anchor xml:id="__tile_type_8cs_source_1l00778"/>00778 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060031E2&#32;RID:&#32;12770&#32;RVA:&#32;0x0011658C&#32;File&#32;Offset:&#32;0x0011478C</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00779"/>00779 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;HitResult&#32;_HitTest(<link linkend="_class_point">Point</link>&#32;pos,&#32;<link linkend="_class_card">Card</link>&#32;target,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;canIgnore&#32;=&#32;<emphasis role="keyword">true</emphasis>)
+<anchor xml:id="__tile_type_8cs_source_1l00780"/>00780 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00781"/>00781 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((<link linkend="_class_e_class">EClass</link>.debug.ignoreBuildRule&#32;||&#32;<emphasis role="keyword">this</emphasis>.IgnoreBuildRule)&#32;&amp;&amp;&#32;canIgnore)
+<anchor xml:id="__tile_type_8cs_source_1l00782"/>00782 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00783"/>00783 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;HitResult.Valid;
+<anchor xml:id="__tile_type_8cs_source_1l00784"/>00784 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00785"/>00785 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.CanBuiltOnArea&#32;&amp;&amp;&#32;pos.HasArea)
+<anchor xml:id="__tile_type_8cs_source_1l00786"/>00786 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00787"/>00787 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;HitResult.Invalid;
+<anchor xml:id="__tile_type_8cs_source_1l00788"/>00788 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00789"/>00789 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pos.cell.IsTopWater)
+<anchor xml:id="__tile_type_8cs_source_1l00790"/>00790 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00791"/>00791 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.CanBuiltOnWater)
+<anchor xml:id="__tile_type_8cs_source_1l00792"/>00792 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00793"/>00793 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;HitResult.Invalid;
+<anchor xml:id="__tile_type_8cs_source_1l00794"/>00794 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00795"/>00795 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00796"/>00796 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.CanBuiltOnFloor)
+<anchor xml:id="__tile_type_8cs_source_1l00797"/>00797 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00798"/>00798 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;HitResult.Invalid;
+<anchor xml:id="__tile_type_8cs_source_1l00799"/>00799 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00800"/>00800 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.CanBuiltOnBridge&#32;&amp;&amp;&#32;pos.cell._bridge&#32;!=&#32;0)
+<anchor xml:id="__tile_type_8cs_source_1l00801"/>00801 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00802"/>00802 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;HitResult.Invalid;
+<anchor xml:id="__tile_type_8cs_source_1l00803"/>00803 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00804"/>00804 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(target&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__tile_type_8cs_source_1l00805"/>00805 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00806"/>00806 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(target.sourceCard.multisize&#32;&amp;&amp;&#32;(pos.Installed&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;||&#32;pos.cell.blocked&#32;||&#32;(pos.HasChara&#32;&amp;&amp;&#32;pos.FirstChara.IsHostile(<link linkend="_class_e_class">EClass</link>.pc))))
+<anchor xml:id="__tile_type_8cs_source_1l00807"/>00807 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00808"/>00808 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;HitResult.Invalid;
+<anchor xml:id="__tile_type_8cs_source_1l00809"/>00809 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00810"/>00810 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pos.Installed&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;pos.Installed&#32;!=&#32;target)
+<anchor xml:id="__tile_type_8cs_source_1l00811"/>00811 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00812"/>00812 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tile_type">TileType</link>&#32;tileType&#32;=&#32;pos.Installed.TileType;
+<anchor xml:id="__tile_type_8cs_source_1l00813"/>00813 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tile_type">TileType</link>&#32;tileType2&#32;=&#32;target.TileType;
+<anchor xml:id="__tile_type_8cs_source_1l00814"/>00814 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!tileType.AllowMultiInstall&#32;||&#32;!tileType2.AllowMultiInstall)
+<anchor xml:id="__tile_type_8cs_source_1l00815"/>00815 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00816"/>00816 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;HitResult.Invalid;
+<anchor xml:id="__tile_type_8cs_source_1l00817"/>00817 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00818"/>00818 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00819"/>00819 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!target.trait.CanBuiltAt(pos))
+<anchor xml:id="__tile_type_8cs_source_1l00820"/>00820 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00821"/>00821 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;HitResult.Invalid;
+<anchor xml:id="__tile_type_8cs_source_1l00822"/>00822 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00823"/>00823 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00824"/>00824 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pos.Installed&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;!<emphasis role="keyword">this</emphasis>.CanBuiltOnThing&#32;&amp;&amp;&#32;!pos.cell.hasDoor)
+<anchor xml:id="__tile_type_8cs_source_1l00825"/>00825 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00826"/>00826 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;HitResult.Invalid;
+<anchor xml:id="__tile_type_8cs_source_1l00827"/>00827 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00828"/>00828 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pos.HasBlock)
+<anchor xml:id="__tile_type_8cs_source_1l00829"/>00829 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00830"/>00830 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.CanBuiltOnBlock&#32;&amp;&amp;&#32;pos.sourceBlock.tileType.IsOccupyCell)
+<anchor xml:id="__tile_type_8cs_source_1l00831"/>00831 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00832"/>00832 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;HitResult.Invalid;
+<anchor xml:id="__tile_type_8cs_source_1l00833"/>00833 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00834"/>00834 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.IsDoor&#32;&amp;&amp;&#32;pos.HasWallOrFence&#32;&amp;&amp;&#32;pos.cell.blockDir&#32;==&#32;2)
+<anchor xml:id="__tile_type_8cs_source_1l00835"/>00835 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00836"/>00836 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;HitResult.Invalid;
+<anchor xml:id="__tile_type_8cs_source_1l00837"/>00837 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00838"/>00838 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00839"/>00839 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.IsDoor)
+<anchor xml:id="__tile_type_8cs_source_1l00840"/>00840 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00841"/>00841 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;HitResult.Invalid;
+<anchor xml:id="__tile_type_8cs_source_1l00842"/>00842 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00843"/>00843 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.HitTest(pos);
+<anchor xml:id="__tile_type_8cs_source_1l00844"/>00844 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00845"/>00845 
+<anchor xml:id="__tile_type_8cs_source_1l00846"/>00846 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060031E3&#32;RID:&#32;12771&#32;RVA:&#32;0x001166FA&#32;File&#32;Offset:&#32;0x001148FA</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00847"/>00847 &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;HitResult&#32;HitTest(<link linkend="_class_point">Point</link>&#32;pos)
+<anchor xml:id="__tile_type_8cs_source_1l00848"/>00848 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00849"/>00849 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pos.HasObj)
+<anchor xml:id="__tile_type_8cs_source_1l00850"/>00850 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00851"/>00851 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;HitResult.Warning;
+<anchor xml:id="__tile_type_8cs_source_1l00852"/>00852 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00853"/>00853 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;HitResult.Valid;
+<anchor xml:id="__tile_type_8cs_source_1l00854"/>00854 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00855"/>00855 
+<anchor xml:id="__tile_type_8cs_source_1l00856"/>00856 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060031E4&#32;RID:&#32;12772&#32;RVA:&#32;0x00116707&#32;File&#32;Offset:&#32;0x00114907</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00857"/>00857 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;GetDesiredDir(<link linkend="_class_point">Point</link>&#32;p,&#32;<emphasis role="keywordtype">int</emphasis>&#32;d)
+<anchor xml:id="__tile_type_8cs_source_1l00858"/>00858 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00859"/>00859 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="__tile_type_8cs_source_1l00860"/>00860 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00861"/>00861 
+<anchor xml:id="__tile_type_8cs_source_1l00862"/>00862 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060031E5&#32;RID:&#32;12773&#32;RVA:&#32;0x0011670A&#32;File&#32;Offset:&#32;0x0011490A</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00863"/>00863 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;GetMountHeight(ref&#32;Vector3&#32;v,&#32;<link linkend="_class_point">Point</link>&#32;p,&#32;<emphasis role="keywordtype">int</emphasis>&#32;d,&#32;<link linkend="_class_card">Card</link>&#32;target&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__tile_type_8cs_source_1l00864"/>00864 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00865"/>00865 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;v&#32;+=&#32;EClass.screen.tileMap.altitudeFix&#32;*&#32;(float)target.altitude;
+<anchor xml:id="__tile_type_8cs_source_1l00866"/>00866 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00867"/>00867 
+<anchor xml:id="__tile_type_8cs_source_1l00868"/>00868 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060031E6&#32;RID:&#32;12774&#32;RVA:&#32;0x0011673C&#32;File&#32;Offset:&#32;0x0011493C</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00869"/>00869 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Vector3&#32;GetRampFix(<emphasis role="keywordtype">int</emphasis>&#32;dir)
+<anchor xml:id="__tile_type_8cs_source_1l00870"/>00870 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l00871"/>00871 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;this.Ramp&#32;*&#32;TileType.RampType.Half&#32;-&#32;TileType.RampType.Half&#32;+&#32;((dir&#32;&lt;=&#32;1)&#32;?&#32;0&#32;:&#32;1);
+<anchor xml:id="__tile_type_8cs_source_1l00872"/>00872 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Vector3&#32;vector&#32;=&#32;<link linkend="_class_e_class">EClass</link>.setting.render.rampFix[num];
+<anchor xml:id="__tile_type_8cs_source_1l00873"/>00873 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;Vector3(vector.x&#32;*&#32;(<emphasis role="keywordtype">float</emphasis>)((dir&#32;%&#32;2&#32;==&#32;0)&#32;?&#32;1&#32;:&#32;-1),&#32;vector.y,&#32;vector.z);
+<anchor xml:id="__tile_type_8cs_source_1l00874"/>00874 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l00875"/>00875 
+<anchor xml:id="__tile_type_8cs_source_1l00876"/>00876 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BC3&#32;RID:&#32;7107</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00877"/>00877 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_none">TileTypeNone</link>&#32;None&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_none">TileTypeNone</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00878"/>00878 
+<anchor xml:id="__tile_type_8cs_source_1l00879"/>00879 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BC4&#32;RID:&#32;7108</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00880"/>00880 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_invisible_block">TileTypeInvisibleBlock</link>&#32;InvisiBlock&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_invisible_block">TileTypeInvisibleBlock</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00881"/>00881 
+<anchor xml:id="__tile_type_8cs_source_1l00882"/>00882 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BC5&#32;RID:&#32;7109</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00883"/>00883 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_block">TileTypeBlock</link>&#32;Block&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_block">TileTypeBlock</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00884"/>00884 
+<anchor xml:id="__tile_type_8cs_source_1l00885"/>00885 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BC6&#32;RID:&#32;7110</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00886"/>00886 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_block_ship">TileTypeBlockShip</link>&#32;BlockShip&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_block_ship">TileTypeBlockShip</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00887"/>00887 
+<anchor xml:id="__tile_type_8cs_source_1l00888"/>00888 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BC7&#32;RID:&#32;7111</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00889"/>00889 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_slope">TileTypeSlope</link>&#32;Slope&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_slope">TileTypeSlope</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00890"/>00890 
+<anchor xml:id="__tile_type_8cs_source_1l00891"/>00891 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BC8&#32;RID:&#32;7112</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00892"/>00892 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_half_block">TileTypeHalfBlock</link>&#32;HalfBlock&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_half_block">TileTypeHalfBlock</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00893"/>00893 
+<anchor xml:id="__tile_type_8cs_source_1l00894"/>00894 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BC9&#32;RID:&#32;7113</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00895"/>00895 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_stairs">TileTypeStairs</link>&#32;Stairs&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_stairs">TileTypeStairs</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00896"/>00896 
+<anchor xml:id="__tile_type_8cs_source_1l00897"/>00897 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BCA&#32;RID:&#32;7114</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00898"/>00898 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_stairs">TileTypeStairs</link>&#32;StairsHalf&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_stairs_half">TileTypeStairsHalf</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00899"/>00899 
+<anchor xml:id="__tile_type_8cs_source_1l00900"/>00900 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BCB&#32;RID:&#32;7115</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00901"/>00901 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_rooftop">TileTypeRooftop</link>&#32;Rooftop&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_rooftop">TileTypeRooftop</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00902"/>00902 
+<anchor xml:id="__tile_type_8cs_source_1l00903"/>00903 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BCC&#32;RID:&#32;7116</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00904"/>00904 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_scaffold">TileTypeScaffold</link>&#32;Scaffold&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_scaffold">TileTypeScaffold</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00905"/>00905 
+<anchor xml:id="__tile_type_8cs_source_1l00906"/>00906 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BCD&#32;RID:&#32;7117</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00907"/>00907 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_ladder">TileTypeLadder</link>&#32;Ladder&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_ladder">TileTypeLadder</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00908"/>00908 
+<anchor xml:id="__tile_type_8cs_source_1l00909"/>00909 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BCE&#32;RID:&#32;7118</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00910"/>00910 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_pillar">TileTypePillar</link>&#32;Pillar&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_pillar">TileTypePillar</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00911"/>00911 
+<anchor xml:id="__tile_type_8cs_source_1l00912"/>00912 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BCF&#32;RID:&#32;7119</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00913"/>00913 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_waterfall">TileTypeWaterfall</link>&#32;Waterfall&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_waterfall">TileTypeWaterfall</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00914"/>00914 
+<anchor xml:id="__tile_type_8cs_source_1l00915"/>00915 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BD0&#32;RID:&#32;7120</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00916"/>00916 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_wall">TileTypeWall</link>&#32;<link linkend="_struct_wall">Wall</link>&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_wall">TileTypeWall</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00917"/>00917 
+<anchor xml:id="__tile_type_8cs_source_1l00918"/>00918 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BD1&#32;RID:&#32;7121</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00919"/>00919 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_wall_open">TileTypeWallOpen</link>&#32;WallOpen&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_wall_open">TileTypeWallOpen</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00920"/>00920 
+<anchor xml:id="__tile_type_8cs_source_1l00921"/>00921 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BD2&#32;RID:&#32;7122</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00922"/>00922 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_fence">TileTypeFence</link>&#32;Fence&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_fence">TileTypeFence</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00923"/>00923 
+<anchor xml:id="__tile_type_8cs_source_1l00924"/>00924 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BD3&#32;RID:&#32;7123</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00925"/>00925 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_fence_closed">TileTypeFenceClosed</link>&#32;FenceClosed&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_fence_closed">TileTypeFenceClosed</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00926"/>00926 
+<anchor xml:id="__tile_type_8cs_source_1l00927"/>00927 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BD4&#32;RID:&#32;7124</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00928"/>00928 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_floor">TileTypeFloor</link>&#32;Floor&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_floor">TileTypeFloor</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00929"/>00929 
+<anchor xml:id="__tile_type_8cs_source_1l00930"/>00930 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BD5&#32;RID:&#32;7125</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00931"/>00931 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_floor_scaffold">TileTypeFloorScaffold</link>&#32;FloorScaffold&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_floor_scaffold">TileTypeFloorScaffold</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00932"/>00932 
+<anchor xml:id="__tile_type_8cs_source_1l00933"/>00933 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BD6&#32;RID:&#32;7126</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00934"/>00934 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_water">TileTypeWater</link>&#32;FloorWater&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_water">TileTypeWater</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00935"/>00935 
+<anchor xml:id="__tile_type_8cs_source_1l00936"/>00936 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BD7&#32;RID:&#32;7127</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00937"/>00937 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_water_shallow">TileTypeWaterShallow</link>&#32;FloorWaterShallow&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_water_shallow">TileTypeWaterShallow</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00938"/>00938 
+<anchor xml:id="__tile_type_8cs_source_1l00939"/>00939 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BD8&#32;RID:&#32;7128</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00940"/>00940 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_water_deep">TileTypeWaterDeep</link>&#32;FloorWaterDeep&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_water_deep">TileTypeWaterDeep</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00941"/>00941 
+<anchor xml:id="__tile_type_8cs_source_1l00942"/>00942 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BD9&#32;RID:&#32;7129</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00943"/>00943 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_bridge">TileTypeBridge</link>&#32;Bridge&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_bridge">TileTypeBridge</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00944"/>00944 
+<anchor xml:id="__tile_type_8cs_source_1l00945"/>00945 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BDA&#32;RID:&#32;7130</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00946"/>00946 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_bridge_deco">TileTypeBridgeDeco</link>&#32;BridgeDeco&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_bridge_deco">TileTypeBridgeDeco</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00947"/>00947 
+<anchor xml:id="__tile_type_8cs_source_1l00948"/>00948 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BDB&#32;RID:&#32;7131</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00949"/>00949 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_bridge_pillar">TileTypeBridgePillar</link>&#32;BridgePillar&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_bridge_pillar">TileTypeBridgePillar</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00950"/>00950 
+<anchor xml:id="__tile_type_8cs_source_1l00951"/>00951 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BDC&#32;RID:&#32;7132</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00952"/>00952 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_sky">TileTypeSky</link>&#32;Sky&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_sky">TileTypeSky</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00953"/>00953 
+<anchor xml:id="__tile_type_8cs_source_1l00954"/>00954 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BDD&#32;RID:&#32;7133</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00955"/>00955 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_obj">TileTypeObj</link>&#32;Obj&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_obj">TileTypeObj</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00956"/>00956 
+<anchor xml:id="__tile_type_8cs_source_1l00957"/>00957 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BDE&#32;RID:&#32;7134</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00958"/>00958 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_obj_big">TileTypeObjBig</link>&#32;ObjBig&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_obj_big">TileTypeObjBig</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00959"/>00959 
+<anchor xml:id="__tile_type_8cs_source_1l00960"/>00960 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BDF&#32;RID:&#32;7135</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00961"/>00961 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_obj_huge">TileTypeObjHuge</link>&#32;ObjHuge&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_obj_huge">TileTypeObjHuge</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00962"/>00962 
+<anchor xml:id="__tile_type_8cs_source_1l00963"/>00963 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BE0&#32;RID:&#32;7136</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00964"/>00964 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_obj_ceil">TileTypeObjCeil</link>&#32;ObjCeil&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_obj_ceil">TileTypeObjCeil</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00965"/>00965 
+<anchor xml:id="__tile_type_8cs_source_1l00966"/>00966 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BE1&#32;RID:&#32;7137</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00967"/>00967 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_obj_float">TileTypeObjFloat</link>&#32;ObjFloat&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_obj_float">TileTypeObjFloat</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00968"/>00968 
+<anchor xml:id="__tile_type_8cs_source_1l00969"/>00969 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BE2&#32;RID:&#32;7138</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00970"/>00970 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_obj_water">TileTypeObjWater</link>&#32;ObjWater&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_obj_water">TileTypeObjWater</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00971"/>00971 
+<anchor xml:id="__tile_type_8cs_source_1l00972"/>00972 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BE3&#32;RID:&#32;7139</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00973"/>00973 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_obj_water_top">TileTypeObjWaterTop</link>&#32;ObjWaterTop&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_obj_water_top">TileTypeObjWaterTop</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00974"/>00974 
+<anchor xml:id="__tile_type_8cs_source_1l00975"/>00975 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BE4&#32;RID:&#32;7140</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00976"/>00976 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_illumination">TileTypeIllumination</link>&#32;Illumination&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_illumination">TileTypeIllumination</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00977"/>00977 
+<anchor xml:id="__tile_type_8cs_source_1l00978"/>00978 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BE5&#32;RID:&#32;7141</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00979"/>00979 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_tree">TileTypeTree</link>&#32;Tree&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_tree">TileTypeTree</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00980"/>00980 
+<anchor xml:id="__tile_type_8cs_source_1l00981"/>00981 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BE6&#32;RID:&#32;7142</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00982"/>00982 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_door">TileTypeDoor</link>&#32;Door&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_door">TileTypeDoor</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00983"/>00983 
+<anchor xml:id="__tile_type_8cs_source_1l00984"/>00984 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BE7&#32;RID:&#32;7143</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00985"/>00985 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_wall_hang">TileTypeWallHang</link>&#32;WallHang&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_wall_hang">TileTypeWallHang</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00986"/>00986 
+<anchor xml:id="__tile_type_8cs_source_1l00987"/>00987 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BE8&#32;RID:&#32;7144</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00988"/>00988 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_wall_hang_sign">TileTypeWallHangSign</link>&#32;WallHangSign&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_wall_hang_sign">TileTypeWallHangSign</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00989"/>00989 
+<anchor xml:id="__tile_type_8cs_source_1l00990"/>00990 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BE9&#32;RID:&#32;7145</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00991"/>00991 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_vine">TileTypeVine</link>&#32;Vine&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_vine">TileTypeVine</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00992"/>00992 
+<anchor xml:id="__tile_type_8cs_source_1l00993"/>00993 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BEA&#32;RID:&#32;7146</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00994"/>00994 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_wall_mount">TileTypeWallMount</link>&#32;WallMount&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_wall_mount">TileTypeWallMount</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00995"/>00995 
+<anchor xml:id="__tile_type_8cs_source_1l00996"/>00996 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BEB&#32;RID:&#32;7147</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l00997"/>00997 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_paint">TileTypePaint</link>&#32;Paint&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_paint">TileTypePaint</link>();
+<anchor xml:id="__tile_type_8cs_source_1l00998"/>00998 
+<anchor xml:id="__tile_type_8cs_source_1l00999"/>00999 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BEC&#32;RID:&#32;7148</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l01000"/>01000 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_window">TileTypeWindow</link>&#32;Window&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_window">TileTypeWindow</link>();
+<anchor xml:id="__tile_type_8cs_source_1l01001"/>01001 
+<anchor xml:id="__tile_type_8cs_source_1l01002"/>01002 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BED&#32;RID:&#32;7149</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l01003"/>01003 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_roof">TileTypeRoof</link>&#32;Roof&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_roof">TileTypeRoof</link>();
+<anchor xml:id="__tile_type_8cs_source_1l01004"/>01004 
+<anchor xml:id="__tile_type_8cs_source_1l01005"/>01005 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BEE&#32;RID:&#32;7150</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l01006"/>01006 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_road">TileTypeRoad</link>&#32;Road&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_road">TileTypeRoad</link>();
+<anchor xml:id="__tile_type_8cs_source_1l01007"/>01007 
+<anchor xml:id="__tile_type_8cs_source_1l01008"/>01008 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BEF&#32;RID:&#32;7151</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l01009"/>01009 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_chasm">TileTypeChasm</link>&#32;Chasm&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_chasm">TileTypeChasm</link>();
+<anchor xml:id="__tile_type_8cs_source_1l01010"/>01010 
+<anchor xml:id="__tile_type_8cs_source_1l01011"/>01011 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BF0&#32;RID:&#32;7152</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l01012"/>01012 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_boat">TileTypeBoat</link>&#32;Boat&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_boat">TileTypeBoat</link>();
+<anchor xml:id="__tile_type_8cs_source_1l01013"/>01013 
+<anchor xml:id="__tile_type_8cs_source_1l01014"/>01014 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BF1&#32;RID:&#32;7153</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l01015"/>01015 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_liquid">TileTypeLiquid</link>&#32;Liquid&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_liquid">TileTypeLiquid</link>();
+<anchor xml:id="__tile_type_8cs_source_1l01016"/>01016 
+<anchor xml:id="__tile_type_8cs_source_1l01017"/>01017 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BF2&#32;RID:&#32;7154</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l01018"/>01018 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_tile_type_marker">TileTypeMarker</link>&#32;Marker&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_tile_type_marker">TileTypeMarker</link>();
+<anchor xml:id="__tile_type_8cs_source_1l01019"/>01019 
+<anchor xml:id="__tile_type_8cs_source_1l01020"/>01020 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001BF3&#32;RID:&#32;7155</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l01021"/>01021 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;Dictionary&lt;string,&#32;TileType&gt;&#32;dict&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Dictionary&lt;string,&#32;TileType&gt;();
+<anchor xml:id="__tile_type_8cs_source_1l01022"/>01022 
+<anchor xml:id="__tile_type_8cs_source_1l01023"/>01023 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x02000C0A&#32;RID:&#32;3082</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l01024"/>01024 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">enum</emphasis>&#32;RampType
+<anchor xml:id="__tile_type_8cs_source_1l01025"/>01025 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__tile_type_8cs_source_1l01026"/>01026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002FE8&#32;RID:&#32;12264</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l01027"/>01027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;None,
+<anchor xml:id="__tile_type_8cs_source_1l01028"/>01028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002FE9&#32;RID:&#32;12265</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l01029"/>01029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Full,
+<anchor xml:id="__tile_type_8cs_source_1l01030"/>01030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002FEA&#32;RID:&#32;12266</emphasis>
+<anchor xml:id="__tile_type_8cs_source_1l01031"/>01031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Half
+<anchor xml:id="__tile_type_8cs_source_1l01032"/>01032 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__tile_type_8cs_source_1l01033"/>01033 }
+</programlisting></section>

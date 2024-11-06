@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__random_position_mover_8cs_source" xml:lang="en-US">
+<title>RandomPositionMover.cs</title>
+<indexterm><primary>Elin/RandomPositionMover.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__random_position_mover_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__random_position_mover_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__random_position_mover_8cs_source_1l00003"/>00003 
+<anchor xml:id="__random_position_mover_8cs_source_1l00004"/>00004 <emphasis role="comment">//&#32;Token:&#32;0x02000122&#32;RID:&#32;290</emphasis>
+<anchor xml:id="__random_position_mover_8cs_source_1l00005"/><link linkend="_class_random_position_mover">00005</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_random_position_mover">RandomPositionMover</link>&#32;:&#32;MonoBehaviour
+<anchor xml:id="__random_position_mover_8cs_source_1l00006"/>00006 {
+<anchor xml:id="__random_position_mover_8cs_source_1l00007"/>00007 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060007D7&#32;RID:&#32;2007&#32;RVA:&#32;0x00032A20&#32;File&#32;Offset:&#32;0x00030C20</emphasis>
+<anchor xml:id="__random_position_mover_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Start()
+<anchor xml:id="__random_position_mover_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__random_position_mover_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.pickerInterval&#32;==&#32;0f)
+<anchor xml:id="__random_position_mover_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__random_position_mover_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.pickerInterval&#32;=&#32;3f;
+<anchor xml:id="__random_position_mover_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__random_position_mover_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.randomPointInCircle&#32;=&#32;Vector2.zero;
+<anchor xml:id="__random_position_mover_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.InvokeRepeating(<emphasis role="stringliteral">&quot;PickRandomPointInCircle&quot;</emphasis>,&#32;UnityEngine.Random.Range(0f,&#32;<emphasis role="keyword">this</emphasis>.pickerInterval),&#32;<emphasis role="keyword">this</emphasis>.pickerInterval);
+<anchor xml:id="__random_position_mover_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__random_position_mover_8cs_source_1l00017"/>00017 
+<anchor xml:id="__random_position_mover_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060007D8&#32;RID:&#32;2008&#32;RVA:&#32;0x00032A74&#32;File&#32;Offset:&#32;0x00030C74</emphasis>
+<anchor xml:id="__random_position_mover_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;PickRandomPointInCircle()
+<anchor xml:id="__random_position_mover_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__random_position_mover_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.transform.position&#32;=&#32;this.player.transform.position;
+<anchor xml:id="__random_position_mover_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.randomPointInCircle&#32;=&#32;base.transform.localPosition&#32;+&#32;UnityEngine.Random.insideUnitCircle&#32;*&#32;this.radius;
+<anchor xml:id="__random_position_mover_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.transform.localPosition&#32;=&#32;this.randomPointInCircle;
+<anchor xml:id="__random_position_mover_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__random_position_mover_8cs_source_1l00025"/>00025 
+<anchor xml:id="__random_position_mover_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060007D9&#32;RID:&#32;2009&#32;RVA:&#32;0x00032ADD&#32;File&#32;Offset:&#32;0x00030CDD</emphasis>
+<anchor xml:id="__random_position_mover_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Update()
+<anchor xml:id="__random_position_mover_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__random_position_mover_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__random_position_mover_8cs_source_1l00030"/>00030 
+<anchor xml:id="__random_position_mover_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007E6&#32;RID:&#32;2022</emphasis>
+<anchor xml:id="__random_position_mover_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;pickerInterval;
+<anchor xml:id="__random_position_mover_8cs_source_1l00033"/>00033 
+<anchor xml:id="__random_position_mover_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007E7&#32;RID:&#32;2023</emphasis>
+<anchor xml:id="__random_position_mover_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;radius;
+<anchor xml:id="__random_position_mover_8cs_source_1l00036"/>00036 
+<anchor xml:id="__random_position_mover_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007E8&#32;RID:&#32;2024</emphasis>
+<anchor xml:id="__random_position_mover_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;GameObject&#32;player;
+<anchor xml:id="__random_position_mover_8cs_source_1l00039"/>00039 
+<anchor xml:id="__random_position_mover_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007E9&#32;RID:&#32;2025</emphasis>
+<anchor xml:id="__random_position_mover_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Vector2&#32;randomPointInCircle;
+<anchor xml:id="__random_position_mover_8cs_source_1l00042"/>00042 }
+</programlisting></section>

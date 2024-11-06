@@ -1,0 +1,64 @@
+\doxysection{Button\+Grid\+Drag.\+cs}
+\hypertarget{_button_grid_drag_8cs_source}{}\label{_button_grid_drag_8cs_source}\index{Elin/ButtonGridDrag.cs@{Elin/ButtonGridDrag.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine.EventSystems;}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x0200050A\ RID:\ 1290}}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00005}\mbox{\hyperlink{class_button_grid_drag}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_button_grid_drag}{ButtonGridDrag}}\ :\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}},\ IDragHandler,\ IEventSystemHandler}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600228A\ RID:\ 8842\ RVA:\ 0x000C03B8\ File\ Offset:\ 0x000BE5B8}}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ SetDragParent(IDragParent\ p)}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ this.dragParent\ =\ p;}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00011}00011\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600228B\ RID:\ 8843\ RVA:\ 0x000C03C4\ File\ Offset:\ 0x000BE5C4}}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnDrag(PointerEventData\ data)}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.dragParent\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CanDragLeftButton\ \&\&\ data.button\ !=\ PointerEventData.InputButton.Left)}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.CanDragLeftButton\ \&\&\ data.button\ !=\ PointerEventData.InputButton.Right)}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.dragged)}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ SE.DragStart();}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ this.dragged\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ this.dragParent.OnStartDrag(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnPointerUpOnDrag(data);}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ this.dragParent.OnDrag(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600228C\ RID:\ 8844\ RVA:\ 0x000C0431\ File\ Offset:\ 0x000BE631}}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnPointerUp(PointerEventData\ eventData)}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.dragged)}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ this.dragged\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ this.dragParent.OnEndDrag(\textcolor{keyword}{this},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_u_i_inventory}{UIInventory}}.RefreshAllList();}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ base.OnPointerUp(eventData);}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040011E1\ RID:\ 4577}}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{public}\ IDragParent\ dragParent;}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040011E2\ RID:\ 4578}}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00056}00056\ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ dragged;}
+\DoxyCodeLine{\Hypertarget{_button_grid_drag_8cs_source_l00058}00058\ \}}
+
+\end{DoxyCode}

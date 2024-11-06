@@ -1,0 +1,65 @@
+\doxysection{Item\+Research.\+cs}
+\hypertarget{_item_research_8cs_source}{}\label{_item_research_8cs_source}\index{Elin/ItemResearch.cs@{Elin/ItemResearch.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000554\ RID:\ 1364}}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00005}\mbox{\hyperlink{class_item_research}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_item_research}{ItemResearch}}\ :\ UIItem}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002506\ RID:\ 9478\ RVA:\ 0x000D1BBC\ File\ Offset:\ 0x000CFDBC}}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetPlan(\mbox{\hyperlink{class_research_plan}{ResearchPlan}}\ p,\ UIList\ list,\ \mbox{\hyperlink{class_faction_branch}{FactionBranch}}\ branch,\ \mbox{\hyperlink{class_layer_tech}{LayerTech}}\ layer)}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isFinished\ =\ !branch.researches.plans.Contains(p);}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ this.plan\ =\ p;}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ this.button1.mainText.text\ =\ p.Name;}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ this.goFocus.SetActive(branch.researches.focused\ ==\ p);}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ p.source.tech.ToString(\textcolor{stringliteral}{"{}\#,0"{}}).TagColorGoodBad(()\ =>\ branch.researches.CanCompletePlan(p),\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ this.button1.subText.text\ =\ text;}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ this.button1.subText.SetActive(!isFinished);}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ this.imageExp.fillAmount\ =\ (float)branch.resources.knowledge.value\ /\ (\textcolor{keywordtype}{float})p.source.tech;}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ this.button1.tooltip.onShowTooltip\ =\ delegate(UITooltip\ tp)}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ p.WriteNote(tp.note);}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ Action\ <>9\_\_3;}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ this.button1.onClick.AddListener(delegate()}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isFinished)}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!branch.researches.CanCompletePlan(p))}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SE.Beep();}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ UIContextMenu\ uicontextMenu\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.ui.CreateContextMenuInteraction().SetHighlightTarget(this.button1);}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ idLang\ =\ \textcolor{stringliteral}{"{}buy"{}};}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ Action\ action;}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((action\ =\ <>9\_\_3)\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ action\ =\ (<>9\_\_3\ =\ delegate()}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ branch.resources.knowledge.Mod(-\/p.source.tech,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ branch.researches.CompletePlan(p);}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ layer.RefreshTech();}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ uicontextMenu.AddButton(idLang,\ action,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ uicontextMenu.Show();}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001493\ RID:\ 5267}}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00052}00052\ \ \ \ \ \textcolor{keyword}{public}\ Image\ imageExp;}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001494\ RID:\ 5268}}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00055}00055\ \ \ \ \ \textcolor{keyword}{public}\ Image\ goFocus;}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001495\ RID:\ 5269}}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00058}00058\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_research_plan}{ResearchPlan}}\ plan;}
+\DoxyCodeLine{\Hypertarget{_item_research_8cs_source_l00059}00059\ \}}
+
+\end{DoxyCode}

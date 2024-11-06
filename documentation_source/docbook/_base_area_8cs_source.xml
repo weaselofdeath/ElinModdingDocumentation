@@ -1,0 +1,377 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__base_area_8cs_source" xml:lang="en-US">
+<title>BaseArea.cs</title>
+<indexterm><primary>Elin/BaseArea.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__base_area_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__base_area_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__base_area_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>Newtonsoft.Json;
+<anchor xml:id="__base_area_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__base_area_8cs_source_1l00005"/>00005 
+<anchor xml:id="__base_area_8cs_source_1l00006"/>00006 <emphasis role="comment">//&#32;Token:&#32;0x02000216&#32;RID:&#32;534</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00007"/><link linkend="_class_base_area">00007</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_base_area">BaseArea</link>&#32;:&#32;<link linkend="_class_e_class">EClass</link>,&#32;<link linkend="_interface_i_inspect">IInspect</link>
+<anchor xml:id="__base_area_8cs_source_1l00008"/>00008 {
+<anchor xml:id="__base_area_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170003EB&#32;RID:&#32;1003</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000F38&#32;RID:&#32;3896&#32;RVA:&#32;0x0006F00B&#32;File&#32;Offset:&#32;0x0006D20B</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;Name
+<anchor xml:id="__base_area_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.data.name.IsEmpty())
+<anchor xml:id="__base_area_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.data.name;
+<anchor xml:id="__base_area_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.type.source.GetName();
+<anchor xml:id="__base_area_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00022"/>00022 
+<anchor xml:id="__base_area_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170003EC&#32;RID:&#32;1004</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000F39&#32;RID:&#32;3897&#32;RVA:&#32;0x0006F03B&#32;File&#32;Offset:&#32;0x0006D23B</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsPrivate
+<anchor xml:id="__base_area_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.data.accessType&#32;==&#32;<link linkend="_class_base_area">BaseArea</link>.AccessType.Private;
+<anchor xml:id="__base_area_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00032"/>00032 
+<anchor xml:id="__base_area_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170003ED&#32;RID:&#32;1005</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000F3A&#32;RID:&#32;3898&#32;RVA:&#32;0x0006F04B&#32;File&#32;Offset:&#32;0x0006D24B</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_source_area_1_1_row">SourceArea.Row</link>&#32;source
+<anchor xml:id="__base_area_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.type.source;
+<anchor xml:id="__base_area_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00042"/>00042 
+<anchor xml:id="__base_area_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000F3B&#32;RID:&#32;3899&#32;RVA:&#32;0x0006F058&#32;File&#32;Offset:&#32;0x0006D258</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_point">Point</link>&#32;GetRandomFreePos()
+<anchor xml:id="__base_area_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;100;&#32;i++)
+<anchor xml:id="__base_area_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_point">Point</link>&#32;point&#32;=&#32;this.points.RandomItem&lt;<link linkend="_class_point">Point</link>&gt;();
+<anchor xml:id="__base_area_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!point.IsBlocked)
+<anchor xml:id="__base_area_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;point;
+<anchor xml:id="__base_area_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__base_area_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00056"/>00056 
+<anchor xml:id="__base_area_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000F3C&#32;RID:&#32;3900&#32;RVA:&#32;0x0006F08C&#32;File&#32;Offset:&#32;0x0006D28C</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_thing">Thing</link>&#32;GetEmptySeat()
+<anchor xml:id="__base_area_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_point">Point</link>&#32;point&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.points)
+<anchor xml:id="__base_area_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_thing">Thing</link>&#32;thing&#32;<emphasis role="keywordflow">in</emphasis>&#32;point.Things)
+<anchor xml:id="__base_area_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(thing.IsInstalled&#32;&amp;&amp;&#32;!thing.pos.HasChara&#32;&amp;&amp;&#32;thing.trait&#32;is&#32;<link linkend="_class_trait_chair">TraitChair</link>)
+<anchor xml:id="__base_area_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;thing;
+<anchor xml:id="__base_area_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__base_area_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00072"/>00072 
+<anchor xml:id="__base_area_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000F3D&#32;RID:&#32;3901&#32;RVA:&#32;0x0006F13C&#32;File&#32;Offset:&#32;0x0006D33C</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_point">Point</link>&#32;GetRandomPoint(<emphasis role="keywordtype">bool</emphasis>&#32;walkable&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;allowChara&#32;=&#32;<emphasis role="keyword">true</emphasis>)
+<anchor xml:id="__base_area_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(walkable)
+<anchor xml:id="__base_area_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;100;&#32;i++)
+<anchor xml:id="__base_area_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_point">Point</link>&#32;point&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.points)
+<anchor xml:id="__base_area_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!point.IsBlocked&#32;&amp;&amp;&#32;(allowChara&#32;||&#32;!point.HasChara))
+<anchor xml:id="__base_area_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;point;
+<anchor xml:id="__base_area_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.points.RandomItem&lt;<link linkend="_class_point">Point</link>&gt;();
+<anchor xml:id="__base_area_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00091"/>00091 
+<anchor xml:id="__base_area_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000F3E&#32;RID:&#32;3902&#32;RVA:&#32;0x0006F1BC&#32;File&#32;Offset:&#32;0x0006D3BC</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ChangeType(<emphasis role="keywordtype">string</emphasis>&#32;_id)
+<anchor xml:id="__base_area_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.type&#32;=&#32;ClassCache.Create&lt;<link linkend="_class_area_type">AreaType</link>&gt;(<emphasis role="stringliteral">&quot;AreaType&quot;</emphasis>&#32;+&#32;_id,&#32;<emphasis role="stringliteral">&quot;Elin&quot;</emphasis>);
+<anchor xml:id="__base_area_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.type.id&#32;=&#32;_id;
+<anchor xml:id="__base_area_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.type.owner&#32;=&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="__base_area_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.plate&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__base_area_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.plate.areaData.type&#32;=&#32;this.type;
+<anchor xml:id="__base_area_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00103"/>00103 
+<anchor xml:id="__base_area_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000F3F&#32;RID:&#32;3903&#32;RVA:&#32;0x0006F21A&#32;File&#32;Offset:&#32;0x0006D41A</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetRandomName(<emphasis role="keywordtype">int</emphasis>&#32;seed&#32;=&#32;-1)
+<anchor xml:id="__base_area_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.data.name&#32;=&#32;this.GetRandomName(seed);
+<anchor xml:id="__base_area_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00109"/>00109 
+<anchor xml:id="__base_area_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000F40&#32;RID:&#32;3904&#32;RVA:&#32;0x0006F22E&#32;File&#32;Offset:&#32;0x0006D42E</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;GetRandomName(<emphasis role="keywordtype">int</emphasis>&#32;seed&#32;=&#32;-1)
+<anchor xml:id="__base_area_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(seed&#32;!=&#32;-1)
+<anchor xml:id="__base_area_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Rand.SetSeed(seed);
+<anchor xml:id="__base_area_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_faction_branch">FactionBranch</link>&#32;branch&#32;=&#32;<link linkend="_class_e_class">EClass</link>.Branch;
+<anchor xml:id="__base_area_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;combinedName&#32;=&#32;WordGen.GetCombinedName((branch&#32;!=&#32;<emphasis role="keyword">null</emphasis>)&#32;?&#32;branch.GetRandomName()&#32;:&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">this</emphasis>.ListRoomNames().RandomItem&lt;<emphasis role="keywordtype">string</emphasis>&gt;(),&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__base_area_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(seed&#32;!=&#32;-1)
+<anchor xml:id="__base_area_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Rand.SetSeed(-1);
+<anchor xml:id="__base_area_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;combinedName;
+<anchor xml:id="__base_area_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00125"/>00125 
+<anchor xml:id="__base_area_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000F41&#32;RID:&#32;3905&#32;RVA:&#32;0x0006F268&#32;File&#32;Offset:&#32;0x0006D468</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;HashSet&lt;string&gt;&#32;ListRoomNames()
+<anchor xml:id="__base_area_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HashSet&lt;string&gt;&#32;hashSet&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;HashSet&lt;string&gt;();
+<anchor xml:id="__base_area_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<emphasis role="keywordtype">string</emphasis>&#32;item&#32;<emphasis role="keywordflow">in</emphasis>&#32;Lang.GetList(<emphasis role="stringliteral">&quot;rooms&quot;</emphasis>))
+<anchor xml:id="__base_area_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hashSet.Add(item);
+<anchor xml:id="__base_area_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_point">Point</link>&#32;point&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.points)
+<anchor xml:id="__base_area_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_thing">Thing</link>&#32;thing&#32;<emphasis role="keywordflow">in</emphasis>&#32;point.Things)
+<anchor xml:id="__base_area_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(thing.IsInstalled&#32;&amp;&amp;&#32;!thing.source.roomName.IsEmpty())
+<anchor xml:id="__base_area_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<emphasis role="keywordtype">string</emphasis>&#32;item2&#32;<emphasis role="keywordflow">in</emphasis>&#32;thing.source.GetTextArray(<emphasis role="stringliteral">&quot;roomName&quot;</emphasis>))
+<anchor xml:id="__base_area_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hashSet.Add(item2);
+<anchor xml:id="__base_area_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;hashSet;
+<anchor xml:id="__base_area_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00149"/>00149 
+<anchor xml:id="__base_area_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000F42&#32;RID:&#32;3906&#32;RVA:&#32;0x0006F36C&#32;File&#32;Offset:&#32;0x0006D56C</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;GetSortVal(UIList.SortMode&#32;m)
+<anchor xml:id="__base_area_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.source._index;
+<anchor xml:id="__base_area_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00155"/>00155 
+<anchor xml:id="__base_area_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000F43&#32;RID:&#32;3907&#32;RVA:&#32;0x0006F380&#32;File&#32;Offset:&#32;0x0006D580</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00157"/>00157 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;<link linkend="_class_base_area">BaseArea</link>.<link linkend="_class_base_area_1_1_interaction">Interaction</link>&gt;&#32;ListInteractions()
+<anchor xml:id="__base_area_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;<link linkend="_class_base_area">BaseArea</link>.<link linkend="_class_base_area_1_1_interaction">Interaction</link>&gt;
+<anchor xml:id="__base_area_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_base_area_1_1_interaction">BaseArea.Interaction</link>
+<anchor xml:id="__base_area_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text&#32;=&#32;<emphasis role="stringliteral">&quot;accessType&quot;</emphasis>.lang((<emphasis role="stringliteral">&quot;access_&quot;</emphasis>&#32;+&#32;this.data.accessType.ToString()).lang(),&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>),
+<anchor xml:id="__base_area_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;action&#32;=&#32;delegate()
+<anchor xml:id="__base_area_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIContextMenu&#32;uicontextMenu&#32;=&#32;<link linkend="_class_e_class">EClass</link>.ui.CreateContextMenuInteraction();
+<anchor xml:id="__base_area_8cs_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_base_area">BaseArea</link>.AccessType&#32;accessType&#32;in&#32;Util.EnumToList&lt;<link linkend="_class_base_area">BaseArea</link>.AccessType&gt;())
+<anchor xml:id="__base_area_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uicontextMenu.AddButton(((this.data.accessType&#32;==&#32;accessType)&#32;?&#32;<emphasis role="stringliteral">&quot;context_checker&quot;</emphasis>.lang()&#32;:&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>)&#32;+&#32;(<emphasis role="stringliteral">&quot;access_&quot;</emphasis>&#32;+&#32;accessType.ToString()).lang(),&#32;delegate()
+<anchor xml:id="__base_area_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.data.accessType&#32;=&#32;((this.data.accessType&#32;==&#32;<link linkend="_class_base_area">BaseArea</link>.AccessType.Public)&#32;?&#32;BaseArea.AccessType.Private&#32;:&#32;<link linkend="_class_base_area">BaseArea</link>.AccessType.Public);
+<anchor xml:id="__base_area_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.plate&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__base_area_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.plate.areaData.accessType&#32;=&#32;this.data.accessType;
+<anchor xml:id="__base_area_8cs_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00176"/>00176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.ClickOk();
+<anchor xml:id="__base_area_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__base_area_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CursorSystem.ignoreCount&#32;=&#32;5;
+<anchor xml:id="__base_area_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uicontextMenu.Show();
+<anchor xml:id="__base_area_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},
+<anchor xml:id="__base_area_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_base_area_1_1_interaction">BaseArea.Interaction</link>
+<anchor xml:id="__base_area_8cs_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00185"/>00185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text&#32;=&#32;<emphasis role="stringliteral">&quot;changeName&quot;</emphasis>,
+<anchor xml:id="__base_area_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;action&#32;=&#32;delegate()
+<anchor xml:id="__base_area_8cs_source_1l00187"/>00187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00188"/>00188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;List&lt;string&gt;&#32;list&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;string&gt;();
+<anchor xml:id="__base_area_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.ui.AddLayer&lt;<link linkend="_class_layer_list">LayerList</link>&gt;().SetStringList(delegate
+<anchor xml:id="__base_area_8cs_source_1l00190"/>00190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00191"/>00191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.Clear();
+<anchor xml:id="__base_area_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;10;&#32;i++)
+<anchor xml:id="__base_area_8cs_source_1l00193"/>00193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.Add(this.GetRandomName(-1));
+<anchor xml:id="__base_area_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00196"/>00196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;list;
+<anchor xml:id="__base_area_8cs_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;delegate(<emphasis role="keywordtype">int</emphasis>&#32;a,&#32;<emphasis role="keywordtype">string</emphasis>&#32;b)
+<anchor xml:id="__base_area_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00199"/>00199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.data.name&#32;=&#32;list[a];
+<anchor xml:id="__base_area_8cs_source_1l00200"/>00200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.plate&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__base_area_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00202"/>00202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.plate.areaData.name&#32;=&#32;list[a];
+<anchor xml:id="__base_area_8cs_source_1l00203"/>00203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00204"/>00204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">true</emphasis>).SetSize(450f,&#32;-1f).EnableReroll();
+<anchor xml:id="__base_area_8cs_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00206"/>00206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},
+<anchor xml:id="__base_area_8cs_source_1l00207"/>00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_base_area_1_1_interaction">BaseArea.Interaction</link>
+<anchor xml:id="__base_area_8cs_source_1l00208"/>00208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text&#32;=&#32;<emphasis role="stringliteral">&quot;toggleShowWallItem&quot;</emphasis>.lang()&#32;+&#32;<emphasis role="stringliteral">&quot;(&quot;</emphasis>&#32;+&#32;(this.data.showWallItem&#32;?&#32;<emphasis role="stringliteral">&quot;on&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;off&quot;</emphasis>).lang()&#32;+&#32;<emphasis role="stringliteral">&quot;)&quot;</emphasis>,
+<anchor xml:id="__base_area_8cs_source_1l00210"/>00210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;action&#32;=&#32;delegate()
+<anchor xml:id="__base_area_8cs_source_1l00211"/>00211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.data.showWallItem&#32;=&#32;!this.data.showWallItem;
+<anchor xml:id="__base_area_8cs_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.ClickOk();
+<anchor xml:id="__base_area_8cs_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},
+<anchor xml:id="__base_area_8cs_source_1l00216"/>00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_base_area_1_1_interaction">BaseArea.Interaction</link>
+<anchor xml:id="__base_area_8cs_source_1l00217"/>00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00218"/>00218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text&#32;=&#32;<emphasis role="stringliteral">&quot;toggleAtrium&quot;</emphasis>.lang()&#32;+&#32;<emphasis role="stringliteral">&quot;(&quot;</emphasis>&#32;+&#32;(this.data.atrium&#32;?&#32;<emphasis role="stringliteral">&quot;on&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;off&quot;</emphasis>).lang()&#32;+&#32;<emphasis role="stringliteral">&quot;)&quot;</emphasis>,
+<anchor xml:id="__base_area_8cs_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;action&#32;=&#32;delegate()
+<anchor xml:id="__base_area_8cs_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.data.atrium&#32;=&#32;!this.data.atrium;
+<anchor xml:id="__base_area_8cs_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.plate&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__base_area_8cs_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.plate.areaData.atrium&#32;=&#32;this.data.atrium;
+<anchor xml:id="__base_area_8cs_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00226"/>00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.ClickOk();
+<anchor xml:id="__base_area_8cs_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00228"/>00228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},
+<anchor xml:id="__base_area_8cs_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_base_area_1_1_interaction">BaseArea.Interaction</link>
+<anchor xml:id="__base_area_8cs_source_1l00230"/>00230 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00231"/>00231 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text&#32;=&#32;<emphasis role="stringliteral">&quot;limitRoomHeight&quot;</emphasis>,
+<anchor xml:id="__base_area_8cs_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;action&#32;=&#32;delegate()
+<anchor xml:id="__base_area_8cs_source_1l00233"/>00233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00234"/>00234 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;List&lt;string&gt;&#32;list&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;string&gt;();
+<anchor xml:id="__base_area_8cs_source_1l00235"/>00235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.ui.AddLayer&lt;<link linkend="_class_layer_list">LayerList</link>&gt;().SetStringList(delegate
+<anchor xml:id="__base_area_8cs_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00237"/>00237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.Clear();
+<anchor xml:id="__base_area_8cs_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;1;&#32;i&#32;&lt;&#32;10;&#32;i++)
+<anchor xml:id="__base_area_8cs_source_1l00239"/>00239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00240"/>00240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.Add(i.ToString()&#32;??&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+<anchor xml:id="__base_area_8cs_source_1l00241"/>00241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00242"/>00242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;list;
+<anchor xml:id="__base_area_8cs_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;delegate(<emphasis role="keywordtype">int</emphasis>&#32;a,&#32;<emphasis role="keywordtype">string</emphasis>&#32;b)
+<anchor xml:id="__base_area_8cs_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.data.maxHeight&#32;=&#32;a&#32;+&#32;1;
+<anchor xml:id="__base_area_8cs_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.plate&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__base_area_8cs_source_1l00247"/>00247 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.plate.areaData.maxHeight&#32;=&#32;a&#32;+&#32;1;
+<anchor xml:id="__base_area_8cs_source_1l00249"/>00249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>._map.rooms.RefreshAll();
+<anchor xml:id="__base_area_8cs_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__base_area_8cs_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00253"/>00253 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},
+<anchor xml:id="__base_area_8cs_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_base_area_1_1_interaction">BaseArea.Interaction</link>
+<anchor xml:id="__base_area_8cs_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00256"/>00256 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text&#32;=&#32;<emphasis role="stringliteral">&quot;changeGroup&quot;</emphasis>,
+<anchor xml:id="__base_area_8cs_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;action&#32;=&#32;delegate()
+<anchor xml:id="__base_area_8cs_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00259"/>00259 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;List&lt;string&gt;&#32;list&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;string&gt;();
+<anchor xml:id="__base_area_8cs_source_1l00260"/>00260 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.ui.AddLayer&lt;<link linkend="_class_layer_list">LayerList</link>&gt;().SetStringList(delegate
+<anchor xml:id="__base_area_8cs_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.Clear();
+<anchor xml:id="__base_area_8cs_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;5;&#32;i++)
+<anchor xml:id="__base_area_8cs_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.Add(i.ToString()&#32;??&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+<anchor xml:id="__base_area_8cs_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00267"/>00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;list;
+<anchor xml:id="__base_area_8cs_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;delegate(<emphasis role="keywordtype">int</emphasis>&#32;a,&#32;<emphasis role="keywordtype">string</emphasis>&#32;b)
+<anchor xml:id="__base_area_8cs_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.data.group&#32;=&#32;a;
+<anchor xml:id="__base_area_8cs_source_1l00271"/>00271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.plate&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__base_area_8cs_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.plate.areaData.group&#32;=&#32;a;
+<anchor xml:id="__base_area_8cs_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>._map.rooms.RefreshAll();
+<anchor xml:id="__base_area_8cs_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__base_area_8cs_source_1l00277"/>00277 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00278"/>00278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00279"/>00279 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__base_area_8cs_source_1l00280"/>00280 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00281"/>00281 
+<anchor xml:id="__base_area_8cs_source_1l00282"/>00282 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000F44&#32;RID:&#32;3908&#32;RVA:&#32;0x0006F517&#32;File&#32;Offset:&#32;0x0006D717</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00283"/>00283 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnInspect()
+<anchor xml:id="__base_area_8cs_source_1l00284"/>00284 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00285"/>00285 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00286"/>00286 
+<anchor xml:id="__base_area_8cs_source_1l00287"/>00287 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170003EE&#32;RID:&#32;1006</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00288"/>00288 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000F45&#32;RID:&#32;3909&#32;RVA:&#32;0x0006F519&#32;File&#32;Offset:&#32;0x0006D719</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00289"/>00289 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanInspect
+<anchor xml:id="__base_area_8cs_source_1l00290"/>00290 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00291"/>00291 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__base_area_8cs_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00295"/>00295 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00296"/>00296 
+<anchor xml:id="__base_area_8cs_source_1l00297"/>00297 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170003EF&#32;RID:&#32;1007</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00298"/>00298 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000F46&#32;RID:&#32;3910&#32;RVA:&#32;0x0006F51C&#32;File&#32;Offset:&#32;0x0006D71C</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00299"/>00299 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;InspectName
+<anchor xml:id="__base_area_8cs_source_1l00300"/>00300 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00301"/>00301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.Name;
+<anchor xml:id="__base_area_8cs_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00305"/>00305 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00306"/>00306 
+<anchor xml:id="__base_area_8cs_source_1l00307"/>00307 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170003F0&#32;RID:&#32;1008</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00308"/>00308 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000F47&#32;RID:&#32;3911&#32;RVA:&#32;0x0006F524&#32;File&#32;Offset:&#32;0x0006D724</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00309"/>00309 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_point">Point</link>&#32;InspectPoint
+<anchor xml:id="__base_area_8cs_source_1l00310"/>00310 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00312"/>00312 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00313"/>00313 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_point">Point</link>.Invalid;
+<anchor xml:id="__base_area_8cs_source_1l00314"/>00314 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00315"/>00315 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00316"/>00316 
+<anchor xml:id="__base_area_8cs_source_1l00317"/>00317 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000F48&#32;RID:&#32;3912&#32;RVA:&#32;0x0006F52B&#32;File&#32;Offset:&#32;0x0006D72B</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00318"/>00318 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;WriteNote(UINote&#32;n,&#32;Action&lt;UINote&gt;&#32;onWriteNote&#32;=&#32;<emphasis role="keyword">null</emphasis>,&#32;<link linkend="_interface_i_inspect">IInspect</link>.NoteMode&#32;mode&#32;=&#32;<link linkend="_interface_i_inspect">IInspect</link>.NoteMode.Default,&#32;<link linkend="_class_recipe">Recipe</link>&#32;recipe&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__base_area_8cs_source_1l00319"/>00319 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00320"/>00320 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;n.Clear();
+<anchor xml:id="__base_area_8cs_source_1l00321"/>00321 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;n.AddHeaderCard(this.Name,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__base_area_8cs_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;n.Build();
+<anchor xml:id="__base_area_8cs_source_1l00323"/>00323 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00324"/>00324 
+<anchor xml:id="__base_area_8cs_source_1l00325"/>00325 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170003F1&#32;RID:&#32;1009</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00326"/>00326 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000F49&#32;RID:&#32;3913&#32;RVA:&#32;0x0006F547&#32;File&#32;Offset:&#32;0x0006D747</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00327"/>00327 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Vector3&#32;InspectPosition
+<anchor xml:id="__base_area_8cs_source_1l00328"/>00328 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00329"/>00329 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00330"/>00330 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00331"/>00331 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;Vector3.zero;
+<anchor xml:id="__base_area_8cs_source_1l00332"/>00332 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00333"/>00333 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00334"/>00334 
+<anchor xml:id="__base_area_8cs_source_1l00335"/>00335 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000D77&#32;RID:&#32;3447</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00336"/>00336 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__base_area_8cs_source_1l00337"/>00337 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;uid;
+<anchor xml:id="__base_area_8cs_source_1l00338"/>00338 
+<anchor xml:id="__base_area_8cs_source_1l00339"/>00339 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000D78&#32;RID:&#32;3448</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00340"/>00340 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__base_area_8cs_source_1l00341"/>00341 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_point_list">PointList</link>&#32;points&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_point_list">PointList</link>();
+<anchor xml:id="__base_area_8cs_source_1l00342"/>00342 
+<anchor xml:id="__base_area_8cs_source_1l00343"/>00343 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000D79&#32;RID:&#32;3449</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00344"/>00344 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__base_area_8cs_source_1l00345"/>00345 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_area_data">AreaData</link>&#32;data&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_area_data">AreaData</link>();
+<anchor xml:id="__base_area_8cs_source_1l00346"/>00346 
+<anchor xml:id="__base_area_8cs_source_1l00347"/>00347 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000D7A&#32;RID:&#32;3450</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00348"/>00348 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__base_area_8cs_source_1l00349"/>00349 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_area_type">AreaType</link>&#32;type&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_area_type_room">AreaTypeRoom</link>();
+<anchor xml:id="__base_area_8cs_source_1l00350"/>00350 
+<anchor xml:id="__base_area_8cs_source_1l00351"/>00351 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000D7B&#32;RID:&#32;3451</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00352"/>00352 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_trait_room_plate">TraitRoomPlate</link>&#32;plate;
+<anchor xml:id="__base_area_8cs_source_1l00353"/>00353 
+<anchor xml:id="__base_area_8cs_source_1l00354"/>00354 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0200090B&#32;RID:&#32;2315</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00355"/>00355 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">enum</emphasis>&#32;AccessType
+<anchor xml:id="__base_area_8cs_source_1l00356"/>00356 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00357"/>00357 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002652&#32;RID:&#32;9810</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00358"/>00358 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Public,
+<anchor xml:id="__base_area_8cs_source_1l00359"/>00359 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002653&#32;RID:&#32;9811</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00360"/>00360 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Private
+<anchor xml:id="__base_area_8cs_source_1l00361"/>00361 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00362"/>00362 
+<anchor xml:id="__base_area_8cs_source_1l00363"/>00363 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0200090C&#32;RID:&#32;2316</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00364"/><link linkend="_class_base_area_1_1_interaction">00364</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_base_area_1_1_interaction">Interaction</link>
+<anchor xml:id="__base_area_8cs_source_1l00365"/>00365 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__base_area_8cs_source_1l00366"/>00366 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002654&#32;RID:&#32;9812</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00367"/>00367 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;text;
+<anchor xml:id="__base_area_8cs_source_1l00368"/>00368 
+<anchor xml:id="__base_area_8cs_source_1l00369"/>00369 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002655&#32;RID:&#32;9813</emphasis>
+<anchor xml:id="__base_area_8cs_source_1l00370"/>00370 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Action&#32;action;
+<anchor xml:id="__base_area_8cs_source_1l00371"/>00371 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__base_area_8cs_source_1l00372"/>00372 }
+</programlisting></section>

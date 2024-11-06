@@ -1,0 +1,47 @@
+\doxysection{Trait\+Item.\+cs}
+\hypertarget{_trait_item_8cs_source}{}\label{_trait_item_8cs_source}\index{Elin/TraitItem.cs@{Elin/TraitItem.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00003}00003\ \textcolor{comment}{//\ Token:\ 0x0200041E\ RID:\ 1054}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00004}\mbox{\hyperlink{class_trait_item}{00004}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_trait_item}{TraitItem}}\ :\ \mbox{\hyperlink{class_trait}{Trait}}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000957\ RID:\ 2391}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06001DFA\ RID:\ 7674\ RVA:\ 0x000AD168\ File\ Offset:\ 0x000AB368}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ CanUseFromInventory}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000958\ RID:\ 2392}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06001DFB\ RID:\ 7675\ RVA:\ 0x000AD16B\ File\ Offset:\ 0x000AB36B}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ CanUseInUserZone}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !this.owner.isNPCProperty;}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001DFC\ RID:\ 7676\ RVA:\ 0x000AD17C\ File\ Offset:\ 0x000AB37C}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00027}00027\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ CanUse(\mbox{\hyperlink{class_chara}{Chara}}\ c)}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00028}00028\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (this.CanUseFromInventory\ ||\ this.owner.IsInstalled)\ \&\&\ (this.CanUseInUserZone\ ||\ !EClass.\_zone.IsUserZone\ ||\ !this.owner.isNPCProperty)\ \&\&\ (this.Electricity\ >=\ 0\ ||\ this.owner.isOn);}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00030}00030\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001DFD\ RID:\ 7677\ RVA:\ 0x000AD1D9\ File\ Offset:\ 0x000AB3D9}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ WriteNote(UINote\ n,\ \textcolor{keywordtype}{bool}\ identified)}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00034}00034\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.langNote.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ n.Space(20,\ 1);}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ n.AddText(this.langNote.lang(),\ FontColor.Good);}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_item_8cs_source_l00041}00041\ \}}
+
+\end{DoxyCode}

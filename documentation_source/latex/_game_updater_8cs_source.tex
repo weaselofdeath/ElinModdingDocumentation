@@ -1,0 +1,712 @@
+\doxysection{Game\+Updater.\+cs}
+\hypertarget{_game_updater_8cs_source}{}\label{_game_updater_8cs_source}\index{Elin/GameUpdater.cs@{Elin/GameUpdater.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_algorithms}{Algorithms}};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00006}00006\ \textcolor{comment}{//\ Token:\ 0x020000AE\ RID:\ 174}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00007}\mbox{\hyperlink{class_game_updater}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_updater}{GameUpdater}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004B0\ RID:\ 1200\ RVA:\ 0x00020488\ File\ Offset:\ 0x0001E688}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Reset()}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ this.area\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_area_updater}{AreaUpdater}}();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ this.surface\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_surface_updater}{SurfaceUpdater}}();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ this.surfaceFast\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_fast_surface_updater}{FastSurfaceUpdater}}();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ this.fire\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_fire_updater}{FireUpdater}}();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ this.chara\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_chara_updater}{CharaUpdater}}();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ this.condition\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_condition_updater}{ConditionUpdater}}();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ this.thing\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_thing_updater}{ThingUpdater}}();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ this.sensor\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_sensor_updater}{SensorUpdater}}();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004B1\ RID:\ 1201\ RVA:\ 0x000204F0\ File\ Offset:\ 0x0001E6F0}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{public}\ unsafe\ \textcolor{keywordtype}{void}\ Update100ms()}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.game.activeZone.IsPCFaction\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.Branch.resources.isDirty)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.Branch.resources.Refresh();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ EClass.world.weather.CurrentCondition\ ==\ \mbox{\hyperlink{class_weather}{Weather}}.Condition.RainHeavy;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag2;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.\_map.config.indoor)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.pc.IsInActiveZone)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_room}{Room}}\ room\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.pos.cell.room;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flag2\ =\ (room\ !=\ \textcolor{keyword}{null}\ \&\&\ room.HasRoof);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flag2\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ flag2\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag3\ =\ flag2;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_room}{Room}}\ room2\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.pos.cell.room;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag4\ =\ room2\ !=\ \textcolor{keyword}{null}\ \&\&\ room2.data.atrium;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ mtpVolume\ =\ (EClass.\_zone.lv\ <=\ -\/2)\ ?\ 0f\ :\ ((flag3\ \&\&\ !flag4)\ ?\ 0.5f\ :\ 1f);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.world.weather.IsRaining\ \&\&\ !\mbox{\hyperlink{class_e_class}{EClass}}.\_map.IsIndoor)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ EClass.setting.weather.splashCount\ *\ (flag\ ?\ 2\ :\ 1);\ i++)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ randomPoint\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.screen.GetRandomPoint();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (randomPoint.IsValid)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_cell}{Cell}}\ cell\ =\ randomPoint.cell;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!cell.HasRoof\ \&\&\ cell.\_block\ ==\ 0\ \&\&\ !randomPoint.IsSky)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cell.IsTopWaterAndNoSnow)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.scene.psRainSplash.Emit(*randomPoint.PositionCenter(),\ Vector3.zero,\ Rand.Range(0.6f,\ 1.1f),\ 0.2f,\ Color.white);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.scene.psRainSplashWater.Emit(*randomPoint.PositionCenter(),\ Vector3.zero,\ Rand.Range(0.6f,\ 1.1f),\ 0.2f,\ Color.white);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flag)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ this.timerThunder\ +=\ 0.1f;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.timerThunder\ >\ \mbox{\hyperlink{class_e_class}{EClass}}.setting.weather.thunerInterval)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.\_map.IsIndoor)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_screen_flash}{ScreenFlash}}.Play(\textcolor{stringliteral}{"{}storm"{}}\ +\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(2)\ +\ 1).ToString(),\ (flag3\ \&\&\ !flag4)\ ?\ 0.3f\ :\ 1f);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.Sound.Play(\textcolor{stringliteral}{"{}Ambience/Random/storm"{}},\ mtpVolume);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.timerThunder\ =\ 0f\ -\/\ Rand.Range(0f,\ \mbox{\hyperlink{class_e_class}{EClass}}.setting.weather.thunerInterval);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00088}00088\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004B2\ RID:\ 1202\ RVA:\ 0x00020794\ File\ Offset:\ 0x0001E994}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00089}00089\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ FixedUpdate()}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00090}00090\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ this.recipe.FixedUpdate();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.scene.paused)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.all\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ this.all\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_updater}{Updater}}[]}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.area,}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.surface,}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.surfaceFast,}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.fire,}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.chara,}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.condition,}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.sensor,}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.thing}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ GameUpdater.delta\ =\ Core.delta;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ this.area.FixedUpdate();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ this.surface.FixedUpdate();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ this.surfaceFast.FixedUpdate();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ this.fire.FixedUpdate();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ this.chara.FixedUpdate();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ this.condition.FixedUpdate();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ this.sensor.FixedUpdate();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ this.thing.FixedUpdate();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00119}00119\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00121}00121\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004B3\ RID:\ 1203\ RVA:\ 0x00020878\ File\ Offset:\ 0x0001EA78}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00122}00122\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00123}00123\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.game.activeZone\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.RefreshSunMap();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.debug.testLOS)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.\_zone.IsRegion)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_zone}{Zone}}\ zone\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.game.spatials.Find(\textcolor{stringliteral}{"{}palmia"{}});}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_path_progress}{PathProgress}}\ pathProgress\ =\ \mbox{\hyperlink{class_path_manager}{PathManager}}.Instance.RequestPathImmediate(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_point}{Point}}(zone.x\ -\/\ \mbox{\hyperlink{class_e_class}{EClass}}.scene.elomap.minX,\ zone.y\ -\/\ \mbox{\hyperlink{class_e_class}{EClass}}.scene.elomap.minY),\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.pos,\ \mbox{\hyperlink{class_e_class}{EClass}}.pc,\ \mbox{\hyperlink{class_path_manager}{PathManager}}.MoveType.Default,\ -\/1,\ 0);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pathProgress.HasPath)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(pathProgress.nodes.Count);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{struct_algorithms_1_1_path_finder_node}{PathFinderNode}}\ pathFinderNode\ \textcolor{keywordflow}{in}\ pathProgress.nodes)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ point2\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_point}{Point}}(pathFinderNode.X,\ pathFinderNode.Z);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.screen.tileMap.passGuideBlock.Add(point2.PositionTopdown(),\ 20f,\ 0f);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ hit\ =\ \mbox{\hyperlink{class_scene}{Scene}}.HitPoint;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hit.IsValid)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.charas.Count;\ i++)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chara}{Chara}}\ tg\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.charas[i];}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_los}{Los}}.IsVisible(hit,\ tg.pos,\ \textcolor{keyword}{null}))}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_los}{Los}}.IsVisible(hit,\ tg.pos,\ delegate(\mbox{\hyperlink{class_point}{Point}}\ point,\ \textcolor{keywordtype}{bool}\ blocked)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.screen.tileMap.passGuideFloor.Add(point,\ 20f,\ 0f);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Input.GetKey(KeyCode.LeftControl))}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(tg.Name\ +\ \textcolor{stringliteral}{"{}:\ Distance:"{}}\ +\ hit.Distance(tg.pos).ToString());}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.debug.testLOS2)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ hit\ =\ \mbox{\hyperlink{class_scene}{Scene}}.HitPoint;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hit.IsValid)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.ForeachSphere(hit.x,\ hit.z,\ 6f,\ delegate(\mbox{\hyperlink{class_point}{Point}}\ p)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p.IsValid\ \&\&\ \mbox{\hyperlink{class_los}{Los}}.IsVisible(hit,\ p,\ \textcolor{keyword}{null}))}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.screen.tileMap.passGuideFloor.Add(p,\ 20f,\ 0f);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.scene.paused)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ GameUpdater.delta\ =\ Core.gameDelta;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_zone.events.Tick(\mbox{\hyperlink{class_game_updater}{GameUpdater}}.delta);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ this.dateTimer\ +=\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.delta;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.dateTimer\ >\ \mbox{\hyperlink{class_e_class}{EClass}}.setting.secsPerHour\ /\ 60f)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ this.dateTimer\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.world.date.AdvanceMin(1);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ this.counterTimer\ +=\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.delta;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.counterTimer\ >\ 0.1f)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ this.counterTimer\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ this.counter++;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.counter\ ==\ 10)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.counter\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ this.counter;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ ==\ 1)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_u_i_resource_track}{UIResourceTrack}}.Refresh();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ !=\ 5)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.Sound.currentAmbience)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.Sound.currentAmbience.TryEmit(\mbox{\hyperlink{class_e_class}{EClass}}.world.date.IsDay,\ \mbox{\hyperlink{class_point}{Point}}.shared.Set(\mbox{\hyperlink{class_e_class}{EClass}}.pc.pos.x\ +\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(5)\ -\/\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(5),\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.pos.z).Clamp(\textcolor{keyword}{false}).Position(),\ 1f);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00215}00215\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00217}00217\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004B4\ RID:\ 1204\ RVA:\ 0x00020C14\ File\ Offset:\ 0x0001EE14}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00218}00218\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ GetText()}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00219}00219\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.all\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_updater}{Updater}}\ updater\ in\ \textcolor{keyword}{this}.all)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ text\ =\ \textcolor{keywordtype}{string}.Concat(\textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text,}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ updater.GetType().Name,}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}:\ "{}},}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ updater.updatesPerFrame.ToString(),}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ /\ frame\ \ \ \ \ "{}},}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ updater.maxCount.ToString(),}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ in\ "{}},}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ updater.duration.ToString(),}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}sec\ \(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ text;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00241}00241\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00243}00243\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400063B\ RID:\ 1595}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00244}00244\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ delta;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00246}00246\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400063C\ RID:\ 1596}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00247}00247\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_game_updater_1_1_area_updater}{GameUpdater.AreaUpdater}}\ area;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00249}00249\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400063D\ RID:\ 1597}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00250}00250\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_game_updater_1_1_surface_updater}{GameUpdater.SurfaceUpdater}}\ surface;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00252}00252\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400063E\ RID:\ 1598}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00253}00253\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_game_updater_1_1_fast_surface_updater}{GameUpdater.FastSurfaceUpdater}}\ surfaceFast;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00255}00255\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400063F\ RID:\ 1599}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00256}00256\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_game_updater_1_1_fire_updater}{GameUpdater.FireUpdater}}\ fire;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00258}00258\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000640\ RID:\ 1600}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00259}00259\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_game_updater_1_1_chara_updater}{GameUpdater.CharaUpdater}}\ chara;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00261}00261\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000641\ RID:\ 1601}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00262}00262\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_game_updater_1_1_condition_updater}{GameUpdater.ConditionUpdater}}\ condition;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00264}00264\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000642\ RID:\ 1602}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00265}00265\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_game_updater_1_1_thing_updater}{GameUpdater.ThingUpdater}}\ thing;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00267}00267\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000643\ RID:\ 1603}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00268}00268\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_game_updater_1_1_sensor_updater}{GameUpdater.SensorUpdater}}\ sensor;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00270}00270\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000644\ RID:\ 1604}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00271}00271\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_recipe_updater}{RecipeUpdater}}\ recipe\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_recipe_updater}{RecipeUpdater}}();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00273}00273\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000645\ RID:\ 1605}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00274}00274\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_updater}{Updater}}[]\ all;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00276}00276\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000646\ RID:\ 1606}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00277}00277\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ dateTimer;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00279}00279\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000647\ RID:\ 1607}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00280}00280\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ counterTimer;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00282}00282\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000648\ RID:\ 1608}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00283}00283\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ counter;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00285}00285\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000649\ RID:\ 1609}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00286}00286\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ timerThunder;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00288}00288\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x020007F6\ RID:\ 2038}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00289}\mbox{\hyperlink{class_game_updater_1_1_updater}{00289}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_updater_1_1_updater}{Updater}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00290}00290\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003837\ RID:\ 14391\ RVA:\ 0x0012D107\ File\ Offset:\ 0x0012B307}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00292}00292\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ FixedUpdate()}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00293}00293\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00296}00296\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003838\ RID:\ 14392\ RVA:\ 0x0012D10C\ File\ Offset:\ 0x0012B30C}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetUpdatesPerFrame(\textcolor{keywordtype}{int}\ \_maxcount,\ \textcolor{keywordtype}{float}\ \_duration)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ this.duration\ =\ \_duration;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ this.maxCount\ =\ \_maxcount;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.maxCount\ <=\ 0)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.updatesPerFrame\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_updatesPerFrame\ +=\ EClass.scene.actionMode.gameSpeed\ *\ (float)this.maxCount\ /\ (1f\ /\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.delta)\ /\ this.duration;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ this.updatesPerFrame\ =\ (int)this.\_updatesPerFrame;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_updatesPerFrame\ -\/=\ (float)this.updatesPerFrame;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00311}00311\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002276\ RID:\ 8822}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00312}00312\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ index;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00314}00314\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002277\ RID:\ 8823}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00315}00315\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ updatesPerFrame;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00316}00316\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00317}00317\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002278\ RID:\ 8824}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00318}00318\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ maxCount;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00320}00320\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002279\ RID:\ 8825}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00321}00321\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ duration\ =\ 1f;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00322}00322\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00323}00323\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400227A\ RID:\ 8826}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00324}00324\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \_updatesPerFrame;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00326}00326\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400227B\ RID:\ 8827}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00327}00327\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_point}{Point}}\ pos\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_point}{Point}}();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00328}00328\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00330}00330\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x020007F7\ RID:\ 2039}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00331}\mbox{\hyperlink{class_game_updater_1_1_area_updater}{00331}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_updater_1_1_area_updater}{AreaUpdater}}\ :\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_updater}{Updater}}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00332}00332\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00333}00333\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600383A\ RID:\ 14394\ RVA:\ 0x0012D1B0\ File\ Offset:\ 0x0012B3B0}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00334}00334\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ FixedUpdate()}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00335}00335\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ List<Area>\ listArea\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.rooms.listArea;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (listArea.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ base.SetUpdatesPerFrame(listArea.Count,\ 1f);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ this.updatesPerFrame;\ i++)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.index++;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.index\ >=\ listArea.Count)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.index\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ listArea[this.index].Update();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00351}00351\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00352}00352\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00353}00353\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00354}00354\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x020007F8\ RID:\ 2040}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00355}\mbox{\hyperlink{class_game_updater_1_1_surface_updater}{00355}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_updater_1_1_surface_updater}{SurfaceUpdater}}\ :\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_updater}{Updater}}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00356}00356\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00357}00357\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17001121\ RID:\ 4385}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00358}00358\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600383C\ RID:\ 14396\ RVA:\ 0x0012D234\ File\ Offset:\ 0x0012B434}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00359}00359\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ SizeXZ}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00360}00360\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.SizeXZ;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00365}00365\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00366}00366\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00367}00367\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17001122\ RID:\ 4386}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00368}00368\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600383D\ RID:\ 14397\ RVA:\ 0x0012D240\ File\ Offset:\ 0x0012B440}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00369}00369\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ Size}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00370}00370\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.Size;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00375}00375\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00376}00376\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00377}00377\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600383E\ RID:\ 14398\ RVA:\ 0x0012D24C\ File\ Offset:\ 0x0012B44C}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00378}00378\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ FixedUpdate()}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00379}00379\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.pos.Set(\textcolor{keyword}{this}.x,\ \textcolor{keyword}{this}.z).IsValid)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.x\ =\ (this.z\ =\ 0);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ base.SetUpdatesPerFrame(this.SizeXZ,\ 20f);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_prop_set}{PropSet}}\ propSet\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.Roaming.raceMap.TryGetValue(\textcolor{stringliteral}{"{}fish"{}},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (propSet\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ propSet.num;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isRaining\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.world.weather.IsRaining;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ this.updatesPerFrame;\ i++)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00392}00392\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00393}00393\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.pos.Set(this.x,\ this.z);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00394}00394\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_source_obj_1_1_row}{SourceObj.Row}}\ sourceObj\ =\ this.pos.sourceObj;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ this.pos.sourceBlock.id\ !=\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_cell}{Cell}}\ cell\ =\ this.pos.cell;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00397}00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag2\ =\ EClass.\_map.IsIndoor\ ||\ cell.HasRoof;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cell.effect\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00399}00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cell.HasFire)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00402}00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isRaining)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00403}00403\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00404}00404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.pos.ModFire(-\/5);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00405}00405\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00406}00406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(2)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00408}00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.pos.ModFire(-\/2);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00409}00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (cell.HasLiquid\ \&\&\ (!isRaining\ ||\ cell.IsTopWater\ ||\ cell.HasRoof))}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00412}00412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00413}00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.ModLiquid(this.pos.x,\ \textcolor{keyword}{this}.pos.z,\ -\/1);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00414}00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00415}00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isRaining)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00417}00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00418}00418\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!flag2)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00419}00419\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00420}00420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cell.IsFarmField)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00421}00421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00422}00422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cell.isWatered\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00424}00424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(500)\ ==\ 0\ \&\&\ !flag\ \&\&\ !cell.blocked\ \&\&\ !cell.HasObj\ \&\&\ !cell.IsTopWaterAndNoSnow\ \&\&\ !\mbox{\hyperlink{class_e_class}{EClass}}.\_zone.IsRegion)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00425}00425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00426}00426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.SetLiquid(this.pos.x,\ \textcolor{keyword}{this}.pos.z,\ 1,\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(3)\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00427}00427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00429}00429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(50)\ ==\ 0\ \&\&\ cell.decal\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00430}00430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00431}00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cell.decal\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00432}00432\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00433}00433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00434}00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.x++;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00435}00435\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.x\ >=\ this.Size)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00436}00436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00437}00437\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.x\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00438}00438\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.z++;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00439}00439\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.z\ >=\ this.Size)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00440}00440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00441}00441\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.z\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00442}00442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00443}00443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00444}00444\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00445}00445\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00446}00446\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00447}00447\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400227C\ RID:\ 8828}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00448}00448\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ x;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00449}00449\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00450}00450\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400227D\ RID:\ 8829}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00451}00451\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ z;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00452}00452\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00453}00453\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00454}00454\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x020007F9\ RID:\ 2041}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00455}\mbox{\hyperlink{class_game_updater_1_1_fast_surface_updater}{00455}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_updater_1_1_fast_surface_updater}{FastSurfaceUpdater}}\ :\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_surface_updater}{SurfaceUpdater}}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00456}00456\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00457}00457\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003840\ RID:\ 14400\ RVA:\ 0x0012D4A0\ File\ Offset:\ 0x0012B6A0}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00458}00458\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ FixedUpdate()}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00459}00459\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00460}00460\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.pos.Set(\textcolor{keyword}{this}.x,\ \textcolor{keyword}{this}.z).IsValid)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00461}00461\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00462}00462\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.x\ =\ (this.z\ =\ 0);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00463}00463\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00464}00464\ \ \ \ \ \ \ \ \ \ \ \ \ base.SetUpdatesPerFrame(base.SizeXZ,\ 1f);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00465}00465\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ this.updatesPerFrame;\ i++)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00467}00467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.pos.Set(this.x,\ this.z);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_cell}{Cell}}\ cell\ =\ this.pos.cell;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cell.effect\ !=\ \textcolor{keyword}{null}\ \&\&\ cell.effect.WillFade)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00471}00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_cell_effect}{CellEffect}}\ effect\ =\ cell.effect;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ amount\ =\ effect.amount;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ effect.amount\ =\ amount\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cell.effect.amount\ <=\ 0)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00476}00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.SetEffect(this.pos.x,\ \textcolor{keyword}{this}.pos.z,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00478}00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.x++;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.x\ >=\ base.Size)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00481}00481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00482}00482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.x\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00483}00483\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.z++;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.z\ >=\ base.Size)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00486}00486\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.z\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00488}00488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00490}00490\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00491}00491\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00492}00492\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00493}00493\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x020007FA\ RID:\ 2042}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00494}\mbox{\hyperlink{class_game_updater_1_1_logic_updater}{00494}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_updater_1_1_logic_updater}{LogicUpdater}}\ :\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_updater}{Updater}}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00495}00495\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00496}00496\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17001123\ RID:\ 4387}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00497}00497\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06003842\ RID:\ 14402\ RVA:\ 0x0012D5CE\ File\ Offset:\ 0x0012B7CE}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00498}00498\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_logical_point_manager}{LogicalPointManager}}\ manager}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00499}00499\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00504}00504\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00505}00505\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00506}00506\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17001124\ RID:\ 4388}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00507}00507\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06003843\ RID:\ 14403\ RVA:\ 0x0012D5D1\ File\ Offset:\ 0x0012B7D1}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00508}00508\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{float}\ UpdateDuration}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00509}00509\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00510}00510\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00511}00511\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00512}00512\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1f;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00513}00513\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00514}00514\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00515}00515\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00516}00516\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17001125\ RID:\ 4389}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00517}00517\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06003844\ RID:\ 14404\ RVA:\ 0x0012D5D8\ File\ Offset:\ 0x0012B7D8}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00518}00518\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ RefreshTile}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00519}00519\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00520}00520\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00521}00521\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00523}00523\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00524}00524\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00525}00525\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00526}00526\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003845\ RID:\ 14405\ RVA:\ 0x0012D5DC\ File\ Offset:\ 0x0012B7DC}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00527}00527\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ FixedUpdate()}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00528}00528\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00529}00529\ \ \ \ \ \ \ \ \ \ \ \ \ List<LogicalPoint>\ list\ =\ this.manager.list;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00530}00530\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00531}00531\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00532}00532\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00533}00533\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ base.SetUpdatesPerFrame(list.Count,\ \textcolor{keyword}{this}.UpdateDuration);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00535}00535\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ this.updatesPerFrame;\ i++)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00536}00536\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00537}00537\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.index++;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00538}00538\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.index\ >=\ list.Count)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00539}00539\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00540}00540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.index\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00541}00541\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00542}00542\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list[this.index].Update();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00543}00543\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00544}00544\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.RefreshTile)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00545}00545\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00546}00546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_point}{Point}}\ point\ \textcolor{keywordflow}{in}\ this.manager.refreshList)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00547}00547\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00548}00548\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.RefreshSingleTile(point.x,\ point.z);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00549}00549\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00551}00551\ \ \ \ \ \ \ \ \ \ \ \ \ this.manager.refreshList.Clear();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00552}00552\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00553}00553\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00554}00554\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00555}00555\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x020007FB\ RID:\ 2043}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00556}\mbox{\hyperlink{class_game_updater_1_1_fire_updater}{00556}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_updater_1_1_fire_updater}{FireUpdater}}\ :\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_logic_updater}{LogicUpdater}}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00557}00557\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00558}00558\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17001126\ RID:\ 4390}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00559}00559\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06003847\ RID:\ 14407\ RVA:\ 0x0012D6D8\ File\ Offset:\ 0x0012B8D8}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00560}00560\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \mbox{\hyperlink{class_logical_point_manager}{LogicalPointManager}}\ manager}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00561}00561\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00562}00562\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00563}00563\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00564}00564\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.effectManager;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00565}00565\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00566}00566\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00567}00567\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00568}00568\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17001127\ RID:\ 4391}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00569}00569\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06003848\ RID:\ 14408\ RVA:\ 0x0012D6E4\ File\ Offset:\ 0x0012B8E4}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00570}00570\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{float}\ UpdateDuration}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00571}00571\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00572}00572\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00573}00573\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00574}00574\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 5f;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00575}00575\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00576}00576\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00577}00577\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00578}00578\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00579}00579\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x020007FC\ RID:\ 2044}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00580}\mbox{\hyperlink{class_game_updater_1_1_sensor_updater}{00580}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_updater_1_1_sensor_updater}{SensorUpdater}}\ :\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_updater}{Updater}}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00581}00581\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00582}00582\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600384A\ RID:\ 14410\ RVA:\ 0x0012D6F4\ File\ Offset:\ 0x0012B8F4}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00583}00583\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ FixedUpdate()}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00584}00584\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00585}00585\ \ \ \ \ \ \ \ \ \ \ \ \ List<Chara>\ charas\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.charas;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00586}00586\ \ \ \ \ \ \ \ \ \ \ \ \ base.SetUpdatesPerFrame(charas.Count,\ 1f);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00587}00587\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ this.updatesPerFrame;\ i++)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00588}00588\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00589}00589\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.index++;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00590}00590\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.index\ >=\ charas.Count)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00591}00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00592}00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.index\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00593}00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00594}00594\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chara}{Chara}}\ chara\ =\ charas[this.index];}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00595}00595\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara.IsAliveInCurrentZone\ \&\&\ !chara.IsPC)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00596}00596\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00597}00597\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chara.FindNewEnemy();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00598}00598\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00599}00599\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00600}00600\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00601}00601\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00602}00602\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00603}00603\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x020007FD\ RID:\ 2045}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00604}\mbox{\hyperlink{class_game_updater_1_1_chara_updater}{00604}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_updater_1_1_chara_updater}{CharaUpdater}}\ :\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_updater}{Updater}}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00605}00605\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00606}00606\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600384C\ RID:\ 14412\ RVA:\ 0x0012D780\ File\ Offset:\ 0x0012B980}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00607}00607\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ FixedUpdate()}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00608}00608\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00609}00609\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_game}{Game}}.isPaused)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00610}00610\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00611}00611\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00612}00612\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00613}00613\ \ \ \ \ \ \ \ \ \ \ \ \ List<Chara>\ charas\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.charas;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00614}00614\ \ \ \ \ \ \ \ \ \ \ \ \ base.SetUpdatesPerFrame(charas.Count,\ 0.05f);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00615}00615\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ gameDelta\ =\ Core.gameDelta;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00616}00616\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ charas.Count;\ i++)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00617}00617\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00618}00618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chara}{Chara}}\ chara\ =\ charas[i];}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00619}00619\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_game}{Game}}.isPaused\ \&\&\ !chara.IsPC)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00620}00620\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00621}00621\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00622}00622\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00623}00623\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chara.roundTimer\ +=\ gameDelta;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00624}00624\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ actTime\ =\ chara.actTime;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00625}00625\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara.roundTimer\ >\ actTime)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00626}00626\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00627}00627\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chara.Tick();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00628}00628\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chara.roundTimer\ -\/=\ actTime;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00629}00629\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara.ai\ is\ \mbox{\hyperlink{class_goal_end_turn}{GoalEndTurn}})}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00630}00630\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00631}00631\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chara.SetNoGoal();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00632}00632\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00633}00633\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00634}00634\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ >\ charas.Count)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00635}00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00636}00636\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00637}00637\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00638}00638\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00639}00639\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00640}00640\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00641}00641\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00642}00642\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00643}00643\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x020007FE\ RID:\ 2046}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00644}\mbox{\hyperlink{class_game_updater_1_1_condition_updater}{00644}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_updater_1_1_condition_updater}{ConditionUpdater}}\ :\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_chara_updater}{CharaUpdater}}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00645}00645\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00646}00646\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600384E\ RID:\ 14414\ RVA:\ 0x0012D83C\ File\ Offset:\ 0x0012BA3C}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00647}00647\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ FixedUpdate()}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00648}00648\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00649}00649\ \ \ \ \ \ \ \ \ \ \ \ \ List<Chara>\ charas\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.charas;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00650}00650\ \ \ \ \ \ \ \ \ \ \ \ \ base.SetUpdatesPerFrame(charas.Count,\ 0.01f\ *\ (\textcolor{keywordtype}{float})\mbox{\hyperlink{class_e_class}{EClass}}.pc.Speed\ *\ (\mbox{\hyperlink{class_e_class}{EClass}}.\_zone.IsRegion\ ?\ 0.1f\ :\ 1f));}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00651}00651\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ this.updatesPerFrame;\ i++)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00652}00652\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00653}00653\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.index++;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00654}00654\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.index\ >=\ charas.Count)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00655}00655\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00656}00656\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.index\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00657}00657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00658}00658\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chara}{Chara}}\ chara\ =\ charas[this.index];}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00659}00659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ chara.conditions.Count\ -\/\ 1;\ j\ >=\ 0;\ j-\/-\/)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00660}00660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00661}00661\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_condition}{Condition}}\ condition\ =\ chara.conditions[j];}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00662}00662\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (condition.TimeBased)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00663}00663\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00664}00664\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ condition.Tick();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00665}00665\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00666}00666\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara.isDead)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00667}00667\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00668}00668\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00669}00669\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00670}00670\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00671}00671\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00672}00672\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00673}00673\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00674}00674\ }
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00675}00675\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x020007FF\ RID:\ 2047}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00676}\mbox{\hyperlink{class_game_updater_1_1_thing_updater}{00676}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_updater_1_1_thing_updater}{ThingUpdater}}\ :\ \mbox{\hyperlink{class_game_updater}{GameUpdater}}.\mbox{\hyperlink{class_game_updater_1_1_updater}{Updater}}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00677}00677\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00678}00678\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003850\ RID:\ 14416\ RVA:\ 0x0012D914\ File\ Offset:\ 0x0012BB14}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00679}00679\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ FixedUpdate()}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00680}00680\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00681}00681\ \ \ \ \ \ \ \ \ \ \ \ \ List<Thing>\ things\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.things;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00682}00682\ \ \ \ \ \ \ \ \ \ \ \ \ base.SetUpdatesPerFrame(things.Count,\ 1f);}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00683}00683\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ this.updatesPerFrame;\ i++)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00684}00684\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00685}00685\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.index++;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00686}00686\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.index\ >=\ things.Count)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00687}00687\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00688}00688\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.index\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00689}00689\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00690}00690\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ thing\ =\ things[this.index];}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00691}00691\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (thing.fov\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00692}00692\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00693}00693\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ thing.CalculateFOV();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00694}00694\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00695}00695\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (thing.trait.HaveUpdate)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00696}00696\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00697}00697\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ thing.trait.Update();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00698}00698\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00699}00699\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((thing.id\ ==\ \textcolor{stringliteral}{"{}snow"{}}\ ||\ thing.id\ ==\ \textcolor{stringliteral}{"{}flyer"{}})\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(30)\ ==\ 0\ \&\&\ !thing.IsInstalled\ \&\&\ !\mbox{\hyperlink{class_layer_drag_grid}{LayerDragGrid}}.Instance\ \&\&\ !\mbox{\hyperlink{class_layer_craft}{LayerCraft}}.Instance)}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00700}00700\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00701}00701\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ thing.Destroy();}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00702}00702\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00703}00703\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00704}00704\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00705}00705\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_updater_8cs_source_l00706}00706\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,426 @@
+.TH "LayerInventory" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LayerInventory
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBELayer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsPlayerContainer\fP (bool includePlayer=false)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBGetPlayerContainer\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBHeaderIsListOf\fP (int id)"
+.br
+.ti -1c
+.RI "override void \fBOnInit\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnAfterInit\fP ()"
+.br
+.ti -1c
+.RI "\fBUIInventory\fP \fBSetInv\fP (int idWindow=0)"
+.br
+.ti -1c
+.RI "override void \fBOnUpdateInput\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnKill\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnRightClick\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBELayer\fP
+.in +1c
+.ti -1c
+.RI "override void \fBOnBeforeAddLayer\fP ()"
+.br
+.ti -1c
+.RI "void \fBInitInspector\fP ()"
+.br
+.ti -1c
+.RI "override void \fBInit\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnAfterAddLayer\fP ()"
+.br
+.ti -1c
+.RI "void \fBTryShowHelp\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddLayerToUI\fP (string id)"
+.br
+.ti -1c
+.RI "void \fBTryShowHint\fP (string _langHint=null)"
+.br
+.ti -1c
+.RI "void \fBTalkHomeMemeber\fP (string id)"
+.br
+.ti -1c
+.RI "void \fBTalkMaid\fP (string id)"
+.br
+.ti -1c
+.RI "override void \fBOnRightClick\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBLayerInventory\fP \fBGetTopLayer\fP (\fBThing\fP t, bool includePlayer=false, \fBInvOwner\fP exclude=null)"
+.br
+.ti -1c
+.RI "static \fBLayerInventory\fP \fBGetPCLayer\fP ()"
+.br
+.ti -1c
+.RI "static void \fBClose\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "static bool \fBIsOpen\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "static void \fBSetDirty\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "static void \fBSetDirtyAll\fP (bool immediate=false)"
+.br
+.ti -1c
+.RI "static void \fBTryShowGuide\fP (UIList list)"
+.br
+.ti -1c
+.RI "static void \fBTryShowGuide\fP (List< \fBButtonGrid\fP > list)"
+.br
+.ti -1c
+.RI "static \fBLayerInventory\fP \fB_Create\fP (string path='')"
+.br
+.ti -1c
+.RI "static \fBLayerInventory\fP \fBCreatePCBackpack\fP (bool mousePos=false)"
+.br
+.ti -1c
+.RI "static bool \fBCloseAllyInv\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "static void \fBCloseAllyInv\fP ()"
+.br
+.ti -1c
+.RI "static \fBLayerInventory\fP \fBCreateContainerAlly\fP (\fBChara\fP owner, \fBCard\fP container)"
+.br
+.ti -1c
+.RI "static bool \fBIsOpen\fP (\fBCard\fP container)"
+.br
+.ti -1c
+.RI "static \fBLayerInventory\fP \fBCreateContainerPC\fP (\fBCard\fP container)"
+.br
+.ti -1c
+.RI "static \fBLayerInventory\fP \fBCreateContainer\fP (\fBCard\fP owner)"
+.br
+.ti -1c
+.RI "static \fBLayerInventory\fP \fBCreateContainer\fP (\fBCard\fP owner, \fBCard\fP container)"
+.br
+.ti -1c
+.RI "static \fBLayerInventory\fP \fBCreateContainer< T >\fP (\fBCard\fP c, \fBCard\fP container, CurrencyType currency=CurrencyType\&.None)"
+.br
+.ti -1c
+.RI "static \fBLayerInventory\fP \fBCreateBuy\fP (\fBCard\fP c, CurrencyType currency=CurrencyType\&.Money, PriceType price=PriceType\&.Default)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBELayer\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "List< \fBUIInventory\fP > \fBinvs\fP = new List<\fBUIInventory\fP>()"
+.br
+.ti -1c
+.RI "\fBUICurrency\fP \fBuiCurrency\fP"
+.br
+.ti -1c
+.RI "bool \fBfloatInv\fP"
+.br
+.ti -1c
+.RI "bool \fBmainInv\fP"
+.br
+.ti -1c
+.RI "\fBWindowCharaMini\fP \fBmini\fP"
+.br
+.ti -1c
+.RI "bool \fBwasInventoryOpen\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static List< \fBLayerInventory\fP > \fBlistInv\fP = new List<\fBLayerInventory\fP>()"
+.br
+.ti -1c
+.RI "static \fBInvOwner\fP \fBhighlightInv\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBInvOwner\fP \fBInv\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBELayer\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreConfig\fP \fBconfig\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFloat\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBIdHelp\fP\fR [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Member Functions inherited from \fBELayer\fP
+.in +1c
+.ti -1c
+.RI "override void \fB_Close\fP ()"
+.br
+.ti -1c
+.RI "override void \fBKill\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB6\fP of file \fBLayerInventory\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBLayerInventory\fP LayerInventory\&._Create (string path = \fR''\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB331\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static void LayerInventory\&.Close (\fBThing\fP t)\fR [static]\fP"
+
+.PP
+Definition at line \fB43\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static void LayerInventory\&.CloseAllyInv ()\fR [static]\fP"
+
+.PP
+Definition at line \fB369\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static bool LayerInventory\&.CloseAllyInv (\fBChara\fP c)\fR [static]\fP"
+
+.PP
+Definition at line \fB355\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static \fBLayerInventory\fP LayerInventory\&.CreateBuy (\fBCard\fP c, CurrencyType currency = \fRCurrencyType::Money\fP, PriceType price = \fRPriceType::Default\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB599\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static \fBLayerInventory\fP LayerInventory\&.CreateContainer (\fBCard\fP owner)\fR [static]\fP"
+
+.PP
+Definition at line \fB529\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static \fBLayerInventory\fP LayerInventory\&.CreateContainer (\fBCard\fP owner, \fBCard\fP container)\fR [static]\fP"
+
+.PP
+Definition at line \fB550\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static \fBLayerInventory\fP LayerInventory\&.CreateContainer< T > (\fBCard\fP c, \fBCard\fP container, CurrencyType currency = \fRCurrencyType::None\fP)\fR [static]\fP"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fI\fBInvOwner\fP\fP
+.PP
+Definition at line \fB575\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static \fBLayerInventory\fP LayerInventory\&.CreateContainerAlly (\fBChara\fP owner, \fBCard\fP container)\fR [static]\fP"
+
+.PP
+Definition at line \fB381\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static \fBLayerInventory\fP LayerInventory\&.CreateContainerPC (\fBCard\fP container)\fR [static]\fP"
+
+.PP
+Definition at line \fB431\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static \fBLayerInventory\fP LayerInventory\&.CreatePCBackpack (bool mousePos = \fRfalse\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB341\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static \fBLayerInventory\fP LayerInventory\&.GetPCLayer ()\fR [static]\fP"
+
+.PP
+Definition at line \fB29\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "\fBCard\fP LayerInventory\&.GetPlayerContainer ()"
+
+.PP
+Definition at line \fB208\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static \fBLayerInventory\fP LayerInventory\&.GetTopLayer (\fBThing\fP t, bool includePlayer = \fRfalse\fP, \fBInvOwner\fP exclude = \fRnull\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB9\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "override bool LayerInventory\&.HeaderIsListOf (int id)"
+
+.PP
+Definition at line \fB219\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static bool LayerInventory\&.IsOpen (\fBCard\fP container)\fR [static]\fP"
+
+.PP
+Definition at line \fB415\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static bool LayerInventory\&.IsOpen (\fBThing\fP t)\fR [static]\fP"
+
+.PP
+Definition at line \fB56\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "bool LayerInventory\&.IsPlayerContainer (bool includePlayer = \fRfalse\fP)"
+
+.PP
+Definition at line \fB202\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "override void LayerInventory\&.OnAfterInit ()"
+
+.PP
+Definition at line \fB248\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "override void LayerInventory\&.OnInit ()"
+
+.PP
+Definition at line \fB225\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "override void LayerInventory\&.OnKill ()"
+
+.PP
+Definition at line \fB284\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "override void LayerInventory\&.OnRightClick ()"
+
+.PP
+Definition at line \fB318\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "override void LayerInventory\&.OnUpdateInput ()"
+
+.PP
+Definition at line \fB272\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static void LayerInventory\&.SetDirty (\fBThing\fP t)\fR [static]\fP"
+
+.PP
+Definition at line \fB72\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static void LayerInventory\&.SetDirtyAll (bool immediate = \fRfalse\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB96\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "\fBUIInventory\fP LayerInventory\&.SetInv (int idWindow = \fR0\fP)"
+
+.PP
+Definition at line \fB263\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static void LayerInventory\&.TryShowGuide (List< \fBButtonGrid\fP > list)\fR [static]\fP"
+
+.PP
+Definition at line \fB137\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "static void LayerInventory\&.TryShowGuide (UIList list)\fR [static]\fP"
+
+.PP
+Definition at line \fB122\fP of file \fBLayerInventory\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool LayerInventory\&.floatInv"
+
+.PP
+Definition at line \fB637\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "\fBInvOwner\fP LayerInventory\&.highlightInv\fR [static]\fP"
+
+.PP
+Definition at line \fB628\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "List<\fBUIInventory\fP> LayerInventory\&.invs = new List<\fBUIInventory\fP>()"
+
+.PP
+Definition at line \fB631\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "List<\fBLayerInventory\fP> LayerInventory\&.listInv = new List<\fBLayerInventory\fP>()\fR [static]\fP"
+
+.PP
+Definition at line \fB625\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "bool LayerInventory\&.mainInv"
+
+.PP
+Definition at line \fB640\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "\fBWindowCharaMini\fP LayerInventory\&.mini"
+
+.PP
+Definition at line \fB643\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "\fBUICurrency\fP LayerInventory\&.uiCurrency"
+
+.PP
+Definition at line \fB634\fP of file \fBLayerInventory\&.cs\fP\&.
+.SS "bool LayerInventory\&.wasInventoryOpen"
+
+.PP
+Definition at line \fB647\fP of file \fBLayerInventory\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBInvOwner\fP LayerInventory\&.Inv\fR [get]\fP"
+
+.PP
+Definition at line \fB193\fP of file \fBLayerInventory\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

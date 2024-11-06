@@ -1,0 +1,227 @@
+\doxysection{Layer\+Newspaper.\+cs}
+\hypertarget{_layer_newspaper_8cs_source}{}\label{_layer_newspaper_8cs_source}\index{Elin/LayerNewspaper.cs@{Elin/LayerNewspaper.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Runtime.CompilerServices;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00008}00008\ \textcolor{comment}{//\ Token:\ 0x020005A4\ RID:\ 1444}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00009}\mbox{\hyperlink{class_layer_newspaper}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_layer_newspaper}{LayerNewspaper}}\ :\ \mbox{\hyperlink{class_e_layer}{ELayer}}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000BB1\ RID:\ 2993}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600279A\ RID:\ 10138\ RVA:\ 0x000E0348\ File\ Offset:\ 0x000DE548}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_day_data}{DayData}}\ data}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_layer}{ELayer}}.world.dayData;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600279B\ RID:\ 10139\ RVA:\ 0x000E0354\ File\ Offset:\ 0x000DE554}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnInit()}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_layer}{ELayer}}.debug.enable)}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ NewsList.dict\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.world.CreateDayData();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ this.seed\ =\ (ELayer.debug.enable\ ?\ -\/1\ :\ \mbox{\hyperlink{class_e_layer}{ELayer}}.world.dayData.seed);}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ Rand.UseSeed(this.seed,\ delegate}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ this.imageAdRight.sprite\ =\ this.spritesAd.RandomItem<Sprite>();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ this.imageAdRight.SetNativeSize();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ this.textDate.text\ =\ \textcolor{stringliteral}{"{}news\_date"{}}.lang(Lang.GetList(\textcolor{stringliteral}{"{}monthEng"{}})[\mbox{\hyperlink{class_e_layer}{ELayer}}.world.date.month\ -\/\ 1],\ \mbox{\hyperlink{class_e_layer}{ELayer}}.world.date.day.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \mbox{\hyperlink{class_e_layer}{ELayer}}.world.date.year.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ luck\ =\ (int)\mbox{\hyperlink{class_e_layer}{ELayer}}.world.dayData.luck;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ this.textFortune.text\ =\ \textcolor{stringliteral}{"{}news\_tellLuck"{}}.lang(Lang.GetList(\textcolor{stringliteral}{"{}dayLuck"{}})[luck],\ Lang.GetList(\textcolor{stringliteral}{"{}dayLuck2"{}})[luck],\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ this.RefreshAD();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ this.RefreshChat();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ this.RefreshVote();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ this.RefreshWeather();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ this.RefreshNews();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ this.RefreshPage();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600279C\ RID:\ 10140\ RVA:\ 0x000E0490\ File\ Offset:\ 0x000DE690}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnClickPage()}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ this.topPage\ =\ !this.topPage;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ this.buttonPage.mainText.SetText((this.topPage\ ?\ \textcolor{stringliteral}{"{}news\_firstPage"{}}\ :\ \textcolor{stringliteral}{"{}news\_secondPage"{}}).lang());}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ SE.Play(\textcolor{stringliteral}{"{}click\_scroll"{}});}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ this.RefreshPage();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600279D\ RID:\ 10141\ RVA:\ 0x000E04E5\ File\ Offset:\ 0x000DE6E5}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshPage()}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00057}00057\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ this.goTop.SetActive(this.topPage);}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ this.goBack.SetActive(!this.topPage);}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600279E\ RID:\ 10142\ RVA:\ 0x000E050C\ File\ Offset:\ 0x000DE70C}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshNews()}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00064}00064\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_newspaper}{LayerNewspaper}}.<RefreshNews>d\_\_28\ <RefreshNews>d\_\_;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ <RefreshNews>d\_\_.<>t\_\_builder\ =\ AsyncVoidMethodBuilder.Create();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ <RefreshNews>d\_\_.<>4\_\_this\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ <RefreshNews>d\_\_.<>1\_\_state\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ <RefreshNews>d\_\_.<>t\_\_builder.Start<\mbox{\hyperlink{class_layer_newspaper}{LayerNewspaper}}.<RefreshNews>d\_\_28>(ref\ <RefreshNews>d\_\_);}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600279F\ RID:\ 10143\ RVA:\ 0x000E0544\ File\ Offset:\ 0x000DE744}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshAD()}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00074}00074\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ Rand.SetSeed(this.seed);}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ this.moldAdBottom\ =\ this.layoutAdBottom.CreateMold(\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ num\ =\ this.layoutAdBottom.Rect().sizeDelta.x\ -\/\ 20f;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ IList<Sprite>\ list\ =\ this.spritesSmallAd.Copy<Sprite>().Shuffle<Sprite>();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ list.Count;\ i++)}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ Sprite\ sprite\ =\ list[i];}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ >\ sprite.textureRect.width)}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Image\ image\ =\ Util.Instantiate<Image>(this.moldAdBottom,\ this.layoutAdBottom);}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ num\ -\/\ sprite.textureRect.width\ -\/\ 5f;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ image.sprite\ =\ sprite;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ image.SetNativeSize();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ this.layoutAdBottom.RebuildLayout(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ Rand.SetSeed(-\/1);}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00094}00094\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060027A0\ RID:\ 10144\ RVA:\ 0x000E0610\ File\ Offset:\ 0x000DE810}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00095}00095\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshChat()}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00096}00096\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_newspaper}{LayerNewspaper}}.<RefreshChat>d\_\_30\ <RefreshChat>d\_\_;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ <RefreshChat>d\_\_.<>t\_\_builder\ =\ AsyncVoidMethodBuilder.Create();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ <RefreshChat>d\_\_.<>4\_\_this\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ <RefreshChat>d\_\_.<>1\_\_state\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ <RefreshChat>d\_\_.<>t\_\_builder.Start<\mbox{\hyperlink{class_layer_newspaper}{LayerNewspaper}}.<RefreshChat>d\_\_30>(ref\ <RefreshChat>d\_\_);}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00102}00102\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00104}00104\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060027A1\ RID:\ 10145\ RVA:\ 0x000E0648\ File\ Offset:\ 0x000DE848}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00105}00105\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshVote()}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00106}00106\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_newspaper}{LayerNewspaper}}.<RefreshVote>d\_\_31\ <RefreshVote>d\_\_;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ <RefreshVote>d\_\_.<>t\_\_builder\ =\ AsyncVoidMethodBuilder.Create();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ <RefreshVote>d\_\_.<>4\_\_this\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ <RefreshVote>d\_\_.<>1\_\_state\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ <RefreshVote>d\_\_.<>t\_\_builder.Start<\mbox{\hyperlink{class_layer_newspaper}{LayerNewspaper}}.<RefreshVote>d\_\_31>(ref\ <RefreshVote>d\_\_);}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00112}00112\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00114}00114\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060027A2\ RID:\ 10146\ RVA:\ 0x000E0680\ File\ Offset:\ 0x000DE880}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00115}00115\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshWeather()}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00116}00116\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ List<\mbox{\hyperlink{class_weather}{Weather}}.\mbox{\hyperlink{class_weather_1_1_weather_forecast}{WeatherForecast}}>\ list\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.world.weather.GetWeatherForecast();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ BaseList\ baseList\ =\ this.listWeather;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ UIList.Callback<\mbox{\hyperlink{class_weather}{Weather}}.\mbox{\hyperlink{class_weather_1_1_weather_forecast}{WeatherForecast}},\ UIItem>\ callback\ =\ \textcolor{keyword}{new}\ UIList.Callback<\mbox{\hyperlink{class_weather}{Weather}}.\mbox{\hyperlink{class_weather_1_1_weather_forecast}{WeatherForecast}},\ UIItem>();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ callback.onInstantiate\ =\ delegate(\mbox{\hyperlink{class_weather}{Weather}}.\mbox{\hyperlink{class_weather_1_1_weather_forecast}{WeatherForecast}}\ a,\ UIItem\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ a.date.month.ToString()\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ a.date.day.ToString();}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (KeyValuePair<Weather.Condition,\ int>\ keyValuePair\ \textcolor{keywordflow}{in}\ from\ a\ \textcolor{keywordflow}{in}\ a.cons}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ orderby\ a.Value\ descending}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ select\ a)}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (b.image1.sprite\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.image1.sprite\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.core.refs.icons.weather[keyValuePair.Key];}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (b.image2.sprite\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.image2.sprite\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.core.refs.icons.weather[keyValuePair.Key];}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.image2.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ b.text1.text\ =\ text;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ callback.onList\ =\ delegate(UIList.SortMode\ m)}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 7;\ i++)}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list.Count\ >\ i\ \&\&\ list[i].cons.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.listWeather.Add(list[i]);}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ baseList.callbacks\ =\ callback;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ this.listWeather.List(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00151}00151\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00153}00153\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015FD\ RID:\ 5629}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00154}00154\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textDate;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00156}00156\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015FE\ RID:\ 5630}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00157}00157\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textFortune;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00159}00159\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015FF\ RID:\ 5631}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00160}00160\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textVote;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00162}00162\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001600\ RID:\ 5632}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00163}00163\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textVoteRemaining;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00165}00165\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001601\ RID:\ 5633}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00166}00166\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ listChat;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00168}00168\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001602\ RID:\ 5634}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00169}00169\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ listWeather;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00171}00171\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001603\ RID:\ 5635}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00172}00172\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ listVote;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00174}00174\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001604\ RID:\ 5636}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00175}00175\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ listNews;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00177}00177\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001605\ RID:\ 5637}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00178}00178\ \ \ \ \ \textcolor{keyword}{public}\ Image\ imageHeadline;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00180}00180\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001606\ RID:\ 5638}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00181}00181\ \ \ \ \ \textcolor{keyword}{public}\ Image\ imageAdRight;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00183}00183\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001607\ RID:\ 5639}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00184}00184\ \ \ \ \ \textcolor{keyword}{public}\ Image\ moldAdBottom;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00186}00186\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001608\ RID:\ 5640}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00187}00187\ \ \ \ \ \textcolor{keyword}{public}\ List<Sprite>\ spritesAd;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00189}00189\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001609\ RID:\ 5641}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00190}00190\ \ \ \ \ \textcolor{keyword}{public}\ List<Sprite>\ spritesSmallAd;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00192}00192\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400160A\ RID:\ 5642}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00193}00193\ \ \ \ \ \textcolor{keyword}{public}\ List<Sprite>\ spritesHeadline;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00195}00195\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400160B\ RID:\ 5643}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00196}00196\ \ \ \ \ \textcolor{keyword}{public}\ LayoutGroup\ layoutAdBottom;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00198}00198\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400160C\ RID:\ 5644}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00199}00199\ \ \ \ \ \textcolor{keyword}{public}\ LayoutGroup\ layoutPortrait;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00201}00201\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400160D\ RID:\ 5645}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00202}00202\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_portrait}{Portrait}}\ moldPortrait;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00204}00204\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400160E\ RID:\ 5646}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00205}00205\ \ \ \ \ \textcolor{keyword}{public}\ List<string>\ desiredNews;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00207}00207\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400160F\ RID:\ 5647}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00208}00208\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonPage;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00210}00210\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001610\ RID:\ 5648}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00211}00211\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ goTop;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00213}00213\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001611\ RID:\ 5649}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00214}00214\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ goBack;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00216}00216\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001612\ RID:\ 5650}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00217}00217\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ topPage;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00219}00219\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001613\ RID:\ 5651}}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00220}00220\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ seed;}
+\DoxyCodeLine{\Hypertarget{_layer_newspaper_8cs_source_l00221}00221\ \}}
+
+\end{DoxyCode}

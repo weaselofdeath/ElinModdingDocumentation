@@ -1,0 +1,1387 @@
+.TH "Map" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Map
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBMapBounds\fP, and \fBIPathfindGrid\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCreateNew\fP (int size, bool setReference=true)"
+.br
+.ti -1c
+.RI "void \fBSetZone\fP (\fBZone\fP _zone)"
+.br
+.ti -1c
+.RI "void \fBSetReference\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnDeactivate\fP ()"
+.br
+.ti -1c
+.RI "void \fBResize\fP (int newSize)"
+.br
+.ti -1c
+.RI "void \fBShift\fP (Vector2Int offset)"
+.br
+.ti -1c
+.RI "void \fBReload\fP ()"
+.br
+.ti -1c
+.RI "void \fBReloadRoom\fP ()"
+.br
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.ti -1c
+.RI "void \fBResetEditorPos\fP ()"
+.br
+.ti -1c
+.RI "void \fBSave\fP (string path, \fBZoneExportData\fP export=null, \fBPartialMap\fP partial=null)"
+.br
+.ti -1c
+.RI "void \fBLoad\fP (string path, bool import=false, \fBPartialMap\fP partial=null)"
+.br
+.ti -1c
+.RI "void \fBValidateVersion\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnLoad\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnImport\fP (\fBZoneExportData\fP data)"
+.br
+.ti -1c
+.RI "void \fBExportMetaData\fP (string _path, string id, \fBPartialMap\fP partial=null)"
+.br
+.ti -1c
+.RI "void \fBAddCardOnActivate\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "void \fBOnCardAddedToZone\fP (\fBCard\fP t, int x, int z)"
+.br
+.ti -1c
+.RI "void \fBOnCardRemovedFromZone\fP (\fBCard\fP t)"
+.br
+.ti -1c
+.RI "void \fBMoveCard\fP (\fBPoint\fP p, \fBCard\fP t)"
+.br
+.ti -1c
+.RI "void \fB_AddCard\fP (int x, int z, \fBCard\fP t, bool onAddToZone)"
+.br
+.ti -1c
+.RI "void \fB_RemoveCard\fP (\fBCard\fP t)"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBGetCell\fP (int index)"
+.br
+.ti -1c
+.RI "void \fBSetSeen\fP (int x, int z, bool seen=true, bool refresh=true)"
+.br
+.ti -1c
+.RI "void \fBRevealAll\fP (bool reveal=true)"
+.br
+.ti -1c
+.RI "void \fBReveal\fP (\fBPoint\fP center, int power=100)"
+.br
+.ti -1c
+.RI "void \fBRefreshFOV\fP (int x, int z, int radius=6, bool recalculate=false)"
+.br
+.ti -1c
+.RI "void \fBRefreshFOVAll\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetFloor\fP (int x, int z, int idMat=0, int idFloor=0)"
+.br
+.ti -1c
+.RI "void \fBSetFloor\fP (int x, int z, int idMat, int idFloor, int dir)"
+.br
+.ti -1c
+.RI "void \fBSetBridge\fP (int x, int z, int height=0, int idMat=0, int idBridge=0, int dir=0)"
+.br
+.ti -1c
+.RI "void \fBSetRoofBlock\fP (int x, int z, int idMat, int idBlock, int dir, int height)"
+.br
+.ti -1c
+.RI "void \fBSetBlock\fP (int x, int z, int idMat=0, int idBlock=0)"
+.br
+.ti -1c
+.RI "void \fBSetBlock\fP (int x, int z, int idMat, int idBlock, int dir)"
+.br
+.ti -1c
+.RI "void \fBOnSetBlockOrDoor\fP (int x, int z)"
+.br
+.ti -1c
+.RI "void \fBTryRemoveRoom\fP (int x, int z)"
+.br
+.ti -1c
+.RI "void \fBTryAddRoom\fP (int x, int z)"
+.br
+.ti -1c
+.RI "void \fBSetBlockDir\fP (int x, int z, int dir)"
+.br
+.ti -1c
+.RI "void \fBModFire\fP (int x, int z, int amount)"
+.br
+.ti -1c
+.RI "void \fBTryShatter\fP (\fBPoint\fP pos, int ele, int power)"
+.br
+.ti -1c
+.RI "void \fBBurn\fP (int x, int z, bool instant=false)"
+.br
+.ti -1c
+.RI "void \fBSetLiquid\fP (int x, int z, \fBCellEffect\fP effect=null)"
+.br
+.ti -1c
+.RI "void \fBSetLiquid\fP (int x, int z, int id, int value=1)"
+.br
+.ti -1c
+.RI "void \fBSetEffect\fP (int x, int z, \fBCellEffect\fP effect=null)"
+.br
+.ti -1c
+.RI "void \fBModLiquid\fP (int x, int z, int amount)"
+.br
+.ti -1c
+.RI "void \fBClearRainAndDecal\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetObj\fP (int x, int z, int id=0, int value=1, int dir=0)"
+.br
+.ti -1c
+.RI "void \fBSetObj\fP (int x, int z, int idMat, int idObj, int value, int dir)"
+.br
+.ti -1c
+.RI "void \fBAddBackerTree\fP ()"
+.br
+.ti -1c
+.RI "\fBSourceBacker\&.Row\fP \fBGetBackerObj\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "void \fBApplyBackerObj\fP (\fBPoint\fP p, int id=\-1)"
+.br
+.ti -1c
+.RI "void \fBDropBlockComponent\fP (\fBPoint\fP point, \fBTileRow\fP r, \fBSourceMaterial\&.Row\fP mat, bool recoverBlock, bool isPlatform=false, \fBChara\fP c=null)"
+.br
+.ti -1c
+.RI "void \fBMineBlock\fP (\fBPoint\fP point, bool recoverBlock=false, \fBChara\fP c=null)"
+.br
+.ti -1c
+.RI "void \fBMineRamp\fP (\fBPoint\fP point, int ramp, bool recoverBlock=false)"
+.br
+.ti -1c
+.RI "void \fBMineFloor\fP (\fBPoint\fP point, \fBChara\fP c=null, bool recoverBlock=false, bool removePlatform=true)"
+.br
+.ti -1c
+.RI "void \fBRefreshShadow\fP (int x, int z)"
+.br
+.ti -1c
+.RI "void \fBTrySmoothPick\fP (\fBCell\fP cell, \fBThing\fP t, \fBChara\fP c)"
+.br
+.ti -1c
+.RI "void \fBTrySmoothPick\fP (\fBPoint\fP p, \fBThing\fP t, \fBChara\fP c)"
+.br
+.ti -1c
+.RI "void \fBDestroyObj\fP (\fBPoint\fP point)"
+.br
+.ti -1c
+.RI "void \fBMineObj\fP (\fBPoint\fP point, \fBTask\fP task=null, \fBChara\fP c=null)"
+.br
+.ti -1c
+.RI "void \fBMineObjSound\fP (\fBPoint\fP point)"
+.br
+.ti -1c
+.RI "\fBPlantData\fP \fBTryGetPlant\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "\fBPlantData\fP \fBTryGetPlant\fP (\fBCell\fP c)"
+.br
+.ti -1c
+.RI "\fBPlantData\fP \fBAddPlant\fP (\fBPoint\fP pos, \fBThing\fP seed)"
+.br
+.ti -1c
+.RI "void \fBRemovePlant\fP (\fBPoint\fP pos)"
+.br
+.ti -1c
+.RI "void \fBValidateInstalled\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "void \fB_ValidateInstalled\fP (int x, int y)"
+.br
+.ti -1c
+.RI "void \fBRemoveLonelyRamps\fP (\fBCell\fP cell)"
+.br
+.ti -1c
+.RI "void \fBDestroyBlock\fP (int x, int z)"
+.br
+.ti -1c
+.RI "void \fBAddDecal\fP (int x, int z, int id, int amount=1, bool refresh=true)"
+.br
+.ti -1c
+.RI "void \fBSetDecal\fP (int x, int z, int id=0, int amount=1, bool refresh=true)"
+.br
+.ti -1c
+.RI "void \fBSetFoormark\fP (\fBPoint\fP pos, int id, int angle, int offset=0)"
+.br
+.ti -1c
+.RI "int \fBAngleToIndex\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBRefreshSingleTile\fP (int x, int z)"
+.br
+.ti -1c
+.RI "void \fBRefreshAllTiles\fP ()"
+.br
+.ti -1c
+.RI "void \fBRefreshNeighborTiles\fP (int x, int z)"
+.br
+.ti -1c
+.RI "void \fBQuickRefreshTile\fP (int x, int z)"
+.br
+.ti -1c
+.RI "int \fBGetRampDir\fP (int x, int z, \fBTileType\fP blockType=null)"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBGetDependedRamp\fP (\fBCell\fP cell)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomPoint\fP (\fBPoint\fP center, int radius, int tries=100, bool mustBeWalkable=true, bool requireLos=true)"
+.br
+.ti -1c
+.RI "new \fBPoint\fP \fBGetRandomEdge\fP (int r=3)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetNearbyResourcePoint\fP (\fBPoint\fP center)"
+.br
+.ti -1c
+.RI "List< \fBPoint\fP > \fBListPointsInCircle\fP (\fBPoint\fP center, float radius, bool mustBeWalkable=true, bool los=true)"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBListCharasInCircle\fP (\fBPoint\fP center, float radius, bool los=true)"
+.br
+.ti -1c
+.RI "List< \fBPoint\fP > \fBListPointsInArc\fP (\fBPoint\fP center, \fBPoint\fP to, int radius, float angle)"
+.br
+.ti -1c
+.RI "List< \fBPoint\fP > \fBListPointsInLine\fP (\fBPoint\fP center, \fBPoint\fP to, int radius)"
+.br
+.ti -1c
+.RI "void \fBSetBounds\fP (int size)"
+.br
+.ti -1c
+.RI "void \fBSetBounds\fP (\fBMapBounds\fP b)"
+.br
+.ti -1c
+.RI "new void \fBForeachCell\fP (Action< \fBCell\fP > action)"
+.br
+.ti -1c
+.RI "new void \fBForeachPoint\fP (Action< \fBPoint\fP > action)"
+.br
+.ti -1c
+.RI "new void \fBForeachXYZ\fP (Action< int, int > action)"
+.br
+.ti -1c
+.RI "void \fBForeachSphere\fP (int _x, int _z, float r, Action< \fBPoint\fP > action)"
+.br
+.ti -1c
+.RI "void \fBForeachNeighbor\fP (\fBPoint\fP center, Action< \fBPoint\fP > action)"
+.br
+.ti -1c
+.RI "void \fBQuake\fP ()"
+.br
+.ti -1c
+.RI "int \fBCountChara\fP (\fBFaction\fP faction)"
+.br
+.ti -1c
+.RI "int \fBCountGuest\fP ()"
+.br
+.ti -1c
+.RI "int \fBCountHostile\fP ()"
+.br
+.ti -1c
+.RI "int \fBCountWildAnimal\fP ()"
+.br
+.ti -1c
+.RI "int \fBCountNonHostile\fP ()"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBListChara\fP (\fBFaction\fP faction)"
+.br
+.ti -1c
+.RI "List< \fBThing\fP > \fBListThing< T >\fP ()"
+.br
+.ti -1c
+.RI "bool \fBPutAway\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBFindChara\fP (string id)"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBFindChara\fP (int uid)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFindThing\fP (Func< \fBThing\fP, bool > func)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFindThing\fP (int uid)"
+.br
+.ti -1c
+.RI "T \fBFindThing< T >\fP ()"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFindThing\fP (Type type, \fBChara\fP c=null)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFindThing\fP (Type type, \fBBaseArea\fP area1, \fBBaseArea\fP area2=null)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFindThing\fP (string workTag, \fBBaseArea\fP area1=null, \fBBaseArea\fP area2=null)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFindThing\fP (string workTag, \fBChara\fP c)"
+.br
+.ti -1c
+.RI "\fBBaseArea\fP \fBFindPublicArea\fP ()"
+.br
+.ti -1c
+.RI "void \fBRefreshSunMap\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBMapBounds\fP
+.in +1c
+.ti -1c
+.RI "void \fBSetBounds\fP (int _x, int _z, int _maxX, int _maxZ)"
+.br
+.ti -1c
+.RI "bool \fBContains\fP (int dx, int dz)"
+.br
+.ti -1c
+.RI "bool \fBContains\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetCenterPos\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomTopPos\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomRightPos\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomBottomPos\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomLeftPos\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetTopPos\fP (float rate=\-1f)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRightPos\fP (float rate=\-1f)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetBottomPos\fP (float rate=\-1f)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetLeftPos\fP (float rate=\-1f)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomPoint\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetSpawnPos\fP (int x, int z, int maxX, int maxZ)"
+.br
+.ti -1c
+.RI "bool \fBCanExpand\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBExpand\fP (int a)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetSurface\fP (int x, int z, bool walkable=true)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomSurface\fP (int x, int z, int radius, bool walkable=true, bool allowWater=false)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomSurface\fP (bool centered=false, bool walkable=true, bool allowWater=false)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomSpawnPos\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomEdge\fP (int r=3)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomSpace\fP (int width, int height, int tries=100)"
+.br
+.ti -1c
+.RI "void \fBForeachCell\fP (Action< \fBCell\fP > action)"
+.br
+.ti -1c
+.RI "void \fBForeachPoint\fP (Action< \fBPoint\fP > action)"
+.br
+.ti -1c
+.RI "void \fBForeachXYZ\fP (Action< int, int > action)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBMapMetaData\fP \fBGetMetaData\fP (string pathZip)"
+.br
+.ti -1c
+.RI "static void \fBUpdateMetaData\fP (string pathZip, \fBPartialMap\fP partial=null)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBseed\fP"
+.br
+.ti -1c
+.RI "int \fB_bits\fP"
+.br
+.ti -1c
+.RI "global::Version \fBversion\fP"
+.br
+.ti -1c
+.RI "\fBRoomManager\fP \fBrooms\fP = new \fBRoomManager\fP()"
+.br
+.ti -1c
+.RI "\fBTaskManager\fP \fBtasks\fP = new \fBTaskManager\fP()"
+.br
+.ti -1c
+.RI "\fBMapConfig\fP \fBconfig\fP = new \fBMapConfig\fP()"
+.br
+.ti -1c
+.RI "\fBCustomData\fP \fBcustom\fP"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBserializedCharas\fP = new List<\fBChara\fP>()"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBdeadCharas\fP = new List<\fBChara\fP>()"
+.br
+.ti -1c
+.RI "List< \fBThing\fP > \fBthings\fP = new List<\fBThing\fP>()"
+.br
+.ti -1c
+.RI "\fBMapBounds\fP \fBbounds\fP = new \fBMapBounds\fP()"
+.br
+.ti -1c
+.RI "List< int > \fB_plDay\fP = new List<int>()"
+.br
+.ti -1c
+.RI "List< int > \fB_plNight\fP = new List<int>()"
+.br
+.ti -1c
+.RI "Dictionary< int, int > \fBgatherCounts\fP = new Dictionary<int, int>()"
+.br
+.ti -1c
+.RI "Dictionary< int, \fBCellEffect\fP > \fBcellEffects\fP = new Dictionary<int, \fBCellEffect\fP>()"
+.br
+.ti -1c
+.RI "Dictionary< int, int > \fBbackerObjs\fP = new Dictionary<int, int>()"
+.br
+.ti -1c
+.RI "Dictionary< int, \fBPlantData\fP > \fBplants\fP = new Dictionary<int, \fBPlantData\fP>()"
+.br
+.ti -1c
+.RI "BitArray32 \fBbits\fP"
+.br
+.ti -1c
+.RI "Playlist \fBplDay\fP"
+.br
+.ti -1c
+.RI "Playlist \fBplNight\fP"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBcharas\fP = new List<\fBChara\fP>()"
+.br
+.ti -1c
+.RI "List< \fBTransAnime\fP > \fBpointAnimes\fP = new List<\fBTransAnime\fP>()"
+.br
+.ti -1c
+.RI "\fBCell\fP[,] \fBcells\fP"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBzone\fP"
+.br
+.ti -1c
+.RI "\fBCellEffectManager\fP \fBeffectManager\fP = new \fBCellEffectManager\fP()"
+.br
+.ti -1c
+.RI "\fBPropsManager\fP \fBprops\fP = new \fBPropsManager\fP()"
+.br
+.ti -1c
+.RI "FloodSpiller \fBflood\fP = new FloodSpiller()"
+.br
+.ti -1c
+.RI "\fBBiomeProfile\fP[,] \fBbiomes\fP"
+.br
+.ti -1c
+.RI "\fBPOIMap\fP \fBpoiMap\fP"
+.br
+.ti -1c
+.RI "List< \fBFootmark\fP > \fBfootmarks\fP = new List<\fBFootmark\fP>()"
+.br
+.ti -1c
+.RI "\fBFowProfile\fP \fBfowProfile\fP"
+.br
+.ti -1c
+.RI "bool \fBrevealed\fP"
+.br
+.in -1c
+
+Public Attributes inherited from \fBMapBounds\fP
+.in +1c
+.ti -1c
+.RI "int \fBx\fP"
+.br
+.ti -1c
+.RI "int \fBz\fP"
+.br
+.ti -1c
+.RI "int \fBmaxX\fP"
+.br
+.ti -1c
+.RI "int \fBmaxZ\fP"
+.br
+.ti -1c
+.RI "int \fBSize\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static HashSet< int > \fBsunMap\fP = new HashSet<int>()"
+.br
+.ti -1c
+.RI "static bool \fBisDirtySunMap\fP"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnSerializing\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBisBreakerDown\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBPropsStocked\fP \fBStocked\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBPropsInstalled\fP \fBInstalled\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBPropsRoaming\fP \fBRoaming\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "float \fBsizeModifier\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBisGenerated\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsIndoor\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBSizeXZ\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< \fBCard\fP > \fBCards\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBMapBounds\fP
+.in +1c
+.ti -1c
+.RI "int \fBCenterX\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBCenterZ\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBWidth\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBHeight\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB14\fP of file \fBMap\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Map\&._AddCard (int x, int z, \fBCard\fP t, bool onAddToZone)"
+
+.PP
+Definition at line \fB821\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&._RemoveCard (\fBCard\fP t)"
+
+.PP
+Definition at line \fB847\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&._ValidateInstalled (int x, int y)"
+
+.PP
+Definition at line \fB2016\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.AddBackerTree ()"
+
+.PP
+Definition at line \fB1550\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.AddCardOnActivate (\fBCard\fP c)"
+
+.PP
+Definition at line \fB767\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.AddDecal (int x, int z, int id, int amount = \fR1\fP, bool refresh = \fRtrue\fP)"
+
+.PP
+Definition at line \fB2070\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBPlantData\fP Map\&.AddPlant (\fBPoint\fP pos, \fBThing\fP seed)"
+
+.PP
+Definition at line \fB1989\fP of file \fBMap\&.cs\fP\&.
+.SS "int Map\&.AngleToIndex (int a)"
+
+.PP
+Definition at line \fB2123\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.ApplyBackerObj (\fBPoint\fP p, int id = \fR\-1\fP)"
+
+.PP
+Definition at line \fB1596\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.Burn (int x, int z, bool instant = \fRfalse\fP)"
+
+.PP
+Definition at line \fB1378\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.ClearRainAndDecal ()"
+
+.PP
+Definition at line \fB1502\fP of file \fBMap\&.cs\fP\&.
+.SS "int Map\&.CountChara (\fBFaction\fP faction)"
+
+.PP
+Definition at line \fB2545\fP of file \fBMap\&.cs\fP\&.
+.SS "int Map\&.CountGuest ()"
+
+.PP
+Definition at line \fB2562\fP of file \fBMap\&.cs\fP\&.
+.SS "int Map\&.CountHostile ()"
+
+.PP
+Definition at line \fB2579\fP of file \fBMap\&.cs\fP\&.
+.SS "int Map\&.CountNonHostile ()"
+
+.PP
+Definition at line \fB2607\fP of file \fBMap\&.cs\fP\&.
+.SS "int Map\&.CountWildAnimal ()"
+
+.PP
+Definition at line \fB2593\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.CreateNew (int size, bool setReference = \fRtrue\fP)"
+
+.PP
+Definition at line \fB131\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.DestroyBlock (int x, int z)"
+
+.PP
+Definition at line \fB2064\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.DestroyObj (\fBPoint\fP point)"
+
+.PP
+Definition at line \fB1823\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.DropBlockComponent (\fBPoint\fP point, \fBTileRow\fP r, \fBSourceMaterial\&.Row\fP mat, bool recoverBlock, bool isPlatform = \fRfalse\fP, \fBChara\fP c = \fRnull\fP)"
+
+.PP
+Definition at line \fB1623\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.ExportMetaData (string _path, string id, \fBPartialMap\fP partial = \fRnull\fP)"
+
+.PP
+Definition at line \fB691\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBChara\fP Map\&.FindChara (int uid)"
+
+.PP
+Definition at line \fB2702\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBChara\fP Map\&.FindChara (string id)"
+
+.PP
+Definition at line \fB2689\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBBaseArea\fP Map\&.FindPublicArea ()"
+
+.PP
+Definition at line \fB2836\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBThing\fP Map\&.FindThing (Func< \fBThing\fP, bool > func)"
+
+.PP
+Definition at line \fB2715\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBThing\fP Map\&.FindThing (int uid)"
+
+.PP
+Definition at line \fB2728\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBThing\fP Map\&.FindThing (string workTag, \fBBaseArea\fP area1 = \fRnull\fP, \fBBaseArea\fP area2 = \fRnull\fP)"
+
+.PP
+Definition at line \fB2790\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBThing\fP Map\&.FindThing (string workTag, \fBChara\fP c)"
+
+.PP
+Definition at line \fB2822\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBThing\fP Map\&.FindThing (Type type, \fBBaseArea\fP area1, \fBBaseArea\fP area2 = \fRnull\fP)"
+
+.PP
+Definition at line \fB2772\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBThing\fP Map\&.FindThing (Type type, \fBChara\fP c = \fRnull\fP)"
+
+.PP
+Definition at line \fB2754\fP of file \fBMap\&.cs\fP\&.
+.SS "T Map\&.FindThing< T > ()"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fI\fBTrait\fP\fP
+.PP
+Definition at line \fB2741\fP of file \fBMap\&.cs\fP\&.
+.SS "new void Map\&.ForeachCell (Action< \fBCell\fP > action)"
+
+.PP
+Definition at line \fB2448\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.ForeachNeighbor (\fBPoint\fP center, Action< \fBPoint\fP > action)"
+
+.PP
+Definition at line \fB2506\fP of file \fBMap\&.cs\fP\&.
+.SS "new void Map\&.ForeachPoint (Action< \fBPoint\fP > action)"
+
+.PP
+Definition at line \fB2460\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.ForeachSphere (int _x, int _z, float r, Action< \fBPoint\fP > action)"
+
+.PP
+Definition at line \fB2485\fP of file \fBMap\&.cs\fP\&.
+.SS "new void Map\&.ForeachXYZ (Action< int, int > action)"
+
+.PP
+Definition at line \fB2473\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBSourceBacker\&.Row\fP Map\&.GetBackerObj (\fBPoint\fP p)"
+
+.PP
+Definition at line \fB1586\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBCell\fP Map\&.GetCell (int index)"
+
+.PP
+Definition at line \fB864\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBCell\fP Map\&.GetDependedRamp (\fBCell\fP cell)"
+
+.PP
+Definition at line \fB2283\fP of file \fBMap\&.cs\fP\&.
+.SS "static \fBMapMetaData\fP Map\&.GetMetaData (string pathZip)\fR [static]\fP"
+
+.PP
+Definition at line \fB710\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBPoint\fP Map\&.GetNearbyResourcePoint (\fBPoint\fP center)"
+
+.PP
+Definition at line \fB2354\fP of file \fBMap\&.cs\fP\&.
+.SS "int Map\&.GetRampDir (int x, int z, \fBTileType\fP blockType = \fRnull\fP)"
+
+.PP
+Definition at line \fB2245\fP of file \fBMap\&.cs\fP\&.
+.SS "new \fBPoint\fP Map\&.GetRandomEdge (int r = \fR3\fP)"
+
+.PP
+Definition at line \fB2328\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBPoint\fP Map\&.GetRandomPoint (\fBPoint\fP center, int radius, int tries = \fR100\fP, bool mustBeWalkable = \fRtrue\fP, bool requireLos = \fRtrue\fP)"
+
+.PP
+Definition at line \fB2309\fP of file \fBMap\&.cs\fP\&.
+.SS "List< \fBChara\fP > Map\&.ListChara (\fBFaction\fP faction)"
+
+.PP
+Definition at line \fB2621\fP of file \fBMap\&.cs\fP\&.
+.SS "List< \fBChara\fP > Map\&.ListCharasInCircle (\fBPoint\fP center, float radius, bool los = \fRtrue\fP)"
+
+.PP
+Definition at line \fB2389\fP of file \fBMap\&.cs\fP\&.
+.SS "List< \fBPoint\fP > Map\&.ListPointsInArc (\fBPoint\fP center, \fBPoint\fP to, int radius, float angle)"
+
+.PP
+Definition at line \fB2407\fP of file \fBMap\&.cs\fP\&.
+.SS "List< \fBPoint\fP > Map\&.ListPointsInCircle (\fBPoint\fP center, float radius, bool mustBeWalkable = \fRtrue\fP, bool los = \fRtrue\fP)"
+
+.PP
+Definition at line \fB2375\fP of file \fBMap\&.cs\fP\&.
+.SS "List< \fBPoint\fP > Map\&.ListPointsInLine (\fBPoint\fP center, \fBPoint\fP to, int radius)"
+
+.PP
+Definition at line \fB2425\fP of file \fBMap\&.cs\fP\&.
+.SS "List< \fBThing\fP > Map\&.ListThing< T > ()"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fI\fBTrait\fP\fP
+.PP
+Definition at line \fB2635\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.Load (string path, bool import = \fRfalse\fP, \fBPartialMap\fP partial = \fRnull\fP)"
+
+.PP
+Definition at line \fB525\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.MineBlock (\fBPoint\fP point, bool recoverBlock = \fRfalse\fP, \fBChara\fP c = \fRnull\fP)"
+
+.PP
+Definition at line \fB1666\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.MineFloor (\fBPoint\fP point, \fBChara\fP c = \fRnull\fP, bool recoverBlock = \fRfalse\fP, bool removePlatform = \fRtrue\fP)"
+
+.PP
+Definition at line \fB1747\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.MineObj (\fBPoint\fP point, \fBTask\fP task = \fRnull\fP, \fBChara\fP c = \fRnull\fP)"
+
+.PP
+Definition at line \fB1838\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.MineObjSound (\fBPoint\fP point)"
+
+.PP
+Definition at line \fB1971\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.MineRamp (\fBPoint\fP point, int ramp, bool recoverBlock = \fRfalse\fP)"
+
+.PP
+Definition at line \fB1729\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.ModFire (int x, int z, int amount)"
+
+.PP
+Definition at line \fB1174\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.ModLiquid (int x, int z, int amount)"
+
+.PP
+Definition at line \fB1487\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.MoveCard (\fBPoint\fP p, \fBCard\fP t)"
+
+.PP
+Definition at line \fB815\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.OnCardAddedToZone (\fBCard\fP t, int x, int z)"
+
+.PP
+Definition at line \fB780\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.OnCardRemovedFromZone (\fBCard\fP t)"
+
+.PP
+Definition at line \fB800\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.OnDeactivate ()"
+
+.PP
+Definition at line \fB190\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.OnImport (\fBZoneExportData\fP data)"
+
+.PP
+Definition at line \fB684\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.OnLoad ()"
+
+.PP
+Definition at line \fB677\fP of file \fBMap\&.cs\fP\&.
+.SS "virtual void Map\&.OnSerializing ()\fR [protected]\fP, \fR [virtual]\fP"
+
+.PP
+Definition at line \fB119\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.OnSetBlockOrDoor (int x, int z)"
+
+.PP
+Definition at line \fB1018\fP of file \fBMap\&.cs\fP\&.
+.SS "bool Map\&.PutAway (\fBCard\fP c)"
+
+.PP
+Definition at line \fB2649\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.Quake ()"
+
+.PP
+Definition at line \fB2528\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.QuickRefreshTile (int x, int z)"
+
+.PP
+Definition at line \fB2229\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.RefreshAllTiles ()"
+
+.PP
+Definition at line \fB2198\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.RefreshFOV (int x, int z, int radius = \fR6\fP, bool recalculate = \fRfalse\fP)"
+
+.PP
+Definition at line \fB911\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.RefreshFOVAll ()"
+
+.PP
+Definition at line \fB936\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.RefreshNeighborTiles (int x, int z)"
+
+.PP
+Definition at line \fB2210\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.RefreshShadow (int x, int z)"
+
+.PP
+Definition at line \fB1796\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.RefreshSingleTile (int x, int z)"
+
+.PP
+Definition at line \fB2192\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.RefreshSunMap ()"
+
+.PP
+Definition at line \fB2844\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.Reload ()"
+
+.PP
+Definition at line \fB299\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.ReloadRoom ()"
+
+.PP
+Definition at line \fB315\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.RemoveLonelyRamps (\fBCell\fP cell)"
+
+.PP
+Definition at line \fB2050\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.RemovePlant (\fBPoint\fP pos)"
+
+.PP
+Definition at line \fB2000\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.Reset ()"
+
+.PP
+Definition at line \fB336\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.ResetEditorPos ()"
+
+.PP
+Definition at line \fB349\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.Resize (int newSize)"
+
+.PP
+Definition at line \fB212\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.Reveal (\fBPoint\fP center, int power = \fR100\fP)"
+
+.PP
+Definition at line \fB899\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.RevealAll (bool reveal = \fRtrue\fP)"
+
+.PP
+Definition at line \fB885\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.Save (string path, \fBZoneExportData\fP export = \fRnull\fP, \fBPartialMap\fP partial = \fRnull\fP)"
+
+.PP
+Definition at line \fB369\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetBlock (int x, int z, int idMat, int idBlock, int dir)"
+
+.PP
+Definition at line \fB994\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetBlock (int x, int z, int idMat = \fR0\fP, int idBlock = \fR0\fP)"
+
+.PP
+Definition at line \fB988\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetBlockDir (int x, int z, int dir)"
+
+.PP
+Definition at line \fB1166\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetBounds (int size)"
+
+.PP
+Definition at line \fB2431\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetBounds (\fBMapBounds\fP b)"
+
+.PP
+Definition at line \fB2441\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetBridge (int x, int z, int height = \fR0\fP, int idMat = \fR0\fP, int idBridge = \fR0\fP, int dir = \fR0\fP)"
+
+.PP
+Definition at line \fB962\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetDecal (int x, int z, int id = \fR0\fP, int amount = \fR1\fP, bool refresh = \fRtrue\fP)"
+
+.PP
+Definition at line \fB2098\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetEffect (int x, int z, \fBCellEffect\fP effect = \fRnull\fP)"
+
+.PP
+Definition at line \fB1481\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetFloor (int x, int z, int idMat, int idFloor, int dir)"
+
+.PP
+Definition at line \fB951\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetFloor (int x, int z, int idMat = \fR0\fP, int idFloor = \fR0\fP)"
+
+.PP
+Definition at line \fB945\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetFoormark (\fBPoint\fP pos, int id, int angle, int offset = \fR0\fP)"
+
+.PP
+Definition at line \fB2108\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetLiquid (int x, int z, \fBCellEffect\fP effect = \fRnull\fP)"
+
+.PP
+Definition at line \fB1446\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetLiquid (int x, int z, int id, int value = \fR1\fP)"
+
+.PP
+Definition at line \fB1457\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetObj (int x, int z, int id = \fR0\fP, int value = \fR1\fP, int dir = \fR0\fP)"
+
+.PP
+Definition at line \fB1512\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetObj (int x, int z, int idMat, int idObj, int value, int dir)"
+
+.PP
+Definition at line \fB1518\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetReference ()"
+
+.PP
+Definition at line \fB175\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetRoofBlock (int x, int z, int idMat, int idBlock, int dir, int height)"
+
+.PP
+Definition at line \fB978\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetSeen (int x, int z, bool seen = \fRtrue\fP, bool refresh = \fRtrue\fP)"
+
+.PP
+Definition at line \fB870\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.SetZone (\fBZone\fP _zone)"
+
+.PP
+Definition at line \fB160\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.Shift (Vector2Int offset)"
+
+.PP
+Definition at line \fB242\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.TryAddRoom (int x, int z)"
+
+.PP
+Definition at line \fB1081\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBPlantData\fP Map\&.TryGetPlant (\fBCell\fP c)"
+
+.PP
+Definition at line \fB1983\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBPlantData\fP Map\&.TryGetPlant (\fBPoint\fP p)"
+
+.PP
+Definition at line \fB1977\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.TryRemoveRoom (int x, int z)"
+
+.PP
+Definition at line \fB1067\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.TryShatter (\fBPoint\fP pos, int ele, int power)"
+
+.PP
+Definition at line \fB1205\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.TrySmoothPick (\fBCell\fP cell, \fBThing\fP t, \fBChara\fP c)"
+
+.PP
+Definition at line \fB1801\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.TrySmoothPick (\fBPoint\fP p, \fBThing\fP t, \fBChara\fP c)"
+
+.PP
+Definition at line \fB1807\fP of file \fBMap\&.cs\fP\&.
+.SS "static void Map\&.UpdateMetaData (string pathZip, \fBPartialMap\fP partial = \fRnull\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB739\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.ValidateInstalled (\fBPoint\fP p)"
+
+.PP
+Definition at line \fB2006\fP of file \fBMap\&.cs\fP\&.
+.SS "void Map\&.ValidateVersion ()"
+
+.PP
+Definition at line \fB671\fP of file \fBMap\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int Map\&._bits"
+
+.PP
+Definition at line \fB2910\fP of file \fBMap\&.cs\fP\&.
+.SS "List<int> Map\&._plDay = new List<int>()"
+
+.PP
+Definition at line \fB2950\fP of file \fBMap\&.cs\fP\&.
+.SS "List<int> Map\&._plNight = new List<int>()"
+
+.PP
+Definition at line \fB2954\fP of file \fBMap\&.cs\fP\&.
+.SS "Dictionary<int, int> Map\&.backerObjs = new Dictionary<int, int>()"
+
+.PP
+Definition at line \fB2966\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBBiomeProfile\fP [,] Map\&.biomes"
+
+.PP
+Definition at line \fB3003\fP of file \fBMap\&.cs\fP\&.
+.SS "BitArray32 Map\&.bits"
+
+.PP
+Definition at line \fB2973\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBMapBounds\fP Map\&.bounds = new \fBMapBounds\fP()"
+
+.PP
+Definition at line \fB2946\fP of file \fBMap\&.cs\fP\&.
+.SS "Dictionary<int, \fBCellEffect\fP> Map\&.cellEffects = new Dictionary<int, \fBCellEffect\fP>()"
+
+.PP
+Definition at line \fB2962\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBCell\fP [,] Map\&.cells"
+
+.PP
+Definition at line \fB2988\fP of file \fBMap\&.cs\fP\&.
+.SS "List<\fBChara\fP> Map\&.charas = new List<\fBChara\fP>()"
+
+.PP
+Definition at line \fB2982\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBMapConfig\fP Map\&.config = new \fBMapConfig\fP()"
+
+.PP
+Definition at line \fB2926\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBCustomData\fP Map\&.custom"
+
+.PP
+Definition at line \fB2930\fP of file \fBMap\&.cs\fP\&.
+.SS "List<\fBChara\fP> Map\&.deadCharas = new List<\fBChara\fP>()"
+
+.PP
+Definition at line \fB2938\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBCellEffectManager\fP Map\&.effectManager = new \fBCellEffectManager\fP()"
+
+.PP
+Definition at line \fB2994\fP of file \fBMap\&.cs\fP\&.
+.SS "FloodSpiller Map\&.flood = new FloodSpiller()"
+
+.PP
+Definition at line \fB3000\fP of file \fBMap\&.cs\fP\&.
+.SS "List<\fBFootmark\fP> Map\&.footmarks = new List<\fBFootmark\fP>()"
+
+.PP
+Definition at line \fB3009\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBFowProfile\fP Map\&.fowProfile"
+
+.PP
+Definition at line \fB3012\fP of file \fBMap\&.cs\fP\&.
+.SS "Dictionary<int, int> Map\&.gatherCounts = new Dictionary<int, int>()"
+
+.PP
+Definition at line \fB2958\fP of file \fBMap\&.cs\fP\&.
+.SS "bool Map\&.isDirtySunMap\fR [static]\fP"
+
+.PP
+Definition at line \fB2902\fP of file \fBMap\&.cs\fP\&.
+.SS "Dictionary<int, \fBPlantData\fP> Map\&.plants = new Dictionary<int, \fBPlantData\fP>()"
+
+.PP
+Definition at line \fB2970\fP of file \fBMap\&.cs\fP\&.
+.SS "Playlist Map\&.plDay"
+
+.PP
+Definition at line \fB2976\fP of file \fBMap\&.cs\fP\&.
+.SS "Playlist Map\&.plNight"
+
+.PP
+Definition at line \fB2979\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBPOIMap\fP Map\&.poiMap"
+
+.PP
+Definition at line \fB3006\fP of file \fBMap\&.cs\fP\&.
+.SS "List<\fBTransAnime\fP> Map\&.pointAnimes = new List<\fBTransAnime\fP>()"
+
+.PP
+Definition at line \fB2985\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBPropsManager\fP Map\&.props = new \fBPropsManager\fP()"
+
+.PP
+Definition at line \fB2997\fP of file \fBMap\&.cs\fP\&.
+.SS "bool Map\&.revealed"
+
+.PP
+Definition at line \fB3015\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBRoomManager\fP Map\&.rooms = new \fBRoomManager\fP()"
+
+.PP
+Definition at line \fB2918\fP of file \fBMap\&.cs\fP\&.
+.SS "int Map\&.seed"
+
+.PP
+Definition at line \fB2906\fP of file \fBMap\&.cs\fP\&.
+.SS "List<\fBChara\fP> Map\&.serializedCharas = new List<\fBChara\fP>()"
+
+.PP
+Definition at line \fB2934\fP of file \fBMap\&.cs\fP\&.
+.SS "HashSet<int> Map\&.sunMap = new HashSet<int>()\fR [static]\fP"
+
+.PP
+Definition at line \fB2899\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBTaskManager\fP Map\&.tasks = new \fBTaskManager\fP()"
+
+.PP
+Definition at line \fB2922\fP of file \fBMap\&.cs\fP\&.
+.SS "List<\fBThing\fP> Map\&.things = new List<\fBThing\fP>()"
+
+.PP
+Definition at line \fB2942\fP of file \fBMap\&.cs\fP\&.
+.SS "global\&.Version Map\&.version"
+
+.PP
+Definition at line \fB2914\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBZone\fP Map\&.zone"
+
+.PP
+Definition at line \fB2991\fP of file \fBMap\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "IEnumerable<\fBCard\fP> Map\&.Cards\fR [get]\fP"
+
+.PP
+Definition at line \fB103\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBPropsInstalled\fP Map\&.Installed\fR [get]\fP"
+
+.PP
+Definition at line \fB43\fP of file \fBMap\&.cs\fP\&.
+.SS "bool Map\&.isBreakerDown\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB19\fP of file \fBMap\&.cs\fP\&.
+.SS "bool Map\&.isGenerated\fR [get]\fP"
+
+.PP
+Definition at line \fB73\fP of file \fBMap\&.cs\fP\&.
+.SS "bool Map\&.IsIndoor\fR [get]\fP"
+
+.PP
+Definition at line \fB83\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBPropsRoaming\fP Map\&.Roaming\fR [get]\fP"
+
+.PP
+Definition at line \fB53\fP of file \fBMap\&.cs\fP\&.
+.SS "float Map\&.sizeModifier\fR [get]\fP"
+
+.PP
+Definition at line \fB63\fP of file \fBMap\&.cs\fP\&.
+.SS "int Map\&.SizeXZ\fR [get]\fP"
+
+.PP
+Definition at line \fB93\fP of file \fBMap\&.cs\fP\&.
+.SS "\fBPropsStocked\fP Map\&.Stocked\fR [get]\fP"
+
+.PP
+Definition at line \fB33\fP of file \fBMap\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

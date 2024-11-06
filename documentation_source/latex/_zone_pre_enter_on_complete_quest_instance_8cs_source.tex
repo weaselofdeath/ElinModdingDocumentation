@@ -1,0 +1,74 @@
+\doxysection{Zone\+Pre\+Enter\+On\+Complete\+Quest\+Instance.\+cs}
+\hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source}{}\label{_zone_pre_enter_on_complete_quest_instance_8cs_source}\index{Elin/ZonePreEnterOnCompleteQuestInstance.cs@{Elin/ZonePreEnterOnCompleteQuestInstance.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000751\ RID:\ 1873}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00005}\mbox{\hyperlink{class_zone_pre_enter_on_complete_quest_instance}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_zone_pre_enter_on_complete_quest_instance}{ZonePreEnterOnCompleteQuestInstance}}\ :\ \mbox{\hyperlink{class_zone_pre_enter_event}{ZonePreEnterEvent}}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003645\ RID:\ 13893\ RVA:\ 0x00126DCC\ File\ Offset:\ 0x00124FCC}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ Execute()}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ EClass.player.returnInfo\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.uidQuest\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quest}{Quest}}\ quest\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.game.quests.Get(this.uidQuest);}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chara}{Chara}}\ chara\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.FindChara(this.uidClient);}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara\ ==\ \textcolor{keyword}{null}\ ||\ chara.quest\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}[]\ array\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[7];}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ array[0]\ =\ this.uidClient.ToString();}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ array[1]\ =\ \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ array[2]\ =\ this.uidQuest.ToString();}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ array[3]\ =\ \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ array[4]\ =\ this.fail.ToString();}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ array[5]\ =\ \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ 6;}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quest}{Quest}}\ quest2\ =\ quest;}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ array[num]\ =\ ((quest2\ !=\ \textcolor{keyword}{null})\ ?\ quest2.ToString()\ :\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{keywordtype}{string}.Concat(array));}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str\ =\ \textcolor{stringliteral}{"{}exception:\ quest\ not\ found:"{}};}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chara}{Chara}}\ chara2\ =\ chara;}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str2\ =\ (chara2\ !=\ \textcolor{keyword}{null})\ ?\ chara2.ToString()\ :\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str3\ =\ \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quest}{Quest}}\ quest3\ =\ (chara\ !=\ \textcolor{keyword}{null})\ ?\ chara.quest\ :\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(str\ +\ str2\ +\ str3\ +\ ((quest3\ !=\ \textcolor{keyword}{null})\ ?\ quest3.ToString()\ :\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (quest\ ==\ \textcolor{keyword}{null}\ \&\&\ chara.quest.uid\ ==\ \textcolor{keyword}{this}.uidQuest)}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ quest\ =\ chara.quest;}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (quest\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.fail)}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ quest.Fail();}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ quest.Complete();}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.pc.IsAliveInCurrentZone)}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ chara.ShowDialog(\textcolor{stringliteral}{"{}\_chara"{}},\ this.fail\ ?\ \textcolor{stringliteral}{"{}quest\_fail"{}}\ :\ \textcolor{stringliteral}{"{}quest\_success"{}},\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CA8\ RID:\ 7336}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ uidClient;}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CA9\ RID:\ 7337}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ uidQuest;}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CAA\ RID:\ 7338}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00067}00067\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ fail;}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_on_complete_quest_instance_8cs_source_l00068}00068\ \}}
+
+\end{DoxyCode}

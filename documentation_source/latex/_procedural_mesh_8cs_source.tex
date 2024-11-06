@@ -1,0 +1,130 @@
+\doxysection{Procedural\+Mesh.\+cs}
+\hypertarget{_procedural_mesh_8cs_source}{}\label{_procedural_mesh_8cs_source}\index{Elin/ProceduralMesh.cs@{Elin/ProceduralMesh.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x0200012E\ RID:\ 302}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00006}\mbox{\hyperlink{class_procedural_mesh}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_procedural_mesh}{ProceduralMesh}}\ :\ ScriptableObject}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000816\ RID:\ 2070\ RVA:\ 0x00034E98\ File\ Offset:\ 0x00033098}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ Mesh\ GetMesh()}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.mesh)}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ this.Create();}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.mesh;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00016}00016\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000817\ RID:\ 2071\ RVA:\ 0x00034EB4\ File\ Offset:\ 0x000330B4}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Create()}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ this.mesh\ =\ \textcolor{keyword}{new}\ Mesh();}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ this.triOffset\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ this.triangles.Clear();}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ this.vertices.Clear();}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ this.uv.Clear();}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.top)}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ this.vertices.AddRange(\textcolor{keyword}{new}\ Vector3[]}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Vector3(0f,\ this.size.y,\ \textcolor{keyword}{this}.size.z)\ +\ this.pos,}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Vector3(this.size.x,\ \textcolor{keyword}{this}.size.y,\ \textcolor{keyword}{this}.size.z)\ +\ this.pos,}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Vector3(this.size.x,\ \textcolor{keyword}{this}.size.y,\ 0f)\ +\ this.pos,}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Vector3(0f,\ this.size.y,\ 0f)\ +\ this.pos}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ this.uv.AddRange(this.GetUVs(0));}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ this.AddTriangles();}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ this.vertices.AddRange(\textcolor{keyword}{new}\ Vector3[]}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Vector3(0f,\ this.size.y,\ 0f)\ +\ this.pos,}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Vector3(this.size.x,\ \textcolor{keyword}{this}.size.y,\ 0f)\ +\ this.pos,}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Vector3(this.size.x,\ \textcolor{keyword}{this}.offset.y,\ 0f)\ +\ this.pos,}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Vector3(0f,\ this.offset.y,\ 0f)\ +\ this.pos}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ this.uv.AddRange(this.GetUVs(0));}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ this.AddTriangles();}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ this.mesh.SetVertices(this.vertices);}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ this.mesh.SetUVs(0,\ this.uv);}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ this.mesh.SetTriangles(this.triangles,\ 0);}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.calculateNormal)}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ this.mesh.RecalculateNormals();}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00059}00059\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000818\ RID:\ 2072\ RVA:\ 0x00035124\ File\ Offset:\ 0x00033324}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00060}00060\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ AddTriangles()}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00061}00061\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ this.triangles.AddRange(\textcolor{keyword}{new}\ \textcolor{keywordtype}{int}[]}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ this.triOffset,}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ 1\ +\ this.triOffset,}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ 2\ +\ this.triOffset,}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ 2\ +\ this.triOffset,}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ 3\ +\ this.triOffset,}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ this.triOffset}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ this.triOffset\ +=\ 4;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00072}00072\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000819\ RID:\ 2073\ RVA:\ 0x00035190\ File\ Offset:\ 0x00033390}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00075}00075\ \ \ \ \ \textcolor{keyword}{private}\ Vector2[]\ GetUVs(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00076}00076\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ Vector2[]\ array\ =\ \textcolor{keyword}{new}\ Vector2[4];}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ Vector2\ vector\ =\ \textcolor{keyword}{new}\ Vector2(1f\ /\ this.tiling.x,\ 1f\ /\ \textcolor{keyword}{this}.tiling.y);}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ \textcolor{keywordtype}{id}\ \%\ (int)this.tiling.x;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ \textcolor{keywordtype}{id}\ /\ (int)this.tiling.x;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ num3\ =\ this.UVPadding\ /\ this.tiling.x;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ array[0]\ =\ \textcolor{keyword}{new}\ Vector2((\textcolor{keywordtype}{float})num\ /\ this.tiling.x\ +\ num3,\ 1f\ -\/\ (\textcolor{keywordtype}{float})num2\ /\ \textcolor{keyword}{this}.tiling.y\ -\/\ num3);}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ array[1]\ =\ \textcolor{keyword}{new}\ Vector2((\textcolor{keywordtype}{float})num\ /\ this.tiling.x\ +\ vector.x\ -\/\ num3,\ 1f\ -\/\ (\textcolor{keywordtype}{float})num2\ /\ \textcolor{keyword}{this}.tiling.y\ -\/\ num3);}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ array[2]\ =\ \textcolor{keyword}{new}\ Vector2((\textcolor{keywordtype}{float})num\ /\ this.tiling.x\ +\ vector.x\ -\/\ num3,\ 1f\ -\/\ ((\textcolor{keywordtype}{float})num2\ /\ \textcolor{keyword}{this}.tiling.y\ +\ vector.y)\ +\ num3);}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ array[3]\ =\ \textcolor{keyword}{new}\ Vector2((\textcolor{keywordtype}{float})num\ /\ this.tiling.x\ +\ num3,\ 1f\ -\/\ ((\textcolor{keywordtype}{float})num2\ /\ \textcolor{keyword}{this}.tiling.y\ +\ vector.y)\ +\ num3);}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ array;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00089}00089\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000872\ RID:\ 2162}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00090}00090\ \ \ \ \ \textcolor{keyword}{public}\ Vector2\ tiling\ =\ Vector2.one;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000873\ RID:\ 2163}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00093}00093\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ UVPadding\ =\ 0.02f;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00095}00095\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000874\ RID:\ 2164}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00096}00096\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ pos\ =\ \textcolor{keyword}{new}\ Vector3(0f,\ 0f,\ -\/1f);}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00098}00098\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000875\ RID:\ 2165}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00099}00099\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ offset;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00101}00101\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000876\ RID:\ 2166}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00102}00102\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ size\ =\ Vector3.one;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00104}00104\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000877\ RID:\ 2167}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00105}00105\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ top;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00107}00107\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000878\ RID:\ 2168}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00108}00108\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ calculateNormal\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00110}00110\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000879\ RID:\ 2169}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00111}00111\ \ \ \ \ \textcolor{keyword}{private}\ Mesh\ mesh;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00113}00113\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400087A\ RID:\ 2170}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00114}00114\ \ \ \ \ \textcolor{keyword}{private}\ List<int>\ triangles\ =\ \textcolor{keyword}{new}\ List<int>();}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00116}00116\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400087B\ RID:\ 2171}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00117}00117\ \ \ \ \ \textcolor{keyword}{private}\ List<Vector3>\ vertices\ =\ \textcolor{keyword}{new}\ List<Vector3>();}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00119}00119\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400087C\ RID:\ 2172}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00120}00120\ \ \ \ \ \textcolor{keyword}{private}\ List<Vector2>\ uv\ =\ \textcolor{keyword}{new}\ List<Vector2>();}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00122}00122\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400087D\ RID:\ 2173}}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00123}00123\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ triOffset;}
+\DoxyCodeLine{\Hypertarget{_procedural_mesh_8cs_source_l00124}00124\ \}}
+
+\end{DoxyCode}

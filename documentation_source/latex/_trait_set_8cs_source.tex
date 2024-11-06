@@ -1,0 +1,57 @@
+\doxysection{Trait\+Set.\+cs}
+\hypertarget{_trait_set_8cs_source}{}\label{_trait_set_8cs_source}\index{Elin/TraitSet.cs@{Elin/TraitSet.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x020006A2\ RID:\ 1698}}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00006}\mbox{\hyperlink{class_trait_set}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_trait_set}{TraitSet}}\ :\ Dictionary<int,\ Card>}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003153\ RID:\ 12627\ RVA:\ 0x00114690\ File\ Offset:\ 0x00112890}}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Add(\mbox{\hyperlink{class_card}{Card}}\ c)}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ base.Add(c.uid,\ c);}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003154\ RID:\ 12628\ RVA:\ 0x0011469F\ File\ Offset:\ 0x0011289F}}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Remove(\mbox{\hyperlink{class_card}{Card}}\ c)}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ base.Remove(c.uid);}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003155\ RID:\ 12629\ RVA:\ 0x001146AE\ File\ Offset:\ 0x001128AE}}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_trait}{Trait}}\ GetRandom()}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_card}{Card}}\ card\ =\ this.RandomItem<int,\ Card>();}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (card\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ card.trait;}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003156\ RID:\ 12630\ RVA:\ 0x001146C1\ File\ Offset:\ 0x001128C1}}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_trait}{Trait}}\ GetRandom(Func<Card,\ bool>\ func)}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (func\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.GetRandom();}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_card}{Card}}\ card\ =\ base.Values.Where(func).RandomItem<\mbox{\hyperlink{class_card}{Card}}>();}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (card\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ card.trait;}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003157\ RID:\ 12631\ RVA:\ 0x001146E9\ File\ Offset:\ 0x001128E9}}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ Contains(\mbox{\hyperlink{class_card}{Card}}\ c)}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ base.ContainsKey(c.uid);}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_set_8cs_source_l00051}00051\ \}}
+
+\end{DoxyCode}

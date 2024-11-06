@@ -1,0 +1,1115 @@
+.TH "Point" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Point
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBEClass\fP\&.
+.PP
+Inherited by \fBLogicalPoint\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBWithin\fP (int _x, int _z, int _w, int _h)"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBFirstVisibleChara\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHasRoomOrArea\fP (\fBBaseArea\fP a)"
+.br
+.ti -1c
+.RI "bool \fBIsPublicSpace\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "\fBPoint\fP (int _x, int _z)"
+.br
+.ti -1c
+.RI "\fBPoint\fP (int _index)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBCopy\fP ()"
+.br
+.ti -1c
+.RI "T \fBCopy< T >\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBSet\fP (int _x, int _z)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBSet\fP (int index)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBSet\fP (\fBPoint\fP point)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "void \fBSet\fP (Vector3 v)"
+.br
+.ti -1c
+.RI "ref Vector3 \fBPositionAuto\fP ()"
+.br
+.ti -1c
+.RI "ref Vector3 \fBPosition\fP (int height)"
+.br
+.ti -1c
+.RI "ref Vector3 \fBPosition\fP ()"
+.br
+.ti -1c
+.RI "ref Vector3 \fBPositionTopdown\fP ()"
+.br
+.ti -1c
+.RI "ref Vector3 \fBPositionTopdownTreasure\fP ()"
+.br
+.ti -1c
+.RI "ref Vector3 \fBPositionCenter\fP ()"
+.br
+.ti -1c
+.RI "Quaternion \fBGetRotation\fP (\fBPoint\fP to)"
+.br
+.ti -1c
+.RI "unsafe float \fBGetAngle\fP (\fBPoint\fP to)"
+.br
+.ti -1c
+.RI "float \fBGetAngle2\fP (\fBPoint\fP to)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetNearestPoint\fP (bool allowBlock=false, bool allowChara=true, bool allowInstalled=true, bool ignoreCenter=false)"
+.br
+.ti -1c
+.RI "bool \fBForeachNearestPoint\fP (Func< \fBPoint\fP, bool > endFunc, bool allowBlock=false, bool allowChara=true, bool allowInstalled=true, bool ignoreCenter=false)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomNeighbor\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomPoint\fP (int radius, bool requireLos=true, bool allowChara=true, bool allowBlocked=false, int tries=100)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetPointTowards\fP (\fBPoint\fP dest)"
+.br
+.ti -1c
+.RI "void \fBTalkWitnesses\fP (\fBChara\fP criminal, string idTalk, int radius=4, WitnessType type=WitnessType\&.everyone, Func< \fBChara\fP, bool > talkIf=null, int chance=3)"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBListWitnesses\fP (\fBChara\fP criminal, int radius=4, WitnessType type=WitnessType\&.crime, \fBChara\fP target=null)"
+.br
+.ti -1c
+.RI "bool \fBTryWitnessCrime\fP (\fBChara\fP criminal, \fBChara\fP target=null, int radius=4, Func< \fBChara\fP, bool > funcWitness=null)"
+.br
+.ti -1c
+.RI "void \fBCallGuard\fP (\fBChara\fP criminal, \fBChara\fP caller)"
+.br
+.ti -1c
+.RI "void \fBSetBlock\fP (int idMat=0, int idBlock=0)"
+.br
+.ti -1c
+.RI "void \fBSetFloor\fP (int idMat=0, int idFloor=0)"
+.br
+.ti -1c
+.RI "void \fBSetObj\fP (int id=0, int value=1, int dir=0)"
+.br
+.ti -1c
+.RI "void \fBModFire\fP (int value)"
+.br
+.ti -1c
+.RI "void \fBPlow\fP ()"
+.br
+.ti -1c
+.RI "bool \fBEquals\fP (int _x, int _z)"
+.br
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.ti -1c
+.RI "int \fBDistance\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "int \fBDistance\fP (int tx, int tz)"
+.br
+.ti -1c
+.RI "bool \fBIsBlockByHeight\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBClamp\fP (bool useBounds=false)"
+.br
+.ti -1c
+.RI "List< \fBCard\fP > \fBListCards\fP (bool includeMasked=false)"
+.br
+.ti -1c
+.RI "List< \fBCard\fP > \fBListVisibleCards\fP ()"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBFindAttackTarget\fP ()"
+.br
+.ti -1c
+.RI "T \fBFindThing< T >\fP ()"
+.br
+.ti -1c
+.RI "List< \fBCard\fP > \fBListThings< T >\fP (bool onlyInstalled=true)"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBListCharas\fP ()"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBListVisibleCharas\fP ()"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBListCharasInNeighbor\fP (Func< \fBChara\fP, bool > func)"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBListCharasInRadius\fP (\fBChara\fP cc, int dist, Func< \fBChara\fP, bool > func)"
+.br
+.ti -1c
+.RI "T \fBGetInstalled< T >\fP ()"
+.br
+.ti -1c
+.RI "\fBEffect\fP \fBPlayEffect\fP (string id)"
+.br
+.ti -1c
+.RI "unsafe SoundSource \fBPlaySound\fP (string id, bool synced=true, float v=1f, bool spatial=true)"
+.br
+.ti -1c
+.RI "void \fBRefreshNeighborTiles\fP ()"
+.br
+.ti -1c
+.RI "void \fBRefreshTile\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHasNonHomeProperty\fP (\fBThing\fP exclude=null)"
+.br
+.ti -1c
+.RI "void \fBAnimate\fP (AnimeID id, bool animeBlock=false)"
+.br
+.ti -1c
+.RI "\fBRenderParam\fP \fBApplyAnime\fP (\fBRenderParam\fP p)"
+.br
+.ti -1c
+.RI "Vector3 \fBApplyAnime\fP (ref Vector3 p)"
+.br
+.ti -1c
+.RI "List< \fBIInspect\fP > \fBListInspectorTargets\fP ()"
+.br
+.ti -1c
+.RI "void \fBForeachMultiSize\fP (int w, int h, Action< \fBPoint\fP, bool > action)"
+.br
+.ti -1c
+.RI "void \fBForeachNeighbor\fP (Action< \fBPoint\fP > action, bool diagonal=true)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBToRegionPos\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBPoint\fP \fBGetShared\fP (int x, int z)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBx\fP"
+.br
+.ti -1c
+.RI "int \fBz\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBXY\fP[] \fBSurrounds\fP"
+.br
+.ti -1c
+.RI "static Vector3 \fBfixedPos\fP"
+.br
+.ti -1c
+.RI "static \fBPoint\fP \fBshared\fP = new \fBPoint\fP()"
+.br
+.ti -1c
+.RI "static \fBPoint\fP \fBshared2\fP = new \fBPoint\fP()"
+.br
+.ti -1c
+.RI "static \fBPoint\fP \fBshared3\fP = new \fBPoint\fP()"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fBmap\fP"
+.br
+.ti -1c
+.RI "static \fBPoint\fP \fBInvalid\fP"
+.br
+.ti -1c
+.RI "static \fBPoint\fP \fBZero\fP = new \fBPoint\fP()"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fB_screen\fP"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBindex\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBcell\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmatRoofBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmatBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmatFloor\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmatBridge\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceBlock\&.Row\fP \fBsourceRoofBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceBlock\&.Row\fP \fBsourceBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceFloor\&.Row\fP \fBsourceFloor\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceFloor\&.Row\fP \fBsourceBridge\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceObj\&.Row\fP \fBsourceObj\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCellDetail\fP \fBdetail\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBArea\fP \fBarea\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBFront\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBGrowSystem\fP \fBgrowth\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBeloX\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBeloY\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasDesignation\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasDirt\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsValid\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInBounds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInBoundsPlus\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFarmField\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsWater\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasRamp\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasRail\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasRampOrLadder\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasObj\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasDecal\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasMinableBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasWallOrFence\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasWall\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasFence\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasNonWallBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasTaskBuild\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasBlockRecipe\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasFloor\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasBridge\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSky\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasArea\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasChara\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasMultipleChara\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBFirstChara\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFirstThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBLastThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBInstalled\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "List< \fBThing\fP > \fBThings\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBCharas\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSeen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSync\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsHidden\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsBlocked\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB10\fP of file \fBPoint\&.cs\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Point\&.Point ()"
+
+.PP
+Definition at line \fB634\fP of file \fBPoint\&.cs\fP\&.
+.SS "Point\&.Point (\fBPoint\fP p)"
+
+.PP
+Definition at line \fB639\fP of file \fBPoint\&.cs\fP\&.
+.SS "Point\&.Point (int _x, int _z)"
+
+.PP
+Definition at line \fB646\fP of file \fBPoint\&.cs\fP\&.
+.SS "Point\&.Point (int _index)"
+
+.PP
+Definition at line \fB653\fP of file \fBPoint\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Point\&.Animate (AnimeID id, bool animeBlock = \fRfalse\fP)"
+
+.PP
+Definition at line \fB1461\fP of file \fBPoint\&.cs\fP\&.
+.SS "Vector3 Point\&.ApplyAnime (ref Vector3 p)"
+
+.PP
+Definition at line \fB1503\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBRenderParam\fP Point\&.ApplyAnime (\fBRenderParam\fP p)"
+
+.PP
+Definition at line \fB1487\fP of file \fBPoint\&.cs\fP\&.
+.SS "void Point\&.CallGuard (\fBChara\fP criminal, \fBChara\fP caller)"
+
+.PP
+Definition at line \fB1079\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.Clamp (bool useBounds = \fRfalse\fP)"
+
+.PP
+Definition at line \fB1181\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.Copy ()"
+
+.PP
+Definition at line \fB659\fP of file \fBPoint\&.cs\fP\&.
+.SS "T Point\&.Copy< T > ()"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fI\fBPoint\fP\fP
+.PP
+Definition at line \fB665\fP of file \fBPoint\&.cs\fP\&.
+.SS "int Point\&.Distance (int tx, int tz)"
+
+.PP
+Definition at line \fB1169\fP of file \fBPoint\&.cs\fP\&.
+.SS "int Point\&.Distance (\fBPoint\fP p)"
+
+.PP
+Definition at line \fB1163\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.Equals (int _x, int _z)"
+
+.PP
+Definition at line \fB1135\fP of file \fBPoint\&.cs\fP\&.
+.SS "override bool Point\&.Equals (object obj)"
+
+.PP
+Definition at line \fB1141\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBCard\fP Point\&.FindAttackTarget ()"
+
+.PP
+Definition at line \fB1274\fP of file \fBPoint\&.cs\fP\&.
+.SS "T Point\&.FindThing< T > ()"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fI\fBTrait\fP\fP
+.PP
+Definition at line \fB1287\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBChara\fP Point\&.FirstVisibleChara ()"
+
+.PP
+Definition at line \fB498\fP of file \fBPoint\&.cs\fP\&.
+.SS "void Point\&.ForeachMultiSize (int w, int h, Action< \fBPoint\fP, bool > action)"
+
+.PP
+Definition at line \fB1550\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.ForeachNearestPoint (Func< \fBPoint\fP, bool > endFunc, bool allowBlock = \fRfalse\fP, bool allowChara = \fRtrue\fP, bool allowInstalled = \fRtrue\fP, bool ignoreCenter = \fRfalse\fP)"
+
+.PP
+Definition at line \fB872\fP of file \fBPoint\&.cs\fP\&.
+.SS "void Point\&.ForeachNeighbor (Action< \fBPoint\fP > action, bool diagonal = \fRtrue\fP)"
+
+.PP
+Definition at line \fB1563\fP of file \fBPoint\&.cs\fP\&.
+.SS "unsafe float Point\&.GetAngle (\fBPoint\fP to)"
+
+.PP
+Definition at line \fB796\fP of file \fBPoint\&.cs\fP\&.
+.SS "float Point\&.GetAngle2 (\fBPoint\fP to)"
+
+.PP
+Definition at line \fB803\fP of file \fBPoint\&.cs\fP\&.
+.SS "override int Point\&.GetHashCode ()"
+
+.PP
+Definition at line \fB1157\fP of file \fBPoint\&.cs\fP\&.
+.SS "T Point\&.GetInstalled< T > ()"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fI\fBTrait\fP\fP
+.PP
+Definition at line \fB1386\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.GetNearestPoint (bool allowBlock = \fRfalse\fP, bool allowChara = \fRtrue\fP, bool allowInstalled = \fRtrue\fP, bool ignoreCenter = \fRfalse\fP)"
+
+.PP
+Definition at line \fB810\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.GetPointTowards (\fBPoint\fP dest)"
+
+.PP
+Definition at line \fB960\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.GetRandomNeighbor ()"
+
+.PP
+Definition at line \fB934\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.GetRandomPoint (int radius, bool requireLos = \fRtrue\fP, bool allowChara = \fRtrue\fP, bool allowBlocked = \fRfalse\fP, int tries = \fR100\fP)"
+
+.PP
+Definition at line \fB945\fP of file \fBPoint\&.cs\fP\&.
+.SS "Quaternion Point\&.GetRotation (\fBPoint\fP to)"
+
+.PP
+Definition at line \fB790\fP of file \fBPoint\&.cs\fP\&.
+.SS "static \fBPoint\fP Point\&.GetShared (int x, int z)\fR [static]\fP"
+
+.PP
+Definition at line \fB13\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasNonHomeProperty (\fBThing\fP exclude = \fRnull\fP)"
+
+.PP
+Definition at line \fB1444\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasRoomOrArea (\fBBaseArea\fP a)"
+
+.PP
+Definition at line \fB618\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.IsBlockByHeight (\fBPoint\fP p)"
+
+.PP
+Definition at line \fB1175\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.IsPublicSpace ()"
+
+.PP
+Definition at line \fB624\fP of file \fBPoint\&.cs\fP\&.
+.SS "List< \fBCard\fP > Point\&.ListCards (bool includeMasked = \fRfalse\fP)"
+
+.PP
+Definition at line \fB1225\fP of file \fBPoint\&.cs\fP\&.
+.SS "List< \fBChara\fP > Point\&.ListCharas ()"
+
+.PP
+Definition at line \fB1320\fP of file \fBPoint\&.cs\fP\&.
+.SS "List< \fBChara\fP > Point\&.ListCharasInNeighbor (Func< \fBChara\fP, bool > func)"
+
+.PP
+Definition at line \fB1351\fP of file \fBPoint\&.cs\fP\&.
+.SS "List< \fBChara\fP > Point\&.ListCharasInRadius (\fBChara\fP cc, int dist, Func< \fBChara\fP, bool > func)"
+
+.PP
+Definition at line \fB1372\fP of file \fBPoint\&.cs\fP\&.
+.SS "List< \fBIInspect\fP > Point\&.ListInspectorTargets ()"
+
+.PP
+Definition at line \fB1516\fP of file \fBPoint\&.cs\fP\&.
+.SS "List< \fBCard\fP > Point\&.ListThings< T > (bool onlyInstalled = \fRtrue\fP)"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fI\fBTrait\fP\fP
+.PP
+Definition at line \fB1303\fP of file \fBPoint\&.cs\fP\&.
+.SS "List< \fBCard\fP > Point\&.ListVisibleCards ()"
+
+.PP
+Definition at line \fB1250\fP of file \fBPoint\&.cs\fP\&.
+.SS "List< \fBChara\fP > Point\&.ListVisibleCharas ()"
+
+.PP
+Definition at line \fB1334\fP of file \fBPoint\&.cs\fP\&.
+.SS "List< \fBChara\fP > Point\&.ListWitnesses (\fBChara\fP criminal, int radius = \fR4\fP, WitnessType type = \fRWitnessType::crime\fP, \fBChara\fP target = \fRnull\fP)"
+
+.PP
+Definition at line \fB991\fP of file \fBPoint\&.cs\fP\&.
+.SS "void Point\&.ModFire (int value)"
+
+.PP
+Definition at line \fB1112\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBEffect\fP Point\&.PlayEffect (string id)"
+
+.PP
+Definition at line \fB1402\fP of file \fBPoint\&.cs\fP\&.
+.SS "unsafe SoundSource Point\&.PlaySound (string id, bool synced = \fRtrue\fP, float v = \fR1f\fP, bool spatial = \fRtrue\fP)"
+
+.PP
+Definition at line \fB1408\fP of file \fBPoint\&.cs\fP\&.
+.SS "void Point\&.Plow ()"
+
+.PP
+Definition at line \fB1118\fP of file \fBPoint\&.cs\fP\&.
+.SS "ref Vector3 Point\&.Position ()"
+
+.PP
+Definition at line \fB744\fP of file \fBPoint\&.cs\fP\&.
+.SS "ref Vector3 Point\&.Position (int height)"
+
+.PP
+Definition at line \fB731\fP of file \fBPoint\&.cs\fP\&.
+.SS "ref Vector3 Point\&.PositionAuto ()"
+
+.PP
+Definition at line \fB721\fP of file \fBPoint\&.cs\fP\&.
+.SS "ref Vector3 Point\&.PositionCenter ()"
+
+.PP
+Definition at line \fB774\fP of file \fBPoint\&.cs\fP\&.
+.SS "ref Vector3 Point\&.PositionTopdown ()"
+
+.PP
+Definition at line \fB754\fP of file \fBPoint\&.cs\fP\&.
+.SS "ref Vector3 Point\&.PositionTopdownTreasure ()"
+
+.PP
+Definition at line \fB764\fP of file \fBPoint\&.cs\fP\&.
+.SS "void Point\&.RefreshNeighborTiles ()"
+
+.PP
+Definition at line \fB1432\fP of file \fBPoint\&.cs\fP\&.
+.SS "void Point\&.RefreshTile ()"
+
+.PP
+Definition at line \fB1438\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.Set (int _x, int _z)"
+
+.PP
+Definition at line \fB673\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.Set (int index)"
+
+.PP
+Definition at line \fB681\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.Set (\fBPoint\fP point)"
+
+.PP
+Definition at line \fB689\fP of file \fBPoint\&.cs\fP\&.
+.SS "void Point\&.Set (Vector3 v)"
+
+.PP
+Definition at line \fB710\fP of file \fBPoint\&.cs\fP\&.
+.SS "void Point\&.SetBlock (int idMat = \fR0\fP, int idBlock = \fR0\fP)"
+
+.PP
+Definition at line \fB1094\fP of file \fBPoint\&.cs\fP\&.
+.SS "void Point\&.SetFloor (int idMat = \fR0\fP, int idFloor = \fR0\fP)"
+
+.PP
+Definition at line \fB1100\fP of file \fBPoint\&.cs\fP\&.
+.SS "void Point\&.SetObj (int id = \fR0\fP, int value = \fR1\fP, int dir = \fR0\fP)"
+
+.PP
+Definition at line \fB1106\fP of file \fBPoint\&.cs\fP\&.
+.SS "void Point\&.TalkWitnesses (\fBChara\fP criminal, string idTalk, int radius = \fR4\fP, WitnessType type = \fRWitnessType::everyone\fP, Func< \fBChara\fP, bool > talkIf = \fRnull\fP, int chance = \fR3\fP)"
+
+.PP
+Definition at line \fB975\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.ToRegionPos ()"
+
+.PP
+Definition at line \fB1583\fP of file \fBPoint\&.cs\fP\&.
+.SS "override string Point\&.ToString ()"
+
+.PP
+Definition at line \fB697\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.TryWitnessCrime (\fBChara\fP criminal, \fBChara\fP target = \fRnull\fP, int radius = \fR4\fP, Func< \fBChara\fP, bool > funcWitness = \fRnull\fP)"
+
+.PP
+Definition at line \fB1049\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.Within (int _x, int _z, int _w, int _h)"
+
+.PP
+Definition at line \fB252\fP of file \fBPoint\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBBaseGameScreen\fP Point\&._screen\fR [static]\fP"
+
+.PP
+Definition at line \fB1652\fP of file \fBPoint\&.cs\fP\&.
+.SS "Vector3 Point\&.fixedPos\fR [static]\fP"
+
+.PP
+Definition at line \fB1617\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.Invalid\fR [static]\fP"
+\fBInitial value:\fP
+.nf
+= new Point
+    {
+        IsValid = false
+    }
+.PP
+.fi
+
+.PP
+Definition at line \fB1632\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBMap\fP Point\&.map\fR [static]\fP"
+
+.PP
+Definition at line \fB1629\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.shared = new \fBPoint\fP()\fR [static]\fP"
+
+.PP
+Definition at line \fB1620\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.shared2 = new \fBPoint\fP()\fR [static]\fP"
+
+.PP
+Definition at line \fB1623\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.shared3 = new \fBPoint\fP()\fR [static]\fP"
+
+.PP
+Definition at line \fB1626\fP of file \fBPoint\&.cs\fP\&.
+.SS "readonly \fBXY\fP [] Point\&.Surrounds\fR [static]\fP"
+\fBInitial value:\fP
+.nf
+= new XY[]
+    {
+        new XY(0, \-1),
+        new XY(1, 0),
+        new XY(0, 1),
+        new XY(\-1, 0)
+    }
+.PP
+.fi
+
+.PP
+Definition at line \fB1608\fP of file \fBPoint\&.cs\fP\&.
+.SS "int Point\&.x"
+
+.PP
+Definition at line \fB1642\fP of file \fBPoint\&.cs\fP\&.
+.SS "int Point\&.z"
+
+.PP
+Definition at line \fB1646\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.Zero = new \fBPoint\fP()\fR [static]\fP"
+
+.PP
+Definition at line \fB1638\fP of file \fBPoint\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBArea\fP Point\&.area\fR [get]\fP"
+
+.PP
+Definition at line \fB142\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBCell\fP Point\&.cell\fR [get]\fP"
+
+.PP
+Definition at line \fB32\fP of file \fBPoint\&.cs\fP\&.
+.SS "List<\fBChara\fP> Point\&.Charas\fR [get]\fP"
+
+.PP
+Definition at line \fB569\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBCellDetail\fP Point\&.detail\fR [get]\fP"
+
+.PP
+Definition at line \fB132\fP of file \fBPoint\&.cs\fP\&.
+.SS "int Point\&.eloX\fR [get]\fP"
+
+.PP
+Definition at line \fB177\fP of file \fBPoint\&.cs\fP\&.
+.SS "int Point\&.eloY\fR [get]\fP"
+
+.PP
+Definition at line \fB187\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBChara\fP Point\&.FirstChara\fR [get]\fP"
+
+.PP
+Definition at line \fB484\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBThing\fP Point\&.FirstThing\fR [get]\fP"
+
+.PP
+Definition at line \fB515\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBPoint\fP Point\&.Front\fR [get]\fP"
+
+.PP
+Definition at line \fB157\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBGrowSystem\fP Point\&.growth\fR [get]\fP"
+
+.PP
+Definition at line \fB167\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasArea\fR [get]\fP"
+
+.PP
+Definition at line \fB441\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB329\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasBlockRecipe\fR [get]\fP"
+
+.PP
+Definition at line \fB399\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasBridge\fR [get]\fP"
+
+.PP
+Definition at line \fB421\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasChara\fR [get]\fP"
+
+.PP
+Definition at line \fB452\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasDecal\fR [get]\fP"
+
+.PP
+Definition at line \fB319\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasDesignation\fR [get]\fP"
+
+.PP
+Definition at line \fB197\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasDirt\fR [get]\fP"
+
+.PP
+Definition at line \fB208\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasFence\fR [get]\fP"
+
+.PP
+Definition at line \fB369\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasFloor\fR [get]\fP"
+
+.PP
+Definition at line \fB411\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasMinableBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB339\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasMultipleChara\fR [get]\fP"
+
+.PP
+Definition at line \fB474\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasNonWallBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB379\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasObj\fR [get]\fP"
+
+.PP
+Definition at line \fB309\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasRail\fR [get]\fP"
+
+.PP
+Definition at line \fB289\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasRamp\fR [get]\fP"
+
+.PP
+Definition at line \fB279\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasRampOrLadder\fR [get]\fP"
+
+.PP
+Definition at line \fB299\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasTaskBuild\fR [get]\fP"
+
+.PP
+Definition at line \fB389\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasThing\fR [get]\fP"
+
+.PP
+Definition at line \fB463\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasWall\fR [get]\fP"
+
+.PP
+Definition at line \fB359\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.HasWallOrFence\fR [get]\fP"
+
+.PP
+Definition at line \fB349\fP of file \fBPoint\&.cs\fP\&.
+.SS "int Point\&.index\fR [get]\fP"
+
+.PP
+Definition at line \fB22\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBThing\fP Point\&.Installed\fR [get]\fP"
+
+.PP
+Definition at line \fB545\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.IsBlocked\fR [get]\fP"
+
+.PP
+Definition at line \fB609\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.IsFarmField\fR [get]\fP"
+
+.PP
+Definition at line \fB259\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.IsHidden\fR [get]\fP"
+
+.PP
+Definition at line \fB599\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.IsInBounds\fR [get]\fP"
+
+.PP
+Definition at line \fB233\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.IsInBoundsPlus\fR [get]\fP"
+
+.PP
+Definition at line \fB243\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.IsSeen\fR [get]\fP"
+
+.PP
+Definition at line \fB579\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.IsSky\fR [get]\fP"
+
+.PP
+Definition at line \fB431\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.IsSync\fR [get]\fP"
+
+.PP
+Definition at line \fB589\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.IsValid\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB219\fP of file \fBPoint\&.cs\fP\&.
+.SS "bool Point\&.IsWater\fR [get]\fP"
+
+.PP
+Definition at line \fB269\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBThing\fP Point\&.LastThing\fR [get]\fP"
+
+.PP
+Definition at line \fB530\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBSourceMaterial\&.Row\fP Point\&.matBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB52\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBSourceMaterial\&.Row\fP Point\&.matBridge\fR [get]\fP"
+
+.PP
+Definition at line \fB72\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBSourceMaterial\&.Row\fP Point\&.matFloor\fR [get]\fP"
+
+.PP
+Definition at line \fB62\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBSourceMaterial\&.Row\fP Point\&.matRoofBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB42\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBSourceBlock\&.Row\fP Point\&.sourceBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB92\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBSourceFloor\&.Row\fP Point\&.sourceBridge\fR [get]\fP"
+
+.PP
+Definition at line \fB112\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBSourceFloor\&.Row\fP Point\&.sourceFloor\fR [get]\fP"
+
+.PP
+Definition at line \fB102\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBSourceObj\&.Row\fP Point\&.sourceObj\fR [get]\fP"
+
+.PP
+Definition at line \fB122\fP of file \fBPoint\&.cs\fP\&.
+.SS "\fBSourceBlock\&.Row\fP Point\&.sourceRoofBlock\fR [get]\fP"
+
+.PP
+Definition at line \fB82\fP of file \fBPoint\&.cs\fP\&.
+.SS "List<\fBThing\fP> Point\&.Things\fR [get]\fP"
+
+.PP
+Definition at line \fB559\fP of file \fBPoint\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

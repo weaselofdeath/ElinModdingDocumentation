@@ -1,0 +1,89 @@
+\doxysection{Act\+Rush.\+cs}
+\hypertarget{_act_rush_8cs_source}{}\label{_act_rush_8cs_source}\index{Elin/ActRush.cs@{Elin/ActRush.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00003}00003\ \textcolor{comment}{//\ Token:\ 0x020001BF\ RID:\ 447}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00004}\mbox{\hyperlink{class_act_rush}{00004}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_act_rush}{ActRush}}\ :\ \mbox{\hyperlink{class_act_melee}{ActMelee}}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000333\ RID:\ 819}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000CEE\ RID:\ 3310\ RVA:\ 0x00065AE1\ File\ Offset:\ 0x00063CE1}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ ShowMapHighlight}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CEF\ RID:\ 3311\ RVA:\ 0x00065AE4\ File\ Offset:\ 0x00063CE4}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnMarkMapHighlights()}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.scene.mouseTarget.pos.IsValid\ ||\ \mbox{\hyperlink{class_e_class}{EClass}}.scene.mouseTarget.TargetChara\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ dest\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.scene.mouseTarget.pos;}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_los}{Los}}.IsVisible(\mbox{\hyperlink{class_e_class}{EClass}}.pc.pos,\ dest,\ delegate(\mbox{\hyperlink{class_point}{Point}}\ p,\ \textcolor{keywordtype}{bool}\ blocked)}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p.Equals(\mbox{\hyperlink{class_e_class}{EClass}}.pc.pos))}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ p.cell.highlight\ =\ ((blocked\ ||\ p.IsBlocked\ ||\ (!p.Equals(dest)\ \&\&\ p.HasChara))\ ?\ 4\ :\ ((p.Distance(\mbox{\hyperlink{class_e_class}{EClass}}.pc.pos)\ <=\ 2)\ ?\ 2\ :\ 8));}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.player.lastMarkedHighlights.Add(p.Copy());}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CF0\ RID:\ 3312\ RVA:\ 0x00065B58\ File\ Offset:\ 0x00063D58}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ CanPerform()}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00037}00037\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ Act.CC.IsPC\ \&\&\ !(Act.CC.ai\ is\ \mbox{\hyperlink{class_goal_auto_combat}{GoalAutoCombat}});}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flag)}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ Act.TC\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.scene.mouseTarget.TargetChara;}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_act}{Act}}.TC\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_act}{Act}}.TP.Set(flag\ ?\ \mbox{\hyperlink{class_e_class}{EClass}}.scene.mouseTarget.pos\ :\ \mbox{\hyperlink{class_act}{Act}}.TC.pos);}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !Act.CC.isRestrained\ \&\&\ Act.CC.host\ ==\ \textcolor{keyword}{null}\ \&\&\ \mbox{\hyperlink{class_act}{Act}}.CC.Dist(\mbox{\hyperlink{class_act}{Act}}.TP)\ >\ 2\ \&\&\ \mbox{\hyperlink{class_los}{Los}}.GetRushPoint(\mbox{\hyperlink{class_act}{Act}}.CC.pos,\ \mbox{\hyperlink{class_act}{Act}}.TP)\ !=\ \textcolor{keyword}{null}\ \&\&\ base.CanPerform();}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000334\ RID:\ 820}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000CF1\ RID:\ 3313\ RVA:\ 0x00065C1F\ File\ Offset:\ 0x00063E1F}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{int}\ PerformDistance}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00054}00054\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 6;}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CF2\ RID:\ 3314\ RVA:\ 0x00065C24\ File\ Offset:\ 0x00063E24}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ Perform()}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00063}00063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ Act.CC.IsPC\ \&\&\ !(Act.CC.ai\ is\ \mbox{\hyperlink{class_goal_auto_combat}{GoalAutoCombat}});}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flag)}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ Act.TC\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.scene.mouseTarget.TargetChara;}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_act}{Act}}.TC\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_act}{Act}}.TP.Set(flag\ ?\ \mbox{\hyperlink{class_e_class}{EClass}}.scene.mouseTarget.pos\ :\ \mbox{\hyperlink{class_act}{Act}}.TC.pos);}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ \mbox{\hyperlink{class_act}{Act}}.CC.Dist(\mbox{\hyperlink{class_act}{Act}}.TP);}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ rushPoint\ =\ \mbox{\hyperlink{class_los}{Los}}.GetRushPoint(\mbox{\hyperlink{class_act}{Act}}.CC.pos,\ \mbox{\hyperlink{class_act}{Act}}.TP);}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_act}{Act}}.CC.pos.PlayEffect(\textcolor{stringliteral}{"{}vanish"{}});}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_act}{Act}}.CC.MoveImmediate(rushPoint,\ \textcolor{keyword}{true},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_act}{Act}}.CC.Say(\textcolor{stringliteral}{"{}rush"{}},\ \mbox{\hyperlink{class_act}{Act}}.CC,\ \mbox{\hyperlink{class_act}{Act}}.TC,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_act}{Act}}.CC.PlaySound(\textcolor{stringliteral}{"{}rush"{}},\ 1f,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_act}{Act}}.CC.pos.PlayEffect(\textcolor{stringliteral}{"{}vanish"{}});}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ base.Attack(1f\ +\ 0.1f\ *\ (\textcolor{keywordtype}{float})num,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_act_rush_8cs_source_l00083}00083\ \}}
+
+\end{DoxyCode}

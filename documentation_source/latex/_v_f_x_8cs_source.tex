@@ -1,0 +1,43 @@
+\doxysection{VFX.\+cs}
+\hypertarget{_v_f_x_8cs_source}{}\label{_v_f_x_8cs_source}\index{Elin/VFX.cs@{Elin/VFX.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000129\ RID:\ 297}}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00005}\mbox{\hyperlink{class_v_f_x}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_v_f_x}{VFX}}\ :\ \mbox{\hyperlink{class_e_mono}{EMono}}}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007FA\ RID:\ 2042\ RVA:\ 0x00033A2C\ File\ Offset:\ 0x00031C2C}}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnChangeHour()}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ maxParticles\ =\ (int)(this.timeCurve.Evaluate(\mbox{\hyperlink{class_e_mono}{EMono}}.scene.timeRatio)\ *\ (\textcolor{keywordtype}{float})\textcolor{keyword}{this}.baseParticleCount);}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ ParticleSystem.MainModule\ main\ =\ this.ps.main;}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ main.maxParticles\ =\ maxParticles;}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.useSunColor)}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ main.startColor\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.scene.profile.color.sun.Evaluate(\mbox{\hyperlink{class_e_mono}{EMono}}.scene.timeRatio);}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.dbg)}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\mbox{\hyperlink{class_e_mono}{EMono}}.scene.timeRatio.ToString()\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ \textcolor{keyword}{this}.ps.main.maxParticles.ToString());}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400083B\ RID:\ 2107}}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{public}\ ParticleSystem\ ps;}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400083C\ RID:\ 2108}}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00027}00027\ \ \ \ \ \textcolor{keyword}{public}\ AnimationCurve\ timeCurve;}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400083D\ RID:\ 2109}}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ baseParticleCount;}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400083E\ RID:\ 2110}}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ useSunColor;}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400083F\ RID:\ 2111}}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ dbg;}
+\DoxyCodeLine{\Hypertarget{_v_f_x_8cs_source_l00037}00037\ \}}
+
+\end{DoxyCode}

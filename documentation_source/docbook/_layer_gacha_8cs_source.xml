@@ -1,0 +1,216 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__layer_gacha_8cs_source" xml:lang="en-US">
+<title>LayerGacha.cs</title>
+<indexterm><primary>Elin/LayerGacha.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__layer_gacha_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__layer_gacha_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>DG.Tweening;
+<anchor xml:id="__layer_gacha_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__layer_gacha_8cs_source_1l00004"/>00004 
+<anchor xml:id="__layer_gacha_8cs_source_1l00005"/>00005 <emphasis role="comment">//&#32;Token:&#32;0x02000547&#32;RID:&#32;1351</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00006"/><link linkend="_class_layer_gacha">00006</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_layer_gacha">LayerGacha</link>&#32;:&#32;<link linkend="_class_e_layer">ELayer</link>
+<anchor xml:id="__layer_gacha_8cs_source_1l00007"/>00007 {
+<anchor xml:id="__layer_gacha_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024BD&#32;RID:&#32;9405&#32;RVA:&#32;0x000CF49B&#32;File&#32;Offset:&#32;0x000CD69B</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnAfterInit()
+<anchor xml:id="__layer_gacha_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_msg">Msg</link>.TalkHomeMemeber(<emphasis role="stringliteral">&quot;layerGacha&quot;</emphasis>);
+<anchor xml:id="__layer_gacha_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.alt)
+<anchor xml:id="__layer_gacha_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_action_mode">ActionMode</link>.NoMap.Activate(<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__layer_gacha_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshCoin();
+<anchor xml:id="__layer_gacha_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.InvokeRepeating(<emphasis role="stringliteral">&quot;RandomAnime&quot;</emphasis>,&#32;2f,&#32;2f);
+<anchor xml:id="__layer_gacha_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00019"/>00019 
+<anchor xml:id="__layer_gacha_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024BE&#32;RID:&#32;9406&#32;RVA:&#32;0x000CF4D7&#32;File&#32;Offset:&#32;0x000CD6D7</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RandomAnime()
+<anchor xml:id="__layer_gacha_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.randomAnimes.RandomItem&lt;DOTweenAnimation&gt;().DORestart();
+<anchor xml:id="__layer_gacha_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00025"/>00025 
+<anchor xml:id="__layer_gacha_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024BF&#32;RID:&#32;9407&#32;RVA:&#32;0x000CF4E9&#32;File&#32;Offset:&#32;0x000CD6E9</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickGoldGacha(<emphasis role="keywordtype">int</emphasis>&#32;num)
+<anchor xml:id="__layer_gacha_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.PlayGacha(<emphasis role="keyword">true</emphasis>,&#32;num);
+<anchor xml:id="__layer_gacha_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00031"/>00031 
+<anchor xml:id="__layer_gacha_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024C0&#32;RID:&#32;9408&#32;RVA:&#32;0x000CF4F3&#32;File&#32;Offset:&#32;0x000CD6F3</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickSilverGacha(<emphasis role="keywordtype">int</emphasis>&#32;num)
+<anchor xml:id="__layer_gacha_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.PlayGacha(<emphasis role="keyword">false</emphasis>,&#32;num);
+<anchor xml:id="__layer_gacha_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00037"/>00037 
+<anchor xml:id="__layer_gacha_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024C1&#32;RID:&#32;9409&#32;RVA:&#32;0x000CF500&#32;File&#32;Offset:&#32;0x000CD700</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;PlayGacha(<emphasis role="keywordtype">bool</emphasis>&#32;gold,&#32;<emphasis role="keywordtype">int</emphasis>&#32;num)
+<anchor xml:id="__layer_gacha_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_thing">Thing</link>&#32;thing&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__layer_gacha_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_layer">ELayer</link>.player.dailyGacha&#32;&amp;&amp;&#32;!gold&#32;&amp;&amp;&#32;num&#32;==&#32;1)
+<anchor xml:id="__layer_gacha_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ELayer.player.dailyGacha&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__layer_gacha_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing&#32;=&#32;<link linkend="_class_e_layer">ELayer</link>.pc.things.Find(<emphasis role="stringliteral">&quot;gacha_coin&quot;</emphasis>,&#32;gold&#32;?&#32;<emphasis role="stringliteral">&quot;gold&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;silver&quot;</emphasis>);
+<anchor xml:id="__layer_gacha_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(thing&#32;==&#32;<emphasis role="keyword">null</emphasis>&#32;||&#32;thing.Num&#32;&lt;&#32;num)
+<anchor xml:id="__layer_gacha_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.Beep();
+<anchor xml:id="__layer_gacha_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__layer_gacha_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.ModNum(-num,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__layer_gacha_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshCoin();
+<anchor xml:id="__layer_gacha_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_dialog">Dialog</link>&#32;d&#32;=&#32;Layer.Create(<emphasis role="stringliteral">&quot;DialogGacha&quot;</emphasis>)&#32;as&#32;<link linkend="_class_dialog">Dialog</link>;
+<anchor xml:id="__layer_gacha_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;d.windows[0].setting.textCaption&#32;=&#32;<emphasis role="stringliteral">&quot;confirm&quot;</emphasis>.lang();
+<anchor xml:id="__layer_gacha_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;d.note.AddPrefab(<emphasis role="stringliteral">&quot;Media/Graphics/Image/IllustGacha&quot;</emphasis>);
+<anchor xml:id="__layer_gacha_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;d.note.Space(0,&#32;1);
+<anchor xml:id="__layer_gacha_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;lose&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__layer_gacha_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;num;&#32;i++)
+<anchor xml:id="__layer_gacha_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num2&#32;=&#32;1;
+<anchor xml:id="__layer_gacha_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_layer">ELayer</link>.rnd(6)&#32;==&#32;0)
+<anchor xml:id="__layer_gacha_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num2&#32;=&#32;2;
+<anchor xml:id="__layer_gacha_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_layer">ELayer</link>.rnd(30)&#32;==&#32;0)
+<anchor xml:id="__layer_gacha_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num2&#32;=&#32;3;
+<anchor xml:id="__layer_gacha_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_layer">ELayer</link>.rnd(100)&#32;==&#32;0)
+<anchor xml:id="__layer_gacha_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num2&#32;=&#32;4;
+<anchor xml:id="__layer_gacha_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_layer">ELayer</link>.rnd(1000)&#32;==&#32;0)
+<anchor xml:id="__layer_gacha_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num2&#32;=&#32;5;
+<anchor xml:id="__layer_gacha_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(gold)
+<anchor xml:id="__layer_gacha_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num2++;
+<anchor xml:id="__layer_gacha_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(i&#32;==&#32;9)
+<anchor xml:id="__layer_gacha_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(gold)
+<anchor xml:id="__layer_gacha_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num2&#32;&lt;&#32;4)
+<anchor xml:id="__layer_gacha_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num2&#32;=&#32;4;
+<anchor xml:id="__layer_gacha_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num2&#32;&lt;&#32;3)
+<anchor xml:id="__layer_gacha_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num2&#32;=&#32;3;
+<anchor xml:id="__layer_gacha_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num2&#32;&gt;&#32;5)
+<anchor xml:id="__layer_gacha_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num2&#32;=&#32;5;
+<anchor xml:id="__layer_gacha_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_hoard_1_1_item">Hoard.Item</link>&#32;item&#32;=&#32;<link linkend="_class_e_layer">ELayer</link>.player.hoard.AddRandom(num2,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__layer_gacha_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;rarity&#32;=&#32;item.Source.rarity;
+<anchor xml:id="__layer_gacha_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(rarity&#32;==&#32;4&#32;||&#32;rarity&#32;==&#32;5)
+<anchor xml:id="__layer_gacha_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lose&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__layer_gacha_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;d.note.AddText(<emphasis role="keyword">null</emphasis>,&#32;item.Name(1),&#32;<link linkend="_class_e_layer">ELayer</link>.Colors.GetRarityColor(rarity,&#32;<emphasis role="keyword">false</emphasis>));
+<anchor xml:id="__layer_gacha_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;d.note.Space(0,&#32;1);
+<anchor xml:id="__layer_gacha_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(thing&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__layer_gacha_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;d.note.AddText(<emphasis role="stringliteral">&quot;dailyGacha&quot;</emphasis>.lang()&#32;+&#32;<emphasis role="stringliteral">&quot;&#32;&#32;1&#32;&gt;&#32;0&quot;</emphasis>,&#32;FontColor.DontChange);
+<anchor xml:id="__layer_gacha_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;d.note.AddText(<emphasis role="keywordtype">string</emphasis>.Concat(<emphasis role="keyword">new</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>[]
+<anchor xml:id="__layer_gacha_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.NameSimple,
+<anchor xml:id="__layer_gacha_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;&#32;&#32;&quot;</emphasis>,
+<anchor xml:id="__layer_gacha_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(thing.Num&#32;+&#32;num).ToString(),
+<anchor xml:id="__layer_gacha_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;&#32;&gt;&#32;&quot;</emphasis>,
+<anchor xml:id="__layer_gacha_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.Num.ToString()
+<anchor xml:id="__layer_gacha_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}),&#32;FontColor.DontChange);
+<anchor xml:id="__layer_gacha_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;d.note.Build();
+<anchor xml:id="__layer_gacha_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;d.windows[0].Find(<emphasis role="stringliteral">&quot;GachaAnime&quot;</emphasis>,&#32;<emphasis role="keyword">false</emphasis>).SetActive(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__layer_gacha_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;d.list.AddButton(<emphasis role="keyword">null</emphasis>,&#32;Lang.Get(<emphasis role="stringliteral">&quot;ok&quot;</emphasis>),&#32;delegate
+<anchor xml:id="__layer_gacha_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;d.Close();
+<anchor xml:id="__layer_gacha_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__layer_gacha_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.ui.AddLayer(d);
+<anchor xml:id="__layer_gacha_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.Sound.Play(<emphasis role="stringliteral">&quot;gacha&quot;</emphasis>);
+<anchor xml:id="__layer_gacha_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;TweenUtil.Delay(0.5f,&#32;delegate
+<anchor xml:id="__layer_gacha_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.Sound.Play(lose&#32;?&#32;<emphasis role="stringliteral">&quot;gacha_lose&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;gacha_win&quot;</emphasis>);
+<anchor xml:id="__layer_gacha_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__layer_gacha_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;d.SetOnKill(delegate
+<anchor xml:id="__layer_gacha_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!lose)
+<anchor xml:id="__layer_gacha_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_msg">Msg</link>.TalkHomeMemeber(<emphasis role="stringliteral">&quot;ding_other&quot;</emphasis>);
+<anchor xml:id="__layer_gacha_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__layer_gacha_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00147"/>00147 
+<anchor xml:id="__layer_gacha_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024C2&#32;RID:&#32;9410&#32;RVA:&#32;0x000CF7E4&#32;File&#32;Offset:&#32;0x000CD9E4</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshCoin()
+<anchor xml:id="__layer_gacha_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.goFree.SetActive(<link linkend="_class_e_layer">ELayer</link>.player.dailyGacha);
+<anchor xml:id="__layer_gacha_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.listCoin.Clear();
+<anchor xml:id="__layer_gacha_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BaseList&#32;baseList&#32;=&#32;this.listCoin;
+<anchor xml:id="__layer_gacha_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIList.Callback&lt;<link linkend="_class_thing">Thing</link>,&#32;<link linkend="_class_button_grid">ButtonGrid</link>&gt;&#32;callback&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;UIList.Callback&lt;<link linkend="_class_thing">Thing</link>,&#32;<link linkend="_class_button_grid">ButtonGrid</link>&gt;();
+<anchor xml:id="__layer_gacha_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onInstantiate&#32;=&#32;delegate(<link linkend="_class_thing">Thing</link>&#32;a,&#32;<link linkend="_class_button_grid">ButtonGrid</link>&#32;b)
+<anchor xml:id="__layer_gacha_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.SetCard(a,&#32;<link linkend="_class_button_grid">ButtonGrid</link>.Mode.Default,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__layer_gacha_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__layer_gacha_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onClick&#32;=&#32;delegate(<link linkend="_class_thing">Thing</link>&#32;a,&#32;<link linkend="_class_button_grid">ButtonGrid</link>&#32;b)
+<anchor xml:id="__layer_gacha_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.ui.AddLayer&lt;<link linkend="_class_layer_info">LayerInfo</link>&gt;().Set(a,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__layer_gacha_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__layer_gacha_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;baseList.callbacks&#32;=&#32;callback;
+<anchor xml:id="__layer_gacha_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.listCoin.Refresh(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__layer_gacha_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00166"/>00166 
+<anchor xml:id="__layer_gacha_8cs_source_1l00167"/>00167 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024C3&#32;RID:&#32;9411&#32;RVA:&#32;0x000CF877&#32;File&#32;Offset:&#32;0x000CDA77</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickBuyCoin()
+<anchor xml:id="__layer_gacha_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.Beep();
+<anchor xml:id="__layer_gacha_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00172"/>00172 
+<anchor xml:id="__layer_gacha_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024C4&#32;RID:&#32;9412&#32;RVA:&#32;0x000CF87E&#32;File&#32;Offset:&#32;0x000CDA7E</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnKill()
+<anchor xml:id="__layer_gacha_8cs_source_1l00175"/>00175 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00176"/>00176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.alt)
+<anchor xml:id="__layer_gacha_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_gacha_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_action_mode">ActionMode</link>.DefaultMode.Activate(<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__layer_gacha_8cs_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_gacha_8cs_source_1l00181"/>00181 
+<anchor xml:id="__layer_gacha_8cs_source_1l00182"/>00182 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001439&#32;RID:&#32;5177</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;GameObject&#32;slot;
+<anchor xml:id="__layer_gacha_8cs_source_1l00184"/>00184 
+<anchor xml:id="__layer_gacha_8cs_source_1l00185"/>00185 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400143A&#32;RID:&#32;5178</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;GameObject&#32;goFree;
+<anchor xml:id="__layer_gacha_8cs_source_1l00187"/>00187 
+<anchor xml:id="__layer_gacha_8cs_source_1l00188"/>00188 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400143B&#32;RID:&#32;5179</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Color&#32;colorC;
+<anchor xml:id="__layer_gacha_8cs_source_1l00190"/>00190 
+<anchor xml:id="__layer_gacha_8cs_source_1l00191"/>00191 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400143C&#32;RID:&#32;5180</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Color&#32;colorR;
+<anchor xml:id="__layer_gacha_8cs_source_1l00193"/>00193 
+<anchor xml:id="__layer_gacha_8cs_source_1l00194"/>00194 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400143D&#32;RID:&#32;5181</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Color&#32;colorSR;
+<anchor xml:id="__layer_gacha_8cs_source_1l00196"/>00196 
+<anchor xml:id="__layer_gacha_8cs_source_1l00197"/>00197 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400143E&#32;RID:&#32;5182</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Color&#32;colorSSR;
+<anchor xml:id="__layer_gacha_8cs_source_1l00199"/>00199 
+<anchor xml:id="__layer_gacha_8cs_source_1l00200"/>00200 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400143F&#32;RID:&#32;5183</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Color&#32;colorLE;
+<anchor xml:id="__layer_gacha_8cs_source_1l00202"/>00202 
+<anchor xml:id="__layer_gacha_8cs_source_1l00203"/>00203 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001440&#32;RID:&#32;5184</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00204"/>00204 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;DOTweenAnimation[]&#32;randomAnimes;
+<anchor xml:id="__layer_gacha_8cs_source_1l00205"/>00205 
+<anchor xml:id="__layer_gacha_8cs_source_1l00206"/>00206 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001441&#32;RID:&#32;5185</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00207"/>00207 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;alt;
+<anchor xml:id="__layer_gacha_8cs_source_1l00208"/>00208 
+<anchor xml:id="__layer_gacha_8cs_source_1l00209"/>00209 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001442&#32;RID:&#32;5186</emphasis>
+<anchor xml:id="__layer_gacha_8cs_source_1l00210"/>00210 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIList&#32;listCoin;
+<anchor xml:id="__layer_gacha_8cs_source_1l00211"/>00211 }
+</programlisting></section>

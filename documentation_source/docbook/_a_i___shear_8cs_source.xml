@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__a_i___shear_8cs_source" xml:lang="en-US">
+<title>AI_Shear.cs</title>
+<indexterm><primary>Elin/AI_Shear.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__a_i___shear_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__a_i___shear_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__a_i___shear_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__a_i___shear_8cs_source_1l00004"/>00004 
+<anchor xml:id="__a_i___shear_8cs_source_1l00005"/>00005 <emphasis role="comment">//&#32;Token:&#32;0x02000202&#32;RID:&#32;514</emphasis>
+<anchor xml:id="__a_i___shear_8cs_source_1l00006"/><link linkend="_class_a_i___shear">00006</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_a_i___shear">AI_Shear</link>&#32;:&#32;<link linkend="_class_a_i___target_card">AI_TargetCard</link>
+<anchor xml:id="__a_i___shear_8cs_source_1l00007"/>00007 {
+<anchor xml:id="__a_i___shear_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000EAB&#32;RID:&#32;3755&#32;RVA:&#32;0x0006D9CC&#32;File&#32;Offset:&#32;0x0006BBCC</emphasis>
+<anchor xml:id="__a_i___shear_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;GetText(<emphasis role="keywordtype">string</emphasis>&#32;str&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>)
+<anchor xml:id="__a_i___shear_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>[]&#32;list&#32;=&#32;Lang.GetList(<emphasis role="stringliteral">&quot;fur&quot;</emphasis>);
+<anchor xml:id="__a_i___shear_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;str2&#32;=&#32;list[Mathf.Clamp(this.target.c_fur&#32;/&#32;10,&#32;0,&#32;list.Length&#32;-&#32;1)];
+<anchor xml:id="__a_i___shear_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;AI_Shear&quot;</emphasis>.lang()&#32;+&#32;<emphasis role="stringliteral">&quot;(&quot;</emphasis>&#32;+&#32;str2&#32;+&#32;<emphasis role="stringliteral">&quot;)&quot;</emphasis>;
+<anchor xml:id="__a_i___shear_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i___shear_8cs_source_1l00015"/>00015 
+<anchor xml:id="__a_i___shear_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000EAC&#32;RID:&#32;3756&#32;RVA:&#32;0x0006DA1A&#32;File&#32;Offset:&#32;0x0006BC1A</emphasis>
+<anchor xml:id="__a_i___shear_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsValidTC(<link linkend="_class_card">Card</link>&#32;c)
+<anchor xml:id="__a_i___shear_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;c&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;c.CanBeSheared();
+<anchor xml:id="__a_i___shear_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i___shear_8cs_source_1l00021"/>00021 
+<anchor xml:id="__a_i___shear_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000EAD&#32;RID:&#32;3757&#32;RVA:&#32;0x0006DA27&#32;File&#32;Offset:&#32;0x0006BC27</emphasis>
+<anchor xml:id="__a_i___shear_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Perform()
+<anchor xml:id="__a_i___shear_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.target&#32;=&#32;<link linkend="_class_act">Act</link>.TC;
+<anchor xml:id="__a_i___shear_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;base.Perform();
+<anchor xml:id="__a_i___shear_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i___shear_8cs_source_1l00028"/>00028 
+<anchor xml:id="__a_i___shear_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000EAE&#32;RID:&#32;3758&#32;RVA:&#32;0x0006DA3A&#32;File&#32;Offset:&#32;0x0006BC3A</emphasis>
+<anchor xml:id="__a_i___shear_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;IEnumerable&lt;<link linkend="_class_a_i_act">AIAct</link>.Status&gt;&#32;Run()
+<anchor xml:id="__a_i___shear_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;yield&#32;<emphasis role="keywordflow">return</emphasis>&#32;base.DoGoto(this.target,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i___shear_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;furLv&#32;=&#32;Mathf.Clamp(this.target.c_fur&#32;/&#32;10&#32;+&#32;1,&#32;1,&#32;5);
+<anchor xml:id="__a_i___shear_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_progress___custom">Progress_Custom</link>&#32;seq&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_progress___custom">Progress_Custom</link>
+<anchor xml:id="__a_i___shear_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canProgress&#32;=&#32;(()&#32;=&gt;&#32;this.IsValidTC(this.target)),
+<anchor xml:id="__a_i___shear_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;onProgressBegin&#32;=&#32;delegate()
+<anchor xml:id="__a_i___shear_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.Say(<emphasis role="stringliteral">&quot;shear_start&quot;</emphasis>,&#32;this.owner,&#32;this.target,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i___shear_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.rnd(5)&#32;==&#32;0)
+<anchor xml:id="__a_i___shear_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.Talk(<emphasis role="stringliteral">&quot;goodBoy&quot;</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__a_i___shear_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i___shear_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},
+<anchor xml:id="__a_i___shear_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;onProgress&#32;=&#32;delegate(<link linkend="_class_progress___custom">Progress_Custom</link>&#32;p)
+<anchor xml:id="__a_i___shear_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.LookAt(this.target);
+<anchor xml:id="__a_i___shear_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.PlaySound(<emphasis role="stringliteral">&quot;shear&quot;</emphasis>,&#32;1f,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__a_i___shear_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.target.renderer.PlayAnime(AnimeID.Shiver,&#32;<emphasis role="keywordflow">default</emphasis>(Vector3),&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__a_i___shear_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.owner.Dist(<emphasis role="keyword">this</emphasis>.target)&#32;&gt;&#32;1)
+<anchor xml:id="__a_i___shear_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.TryMoveTowards(this.target.pos);
+<anchor xml:id="__a_i___shear_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.owner&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i___shear_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;p.Cancel();
+<anchor xml:id="__a_i___shear_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__a_i___shear_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i___shear_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.owner.Dist(<emphasis role="keyword">this</emphasis>.target)&#32;&gt;&#32;1)
+<anchor xml:id="__a_i___shear_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.Say(<emphasis role="stringliteral">&quot;targetTooFar&quot;</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i___shear_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;p.Cancel();
+<anchor xml:id="__a_i___shear_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__a_i___shear_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i___shear_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i___shear_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},
+<anchor xml:id="__a_i___shear_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;onProgressComplete&#32;=&#32;delegate()
+<anchor xml:id="__a_i___shear_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>&#32;=&#32;<emphasis role="stringliteral">&quot;fiber&quot;</emphasis>;
+<anchor xml:id="__a_i___shear_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;idMat&#32;=&#32;<emphasis role="stringliteral">&quot;wool&quot;</emphasis>;
+<anchor xml:id="__a_i___shear_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;id2&#32;=&#32;this.target.id;
+<anchor xml:id="__a_i___shear_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!(id2&#32;==&#32;<emphasis role="stringliteral">&quot;putty_snow&quot;</emphasis>))
+<anchor xml:id="__a_i___shear_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!(id2&#32;==&#32;<emphasis role="stringliteral">&quot;putty_snow_gold&quot;</emphasis>))
+<anchor xml:id="__a_i___shear_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.target.Chara.race.fur.IsEmpty())
+<anchor xml:id="__a_i___shear_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>[]&#32;array&#32;=&#32;this.target.Chara.race.fur.Split(<emphasis role="charliteral">&apos;/&apos;</emphasis>,&#32;StringSplitOptions.None);
+<anchor xml:id="__a_i___shear_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">id</emphasis>&#32;=&#32;array[0];
+<anchor xml:id="__a_i___shear_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;idMat&#32;=&#32;array[1];
+<anchor xml:id="__a_i___shear_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i___shear_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i___shear_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__a_i___shear_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;idMat&#32;=&#32;<emphasis role="stringliteral">&quot;gold&quot;</emphasis>;
+<anchor xml:id="__a_i___shear_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i___shear_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i___shear_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__a_i___shear_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;idMat&#32;=&#32;<emphasis role="stringliteral">&quot;cashmere&quot;</emphasis>;
+<anchor xml:id="__a_i___shear_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i___shear_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_thing">Thing</link>&#32;thing&#32;=&#32;<link linkend="_class_thing_gen">ThingGen</link>.Create(<emphasis role="keywordtype">id</emphasis>,&#32;idMat);
+<anchor xml:id="__a_i___shear_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;100&#32;*&#32;furLv&#32;+&#32;furLv&#32;*&#32;furLv&#32;*&#32;10;
+<anchor xml:id="__a_i___shear_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num2&#32;=&#32;this.target.LV;
+<anchor xml:id="__a_i___shear_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.target.Chara.IsInCombat&#32;||&#32;<emphasis role="keyword">this</emphasis>.target.Chara.IsMinion)
+<anchor xml:id="__a_i___shear_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i___shear_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.Say(<emphasis role="stringliteral">&quot;shear_penalty&quot;</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i___shear_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num&#32;/=&#32;2;
+<anchor xml:id="__a_i___shear_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num2&#32;/=&#32;2;
+<anchor xml:id="__a_i___shear_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i___shear_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num3&#32;=&#32;20&#32;+&#32;thing.material.tier&#32;*&#32;20;
+<anchor xml:id="__a_i___shear_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.SetNum(Mathf.Max(num&#32;/&#32;num3,&#32;1)&#32;+&#32;<link linkend="_class_e_class">EClass</link>.rnd(furLv&#32;+&#32;1));
+<anchor xml:id="__a_i___shear_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.SetEncLv(<link linkend="_class_e_class">EClass</link>.curve(num2,&#32;30,&#32;10,&#32;75)&#32;/&#32;10);
+<anchor xml:id="__a_i___shear_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.elements.ModBase(2,&#32;<link linkend="_class_e_class">EClass</link>.curve(num2&#32;/&#32;10&#32;*&#32;10,&#32;30,&#32;10,&#32;75));
+<anchor xml:id="__a_i___shear_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.target.c_fur&#32;=&#32;-5;
+<anchor xml:id="__a_i___shear_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.Say(<emphasis role="stringliteral">&quot;shear_end&quot;</emphasis>,&#32;this.owner,&#32;this.target,&#32;thing.Name,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i___shear_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.Pick(thing,&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__a_i___shear_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.elements.ModExp(237,&#32;50,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__a_i___shear_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.stamina.Mod(-1);
+<anchor xml:id="__a_i___shear_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.target.Chara.ModAffinity(this.owner,&#32;1,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__a_i___shear_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i___shear_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}.SetDuration((6&#32;+&#32;furLv&#32;*&#32;6)&#32;*&#32;100&#32;/&#32;(100&#32;+&#32;this.owner.Tool.material.hardness&#32;*&#32;2),&#32;3);
+<anchor xml:id="__a_i___shear_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;yield&#32;<emphasis role="keywordflow">return</emphasis>&#32;base.Do(seq,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i___shear_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;yield&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__a_i___shear_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i___shear_8cs_source_1l00115"/>00115 }
+</programlisting></section>

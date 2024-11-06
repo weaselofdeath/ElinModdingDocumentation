@@ -1,0 +1,157 @@
+\doxysection{POIMap.\+cs}
+\hypertarget{_p_o_i_map_8cs_source}{}\label{_p_o_i_map_8cs_source}\index{Elin/POIMap.cs@{Elin/POIMap.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00003}00003\ \textcolor{comment}{//\ Token:\ 0x0200066D\ RID:\ 1645}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00004}\mbox{\hyperlink{class_p_o_i_map}{00004}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_p_o_i_map}{POIMap}}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000D15\ RID:\ 3349}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06002E21\ RID:\ 11809\ RVA:\ 0x00103BA5\ File\ Offset:\ 0x00101DA5}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ length}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ POIMap.mapSize\ /\ POIMap.cellSize\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002E22\ RID:\ 11810\ RVA:\ 0x00103BB4\ File\ Offset:\ 0x00101DB4}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Init(\textcolor{keywordtype}{int}\ \_mapSize,\ \textcolor{keywordtype}{int}\ \_cellSize)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ POIMap.cellSize\ =\ \_cellSize;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ POIMap.mapSize\ =\ \_mapSize;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ this.cells\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_p_o_i_map}{POIMap}}.\mbox{\hyperlink{class_p_o_i_map_1_1_cell}{Cell}}[this.length,\ this.length];}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ this.Reset();}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002E23\ RID:\ 11811\ RVA:\ 0x00103BE0\ File\ Offset:\ 0x00101DE0}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Reset()}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00027}00027\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ this.length;\ i++)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ this.length;\ j++)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.cells[i,\ j]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_p_o_i_map_1_1_cell}{POIMap.Cell}}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ i,}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ j}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002E24\ RID:\ 11812\ RVA:\ 0x00103C30\ File\ Offset:\ 0x00101E30}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_point}{Point}}\ GetCenterOfEmptyCell(\textcolor{keywordtype}{int}\ tries\ =\ 100)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00043}00043\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_point}{Point}}();}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ tries;\ i++)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(this.length\ -\/\ 2)\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(this.length\ -\/\ 2)\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.cells[num,\ num2].occupied)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.cells[num,\ num2].GetCenter();}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_point}{Point}}.Invalid;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002E25\ RID:\ 11813\ RVA:\ 0x00103C9B\ File\ Offset:\ 0x00101E9B}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00058}00058\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_p_o_i_map_1_1_cell}{POIMap.Cell}}\ GetCenterCell(\textcolor{keywordtype}{int}\ radius\ =\ 1)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00059}00059\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.cells[this.length\ /\ 2\ -\/\ radius\ +\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(radius\ *\ 2),\ this.length\ /\ 2\ -\/\ radius\ +\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(radius\ *\ 2)];}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002E26\ RID:\ 11814\ RVA:\ 0x00103CD0\ File\ Offset:\ 0x00101ED0}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_p_o_i_map_1_1_cell}{POIMap.Cell}}\ GetEmptyCell()}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_point}{Point}}();}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 100;\ i++)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(this.length\ -\/\ 2)\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(this.length\ -\/\ 2)\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.cells[num,\ num2]\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.cells[num,\ num2];}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00077}00077\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002E27\ RID:\ 11815\ RVA:\ 0x00103D30\ File\ Offset:\ 0x00101F30}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00080}00080\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ ForeachCenterOfEmptyCell(Action<Point>\ action)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00081}00081\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ this.length\ -\/\ 2;\ i++)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 1;\ j\ <\ this.length\ -\/\ 2;\ j++)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.cells[i,\ j].occupied)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ action(this.cells[i,\ j].GetCenter());}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00094}00094\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002E28\ RID:\ 11816\ RVA:\ 0x00103D8F\ File\ Offset:\ 0x00101F8F}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00095}00095\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OccyupyPOI(\mbox{\hyperlink{class_point}{Point}}\ p,\ \textcolor{keywordtype}{int}\ radius\ =\ 0)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00096}00096\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ this.OccyupyPOI(p.x,\ p.z,\ radius);}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00098}00098\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00100}00100\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002E29\ RID:\ 11817\ RVA:\ 0x00103DA4\ File\ Offset:\ 0x00101FA4}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00101}00101\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OccyupyPOI(\textcolor{keywordtype}{int}\ \_x,\ \textcolor{keywordtype}{int}\ \_z,\ \textcolor{keywordtype}{int}\ radius)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00102}00102\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ \_x\ /\ \mbox{\hyperlink{class_p_o_i_map}{POIMap}}.cellSize;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ \_z\ /\ \mbox{\hyperlink{class_p_o_i_map}{POIMap}}.cellSize;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ this.cells[num,\ num2].occupied\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (radius\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ num\ -\/\ radius;\ i\ <\ num\ +\ radius\ +\ 1;\ i++)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ >=\ 0\ \&\&\ i\ <\ this.length)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ num2\ -\/\ radius;\ j\ <\ num2\ +\ radius\ +\ 1;\ j++)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ >=\ 0\ \&\&\ j\ <\ this.length)}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.cells[i,\ j].occupied\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00122}00122\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00124}00124\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001A3A\ RID:\ 6714}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00125}00125\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ cellSize;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00127}00127\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001A3B\ RID:\ 6715}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00128}00128\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ mapSize;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00130}00130\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001A3C\ RID:\ 6716}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00131}00131\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_p_o_i_map}{POIMap}}.\mbox{\hyperlink{class_p_o_i_map_1_1_cell}{Cell}}[,]\ cells;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00133}00133\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000BE0\ RID:\ 3040}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00134}\mbox{\hyperlink{class_p_o_i_map_1_1_cell}{00134}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_p_o_i_map_1_1_cell}{Cell}}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00135}00135\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060045C5\ RID:\ 17861\ RVA:\ 0x0015F9E8\ File\ Offset:\ 0x0015DBE8}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_point}{Point}}\ GetCenter()}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_point}{Point}}(this.x\ *\ \mbox{\hyperlink{class_p_o_i_map}{POIMap}}.cellSize\ +\ \mbox{\hyperlink{class_p_o_i_map}{POIMap}}.cellSize\ /\ 2,\ \textcolor{keyword}{this}.z\ *\ \mbox{\hyperlink{class_p_o_i_map}{POIMap}}.cellSize\ +\ \mbox{\hyperlink{class_p_o_i_map}{POIMap}}.cellSize\ /\ 2).Clamp(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002F71\ RID:\ 12145}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ x;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002F72\ RID:\ 12146}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ z;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002F73\ RID:\ 12147}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ occupied;}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00150}00150\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_p_o_i_map_8cs_source_l00151}00151\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,552 @@
+\doxysection{UIHome\+Info.\+cs}
+\hypertarget{_u_i_home_info_8cs_source}{}\label{_u_i_home_info_8cs_source}\index{Elin/UIHomeInfo.cs@{Elin/UIHomeInfo.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Runtime.CompilerServices;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00007}00007\ \textcolor{comment}{//\ Token:\ 0x02000558\ RID:\ 1368}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00008}\mbox{\hyperlink{class_u_i_home_info}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}\ :\ \mbox{\hyperlink{class_e_mono}{EMono}}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000B24\ RID:\ 2852}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600251D\ RID:\ 9501\ RVA:\ 0x000D2715\ File\ Offset:\ 0x000D0915}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ tabResearch}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00013}00013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600251E\ RID:\ 9502\ RVA:\ 0x000D2718\ File\ Offset:\ 0x000D0918}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Refresh()}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_mono}{EMono}}.\_zone.RefreshElectricity();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ this.reports.Clear();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ this.faction\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.pc.faction;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ this.branch\ =\ (EMono.Branch\ ??\ \mbox{\hyperlink{class_e_mono}{EMono}}.pc.homeZone.branch);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_faction_branch}{FactionBranch}}\ factionBranch\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.Branch;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ this.zone\ =\ (((factionBranch\ !=\ \textcolor{keyword}{null})\ ?\ factionBranch.owner\ :\ \textcolor{keyword}{null})\ ??\ \mbox{\hyperlink{class_e_mono}{EMono}}.pc.homeZone);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ this.branch.resources.Refresh();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ this.RefreshInfo();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ this.RefreshResources();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ this.RefreshReport();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ this.transLayout.RebuildLayoutTo(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600251F\ RID:\ 9503\ RVA:\ 0x000D27BC\ File\ Offset:\ 0x000D09BC}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshInfo()}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00038}00038\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ this.textHeaderReport.text\ =\ \textcolor{stringliteral}{"{}headerHomeReport"{}}.lang(\mbox{\hyperlink{class_e_mono}{EMono}}.world.date.year.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \mbox{\hyperlink{class_e_mono}{EMono}}.world.date.month.ToString()\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ \mbox{\hyperlink{class_e_mono}{EMono}}.world.date.day.ToString(),\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ this.textFaction.text\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.pc.faction.Name;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ this.textGod.text\ =\ this.branch.faith.Name;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ this.textContentLv.text\ =\ this.branch.DangerLV.ToString()\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ (\textcolor{stringliteral}{"{}("{}}\ +\ this.branch.ContentLV.ToString()\ +\ \textcolor{stringliteral}{"{})"{}}).TagSize(12);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ this.textDateFound.text\ =\ \mbox{\hyperlink{class_date}{Date}}.GetText(this.branch.dateFound,\ \mbox{\hyperlink{class_date}{Date}}.TextFormat.YearMonthDay);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ this.textPasture.text\ =\ this.branch.CountPasture().ToString()\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ (\textcolor{stringliteral}{"{}(-\/"{}}\ +\ this.branch.GetPastureCost().ToString()\ +\ \textcolor{stringliteral}{"{}dailyIncome"{}}.lang()\ +\ \textcolor{stringliteral}{"{})"{}}).TagSize(12);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ this.branch.CountMembers(FactionMemberType.Default,\ \textcolor{keyword}{false})\ >\ this.branch.MaxPopulation;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ this.textMember.SetText(this.branch.CountMembers(FactionMemberType.Default,\ \textcolor{keyword}{false}).ToString()\ +\ \textcolor{stringliteral}{"{}\ /\ "{}}\ +\ \textcolor{keyword}{this}.branch.MaxPopulation.ToString(),\ flag\ ?\ FontColor.Bad\ :\ FontColor.Default);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flag)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ this.AddReport(\textcolor{stringliteral}{"{}rPopOver"{}},\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Warning,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ this.textDev.text\ =\ ((EMono.\_zone.development\ /\ 10).ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ this.textLand.text\ =\ (EMono.\_map.bounds.Width\ *\ EMono.\_map.bounds.Height\ /\ 100).ToString()\ +\ \textcolor{stringliteral}{"{}\ ㎢"{}};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ civility\ =\ this.branch.GetCivility();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ this.textCivility.text\ =\ civility.ToString()\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ (\textcolor{stringliteral}{"{}("{}}\ +\ Lang.GetList(\textcolor{stringliteral}{"{}civility"{}})[Mathf.Clamp(civility\ /\ 20,\ 0,\ 4)]\ +\ \textcolor{stringliteral}{"{})"{}}).TagSize(12);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ electricity\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.\_zone.GetElectricity(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ electricity2\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.\_zone.GetElectricity(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ this.textElec.SetText(\textcolor{stringliteral}{"{}elecLv"{}}.lang(electricity2.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ (electricity.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}}).TagColor((electricity\ <=\ electricity2)\ ?\ FontColor.Good\ :\ FontColor.Bad,\ \textcolor{keyword}{null}),\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (electricity\ >\ electricity2)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ this.AddReport(\textcolor{stringliteral}{"{}rElecOver"{}},\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Warning,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ soilCost\ =\ this.zone.GetSoilCost();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ maxSoil\ =\ this.branch.MaxSoil;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ this.textSoil.SetText(\textcolor{stringliteral}{"{}soilLv"{}}.lang(maxSoil.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ ((maxSoil\ -\/\ soilCost).ToString()\ ??\ \textcolor{stringliteral}{"{}"{}}).TagColor((soilCost\ <=\ maxSoil)\ ?\ FontColor.Good\ :\ FontColor.Bad,\ \textcolor{keyword}{null}),\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (soilCost\ >\ maxSoil)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ this.AddReport(\textcolor{stringliteral}{"{}rSoilOver"{}},\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Warning,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ this.textName.SetText(this.zone.Name);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ this.textRank.SetText(this.branch.RankText);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ this.textPopu.SetText(this.faction.name);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ this.textFaith.SetText(this.branch.faith.Name\ +\ Environment.NewLine\ +\ (\textcolor{stringliteral}{"{}\ ♥"{}}\ +\ \textcolor{keyword}{this}.branch.RankText).TagSize(13));}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ this.imageFaith.sprite\ =\ this.branch.faith.GetSprite();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ this.textTemper.SetText(this.branch.faith.GetTextTemper(\textcolor{keyword}{this}.branch.temper));}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ this.barTemper.fillAmount\ =\ 0.5f\ +\ (float)this.branch.temper\ *\ 0.01f\ *\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ this.barTemper.color\ =\ ((this.branch.temper\ >\ -\/25)\ ?\ SkinManager.CurrentColors.textGood\ :\ SkinManager.CurrentColors.textBad);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.buttonWorth)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ this.buttonWorth.mainText.SetText(this.branch.Worth.ToFormat());}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ this.buttonWorth.SetTooltip(delegate(UITooltip\ t)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.branch.resources.worth.WriteNote(t.note);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ this.buttonLv.mainText.SetText(this.branch.lv.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ this.buttonLv.SetTooltip(delegate(UITooltip\ t)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.<>c\_\_DisplayClass38\_0\ CS\$<>8\_\_locals1;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.n\ =\ t.note;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.n.Clear();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.n.AddHeader(\textcolor{stringliteral}{"{}branchLv"{}}.lang(),\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.n.AddTopic(\textcolor{stringliteral}{"{}TopicLeft"{}},\ \textcolor{stringliteral}{"{}vCurrent"{}}.lang(),\ \mbox{\hyperlink{class_e_mono}{EMono}}.Branch.TextLv);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.n.Space(0,\ 1);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ this.<RefreshInfo>g\_\_Write|38\_6(this.branch.lv,\ ref\ CS\$<>8\_\_locals1);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.branch.lv\ <\ \textcolor{keyword}{this}.branch.MaxLv)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.n.Space(0,\ 1);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.n.AddHeaderTopic(\textcolor{stringliteral}{"{}nextLevel"{}},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.<RefreshInfo>g\_\_Write|38\_6(this.branch.lv\ +\ 1,\ ref\ CS\$<>8\_\_locals1);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ t.note.Build();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ this.buttonRanking.mainText.SetText(\mbox{\hyperlink{class_e_mono}{EMono}}.game.spatials.ranks.GetRankText(\mbox{\hyperlink{class_e_mono}{EMono}}.\_zone));}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ this.buttonRanking.SetTooltip(delegate(UITooltip\ t)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ UINote\ note\ =\ t.note;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ note.Clear();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ note.AddHeader(\textcolor{stringliteral}{"{}homeRanking"{}}.lang(),\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ note.AddTopic(\textcolor{stringliteral}{"{}TopicLeft"{}},\ \textcolor{stringliteral}{"{}vCurrent"{}}.lang(),\ \mbox{\hyperlink{class_e_mono}{EMono}}.game.spatials.ranks.GetRankText(\mbox{\hyperlink{class_e_mono}{EMono}}.\_zone));}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ note.Space(0,\ 1);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ note.AddHeader(\textcolor{stringliteral}{"{}HeaderTopic"{}},\ \textcolor{stringliteral}{"{}rank\_income"{}}.lang(),\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ note.Space(1,\ 1);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ note.AddText(\textcolor{stringliteral}{"{}rank\_income2"{}}.lang(\mbox{\hyperlink{class_e_mono}{EMono}}.game.spatials.ranks.GetIncome(\mbox{\hyperlink{class_e_mono}{EMono}}.\_zone).ToFormat(),\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}),\ FontColor.DontChange);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ t.note.Build();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ this.buttonRank.mainText.SetText(this.branch.rank.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ this.buttonRank.SetTooltip(delegate(UITooltip\ t)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ UINote\ note\ =\ t.note;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ note.Clear();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ note.AddHeader(\textcolor{stringliteral}{"{}factionRank2"{}}.lang(),\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ note.AddTopic(\textcolor{stringliteral}{"{}TopicLeft"{}},\ \textcolor{stringliteral}{"{}vCurrent"{}}.lang(),\ this.branch.rank.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ t.note.Build();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ this.buttonHappinessResident.mainText.text\ =\ this.branch.happiness.residents.GetText();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ this.buttonHappinessLivestock.mainText.text\ =\ this.branch.happiness.livestocks.GetText();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ this.buttonHappinessResident.subText.text\ =\ (this.branch.CountMembers(FactionMemberType.Default,\ \textcolor{keyword}{false}).ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ this.buttonHappinessLivestock.subText.text\ =\ (this.branch.CountMembers(FactionMemberType.Livestock,\ \textcolor{keyword}{false}).ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ this.buttonHappinessResident.SetTooltip(delegate(UITooltip\ t)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ this.branch.happiness.residents.WriteNote(t.note);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ this.buttonHappinessLivestock.SetTooltip(delegate(UITooltip\ t)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ this.branch.happiness.livestocks.WriteNote(t.note);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00139}00139\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002520\ RID:\ 9504\ RVA:\ 0x000D2E6C\ File\ Offset:\ 0x000D106C}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00140}00140\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ GetTextHappiness(List<Chara>\ list)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00141}00141\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num3\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num4\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_chara}{Chara}}\ chara\ \textcolor{keywordflow}{in}\ list)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ happiness\ =\ chara.GetHappiness();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (happiness\ >=\ 80)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num2++;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (happiness\ >=\ 30)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num3++;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num4++;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ num\ +=\ happiness;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ avg\ =\ (list.Count\ ==\ 0)\ ?\ 0\ :\ (num\ /\ list.Count);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ s\ =\ \textcolor{keywordtype}{string}.Concat(\textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}("{}},}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ num2.ToString().TagColor(FontColor.Good,\ \textcolor{keyword}{null}),}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}/"{}},}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ num3.ToString().TagColor(FontColor.Default,\ \textcolor{keyword}{null}),}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}/"{}},}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ num4.ToString().TagColor(FontColor.Bad,\ \textcolor{keyword}{null}),}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{})"{}}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (((list.Count\ ==\ 0)\ ?\ \textcolor{stringliteral}{"{}\ -\/\ "{}}\ :\ avg.ToString())\ +\ \textcolor{stringliteral}{"{}\%"{}}).TagColorGoodBad(()\ =>\ list.Count\ ==\ 0\ ||\ avg\ >=\ 50,\ \textcolor{keyword}{false})\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ s.TagSize(13);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00175}00175\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00177}00177\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002521\ RID:\ 9505\ RVA:\ 0x000D2FCC\ File\ Offset:\ 0x000D11CC}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00178}00178\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshResources()}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00179}00179\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ this.listCurrencies.Clear();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ BaseList\ baseList\ =\ this.listCurrencies;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ UIList.Callback<\mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}},\ \mbox{\hyperlink{class_item_home_resource}{ItemHomeResource}}>\ callback\ =\ \textcolor{keyword}{new}\ UIList.Callback<\mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}},\ \mbox{\hyperlink{class_item_home_resource}{ItemHomeResource}}>();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ callback.onInstantiate\ =\ delegate(\mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}}\ a,\ \mbox{\hyperlink{class_item_home_resource}{ItemHomeResource}}\ b)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ b.SetResource(a);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ callback.onList\ =\ delegate(UIList.SortMode\ m)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}}\ baseHomeResource\ \textcolor{keywordflow}{in}\ this.branch.resources.list)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (baseHomeResource.IsCurrency\ \&\&\ baseHomeResource.IsAvailable)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.listCurrencies.Add(baseHomeResource);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ baseList.callbacks\ =\ callback;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ this.listCurrencies.List(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ this.listResources.Clear();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ BaseList\ baseList2\ =\ this.listResources;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ UIList.Callback<\mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}},\ \mbox{\hyperlink{class_item_home_resource}{ItemHomeResource}}>\ callback2\ =\ \textcolor{keyword}{new}\ UIList.Callback<\mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}},\ \mbox{\hyperlink{class_item_home_resource}{ItemHomeResource}}>();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ callback2.onInstantiate\ =\ delegate(\mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}}\ a,\ \mbox{\hyperlink{class_item_home_resource}{ItemHomeResource}}\ b)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ b.SetResource(a);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ callback2.onList\ =\ delegate(UIList.SortMode\ m)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}}\ baseHomeResource\ \textcolor{keywordflow}{in}\ this.branch.resources.list)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (baseHomeResource.IsRate\ \&\&\ baseHomeResource.IsAvailable)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.listResources.Add(baseHomeResource);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ baseList2.callbacks\ =\ callback2;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ this.listResources.List(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ this.listSkill.Clear();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ BaseList\ baseList3\ =\ this.listSkill;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ UIList.Callback<\mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}},\ \mbox{\hyperlink{class_item_home_resource}{ItemHomeResource}}>\ callback3\ =\ \textcolor{keyword}{new}\ UIList.Callback<\mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}},\ \mbox{\hyperlink{class_item_home_resource}{ItemHomeResource}}>();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ callback3.onInstantiate\ =\ delegate(\mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}}\ a,\ \mbox{\hyperlink{class_item_home_resource}{ItemHomeResource}}\ b)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ b.SetResource(a);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ callback3.onList\ =\ delegate(UIList.SortMode\ m)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}}\ baseHomeResource\ \textcolor{keywordflow}{in}\ this.branch.resources.list)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (baseHomeResource.IsSkill)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.listSkill.Add(baseHomeResource);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ baseList3.callbacks\ =\ callback3;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ this.listSkill.List(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00237}00237\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00239}00239\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002522\ RID:\ 9506\ RVA:\ 0x000D30F4\ File\ Offset:\ 0x000D12F4}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00240}00240\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ AddReport(\textcolor{keywordtype}{string}\ text,\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType\ type\ =\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Default,\ Action\ onClick\ =\ \textcolor{keyword}{null},\ Action<UITooltip>\ onShowTooltip\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00241}00241\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{UIHomeInfo.ReportData}}\ item\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{UIHomeInfo.ReportData}}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ text\ =\ text.lang(),}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ type,}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ onClick\ =\ onClick,}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ onShowTooltip\ =\ onShowTooltip}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ this.reports.Add(item);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00250}00250\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00252}00252\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002523\ RID:\ 9507\ RVA:\ 0x000D3138\ File\ Offset:\ 0x000D1338}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00253}00253\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshReport()}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00254}00254\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_mono}{EMono}}.Branch.meetings.list.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ this.AddReport(\textcolor{stringliteral}{"{}rMeeting"{}}.lang(\mbox{\hyperlink{class_e_mono}{EMono}}.Branch.meetings.list.Count.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}),\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Default,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_zone_event}{ZoneEvent}}\ zoneEvent\ \textcolor{keywordflow}{in}\ this.branch.owner.events.list)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (zoneEvent.HasReport)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.AddReport(zoneEvent.GetText(),\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Trial,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_research_plan}{ResearchPlan}}\ researchPlan\ \textcolor{keywordflow}{in}\ this.branch.researches.newPlans)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ this.AddReport(\textcolor{stringliteral}{"{}rNewPlan"{}}.lang(researchPlan.Name\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}),\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Good,\ delegate}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00271}00271\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_research_plan}{ResearchPlan}}\ researchPlan2\ \textcolor{keywordflow}{in}\ this.branch.researches.plans)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (researchPlan2.exp\ ==\ researchPlan2.MaxExp)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.AddReport(\textcolor{stringliteral}{"{}vResearched"{}}.lang(researchPlan2.Name,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}),\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Great,\ delegate}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_chara}{Chara}}\ chara\ \textcolor{keywordflow}{in}\ this.branch.members)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!chara.isDead\ \&\&\ !chara.IsPCParty\ \&\&\ chara.memberType\ ==\ FactionMemberType.Default\ \&\&\ !chara.noMove)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_mono}{EMono}}.game.activeZone\ ==\ \textcolor{keyword}{this}.branch.owner)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (List<Hobby>.Enumerator\ enumerator4\ =\ chara.ListWorks(\textcolor{keyword}{true}).GetEnumerator())}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (enumerator4.MoveNext())}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (enumerator4.Current.GetEfficiency(chara)\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flag\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ IL\_26A;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ IL\_259;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ IL\_259;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IL\_26A:}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!flag)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.AddReport(\textcolor{stringliteral}{"{}rNoWork"{}}.lang(chara.Name,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}).ToTitleCase(\textcolor{keyword}{false}),\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Warning,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IL\_259:}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara.GetWorkSummary().work\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flag\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ IL\_26A;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ IL\_26A;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00318}00318\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00319}00319\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_mono}{EMono}}.player.taxBills\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00320}00320\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ this.AddReport(\textcolor{stringliteral}{"{}rBill"{}}.lang(\mbox{\hyperlink{class_e_mono}{EMono}}.player.taxBills.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}),\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Warning,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00322}00322\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00323}00323\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.reports.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00324}00324\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ this.AddReport(\textcolor{stringliteral}{"{}rNoReport"{}},\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Good,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00326}00326\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00327}00327\ \ \ \ \ \ \ \ \ this.AddReport(\textcolor{stringliteral}{"{}rTax"{}}.lang((30\ -\/\ \mbox{\hyperlink{class_e_mono}{EMono}}.world.date.day\ +\ 1).ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{this}.faction.GetTotalTax(\textcolor{keyword}{false}).ToFormat(),\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}),\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Default,\ \textcolor{keyword}{null},\ delegate(UITooltip\ t)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00328}00328\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ t.note.Clear();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ this.faction.SetTaxTooltip(t.note);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ t.note.Build();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00332}00332\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00333}00333\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_mono}{EMono}}.debug.showExtra)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00334}00334\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ this.AddReport(\textcolor{stringliteral}{"{}efficiency:"{}}\ +\ this.branch.efficiency.ToString(),\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Default,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00336}00336\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00337}00337\ \ \ \ \ \ \ \ \ this.reports.Sort((\mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}\ a,\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}\ b)\ =>\ b.type\ -\/\ a.type);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00338}00338\ \ \ \ \ \ \ \ \ this.listReport.Clear();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00339}00339\ \ \ \ \ \ \ \ \ BaseList\ baseList\ =\ this.listReport;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00340}00340\ \ \ \ \ \ \ \ \ UIList.Callback<\mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}},\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}>\ callback\ =\ \textcolor{keyword}{new}\ UIList.Callback<\mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}},\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}>();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00341}00341\ \ \ \ \ \ \ \ \ callback.onClick\ =\ delegate(\mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}\ a,\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}\ b)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00342}00342\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a.onClick\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a.onClick();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00347}00347\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00348}00348\ \ \ \ \ \ \ \ \ callback.onInstantiate\ =\ delegate(\mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}\ a,\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}\ b)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00349}00349\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ b.SetMainText(a.text,\ \textcolor{keyword}{this}.iconReports[(\textcolor{keywordtype}{int})a.type],\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ b.button1.mainText.SetColor(a.GetFontColor());}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a.onClick\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.AddSubButton(\mbox{\hyperlink{class_e_mono}{EMono}}.core.refs.icons.go,\ a.onClick,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ b.Build();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a.onShowTooltip\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00358}00358\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.button1.SetTooltip(a.onShowTooltip,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00361}00361\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00362}00362\ \ \ \ \ \ \ \ \ callback.onList\ =\ delegate(UIList.SortMode\ m)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00363}00363\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}\ o\ in\ \textcolor{keyword}{this}.reports)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.listReport.Add(o);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00368}00368\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00369}00369\ \ \ \ \ \ \ \ \ callback.onRefresh\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00370}00370\ \ \ \ \ \ \ \ \ baseList.callbacks\ =\ callback;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00371}00371\ \ \ \ \ \ \ \ \ this.listReport.List(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00372}00372\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00373}00373\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00374}00374\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002527\ RID:\ 9511\ RVA:\ 0x000D36BC\ File\ Offset:\ 0x000D18BC}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00375}00375\ \ \ \ \ [CompilerGenerated]}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00376}00376\ \ \ \ \ \textcolor{keyword}{private}\ void\ <RefreshInfo>g\_\_Write|38\_6(\textcolor{keywordtype}{int}\ lv,\ ref\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.<>c\_\_DisplayClass38\_0\ A\_2)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00377}00377\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00378}00378\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}[]\ array\ =\ this.branch.GetHearthHint(lv).SplitNewline();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00379}00379\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ array.Length;\ i++)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00380}00380\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ array[i].Replace(Environment.NewLine,\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!text.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ A\_2.n.AddText(text,\ FontColor.DontChange);}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00386}00386\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00387}00387\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00388}00388\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00389}00389\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014A9\ RID:\ 5289}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00390}00390\ \ \ \ \ \textcolor{keyword}{public}\ Transform\ transLayout;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00391}00391\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00392}00392\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014AA\ RID:\ 5290}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00393}00393\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textFaction;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00394}00394\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00395}00395\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014AB\ RID:\ 5291}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00396}00396\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textDateFound;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00397}00397\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00398}00398\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014AC\ RID:\ 5292}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00399}00399\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textGod;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00401}00401\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014AD\ RID:\ 5293}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00402}00402\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textMember;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00403}00403\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00404}00404\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014AE\ RID:\ 5294}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00405}00405\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textLand;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00406}00406\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00407}00407\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014AF\ RID:\ 5295}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00408}00408\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textHeaderReport;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00409}00409\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00410}00410\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014B0\ RID:\ 5296}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00411}00411\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textDev;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00412}00412\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00413}00413\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014B1\ RID:\ 5297}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00414}00414\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textElec;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00415}00415\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00416}00416\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014B2\ RID:\ 5298}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00417}00417\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textCivility;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00418}00418\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00419}00419\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014B3\ RID:\ 5299}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00420}00420\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textName;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00421}00421\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00422}00422\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014B4\ RID:\ 5300}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00423}00423\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textRank;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00424}00424\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00425}00425\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014B5\ RID:\ 5301}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00426}00426\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textPopu;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00427}00427\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00428}00428\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014B6\ RID:\ 5302}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00429}00429\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textFaith;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00430}00430\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00431}00431\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014B7\ RID:\ 5303}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00432}00432\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textTemper;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00433}00433\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00434}00434\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014B8\ RID:\ 5304}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00435}00435\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textSoil;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00436}00436\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00437}00437\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014B9\ RID:\ 5305}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00438}00438\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textContentLv;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00439}00439\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00440}00440\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014BA\ RID:\ 5306}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00441}00441\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textPasture;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00442}00442\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00443}00443\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014BB\ RID:\ 5307}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00444}00444\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonHappinessResident;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00445}00445\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00446}00446\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014BC\ RID:\ 5308}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00447}00447\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonHappinessLivestock;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00448}00448\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00449}00449\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014BD\ RID:\ 5309}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00450}00450\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonWorth;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00451}00451\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00452}00452\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014BE\ RID:\ 5310}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00453}00453\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonRank;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00454}00454\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00455}00455\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014BF\ RID:\ 5311}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00456}00456\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonLv;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00457}00457\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00458}00458\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014C0\ RID:\ 5312}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00459}00459\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonRanking;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00460}00460\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00461}00461\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014C1\ RID:\ 5313}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00462}00462\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ listCurrencies;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00463}00463\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00464}00464\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014C2\ RID:\ 5314}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00465}00465\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ listResources;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00466}00466\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00467}00467\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014C3\ RID:\ 5315}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00468}00468\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ listSkill;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00469}00469\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00470}00470\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014C4\ RID:\ 5316}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00471}00471\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ listReport;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00472}00472\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00473}00473\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014C5\ RID:\ 5317}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00474}00474\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_faction}{Faction}}\ faction;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00475}00475\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00476}00476\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014C6\ RID:\ 5318}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00477}00477\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_faction_branch}{FactionBranch}}\ branch;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00478}00478\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00479}00479\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014C7\ RID:\ 5319}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00480}00480\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_zone}{Zone}}\ zone;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00481}00481\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00482}00482\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014C8\ RID:\ 5320}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00483}00483\ \ \ \ \ \textcolor{keyword}{public}\ Image\ imageFaith;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00484}00484\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00485}00485\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014C9\ RID:\ 5321}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00486}00486\ \ \ \ \ \textcolor{keyword}{public}\ Image\ barTemper;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00487}00487\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00488}00488\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014CA\ RID:\ 5322}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00489}00489\ \ \ \ \ \textcolor{keyword}{public}\ List<\mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}>\ reports\ =\ \textcolor{keyword}{new}\ List<\mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}>();}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00490}00490\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00491}00491\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014CB\ RID:\ 5323}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00492}00492\ \ \ \ \ \textcolor{keyword}{public}\ Sprite[]\ iconReports;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00493}00493\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00494}00494\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000A81\ RID:\ 2689}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00495}\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{00495}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00496}00496\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00497}00497\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06004129\ RID:\ 16681\ RVA:\ 0x00150BC0\ File\ Offset:\ 0x0014EDC0}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00498}00498\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ FontColor\ GetFontColor()}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00499}00499\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (this.type)}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Warning:}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ FontColor.Warning;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Critical:}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ FontColor.Bad;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Good:}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ FontColor.Good;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00508}00508\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Great:}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00509}00509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ FontColor.Good;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00510}00510\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_u_i_home_info}{UIHomeInfo}}.\mbox{\hyperlink{class_u_i_home_info_1_1_report_data}{ReportData}}.ReportType.Trial:}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00511}00511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ FontColor.Great;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00512}00512\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00513}00513\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ FontColor.Default;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00514}00514\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00515}00515\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00516}00516\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00517}00517\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002AF2\ RID:\ 10994}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00518}00518\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ UIHomeInfo.ReportData.ReportType\ type;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00519}00519\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00520}00520\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002AF3\ RID:\ 10995}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00521}00521\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ text;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00522}00522\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00523}00523\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002AF4\ RID:\ 10996}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00524}00524\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Action\ onClick;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00525}00525\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00526}00526\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002AF5\ RID:\ 10997}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00527}00527\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Action<UITooltip>\ onShowTooltip;}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00528}00528\ }
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00529}00529\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000C6B\ RID:\ 3179}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00530}00530\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ ReportType}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00531}00531\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00532}00532\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040030D9\ RID:\ 12505}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00533}00533\ \ \ \ \ \ \ \ \ \ \ \ \ Default,}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040030DA\ RID:\ 12506}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00535}00535\ \ \ \ \ \ \ \ \ \ \ \ \ Warning,}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00536}00536\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040030DB\ RID:\ 12507}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00537}00537\ \ \ \ \ \ \ \ \ \ \ \ \ Critical,}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00538}00538\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040030DC\ RID:\ 12508}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00539}00539\ \ \ \ \ \ \ \ \ \ \ \ \ Good,}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00540}00540\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040030DD\ RID:\ 12509}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00541}00541\ \ \ \ \ \ \ \ \ \ \ \ \ Great,}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00542}00542\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040030DE\ RID:\ 12510}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00543}00543\ \ \ \ \ \ \ \ \ \ \ \ \ Trial}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00544}00544\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00545}00545\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_home_info_8cs_source_l00546}00546\ \}}
+
+\end{DoxyCode}

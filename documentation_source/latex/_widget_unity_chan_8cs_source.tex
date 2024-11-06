@@ -1,0 +1,68 @@
+\doxysection{Widget\+Unity\+Chan.\+cs}
+\hypertarget{_widget_unity_chan_8cs_source}{}\label{_widget_unity_chan_8cs_source}\index{Elin/WidgetUnityChan.cs@{Elin/WidgetUnityChan.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000651\ RID:\ 1617}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00005}\mbox{\hyperlink{class_widget_unity_chan}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_widget_unity_chan}{WidgetUnityChan}}\ :\ \mbox{\hyperlink{class_widget}{Widget}}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002D73\ RID:\ 11635\ RVA:\ 0x000FD15F\ File\ Offset:\ 0x000FB35F}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnActivate()}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ WidgetUnityChan.Instance\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ this.goWorld\ =\ UnityEngine.Object.Instantiate<GameObject>(this.prefabWorld);}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ this.animator\ =\ this.goWorld.GetComponentInChildren<Animator>();}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ this.cam\ =\ this.goWorld.GetComponentInChildren<Camera>();}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002D74\ RID:\ 11636\ RVA:\ 0x000FD19A\ File\ Offset:\ 0x000FB39A}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnDestroy()}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ UnityEngine.Object.DestroyImmediate(this.goWorld);}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002D75\ RID:\ 11637\ RVA:\ 0x000FD1A8\ File\ Offset:\ 0x000FB3A8}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Refresh(\textcolor{keywordtype}{float}\ angle)}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ this.animator.transform.localEulerAngles\ =\ \textcolor{keyword}{new}\ Vector3(0f,\ angle\ +\ this.angleFix,\ 0f);}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ this.cam.fieldOfView\ =\ (this.up\ ?\ 6f\ :\ 12f);}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002D76\ RID:\ 11638\ RVA:\ 0x000FD1FB\ File\ Offset:\ 0x000FB3FB}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnSetContextMenu(UIContextMenu\ m)}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ m.AddChild(\textcolor{stringliteral}{"{}setting"{}}).AddToggle(\textcolor{stringliteral}{"{}Up"{}},\ this.up,\ delegate(\textcolor{keywordtype}{bool}\ a)}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ this.up\ =\ a;}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ base.SetBaseContextMenu(m);}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001946\ RID:\ 6470}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_widget_unity_chan}{WidgetUnityChan}}\ Instance;}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001947\ RID:\ 6471}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00043}00043\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ angleFix;}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00045}00045\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001948\ RID:\ 6472}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00046}00046\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ up;}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00048}00048\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001949\ RID:\ 6473}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00049}00049\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ goWorld;}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400194A\ RID:\ 6474}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00052}00052\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ prefabWorld;}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400194B\ RID:\ 6475}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00055}00055\ \ \ \ \ \textcolor{keyword}{public}\ Animator\ animator;}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400194C\ RID:\ 6476}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00058}00058\ \ \ \ \ \textcolor{keyword}{public}\ Camera\ cam;}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400194D\ RID:\ 6477}}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ scroll;}
+\DoxyCodeLine{\Hypertarget{_widget_unity_chan_8cs_source_l00062}00062\ \}}
+
+\end{DoxyCode}

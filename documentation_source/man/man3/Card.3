@@ -1,0 +1,3541 @@
+.TH "Card" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Card
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBBaseCard\fP, \fBIReservable\fP, \fBICardParent\fP, \fBIRenderSource\fP, \fBIGlobalValue\fP, and \fBIInspect\fP\&.
+.PP
+Inherited by \fBChara\fP, and \fBThing\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMoveResult\fP { \fBFail\fP, \fBSuccess\fP, \fBDoor\fP }"
+.br
+.ti -1c
+.RI "enum \fBMoveType\fP { \fBWalk\fP, \fBForce\fP }"
+.br
+.in -1c
+
+Public Types inherited from \fBIInspect\fP
+.in +1c
+.ti -1c
+.RI "enum \fBNoteMode\fP { \fBDefault\fP, \fBRecipe\fP, \fBProduct\fP, \fBInfo\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "bool \fBCanReserve\fP (\fBAIAct\fP act)"
+.br
+.ti -1c
+.RI "bool \fBTryReserve\fP (\fBAIAct\fP act)"
+.br
+.ti -1c
+.RI "void \fBMod\fP ()"
+.br
+.ti -1c
+.RI "Window\&.SaveData \fBGetWindowSaveData\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsExcludeFromCraft\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetDirtyWeight\fP ()"
+.br
+.ti -1c
+.RI "void \fBChangeWeight\fP (int a)"
+.br
+.ti -1c
+.RI "int \fBEvalue\fP (int ele)"
+.br
+.ti -1c
+.RI "int \fBEvalue\fP (string alias)"
+.br
+.ti -1c
+.RI "bool \fBHasTag\fP (CTAG tag)"
+.br
+.ti -1c
+.RI "bool \fBHasEditorTag\fP (EditorTag tag)"
+.br
+.ti -1c
+.RI "void \fBAddEditorTag\fP (EditorTag tag)"
+.br
+.ti -1c
+.RI "void \fBRemoveEditorTag\fP (EditorTag tag)"
+.br
+.ti -1c
+.RI "virtual string \fBGetName\fP (NameStyle style, int num=\-1)"
+.br
+.ti -1c
+.RI "virtual string \fBGetExtraName\fP ()"
+.br
+.ti -1c
+.RI "virtual string \fBGetDetail\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetBestAttribute\fP ()"
+.br
+.ti -1c
+.RI "void \fBModExp\fP (string alias, int a)"
+.br
+.ti -1c
+.RI "void \fBModExp\fP (int ele, int a)"
+.br
+.ti -1c
+.RI "bool \fBIsChildOf\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "string \fBReferenceId\fP ()"
+.br
+.ti -1c
+.RI "void \fBCreate\fP (string _id, int _idMat=\-1, int genLv=\-1)"
+.br
+.ti -1c
+.RI "virtual void \fBOnBeforeCreate\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnCreate\fP (int genLv)"
+.br
+.ti -1c
+.RI "virtual void \fBSetSource\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBApplyEditorTags\fP (EditorTag tag)"
+.br
+.ti -1c
+.RI "void \fBApplyTrait\fP ()"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBSetLv\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBAddExp\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBLevelUp\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBApplyMaterialElements\fP (bool remove)"
+.br
+.ti -1c
+.RI "virtual void \fBApplyMaterial\fP (bool remove=false)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBChangeMaterial\fP (int idNew)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBChangeMaterial\fP (string idNew)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBChangeMaterial\fP (\fBSourceMaterial\&.Row\fP row)"
+.br
+.ti -1c
+.RI "void \fBSetReplica\fP (bool on)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBAdd\fP (string id, int num=1, int lv=1)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBAddCard\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "void \fBRemoveCard\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "void \fBNotifyAddThing\fP (\fBThing\fP t, int num)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBAddThing\fP (string id, int lv=\-1)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBAddThing\fP (\fBThing\fP t, bool tryStack=true, int destInvX=\-1, int destInvY=\-1)"
+.br
+.ti -1c
+.RI "void \fBRemoveThings\fP ()"
+.br
+.ti -1c
+.RI "void \fBRemoveThing\fP (\fBThing\fP thing)"
+.br
+.ti -1c
+.RI "bool \fBShouldTrySetDirtyInventory\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBCanStackTo\fP (\fBThing\fP to)"
+.br
+.ti -1c
+.RI "bool \fBTryStackTo\fP (\fBThing\fP to)"
+.br
+.ti -1c
+.RI "\fBICardParent\fP \fBGetRoot\fP ()"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBGetRootCard\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsStackable\fP (\fBThing\fP tg)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBDuplicate\fP (int num)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBSplit\fP (int a)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBSetNum\fP (int a)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBSetNoSell\fP ()"
+.br
+.ti -1c
+.RI "void \fBModNum\fP (int a, bool notify=true)"
+.br
+.ti -1c
+.RI "void \fBAddSocket\fP ()"
+.br
+.ti -1c
+.RI "void \fBApplySocket\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "void \fBApplySocket\fP (int id, int lv, \fBCard\fP mod=null)"
+.br
+.ti -1c
+.RI "void \fBEjectSockets\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnChildNumChange\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBInstall\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetPlaceState\fP (PlaceState newState, bool byPlayer=false)"
+.br
+.ti -1c
+.RI "int \fBGetTotalQuality\fP (bool applyBonus=true)"
+.br
+.ti -1c
+.RI "void \fBModEncLv\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBSetEncLv\fP (int a)"
+.br
+.ti -1c
+.RI "virtual void \fBSetBlessedState\fP (BlessedState s)"
+.br
+.ti -1c
+.RI "virtual void \fBChangeRarity\fP (Rarity q)"
+.br
+.ti -1c
+.RI "bool \fBTryPay\fP (int a, string id='money')"
+.br
+.ti -1c
+.RI "void \fBSetCharge\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBModCharge\fP (int a, bool destroy=false)"
+.br
+.ti -1c
+.RI "void \fBModCurrency\fP (int a, string id='money')"
+.br
+.ti -1c
+.RI "int \fBGetCurrency\fP (string id='money')"
+.br
+.ti -1c
+.RI "virtual void \fBHealHPHost\fP (int a, HealSource origin=HealSource\&.None)"
+.br
+.ti -1c
+.RI "virtual void \fBHealHP\fP (int a, HealSource origin=HealSource\&.None)"
+.br
+.ti -1c
+.RI "virtual int \fBGetArmorSkill\fP ()"
+.br
+.ti -1c
+.RI "virtual int \fBApplyProtection\fP (int dmg, int mod=100)"
+.br
+.ti -1c
+.RI "void \fBDamageHP\fP (int dmg, AttackSource attackSource=AttackSource\&.None, \fBCard\fP origin=null)"
+.br
+.ti -1c
+.RI "void \fBDamageHP\fP (int dmg, int ele, int eleP=100, AttackSource attackSource=AttackSource\&.None, \fBCard\fP origin=null, bool showEffect=true)"
+.br
+.ti -1c
+.RI "virtual void \fBDie\fP (\fBElement\fP e=null, \fBCard\fP origin=null, AttackSource attackSource=AttackSource\&.None)"
+.br
+.ti -1c
+.RI "void \fBExplode\fP (\fBPoint\fP p, \fBCard\fP origin)"
+.br
+.ti -1c
+.RI "void \fBDeconstruct\fP ()"
+.br
+.ti -1c
+.RI "void \fBDestroy\fP ()"
+.br
+.ti -1c
+.RI "void \fBSpawnLoot\fP (\fBCard\fP origin)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBTryMakeRandomItem\fP (int lv=\-1)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBMakeFoodFrom\fP (string _id)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBMakeFoodFrom\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "void \fBMakeFoodRef\fP (\fBCard\fP c1, \fBCard\fP c2=null)"
+.br
+.ti -1c
+.RI "string \fBTryGetFoodName\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "string \fBGetFoodName\fP (string s)"
+.br
+.ti -1c
+.RI "void \fBMakeFigureFrom\fP (string id)"
+.br
+.ti -1c
+.RI "void \fBMakeRefFrom\fP (string id)"
+.br
+.ti -1c
+.RI "void \fBMakeRefFrom\fP (\fBCard\fP c1, \fBCard\fP c2=null)"
+.br
+.ti -1c
+.RI "void \fBSetHidden\fP (bool hide=true)"
+.br
+.ti -1c
+.RI "virtual Card\&.MoveResult \fB_Move\fP (\fBPoint\fP p, Card\&.MoveType type=Card\&.MoveType\&.Walk)"
+.br
+.ti -1c
+.RI "unsafe void \fBMoveImmediate\fP (\fBPoint\fP p, bool focus=true, bool cancelAI=true)"
+.br
+.ti -1c
+.RI "unsafe void \fBTeleport\fP (\fBPoint\fP point, bool silent=false, bool force=false)"
+.br
+.ti -1c
+.RI "virtual void \fBOnLand\fP ()"
+.br
+.ti -1c
+.RI "int \fBResistLvFrom\fP (int ele)"
+.br
+.ti -1c
+.RI "int \fBResistLv\fP (int res)"
+.br
+.ti -1c
+.RI "bool \fBHasElement\fP (int ele, int req=1)"
+.br
+.ti -1c
+.RI "bool \fBHasElement\fP (string id, int req=1)"
+.br
+.ti -1c
+.RI "virtual \fBCardRenderer\fP \fB_CreateRenderer\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddBlood\fP (int a=1, int id=\-1)"
+.br
+.ti -1c
+.RI "\fBRenderParam\fP \fBGetRenderParam\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBSetRenderParam\fP (\fBRenderParam\fP p)"
+.br
+.ti -1c
+.RI "void \fBDyeRandom\fP ()"
+.br
+.ti -1c
+.RI "void \fBDye\fP (string idMat)"
+.br
+.ti -1c
+.RI "void \fBDye\fP (\fBSourceMaterial\&.Row\fP mat)"
+.br
+.ti -1c
+.RI "void \fBRefreshColor\fP ()"
+.br
+.ti -1c
+.RI "ref Color \fBGetRandomColor\fP ()"
+.br
+.ti -1c
+.RI "virtual Sprite \fBGetSprite\fP (int dir=0)"
+.br
+.ti -1c
+.RI "virtual Sprite \fBGetImageSprite\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetImage\fP (Image image, int dir, int idSkin=0)"
+.br
+.ti -1c
+.RI "virtual void \fBSetImage\fP (Image image)"
+.br
+.ti -1c
+.RI "void \fBShowEmo\fP (Emo _emo=Emo\&.none, float duration=0f, bool skipSame=true)"
+.br
+.ti -1c
+.RI "void \fBPlaySoundHold\fP (bool spatial=true)"
+.br
+.ti -1c
+.RI "void \fBPlaySoundDrop\fP (bool spatial=true)"
+.br
+.ti -1c
+.RI "SoundSource \fBPlaySound\fP (string id, float v=1f, bool spatial=true)"
+.br
+.ti -1c
+.RI "void \fBKillAnime\fP ()"
+.br
+.ti -1c
+.RI "void \fBPlayAnime\fP (AnimeID id, bool force=false)"
+.br
+.ti -1c
+.RI "void \fBPlayAnime\fP (AnimeID id, \fBPoint\fP dest, bool force=false)"
+.br
+.ti -1c
+.RI "void \fBPlayAnimeLoot\fP ()"
+.br
+.ti -1c
+.RI "unsafe \fBEffect\fP \fBPlayEffect\fP (string id, bool useRenderPos=true, float range=0f, Vector3 fix=default(Vector3))"
+.br
+.ti -1c
+.RI "unsafe void \fBPlayEffect\fP (int ele, bool useRenderPos=true, float range=0f)"
+.br
+.ti -1c
+.RI "virtual void \fBSetDir\fP (int d)"
+.br
+.ti -1c
+.RI "void \fBSetRandomDir\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBLookAt\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "virtual void \fBLookAt\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "virtual void \fBRotate\fP (bool reverse=false)"
+.br
+.ti -1c
+.RI "void \fBChangeAltitude\fP (int a)"
+.br
+.ti -1c
+.RI "virtual \fBSubPassData\fP \fBGetSubPassData\fP ()"
+.br
+.ti -1c
+.RI "unsafe void \fBSetFreePos\fP (\fBPoint\fP point)"
+.br
+.ti -1c
+.RI "unsafe void \fBRenderMarker\fP (\fBPoint\fP point, bool active, HitResult result, bool main, int dir, bool useCurrentPosition=false)"
+.br
+.ti -1c
+.RI "void \fBRecalculateFOV\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHasLight\fP ()"
+.br
+.ti -1c
+.RI "float \fBGetLightPower\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetSightRadius\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetLightRadius\fP ()"
+.br
+.ti -1c
+.RI "void \fBCalculateFOV\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetRandomLightColors\fP ()"
+.br
+.ti -1c
+.RI "\fBFov\fP \fBCreateFov\fP ()"
+.br
+.ti -1c
+.RI "void \fBClearFOV\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnSimulateHour\fP (\fBVirtualDate\fP date)"
+.br
+.ti -1c
+.RI "void \fBDecayNatural\fP (int hour=1)"
+.br
+.ti -1c
+.RI "void \fBDecay\fP (int a=10)"
+.br
+.ti -1c
+.RI "void \fBTalk\fP (string idTopic, string ref1=null, string ref2=null, bool forceSync=false)"
+.br
+.ti -1c
+.RI "void \fBTalkRaw\fP (string text, string ref1=null, string ref2=null, bool forceSync=false)"
+.br
+.ti -1c
+.RI "string \fBApplyNewLine\fP (string text)"
+.br
+.ti -1c
+.RI "void \fBSayRaw\fP (string text, string ref1=null, string ref2=null)"
+.br
+.ti -1c
+.RI "void \fBSayNothingHappans\fP ()"
+.br
+.ti -1c
+.RI "void \fBSay\fP (string lang, string ref1=null, string ref2=null)"
+.br
+.ti -1c
+.RI "void \fBSay\fP (string lang, \fBCard\fP c1, \fBCard\fP c2, string ref1=null, string ref2=null)"
+.br
+.ti -1c
+.RI "void \fBSay\fP (string lang, \fBCard\fP c1, string ref1=null, string ref2=null)"
+.br
+.ti -1c
+.RI "string \fBGetTalkText\fP (string idTopic, bool stripPun=false, bool useDefault=true)"
+.br
+.ti -1c
+.RI "string \fBApplyTone\fP (string text, bool stripPun=false)"
+.br
+.ti -1c
+.RI "void \fBSetRandomTalk\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetRandomTone\fP ()"
+.br
+.ti -1c
+.RI "void \fBTryStack\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "void \fBApplyBacker\fP (int bid)"
+.br
+.ti -1c
+.RI "void \fBRemoveBacker\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetPaintData\fP ()"
+.br
+.ti -1c
+.RI "byte[] \fBGetPaintData\fP ()"
+.br
+.ti -1c
+.RI "void \fBClearPaintSprite\fP ()"
+.br
+.ti -1c
+.RI "Sprite \fBGetPaintSprite\fP ()"
+.br
+.ti -1c
+.RI "void \fBTryUnrestrain\fP (bool force=false, \fBChara\fP c=null)"
+.br
+.ti -1c
+.RI "\fBTraitShackle\fP \fBGetRestrainer\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBTick\fP ()"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBSetPriceFix\fP (int a)"
+.br
+.ti -1c
+.RI "int \fBGetEquipValue\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetSale\fP (bool sale)"
+.br
+.ti -1c
+.RI "int \fBGetValue\fP (bool sell=false)"
+.br
+.ti -1c
+.RI "virtual int \fBGetPrice\fP (CurrencyType currency=CurrencyType\&.Money, bool sell=false, PriceType priceType=PriceType\&.Default, \fBChara\fP c=null)"
+.br
+.ti -1c
+.RI "virtual string \fBGetHoverText\fP ()"
+.br
+.ti -1c
+.RI "virtual string \fBGetHoverText2\fP ()"
+.br
+.ti -1c
+.RI "int \fBDist\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "int \fBDist\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "bool \fBIsInMutterDistance\fP (int d=10)"
+.br
+.ti -1c
+.RI "void \fBSetCensored\fP (bool enable)"
+.br
+.ti -1c
+.RI "void \fBSetDeconstruct\fP (bool deconstruct)"
+.br
+.ti -1c
+.RI "virtual void \fBSetSortVal\fP (UIList\&.SortMode m, CurrencyType currency=CurrencyType\&.Money)"
+.br
+.ti -1c
+.RI "virtual int \fBSecondaryCompare\fP (UIList\&.SortMode m, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "void \fBForeachFOV\fP (Func< \fBPoint\fP, bool > func)"
+.br
+.ti -1c
+.RI "void \fBForeachPoint\fP (Action< \fBPoint\fP, bool > action)"
+.br
+.ti -1c
+.RI "void \fBOnInspect\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBWriteNote\fP (UINote n, Action< UINote > onWriteNote=null, IInspect\&.NoteMode mode=IInspect\&.NoteMode\&.Default, \fBRecipe\fP recipe=null)"
+.br
+.ti -1c
+.RI "void \fBInspect\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBHasCondition< T >\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHaveFur\fP ()"
+.br
+.ti -1c
+.RI "bool \fBCanBeSheared\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBBaseCard\fP
+.in +1c
+.ti -1c
+.RI "bool \fBGetBool\fP (int id)"
+.br
+.ti -1c
+.RI "void \fBSetBool\fP (int id, bool enable)"
+.br
+.ti -1c
+.RI "int \fBGetInt\fP (int id, int? defaultInt=null)"
+.br
+.ti -1c
+.RI "void \fBAddInt\fP (int id, int value)"
+.br
+.ti -1c
+.RI "void \fBSetInt\fP (int id, int value=0)"
+.br
+.ti -1c
+.RI "string \fBGetStr\fP (int id, string defaultStr=null)"
+.br
+.ti -1c
+.RI "void \fBSetStr\fP (int id, string value=null)"
+.br
+.ti -1c
+.RI "T \fBGetObj< T >\fP (int id)"
+.br
+.ti -1c
+.RI "void \fBSetObj\fP (int id, object o)"
+.br
+.ti -1c
+.RI "T \fBSetObj< T >\fP (int id, object o)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBICardParent\fP
+
+Public Member Functions inherited from \fBIGlobalValue\fP
+
+Public Member Functions inherited from \fBIInspect\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBApplyTone\fP (\fBChara\fP c, ref string text, string _tones, int gender, bool stripPun=false)"
+.br
+.ti -1c
+.RI "static int \fBGetTilePrice\fP (\fBTileRow\fP row, \fBSourceMaterial\&.Row\fP mat)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int[] \fB_ints\fP = new int[30]"
+.br
+.ti -1c
+.RI "string \fBid\fP = ''"
+.br
+.ti -1c
+.RI "\fBThingContainer\fP \fBthings\fP = new \fBThingContainer\fP()"
+.br
+.ti -1c
+.RI "\fBElementContainerCard\fP \fBelements\fP = new \fBElementContainerCard\fP()"
+.br
+.ti -1c
+.RI "\fBBiography\fP \fBbio\fP"
+.br
+.ti -1c
+.RI "List< int > \fBsockets\fP"
+.br
+.ti -1c
+.RI "\fBAIAct\fP \fBreservedAct\fP"
+.br
+.ti -1c
+.RI "\fBProps\fP \fBprops\fP"
+.br
+.ti -1c
+.RI "\fBTrait\fP \fBtrait\fP"
+.br
+.ti -1c
+.RI "\fBICardParent\fP \fBparent\fP"
+.br
+.ti -1c
+.RI "\fBFov\fP \fBfov\fP"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBpos\fP = new \fBPoint\fP()"
+.br
+.ti -1c
+.RI "\fBCardRenderer\fP \fBrenderer\fP"
+.br
+.ti -1c
+.RI "int \fBturn\fP"
+.br
+.ti -1c
+.RI "int \fB_colorInt\fP"
+.br
+.ti -1c
+.RI "float \fBroundTimer\fP"
+.br
+.ti -1c
+.RI "float \fBangle\fP = 180f"
+.br
+.ti -1c
+.RI "bool \fBisDestroyed\fP"
+.br
+.ti -1c
+.RI "\fBCardBlueprint\fP \fBbp\fP"
+.br
+.ti -1c
+.RI "BitArray32 \fB_bits1\fP"
+.br
+.ti -1c
+.RI "BitArray32 \fB_bits2\fP"
+.br
+.ti -1c
+.RI "PlaceState \fBplaceState\fP"
+.br
+.ti -1c
+.RI "bool \fBdirtyWeight\fP = true"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fB_material\fP"
+.br
+.ti -1c
+.RI "Emo \fBlastEmo\fP"
+.br
+.ti -1c
+.RI "int \fBsortVal\fP"
+.br
+.in -1c
+
+Public Attributes inherited from \fBBaseCard\fP
+.in +1c
+.ti -1c
+.RI "Dictionary< int, object > \fBmapObj\fP = new Dictionary<int, object>()"
+.br
+.ti -1c
+.RI "Dictionary< int, int > \fBmapInt\fP = new Dictionary<int, int>()"
+.br
+.ti -1c
+.RI "Dictionary< int, string > \fBmapStr\fP = new Dictionary<int, string>()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnSerializing\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnDeserialized\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBCard\fP \fBparentCard\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBparentThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBcolorInt\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsHotItem\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBuid\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBidMaterial\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdir\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBNum\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fB_x\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fB_z\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBrefVal\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdecay\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBaltitude\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBhp\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "float \fBfx\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "float \fBfy\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "BlessedState \fBblessedState\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "PlaceState \fB_placeState\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBrarityLv\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "Rarity \fBrarity\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBencLV\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBposInvX\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBposInvY\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBidSkin\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBfeat\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBLV\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBexp\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBqualityTier\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisCensored\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisDeconstructing\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisDyed\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisModified\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisNew\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisPlayerCreation\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBignoreAutoPick\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBfreePos\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisHidden\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisOn\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisNPCProperty\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisRestrained\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisRoofItem\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisMasked\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBdisableAutoToggle\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisImported\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBautoRefuel\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBignoreStackHeight\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisFloating\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisWeightChanged\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisFireproof\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisAcidproof\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisReplica\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisSummon\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisElemental\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisBroken\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisSubsetCard\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBnoSnow\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBnoMove\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisGifted\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisCrafted\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisLostProperty\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBnoShadow\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBnoSell\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisLeashed\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisStolen\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisSale\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisCopy\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisRestocking\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisBackerContent\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceBacker\&.Row\fP \fBsourceBacker\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "BedType \fBc_bedType\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_equippedSlot\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_lockLv\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "Hostility \fBc_originalHostility\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "MinionType \fBc_minionType\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_vomit\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBc_isImportant\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBc_lockedHard\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBc_revealLock\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBc_isTrained\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBc_isPrayed\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_lightColor\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "Color \fBLightColor\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBc_uidZone\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_uidRefCard\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_priceFix\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_priceAdd\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_dyeMat\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "VisitorState \fBvisitorState\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "RescueState \fBc_rescueState\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "BossType \fBc_bossType\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_dateStockExpire\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_IDTState\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_charges\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_bill\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_invest\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_seed\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_allowance\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_fur\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_containerSize\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_weight\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_diceDim\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_indexContainerIcon\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_idMainElement\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_summonDuration\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_idBacker\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_uidMaster\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_ammo\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_daysWithGod\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idPortrait\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idRace\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idJob\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idTone\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_color\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idTalk\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idDeity\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_altName\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_altName2\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_refText\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idRefName\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idRidePCC\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idAbility\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_context\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idEditor\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_editorTags\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_editorTraitVal\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idTrait\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idRefCard\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idRefCard2\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_note\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBUniqueData\fP \fBc_uniqueData\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBammoData\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBc_copyContainer\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "Window\&.SaveData \fBc_windowSaveData\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBCharaUpgrade\fP \fBc_upgrades\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBCharaGenes\fP \fBc_genes\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBContainerUpgrade\fP \fBc_containerUpgrade\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBDNA\fP \fBc_DNA\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBCharaList\fP \fBc_charaList\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "byte[] \fBc_textureData\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBDyeMat\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBinvX\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBinvY\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBCardRow\fP \fBrefCard\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCardRow\fP \fBrefCard2\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBExpToNext\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBDefaultLV\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBChildrenWeight\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBChildrenAndSelfWeight\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBChildrenAndSelfWeightSingle\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBSelfWeight\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBWeightLimit\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceCategory\&.Row\fP \fBcategory\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmaterial\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBAliasMaterialOnCreate\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBCell\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBThing\fP \fBThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBChara\fP \fBChara\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBisThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBisChara\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBExistsOnMap\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBisSynced\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsContainer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsUnique\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsPowerful\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsImportant\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBSourcePref\fP \fBPref\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsDeadOrSleeping\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsDisabled\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsMoving\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBflipX\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsAliveInCurrentZone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBactorPrefab\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBCardRow\fP \fBsourceCard\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBCardRow\fP \fBsourceRenderCard\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBTileType\fP \fBTileType\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBNameSimple\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsPC\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fB_IsPC\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsPCC\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsPCParty\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsMinion\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsPCPartyMinion\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsPCFactionMinion\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsMultisize\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsToolbelt\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsLightsource\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsEquipment\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFood\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBShowFoodEnc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsWeapon\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsEquipmentOrRanged\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMeleeWeapon\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsRangedWeapon\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsThrownWeapon\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsAmmo\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsAgent\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFurniture\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsBlessed\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCursed\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsRestrainedResident\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsPCFaction\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsPCFactionOrMinion\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsGlobal\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBMaxDecay\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDecayed\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsRotting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFresn\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBMaxHP\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBPower\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBFameLv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int[] \fBTiles\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBPrefIndex\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsVariation\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBDV\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBPV\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBHIT\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBDMG\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBSTR\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBDEX\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBEND\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBPER\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBLER\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBWIL\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBMAG\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBCHA\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBINT\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBLUC\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBW\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBH\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsIdentified\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBTextRarity\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInstalled\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMale\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsNegativeGift\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasContainerSize\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBTool\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBSourceMaterial\&.Row\fP \fBDefaultMaterial\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasHost\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBQuality\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBQualityLv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBThisOrParentPos\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "LightData \fBLightData\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCardRenderer\fP \fBHostRenderer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBShouldShowMsg\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBCanInspect\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBInspectName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBInspectPoint\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "Vector3 \fBInspectPosition\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBIInspect\fP
+.SS "Additional Inherited Members"
+
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB12\fP of file \fBCard\&.cs\fP\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum Card\&.MoveResult"
+
+.PP
+Definition at line \fB8031\fP of file \fBCard\&.cs\fP\&.
+.SS "enum Card\&.MoveType"
+
+.PP
+Definition at line \fB8042\fP of file \fBCard\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBCardRenderer\fP Card\&._CreateRenderer ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB5932\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual Card\&.MoveResult Card\&._Move (\fBPoint\fP p, Card\&.MoveType type = \fRCard::MoveType::Walk\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB5817\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBThing\fP Card\&.Add (string id, int num = \fR1\fP, int lv = \fR1\fP)"
+
+.PP
+Definition at line \fB3741\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.AddBlood (int a = \fR1\fP, int id = \fR\-1\fP)"
+
+.PP
+Definition at line \fB5940\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCard\fP Card\&.AddCard (\fBCard\fP c)"
+
+.PP
+Definition at line \fB3751\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.AddEditorTag (EditorTag tag)"
+
+.PP
+Definition at line \fB2413\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.AddExp (int a)"
+
+.PP
+Definition at line \fB3630\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.AddSocket ()"
+
+.PP
+Definition at line \fB4097\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBThing\fP Card\&.AddThing (string id, int lv = \fR\-1\fP)"
+
+.PP
+Definition at line \fB3768\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBThing\fP Card\&.AddThing (\fBThing\fP t, bool tryStack = \fRtrue\fP, int destInvX = \fR\-1\fP, int destInvY = \fR\-1\fP)"
+
+.PP
+Definition at line \fB3774\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ApplyBacker (int bid)"
+
+.PP
+Definition at line \fB6962\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.ApplyEditorTags (EditorTag tag)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB3532\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.ApplyMaterial (bool remove = \fRfalse\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB3691\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.ApplyMaterialElements (bool remove)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB3686\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.ApplyNewLine (string text)"
+
+.PP
+Definition at line \fB6735\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual int Card\&.ApplyProtection (int dmg, int mod = \fR100\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB4469\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ApplySocket (int id, int lv, \fBCard\fP mod = \fRnull\fP)"
+
+.PP
+Definition at line \fB4118\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ApplySocket (\fBThing\fP t)"
+
+.PP
+Definition at line \fB4107\fP of file \fBCard\&.cs\fP\&.
+.SS "static string Card\&.ApplyTone (\fBChara\fP c, ref string text, string _tones, int gender, bool stripPun = \fRfalse\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB6860\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.ApplyTone (string text, bool stripPun = \fRfalse\fP)"
+
+.PP
+Definition at line \fB6850\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ApplyTrait ()"
+
+.PP
+Definition at line \fB3575\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.CalculateFOV ()"
+
+.PP
+Definition at line \fB6473\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.CanBeSheared ()"
+
+.PP
+Definition at line \fB7875\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.CanReserve (\fBAIAct\fP act)"
+
+.PP
+Definition at line \fB31\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.CanStackTo (\fBThing\fP to)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB3945\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ChangeAltitude (int a)"
+
+.PP
+Definition at line \fB6235\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCard\fP Card\&.ChangeMaterial (int idNew)"
+
+.PP
+Definition at line \fB3697\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCard\fP Card\&.ChangeMaterial (\fBSourceMaterial\&.Row\fP row)"
+
+.PP
+Definition at line \fB3709\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCard\fP Card\&.ChangeMaterial (string idNew)"
+
+.PP
+Definition at line \fB3703\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.ChangeRarity (Rarity q)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB4350\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ChangeWeight (int a)"
+
+.PP
+Definition at line \fB2300\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ClearFOV ()"
+
+.PP
+Definition at line \fB6568\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ClearPaintSprite ()"
+
+.PP
+Definition at line \fB7045\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.Create (string _id, int _idMat = \fR\-1\fP, int genLv = \fR\-1\fP)"
+
+.PP
+Definition at line \fB3417\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBFov\fP Card\&.CreateFov ()"
+
+.PP
+Definition at line \fB6517\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.DamageHP (int dmg, AttackSource attackSource = \fRAttackSource::None\fP, \fBCard\fP origin = \fRnull\fP)"
+
+.PP
+Definition at line \fB4495\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.DamageHP (int dmg, int ele, int eleP = \fR100\fP, AttackSource attackSource = \fRAttackSource::None\fP, \fBCard\fP origin = \fRnull\fP, bool showEffect = \fRtrue\fP)"
+
+.PP
+Definition at line \fB4501\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.Decay (int a = \fR10\fP)"
+
+.PP
+Definition at line \fB6611\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.DecayNatural (int hour = \fR1\fP)"
+
+.PP
+Definition at line \fB6588\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.Deconstruct ()"
+
+.PP
+Definition at line \fB5250\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.Destroy ()"
+
+.PP
+Definition at line \fB5257\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.Die (\fBElement\fP e = \fRnull\fP, \fBCard\fP origin = \fRnull\fP, AttackSource attackSource = \fRAttackSource::None\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB5186\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.Dist (\fBCard\fP c)"
+
+.PP
+Definition at line \fB7637\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.Dist (\fBPoint\fP p)"
+
+.PP
+Definition at line \fB7660\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBThing\fP Card\&.Duplicate (int num)"
+
+.PP
+Definition at line \fB3999\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.Dye (\fBSourceMaterial\&.Row\fP mat)"
+
+.PP
+Definition at line \fB5982\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.Dye (string idMat)"
+
+.PP
+Definition at line \fB5976\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.DyeRandom ()"
+
+.PP
+Definition at line \fB5970\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.EjectSockets ()"
+
+.PP
+Definition at line \fB4146\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.Evalue (int ele)"
+
+.PP
+Definition at line \fB2388\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.Evalue (string alias)"
+
+.PP
+Definition at line \fB2394\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.Explode (\fBPoint\fP p, \fBCard\fP origin)"
+
+.PP
+Definition at line \fB5239\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ForeachFOV (Func< \fBPoint\fP, bool > func)"
+
+.PP
+Definition at line \fB7766\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ForeachPoint (Action< \fBPoint\fP, bool > action)"
+
+.PP
+Definition at line \fB7783\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual int Card\&.GetArmorSkill ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB4463\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.GetBestAttribute ()"
+
+.PP
+Definition at line \fB3199\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.GetCurrency (string id = \fR'money'\fP)"
+
+.PP
+Definition at line \fB4411\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual string Card\&.GetDetail ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB2675\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.GetEquipValue ()"
+
+.PP
+Definition at line \fB7147\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual string Card\&.GetExtraName ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB2669\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.GetFoodName (string s)"
+
+.PP
+Definition at line \fB5780\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual string Card\&.GetHoverText ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB7625\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual string Card\&.GetHoverText2 ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB7631\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual Sprite Card\&.GetImageSprite ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB6051\fP of file \fBCard\&.cs\fP\&.
+.SS "float Card\&.GetLightPower ()"
+
+.PP
+Definition at line \fB6377\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.GetLightRadius ()"
+
+.PP
+Definition at line \fB6402\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual string Card\&.GetName (NameStyle style, int num = \fR\-1\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB2663\fP of file \fBCard\&.cs\fP\&.
+.SS "byte[] Card\&.GetPaintData ()"
+
+.PP
+Definition at line \fB7026\fP of file \fBCard\&.cs\fP\&.
+.SS "Sprite Card\&.GetPaintSprite ()"
+
+.PP
+Definition at line \fB7056\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual int Card\&.GetPrice (CurrencyType currency = \fRCurrencyType::Money\fP, bool sell = \fRfalse\fP, PriceType priceType = \fRPriceType::Default\fP, \fBChara\fP c = \fRnull\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB7250\fP of file \fBCard\&.cs\fP\&.
+.SS "ref Color Card\&.GetRandomColor ()"
+
+.PP
+Definition at line \fB6030\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBRenderParam\fP Card\&.GetRenderParam ()"
+
+.PP
+Definition at line \fB5954\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBTraitShackle\fP Card\&.GetRestrainer ()"
+
+.PP
+Definition at line \fB7106\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBICardParent\fP Card\&.GetRoot ()"
+
+.PP
+Implements \fBICardParent\fP\&.
+.PP
+Definition at line \fB3972\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCard\fP Card\&.GetRootCard ()"
+
+.PP
+Definition at line \fB3982\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.GetSightRadius ()"
+
+.PP
+Definition at line \fB6392\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual Sprite Card\&.GetSprite (int dir = \fR0\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB6040\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual \fBSubPassData\fP Card\&.GetSubPassData ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB6249\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.GetTalkText (string idTopic, bool stripPun = \fRfalse\fP, bool useDefault = \fRtrue\fP)"
+
+.PP
+Definition at line \fB6830\fP of file \fBCard\&.cs\fP\&.
+.SS "static int Card\&.GetTilePrice (\fBTileRow\fP row, \fBSourceMaterial\&.Row\fP mat)\fR [static]\fP"
+
+.PP
+Definition at line \fB7124\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.GetTotalQuality (bool applyBonus = \fRtrue\fP)"
+
+.PP
+Definition at line \fB4290\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.GetValue (bool sell = \fRfalse\fP)"
+
+.PP
+Definition at line \fB7169\fP of file \fBCard\&.cs\fP\&.
+.SS "Window\&.SaveData Card\&.GetWindowSaveData ()"
+
+.PP
+Definition at line \fB2105\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.HasCondition< T > ()\fR [virtual]\fP"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fI\fBCondition\fP\fP
+.PP
+Definition at line \fB7858\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.HasEditorTag (EditorTag tag)"
+
+.PP
+Definition at line \fB2406\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.HasElement (int ele, int req = \fR1\fP)"
+
+.PP
+Definition at line \fB5920\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.HasElement (string id, int req = \fR1\fP)"
+
+.PP
+Definition at line \fB5926\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.HasLight ()"
+
+.PP
+Definition at line \fB6357\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.HasTag (CTAG tag)"
+
+.PP
+Definition at line \fB2400\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.HaveFur ()"
+
+.PP
+Definition at line \fB7864\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.HealHP (int a, HealSource origin = \fRHealSource::None\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB4441\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.HealHPHost (int a, HealSource origin = \fRHealSource::None\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB4424\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.Inspect ()"
+
+.PP
+Definition at line \fB7844\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCard\fP Card\&.Install ()"
+
+.PP
+Definition at line \fB4179\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsChildOf (\fBCard\fP c)"
+
+.PP
+Definition at line \fB3314\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsExcludeFromCraft ()"
+
+.PP
+Definition at line \fB2119\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsInMutterDistance (int d = \fR10\fP)"
+
+.PP
+Definition at line \fB7666\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsStackable (\fBThing\fP tg)"
+
+.PP
+Definition at line \fB3993\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.KillAnime ()"
+
+.PP
+Definition at line \fB6132\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.LevelUp ()"
+
+.PP
+Definition at line \fB3645\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.LookAt (\fBCard\fP c)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB6191\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.LookAt (\fBPoint\fP p)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB6196\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.MakeFigureFrom (string id)"
+
+.PP
+Definition at line \fB5786\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCard\fP Card\&.MakeFoodFrom (\fBCard\fP c)"
+
+.PP
+Definition at line \fB5640\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCard\fP Card\&.MakeFoodFrom (string _id)"
+
+.PP
+Definition at line \fB5634\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.MakeFoodRef (\fBCard\fP c1, \fBCard\fP c2 = \fRnull\fP)"
+
+.PP
+Definition at line \fB5720\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.MakeRefFrom (\fBCard\fP c1, \fBCard\fP c2 = \fRnull\fP)"
+
+.PP
+Definition at line \fB5798\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.MakeRefFrom (string id)"
+
+.PP
+Definition at line \fB5792\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.Mod ()"
+
+.PP
+Definition at line \fB1061\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ModCharge (int a, bool destroy = \fRfalse\fP)"
+
+.PP
+Definition at line \fB4383\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ModCurrency (int a, string id = \fR'money'\fP)"
+
+.PP
+Definition at line \fB4395\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ModEncLv (int a)"
+
+.PP
+Definition at line \fB4301\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ModExp (int ele, int a)"
+
+.PP
+Definition at line \fB3226\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ModExp (string alias, int a)"
+
+.PP
+Definition at line \fB3220\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ModNum (int a, bool notify = \fRtrue\fP)"
+
+.PP
+Definition at line \fB4070\fP of file \fBCard\&.cs\fP\&.
+.SS "unsafe void Card\&.MoveImmediate (\fBPoint\fP p, bool focus = \fRtrue\fP, bool cancelAI = \fRtrue\fP)"
+
+.PP
+Definition at line \fB5828\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.NotifyAddThing (\fBThing\fP t, int num)"
+
+.PP
+Definition at line \fB3763\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.OnBeforeCreate ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB3517\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.OnChildNumChange (\fBCard\fP c)"
+
+.PP
+Implements \fBICardParent\fP\&.
+.PP
+Definition at line \fB4169\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.OnCreate (int genLv)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB3522\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.OnDeserialized ()\fR [protected]\fP, \fR [virtual]\fP"
+
+.PP
+Definition at line \fB3406\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.OnInspect ()"
+
+.PP
+Implements \fBIInspect\fP\&.
+.PP
+Definition at line \fB7794\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.OnLand ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB5898\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.OnSerializing ()\fR [protected]\fP, \fR [virtual]\fP"
+
+.PP
+Definition at line \fB3376\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.OnSimulateHour (\fBVirtualDate\fP date)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB6578\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.PlayAnime (AnimeID id, bool force = \fRfalse\fP)"
+
+.PP
+Definition at line \fB6138\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.PlayAnime (AnimeID id, \fBPoint\fP dest, bool force = \fRfalse\fP)"
+
+.PP
+Definition at line \fB6144\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.PlayAnimeLoot ()"
+
+.PP
+Definition at line \fB6150\fP of file \fBCard\&.cs\fP\&.
+.SS "unsafe void Card\&.PlayEffect (int ele, bool useRenderPos = \fRtrue\fP, float range = \fR0f\fP)"
+
+.PP
+Definition at line \fB6166\fP of file \fBCard\&.cs\fP\&.
+.SS "unsafe \fBEffect\fP Card\&.PlayEffect (string id, bool useRenderPos = \fRtrue\fP, float range = \fR0f\fP, Vector3 fix = \fRdefault(Vector3)\fP)"
+
+.PP
+Definition at line \fB6156\fP of file \fBCard\&.cs\fP\&.
+.SS "SoundSource Card\&.PlaySound (string id, float v = \fR1f\fP, bool spatial = \fRtrue\fP)"
+
+.PP
+Definition at line \fB6118\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.PlaySoundDrop (bool spatial = \fRtrue\fP)"
+
+.PP
+Definition at line \fB6112\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.PlaySoundHold (bool spatial = \fRtrue\fP)"
+
+.PP
+Definition at line \fB6106\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.RecalculateFOV ()"
+
+.PP
+Definition at line \fB6342\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.ReferenceId ()"
+
+.PP
+Implements \fBIGlobalValue\fP\&.
+.PP
+Definition at line \fB3411\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.RefreshColor ()"
+
+.PP
+Definition at line \fB5990\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.RemoveBacker ()"
+
+.PP
+Definition at line \fB6997\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.RemoveCard (\fBCard\fP c)"
+
+.PP
+Implements \fBICardParent\fP\&.
+.PP
+Definition at line \fB3757\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.RemoveEditorTag (EditorTag tag)"
+
+.PP
+Definition at line \fB2419\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.RemoveThing (\fBThing\fP thing)"
+
+.PP
+Definition at line \fB3888\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.RemoveThings ()"
+
+.PP
+Definition at line \fB3879\fP of file \fBCard\&.cs\fP\&.
+.SS "unsafe void Card\&.RenderMarker (\fBPoint\fP point, bool active, HitResult result, bool main, int dir, bool useCurrentPosition = \fRfalse\fP)"
+
+.PP
+Definition at line \fB6277\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.ResistLv (int res)"
+
+.PP
+Definition at line \fB5914\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.ResistLvFrom (int ele)"
+
+.PP
+Definition at line \fB5908\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.Rotate (bool reverse = \fRfalse\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB6201\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.Say (string lang, \fBCard\fP c1, \fBCard\fP c2, string ref1 = \fRnull\fP, string ref2 = \fRnull\fP)"
+
+.PP
+Definition at line \fB6810\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.Say (string lang, \fBCard\fP c1, string ref1 = \fRnull\fP, string ref2 = \fRnull\fP)"
+
+.PP
+Definition at line \fB6820\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.Say (string lang, string ref1 = \fRnull\fP, string ref2 = \fRnull\fP)"
+
+.PP
+Definition at line \fB6800\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SayNothingHappans ()"
+
+.PP
+Definition at line \fB6794\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SayRaw (string text, string ref1 = \fRnull\fP, string ref2 = \fRnull\fP)"
+
+.PP
+Definition at line \fB6762\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual int Card\&.SecondaryCompare (UIList\&.SortMode m, \fBCard\fP c)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB7731\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.SetBlessedState (BlessedState s)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB4324\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SetCensored (bool enable)"
+
+.PP
+Definition at line \fB7672\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SetCharge (int a)"
+
+.PP
+Definition at line \fB4376\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SetDeconstruct (bool deconstruct)"
+
+.PP
+Definition at line \fB7683\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.SetDir (int d)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB6178\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SetDirtyWeight ()"
+
+.PP
+Definition at line \fB2284\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SetEncLv (int a)"
+
+.PP
+Definition at line \fB4318\fP of file \fBCard\&.cs\fP\&.
+.SS "unsafe void Card\&.SetFreePos (\fBPoint\fP point)"
+
+.PP
+Definition at line \fB6255\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SetHidden (bool hide = \fRtrue\fP)"
+
+.PP
+Definition at line \fB5810\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.SetImage (Image image)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB6063\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SetImage (Image image, int dir, int idSkin = \fR0\fP)"
+
+.PP
+Definition at line \fB6057\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCard\fP Card\&.SetLv (int a)"
+
+.PP
+Definition at line \fB3597\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBThing\fP Card\&.SetNoSell ()"
+
+.PP
+Definition at line \fB4063\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBThing\fP Card\&.SetNum (int a)"
+
+.PP
+Definition at line \fB4048\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SetPaintData ()"
+
+.PP
+Definition at line \fB7011\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SetPlaceState (PlaceState newState, bool byPlayer = \fRfalse\fP)"
+
+.PP
+Definition at line \fB4186\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBThing\fP Card\&.SetPriceFix (int a)"
+
+.PP
+Definition at line \fB7140\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SetRandomDir ()"
+
+.PP
+Definition at line \fB6185\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SetRandomLightColors ()"
+
+.PP
+Definition at line \fB6511\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SetRandomTalk ()"
+
+.PP
+Definition at line \fB6909\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SetRandomTone ()"
+
+.PP
+Definition at line \fB6919\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.SetRenderParam (\fBRenderParam\fP p)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB5965\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SetReplica (bool on)"
+
+.PP
+Definition at line \fB3734\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SetSale (bool sale)"
+
+.PP
+Definition at line \fB7153\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.SetSortVal (UIList\&.SortMode m, CurrencyType currency = \fRCurrencyType::Money\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB7701\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.SetSource ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB3527\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.ShouldTrySetDirtyInventory ()"
+
+.PP
+Definition at line \fB3939\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.ShowEmo (Emo _emo = \fREmo::none\fP, float duration = \fR0f\fP, bool skipSame = \fRtrue\fP)"
+
+.PP
+Definition at line \fB6074\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.SpawnLoot (\fBCard\fP origin)"
+
+.PP
+Definition at line \fB5298\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBThing\fP Card\&.Split (int a)"
+
+.PP
+Definition at line \fB4036\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.Talk (string idTopic, string ref1 = \fRnull\fP, string ref2 = \fRnull\fP, bool forceSync = \fRfalse\fP)"
+
+.PP
+Definition at line \fB6684\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.TalkRaw (string text, string ref1 = \fRnull\fP, string ref2 = \fRnull\fP, bool forceSync = \fRfalse\fP)"
+
+.PP
+Definition at line \fB6709\fP of file \fBCard\&.cs\fP\&.
+.SS "unsafe void Card\&.Teleport (\fBPoint\fP point, bool silent = \fRfalse\fP, bool force = \fRfalse\fP)"
+
+.PP
+Definition at line \fB5855\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.Tick ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB7119\fP of file \fBCard\&.cs\fP\&.
+.SS "override string Card\&.ToString ()"
+
+.PP
+Definition at line \fB15\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.TryGetFoodName (\fBCard\fP c)"
+
+.PP
+Definition at line \fB5754\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBThing\fP Card\&.TryMakeRandomItem (int lv = \fR\-1\fP)"
+
+.PP
+Definition at line \fB5513\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.TryPay (int a, string id = \fR'money'\fP)"
+
+.PP
+Definition at line \fB4356\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.TryReserve (\fBAIAct\fP act)"
+
+.PP
+Definition at line \fB37\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.TryStack (\fBThing\fP t)"
+
+.PP
+Definition at line \fB6944\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.TryStackTo (\fBThing\fP to)"
+
+.PP
+Definition at line \fB3951\fP of file \fBCard\&.cs\fP\&.
+.SS "void Card\&.TryUnrestrain (bool force = \fRfalse\fP, \fBChara\fP c = \fRnull\fP)"
+
+.PP
+Definition at line \fB7075\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual void Card\&.WriteNote (UINote n, Action< UINote > onWriteNote = \fRnull\fP, IInspect\&.NoteMode mode = \fRIInspect::NoteMode::Default\fP, \fBRecipe\fP recipe = \fRnull\fP)\fR [virtual]\fP"
+
+.PP
+Implements \fBIInspect\fP\&.
+.PP
+Definition at line \fB7839\fP of file \fBCard\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "BitArray32 Card\&._bits1"
+
+.PP
+Definition at line \fB7995\fP of file \fBCard\&.cs\fP\&.
+.SS "BitArray32 Card\&._bits2"
+
+.PP
+Definition at line \fB7998\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&._colorInt"
+
+.PP
+Definition at line \fB7980\fP of file \fBCard\&.cs\fP\&.
+.SS "int [] Card\&._ints = new int[30]"
+
+.PP
+Definition at line \fB7933\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBSourceMaterial\&.Row\fP Card\&._material"
+
+.PP
+Definition at line \fB8013\fP of file \fBCard\&.cs\fP\&.
+.SS "float Card\&.angle = 180f"
+
+.PP
+Definition at line \fB7986\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBBiography\fP Card\&.bio"
+
+.PP
+Definition at line \fB7949\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCardBlueprint\fP Card\&.bp"
+
+.PP
+Definition at line \fB7992\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.dirtyWeight = true"
+
+.PP
+Definition at line \fB8004\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBElementContainerCard\fP Card\&.elements = new \fBElementContainerCard\fP()"
+
+.PP
+Definition at line \fB7945\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBFov\fP Card\&.fov"
+
+.PP
+Definition at line \fB7968\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.id = ''"
+
+.PP
+Definition at line \fB7937\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isDestroyed"
+
+.PP
+Definition at line \fB7989\fP of file \fBCard\&.cs\fP\&.
+.SS "Emo Card\&.lastEmo"
+
+.PP
+Definition at line \fB8019\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBICardParent\fP Card\&.parent"
+
+.PP
+Definition at line \fB7965\fP of file \fBCard\&.cs\fP\&.
+.SS "PlaceState Card\&.placeState"
+
+.PP
+Definition at line \fB8001\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBPoint\fP Card\&.pos = new \fBPoint\fP()"
+
+.PP
+Definition at line \fB7971\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBProps\fP Card\&.props"
+
+.PP
+Definition at line \fB7959\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCardRenderer\fP Card\&.renderer"
+
+.PP
+Definition at line \fB7974\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBAIAct\fP Card\&.reservedAct"
+
+.PP
+Definition at line \fB7956\fP of file \fBCard\&.cs\fP\&.
+.SS "float Card\&.roundTimer"
+
+.PP
+Definition at line \fB7983\fP of file \fBCard\&.cs\fP\&.
+.SS "List<int> Card\&.sockets"
+
+.PP
+Definition at line \fB7953\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.sortVal"
+
+.PP
+Definition at line \fB8028\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBThingContainer\fP Card\&.things = new \fBThingContainer\fP()"
+
+.PP
+Definition at line \fB7941\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBTrait\fP Card\&.trait"
+
+.PP
+Definition at line \fB7962\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.turn"
+
+.PP
+Definition at line \fB7977\fP of file \fBCard\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool Card\&._IsPC\fR [get]\fP"
+
+.PP
+Definition at line \fB2692\fP of file \fBCard\&.cs\fP\&.
+.SS "PlaceState Card\&._placeState\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB289\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&._x\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB154\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&._z\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB169\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual string Card\&.actorPrefab\fR [get]\fP"
+
+.PP
+Definition at line \fB2604\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual string Card\&.AliasMaterialOnCreate\fR [get]\fP"
+
+.PP
+Definition at line \fB2379\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.altitude\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB214\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBThing\fP Card\&.ammoData\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1982\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.autoRefuel\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB694\fP of file \fBCard\&.cs\fP\&.
+.SS "BlessedState Card\&.blessedState\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB274\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_allowance\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1472\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_altName\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1757\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_altName2\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1772\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_ammo\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1622\fP of file \fBCard\&.cs\fP\&.
+.SS "BedType Card\&.c_bedType\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1069\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_bill\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1427\fP of file \fBCard\&.cs\fP\&.
+.SS "BossType Card\&.c_bossType\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1367\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCharaList\fP Card\&.c_charaList\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB2092\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_charges\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1412\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_color\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1712\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_containerSize\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1502\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBContainerUpgrade\fP Card\&.c_containerUpgrade\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB2057\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_context\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1847\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBThing\fP Card\&.c_copyContainer\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1997\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_dateStockExpire\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1382\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_daysWithGod\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1637\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_diceDim\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1532\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBDNA\fP Card\&.c_DNA\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB2077\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_dyeMat\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1322\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_editorTags\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1877\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_editorTraitVal\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1892\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_equippedSlot\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1084\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_fur\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1487\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCharaGenes\fP Card\&.c_genes\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB2042\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_idAbility\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1832\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_idBacker\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1592\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_idDeity\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1742\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_idEditor\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1862\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_idJob\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1682\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_idMainElement\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1562\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_idPortrait\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1652\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_idRace\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1667\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_idRefCard\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1922\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_idRefCard2\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1937\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_idRefName\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1802\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_idRidePCC\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1817\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_idTalk\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1727\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_idTone\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1697\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_idTrait\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1907\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_IDTState\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1397\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_indexContainerIcon\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1547\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_invest\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1442\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.c_isImportant\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1159\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.c_isPrayed\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1219\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.c_isTrained\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1204\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_lightColor\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1234\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.c_lockedHard\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1174\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_lockLv\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1099\fP of file \fBCard\&.cs\fP\&.
+.SS "MinionType Card\&.c_minionType\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1129\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_note\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1952\fP of file \fBCard\&.cs\fP\&.
+.SS "Hostility Card\&.c_originalHostility\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1114\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_priceAdd\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1307\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_priceFix\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1292\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.c_refText\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1787\fP of file \fBCard\&.cs\fP\&.
+.SS "RescueState Card\&.c_rescueState\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1352\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.c_revealLock\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1189\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_seed\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1457\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_summonDuration\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1577\fP of file \fBCard\&.cs\fP\&.
+.SS "byte [] Card\&.c_textureData\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB2148\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_uidMaster\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1607\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_uidRefCard\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1276\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_uidZone\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1260\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBUniqueData\fP Card\&.c_uniqueData\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1967\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCharaUpgrade\fP Card\&.c_upgrades\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB2027\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_vomit\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1144\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.c_weight\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1517\fP of file \fBCard\&.cs\fP\&.
+.SS "Window\&.SaveData Card\&.c_windowSaveData\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB2012\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.CanInspect\fR [get]\fP"
+
+.PP
+Implements \fBIInspect\fP\&.
+.PP
+Definition at line \fB7800\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBSourceCategory\&.Row\fP Card\&.category\fR [get]\fP"
+
+.PP
+Definition at line \fB2349\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCell\fP Card\&.Cell\fR [get]\fP"
+
+.PP
+Definition at line \fB2426\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.CHA\fR [get]\fP"
+
+.PP
+Definition at line \fB3170\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual \fBChara\fP Card\&.Chara\fR [get]\fP"
+
+.PP
+Definition at line \fB2450\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.ChildrenAndSelfWeight\fR [get]\fP"
+
+.PP
+Definition at line \fB2309\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.ChildrenAndSelfWeightSingle\fR [get]\fP"
+
+.PP
+Definition at line \fB2319\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.ChildrenWeight\fR [get]\fP"
+
+.PP
+Definition at line \fB2250\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.colorInt\fR [get]\fP"
+
+.PP
+Definition at line \fB69\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.decay\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB199\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.DefaultLV\fR [get]\fP"
+
+.PP
+Definition at line \fB2240\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual \fBSourceMaterial\&.Row\fP Card\&.DefaultMaterial\fR [get]\fP"
+
+.PP
+Definition at line \fB3345\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.DEX\fR [get]\fP"
+
+.PP
+Definition at line \fB3110\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.dir\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB124\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.disableAutoToggle\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB664\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.DMG\fR [get]\fP"
+
+.PP
+Definition at line \fB3090\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual int Card\&.DV\fR [get]\fP"
+
+.PP
+Definition at line \fB3060\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBSourceMaterial\&.Row\fP Card\&.DyeMat\fR [get]\fP"
+
+.PP
+Definition at line \fB2162\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.encLV\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB334\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.END\fR [get]\fP"
+
+.PP
+Definition at line \fB3120\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.ExistsOnMap\fR [get]\fP"
+
+.PP
+Definition at line \fB2484\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.exp\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB424\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.ExpToNext\fR [get]\fP"
+
+.PP
+Definition at line \fB2230\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.FameLv\fR [get]\fP"
+
+.PP
+Definition at line \fB3012\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.feat\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB394\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.flipX\fR [get]\fP"
+
+.PP
+Definition at line \fB2584\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.freePos\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB559\fP of file \fBCard\&.cs\fP\&.
+.SS "float Card\&.fx\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB244\fP of file \fBCard\&.cs\fP\&.
+.SS "float Card\&.fy\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB259\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.H\fR [get]\fP"
+
+.PP
+Definition at line \fB3251\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.HasContainerSize\fR [get]\fP"
+
+.PP
+Definition at line \fB3321\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.HasHost\fR [get]\fP"
+
+.PP
+Definition at line \fB3355\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.HIT\fR [get]\fP"
+
+.PP
+Definition at line \fB3080\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCardRenderer\fP Card\&.HostRenderer\fR [get]\fP"
+
+.PP
+Definition at line \fB6749\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.hp\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB229\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.idMaterial\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB109\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.idSkin\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB379\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.ignoreAutoPick\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB544\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.ignoreStackHeight\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB709\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.InspectName\fR [get]\fP"
+
+.PP
+Implements \fBIInspect\fP\&.
+.PP
+Definition at line \fB7810\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBPoint\fP Card\&.InspectPoint\fR [get]\fP"
+
+.PP
+Implements \fBIInspect\fP\&.
+.PP
+Definition at line \fB7820\fP of file \fBCard\&.cs\fP\&.
+.SS "Vector3 Card\&.InspectPosition\fR [get]\fP"
+
+.PP
+Implements \fBIInspect\fP\&.
+.PP
+Definition at line \fB7830\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.INT\fR [get]\fP"
+
+.PP
+Definition at line \fB3180\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.invX\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB2173\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.invY\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB2188\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isAcidproof\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB769\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsAgent\fR [get]\fP"
+
+.PP
+Definition at line \fB2872\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.IsAliveInCurrentZone\fR [get]\fP"
+
+.PP
+Definition at line \fB2594\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsAmmo\fR [get]\fP"
+
+.PP
+Definition at line \fB2862\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isBackerContent\fR [get]\fP"
+
+.PP
+Definition at line \fB1038\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsBlessed\fR [get]\fP"
+
+.PP
+Definition at line \fB2892\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isBroken\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB829\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isCensored\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB454\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.isChara\fR [get]\fP"
+
+.PP
+Definition at line \fB2474\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsContainer\fR [get]\fP"
+
+.PP
+Definition at line \fB2504\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isCopy\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1009\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isCrafted\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB904\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsCursed\fR [get]\fP"
+
+.PP
+Definition at line \fB2902\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.IsDeadOrSleeping\fR [get]\fP"
+
+.PP
+Definition at line \fB2554\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsDecayed\fR [get]\fP"
+
+.PP
+Definition at line \fB2962\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isDeconstructing\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB469\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.IsDisabled\fR [get]\fP"
+
+.PP
+Definition at line \fB2564\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isDyed\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB484\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isElemental\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB814\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsEquipment\fR [get]\fP"
+
+.PP
+Definition at line \fB2782\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsEquipmentOrRanged\fR [get]\fP"
+
+.PP
+Definition at line \fB2822\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isFireproof\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB754\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isFloating\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB724\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsFood\fR [get]\fP"
+
+.PP
+Definition at line \fB2792\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsFresn\fR [get]\fP"
+
+.PP
+Definition at line \fB2982\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsFurniture\fR [get]\fP"
+
+.PP
+Definition at line \fB2882\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isGifted\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB889\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.IsGlobal\fR [get]\fP"
+
+.PP
+Definition at line \fB2942\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isHidden\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB574\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsHotItem\fR [get]\fP"
+
+.PP
+Definition at line \fB83\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsIdentified\fR [get]\fP"
+
+.PP
+Definition at line \fB3265\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsImportant\fR [get]\fP"
+
+.PP
+Definition at line \fB2534\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isImported\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB679\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsInstalled\fR [get]\fP"
+
+.PP
+Definition at line \fB3285\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isLeashed\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB964\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsLightsource\fR [get]\fP"
+
+.PP
+Definition at line \fB2772\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isLostProperty\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB919\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsMale\fR [get]\fP"
+
+.PP
+Definition at line \fB3295\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isMasked\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB649\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsMeleeWeapon\fR [get]\fP"
+
+.PP
+Definition at line \fB2832\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.IsMinion\fR [get]\fP"
+
+.PP
+Definition at line \fB2722\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isModified\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB499\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.IsMoving\fR [get]\fP"
+
+.PP
+Definition at line \fB2574\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.IsMultisize\fR [get]\fP"
+
+.PP
+Definition at line \fB2752\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsNegativeGift\fR [get]\fP"
+
+.PP
+Definition at line \fB3305\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isNew\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB514\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isNPCProperty\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB604\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isOn\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB589\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.IsPC\fR [get]\fP"
+
+.PP
+Definition at line \fB2682\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.IsPCC\fR [get]\fP"
+
+.PP
+Definition at line \fB2702\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.IsPCFaction\fR [get]\fP"
+
+.PP
+Definition at line \fB2922\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.IsPCFactionMinion\fR [get]\fP"
+
+.PP
+Definition at line \fB2742\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsPCFactionOrMinion\fR [get]\fP"
+
+.PP
+Definition at line \fB2932\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.IsPCParty\fR [get]\fP"
+
+.PP
+Definition at line \fB2712\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.IsPCPartyMinion\fR [get]\fP"
+
+.PP
+Definition at line \fB2732\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isPlayerCreation\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB529\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsPowerful\fR [get]\fP"
+
+.PP
+Definition at line \fB2524\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsRangedWeapon\fR [get]\fP"
+
+.PP
+Definition at line \fB2842\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isReplica\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB784\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isRestocking\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1024\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isRestrained\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB619\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsRestrainedResident\fR [get]\fP"
+
+.PP
+Definition at line \fB2912\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isRoofItem\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB634\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsRotting\fR [get]\fP"
+
+.PP
+Definition at line \fB2972\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isSale\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB994\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isStolen\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB979\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isSubsetCard\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB844\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isSummon\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB799\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.isSynced\fR [get]\fP"
+
+.PP
+Definition at line \fB2494\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual bool Card\&.isThing\fR [get]\fP"
+
+.PP
+Definition at line \fB2464\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsThrownWeapon\fR [get]\fP"
+
+.PP
+Definition at line \fB2852\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsToolbelt\fR [get]\fP"
+
+.PP
+Definition at line \fB2762\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsUnique\fR [get]\fP"
+
+.PP
+Definition at line \fB2514\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsVariation\fR [get]\fP"
+
+.PP
+Definition at line \fB3050\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.IsWeapon\fR [get]\fP"
+
+.PP
+Definition at line \fB2812\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.isWeightChanged\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB739\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.LER\fR [get]\fP"
+
+.PP
+Definition at line \fB3140\fP of file \fBCard\&.cs\fP\&.
+.SS "Color Card\&.LightColor\fR [get]\fP"
+
+.PP
+Definition at line \fB1249\fP of file \fBCard\&.cs\fP\&.
+.SS "LightData Card\&.LightData\fR [get]\fP"
+
+.PP
+Definition at line \fB6364\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.LUC\fR [get]\fP"
+
+.PP
+Definition at line \fB3190\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.LV\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB409\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.MAG\fR [get]\fP"
+
+.PP
+Definition at line \fB3160\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBSourceMaterial\&.Row\fP Card\&.material\fR [get]\fP"
+
+.PP
+Definition at line \fB2364\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual int Card\&.MaxDecay\fR [get]\fP"
+
+.PP
+Definition at line \fB2952\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual int Card\&.MaxHP\fR [get]\fP"
+
+.PP
+Definition at line \fB2992\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.Name\fR [get]\fP"
+
+.PP
+Definition at line \fB2644\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.NameSimple\fR [get]\fP"
+
+.PP
+Definition at line \fB2654\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.noMove\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB874\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.noSell\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB949\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.noShadow\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB934\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.noSnow\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB859\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.Num\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB139\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCard\fP Card\&.parentCard\fR [get]\fP"
+
+.PP
+Definition at line \fB49\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBThing\fP Card\&.parentThing\fR [get]\fP"
+
+.PP
+Definition at line \fB59\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.PER\fR [get]\fP"
+
+.PP
+Definition at line \fB3130\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.posInvX\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB349\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.posInvY\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB364\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual int Card\&.Power\fR [get]\fP"
+
+.PP
+Definition at line \fB3002\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual \fBSourcePref\fP Card\&.Pref\fR [get]\fP"
+
+.PP
+Definition at line \fB2544\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual int Card\&.PrefIndex\fR [get]\fP"
+
+.PP
+Definition at line \fB3036\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual int Card\&.PV\fR [get]\fP"
+
+.PP
+Definition at line \fB3070\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.Quality\fR [get]\fP"
+
+.PP
+Definition at line \fB4271\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.QualityLv\fR [get]\fP"
+
+.PP
+Definition at line \fB4281\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.qualityTier\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB439\fP of file \fBCard\&.cs\fP\&.
+.SS "Rarity Card\&.rarity\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB319\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.rarityLv\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB304\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCardRow\fP Card\&.refCard\fR [get]\fP"
+
+.PP
+Definition at line \fB2202\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBCardRow\fP Card\&.refCard2\fR [get]\fP"
+
+.PP
+Definition at line \fB2216\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.refVal\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB184\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual int Card\&.SelfWeight\fR [get]\fP"
+
+.PP
+Definition at line \fB2329\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.ShouldShowMsg\fR [get]\fP"
+
+.PP
+Definition at line \fB6785\fP of file \fBCard\&.cs\fP\&.
+.SS "bool Card\&.ShowFoodEnc\fR [get]\fP"
+
+.PP
+Definition at line \fB2802\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBSourceBacker\&.Row\fP Card\&.sourceBacker\fR [get]\fP"
+
+.PP
+Definition at line \fB1048\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual \fBCardRow\fP Card\&.sourceCard\fR [get]\fP"
+
+.PP
+Definition at line \fB2614\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual \fBCardRow\fP Card\&.sourceRenderCard\fR [get]\fP"
+
+.PP
+Definition at line \fB2624\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.STR\fR [get]\fP"
+
+.PP
+Definition at line \fB3100\fP of file \fBCard\&.cs\fP\&.
+.SS "string Card\&.TextRarity\fR [get]\fP"
+
+.PP
+Definition at line \fB3275\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual \fBThing\fP Card\&.Thing\fR [get]\fP"
+
+.PP
+Definition at line \fB2436\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBPoint\fP Card\&.ThisOrParentPos\fR [get]\fP"
+
+.PP
+Definition at line \fB6093\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual int [] Card\&.Tiles\fR [get]\fP"
+
+.PP
+Definition at line \fB3026\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBTileType\fP Card\&.TileType\fR [get]\fP"
+
+.PP
+Definition at line \fB2634\fP of file \fBCard\&.cs\fP\&.
+.SS "\fBThing\fP Card\&.Tool\fR [get]\fP"
+
+.PP
+Definition at line \fB3331\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.uid\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB94\fP of file \fBCard\&.cs\fP\&.
+.SS "VisitorState Card\&.visitorState\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB1337\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.W\fR [get]\fP"
+
+.PP
+Definition at line \fB3237\fP of file \fBCard\&.cs\fP\&.
+.SS "virtual int Card\&.WeightLimit\fR [get]\fP"
+
+.PP
+Definition at line \fB2339\fP of file \fBCard\&.cs\fP\&.
+.SS "int Card\&.WIL\fR [get]\fP"
+
+.PP
+Definition at line \fB3150\fP of file \fBCard\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

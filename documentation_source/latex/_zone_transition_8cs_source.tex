@@ -1,0 +1,110 @@
+\doxysection{Zone\+Transition.\+cs}
+\hypertarget{_zone_transition_8cs_source}{}\label{_zone_transition_8cs_source}\index{Elin/ZoneTransition.cs@{Elin/ZoneTransition.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000292\ RID:\ 658}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00005}\mbox{\hyperlink{class_zone_transition}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_zone_transition}{ZoneTransition}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700059D\ RID:\ 1437}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060013D3\ RID:\ 5075\ RVA:\ 0x00082608\ File\ Offset:\ 0x00080808}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_zone}{Zone}}\ lastZone}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_ref_zone}{RefZone}}.Get(this.uidLastZone);}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060013D4\ RID:\ 5076\ RVA:\ 0x00082615\ File\ Offset:\ 0x00080815}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ ZoneTransition.EnterState\ DirToState(\textcolor{keywordtype}{int}\ dir)}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dir\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_zone_transition}{ZoneTransition}}.EnterState.Top;}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dir\ ==\ 1)}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_zone_transition}{ZoneTransition}}.EnterState.Right;}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dir\ ==\ 3)}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_zone_transition}{ZoneTransition}}.EnterState.Bottom;}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_zone_transition}{ZoneTransition}}.EnterState.Left;}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000F9E\ RID:\ 3998}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00036}00036\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ uidLastZone;}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000F9F\ RID:\ 3999}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00040}00040\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ x;}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000FA0\ RID:\ 4000}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00044}00044\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ z;}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000FA1\ RID:\ 4001}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00048}00048\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00049}00049\ \ \ \ \ \textcolor{keyword}{public}\ ZoneTransition.EnterState\ state;}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000FA2\ RID:\ 4002}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00052}00052\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ idTele;}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000FA3\ RID:\ 4003}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ ratePos\ =\ -\/1f;}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000954\ RID:\ 2388}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ EnterState}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00060}00060\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400273F\ RID:\ 10047}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ Auto,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002740\ RID:\ 10048}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ Center,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002741\ RID:\ 10049}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ Encounter,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002742\ RID:\ 10050}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ Dir,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002743\ RID:\ 10051}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ Top,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002744\ RID:\ 10052}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ Right,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002745\ RID:\ 10053}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ Bottom,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002746\ RID:\ 10054}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ Left,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002747\ RID:\ 10055}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ Dead,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002748\ RID:\ 10056}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ Exact,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002749\ RID:\ 10057}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ PortalReturn,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400274A\ RID:\ 10058}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ RandomVisit,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400274B\ RID:\ 10059}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ Down,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400274C\ RID:\ 10060}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ Up,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400274D\ RID:\ 10061}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ Return,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400274E\ RID:\ 10062}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ Teleport,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400274F\ RID:\ 10063}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ Elevator,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002750\ RID:\ 10064}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_region}{Region}},}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002751\ RID:\ 10065}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ UndergroundOrSky,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002752\ RID:\ 10066}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ Moongate,}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002753\ RID:\ 10067}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ Fall}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00103}00103\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_transition_8cs_source_l00104}00104\ \}}
+
+\end{DoxyCode}

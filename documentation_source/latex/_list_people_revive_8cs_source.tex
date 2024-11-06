@@ -1,0 +1,49 @@
+\doxysection{List\+People\+Revive.\+cs}
+\hypertarget{_list_people_revive_8cs_source}{}\label{_list_people_revive_8cs_source}\index{Elin/ListPeopleRevive.cs@{Elin/ListPeopleRevive.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x020005AE\ RID:\ 1454}}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00006}\mbox{\hyperlink{class_list_people_revive}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_list_people_revive}{ListPeopleRevive}}\ :\ \mbox{\hyperlink{class_base_list_people}{BaseListPeople}}}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060027E9\ RID:\ 10217\ RVA:\ 0x000E1930\ File\ Offset:\ 0x000DFB30}}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ IsDisabled(\mbox{\hyperlink{class_chara}{Chara}}\ c)}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060027EA\ RID:\ 10218\ RVA:\ 0x000E1934\ File\ Offset:\ 0x000DFB34}}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnInstantiate(\mbox{\hyperlink{class_chara}{Chara}}\ a,\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}\ b)}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ base.OnInstantiate(a,\ b);}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ money\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.GetCurrency(\textcolor{stringliteral}{"{}money"{}});}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ b.AddPrefab<UIItem>(\textcolor{stringliteral}{"{}costMoney"{}}).text1.SetText((\mbox{\hyperlink{class_calc_money}{CalcMoney}}.Revive(a).ToString()\ ??\ \textcolor{stringliteral}{"{}"{}}).TagColorGoodBad(()\ =>\ money\ >=\ \mbox{\hyperlink{class_calc_money}{CalcMoney}}.Revive(a),\ \textcolor{keyword}{false}));}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060027EB\ RID:\ 10219\ RVA:\ 0x000E19B3\ File\ Offset:\ 0x000DFBB3}}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnClick(\mbox{\hyperlink{class_chara}{Chara}}\ c,\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}\ i)}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.pc.TryPay(\mbox{\hyperlink{class_calc_money}{CalcMoney}}.Revive(c),\ \textcolor{stringliteral}{"{}money"{}}))}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ c.GetRevived();}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ this.list.List(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060027EC\ RID:\ 10220\ RVA:\ 0x000E19E0\ File\ Offset:\ 0x000DFBE0}}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00034}00034\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnList()}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00035}00035\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (KeyValuePair<int,\ Chara>\ keyValuePair\ \textcolor{keywordflow}{in}\ from\ a\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_e_class}{EClass}}.game.cards.globalCharas}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ where\ a.Value.isDead\ \&\&\ a.Value.faction\ ==\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.faction\ \&\&\ !a.Value.isSummon}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ select\ a)}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ this.list.Add(keyValuePair.Value);}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_list_people_revive_8cs_source_l00043}00043\ \}}
+
+\end{DoxyCode}

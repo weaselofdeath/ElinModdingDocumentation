@@ -1,0 +1,503 @@
+.TH "RenderRow" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RenderRow
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits SourceData\&.BaseRow, and \fBIRenderSource\fP\&.
+.PP
+Inherited by \fBCardRow\fP, and \fBTileRow\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHasTag\fP (CTAG _tag)"
+.br
+.ti -1c
+.RI "virtual string \fBGetSearchName\fP (bool jp)"
+.br
+.ti -1c
+.RI "bool \fBContainsTag\fP (string _tag)"
+.br
+.ti -1c
+.RI "override void \fBOnImportData\fP (SourceData data)"
+.br
+.ti -1c
+.RI "void \fBSetRenderData\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBSetTiles\fP ()"
+.br
+.ti -1c
+.RI "int \fBConvertTile\fP (int tile)"
+.br
+.ti -1c
+.RI "Sprite \fBGetSprite\fP (int dir=0, int skin=0, bool snow=false)"
+.br
+.ti -1c
+.RI "void \fBSetSpriteRenderer\fP (SpriteRenderer sr, Sprite sprite=null, int matCol=0, bool setTransform=true, int dir=0)"
+.br
+.ti -1c
+.RI "virtual \fBSourcePref\fP \fBGetPref\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetImage\fP (Image image, Sprite sprite=null, int matCol=0, bool setNativeSize=true, int dir=0, int idSkin=0)"
+.br
+.ti -1c
+.RI "void \fBSetRenderParam\fP (\fBRenderParam\fP p, \fBSourceMaterial\&.Row\fP mat, int dir)"
+.br
+.ti -1c
+.RI "virtual unsafe \fBRenderParam\fP \fBGetRenderParam\fP (\fBSourceMaterial\&.Row\fP mat, int dir, \fBPoint\fP point=null, int bridgeHeight=\-1)"
+.br
+.ti -1c
+.RI "virtual int \fBGetTile\fP (\fBSourceMaterial\&.Row\fP mat, int dir=0)"
+.br
+.ti -1c
+.RI "int \fBGetColorInt\fP (\fBSourceMaterial\&.Row\fP mat)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int[] \fBtiles\fP"
+.br
+.ti -1c
+.RI "int[] \fB_tiles\fP"
+.br
+.ti -1c
+.RI "int[] \fBskins\fP"
+.br
+.ti -1c
+.RI "int \fBcolorMod\fP"
+.br
+.ti -1c
+.RI "int \fBsort\fP"
+.br
+.ti -1c
+.RI "int \fBvalue\fP"
+.br
+.ti -1c
+.RI "int \fBLV\fP"
+.br
+.ti -1c
+.RI "int \fBchance\fP"
+.br
+.ti -1c
+.RI "int \fBtempChance\fP"
+.br
+.ti -1c
+.RI "int \fBsnowTile\fP"
+.br
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.ti -1c
+.RI "string \fBname_JP\fP"
+.br
+.ti -1c
+.RI "string \fBdetail\fP"
+.br
+.ti -1c
+.RI "string \fBdetail_JP\fP"
+.br
+.ti -1c
+.RI "string \fB_idRenderData\fP"
+.br
+.ti -1c
+.RI "string \fB_tileType\fP"
+.br
+.ti -1c
+.RI "string \fBdefMat\fP"
+.br
+.ti -1c
+.RI "string \fBcolorType\fP"
+.br
+.ti -1c
+.RI "string \fBcategory\fP"
+.br
+.ti -1c
+.RI "string \fBidSound\fP"
+.br
+.ti -1c
+.RI "string \fBaliasPref\fP"
+.br
+.ti -1c
+.RI "string[] \fBcomponents\fP"
+.br
+.ti -1c
+.RI "string[] \fBfactory\fP"
+.br
+.ti -1c
+.RI "string[] \fBrecipeKey\fP"
+.br
+.ti -1c
+.RI "string[] \fBtag\fP"
+.br
+.ti -1c
+.RI "int \fBW\fP = 1"
+.br
+.ti -1c
+.RI "int \fBH\fP = 1"
+.br
+.ti -1c
+.RI "bool \fBmultisize\fP"
+.br
+.ti -1c
+.RI "\fBSourcePref\fP \fBpref\fP"
+.br
+.ti -1c
+.RI "\fBRenderData\fP \fBrenderData\fP"
+.br
+.ti -1c
+.RI "Sprite[,] \fBsprites\fP"
+.br
+.ti -1c
+.RI "\fBTileType\fP \fBtileType\fP"
+.br
+.ti -1c
+.RI "bool \fBuseAltColor\fP"
+.br
+.ti -1c
+.RI "bool \fBuseRandomColor\fP"
+.br
+.ti -1c
+.RI "bool \fBfixedMaterial\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBDefaultMaterial\fP"
+.br
+.ti -1c
+.RI "SpriteReplacer \fBreplacer\fP"
+.br
+.ti -1c
+.RI "string \fB_nameSearch\fP"
+.br
+.ti -1c
+.RI "string \fB_nameSearchJP\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static Dictionary< string, \fBRenderData\fP > \fBDictRenderData\fP = new Dictionary<string, \fBRenderData\fP>()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBidString\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBRecipeID\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBpathRenderData\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBidRenderData\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBRenderData\fP \fBdefaultRenderData\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBpathSprite\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBidSprite\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBprefabName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceCategory\&.Row\fP \fBCategory\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBRecipeCat\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB7\fP of file \fBRenderRow\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool RenderRow\&.ContainsTag (string _tag)"
+
+.PP
+Definition at line \fB144\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "int RenderRow\&.ConvertTile (int tile)"
+
+.PP
+Definition at line \fB282\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "int RenderRow\&.GetColorInt (\fBSourceMaterial\&.Row\fP mat)"
+
+.PP
+Definition at line \fB455\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "virtual \fBSourcePref\fP RenderRow\&.GetPref ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB373\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "virtual unsafe \fBRenderParam\fP RenderRow\&.GetRenderParam (\fBSourceMaterial\&.Row\fP mat, int dir, \fBPoint\fP point = \fRnull\fP, int bridgeHeight = \fR\-1\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB417\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "virtual string RenderRow\&.GetSearchName (bool jp)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB96\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "Sprite RenderRow\&.GetSprite (int dir = \fR0\fP, int skin = \fR0\fP, bool snow = \fRfalse\fP)"
+
+.PP
+Definition at line \fB288\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "virtual int RenderRow\&.GetTile (\fBSourceMaterial\&.Row\fP mat, int dir = \fR0\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB449\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "bool RenderRow\&.HasTag (CTAG _tag)"
+
+.PP
+Definition at line \fB90\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "override void RenderRow\&.OnImportData (SourceData data)"
+
+.PP
+Definition at line \fB160\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "void RenderRow\&.SetImage (Image image, Sprite sprite = \fRnull\fP, int matCol = \fR0\fP, bool setNativeSize = \fRtrue\fP, int dir = \fR0\fP, int idSkin = \fR0\fP)"
+
+.PP
+Definition at line \fB379\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "void RenderRow\&.SetRenderData ()"
+
+.PP
+Definition at line \fB168\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "void RenderRow\&.SetRenderParam (\fBRenderParam\fP p, \fBSourceMaterial\&.Row\fP mat, int dir)"
+
+.PP
+Definition at line \fB406\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "void RenderRow\&.SetSpriteRenderer (SpriteRenderer sr, Sprite sprite = \fRnull\fP, int matCol = \fR0\fP, bool setTransform = \fRtrue\fP, int dir = \fR0\fP)"
+
+.PP
+Definition at line \fB346\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "virtual void RenderRow\&.SetTiles ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB265\fP of file \fBRenderRow\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "string RenderRow\&._idRenderData"
+
+.PP
+Definition at line \fB521\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string RenderRow\&._nameSearch"
+
+.PP
+Definition at line \fB599\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string RenderRow\&._nameSearchJP"
+
+.PP
+Definition at line \fB603\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "int [] RenderRow\&._tiles"
+
+.PP
+Definition at line \fB482\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string RenderRow\&._tileType"
+
+.PP
+Definition at line \fB524\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string RenderRow\&.aliasPref"
+
+.PP
+Definition at line \fB539\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string RenderRow\&.category"
+
+.PP
+Definition at line \fB533\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "int RenderRow\&.chance"
+
+.PP
+Definition at line \fB500\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "int RenderRow\&.colorMod"
+
+.PP
+Definition at line \fB488\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string RenderRow\&.colorType"
+
+.PP
+Definition at line \fB530\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string [] RenderRow\&.components"
+
+.PP
+Definition at line \fB542\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "\fBSourceMaterial\&.Row\fP RenderRow\&.DefaultMaterial"
+
+.PP
+Definition at line \fB591\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string RenderRow\&.defMat"
+
+.PP
+Definition at line \fB527\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string RenderRow\&.detail"
+
+.PP
+Definition at line \fB515\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string RenderRow\&.detail_JP"
+
+.PP
+Definition at line \fB518\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "Dictionary<string, \fBRenderData\fP> RenderRow\&.DictRenderData = new Dictionary<string, \fBRenderData\fP>()\fR [static]\fP"
+
+.PP
+Definition at line \fB476\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string [] RenderRow\&.factory"
+
+.PP
+Definition at line \fB545\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "bool RenderRow\&.fixedMaterial"
+
+.PP
+Definition at line \fB587\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "int RenderRow\&.H = 1"
+
+.PP
+Definition at line \fB557\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string RenderRow\&.idSound"
+
+.PP
+Definition at line \fB536\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "int RenderRow\&.LV"
+
+.PP
+Definition at line \fB497\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "bool RenderRow\&.multisize"
+
+.PP
+Definition at line \fB560\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string RenderRow\&.name"
+
+.PP
+Definition at line \fB509\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string RenderRow\&.name_JP"
+
+.PP
+Definition at line \fB512\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "\fBSourcePref\fP RenderRow\&.pref"
+
+.PP
+Definition at line \fB563\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string [] RenderRow\&.recipeKey"
+
+.PP
+Definition at line \fB548\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "\fBRenderData\fP RenderRow\&.renderData"
+
+.PP
+Definition at line \fB567\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "SpriteReplacer RenderRow\&.replacer"
+
+.PP
+Definition at line \fB595\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "int [] RenderRow\&.skins"
+
+.PP
+Definition at line \fB485\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "int RenderRow\&.snowTile"
+
+.PP
+Definition at line \fB506\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "int RenderRow\&.sort"
+
+.PP
+Definition at line \fB491\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "Sprite [,] RenderRow\&.sprites"
+
+.PP
+Definition at line \fB571\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string [] RenderRow\&.tag"
+
+.PP
+Definition at line \fB551\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "int RenderRow\&.tempChance"
+
+.PP
+Definition at line \fB503\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "int [] RenderRow\&.tiles"
+
+.PP
+Definition at line \fB479\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "\fBTileType\fP RenderRow\&.tileType"
+
+.PP
+Definition at line \fB575\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "bool RenderRow\&.useAltColor"
+
+.PP
+Definition at line \fB579\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "bool RenderRow\&.useRandomColor"
+
+.PP
+Definition at line \fB583\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "int RenderRow\&.value"
+
+.PP
+Definition at line \fB494\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "int RenderRow\&.W = 1"
+
+.PP
+Definition at line \fB554\fP of file \fBRenderRow\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBSourceCategory\&.Row\fP RenderRow\&.Category\fR [get]\fP"
+
+.PP
+Definition at line \fB115\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "virtual \fBRenderData\fP RenderRow\&.defaultRenderData\fR [get]\fP"
+
+.PP
+Definition at line \fB51\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "virtual string RenderRow\&.idRenderData\fR [get]\fP"
+
+.PP
+Definition at line \fB41\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "virtual string RenderRow\&.idSprite\fR [get]\fP"
+
+.PP
+Definition at line \fB71\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "virtual string RenderRow\&.idString\fR [get]\fP"
+
+.PP
+Definition at line \fB11\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "virtual string RenderRow\&.pathRenderData\fR [get]\fP"
+
+.PP
+Definition at line \fB31\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "virtual string RenderRow\&.pathSprite\fR [get]\fP"
+
+.PP
+Definition at line \fB61\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "virtual string RenderRow\&.prefabName\fR [get]\fP"
+
+.PP
+Definition at line \fB81\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "string RenderRow\&.RecipeCat\fR [get]\fP"
+
+.PP
+Definition at line \fB130\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "virtual string RenderRow\&.RecipeID\fR [get]\fP"
+
+.PP
+Definition at line \fB21\fP of file \fBRenderRow\&.cs\fP\&.
+.SS "\fBSourceManager\fP RenderRow\&.sources\fR [get]\fP"
+
+.PP
+Definition at line \fB151\fP of file \fBRenderRow\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

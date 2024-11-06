@@ -1,0 +1,87 @@
+\doxysection{Screen\+Effect.\+cs}
+\hypertarget{_screen_effect_8cs_source}{}\label{_screen_effect_8cs_source}\index{Elin/ScreenEffect.cs@{Elin/ScreenEffect.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000128\ RID:\ 296}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00005}\mbox{\hyperlink{class_screen_effect}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_screen_effect}{ScreenEffect}}\ :\ \mbox{\hyperlink{class_e_mono}{EMono}}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007F6\ RID:\ 2038\ RVA:\ 0x0003387A\ File\ Offset:\ 0x00031A7A}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Play(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ Util.Instantiate<\mbox{\hyperlink{class_screen_effect}{ScreenEffect}}>(\textcolor{stringliteral}{"{}Media/Effect/ScreenEffect/"{}}\ +\ id,\ Camera.main.transform);}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00011}00011\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007F7\ RID:\ 2039\ RVA:\ 0x00033898\ File\ Offset:\ 0x00031A98}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Awake()}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (base.transform.parent)}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ this.goParent\ =\ base.transform.parent.gameObject;}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ base.transform.SetParent(Camera.main.transform,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.worldParticle)}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ ParticleSystem[]\ componentsInChildren\ =\ base.GetComponentsInChildren<ParticleSystem>();}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ componentsInChildren.Length;\ i++)}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ componentsInChildren[i].main.simulationSpace\ =\ ParticleSystemSimulationSpace.World;}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007F8\ RID:\ 2040\ RVA:\ 0x00033914\ File\ Offset:\ 0x00031B14}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.goParent)}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ this.time\ +=\ Time.unscaledDeltaTime;}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.particleStopped\ \&\&\ this.stopParticleTime\ !=\ 0f\ \&\&\ this.time\ >\ this.stopParticleTime)}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (ParticleSystem\ particleSystem\ \textcolor{keywordflow}{in}\ base.GetComponentsInChildren<ParticleSystem>())}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (particleSystem.transform.tag.Contains(\textcolor{stringliteral}{"{}ParticleEmitter"{}}))}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ particleSystem.main.loop\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ particleSystem.emission.enabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (SoundEmitter\ soundEmitter\ \textcolor{keywordflow}{in}\ base.GetComponentsInChildren<SoundEmitter>())}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (soundEmitter.source)}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ soundEmitter.source.Stop(2f);}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ soundEmitter.source\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.particleStopped\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.time\ >\ this.killDuration)}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UnityEngine.Object.Destroy(base.gameObject);}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000835\ RID:\ 2101}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ worldParticle;}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000836\ RID:\ 2102}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00068}00068\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ killDuration;}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000837\ RID:\ 2103}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00071}00071\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ stopParticleTime;}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000838\ RID:\ 2104}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00074}00074\ \ \ \ \ \textcolor{keyword}{private}\ GameObject\ goParent;}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000839\ RID:\ 2105}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00077}00077\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ time;}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400083A\ RID:\ 2106}}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00080}00080\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ particleStopped;}
+\DoxyCodeLine{\Hypertarget{_screen_effect_8cs_source_l00081}00081\ \}}
+
+\end{DoxyCode}

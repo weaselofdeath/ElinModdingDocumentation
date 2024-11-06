@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__item_quest_8cs_source" xml:lang="en-US">
+<title>ItemQuest.cs</title>
+<indexterm><primary>Elin/ItemQuest.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__item_quest_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__item_quest_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>UnityEngine.UI;
+<anchor xml:id="__item_quest_8cs_source_1l00003"/>00003 
+<anchor xml:id="__item_quest_8cs_source_1l00004"/>00004 <emphasis role="comment">//&#32;Token:&#32;0x020005B6&#32;RID:&#32;1462</emphasis>
+<anchor xml:id="__item_quest_8cs_source_1l00005"/><link linkend="_class_item_quest">00005</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_item_quest">ItemQuest</link>&#32;:&#32;<link linkend="_class_e_mono">EMono</link>
+<anchor xml:id="__item_quest_8cs_source_1l00006"/>00006 {
+<anchor xml:id="__item_quest_8cs_source_1l00007"/>00007 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002814&#32;RID:&#32;10260&#32;RVA:&#32;0x000E25F8&#32;File&#32;Offset:&#32;0x000E07F8</emphasis>
+<anchor xml:id="__item_quest_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetQuest(<link linkend="_class_quest">Quest</link>&#32;q)
+<anchor xml:id="__item_quest_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__item_quest_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.SetPerson(q.person);
+<anchor xml:id="__item_quest_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.button.mainText.text&#32;=&#32;(<link linkend="_class_e_mono">EMono</link>.game.quests.list.Contains(q)&#32;?&#32;<emphasis role="stringliteral">&quot;questInProgress&quot;</emphasis>.lang().TagColor(FontColor.Good,&#32;<emphasis role="keyword">null</emphasis>)&#32;:&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>)&#32;+&#32;q.TitlePrefix&#32;+&#32;q.GetTitle();
+<anchor xml:id="__item_quest_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.button.subText.text&#32;=&#32;q.person.NameBraced;
+<anchor xml:id="__item_quest_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textDate.SetText(<link linkend="_class_date">Date</link>.GetText(q.Hours));
+<anchor xml:id="__item_quest_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textDate.transform.parent.RebuildLayout(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__item_quest_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textReward.SetText(q.GetRewardText());
+<anchor xml:id="__item_quest_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;text&#32;=&#32;q.GetDetail(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__item_quest_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_quest_supply">QuestSupply</link>&#32;questSupply&#32;=&#32;q&#32;as&#32;<link linkend="_class_quest_supply">QuestSupply</link>;
+<anchor xml:id="__item_quest_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(questSupply&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;questSupply.GetDestThing()&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__item_quest_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__item_quest_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text&#32;=&#32;<emphasis role="stringliteral">&quot;questSupplyOwned&quot;</emphasis>.lang().TagColor(FontColor.Good,&#32;<emphasis role="keyword">null</emphasis>)&#32;+&#32;text;
+<anchor xml:id="__item_quest_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__item_quest_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textDetail.SetText(text);
+<anchor xml:id="__item_quest_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.imageNew.SetActive(q.isNew);
+<anchor xml:id="__item_quest_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;q.isNew&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__item_quest_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textDifficulty.SetText(<emphasis role="stringliteral">&quot;★&quot;</emphasis>.Repeat(q.difficulty));
+<anchor xml:id="__item_quest_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textDifficulty.SetActive(q.IsRandomQuest);
+<anchor xml:id="__item_quest_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;textExtra&#32;=&#32;q.TextExtra;
+<anchor xml:id="__item_quest_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textDanger.SetActive(!textExtra.IsEmpty());
+<anchor xml:id="__item_quest_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textDanger.SetText(textExtra);
+<anchor xml:id="__item_quest_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__item_quest_8cs_source_1l00031"/>00031 
+<anchor xml:id="__item_quest_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001642&#32;RID:&#32;5698</emphasis>
+<anchor xml:id="__item_quest_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_portrait">Portrait</link>&#32;portrait;
+<anchor xml:id="__item_quest_8cs_source_1l00034"/>00034 
+<anchor xml:id="__item_quest_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001643&#32;RID:&#32;5699</emphasis>
+<anchor xml:id="__item_quest_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIButton&#32;button;
+<anchor xml:id="__item_quest_8cs_source_1l00037"/>00037 
+<anchor xml:id="__item_quest_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001644&#32;RID:&#32;5700</emphasis>
+<anchor xml:id="__item_quest_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textDetail;
+<anchor xml:id="__item_quest_8cs_source_1l00040"/>00040 
+<anchor xml:id="__item_quest_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001645&#32;RID:&#32;5701</emphasis>
+<anchor xml:id="__item_quest_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textReward;
+<anchor xml:id="__item_quest_8cs_source_1l00043"/>00043 
+<anchor xml:id="__item_quest_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001646&#32;RID:&#32;5702</emphasis>
+<anchor xml:id="__item_quest_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textDate;
+<anchor xml:id="__item_quest_8cs_source_1l00046"/>00046 
+<anchor xml:id="__item_quest_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001647&#32;RID:&#32;5703</emphasis>
+<anchor xml:id="__item_quest_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textDifficulty;
+<anchor xml:id="__item_quest_8cs_source_1l00049"/>00049 
+<anchor xml:id="__item_quest_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001648&#32;RID:&#32;5704</emphasis>
+<anchor xml:id="__item_quest_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textDanger;
+<anchor xml:id="__item_quest_8cs_source_1l00052"/>00052 
+<anchor xml:id="__item_quest_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001649&#32;RID:&#32;5705</emphasis>
+<anchor xml:id="__item_quest_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Image&#32;imageNew;
+<anchor xml:id="__item_quest_8cs_source_1l00055"/>00055 }
+</programlisting></section>

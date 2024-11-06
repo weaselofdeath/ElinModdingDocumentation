@@ -1,0 +1,32 @@
+\doxysection{Render\+Data\+Effect.\+cs}
+\hypertarget{_render_data_effect_8cs_source}{}\label{_render_data_effect_8cs_source}\index{Elin/RenderDataEffect.cs@{Elin/RenderDataEffect.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x0200019A\ RID:\ 410}}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00005}\mbox{\hyperlink{class_render_data_effect}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_render_data_effect}{RenderDataEffect}}\ :\ \mbox{\hyperlink{class_render_data}{RenderData}}}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000BDF\ RID:\ 3039\ RVA:\ 0x000490A8\ File\ Offset:\ 0x000472A8}}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{void}\ Draw(\mbox{\hyperlink{class_render_param}{RenderParam}}\ p,\ \textcolor{keywordtype}{int}\ tile\ =\ 0)}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ num\ =\ (Time.realtimeSinceStartup\ *\ this.speed\ +\ p.x\ +\ p.y)\ \%\ 5f;}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_batch}{MeshBatch}}\ meshBatch\ =\ this.pass.batches[this.pass.batchIdx];}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ meshBatch.matrices[this.pass.idx].m03\ =\ p.x\ +\ this.offset.x;}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ meshBatch.matrices[this.pass.idx].m13\ =\ p.y\ +\ this.offset.y;}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ meshBatch.matrices[this.pass.idx].m23\ =\ p.z\ +\ this.offset.z;}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ meshBatch.tiles[this.pass.idx]\ =\ num;}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ meshBatch.colors[this.pass.idx]\ =\ p.color;}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ this.pass.idx++;}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.pass.idx\ ==\ \textcolor{keyword}{this}.pass.batchSize)}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ this.pass.NextBatch();}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000ADA\ RID:\ 2778}}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ speed;}
+\DoxyCodeLine{\Hypertarget{_render_data_effect_8cs_source_l00026}00026\ \}}
+
+\end{DoxyCode}

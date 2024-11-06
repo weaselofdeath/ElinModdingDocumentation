@@ -1,0 +1,75 @@
+\doxysection{Rigid\+Float.\+cs}
+\hypertarget{_rigid_float_8cs_source}{}\label{_rigid_float_8cs_source}\index{Elin/RigidFloat.cs@{Elin/RigidFloat.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x0200051A\ RID:\ 1306}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00005}\mbox{\hyperlink{class_rigid_float}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_rigid_float}{RigidFloat}}\ :\ \mbox{\hyperlink{class_rigid_update}{RigidUpdate}}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002312\ RID:\ 8978\ RVA:\ 0x000C579E\ File\ Offset:\ 0x000C399E}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Awake()}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ this.\_airHeight\ =\ this.airHeight\ +\ UnityEngine.Random.Range(-\/2f,\ 2f);}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ this.time\ =\ UnityEngine.Random.Range(0f,\ this.pingpongTime);}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002313\ RID:\ 8979\ RVA:\ 0x000C57D4\ File\ Offset:\ 0x000C39D4}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnFixedUpdate()}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ this.time\ +=\ Time.fixedDeltaTime\ *\ this.flip;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.time\ >\ this.pingpongTime)}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ this.flip\ =\ -\/1f;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ this.time\ =\ this.pingpongTime;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (this.time\ <\ 0f)}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ this.flip\ =\ 1f;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ this.time\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ num\ =\ this.time\ -\/\ this.pingpongTime\ *\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ >\ 0f)}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ Mathf.Sqrt(num);}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ Mathf.Sqrt(-\/num)\ *\ -\/1f;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ num2\ =\ this.\_airHeight\ +\ num\ *\ this.pingpongPower;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ num3\ =\ base.transform.position.y;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num3\ <\ num2)}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num3\ <\ 1f)}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num3\ =\ 1f;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ this.rb.AddForce(\textcolor{keyword}{new}\ Vector2(0f,\ this.floatPower\ *\ (1f\ -\/\ num3\ /\ num2)));}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001291\ RID:\ 4753}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00050}00050\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ airHeight\ =\ 3.5f;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001292\ RID:\ 4754}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ floatPower\ =\ 30f;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001293\ RID:\ 4755}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ pingpongTime\ =\ 1f;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001294\ RID:\ 4756}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ pingpongPower\ =\ 0.15f;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001295\ RID:\ 4757}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_airHeight;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001296\ RID:\ 4758}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ time;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001297\ RID:\ 4759}}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00068}00068\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ flip\ =\ 1f;}
+\DoxyCodeLine{\Hypertarget{_rigid_float_8cs_source_l00069}00069\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,125 @@
+\doxysection{Widget\+Quest\+Tracker.\+cs}
+\hypertarget{_widget_quest_tracker_8cs_source}{}\label{_widget_quest_tracker_8cs_source}\index{Elin/WidgetQuestTracker.cs@{Elin/WidgetQuestTracker.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x02000631\ RID:\ 1585}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00006}\mbox{\hyperlink{class_widget_quest_tracker}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_widget_quest_tracker}{WidgetQuestTracker}}\ :\ \mbox{\hyperlink{class_widget}{Widget}}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002C66\ RID:\ 11366\ RVA:\ 0x000F90B3\ File\ Offset:\ 0x000F72B3}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnEnable()}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ base.InvokeRepeating(\textcolor{stringliteral}{"{}Refresh"{}},\ 0.5f,\ 0.5f);}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002C67\ RID:\ 11367\ RVA:\ 0x000F90CA\ File\ Offset:\ 0x000F72CA}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnDisable()}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ base.CancelInvoke();}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002C68\ RID:\ 11368\ RVA:\ 0x000F90D2\ File\ Offset:\ 0x000F72D2}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnActivate()}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ WidgetQuestTracker.Instance\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ this.Refresh();}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002C69\ RID:\ 11369\ RVA:\ 0x000F90E0\ File\ Offset:\ 0x000F72E0}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00028}00028\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Refresh()}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_mono}{EMono}}.game.isLoading\ ||\ !\mbox{\hyperlink{class_e_mono}{EMono}}.\_zone.isStarted\ ||\ \mbox{\hyperlink{class_layer_drama}{LayerDrama}}.Instance)}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_quest}{Quest}}\ quest\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_e_mono}{EMono}}.game.quests.list)}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (quest.track)}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_quest_tracker}{ItemQuestTracker}}\ itemQuestTracker\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_item_quest_tracker}{ItemQuestTracker}}\ itemQuestTracker2\ \textcolor{keywordflow}{in}\ this.items)}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (itemQuestTracker2.quest\ ==\ quest)}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ itemQuestTracker\ =\ itemQuestTracker2;}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(itemQuestTracker\ !=\ \textcolor{keyword}{null}))}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ itemQuestTracker\ =\ Util.Instantiate<\mbox{\hyperlink{class_item_quest_tracker}{ItemQuestTracker}}>(this.mold,\ this.layout);}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ itemQuestTracker.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ itemQuestTracker.quest\ =\ quest;}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.items.Add(itemQuestTracker);}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ this.items.ForeachReverse(delegate(\mbox{\hyperlink{class_item_quest_tracker}{ItemQuestTracker}}\ i)}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ i.Refresh();}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ this.RebuildLayout(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.items.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_mono}{EMono}}.ui.widgets.DeactivateWidget(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ EMono.player.questTracker\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002C6A\ RID:\ 11370\ RVA:\ 0x000F9244\ File\ Offset:\ 0x000F7444}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00070}00070\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Show()}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00071}00071\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_mono}{EMono}}.ui.widgets.GetWidget(\textcolor{stringliteral}{"{}QuestTracker"{}}))}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_mono}{EMono}}.ui.widgets.Toggle(\textcolor{stringliteral}{"{}QuestTracker"{}});}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002C6B\ RID:\ 11371\ RVA:\ 0x000F9278\ File\ Offset:\ 0x000F7478}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ TryShow()}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00080}00080\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (List<Quest>.Enumerator\ enumerator\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.game.quests.list.GetEnumerator())}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (enumerator.MoveNext())}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (enumerator.Current.track)}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flag\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flag\ ||\ \mbox{\hyperlink{class_e_mono}{EMono}}.ui.widgets.GetWidget(\textcolor{stringliteral}{"{}QuestTracker"{}}))}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_widget}{Widget}}\ widget\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.ui.widgets.Toggle(\textcolor{stringliteral}{"{}QuestTracker"{}});}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (widget\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ widget.SoundActivate();}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_mono}{EMono}}.ui.GetLayer<\mbox{\hyperlink{class_layer_journal}{LayerJournal}}>(\textcolor{keyword}{false}))}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_mono}{EMono}}.ui.ToggleLayer<\mbox{\hyperlink{class_layer_journal}{LayerJournal}}>(\textcolor{keyword}{null}).SwitchContent(0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040018DF\ RID:\ 6367}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00109}00109\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_widget_quest_tracker}{WidgetQuestTracker}}\ Instance;}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00111}00111\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040018E0\ RID:\ 6368}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00112}00112\ \ \ \ \ \textcolor{keyword}{public}\ List<ItemQuestTracker>\ items;}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00114}00114\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040018E1\ RID:\ 6369}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00115}00115\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_item_quest_tracker}{ItemQuestTracker}}\ mold;}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00117}00117\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040018E2\ RID:\ 6370}}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00118}00118\ \ \ \ \ \textcolor{keyword}{public}\ LayoutGroup\ layout;}
+\DoxyCodeLine{\Hypertarget{_widget_quest_tracker_8cs_source_l00119}00119\ \}}
+
+\end{DoxyCode}

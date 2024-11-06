@@ -1,0 +1,42 @@
+\doxysection{Trait\+Door\+Swing.\+cs}
+\hypertarget{_trait_door_swing_8cs_source}{}\label{_trait_door_swing_8cs_source}\index{Elin/TraitDoorSwing.cs@{Elin/TraitDoorSwing.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00003}00003\ \textcolor{comment}{//\ Token:\ 0x020003F1\ RID:\ 1009}}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00004}\mbox{\hyperlink{class_trait_door_swing}{00004}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_trait_door_swing}{TraitDoorSwing}}\ :\ \mbox{\hyperlink{class_trait_door}{TraitDoor}}}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001D5C\ RID:\ 7516\ RVA:\ 0x000AB9A1\ File\ Offset:\ 0x000A9BA1}}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00007}00007\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ IsOpen()}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00008}00008\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.isOpen;}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00010}00010\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001D5D\ RID:\ 7517\ RVA:\ 0x000AB9AC\ File\ Offset:\ 0x000A9BAC}}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ ToggleDoor(\textcolor{keywordtype}{bool}\ sound\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ refresh\ =\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sound)}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ this.owner.PlaySound(this.idSound,\ 1f,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ this.isOpen\ =\ !this.isOpen;}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ this.count\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (refresh)}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.RefreshSingleTile(this.owner.pos.x,\ \textcolor{keyword}{this}.owner.pos.z);}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.RefreshFOV(this.owner.pos.x,\ \textcolor{keyword}{this}.owner.pos.z,\ 6,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001D5E\ RID:\ 7518\ RVA:\ 0x000ABA43\ File\ Offset:\ 0x000A9C43}}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnChangePlaceState(PlaceState\ state)}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00030}00030\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ this.isOpen\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040010C6\ RID:\ 4294}}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ isOpen;}
+\DoxyCodeLine{\Hypertarget{_trait_door_swing_8cs_source_l00036}00036\ \}}
+
+\end{DoxyCode}

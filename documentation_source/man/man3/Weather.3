@@ -1,0 +1,326 @@
+.TH "Weather" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Weather
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBEClass\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBForecast\fP"
+.br
+.ti -1c
+.RI "class \fBWeatherForecast\fP"
+.br
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBCondition\fP { \fBFine\fP, \fBCloudy\fP, \fBRain\fP, \fBRainHeavy\fP, \fBSnow\fP, \fBSnowHeavy\fP, \fBEther\fP, \fBBlossom\fP, \fBNone\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBGetName\fP ()"
+.br
+.ti -1c
+.RI "string \fBGetName\fP (Weather\&.Condition condition)"
+.br
+.ti -1c
+.RI "void \fBRefreshWeather\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnChangeHour\fP ()"
+.br
+.ti -1c
+.RI "\fBWeather\&.Forecast\fP \fBGetForecast\fP (\fBDate\fP date, Weather\&.Condition current)"
+.br
+.ti -1c
+.RI "List< \fBWeather\&.WeatherForecast\fP > \fBGetWeatherForecast\fP ()"
+.br
+.ti -1c
+.RI "void \fBRefreshForecasts\fP ()"
+.br
+.ti -1c
+.RI "long \fBGetTimeSinceLastRain\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetRandomCondition\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetConditionFromForecast\fP (bool silent=false)"
+.br
+.ti -1c
+.RI "void \fBSetCondition\fP (Weather\&.Condition condition, int _duration=20, bool silent=false)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "Weather\&.Condition \fB_currentCondition\fP"
+.br
+.ti -1c
+.RI "int \fBduration\fP = 8"
+.br
+.ti -1c
+.RI "int \fBlastRain\fP"
+.br
+.ti -1c
+.RI "List< \fBWeather\&.Forecast\fP > \fBforecasts\fP = new List<\fBWeather\&.Forecast\fP>()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "Weather\&.Condition \fBCurrentCondition\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSeason\fP \fBseason\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsHazard\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFineOrCloudy\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsRaining\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSnowing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsBlossom\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsEther\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB7\fP of file \fBWeather\&.cs\fP\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum Weather\&.Condition"
+
+.PP
+Definition at line \fB341\fP of file \fBWeather\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBWeather\&.Forecast\fP Weather\&.GetForecast (\fBDate\fP date, Weather\&.Condition current)"
+
+.PP
+Definition at line \fB148\fP of file \fBWeather\&.cs\fP\&.
+.SS "string Weather\&.GetName ()"
+
+.PP
+Definition at line \fB94\fP of file \fBWeather\&.cs\fP\&.
+.SS "string Weather\&.GetName (Weather\&.Condition condition)"
+
+.PP
+Definition at line \fB100\fP of file \fBWeather\&.cs\fP\&.
+.SS "long Weather\&.GetTimeSinceLastRain ()"
+
+.PP
+Definition at line \fB230\fP of file \fBWeather\&.cs\fP\&.
+.SS "List< \fBWeather\&.WeatherForecast\fP > Weather\&.GetWeatherForecast ()"
+
+.PP
+Definition at line \fB158\fP of file \fBWeather\&.cs\fP\&.
+.SS "void Weather\&.OnChangeHour ()"
+
+.PP
+Definition at line \fB138\fP of file \fBWeather\&.cs\fP\&.
+.SS "void Weather\&.RefreshForecasts ()"
+
+.PP
+Definition at line \fB205\fP of file \fBWeather\&.cs\fP\&.
+.SS "void Weather\&.RefreshWeather ()"
+
+.PP
+Definition at line \fB106\fP of file \fBWeather\&.cs\fP\&.
+.SS "void Weather\&.SetCondition (Weather\&.Condition condition, int _duration = \fR20\fP, bool silent = \fRfalse\fP)"
+
+.PP
+Definition at line \fB255\fP of file \fBWeather\&.cs\fP\&.
+.SS "void Weather\&.SetConditionFromForecast (bool silent = \fRfalse\fP)"
+
+.PP
+Definition at line \fB246\fP of file \fBWeather\&.cs\fP\&.
+.SS "void Weather\&.SetRandomCondition ()"
+
+.PP
+Definition at line \fB240\fP of file \fBWeather\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "Weather\&.Condition Weather\&._currentCondition"
+
+.PP
+Definition at line \fB315\fP of file \fBWeather\&.cs\fP\&.
+.SS "int Weather\&.duration = 8"
+
+.PP
+Definition at line \fB319\fP of file \fBWeather\&.cs\fP\&.
+.SS "List<\fBWeather\&.Forecast\fP> Weather\&.forecasts = new List<\fBWeather\&.Forecast\fP>()"
+
+.PP
+Definition at line \fB327\fP of file \fBWeather\&.cs\fP\&.
+.SS "int Weather\&.lastRain"
+
+.PP
+Definition at line \fB323\fP of file \fBWeather\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "Weather\&.Condition Weather\&.CurrentCondition\fR [get]\fP"
+
+.PP
+Definition at line \fB11\fP of file \fBWeather\&.cs\fP\&.
+.SS "bool Weather\&.IsBlossom\fR [get]\fP"
+
+.PP
+Definition at line \fB75\fP of file \fBWeather\&.cs\fP\&.
+.SS "bool Weather\&.IsEther\fR [get]\fP"
+
+.PP
+Definition at line \fB85\fP of file \fBWeather\&.cs\fP\&.
+.SS "bool Weather\&.IsFineOrCloudy\fR [get]\fP"
+
+.PP
+Definition at line \fB45\fP of file \fBWeather\&.cs\fP\&.
+.SS "bool Weather\&.IsHazard\fR [get]\fP"
+
+.PP
+Definition at line \fB35\fP of file \fBWeather\&.cs\fP\&.
+.SS "bool Weather\&.IsRaining\fR [get]\fP"
+
+.PP
+Definition at line \fB55\fP of file \fBWeather\&.cs\fP\&.
+.SS "bool Weather\&.IsSnowing\fR [get]\fP"
+
+.PP
+Definition at line \fB65\fP of file \fBWeather\&.cs\fP\&.
+.SS "\fBSeason\fP Weather\&.season\fR [get]\fP"
+
+.PP
+Definition at line \fB25\fP of file \fBWeather\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

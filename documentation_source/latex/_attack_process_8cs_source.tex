@@ -1,0 +1,1012 @@
+\doxysection{Attack\+Process.\+cs}
+\hypertarget{_attack_process_8cs_source}{}\label{_attack_process_8cs_source}\index{Elin/AttackProcess.cs@{Elin/AttackProcess.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Runtime.CompilerServices;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00007}00007\ \textcolor{comment}{//\ Token:\ 0x020001BC\ RID:\ 444}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00008}\mbox{\hyperlink{class_attack_process}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_attack_process}{AttackProcess}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700032C\ RID:\ 812}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000CCC\ RID:\ 3276\ RVA:\ 0x00062FF8\ File\ Offset:\ 0x000611F8}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsMartial}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00013}00013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.weapon\ ==\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700032D\ RID:\ 813}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000CCD\ RID:\ 3277\ RVA:\ 0x00063003\ File\ Offset:\ 0x00061203}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsMartialWeapon}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.weapon\ !=\ \textcolor{keyword}{null}\ \&\&\ this.weapon.category.skill\ ==\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700032E\ RID:\ 814}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000CCE\ RID:\ 3278\ RVA:\ 0x00063023\ File\ Offset:\ 0x00061223}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsRanged}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.toolRange\ !=\ \textcolor{keyword}{null}\ \&\&\ !this.isThrow\ \&\&\ !this.toolRange.owner.Thing.isEquipped;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700032F\ RID:\ 815}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000CCF\ RID:\ 3279\ RVA:\ 0x0006304F\ File\ Offset:\ 0x0006124F}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsCane}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00043}00043\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.IsRanged\ \&\&\ this.toolRange\ is\ \mbox{\hyperlink{class_trait_tool_range_cane}{TraitToolRangeCane}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CD0\ RID:\ 3280\ RVA:\ 0x0006306C\ File\ Offset:\ 0x0006126C}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00051}00051\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ GetText()}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00052}00052\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ this.dNum.ToString()\ +\ \textcolor{stringliteral}{"{}d"{}}\ +\ this.dDim.ToString();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ text\ =\ text\ +\ ((this.dBonus\ >=\ 0)\ ?\ \textcolor{stringliteral}{"{}+"{}}\ :\ \textcolor{stringliteral}{"{}"{}})\ +\ this.dBonus.ToString();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ @ref\ =\ this.IsMartial\ ?\ \textcolor{stringliteral}{"{}evalHand"{}}.lang()\ :\ \textcolor{stringliteral}{"{}evalWeapon"{}}.lang((this.attackIndex\ +\ 1).ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}attackEval"{}}.lang(@ref,\ text,\ this.dMulti.ToString(\textcolor{stringliteral}{"{}F2"{}})\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{this}.toHit.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{this}.penetration.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00059}00059\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CD1\ RID:\ 3281\ RVA:\ 0x0006314C\ File\ Offset:\ 0x0006134C}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00060}00060\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Prepare(\mbox{\hyperlink{class_chara}{Chara}}\ \_CC,\ \mbox{\hyperlink{class_thing}{Thing}}\ \_weapon,\ \mbox{\hyperlink{class_card}{Card}}\ \_TC\ =\ \textcolor{keyword}{null},\ \mbox{\hyperlink{class_point}{Point}}\ \_TP\ =\ \textcolor{keyword}{null},\ \textcolor{keywordtype}{int}\ \_attackIndex\ =\ 0,\ \textcolor{keywordtype}{bool}\ \_isThrow\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00061}00061\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ this.CC\ =\ \_CC;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ this.TC\ =\ \_TC;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ this.TP\ =\ \_TP;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ this.isThrow\ =\ \_isThrow;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ this.weapon\ =\ \_weapon;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ this.ammo\ =\ ((\_weapon\ ==\ \textcolor{keyword}{null})\ ?\ null\ :\ \_weapon.ammoData);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ this.hit\ =\ (this.crit\ =\ (this.evadePlus\ =\ \textcolor{keyword}{false}));}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ thing\ =\ this.weapon;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ this.toolRange\ =\ (((thing\ !=\ \textcolor{keyword}{null})\ ?\ thing.trait\ :\ \textcolor{keyword}{null})\ as\ \mbox{\hyperlink{class_trait_tool_range}{TraitToolRange}});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ this.attackType\ =\ AttackType.Slash;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ this.attackStyle\ =\ AttackStyle.Default;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ this.evasion\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ this.penetration\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ this.distMod\ =\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ this.attackIndex\ =\ \_attackIndex;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ this.posRangedAnime\ =\ this.TP;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ this.ignoreAnime\ =\ (this.ignoreAttackSound\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.isThrow)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.IsRanged)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.attackStyle\ =\ this.CC.body.GetAttackStyle();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (this.TP\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ this.CC.pos.Distance(this.TP);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.distMod\ =\ Mathf.Max(115\ -\/\ 10\ *\ Mathf.Abs(num\ -\/\ \textcolor{keyword}{this}.toolRange.BestDist)\ *\ 100\ /\ (100\ +\ \textcolor{keyword}{this}.weapon.Evalue(605)\ *\ 10),\ 80);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.isThrow)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ this.weapon.HasTag(CTAG.throwWeapon)\ ||\ this.weapon.HasTag(CTAG.throwWeaponEnemy);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ (int)Mathf.Clamp(Mathf.Sqrt((\textcolor{keywordtype}{float})(\textcolor{keyword}{this}.weapon.SelfWeight\ +\ \textcolor{keyword}{this}.weapon.ChildrenWeight))\ *\ 3f\ +\ 25f\ +\ (\textcolor{keywordtype}{float})(flag\ ?\ 75\ :\ 0),\ 10f,\ 400f\ +\ Mathf.Sqrt((\textcolor{keywordtype}{float})\textcolor{keyword}{this}.CC.STR)\ *\ 50f);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num3\ =\ Mathf.Clamp(this.weapon.material.hardness,\ flag\ ?\ 40\ :\ 20,\ 200);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ this.weaponSkill\ =\ this.CC.elements.GetOrCreateElement(108);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ this.attackType\ =\ AttackType.Blunt;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ this.dBonus\ =\ (this.CC.IsPCParty\ ?\ 3\ :\ 7);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ this.dNum\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ this.dDim\ =\ ((this.CC.IsPCParty\ ?\ 0\ :\ this.CC.LV)\ +\ this.CC.STR\ +\ this.CC.Evalue(108))\ *\ num2\ *\ num3\ /\ 10000\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ this.dMulti\ =\ 1f;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ this.toHitBase\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.curve(this.CC.DEX\ /\ 4\ +\ \textcolor{keyword}{this}.CC.STR\ /\ 2\ +\ \textcolor{keyword}{this}.weaponSkill.Value,\ 50,\ 25,\ 75)\ +\ (this.CC.IsPC\ ?\ 75\ :\ 250);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ this.toHitFix\ =\ this.CC.HIT\ +\ this.weapon.HIT;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ this.penetration\ =\ 25;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (this.IsMartial\ ||\ this.IsMartialWeapon)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ this.weaponSkill\ =\ this.CC.elements.GetOrCreateElement(100);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ this.attackType\ =\ (this.CC.race.meleeStyle.IsEmpty()\ ?\ ((\mbox{\hyperlink{class_e_class}{EClass}}.rnd(2)\ ==\ 0)\ ?\ AttackType.Kick\ :\ AttackType.Punch)\ :\ \textcolor{keyword}{this}.CC.race.meleeStyle.ToEnum(\textcolor{keyword}{true}));}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ this.dBonus\ =\ this.CC.DMG\ +\ this.CC.encLV\ +\ (int)Mathf.Sqrt((\textcolor{keywordtype}{float})(\textcolor{keyword}{this}.CC.STR\ /\ 5\ +\ \textcolor{keyword}{this}.weaponSkill.Value\ /\ 4));}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ this.dNum\ =\ 2\ +\ Mathf.Min(this.weaponSkill.Value\ /\ 10,\ 4);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ this.dDim\ =\ 5\ +\ (int)Mathf.Sqrt((\textcolor{keywordtype}{float})(\textcolor{keyword}{this}.weaponSkill.Value\ /\ 3));}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ this.dMulti\ =\ 0.6f\ +\ (float)(this.CC.STR\ /\ 2\ +\ \textcolor{keyword}{this}.weaponSkill.Value\ /\ 2\ +\ \textcolor{keyword}{this}.CC.Evalue(132)\ /\ 2)\ /\ 50f;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ this.dMulti\ +=\ 0.05f\ *\ (float)this.CC.Evalue(1400);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ this.toHitBase\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.curve(this.CC.DEX\ /\ 3\ +\ \textcolor{keyword}{this}.CC.STR\ /\ 3\ +\ \textcolor{keyword}{this}.weaponSkill.Value,\ 50,\ 25,\ 75)\ +\ 50;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ this.toHitFix\ =\ this.CC.HIT;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.attackStyle\ ==\ AttackStyle.Shield)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.toHitBase\ =\ this.toHitBase\ *\ 75\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ this.penetration\ =\ Mathf.Clamp(this.weaponSkill.Value\ /\ 10\ +\ 5,\ 5,\ 20)\ +\ this.CC.Evalue(92);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.IsMartialWeapon)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.dBonus\ +=\ this.weapon.DMG;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.dNum\ +=\ this.weapon.source.offense[0];}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.dDim\ =\ Mathf.Max(this.dDim\ /\ 2\ +\ this.weapon.c\_diceDim,\ 1);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.toHitFix\ +=\ this.weapon.HIT;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.penetration\ +=\ this.weapon.Penetration;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.weapon.source.attackType.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.attackType\ =\ this.weapon.source.attackType.ToEnum(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.IsRanged)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.weaponSkill\ =\ this.CC.elements.GetOrCreateElement(this.toolRange.WeaponSkill);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.weaponSkill\ =\ this.CC.elements.GetOrCreateElement(this.weapon.category.skill);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.weapon.source.attackType.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.attackType\ =\ this.weapon.source.attackType.ToEnum(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag2\ =\ this.IsCane\ ||\ this.weapon.Evalue(482)\ >\ 0;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flag2)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.weaponSkill\ =\ this.CC.elements.GetOrCreateElement(305);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ this.dBonus\ =\ this.CC.DMG\ +\ this.CC.encLV\ +\ this.weapon.DMG;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ this.dNum\ =\ this.weapon.source.offense[0];}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ this.dDim\ =\ this.weapon.c\_diceDim;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ this.dMulti\ =\ 0.6f\ +\ (float)(this.weaponSkill.GetParent(\textcolor{keyword}{this}.CC).Value\ +\ \textcolor{keyword}{this}.weaponSkill.Value\ /\ 2\ +\ \textcolor{keyword}{this}.CC.Evalue(flag2\ ?\ 304\ :\ (\textcolor{keyword}{this}.IsRanged\ ?\ 133\ :\ 132)))\ /\ 50f;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ this.dMulti\ +=\ 0.05f\ *\ (float)this.CC.Evalue(\textcolor{keyword}{this}.IsRanged\ ?\ 1404\ :\ 1400);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ this.toHitBase\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.curve((this.IsCane\ ?\ this.CC.WIL\ :\ \textcolor{keyword}{this}.CC.DEX)\ /\ 4\ +\ \textcolor{keyword}{this}.weaponSkill.GetParent(\textcolor{keyword}{this}.CC).Value\ /\ 3\ +\ \textcolor{keyword}{this}.weaponSkill.Value,\ 50,\ 25,\ 75)\ +\ 50;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ this.toHitFix\ =\ this.CC.HIT\ +\ this.weapon.HIT;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ this.penetration\ =\ this.weapon.Penetration\ +\ this.CC.Evalue(92);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.IsCane)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.toHitBase\ +=\ 50;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.ammo\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ this.dNumAmmo\ =\ ((this.ammo.source.offense.Length\ !=\ 0)\ ?\ this.ammo.source.offense[0]\ :\ 0);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ this.dDimAmmo\ =\ this.ammo.c\_diceDim;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ this.dBonusAmmo\ =\ this.ammo.DMG;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.dNumAmmo\ <\ 1)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.dNumAmmo\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.dDimAmmo\ <\ 1)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.dDimAmmo\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ this.dBonus\ +=\ this.ammo.DMG;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ this.toHitFix\ +=\ this.ammo.HIT;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ this.dNumAmmo\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ this.dDimAmmo\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.dNum\ <\ 1)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ this.dNum\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.dDim\ <\ 1)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ this.dDim\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.penetration\ >\ 100)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ this.penetration\ =\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.attackStyle\ ==\ AttackStyle.TwoHand)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ this.dMulti\ =\ this.dMulti\ *\ 1.5f\ +\ 0.1f\ *\ Mathf.Sqrt((\textcolor{keywordtype}{float})this.CC.Evalue(130));}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ this.dMulti\ =\ this.dMulti\ *\ (float)this.distMod\ /\ 100f;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ this.toHit\ =\ this.toHitBase\ +\ this.toHitFix;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ this.toHit\ =\ this.toHit\ *\ this.distMod\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.HasCondition<\mbox{\hyperlink{class_con_bane}{ConBane}}>())}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ this.toHit\ =\ this.toHit\ *\ 75\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}\ !=\ \textcolor{keyword}{null}\ \&\&\ this.CC.HasHigherGround(\textcolor{keyword}{this}.TC))}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ this.toHit\ =\ this.toHit\ *\ 120\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.ride\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ this.toHit\ =\ this.toHit\ *\ 100\ /\ (100\ +\ 500\ /\ Mathf.Max(5,\ 10\ +\ this.CC.EvalueRiding()));}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.parasite\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ this.toHit\ =\ this.toHit\ *\ 100\ /\ (100\ +\ 1000\ /\ Mathf.Max(5,\ 10\ +\ this.CC.Evalue(227)));}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.host\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.host.ride\ ==\ \textcolor{keyword}{this}.CC)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.toHit\ =\ this.toHit\ *\ 100\ /\ (100\ +\ 1000\ /\ Mathf.Max(5,\ 10\ +\ this.CC.STR));}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.host.parasite\ ==\ \textcolor{keyword}{this}.CC)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.toHit\ =\ this.toHit\ *\ 100\ /\ (100\ +\ 2000\ /\ Mathf.Max(5,\ 10\ +\ this.CC.DEX));}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.attackStyle\ ==\ AttackStyle.TwoHand)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ this.toHit\ +=\ 25\ +\ (int)Mathf.Sqrt((\textcolor{keywordtype}{float})(\textcolor{keyword}{this}.CC.Evalue(130)\ *\ 2));}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (this.attackStyle\ ==\ AttackStyle.TwoWield\ \&\&\ \textcolor{keyword}{this}.toHit\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ this.toHit\ =\ this.toHit\ *\ 100\ /\ (115\ +\ this.attackIndex\ *\ 15\ +\ this.attackIndex\ *\ Mathf.Clamp(2000\ /\ (20\ +\ this.CC.Evalue(131)),\ 0,\ 100));}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.isBlind)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ this.toHit\ /=\ ((this.IsRanged\ ||\ this.isThrow)\ ?\ 10\ :\ 3);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.isConfused\ ||\ \textcolor{keyword}{this}.CC.HasCondition<\mbox{\hyperlink{class_con_dim}{ConDim}}>())}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ this.toHit\ /=\ 2;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ this.evasion\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.curve(this.\mbox{\hyperlink{class_t_c}{TC}}.PER\ /\ 3\ +\ \textcolor{keyword}{this}.TC.Evalue(150),\ 50,\ 10,\ 75)\ +\ this.TC.DV\ +\ 25;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}.isChara\ \&\&\ \textcolor{keyword}{this}.TC.Chara.isBlind)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ this.evasion\ /=\ 2;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}.HasCondition<\mbox{\hyperlink{class_con_dim}{ConDim}}>())}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ this.evasion\ /=\ 2;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}.isChara\ \&\&\ \textcolor{keyword}{this}.TC.Chara.HasHigherGround(\textcolor{keyword}{this}.CC))}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ this.evasion\ =\ this.evasion\ *\ 120\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00267}00267\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00269}00269\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CD2\ RID:\ 3282\ RVA:\ 0x00063DBC\ File\ Offset:\ 0x00061FBC}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00270}00270\ \ \ \ \ \textcolor{keyword}{public}\ unsafe\ \textcolor{keywordtype}{void}\ PlayRangedAnime(\textcolor{keywordtype}{int}\ numFire)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00271}00271\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_attack_process}{AttackProcess}}.<>c\_\_DisplayClass43\_0\ CS\$<>8\_\_locals1\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_attack_process}{AttackProcess}}.<>c\_\_DisplayClass43\_0();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.<>4\_\_this\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.isGun\ =\ (this.toolRange\ is\ \mbox{\hyperlink{class_trait_tool_range_gun}{TraitToolRangeGun}});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.isCane\ =\ (this.toolRange\ is\ \mbox{\hyperlink{class_trait_tool_range_cane}{TraitToolRangeCane}});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_attack_process}{AttackProcess}}.<>c\_\_DisplayClass43\_0\ CS\$<>8\_\_locals2\ =\ CS\$<>8\_\_locals1;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_setting_1_1_effect_data}{GameSetting.EffectData}}\ data;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((data\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.setting.effect.guns.TryGetValue(\textcolor{keyword}{this}.weapon.id,\ \textcolor{keyword}{null}))\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ data\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.setting.effect.guns[CS\$<>8\_\_locals1.isCane\ ?\ \textcolor{stringliteral}{"{}cane"{}}\ :\ (CS\$<>8\_\_locals1.isGun\ ?\ \textcolor{stringliteral}{"{}gun"{}}\ :\ \textcolor{stringliteral}{"{}bow"{}})];}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals2.data\ =\ data;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.isPCC\ =\ (this.CC.IsPCC\ \&\&\ this.CC.renderer.hasActor);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00284}00284\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.firePos\ =\ (CS\$<>8\_\_locals1.isPCC\ ?\ \textcolor{keyword}{new}\ Vector2(CS\$<>8\_\_locals1.data.firePos.x\ *\ (\textcolor{keywordtype}{float})((\textcolor{keyword}{this}.CC.renderer.actor.currentDir\ ==\ 0\ ||\ \textcolor{keyword}{this}.CC.renderer.actor.currentDir\ ==\ 1)\ ?\ -\/1\ :\ 1),\ CS\$<>8\_\_locals1.data.firePos.y)\ :\ Vector2.zero);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.\_CC\ =\ this.CC;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00286}00286\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.\_TP\ =\ this.posRangedAnime.Copy();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00287}00287\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.\_weapon\ =\ this.weapon;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.ignoreSound\ =\ this.ignoreAttackSound;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numFire;\ i++)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ delay\ =\ (float)i\ *\ CS\$<>8\_\_locals1.data.delay;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ Action\ action;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((action\ =\ CS\$<>8\_\_locals1.<>9\_\_0)\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ action\ =\ (CS\$<>8\_\_locals1.<>9\_\_0\ =\ delegate()}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.core.IsGameStarted\ ||\ !CS\$<>8\_\_locals1.\_CC.IsAliveInCurrentZone)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.\_weapon.id\ ==\ \textcolor{stringliteral}{"{}gun\_rail"{}})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.\_CC.PlayEffect(\textcolor{stringliteral}{"{}laser"{}},\ \textcolor{keyword}{true},\ 0f,\ \textcolor{keywordflow}{default}(Vector3)).GetComponent<\mbox{\hyperlink{class_sprite_based_laser}{SpriteBasedLaser}}>().Play(*CS\$<>8\_\_locals1.\_TP.PositionCenter());}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_effect}{Effect}}\ effect\ =\ \mbox{\hyperlink{class_effect}{Effect}}.Get(\textcolor{stringliteral}{"{}ranged\_arrow"{}}).\_Play(CS\$<>8\_\_locals1.\_CC.pos,\ CS\$<>8\_\_locals1.\_CC.isSynced\ ?\ CS\$<>8\_\_locals1.\_CC.renderer.position\ :\ (*CS\$<>8\_\_locals1.\_CC.pos.Position()),\ 0f,\ CS\$<>8\_\_locals1.\_TP,\ CS\$<>8\_\_locals1.data.sprite);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.isCane)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IEnumerable<Element>\ enumerable\ =\ from\ e\ in\ CS\$<>8\_\_locals1.<>4\_\_this.toolRange.owner.elements.dict.Values}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ where\ e.source.categorySub\ ==\ \textcolor{stringliteral}{"{}eleAttack"{}}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ select\ e;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (enumerable.Count<\mbox{\hyperlink{class_element}{Element}}>()\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_element}{Element}}\ element\ =\ enumerable.RandomItem<\mbox{\hyperlink{class_element}{Element}}>();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ effect.sr.color\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.Colors.elementColors[element.source.alias];}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.data.eject)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!CS\$<>8\_\_locals1.ignoreSound)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.\_CC.PlaySound(\textcolor{stringliteral}{"{}bullet\_drop"{}},\ 1f,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.\_CC.PlayEffect(\textcolor{stringliteral}{"{}bullet"{}},\ \textcolor{keyword}{true},\ 0f,\ \textcolor{keywordflow}{default}(Vector3)).Emit(1);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.isGun)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.isPCC)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.\_weapon.PlayEffect(CS\$<>8\_\_locals1.data.idEffect.IsEmpty(\textcolor{stringliteral}{"{}gunfire"{}}),\ \textcolor{keyword}{true},\ 0f,\ CS\$<>8\_\_locals1.firePos);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.\_CC.PlayEffect(CS\$<>8\_\_locals1.data.idEffect.IsEmpty(\textcolor{stringliteral}{"{}gunfire"{}}),\ \textcolor{keyword}{true},\ 0f,\ \textcolor{keywordflow}{default}(Vector3));}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!CS\$<>8\_\_locals1.ignoreSound)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.\_CC.PlaySound(CS\$<>8\_\_locals1.data.idSound.IsEmpty(\textcolor{stringliteral}{"{}attack\_gun"{}}),\ 1f,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ TweenUtil.Delay(delay,\ action);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00346}00346\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00347}00347\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00349}00349\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CD3\ RID:\ 3283\ RVA:\ 0x00063F68\ File\ Offset:\ 0x00062168}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00350}00350\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ Perform(\textcolor{keywordtype}{int}\ count,\ \textcolor{keywordtype}{bool}\ hasHit,\ \textcolor{keywordtype}{float}\ dmgMulti\ =\ 1f,\ \textcolor{keywordtype}{bool}\ maxRoll\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00351}00351\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00352}00352\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ this.CC.HasCondition<\mbox{\hyperlink{class_con_reload}{ConReload}}>();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00353}00353\ \ \ \ \ \ \ \ \ this.hit\ =\ this.CalcHit();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00354}00354\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ \mbox{\hyperlink{class_dice}{Dice}}.Roll(this.dNum,\ this.dDim,\ this.dBonus,\ this.CC);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00355}00355\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.ammo\ !=\ \textcolor{keyword}{null}\ \&\&\ !flag)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00356}00356\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ num\ +=\ \mbox{\hyperlink{class_dice}{Dice}}.Roll(this.dNumAmmo,\ this.dDimAmmo,\ this.dBonusAmmo,\ this.CC);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00358}00358\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00359}00359\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.crit\ ||\ maxRoll)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00360}00360\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ \mbox{\hyperlink{class_dice}{Dice}}.RollMax(this.dNum,\ this.dDim,\ this.dBonus);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.ammo\ !=\ \textcolor{keyword}{null}\ \&\&\ !flag)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num\ +=\ \mbox{\hyperlink{class_dice}{Dice}}.RollMax(this.dNumAmmo,\ this.dDimAmmo,\ 0);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.crit\ \&\&\ (this.IsMartial\ ||\ this.IsMartialWeapon))}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.dMulti\ *=\ 1.25f;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00370}00370\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00371}00371\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.Evalue(1355)\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00372}00372\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_con_strife}{ConStrife}}\ condition\ =\ this.CC.GetCondition<\mbox{\hyperlink{class_con_strife}{ConStrife}}>();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (condition\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num\ +=\ condition.GetDice().Roll();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num++;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00382}00382\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00383}00383\ \ \ \ \ \ \ \ \ num\ =\ (int)(this.dMulti\ *\ (\textcolor{keywordtype}{float})num\ *\ dmgMulti);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00384}00384\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.IsRanged\ \&\&\ count\ >=\ this.numFireWithoutDamageLoss)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00385}00385\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ num\ *\ 100\ /\ (100\ +\ (count\ -\/\ this.numFireWithoutDamageLoss\ +\ 1)\ *\ 30);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00387}00387\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00388}00388\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.isRestrained)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00389}00389\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ num\ /=\ 2;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00391}00391\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00392}00392\ \ \ \ \ \ \ \ \ List<Element>\ list\ =\ \textcolor{keyword}{new}\ List<Element>();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00393}00393\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ this.CC.Evalue(91);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00394}00394\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num3\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00395}00395\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.weapon\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00396}00396\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00397}00397\ \ \ \ \ \ \ \ \ \ \ \ \ list\ =\ this.weapon.elements.dict.Values.ToList<\mbox{\hyperlink{class_element}{Element}}>();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.ammo\ !=\ \textcolor{keyword}{null}\ \&\&\ !flag)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00399}00399\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list\ =\ list.Concat(this.ammo.elements.dict.Values).ToList<\mbox{\hyperlink{class_element}{Element}}>();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00402}00402\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.IsRanged\ ||\ this.isThrow)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00403}00403\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00404}00404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num2\ +=\ this.weapon.Evalue(91);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00405}00405\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00406}00406\ \ \ \ \ \ \ \ \ \ \ \ \ num3\ +=\ this.weapon.Evalue(603);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00407}00407\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00408}00408\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (this.CC.id\ ==\ \textcolor{stringliteral}{"{}rabbit\_vopal"{}})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00409}00409\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ list.Add(\mbox{\hyperlink{class_element}{Element}}.Create(6650,\ 100));}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00411}00411\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00412}00412\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_card}{Card}}\ tc\ =\ this.\mbox{\hyperlink{class_t_c}{TC}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00413}00413\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (((tc\ !=\ \textcolor{keyword}{null})\ ?\ tc.Chara\ :\ \textcolor{keyword}{null})\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00414}00414\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00415}00415\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_source_race_1_1_row}{SourceRace.Row}}\ race\ =\ this.\mbox{\hyperlink{class_t_c}{TC}}.Chara.race;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_attack_process}{AttackProcess}}.<>c\_\_DisplayClass44\_0\ CS\$<>8\_\_locals1;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00417}00417\ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.bane\ =\ this.CC.Evalue(468);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00418}00418\ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_AddBane|44\_5(race.IsUndead,\ 461,\ ref\ CS\$<>8\_\_locals1);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00419}00419\ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_AddBane|44\_5(race.IsAnimal,\ 463,\ ref\ CS\$<>8\_\_locals1);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00420}00420\ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_AddBane|44\_5(race.IsHuman,\ 464,\ ref\ CS\$<>8\_\_locals1);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00421}00421\ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_AddBane|44\_5(race.IsDragon,\ 460,\ ref\ CS\$<>8\_\_locals1);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00422}00422\ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_AddBane|44\_5(race.IsGod,\ 466,\ ref\ CS\$<>8\_\_locals1);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_AddBane|44\_5(race.IsMachine,\ 465,\ ref\ CS\$<>8\_\_locals1);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00424}00424\ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_AddBane|44\_5(race.IsFish,\ 467,\ ref\ CS\$<>8\_\_locals1);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00425}00425\ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_AddBane|44\_5(race.IsFairy,\ 462,\ ref\ CS\$<>8\_\_locals1);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00426}00426\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.bane\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00427}00427\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ num\ *\ (100\ +\ CS\$<>8\_\_locals1.bane\ *\ 3)\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00429}00429\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00430}00430\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00431}00431\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.IsPCFaction)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00432}00432\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00433}00433\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_element}{Element}}\ item\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.faction.charaElements.dict.Values)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00434}00434\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00435}00435\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list.Add(item);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00436}00436\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00437}00437\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00438}00438\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.hit\ \&\&\ num2\ >\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(100))}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00439}00439\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00440}00440\ \ \ \ \ \ \ \ \ \ \ \ \ this.CC.Say(\textcolor{stringliteral}{"{}vopal"{}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00441}00441\ \ \ \ \ \ \ \ \ \ \ \ \ this.penetration\ =\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00442}00442\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00443}00443\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.crit\ \&\&\ this.CC.IsPC)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00444}00444\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00445}00445\ \ \ \ \ \ \ \ \ \ \ \ \ this.CC.Say(\textcolor{stringliteral}{"{}critical"{}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00446}00446\ \ \ \ \ \ \ \ \ \ \ \ \ this.CC.PlaySound(\textcolor{stringliteral}{"{}critical"{}},\ 1f,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00447}00447\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00448}00448\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.isSynced\ ||\ (\textcolor{keyword}{this}.TC\ !=\ \textcolor{keyword}{null}\ \&\&\ \textcolor{keyword}{this}.TC.isSynced))}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00449}00449\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00450}00450\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.toolRange\ !=\ \textcolor{keyword}{null}\ \&\&\ (!this.IsRanged\ ||\ count\ ==\ 0)\ \&\&\ !flag\ \&\&\ !this.ignoreAnime)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00451}00451\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00452}00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.PlayRangedAnime(this.IsRanged\ ?\ this.numFire\ :\ 1);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.hit\ \&\&\ this.\mbox{\hyperlink{class_t_c}{TC}}\ !=\ \textcolor{keyword}{null}\ \&\&\ !hasHit)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00455}00455\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00456}00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_PlayHitEffect|44\_4();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00457}00457\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00458}00458\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00459}00459\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00460}00460\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00461}00461\ \ \ \ \ \ \ \ \ \ \ \ \ this.CC.Say(this.IsRanged\ ?\ \textcolor{stringliteral}{"{}attack\_air\_range"{}}\ :\ \textcolor{stringliteral}{"{}attack\_air"{}},\ this.CC,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00462}00462\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00463}00463\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00464}00464\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.hit)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00465}00465\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00467}00467\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.IsPCParty)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.CC.Say(this.evadePlus\ ?\ \textcolor{stringliteral}{"{}evadePlus2"{}}\ :\ \textcolor{stringliteral}{"{}evade2"{}},\ this.CC,\ this.\mbox{\hyperlink{class_t_c}{TC}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00471}00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{class_t_c}{TC}}.Say(this.evadePlus\ ?\ \textcolor{stringliteral}{"{}evadePlus"{}}\ :\ \textcolor{stringliteral}{"{}evade"{}},\ this.\mbox{\hyperlink{class_t_c}{TC}},\ this.CC,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00476}00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_ModExpDef|44\_2(150,\ 90);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_ModExpDef|44\_2(151,\ 90);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00478}00478\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_Proc|44\_0(list);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00481}00481\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00482}00482\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}.IsPC)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00483}00483\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_msg}{Msg}}.SetColor(\textcolor{stringliteral}{"{}attack\_pc"{}});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.pc.Say(\textcolor{stringliteral}{"{}attackMeleeToPC"{}},\ this.CC,\ this.\mbox{\hyperlink{class_t_c}{TC}},\ this.GetAttackText(this.attackType,\ 3),\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00486}00486\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00487}00487\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00488}00488\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ this.CC.Say(\textcolor{stringliteral}{"{}attackMelee"{}},\ this.CC,\ this.\mbox{\hyperlink{class_t_c}{TC}},\ this.GetAttackText(this.attackType,\ 0),\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00490}00490\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00491}00491\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ showEffect\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00492}00492\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num4\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00493}00493\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num5\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00494}00494\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num6\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00495}00495\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_con_weapon}{ConWeapon}}\ conWeapon\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00496}00496\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.weapon\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00497}00497\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00498}00498\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_element}{Element}}\ element\ \textcolor{keywordflow}{in}\ this.weapon.elements.dict.Values)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (element.source.categorySub\ ==\ \textcolor{stringliteral}{"{}eleConvert"{}})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num4\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.elements.alias[element.source.aliasRef].id;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num5\ =\ 50\ +\ element.Value\ *\ 2;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num6\ =\ Mathf.Min(element.Value,\ 100);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00508}00508\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00509}00509\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num4\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00510}00510\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00511}00511\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.HasCondition<\mbox{\hyperlink{class_con_weapon}{ConWeapon}}>())}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00512}00512\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00513}00513\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ conWeapon\ =\ this.CC.GetCondition<\mbox{\hyperlink{class_con_weapon}{ConWeapon}}>();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00514}00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num4\ =\ conWeapon.sourceElement.id;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00515}00515\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num5\ =\ conWeapon.power\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00516}00516\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num6\ =\ 40\ +\ (int)Mathf.Min(MathF.Sqrt((\textcolor{keywordtype}{float})conWeapon.power),\ 80f);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00517}00517\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00518}00518\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (conWeapon\ ==\ \textcolor{keyword}{null}\ \&\&\ this.weapon\ ==\ \textcolor{keyword}{null}\ \&\&\ (this.CC.MainElement\ !=\ \mbox{\hyperlink{class_element}{Element}}.Void\ ||\ \textcolor{keyword}{this}.CC.HasElement(1565,\ 1)))}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00519}00519\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00520}00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num4\ =\ (this.CC.HasElement(1565,\ 1)\ ?\ 915\ :\ this.CC.MainElement.id);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00521}00521\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num5\ =\ this.CC.Power\ /\ 3\ +\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(this.CC.Power\ /\ 2);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.MainElement\ !=\ \mbox{\hyperlink{class_element}{Element}}.Void)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00523}00523\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00524}00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num5\ +=\ this.CC.MainElement.Value;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00525}00525\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00526}00526\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ showEffect\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00527}00527\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num6\ =\ 50;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00528}00528\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00529}00529\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (conWeapon\ ==\ \textcolor{keyword}{null}\ \&\&\ this.weapon\ !=\ \textcolor{keyword}{null}\ \&\&\ this.weapon.trait\ is\ \mbox{\hyperlink{class_trait_tool_range_cane}{TraitToolRangeCane}})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00530}00530\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00531}00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IEnumerable<Element>\ enumerable\ =\ from\ e\ in\ this.weapon.elements.dict.Values}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00532}00532\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ where\ e.source.categorySub\ ==\ \textcolor{stringliteral}{"{}eleAttack"{}}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00533}00533\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ select\ e;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (enumerable.Count<\mbox{\hyperlink{class_element}{Element}}>()\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00535}00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00536}00536\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num4\ =\ enumerable.RandomItem<\mbox{\hyperlink{class_element}{Element}}>().\textcolor{keywordtype}{id};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00537}00537\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num4\ !=\ 914)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00538}00538\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00539}00539\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num4\ !=\ 918)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00540}00540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00541}00541\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num4\ ==\ 920)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00542}00542\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00543}00543\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num5\ =\ 30;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00544}00544\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00545}00545\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00546}00546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00547}00547\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num5\ =\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00548}00548\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00549}00549\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00551}00551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00552}00552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num5\ =\ 50;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00553}00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00554}00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00555}00555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00556}00556\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00557}00557\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num5\ =\ 50;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00558}00558\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00559}00559\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00560}00560\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num6\ =\ 50;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00561}00561\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00562}00562\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00563}00563\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num7\ =\ num;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00564}00564\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num8\ =\ num\ *\ num6\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00565}00565\ \ \ \ \ \ \ \ \ num\ -\/=\ num8;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00566}00566\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num9\ =\ num\ *\ this.penetration\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00567}00567\ \ \ \ \ \ \ \ \ num\ -\/=\ num9;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00568}00568\ \ \ \ \ \ \ \ \ num\ =\ this.\mbox{\hyperlink{class_t_c}{TC}}.ApplyProtection(num,\ 100)\ +\ num9\ +\ num8;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00569}00569\ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{class_t_c}{TC}}.DamageHP(num,\ num4,\ num5,\ (this.IsRanged\ ||\ this.isThrow)\ ?\ AttackSource.Range\ :\ AttackSource.Melee,\ \textcolor{keyword}{this}.CC,\ showEffect);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00570}00570\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (conWeapon\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00571}00571\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00572}00572\ \ \ \ \ \ \ \ \ \ \ \ \ conWeapon.Mod(-\/1,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00573}00573\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00574}00574\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag2\ =\ this.IsCane\ ||\ (this.weapon\ !=\ \textcolor{keyword}{null}\ \&\&\ this.weapon.Evalue(482)\ >\ 0);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00575}00575\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ attackStyleElement\ =\ this.CC.body.GetAttackStyleElement(this.attackStyle);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00576}00576\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ mod\ =\ 100\ /\ (count\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00577}00577\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.IsRanged\ ||\ count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00578}00578\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00579}00579\ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_ModExpAtk|44\_3(this.weaponSkill.id,\ mod);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00580}00580\ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_ModExpAtk|44\_3(flag2\ ?\ 304\ :\ (this.IsRanged\ ?\ 133\ :\ 132),\ mod);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00581}00581\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00582}00582\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.crit)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00583}00583\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00584}00584\ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_ModExpAtk|44\_3(134,\ 50);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00585}00585\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00586}00586\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ ==\ 0\ \&\&\ attackStyleElement\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00587}00587\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00588}00588\ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_ModExpAtk|44\_3(attackStyleElement,\ 100);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00589}00589\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00590}00590\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.CC.IsAliveInCurrentZone\ ||\ !\textcolor{keyword}{this}.TC.IsAliveInCurrentZone)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00591}00591\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00592}00592\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00593}00593\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00594}00594\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(8)\ ==\ 0\ \&\&\ \textcolor{keyword}{this}.TC.isChara\ \&\&\ \textcolor{keyword}{this}.CC.HasElement(1219,\ 1))}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00595}00595\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00596}00596\ \ \ \ \ \ \ \ \ \ \ \ \ this.CC.Say(\textcolor{stringliteral}{"{}abCrab"{}},\ this.CC,\ this.\mbox{\hyperlink{class_t_c}{TC}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00597}00597\ \ \ \ \ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{class_t_c}{TC}}.Chara.AddCondition<\mbox{\hyperlink{class_con_paralyze}{ConParalyze}}>(30\ +\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(30),\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00598}00598\ \ \ \ \ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{class_t_c}{TC}}.Chara.AddCondition<\mbox{\hyperlink{class_con_gravity}{ConGravity}}>(100,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00599}00599\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00600}00600\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00601}00601\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00602}00602\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_element}{Element}}\ element2\ \textcolor{keywordflow}{in}\ list)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00603}00603\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00604}00604\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.\mbox{\hyperlink{class_t_c}{TC}}.IsAliveInCurrentZone)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00605}00605\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00606}00606\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00607}00607\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00608}00608\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (element2.source.categorySub\ ==\ \textcolor{stringliteral}{"{}eleAttack"{}})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00609}00609\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00610}00610\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num10\ =\ 25;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00611}00611\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ dmg\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(num\ *\ (100\ +\ element2.Value\ *\ 10)\ /\ 500\ +\ 5);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00612}00612\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (conWeapon\ ==\ \textcolor{keyword}{null}\ \&\&\ this.weapon\ !=\ \textcolor{keyword}{null}\ \&\&\ this.weapon.trait\ is\ \mbox{\hyperlink{class_trait_tool_range_cane}{TraitToolRangeCane}})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00613}00613\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00614}00614\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num10\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00615}00615\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00616}00616\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num10\ >=\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(100))}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00617}00617\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00618}00618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{class_t_c}{TC}}.DamageHP(dmg,\ element2.id,\ \textcolor{keyword}{this}.isThrow\ ?\ (100\ +\ element2.Value\ *\ 5)\ :\ (30\ +\ element2.Value),\ AttackSource.WeaponEnchant,\ \textcolor{keyword}{this}.CC,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00619}00619\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00620}00620\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00621}00621\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00622}00622\ \ \ \ \ \ \ \ \ \ \ \ \ this.<Perform>g\_\_Proc|44\_0(list);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00623}00623\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00624}00624\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.CC.IsAliveInCurrentZone\ ||\ !\textcolor{keyword}{this}.TC.IsAliveInCurrentZone)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00625}00625\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00626}00626\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00627}00627\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00628}00628\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.IsRanged\ \&\&\ this.attackStyle\ ==\ AttackStyle.Shield)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00629}00629\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00630}00630\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num11\ =\ this.CC.Evalue(123);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00631}00631\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.elements.ValueWithoutLink(123)\ >=\ 10\ \&\&\ Mathf.Clamp(Mathf.Sqrt((\textcolor{keywordtype}{float})num11)\ -\/\ 2f,\ 8f,\ 12f)\ >\ (\textcolor{keywordtype}{float})\mbox{\hyperlink{class_e_class}{EClass}}.rnd(100))}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00632}00632\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00633}00633\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ num7\ *\ Mathf.Min(50\ +\ num11,\ 200)\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00634}00634\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ this.\mbox{\hyperlink{class_t_c}{TC}}.ApplyProtection(num,\ 100);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00635}00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Bash:"{}}\ +\ num.ToString()\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ num7.ToString());}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00636}00636\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.CC.PlaySound(\textcolor{stringliteral}{"{}shield\_bash"{}},\ 1f,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00637}00637\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.CC.Say(\textcolor{stringliteral}{"{}shield\_bash"{}},\ this.CC,\ this.\mbox{\hyperlink{class_t_c}{TC}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00638}00638\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{class_t_c}{TC}}.DamageHP(num,\ AttackSource.None,\ \textcolor{keyword}{this}.CC);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00639}00639\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}.IsAliveInCurrentZone\ \&\&\ \textcolor{keyword}{this}.TC.isChara)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00640}00640\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00641}00641\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(2)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00642}00642\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00643}00643\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{class_t_c}{TC}}.Chara.AddCondition<\mbox{\hyperlink{class_con_dim}{ConDim}}>(50\ +\ (int)Mathf.Sqrt((\textcolor{keywordtype}{float})num11)\ *\ 10,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00644}00644\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00645}00645\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{class_t_c}{TC}}.Chara.AddCondition<\mbox{\hyperlink{class_con_paralyze}{ConParalyze}}>(\mbox{\hyperlink{class_e_class}{EClass}}.rnd(2),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00646}00646\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00647}00647\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00648}00648\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00649}00649\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.CC.IsAliveInCurrentZone\ ||\ !\textcolor{keyword}{this}.TC.IsAliveInCurrentZone)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00650}00650\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00651}00651\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00652}00652\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00653}00653\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}.isChara\ \&\&\ num3\ >\ 0\ \&\&\ num3\ *\ 2\ +\ 15\ >\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(100)\ \&\&\ !\textcolor{keyword}{this}.TC.isRestrained\ \&\&\ \textcolor{keyword}{this}.TC.Chara.TryMoveFrom(\textcolor{keyword}{this}.CC.pos)\ ==\ \mbox{\hyperlink{class_card}{Card}}.MoveResult.Success)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00654}00654\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00655}00655\ \ \ \ \ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{class_t_c}{TC}}.pos.PlayEffect(\textcolor{stringliteral}{"{}vanish"{}});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00656}00656\ \ \ \ \ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{class_t_c}{TC}}.PlaySound(\textcolor{stringliteral}{"{}push"{}},\ 1.5f,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00657}00657\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00658}00658\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00659}00659\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00660}00660\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00661}00661\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CD4\ RID:\ 3284\ RVA:\ 0x00064C4C\ File\ Offset:\ 0x00062E4C}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00662}00662\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ Crit()}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00663}00663\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00664}00664\ \ \ \ \ \ \ \ \ this.crit\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00665}00665\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00666}00666\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00667}00667\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00668}00668\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CD5\ RID:\ 3285\ RVA:\ 0x00064C56\ File\ Offset:\ 0x00062E56}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00669}00669\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ EvadePlus()}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00670}00670\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00671}00671\ \ \ \ \ \ \ \ \ this.evadePlus\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00672}00672\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00673}00673\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00674}00674\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00675}00675\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CD6\ RID:\ 3286\ RVA:\ 0x00064C60\ File\ Offset:\ 0x00062E60}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00676}00676\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ CalcHit()}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00677}00677\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00678}00678\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00679}00679\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00680}00680\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}.HasCondition<\mbox{\hyperlink{class_con_dim}{ConDim}}>()\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(4)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00681}00681\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00682}00682\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.Crit();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00683}00683\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00684}00684\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}.IsDeadOrSleeping)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00685}00685\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00686}00686\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.Crit();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00687}00687\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00688}00688\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ this.\mbox{\hyperlink{class_t_c}{TC}}.Evalue(151);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00689}00689\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ !=\ 0\ \&\&\ this.toHit\ <\ num\ *\ 10)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00690}00690\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00691}00691\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ this.evasion\ *\ 100\ /\ Mathf.Clamp(this.toHit,\ 1,\ this.toHit);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00692}00692\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num2\ >\ 300\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(num\ +\ 250)\ >\ 100)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00693}00693\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00694}00694\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.EvadePlus();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00695}00695\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00696}00696\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num2\ >\ 200\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(num\ +\ 250)\ >\ 150)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00697}00697\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00698}00698\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.EvadePlus();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00699}00699\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00700}00700\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num2\ >\ 150\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(num\ +\ 250)\ >\ 200)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00701}00701\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00702}00702\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.EvadePlus();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00703}00703\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00704}00704\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00705}00705\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}.Evalue(57)\ >\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(100))}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00706}00706\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00707}00707\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.EvadePlus();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00708}00708\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00709}00709\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00710}00710\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(20)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00711}00711\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00712}00712\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00713}00713\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00714}00714\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(20)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00715}00715\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00716}00716\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00717}00717\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00718}00718\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.toHit\ <\ 1)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00719}00719\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00720}00720\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00721}00721\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00722}00722\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.evasion\ <\ 1)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00723}00723\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00724}00724\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00725}00725\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00726}00726\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(\textcolor{keyword}{this}.toHit)\ <\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(\textcolor{keyword}{this}.evasion\ *\ 3\ /\ 2))}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00727}00727\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00728}00728\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00729}00729\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00730}00730\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(5000)\ <\ \textcolor{keyword}{this}.CC.Evalue(73)\ +\ 50)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00731}00731\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00732}00732\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.Crit();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00733}00733\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00734}00734\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{float})this.CC.Evalue(90)\ +\ Mathf.Sqrt((\textcolor{keywordtype}{float})\textcolor{keyword}{this}.CC.Evalue(134))\ >\ (\textcolor{keywordtype}{float})\mbox{\hyperlink{class_e_class}{EClass}}.rnd(200))}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00735}00735\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00736}00736\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.Crit();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00737}00737\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00738}00738\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.Evalue(1420)\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00739}00739\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00740}00740\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num3\ =\ Mathf.Min(100,\ 100\ -\/\ this.CC.hp\ *\ 100\ /\ \textcolor{keyword}{this}.CC.MaxHP);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00741}00741\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num3\ >=\ 50\ \&\&\ num3\ *\ num3\ *\ num3\ *\ num3\ /\ 3\ >\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(100000000))}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00742}00742\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00743}00743\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.Crit();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00744}00744\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00745}00745\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00746}00746\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00747}00747\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00748}00748\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00749}00749\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CD7\ RID:\ 3287\ RVA:\ 0x00064E6B\ File\ Offset:\ 0x0006306B}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00750}00750\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ GetAttackText(AttackType\ type,\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00751}00751\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00752}00752\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Lang.GetList(\textcolor{stringliteral}{"{}attack"{}}\ +\ type.ToString())[id];}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00753}00753\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00754}00754\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00755}00755\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CDA\ RID:\ 3290\ RVA:\ 0x00064EA0\ File\ Offset:\ 0x000630A0}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00756}00756\ \ \ \ \ [CompilerGenerated]}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00757}00757\ \ \ \ \ \textcolor{keyword}{private}\ void\ <Perform>g\_\_Proc|44\_0(List<Element>\ list)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00758}00758\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00759}00759\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00760}00760\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00761}00761\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00762}00762\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00763}00763\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_element}{Element}}\ element\ \textcolor{keywordflow}{in}\ list)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00764}00764\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00765}00765\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (element\ is\ \mbox{\hyperlink{class_ability}{Ability}})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00766}00766\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00767}00767\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ value\ =\ element.Value;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00768}00768\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ power\ =\ 100\ +\ element.Value\ *\ 10;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00769}00769\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ >=\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(100))}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00770}00770\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00771}00771\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_act}{Act}}\ act\ =\ element\ as\ \mbox{\hyperlink{class_act}{Act}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00772}00772\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_card}{Card}}\ card\ =\ act.TargetType.CanSelectSelf\ ?\ this.CC\ :\ this.\mbox{\hyperlink{class_t_c}{TC}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00773}00773\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ (element.source.proc.Length\ >=\ 2)\ ?\ element.source.proc[1]\ :\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00774}00774\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((!(act.source.abilityType.TryGet(0,\ -\/1)\ ==\ \textcolor{stringliteral}{"{}buff"{}})\ ||\ !\textcolor{keyword}{this}.CC.HasCondition(text))\ \&\&\ card.IsAliveInCurrentZone)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00775}00775\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00776}00776\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (act.TargetType.CanTargetGround)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00777}00777\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00778}00778\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_act_effect}{ActEffect}}.ProcAt(element.source.proc[0].ToEnum(\textcolor{keyword}{true}),\ power,\ BlessedState.Normal,\ \textcolor{keyword}{this}.CC,\ card,\ card.pos,\ \textcolor{keyword}{false},\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_act_ref}{ActRef}}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00779}00779\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00780}00780\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n1\ =\ text,}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00781}00781\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aliasEle\ =\ element.source.aliasRef,}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00782}00782\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ noFriendlyFire\ =\ true}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00783}00783\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00784}00784\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00785}00785\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00786}00786\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00787}00787\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_act_effect}{ActEffect}}.ProcAt(element.source.proc[0].ToEnum(\textcolor{keyword}{true}),\ power,\ BlessedState.Normal,\ \textcolor{keyword}{this}.CC,\ card,\ \textcolor{keyword}{this}.CC.pos,\ \textcolor{keyword}{false},\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_act_ref}{ActRef}}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00788}00788\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00789}00789\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n1\ =\ text,}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00790}00790\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aliasEle\ =\ element.source.aliasRef,}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00791}00791\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ noFriendlyFire\ =\ true}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00792}00792\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00793}00793\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00794}00794\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00795}00795\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00796}00796\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00797}00797\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00798}00798\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00799}00799\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00800}00800\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CDB\ RID:\ 3291\ RVA:\ 0x00065070\ File\ Offset:\ 0x00063270}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00801}00801\ \ \ \ \ [CompilerGenerated]}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00802}00802\ \ \ \ \ \textcolor{keyword}{private}\ bool\ <Perform>g\_\_IgnoreExp|44\_1()}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00803}00803\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00804}00804\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.CC.HasEditorTag(EditorTag.Invulnerable)\ ||\ this.CC.HasEditorTag(EditorTag.InvulnerableToMobs)\ ||\ this.\mbox{\hyperlink{class_t_c}{TC}}.HasEditorTag(EditorTag.Invulnerable)\ ||\ this.\mbox{\hyperlink{class_t_c}{TC}}.HasEditorTag(EditorTag.InvulnerableToMobs);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00805}00805\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00806}00806\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00807}00807\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CDC\ RID:\ 3292\ RVA:\ 0x000650B0\ File\ Offset:\ 0x000632B0}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00808}00808\ \ \ \ \ [CompilerGenerated]}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00809}00809\ \ \ \ \ \textcolor{keyword}{private}\ void\ <Perform>g\_\_ModExpDef|44\_2(\textcolor{keywordtype}{int}\ ele,\ \textcolor{keywordtype}{int}\ mod)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00810}00810\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00811}00811\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.<Perform>g\_\_IgnoreExp|44\_1())}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00812}00812\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00813}00813\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00814}00814\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00815}00815\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.CC.isCopy\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(10)\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00816}00816\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00817}00817\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00818}00818\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00819}00819\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ (Mathf.Clamp((this.CC.LV\ +\ 10\ -\/\ \textcolor{keyword}{this}.TC.elements.ValueWithoutLink(ele))\ /\ 2,\ 1,\ 10)\ +\ Mathf.Min(\textcolor{keyword}{this}.CC.LV\ /\ 10,\ 10))\ *\ mod\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00820}00820\ \ \ \ \ \ \ \ \ num\ =\ Mathf.Min(num,\ this.\mbox{\hyperlink{class_t_c}{TC}}.isRestrained\ ?\ 10\ :\ 200);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00821}00821\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}\ ==\ this.CC)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00822}00822\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00823}00823\ \ \ \ \ \ \ \ \ \ \ \ \ num\ /=\ 2;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00824}00824\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00825}00825\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.\mbox{\hyperlink{class_t_c}{TC}}.IsPC\ \&\&\ !\textcolor{keyword}{this}.TC.isRestrained\ \&\&\ !\textcolor{keyword}{this}.TC.HasHost)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00826}00826\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00827}00827\ \ \ \ \ \ \ \ \ \ \ \ \ num\ *=\ 3;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00828}00828\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00829}00829\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00830}00830\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00831}00831\ \ \ \ \ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{class_t_c}{TC}}.ModExp(ele,\ num\ +\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(num\ /\ 2\ +\ 1));}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00832}00832\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00833}00833\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00834}00834\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00835}00835\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CDD\ RID:\ 3293\ RVA:\ 0x0006519C\ File\ Offset:\ 0x0006339C}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00836}00836\ \ \ \ \ [CompilerGenerated]}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00837}00837\ \ \ \ \ \textcolor{keyword}{private}\ void\ <Perform>g\_\_ModExpAtk|44\_3(\textcolor{keywordtype}{int}\ ele,\ \textcolor{keywordtype}{int}\ mod)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00838}00838\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00839}00839\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.<Perform>g\_\_IgnoreExp|44\_1())}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00840}00840\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00841}00841\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00842}00842\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00843}00843\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}.isCopy\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(10)\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00844}00844\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00845}00845\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00846}00846\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00847}00847\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ (Mathf.Clamp((this.\mbox{\hyperlink{class_t_c}{TC}}.LV\ +\ 10\ -\/\ \textcolor{keyword}{this}.CC.elements.ValueWithoutLink(ele))\ /\ 2,\ 1,\ 10)\ +\ Mathf.Min(\textcolor{keyword}{this}.TC.LV\ /\ 10,\ 10))\ *\ mod\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00848}00848\ \ \ \ \ \ \ \ \ num\ =\ Mathf.Min(num,\ 200);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00849}00849\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}\ ==\ this.CC)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00850}00850\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00851}00851\ \ \ \ \ \ \ \ \ \ \ \ \ num\ /=\ 2;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00852}00852\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00853}00853\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00854}00854\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00855}00855\ \ \ \ \ \ \ \ \ \ \ \ \ this.CC.ModExp(ele,\ num\ +\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(num\ /\ 2\ +\ 1));}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00856}00856\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00857}00857\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00858}00858\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00859}00859\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CDE\ RID:\ 3294\ RVA:\ 0x00065249\ File\ Offset:\ 0x00063449}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00860}00860\ \ \ \ \ [CompilerGenerated]}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00861}00861\ \ \ \ \ \textcolor{keyword}{private}\ void\ <Perform>g\_\_AddBane|44\_5(\textcolor{keywordtype}{bool}\ valid,\ \textcolor{keywordtype}{int}\ idEle,\ ref\ \mbox{\hyperlink{class_attack_process}{AttackProcess}}.<>c\_\_DisplayClass44\_0\ A\_3)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00862}00862\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00863}00863\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!valid)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00864}00864\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00865}00865\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00866}00866\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00867}00867\ \ \ \ \ \ \ \ \ A\_3.bane\ +=\ this.CC.Evalue(idEle);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00868}00868\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00869}00869\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00870}00870\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000CDF\ RID:\ 3295\ RVA:\ 0x00065268\ File\ Offset:\ 0x00063468}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00871}00871\ \ \ \ \ [CompilerGenerated]}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00872}00872\ \ \ \ \ \textcolor{keyword}{private}\ void\ <Perform>g\_\_PlayHitEffect|44\_4()}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00873}00873\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00874}00874\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id}\ =\ \textcolor{stringliteral}{"{}hit\_default"{}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00875}00875\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ id2\ =\ \textcolor{stringliteral}{"{}hit\_default"{}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00876}00876\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (this.attackType)}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00877}00877\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00878}00878\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ AttackType.Slash:}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00879}00879\ \ \ \ \ \ \ \ \ \ \ \ \ id2\ =\ \textcolor{stringliteral}{"{}hit\_slash"{}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00880}00880\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ \textcolor{stringliteral}{"{}hit\_slash"{}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00881}00881\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00882}00882\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ AttackType.Blunt:}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00883}00883\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ AttackType.Punch:}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00884}00884\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ AttackType.Kick:}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00885}00885\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ AttackType.Bow:}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00886}00886\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ AttackType.Gun:}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00887}00887\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ AttackType.Cane:}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00888}00888\ \ \ \ \ \ \ \ \ \ \ \ \ id2\ =\ \textcolor{stringliteral}{"{}hit\_blunt"{}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00889}00889\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ \textcolor{stringliteral}{"{}hit\_blunt"{}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00890}00890\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00891}00891\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ AttackType.Claw:}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00892}00892\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ AttackType.Bite:}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00893}00893\ \ \ \ \ \ \ \ \ \ \ \ \ id2\ =\ \textcolor{stringliteral}{"{}hit\_claw"{}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00894}00894\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ \textcolor{stringliteral}{"{}hit\_claw"{}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00895}00895\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00896}00896\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ AttackType.Spore:}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00897}00897\ \ \ \ \ \ \ \ \ \ \ \ \ id2\ =\ \textcolor{stringliteral}{"{}hit\_spore"{}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00898}00898\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ \textcolor{stringliteral}{"{}hit\_spore"{}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00899}00899\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00900}00900\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00901}00901\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\mbox{\hyperlink{class_t_c}{TC}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00902}00902\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00903}00903\ \ \ \ \ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{class_t_c}{TC}}.PlayEffect(id2,\ \textcolor{keyword}{true},\ 0f,\ \textcolor{keywordflow}{default}(Vector3)).SetScale(this.crit\ ?\ 1.25f\ :\ 0.75f);}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00904}00904\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00905}00905\ \ \ \ \ \ \ \ \ this.CC.PlaySound(\textcolor{keywordtype}{id},\ 1f,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00906}00906\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00907}00907\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00908}00908\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CDD\ RID:\ 3293}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00909}00909\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_attack_process}{AttackProcess}}\ Current\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_attack_process}{AttackProcess}}();}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00910}00910\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00911}00911\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CDE\ RID:\ 3294}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00912}00912\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ dNum;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00913}00913\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00914}00914\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CDF\ RID:\ 3295}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00915}00915\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ dDim;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00916}00916\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00917}00917\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CE0\ RID:\ 3296}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00918}00918\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ dBonus;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00919}00919\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00920}00920\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CE1\ RID:\ 3297}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00921}00921\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ toHit;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00922}00922\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00923}00923\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CE2\ RID:\ 3298}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00924}00924\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ toHitBase;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00925}00925\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00926}00926\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CE3\ RID:\ 3299}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00927}00927\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ toHitFix;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00928}00928\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00929}00929\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CE4\ RID:\ 3300}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00930}00930\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ evasion;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00931}00931\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00932}00932\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CE5\ RID:\ 3301}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00933}00933\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ penetration;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00934}00934\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00935}00935\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CE6\ RID:\ 3302}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00936}00936\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ distMod;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00937}00937\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00938}00938\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CE7\ RID:\ 3303}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00939}00939\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ attackIndex;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00940}00940\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00941}00941\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CE8\ RID:\ 3304}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00942}00942\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ dNumAmmo;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00943}00943\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00944}00944\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CE9\ RID:\ 3305}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00945}00945\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ dDimAmmo;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00946}00946\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00947}00947\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CEA\ RID:\ 3306}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00948}00948\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ dBonusAmmo;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00949}00949\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00950}00950\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CEB\ RID:\ 3307}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00951}00951\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ numFire;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00952}00952\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00953}00953\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CEC\ RID:\ 3308}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00954}00954\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ numFireWithoutDamageLoss;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00955}00955\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00956}00956\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CED\ RID:\ 3309}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00957}00957\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ dMulti;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00958}00958\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00959}00959\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CEE\ RID:\ 3310}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00960}00960\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ crit;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00961}00961\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00962}00962\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CEF\ RID:\ 3311}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00963}00963\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ hit;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00964}00964\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00965}00965\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CF0\ RID:\ 3312}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00966}00966\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ evadePlus;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00967}00967\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00968}00968\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CF1\ RID:\ 3313}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00969}00969\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ isThrow;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00970}00970\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00971}00971\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CF2\ RID:\ 3314}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00972}00972\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ ignoreAnime;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00973}00973\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00974}00974\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CF3\ RID:\ 3315}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00975}00975\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ ignoreAttackSound;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00976}00976\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00977}00977\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CF4\ RID:\ 3316}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00978}00978\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_chara}{Chara}}\ CC;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00979}00979\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00980}00980\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CF5\ RID:\ 3317}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00981}00981\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_card}{Card}}\ \mbox{\hyperlink{class_t_c}{TC}};}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00982}00982\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00983}00983\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CF6\ RID:\ 3318}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00984}00984\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_point}{Point}}\ TP;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00985}00985\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00986}00986\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CF7\ RID:\ 3319}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00987}00987\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_point}{Point}}\ posRangedAnime;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00988}00988\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00989}00989\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CF8\ RID:\ 3320}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00990}00990\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_element}{Element}}\ weaponSkill;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00991}00991\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00992}00992\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CF9\ RID:\ 3321}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00993}00993\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_thing}{Thing}}\ weapon;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00994}00994\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00995}00995\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CFA\ RID:\ 3322}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00996}00996\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_thing}{Thing}}\ ammo;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00997}00997\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00998}00998\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CFB\ RID:\ 3323}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l00999}00999\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_trait_tool_range}{TraitToolRange}}\ toolRange;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l01000}01000\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l01001}01001\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CFC\ RID:\ 3324}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l01002}01002\ \ \ \ \ \textcolor{keyword}{public}\ AttackType\ attackType;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l01003}01003\ }
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l01004}01004\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000CFD\ RID:\ 3325}}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l01005}01005\ \ \ \ \ \textcolor{keyword}{public}\ AttackStyle\ attackStyle;}
+\DoxyCodeLine{\Hypertarget{_attack_process_8cs_source_l01006}01006\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,131 @@
+\doxysection{Item\+Gacha\+Result.\+cs}
+\hypertarget{_item_gacha_result_8cs_source}{}\label{_item_gacha_result_8cs_source}\index{Elin/ItemGachaResult.cs@{Elin/ItemGachaResult.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00006}00006\ \textcolor{comment}{//\ Token:\ 0x02000548\ RID:\ 1352}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00007}\mbox{\hyperlink{class_item_gacha_result}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_item_gacha_result}{ItemGachaResult}}\ :\ \mbox{\hyperlink{class_e_mono}{EMono}}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060024C6\ RID:\ 9414\ RVA:\ 0x000CF89C\ File\ Offset:\ 0x000CDA9C}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetChara(\mbox{\hyperlink{class_chara}{Chara}}\ c,\ \mbox{\hyperlink{class_layer_gacha_result}{LayerGachaResult}}\ \_layer)}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ this.layer\ =\ \_layer;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ this.chara\ =\ c;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ this.portrait.SetChara(c,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c.IsPCC)}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ this.portrait.imageChara.transform.localScale\ =\ \textcolor{keyword}{new}\ Vector3(1.4f,\ 1.4f,\ 1f);}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ this.portrait.imageChara.rectTransform.anchoredPosition\ =\ \textcolor{keyword}{new}\ Vector2(45f,\ -\/120f);}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ this.textName.text\ =\ c.NameBraced;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ this.textJob.text\ =\ c.job.GetName();}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ this.textBio.text\ =\ c.bio.TextBio(c);}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (List<Element>.Enumerator\ enumerator\ =\ c.elements.ListBestSkills().GetEnumerator())}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (enumerator.MoveNext())}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_element}{Element}}\ e\ =\ enumerator.Current;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HintIcon\ hintIcon\ =\ Util.Instantiate<HintIcon>(\textcolor{stringliteral}{"{}UI/Element/Item/Tag\ Skill"{}},\ this.layoutTag);}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hintIcon.text.SetText(e.Name);}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hintIcon.text2.SetText(e.Value.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hintIcon.tooltip.onShowTooltip\ =\ delegate(UITooltip\ t)}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.WriteNote(t.note,\ \textcolor{keyword}{this}.chara.elements,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hintIcon.RebuildLayout(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ this.textResult.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ this.buttonGet.onClick.AddListener(delegate()}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_mono}{EMono}}.Sound.Play(\textcolor{stringliteral}{"{}good"{}});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ this.Confirm(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ this.buttonDump.tooltip.text\ =\ \textcolor{stringliteral}{"{}gachaDump"{}}.lang(this.GetMedal().ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ this.buttonDump.onClick.AddListener(delegate()}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_mono}{EMono}}.Sound.Play(\textcolor{stringliteral}{"{}pay"{}});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ this.Confirm(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ this.textHobby.text\ =\ c.GetTextHobby(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ this.textWork.text\ =\ c.GetTextWork(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ this.textLifeStyle.text\ =\ \textcolor{stringliteral}{"{}lifestyle"{}}.lang()\ +\ \textcolor{stringliteral}{"{}:\ "{}}\ +\ (\textcolor{stringliteral}{"{}lifestyle\_"{}}\ +\ c.idTimeTable).lang();}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060024C7\ RID:\ 9415\ RVA:\ 0x000CFAF0\ File\ Offset:\ 0x000CDCF0}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ GetMedal()}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00057}00057\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060024C8\ RID:\ 9416\ RVA:\ 0x000CFAF4\ File\ Offset:\ 0x000CDCF4}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Confirm(\textcolor{keywordtype}{bool}\ add)}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00063}00063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ this.textResult.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ this.textResult.SetText(add\ ?\ \textcolor{stringliteral}{"{}Get!"{}}\ :\ \textcolor{stringliteral}{"{}Discarded"{}},\ add\ ?\ FontColor.Good\ :\ FontColor.Bad);}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ this.buttonDump.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ this.buttonGet.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ this.layer.items.Remove(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (add)}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_mono}{EMono}}.Home.AddReserve(this.chara);}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_msg}{Msg}}.Say(\textcolor{stringliteral}{"{}gachaAdd"{}},\ this.chara,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_mono}{EMono}}.pc.ModCurrency(this.GetMedal(),\ \textcolor{stringliteral}{"{}medal"{}});}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.layer.items.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ this.layer.Close();}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00084}00084\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001443\ RID:\ 5187}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00085}00085\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonGet;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001444\ RID:\ 5188}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00088}00088\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonDump;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00090}00090\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001445\ RID:\ 5189}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00091}00091\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_portrait}{Portrait}}\ portrait;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001446\ RID:\ 5190}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00094}00094\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_chara}{Chara}}\ chara;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001447\ RID:\ 5191}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00097}00097\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textName;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00099}00099\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001448\ RID:\ 5192}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00100}00100\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textBio;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00102}00102\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001449\ RID:\ 5193}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00103}00103\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textJob;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00105}00105\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400144A\ RID:\ 5194}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00106}00106\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textDetail;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400144B\ RID:\ 5195}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00109}00109\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textResult;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00111}00111\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400144C\ RID:\ 5196}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00112}00112\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textHobby;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00114}00114\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400144D\ RID:\ 5197}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00115}00115\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textWork;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00117}00117\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400144E\ RID:\ 5198}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00118}00118\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textLifeStyle;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00120}00120\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400144F\ RID:\ 5199}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00121}00121\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_layer_gacha_result}{LayerGachaResult}}\ layer;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00123}00123\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001450\ RID:\ 5200}}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00124}00124\ \ \ \ \ \textcolor{keyword}{public}\ LayoutGroup\ layoutTag;}
+\DoxyCodeLine{\Hypertarget{_item_gacha_result_8cs_source_l00125}00125\ \}}
+
+\end{DoxyCode}

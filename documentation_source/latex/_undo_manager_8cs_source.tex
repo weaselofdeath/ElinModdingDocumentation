@@ -1,0 +1,141 @@
+\doxysection{Undo\+Manager.\+cs}
+\hypertarget{_undo_manager_8cs_source}{}\label{_undo_manager_8cs_source}\index{Elin/UndoManager.cs@{Elin/UndoManager.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x0200024E\ RID:\ 590}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00005}\mbox{\hyperlink{class_undo_manager}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_undo_manager}{UndoManager}}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000452\ RID:\ 1106}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06001047\ RID:\ 4167\ RVA:\ 0x00072E1E\ File\ Offset:\ 0x0007101E}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_undo_manager_1_1_item}{UndoManager.Item}}\ lastItem}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.items.LastItem<\mbox{\hyperlink{class_undo_manager}{UndoManager}}.\mbox{\hyperlink{class_undo_manager_1_1_item}{Item}}>();}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001048\ RID:\ 4168\ RVA:\ 0x00072E2C\ File\ Offset:\ 0x0007102C}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Validate()}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ this.items.Count\ -\/\ 1;\ i\ >=\ 0;\ i-\/-\/)}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.items[i].Count()\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.items.RemoveAt(i);}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001049\ RID:\ 4169\ RVA:\ 0x00072E70\ File\ Offset:\ 0x00071070}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ NewItem()}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ this.items.Add(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_undo_manager}{UndoManager}}.\mbox{\hyperlink{class_undo_manager_1_1_item}{Item}}());}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.items.Count\ >\ 10)}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ this.items.RemoveAt(0);}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600104A\ RID:\ 4170\ RVA:\ 0x00072E9D\ File\ Offset:\ 0x0007109D}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Add(\mbox{\hyperlink{class_task}{Task}}\ t)}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ this.lastItem.list.Add(t);}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00045}00045\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600104B\ RID:\ 4171\ RVA:\ 0x00072EB0\ File\ Offset:\ 0x000710B0}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00046}00046\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ GetText()}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00047}00047\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ \textcolor{stringliteral}{"{}tUndo"{}}.lang()\ +\ Environment.NewLine;}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.items.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ text\ +=\ \textcolor{stringliteral}{"{}tUndoNone"{}}.lang();}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ text\ +=\ \textcolor{stringliteral}{"{}tUndoNote"{}}.lang(this.lastItem.Count().ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{this}.lastItem.name\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ text;}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600104C\ RID:\ 4172\ RVA:\ 0x00072F40\ File\ Offset:\ 0x00071140}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ WriteNote(UINote\ n)}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00062}00062\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ this.Validate();}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ n.Clear();}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ n.Space(10,\ 1);}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ n.AddText(\textcolor{stringliteral}{"{}NoteText\_topic"{}},\ \textcolor{stringliteral}{"{}tUndo"{}}.lang(),\ FontColor.DontChange);}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.items.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ n.AddText(\textcolor{stringliteral}{"{}tUndoNone"{}}.lang(),\ FontColor.DontChange);}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ n.AddText(\textcolor{stringliteral}{"{}tUndoNote"{}}.lang(this.lastItem.Count().ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{this}.lastItem.name\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}),\ FontColor.DontChange);}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ n.Build();}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600104D\ RID:\ 4173\ RVA:\ 0x00072FE8\ File\ Offset:\ 0x000711E8}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Perform()}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00080}00080\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ this.Validate();}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.items.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ SE.Beep();}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_task}{Task}}\ task\ \textcolor{keywordflow}{in}\ this.lastItem.list)}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ task.Destroy();}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ this.items.Remove(this.lastItem);}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ SE.Play(\textcolor{stringliteral}{"{}trash"{}});}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00095}00095\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000DB1\ RID:\ 3505}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00096}00096\ \ \ \ \ \textcolor{keyword}{public}\ List<\mbox{\hyperlink{class_undo_manager}{UndoManager}}.\mbox{\hyperlink{class_undo_manager_1_1_item}{Item}}>\ items\ =\ \textcolor{keyword}{new}\ List<\mbox{\hyperlink{class_undo_manager}{UndoManager}}.\mbox{\hyperlink{class_undo_manager_1_1_item}{Item}}>();}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00098}00098\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0200092A\ RID:\ 2346}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00099}\mbox{\hyperlink{class_undo_manager_1_1_item}{00099}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_undo_manager_1_1_item}{Item}}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00100}00100\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170011C6\ RID:\ 4550}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06003D38\ RID:\ 15672\ RVA:\ 0x001452EC\ File\ Offset:\ 0x001434EC}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ name}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.list.Count\ <=\ 0)}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}none"{}}.lang();}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.list[0].Name;}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003D39\ RID:\ 15673\ RVA:\ 0x00145318\ File\ Offset:\ 0x00143518}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ Count()}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (List<Task>.Enumerator\ enumerator\ =\ this.list.GetEnumerator())}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (enumerator.MoveNext())}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!enumerator.Current.isDestroyed)}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num++;}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ num;}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040026C3\ RID:\ 9923}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ List<Task>\ list\ =\ \textcolor{keyword}{new}\ List<Task>();}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00134}00134\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_undo_manager_8cs_source_l00135}00135\ \}}
+
+\end{DoxyCode}

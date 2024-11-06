@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__zone_instance_random_quest_8cs_source" xml:lang="en-US">
+<title>ZoneInstanceRandomQuest.cs</title>
+<indexterm><primary>Elin/ZoneInstanceRandomQuest.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__zone_instance_random_quest_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>Newtonsoft.Json;
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00003"/>00003 
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00004"/>00004 <emphasis role="comment">//&#32;Token:&#32;0x0200073C&#32;RID:&#32;1852</emphasis>
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00005"/><link linkend="_class_zone_instance_random_quest">00005</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_zone_instance_random_quest">ZoneInstanceRandomQuest</link>&#32;:&#32;<link linkend="_class_zone_instance">ZoneInstance</link>
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00006"/>00006 {
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00007"/>00007 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x1700102E&#32;RID:&#32;4142</emphasis>
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060034F8&#32;RID:&#32;13560&#32;RVA:&#32;0x0011D5AD&#32;File&#32;Offset:&#32;0x0011B7AD</emphasis>
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;WarnExit
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.status&#32;!=&#32;<link linkend="_class_zone_instance">ZoneInstance</link>.Status.Success;
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00016"/>00016 
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060034F9&#32;RID:&#32;13561&#32;RVA:&#32;0x0011D5BC&#32;File&#32;Offset:&#32;0x0011B7BC</emphasis>
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnLeaveZone()
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_chara">Chara</link>&#32;chara&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_e_class">EClass</link>._map.charas)
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(chara.IsMinion&#32;&amp;&amp;&#32;chara.homeZone&#32;==&#32;<link linkend="_class_e_class">EClass</link>._zone)
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;chara.c_uidMaster&#32;=&#32;0;
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;chara.master&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.ReturnZone.events.AddPreEnter(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_zone_pre_enter_on_complete_quest_instance">ZonePreEnterOnCompleteQuestInstance</link>
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uidClient&#32;=&#32;this.uidClient,
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uidQuest&#32;=&#32;this.uidQuest,
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fail&#32;=&#32;(this.status&#32;!=&#32;<link linkend="_class_zone_instance">ZoneInstance</link>.Status.Success)
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00035"/>00035 
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C60&#32;RID:&#32;7264</emphasis>
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;uidClient;
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00039"/>00039 
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C61&#32;RID:&#32;7265</emphasis>
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;uidQuest;
+<anchor xml:id="__zone_instance_random_quest_8cs_source_1l00043"/>00043 }
+</programlisting></section>

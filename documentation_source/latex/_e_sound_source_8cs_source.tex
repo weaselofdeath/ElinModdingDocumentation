@@ -1,0 +1,60 @@
+\doxysection{ESound\+Source.\+cs}
+\hypertarget{_e_sound_source_8cs_source}{}\label{_e_sound_source_8cs_source}\index{Elin/ESoundSource.cs@{Elin/ESoundSource.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000184\ RID:\ 388}}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00005}\mbox{\hyperlink{class_e_sound_source}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_e_sound_source}{ESoundSource}}\ :\ \mbox{\hyperlink{class_e_mono}{EMono}}}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000B25\ RID:\ 2853\ RVA:\ 0x000456F2\ File\ Offset:\ 0x000438F2}}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnEnable()}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ this.Play();}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ base.InvokeRepeating(\textcolor{stringliteral}{"{}Refresh"{}},\ 0f,\ 0.1f);}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000B26\ RID:\ 2854\ RVA:\ 0x0004570F\ File\ Offset:\ 0x0004390F}}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnDisable()}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ base.CancelInvoke();}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000B27\ RID:\ 2855\ RVA:\ 0x00045718\ File\ Offset:\ 0x00043918}}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Play()}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ this.source.clip\ =\ this.data.clip;}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ this.source.loop\ =\ (this.data.loop\ !=\ 0);}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ this.source.volume\ =\ this.data.volume;}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ this.source.pitch\ =\ this.data.pitch\ *\ (1f\ +\ ((this.data.randomPitch\ ==\ 0f)\ ?\ 0f\ :\ Rand.Range(-\/this.data.randomPitch,\ \textcolor{keyword}{this}.data.randomPitch)));}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ this.source.time\ =\ this.data.startAt;}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ this.source.name\ =\ this.data.name;}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ this.source.spatialBlend\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ this.source.Play();}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000B28\ RID:\ 2856\ RVA:\ 0x00045804\ File\ Offset:\ 0x00043A04}}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00034}00034\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Refresh()}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00035}00035\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ Vector3\ vector\ =\ base.transform.position\ -\/\ \mbox{\hyperlink{class_e_mono}{EMono}}.scene.transAudio.position;}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ vector.z\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ magnitude\ =\ vector.magnitude;}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ num\ =\ Mathf.Clamp01(1f\ -\/\ magnitude\ /\ this.maxDistance);}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ this.source.volume\ =\ this.data.volume\ *\ num\ *\ this.data.spatial\ +\ this.data.volume\ *\ (1f\ -\/\ this.data.spatial);}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A35\ RID:\ 2613}}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_t_c}{TC}}\ owner;}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A36\ RID:\ 2614}}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{public}\ AudioSource\ source;}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A37\ RID:\ 2615}}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00050}00050\ \ \ \ \ \textcolor{keyword}{public}\ SoundData\ data;}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A38\ RID:\ 2616}}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ maxDistance;}
+\DoxyCodeLine{\Hypertarget{_e_sound_source_8cs_source_l00054}00054\ \}}
+
+\end{DoxyCode}

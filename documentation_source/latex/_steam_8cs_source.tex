@@ -1,0 +1,198 @@
+\doxysection{Steam.\+cs}
+\hypertarget{_steam_8cs_source}{}\label{_steam_8cs_source}\index{Elin/Steam.cs@{Elin/Steam.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.IO;}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }HeathenEngineering.SteamworksIntegration;}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }HeathenEngineering.SteamworksIntegration.API;}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Steamworks;}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }UnityEngine.Events;}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00009}00009\ \textcolor{comment}{//\ Token:\ 0x020001B2\ RID:\ 434}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00010}\mbox{\hyperlink{class_steam}{00010}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_steam}{Steam}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000C66\ RID:\ 3174\ RVA:\ 0x0005CB37\ File\ Offset:\ 0x0005AD37}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Awake()}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ Steam.Instance\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00016}00016\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000C67\ RID:\ 3175\ RVA:\ 0x0005CB3F\ File\ Offset:\ 0x0005AD3F}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Init()}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ SteamAPI.Init();}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ BaseCore.IsOffline\ =\ (!App.Client.LoggedOn\ ||\ SteamSettings.behaviour\ ==\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000C68\ RID:\ 3176\ RVA:\ 0x0005CB61\ File\ Offset:\ 0x0005AD61}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ CheckUpdate()}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00027}00027\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000C69\ RID:\ 3177\ RVA:\ 0x0005CB63\ File\ Offset:\ 0x0005AD63}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ CheckDLC()}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00032}00032\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ Debug.Log(\mbox{\hyperlink{class_steam}{Steam}}.HasDLC(ID\_DLC.Test));}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000C6A\ RID:\ 3178\ RVA:\ 0x0005CB7C\ File\ Offset:\ 0x0005AD7C}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ HasDLC(ID\_DLC\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00038}00038\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{id}\ !=\ ID\_DLC.BackerReward)}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_class}{EClass}}.core.config.HasBackerRewardCode();}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00045}00045\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000C6B\ RID:\ 3179\ RVA:\ 0x0005CBA4\ File\ Offset:\ 0x0005ADA4}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00046}00046\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ GetAchievement(ID\_Achievement\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00047}00047\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ \textcolor{stringliteral}{"{}acv\_"{}}\ +\ \textcolor{keywordtype}{id}.ToString();}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (AchievementObject\ achievementObject\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_steam}{Steam}}.Instance.steamworks.settings.achievements)}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (achievementObject.Id\ ==\ text)}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (achievementObject.IsAchieved)}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ achievementObject.Unlock();}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.ui.Say(\textcolor{stringliteral}{"{}sys\_acv"{}}.lang(text.lang(),\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}),\ Resources.Load<Sprite>(\textcolor{stringliteral}{"{}Media/Graphics/Icon/Achievement/"{}}\ +\ text));}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Achievement\ not\ found:"{}}\ +\ text);}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00065}00065\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000C6C\ RID:\ 3180\ RVA:\ 0x0005CC74\ File\ Offset:\ 0x0005AE74}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00066}00066\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ TestHasDLC()}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00067}00067\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ Debug.Log(\mbox{\hyperlink{class_steam}{Steam}}.HasDLC(ID\_DLC.Test));}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ Debug.Log(\mbox{\hyperlink{class_steam}{Steam}}.HasDLC(ID\_DLC.CursedManor));}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000C6D\ RID:\ 3181\ RVA:\ 0x0005CCA0\ File\ Offset:\ 0x0005AEA0}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ CreateUserContent(BaseModPackage\ p)}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00074}00074\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_progress}{LayerProgress}}.Start(\textcolor{stringliteral}{"{}Uploading"{}},\ \textcolor{keyword}{null}).onCancel\ =\ delegate()}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ p.UpdateMeta(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ this.currentPackage\ =\ p;}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ UgcQuery\ myPublished\ =\ UgcQuery.GetMyPublished();}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ myPublished.SetReturnKeyValueTags(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ myPublished.Execute(\textcolor{keyword}{new}\ UnityAction<UgcQuery>(this.CreateUserContent2));}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000C6E\ RID:\ 3182\ RVA:\ 0x0005CD0C\ File\ Offset:\ 0x0005AF0C}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00086}00086\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ CreateUserContent2(UgcQuery\ query)}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00087}00087\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Creating\ Content2"{}});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ BaseModPackage\ baseModPackage\ =\ this.currentPackage;}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (query.ResultsList\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(query.ResultsList.Count);}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (WorkshopItem\ workshopItem\ \textcolor{keywordflow}{in}\ query.ResultsList)}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (workshopItem.keyValueTags\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (StringKeyValuePair\ stringKeyValuePair\ \textcolor{keywordflow}{in}\ workshopItem.keyValueTags)}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stringKeyValuePair.key\ ==\ \textcolor{stringliteral}{"{}id"{}}\ \&\&\ stringKeyValuePair.value\ ==\ baseModPackage.id\ \&\&\ workshopItem.Owner.id\ ==\ App.Client.Owner.id)}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Updating\ Content"{}});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.UpdateUserContent(workshopItem.FileId);}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Creating\ Content"{}});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ FileInfo\ fileInfo\ =\ \textcolor{keyword}{new}\ FileInfo(baseModPackage.dirInfo.FullName\ +\ \textcolor{stringliteral}{"{}/preview.jpg"{}});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ DirectoryInfo\ directoryInfo\ =\ \textcolor{keyword}{new}\ DirectoryInfo(baseModPackage.dirInfo.FullName);}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ WorkshopItemData\ workshopItemData\ =\ \textcolor{keyword}{new}\ WorkshopItemData}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ appId\ =\ this.steamworks.settings.applicationId,}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ title\ =\ baseModPackage.title,}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ description\ =\ baseModPackage.description,}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ content\ =\ directoryInfo,}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ preview\ =\ fileInfo,}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ metadata\ =\ (baseModPackage.id\ ??\ \textcolor{stringliteral}{"{}"{}}),}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ tags\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[0]}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ Debug.Log(App.Client.Owner.id);}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ Debug.Log(workshopItemData.appId);}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ Debug.Log(baseModPackage.id);}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ Debug.Log(directoryInfo.Exists.ToString()\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ directoryInfo.FullName);}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ Debug.Log(fileInfo.Exists.ToString()\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ fileInfo.FullName);}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ workshopItemData.Create(\textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{new}\ WorkshopItemKeyValueTag[]}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ WorkshopItemKeyValueTag}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ \textcolor{stringliteral}{"{}id"{}},}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\ =\ baseModPackage.id}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \},\ delegate(WorkshopItemDataCreateStatus\ result)}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ LayerProgress.completed\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result.hasError)}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}.Ok(\textcolor{stringliteral}{"{}mod\_publish\_error"{}});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}error:"{}}\ +\ result.errorMessage);}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}.Ok(\textcolor{stringliteral}{"{}mod\_created"{}});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}created"{}});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00146}00146\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00148}00148\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000C6F\ RID:\ 3183\ RVA:\ 0x0005CFA0\ File\ Offset:\ 0x0005B1A0}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00149}00149\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ UpdateUserContent(PublishedFileId\_t\ fileId)}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00150}00150\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Updating\ Content"{}});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ BaseModPackage\ baseModPackage\ =\ this.currentPackage;}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ WorkshopItemData\ workshopItemData\ =\ \textcolor{keyword}{new}\ WorkshopItemData}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ appId\ =\ this.steamworks.settings.applicationId,}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ title\ =\ baseModPackage.title,}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ description\ =\ baseModPackage.description,}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ content\ =\ \textcolor{keyword}{new}\ DirectoryInfo(baseModPackage.dirInfo.FullName),}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ preview\ =\ \textcolor{keyword}{new}\ FileInfo(baseModPackage.dirInfo.FullName\ +\ \textcolor{stringliteral}{"{}/preview.jpg"{}}),}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ metadata\ =\ (baseModPackage.id\ ??\ \textcolor{stringliteral}{"{}"{}}),}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ tags\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[0]}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ workshopItemData.publishedFileId\ =\ \textcolor{keyword}{new}\ PublishedFileId\_t?(fileId);}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ workshopItemData.Update(delegate(WorkshopItemDataUpdateStatus\ result)}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ LayerProgress.completed\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result.hasError)}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}.Ok(\textcolor{stringliteral}{"{}mod\_publish\_error"{}});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}error:"{}}\ +\ result.errorMessage);}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}.Ok(\textcolor{stringliteral}{"{}mod\_updated"{}});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}updated"{}});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00176}00176\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00178}00178\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000C36\ RID:\ 3126}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00179}00179\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_steam}{Steam}}\ Instance;}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00181}00181\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000C37\ RID:\ 3127}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00182}00182\ \ \ \ \ \textcolor{keyword}{public}\ SteamworksBehaviour\ steamworks;}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00184}00184\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000C38\ RID:\ 3128}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00185}00185\ \ \ \ \ \textcolor{keyword}{public}\ UserGeneratedContentQueryManager\ ugc;}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00187}00187\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000C39\ RID:\ 3129}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00188}00188\ \ \ \ \ \textcolor{keyword}{public}\ WorkshopItem\ testData;}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00190}00190\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000C3A\ RID:\ 3130}}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00191}00191\ \ \ \ \ \textcolor{keyword}{public}\ BaseModPackage\ currentPackage;}
+\DoxyCodeLine{\Hypertarget{_steam_8cs_source_l00192}00192\ \}}
+
+\end{DoxyCode}

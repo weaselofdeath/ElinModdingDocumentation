@@ -1,0 +1,65 @@
+\doxysection{TCState.\+cs}
+\hypertarget{_t_c_state_8cs_source}{}\label{_t_c_state_8cs_source}\index{Elin/TCState.cs@{Elin/TCState.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000182\ RID:\ 386}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00005}\mbox{\hyperlink{class_t_c_state}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_t_c_state}{TCState}}\ :\ \mbox{\hyperlink{class_t_c}{TC}}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170002BF\ RID:\ 703}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000B19\ RID:\ 2841\ RVA:\ 0x00045335\ File\ Offset:\ 0x00043535}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ Vector3\ FixPos}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_t_c}{TC}}.\_setting.statePos;}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000B1A\ RID:\ 2842\ RVA:\ 0x00045344\ File\ Offset:\ 0x00043544}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetSprite(\mbox{\hyperlink{class_multi_sprite}{MultiSprite}}\ \_sprites)}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.sprites\ ==\ \_sprites)}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ base.CancelInvoke();}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ this.sprites\ =\ \_sprites;}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ this.sr.sprite\ =\ this.sprites.frames[0];}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.sprites.frames.Length\ >\ 1)}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ this.index\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ base.InvokeRepeating(\textcolor{stringliteral}{"{}UpdateFrame"{}},\ this.sprites.interval,\ \textcolor{keyword}{this}.sprites.interval);}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000B1B\ RID:\ 2843\ RVA:\ 0x000453B8\ File\ Offset:\ 0x000435B8}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnDisable()}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ base.CancelInvoke();}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000B1C\ RID:\ 2844\ RVA:\ 0x000453C0\ File\ Offset:\ 0x000435C0}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ UpdateFrame()}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00042}00042\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ this.index++;}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.index\ >=\ this.sprites.frames.Length)}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ this.index\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ this.sr.sprite\ =\ this.sprites.frames[this.index];}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A2F\ RID:\ 2607}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00052}00052\ \ \ \ \ \textcolor{keyword}{public}\ SpriteRenderer\ sr;}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A30\ RID:\ 2608}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00055}00055\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_multi_sprite}{MultiSprite}}\ sprites;}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A31\ RID:\ 2609}}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00058}00058\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ index;}
+\DoxyCodeLine{\Hypertarget{_t_c_state_8cs_source_l00059}00059\ \}}
+
+\end{DoxyCode}

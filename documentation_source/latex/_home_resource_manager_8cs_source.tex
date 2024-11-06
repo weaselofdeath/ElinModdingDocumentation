@@ -1,0 +1,157 @@
+\doxysection{Home\+Resource\+Manager.\+cs}
+\hypertarget{_home_resource_manager_8cs_source}{}\label{_home_resource_manager_8cs_source}\index{Elin/HomeResourceManager.cs@{Elin/HomeResourceManager.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x02000078\ RID:\ 120}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00006}\mbox{\hyperlink{class_home_resource_manager}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_home_resource_manager}{HomeResourceManager}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000379\ RID:\ 889\ RVA:\ 0x00019B44\ File\ Offset:\ 0x00017D44}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetOwner(\mbox{\hyperlink{class_faction_branch}{FactionBranch}}\ \_owner)}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ this.owner\ =\ \_owner;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.worth\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ this.food\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_home_resource}{HomeResource}}().Create<\mbox{\hyperlink{class_home_resource}{HomeResource}}>(HomeResourceType.food,\ 0);}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ this.money\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_home_resource}{HomeResource}}().Create<\mbox{\hyperlink{class_home_resource}{HomeResource}}>(HomeResourceType.money,\ 0);}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ this.knowledge\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_home_resource}{HomeResource}}().Create<\mbox{\hyperlink{class_home_resource}{HomeResource}}>(HomeResourceType.knowledge,\ 0);}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ this.fun\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_home_resource_fun}{HomeResourceFun}}().Create<\mbox{\hyperlink{class_home_resource_fun}{HomeResourceFun}}>(HomeResourceType.fun,\ 50);}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ this.culture\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_home_resource_culture}{HomeResourceCulture}}().Create<\mbox{\hyperlink{class_home_resource_culture}{HomeResourceCulture}}>(HomeResourceType.culture,\ 50);}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ this.medicine\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_home_resource_medicine}{HomeResourceMedicine}}().Create<\mbox{\hyperlink{class_home_resource_medicine}{HomeResourceMedicine}}>(HomeResourceType.medicine,\ 50);}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ this.safety\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_home_resource_safety}{HomeResourceSafety}}().Create<\mbox{\hyperlink{class_home_resource_safety}{HomeResourceSafety}}>(HomeResourceType.safety,\ 50);}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ this.industry\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_home_resource_industry}{HomeResourceIndustry}}().Create<\mbox{\hyperlink{class_home_resource_industry}{HomeResourceIndustry}}>(HomeResourceType.industry,\ 0);}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ this.education\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_home_resource_education}{HomeResourceEducation}}().Create<\mbox{\hyperlink{class_home_resource_education}{HomeResourceEducation}}>(HomeResourceType.education,\ 0);}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ this.nature\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_home_resource_nature}{HomeResourceNature}}().Create<\mbox{\hyperlink{class_home_resource_nature}{HomeResourceNature}}>(HomeResourceType.nature,\ 0);}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ this.worth\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_home_resource_worth}{HomeResourceWorth}}().Create<\mbox{\hyperlink{class_home_resource_worth}{HomeResourceWorth}}>(HomeResourceType.worth,\ 0);}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ this.reknown\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_home_resource_reknown}{HomeResourceReknown}}().Create<\mbox{\hyperlink{class_home_resource_reknown}{HomeResourceReknown}}>(HomeResourceType.reknown,\ 0);}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ this.karma\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_home_resource_karma}{HomeResourceKarma}}().Create<\mbox{\hyperlink{class_home_resource_karma}{HomeResourceKarma}}>(HomeResourceType.karma,\ 0);}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ this.list\ =\ \textcolor{keyword}{new}\ List<BaseHomeResource>}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ this.money,}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ this.food,}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ this.knowledge,}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ this.fun,}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ this.culture,}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ this.medicine,}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ this.safety,}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ this.industry,}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ this.education,}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ this.nature,}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ this.worth,}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ this.reknown,}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ this.karma}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}}\ baseHomeResource\ \textcolor{keywordflow}{in}\ this.list)}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ baseHomeResource.branch\ =\ this.owner;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600037A\ RID:\ 890\ RVA:\ 0x00019D48\ File\ Offset:\ 0x00017F48}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00051}00051\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetDirty()}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00052}00052\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ this.isDirty\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600037B\ RID:\ 891\ RVA:\ 0x00019D54\ File\ Offset:\ 0x00017F54}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnSimulateDay()}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00058}00058\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}}\ baseHomeResource\ \textcolor{keywordflow}{in}\ this.list)}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ baseHomeResource.OnAdvanceDay();}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00065}00065\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600037C\ RID:\ 892\ RVA:\ 0x00019DA4\ File\ Offset:\ 0x00017FA4}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00066}00066\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Refresh()}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00067}00067\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}}\ baseHomeResource\ \textcolor{keywordflow}{in}\ this.list)}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ baseHomeResource.Refresh();}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ this.isDirty\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600037D\ RID:\ 893\ RVA:\ 0x00019DFC\ File\ Offset:\ 0x00017FFC}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00076}00076\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}}\ Get(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.GetField(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600037E\ RID:\ 894\ RVA:\ 0x00019E05\ File\ Offset:\ 0x00018005}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00082}00082\ \ \ \ \ \textcolor{keyword}{public}\ T\ Get<T>(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})\ where\ T\ :\ \mbox{\hyperlink{class_base_home_resource}{BaseHomeResource}}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00083}00083\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.GetField(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400057B\ RID:\ 1403}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00088}00088\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00089}00089\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_home_resource}{HomeResource}}\ food;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00091}00091\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400057C\ RID:\ 1404}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00092}00092\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00093}00093\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_home_resource}{HomeResource}}\ money;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00095}00095\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400057D\ RID:\ 1405}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00096}00096\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00097}00097\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_home_resource}{HomeResource}}\ knowledge;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00099}00099\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400057E\ RID:\ 1406}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00100}00100\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00101}00101\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_home_resource}{HomeResource}}\ influence;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00103}00103\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400057F\ RID:\ 1407}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00104}00104\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00105}00105\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_home_resource_fun}{HomeResourceFun}}\ fun;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00107}00107\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000580\ RID:\ 1408}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00108}00108\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00109}00109\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_home_resource_safety}{HomeResourceSafety}}\ safety;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00111}00111\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000581\ RID:\ 1409}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00112}00112\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00113}00113\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_home_resource_nature}{HomeResourceNature}}\ nature;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00115}00115\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000582\ RID:\ 1410}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00116}00116\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00117}00117\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_home_resource_education}{HomeResourceEducation}}\ education;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00119}00119\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000583\ RID:\ 1411}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00120}00120\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00121}00121\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_home_resource_culture}{HomeResourceCulture}}\ culture;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00123}00123\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000584\ RID:\ 1412}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00124}00124\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00125}00125\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_home_resource_industry}{HomeResourceIndustry}}\ industry;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00127}00127\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000585\ RID:\ 1413}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00128}00128\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00129}00129\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_home_resource_medicine}{HomeResourceMedicine}}\ medicine;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00131}00131\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000586\ RID:\ 1414}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00132}00132\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00133}00133\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_home_resource_worth}{HomeResourceWorth}}\ worth;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00135}00135\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000587\ RID:\ 1415}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00136}00136\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00137}00137\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_home_resource_karma}{HomeResourceKarma}}\ karma;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00139}00139\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000588\ RID:\ 1416}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00140}00140\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00141}00141\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_home_resource_reknown}{HomeResourceReknown}}\ reknown;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00143}00143\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000589\ RID:\ 1417}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00144}00144\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_faction_branch}{FactionBranch}}\ owner;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00146}00146\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400058A\ RID:\ 1418}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00147}00147\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ isDirty\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00149}00149\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400058B\ RID:\ 1419}}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00150}00150\ \ \ \ \ \textcolor{keyword}{public}\ List<BaseHomeResource>\ list;}
+\DoxyCodeLine{\Hypertarget{_home_resource_manager_8cs_source_l00151}00151\ \}}
+
+\end{DoxyCode}

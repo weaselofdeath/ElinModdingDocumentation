@@ -1,0 +1,108 @@
+\doxysection{Layer\+Color\+Picker.\+cs}
+\hypertarget{_layer_color_picker_8cs_source}{}\label{_layer_color_picker_8cs_source}\index{Elin/LayerColorPicker.cs@{Elin/LayerColorPicker.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Empyrean.ColorPicker;}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00006}00006\ \textcolor{comment}{//\ Token:\ 0x02000527\ RID:\ 1319}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00007}\mbox{\hyperlink{class_layer_color_picker}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_layer_color_picker}{LayerColorPicker}}\ :\ \mbox{\hyperlink{class_e_layer}{ELayer}}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002363\ RID:\ 9059\ RVA:\ 0x000C7298\ File\ Offset:\ 0x000C5498}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetColor(Color\ \_startColor,\ Color\ \_resetColor,\ Action<PickerState,\ Color>\ \_onChangeColor)}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ UIItem\ t\ =\ this.layoutColors.CreateMold(\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 8;\ i++)}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ UIItem\ item\ =\ Util.Instantiate<UIItem>(t,\ this.layoutColors);}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_i\ =\ i;}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ item.button1.icon.color\ =\ IntColor.FromInt(\mbox{\hyperlink{class_e_layer}{ELayer}}.core.config.colors[\_i]);}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ item.button1.SetOnClick(delegate}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.picker.SelectColor(item.button1.icon.color);}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ item.button2.SetOnClick(delegate}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.button1.icon.color\ =\ this.picker.SelectedColor;}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.core.config.colors[\_i]\ =\ IntColor.ToInt(this.picker.SelectedColor);}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SE.Tab();}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ this.layoutColors.RebuildLayout(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ this.picker.ColorUpdated\ +=\ delegate(Color\ c)}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \_onChangeColor(PickerState.Modify,\ c);}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ this.startColor\ =\ \_startColor;}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ this.resetColor\ =\ \_resetColor;}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ this.picker.Init();}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ this.picker.SelectColor(\_startColor);}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ this.picker.SelectColor(\_startColor);}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ this.onChangeColor\ =\ \_onChangeColor;}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002364\ RID:\ 9060\ RVA:\ 0x000C73CB\ File\ Offset:\ 0x000C55CB}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00043}00043\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnClickConfirm()}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00044}00044\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ this.onChangeColor(PickerState.Confirm,\ \textcolor{keyword}{this}.picker.SelectedColor);}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ this.Close();}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002365\ RID:\ 9061\ RVA:\ 0x000C73EA\ File\ Offset:\ 0x000C55EA}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00050}00050\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnClickCancel()}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00051}00051\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ this.onChangeColor(PickerState.Cancel,\ \textcolor{keyword}{this}.startColor);}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ this.Close();}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002366\ RID:\ 9062\ RVA:\ 0x000C7404\ File\ Offset:\ 0x000C5604}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnClickReset()}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00058}00058\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ this.picker.SelectColor(this.resetColor);}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ this.onChangeColor(PickerState.Reset,\ \textcolor{keyword}{this}.resetColor);}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002367\ RID:\ 9063\ RVA:\ 0x000C742C\ File\ Offset:\ 0x000C562C}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ OnBack()}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.picker.dropper.coroutine\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ this.picker.dropper.Stop();}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ this.picker.dropper.onDropCanceled();}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ this.onChangeColor(PickerState.Cancel,\ \textcolor{keyword}{this}.startColor);}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ base.OnBack();}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002368\ RID:\ 9064\ RVA:\ 0x000C748C\ File\ Offset:\ 0x000C568C}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00077}00077\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnKill()}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00078}00078\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.picker.dropper.coroutine\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ this.picker.dropper.Stop();}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ this.picker.dropper.onDropCanceled();}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ base.OnKill();}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ EInput.Consume(\textcolor{keyword}{false},\ 1);}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00088}00088\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012D4\ RID:\ 4820}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00089}00089\ \ \ \ \ \textcolor{keyword}{public}\ ColorPicker\ picker;}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00091}00091\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012D5\ RID:\ 4821}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00092}00092\ \ \ \ \ \textcolor{keyword}{public}\ Action<PickerState,\ Color>\ onChangeColor;}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00094}00094\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012D6\ RID:\ 4822}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00095}00095\ \ \ \ \ \textcolor{keyword}{public}\ Color\ resetColor;}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00097}00097\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012D7\ RID:\ 4823}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00098}00098\ \ \ \ \ \textcolor{keyword}{public}\ Color\ startColor;}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00100}00100\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012D8\ RID:\ 4824}}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00101}00101\ \ \ \ \ \textcolor{keyword}{public}\ GridLayoutGroup\ layoutColors;}
+\DoxyCodeLine{\Hypertarget{_layer_color_picker_8cs_source_l00102}00102\ \}}
+
+\end{DoxyCode}

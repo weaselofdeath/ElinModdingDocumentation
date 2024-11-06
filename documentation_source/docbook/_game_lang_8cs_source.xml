@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__game_lang_8cs_source" xml:lang="en-US">
+<title>GameLang.cs</title>
+<indexterm><primary>Elin/GameLang.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__game_lang_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__game_lang_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Text;
+<anchor xml:id="__game_lang_8cs_source_1l00003"/>00003 
+<anchor xml:id="__game_lang_8cs_source_1l00004"/>00004 <emphasis role="comment">//&#32;Token:&#32;0x020000AD&#32;RID:&#32;173</emphasis>
+<anchor xml:id="__game_lang_8cs_source_1l00005"/><link linkend="_class_game_lang">00005</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_game_lang">GameLang</link>&#32;:&#32;<link linkend="_class_e_class">EClass</link>
+<anchor xml:id="__game_lang_8cs_source_1l00006"/>00006 {
+<anchor xml:id="__game_lang_8cs_source_1l00007"/>00007 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060004AA&#32;RID:&#32;1194&#32;RVA:&#32;0x0001FC24&#32;File&#32;Offset:&#32;0x0001DE24</emphasis>
+<anchor xml:id="__game_lang_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;ConvertDrama(<emphasis role="keywordtype">string</emphasis>&#32;text,&#32;<link linkend="_class_chara">Chara</link>&#32;c&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_lang_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_class">EClass</link>.core.IsGameStarted)
+<anchor xml:id="__game_lang_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;text;
+<anchor xml:id="__game_lang_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;StringBuilder&#32;stringBuilder&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;StringBuilder();
+<anchor xml:id="__game_lang_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;newValue&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>;
+<anchor xml:id="__game_lang_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;newValue2&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>;
+<anchor xml:id="__game_lang_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;name&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.religions.GetRandomReligion(<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">false</emphasis>).Name;
+<anchor xml:id="__game_lang_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;@ref&#32;=&#32;<emphasis role="stringliteral">&quot;-&quot;</emphasis>;
+<anchor xml:id="__game_lang_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(c&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_lang_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;newValue&#32;=&#32;c.NameBraced;
+<anchor xml:id="__game_lang_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;newValue2&#32;=&#32;(c.IsMale&#32;?&#32;<emphasis role="stringliteral">&quot;his&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;her&quot;</emphasis>).lang();
+<anchor xml:id="__game_lang_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;name&#32;=&#32;c.faith.Name;
+<anchor xml:id="__game_lang_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;@ref&#32;=&#32;(<link linkend="_class_calc_gold">CalcGold</link>.Hire(c).ToString()&#32;??&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+<anchor xml:id="__game_lang_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;flag&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__game_lang_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;text2&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>;
+<anchor xml:id="__game_lang_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;text.Length;&#32;i++)
+<anchor xml:id="__game_lang_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(flag)
+<anchor xml:id="__game_lang_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(text[i]&#32;==&#32;<emphasis role="charliteral">&apos;]&apos;</emphasis>)
+<anchor xml:id="__game_lang_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;flag&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__game_lang_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(text2&#32;==&#32;<emphasis role="stringliteral">&quot;qFriend&quot;</emphasis>&#32;&amp;&amp;&#32;<link linkend="_class_e_class">EClass</link>._zone.IsPCFaction)
+<anchor xml:id="__game_lang_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text2&#32;=&#32;<emphasis role="stringliteral">&quot;qFriendHome&quot;</emphasis>;
+<anchor xml:id="__game_lang_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>[]&#32;list&#32;=&#32;Lang.GetList(text2);
+<anchor xml:id="__game_lang_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(list&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_lang_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Append(list.RandomItem&lt;<emphasis role="keywordtype">string</emphasis>&gt;());
+<anchor xml:id="__game_lang_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__game_lang_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Append(text2);
+<anchor xml:id="__game_lang_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__game_lang_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text2&#32;+=&#32;text[i].ToString();
+<anchor xml:id="__game_lang_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(text[i]&#32;==&#32;<emphasis role="charliteral">&apos;[&apos;</emphasis>)
+<anchor xml:id="__game_lang_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text2&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>;
+<anchor xml:id="__game_lang_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;flag&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_lang_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__game_lang_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Append(text[i]);
+<anchor xml:id="__game_lang_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_drama_manager">DramaManager</link>.TG&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_lang_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#tg&quot;</emphasis>,&#32;<link linkend="_class_drama_manager">DramaManager</link>.TG.Name);
+<anchor xml:id="__game_lang_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_drama_choice">DramaChoice</link>.lastChoice&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_lang_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#last_choice&quot;</emphasis>,&#32;<link linkend="_class_drama_choice">DramaChoice</link>.lastChoice.text);
+<anchor xml:id="__game_lang_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#newline&quot;</emphasis>,&#32;Environment.NewLine);
+<anchor xml:id="__game_lang_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#costHire&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;costHire&quot;</emphasis>.lang(@ref,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>));
+<anchor xml:id="__game_lang_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#self&quot;</emphasis>,&#32;newValue);
+<anchor xml:id="__game_lang_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#his&quot;</emphasis>,&#32;newValue2);
+<anchor xml:id="__game_lang_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#me&quot;</emphasis>,&#32;newValue);
+<anchor xml:id="__game_lang_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#1&quot;</emphasis>,&#32;<link linkend="_class_game_lang">GameLang</link>.refDrama1);
+<anchor xml:id="__game_lang_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#2&quot;</emphasis>,&#32;<link linkend="_class_game_lang">GameLang</link>.refDrama2);
+<anchor xml:id="__game_lang_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#3&quot;</emphasis>,&#32;<link linkend="_class_game_lang">GameLang</link>.refDrama3);
+<anchor xml:id="__game_lang_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#4&quot;</emphasis>,&#32;<link linkend="_class_game_lang">GameLang</link>.refDrama4);
+<anchor xml:id="__game_lang_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#god&quot;</emphasis>,&#32;name);
+<anchor xml:id="__game_lang_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#player&quot;</emphasis>,&#32;<link linkend="_class_e_class">EClass</link>.player.title);
+<anchor xml:id="__game_lang_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#title&quot;</emphasis>,&#32;<link linkend="_class_e_class">EClass</link>.player.title);
+<anchor xml:id="__game_lang_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#zone&quot;</emphasis>,&#32;<link linkend="_class_e_class">EClass</link>._zone.Name);
+<anchor xml:id="__game_lang_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#guild_title&quot;</emphasis>,&#32;<link linkend="_class_guild">Guild</link>.Current.relation.TextTitle);
+<anchor xml:id="__game_lang_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#guild&quot;</emphasis>,&#32;<link linkend="_class_guild">Guild</link>.Current.Name);
+<anchor xml:id="__game_lang_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#pc&quot;</emphasis>,&#32;<link linkend="_class_e_class">EClass</link>.pc.NameSimple);
+<anchor xml:id="__game_lang_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#aka&quot;</emphasis>,&#32;<link linkend="_class_e_class">EClass</link>.pc.Aka);
+<anchor xml:id="__game_lang_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#bigdaddy&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;bigdaddy&quot;</emphasis>.lang());
+<anchor xml:id="__game_lang_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#festival&quot;</emphasis>,&#32;<link linkend="_class_e_class">EClass</link>._zone.IsFestival&#32;?&#32;(<link linkend="_class_e_class">EClass</link>._zone.id&#32;+&#32;<emphasis role="stringliteral">&quot;_festival&quot;</emphasis>).lang()&#32;:&#32;<emphasis role="stringliteral">&quot;_festival&quot;</emphasis>.lang());
+<anchor xml:id="__game_lang_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#brother2&quot;</emphasis>,&#32;(<link linkend="_class_e_class">EClass</link>.pc.IsMale&#32;?&#32;<emphasis role="stringliteral">&quot;brother&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;sister&quot;</emphasis>).lang());
+<anchor xml:id="__game_lang_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#brother&quot;</emphasis>,&#32;Lang.GetList(<link linkend="_class_e_class">EClass</link>.pc.IsMale&#32;?&#32;<emphasis role="stringliteral">&quot;bro&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;sis&quot;</emphasis>).RandomItem&lt;<emphasis role="keywordtype">string</emphasis>&gt;());
+<anchor xml:id="__game_lang_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#onii&quot;</emphasis>,&#32;Lang.GetList(<link linkend="_class_e_class">EClass</link>.pc.IsMale&#32;?&#32;<emphasis role="stringliteral">&quot;onii&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;onee&quot;</emphasis>).RandomItem&lt;<emphasis role="keywordtype">string</emphasis>&gt;());
+<anchor xml:id="__game_lang_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#gender&quot;</emphasis>,&#32;Lang.GetList(<emphasis role="stringliteral">&quot;gendersDrama&quot;</emphasis>)[<link linkend="_class_e_class">EClass</link>.pc.bio.gender]);
+<anchor xml:id="__game_lang_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#he&quot;</emphasis>,&#32;((<link linkend="_class_e_class">EClass</link>.pc.bio.gender&#32;==&#32;2)&#32;?&#32;<emphasis role="stringliteral">&quot;he&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;she&quot;</emphasis>).lang());
+<anchor xml:id="__game_lang_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#He&quot;</emphasis>,&#32;((<link linkend="_class_e_class">EClass</link>.pc.bio.gender&#32;==&#32;2)&#32;?&#32;<emphasis role="stringliteral">&quot;he&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;she&quot;</emphasis>).lang().ToTitleCase(<emphasis role="keyword">false</emphasis>));
+<anchor xml:id="__game_lang_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_game_lang">GameLang</link>.Convert(stringBuilder);
+<anchor xml:id="__game_lang_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00099"/>00099 
+<anchor xml:id="__game_lang_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060004AB&#32;RID:&#32;1195&#32;RVA:&#32;0x00020063&#32;File&#32;Offset:&#32;0x0001E263</emphasis>
+<anchor xml:id="__game_lang_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;Convert(<emphasis role="keywordtype">string</emphasis>&#32;text)
+<anchor xml:id="__game_lang_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;StringBuilder&#32;stringBuilder&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;StringBuilder();
+<anchor xml:id="__game_lang_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Append(text);
+<anchor xml:id="__game_lang_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_game_lang">GameLang</link>.Convert(stringBuilder);
+<anchor xml:id="__game_lang_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00107"/>00107 
+<anchor xml:id="__game_lang_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060004AC&#32;RID:&#32;1196&#32;RVA:&#32;0x00020078&#32;File&#32;Offset:&#32;0x0001E278</emphasis>
+<anchor xml:id="__game_lang_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;Convert(StringBuilder&#32;sb)
+<anchor xml:id="__game_lang_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sb.Replace(<emphasis role="stringliteral">&quot;#player&quot;</emphasis>,&#32;<link linkend="_class_e_class">EClass</link>.player.title);
+<anchor xml:id="__game_lang_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sb.Replace(<emphasis role="stringliteral">&quot;#pc_him&quot;</emphasis>,&#32;<link linkend="_class_e_class">EClass</link>.pc.IsMale&#32;?&#32;<emphasis role="stringliteral">&quot;him&quot;</emphasis>.lang()&#32;:&#32;<emphasis role="stringliteral">&quot;her&quot;</emphasis>.lang());
+<anchor xml:id="__game_lang_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sb.Replace(<emphasis role="stringliteral">&quot;#pc_his&quot;</emphasis>,&#32;<link linkend="_class_e_class">EClass</link>.pc.IsMale&#32;?&#32;<emphasis role="stringliteral">&quot;his&quot;</emphasis>.lang()&#32;:&#32;<emphasis role="stringliteral">&quot;her&quot;</emphasis>.lang());
+<anchor xml:id="__game_lang_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sb.Replace(<emphasis role="stringliteral">&quot;#pc_race&quot;</emphasis>,&#32;<link linkend="_class_e_class">EClass</link>.pc.race.GetName());
+<anchor xml:id="__game_lang_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sb.Replace(<emphasis role="stringliteral">&quot;#pc&quot;</emphasis>,&#32;<link linkend="_class_e_class">EClass</link>.pc.NameSimple);
+<anchor xml:id="__game_lang_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;sb.ToString();
+<anchor xml:id="__game_lang_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00118"/>00118 
+<anchor xml:id="__game_lang_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060004AD&#32;RID:&#32;1197&#32;RVA:&#32;0x00020130&#32;File&#32;Offset:&#32;0x0001E330</emphasis>
+<anchor xml:id="__game_lang_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;Parse(<emphasis role="keywordtype">string</emphasis>&#32;text,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;thirdPerson,&#32;<emphasis role="keywordtype">string</emphasis>&#32;val1,&#32;<emphasis role="keywordtype">string</emphasis>&#32;val2&#32;=&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keywordtype">string</emphasis>&#32;val3&#32;=&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keywordtype">string</emphasis>&#32;val4&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_lang_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;StringBuilder&#32;stringBuilder&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;StringBuilder(text);
+<anchor xml:id="__game_lang_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(val1&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_lang_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(Lang.articlesToRemove.Count&#32;&gt;&#32;0)
+<anchor xml:id="__game_lang_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;text2&#32;=&#32;val1;
+<anchor xml:id="__game_lang_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<emphasis role="keywordtype">char</emphasis>[]&#32;trimChars&#32;<emphasis role="keywordflow">in</emphasis>&#32;Lang.articlesToRemove)
+<anchor xml:id="__game_lang_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text2&#32;=&#32;text2.TrimStart(trimChars);
+<anchor xml:id="__game_lang_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;-#1&quot;</emphasis>,&#32;text2);
+<anchor xml:id="__game_lang_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#1&quot;</emphasis>,&#32;val1&#32;??&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+<anchor xml:id="__game_lang_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(val2&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_lang_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(Lang.articlesToRemove.Count&#32;&gt;&#32;0)
+<anchor xml:id="__game_lang_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;text3&#32;=&#32;val2;
+<anchor xml:id="__game_lang_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<emphasis role="keywordtype">char</emphasis>[]&#32;trimChars2&#32;<emphasis role="keywordflow">in</emphasis>&#32;Lang.articlesToRemove)
+<anchor xml:id="__game_lang_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text3&#32;=&#32;text3.TrimStart(trimChars2);
+<anchor xml:id="__game_lang_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;-#2&quot;</emphasis>,&#32;text3);
+<anchor xml:id="__game_lang_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#2&quot;</emphasis>,&#32;val2);
+<anchor xml:id="__game_lang_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(val3&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_lang_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#3&quot;</emphasis>,&#32;val3);
+<anchor xml:id="__game_lang_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(val4&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_lang_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#4&quot;</emphasis>,&#32;val4);
+<anchor xml:id="__game_lang_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num;
+<anchor xml:id="__game_lang_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>.TryParse(val1,&#32;out&#32;num))
+<anchor xml:id="__game_lang_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#(s)&quot;</emphasis>,&#32;(num&#32;&lt;=&#32;1)&#32;?&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;_s&quot;</emphasis>.lang());
+<anchor xml:id="__game_lang_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_msg">Msg</link>.thirdPerson2.active)
+<anchor xml:id="__game_lang_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#your2&quot;</emphasis>,&#32;<link linkend="_class_msg">Msg</link>.thirdPerson2.your);
+<anchor xml:id="__game_lang_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#himself2&quot;</emphasis>,&#32;<link linkend="_class_msg">Msg</link>.thirdPerson2.himself);
+<anchor xml:id="__game_lang_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#him2&quot;</emphasis>,&#32;<link linkend="_class_msg">Msg</link>.thirdPerson2.him);
+<anchor xml:id="__game_lang_8cs_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#his2&quot;</emphasis>,&#32;<link linkend="_class_msg">Msg</link>.thirdPerson2.his);
+<anchor xml:id="__game_lang_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#he2&quot;</emphasis>,&#32;<link linkend="_class_msg">Msg</link>.thirdPerson2.he);
+<anchor xml:id="__game_lang_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;(s2)&quot;</emphasis>,&#32;<link linkend="_class_msg">Msg</link>.thirdPerson2.thirdperson&#32;?&#32;<emphasis role="stringliteral">&quot;s&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+<anchor xml:id="__game_lang_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_msg">Msg</link>.thirdPerson1.active)
+<anchor xml:id="__game_lang_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#your&quot;</emphasis>,&#32;<link linkend="_class_msg">Msg</link>.thirdPerson1.your);
+<anchor xml:id="__game_lang_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#himself&quot;</emphasis>,&#32;<link linkend="_class_msg">Msg</link>.thirdPerson1.himself);
+<anchor xml:id="__game_lang_8cs_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#him&quot;</emphasis>,&#32;<link linkend="_class_msg">Msg</link>.thirdPerson1.him);
+<anchor xml:id="__game_lang_8cs_source_1l00176"/>00176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#his&quot;</emphasis>,&#32;<link linkend="_class_msg">Msg</link>.thirdPerson1.his);
+<anchor xml:id="__game_lang_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;#he&quot;</emphasis>,&#32;<link linkend="_class_msg">Msg</link>.thirdPerson1.he);
+<anchor xml:id="__game_lang_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(Lang.setting.thirdperson)
+<anchor xml:id="__game_lang_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_game_lang">GameLang</link>.ConvertThirdPerson(stringBuilder.ToString(),&#32;thirdPerson);
+<anchor xml:id="__game_lang_8cs_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_game_lang">GameLang</link>.Convert(stringBuilder);
+<anchor xml:id="__game_lang_8cs_source_1l00184"/>00184 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00185"/>00185 
+<anchor xml:id="__game_lang_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060004AE&#32;RID:&#32;1198&#32;RVA:&#32;0x000203C0&#32;File&#32;Offset:&#32;0x0001E5C0</emphasis>
+<anchor xml:id="__game_lang_8cs_source_1l00187"/>00187 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;ConvertThirdPerson(<emphasis role="keywordtype">string</emphasis>&#32;text,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;thirdPerson)
+<anchor xml:id="__game_lang_8cs_source_1l00188"/>00188 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>[]&#32;array&#32;=&#32;text.Split(<emphasis role="charliteral">&apos;&#32;&apos;</emphasis>,&#32;StringSplitOptions.None);
+<anchor xml:id="__game_lang_8cs_source_1l00190"/>00190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;StringBuilder&#32;stringBuilder&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;StringBuilder();
+<anchor xml:id="__game_lang_8cs_source_1l00191"/>00191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;flag&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_lang_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<emphasis role="keywordtype">string</emphasis>&#32;text2&#32;<emphasis role="keywordflow">in</emphasis>&#32;array)
+<anchor xml:id="__game_lang_8cs_source_1l00193"/>00193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(flag)
+<anchor xml:id="__game_lang_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00196"/>00196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;flag&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__game_lang_8cs_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__game_lang_8cs_source_1l00199"/>00199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00200"/>00200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Append(<emphasis role="charliteral">&apos;&#32;&apos;</emphasis>);
+<anchor xml:id="__game_lang_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00202"/>00202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(text2.Contains(<emphasis role="charliteral">&apos;/&apos;</emphasis>)&#32;&amp;&amp;&#32;!text2.Contains(<emphasis role="charliteral">&apos;&lt;&apos;</emphasis>))
+<anchor xml:id="__game_lang_8cs_source_1l00203"/>00203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00204"/>00204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>[]&#32;array3&#32;=&#32;text2.Split(<emphasis role="charliteral">&apos;/&apos;</emphasis>,&#32;StringSplitOptions.None);
+<anchor xml:id="__game_lang_8cs_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Append(thirdPerson&#32;?&#32;array3[1]&#32;:&#32;array3[0]);
+<anchor xml:id="__game_lang_8cs_source_1l00206"/>00206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00207"/>00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__game_lang_8cs_source_1l00208"/>00208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_lang_8cs_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Append(text2);
+<anchor xml:id="__game_lang_8cs_source_1l00210"/>00210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00211"/>00211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;(s)&quot;</emphasis>,&#32;thirdPerson&#32;?&#32;<emphasis role="stringliteral">&quot;s&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+<anchor xml:id="__game_lang_8cs_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringBuilder.Replace(<emphasis role="stringliteral">&quot;(es)&quot;</emphasis>,&#32;thirdPerson&#32;?&#32;<emphasis role="stringliteral">&quot;es&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+<anchor xml:id="__game_lang_8cs_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_game_lang">GameLang</link>.Convert(stringBuilder);
+<anchor xml:id="__game_lang_8cs_source_1l00215"/>00215 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_lang_8cs_source_1l00216"/>00216 
+<anchor xml:id="__game_lang_8cs_source_1l00217"/>00217 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000637&#32;RID:&#32;1591</emphasis>
+<anchor xml:id="__game_lang_8cs_source_1l00218"/>00218 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;refDrama1;
+<anchor xml:id="__game_lang_8cs_source_1l00219"/>00219 
+<anchor xml:id="__game_lang_8cs_source_1l00220"/>00220 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000638&#32;RID:&#32;1592</emphasis>
+<anchor xml:id="__game_lang_8cs_source_1l00221"/>00221 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;refDrama2;
+<anchor xml:id="__game_lang_8cs_source_1l00222"/>00222 
+<anchor xml:id="__game_lang_8cs_source_1l00223"/>00223 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000639&#32;RID:&#32;1593</emphasis>
+<anchor xml:id="__game_lang_8cs_source_1l00224"/>00224 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;refDrama3;
+<anchor xml:id="__game_lang_8cs_source_1l00225"/>00225 
+<anchor xml:id="__game_lang_8cs_source_1l00226"/>00226 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400063A&#32;RID:&#32;1594</emphasis>
+<anchor xml:id="__game_lang_8cs_source_1l00227"/>00227 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;refDrama4;
+<anchor xml:id="__game_lang_8cs_source_1l00228"/>00228 }
+</programlisting></section>

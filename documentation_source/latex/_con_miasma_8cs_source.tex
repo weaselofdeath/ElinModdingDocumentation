@@ -1,0 +1,72 @@
+\doxysection{Con\+Miasma.\+cs}
+\hypertarget{_con_miasma_8cs_source}{}\label{_con_miasma_8cs_source}\index{Elin/ConMiasma.cs@{Elin/ConMiasma.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x020002F1\ RID:\ 753}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00006}\mbox{\hyperlink{class_con_miasma}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_con_miasma}{ConMiasma}}\ :\ \mbox{\hyperlink{class_time_debuff}{TimeDebuff}}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000687\ RID:\ 1671}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06001780\ RID:\ 6016\ RVA:\ 0x000989FC\ File\ Offset:\ 0x00096BFC}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ IsElemental}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00016}00016\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001781\ RID:\ 6017\ RVA:\ 0x00098A00\ File\ Offset:\ 0x00096C00}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ Tick()}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dice}{Dice}}\ dice\ =\ \mbox{\hyperlink{class_dice}{Dice}}.Create(\textcolor{stringliteral}{"{}miasma\_"{}},\ base.power,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ this.owner.DamageHP(dice.Roll(),\ base.refVal,\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(base.power\ /\ 2)\ +\ base.power\ /\ 4,\ AttackSource.Condition,\ \textcolor{keyword}{null},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.owner.IsAliveInCurrentZone\ \&\&\ base.value\ >\ 1)}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 6;\ i++)}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_chara}{Chara}}\ chara\ \textcolor{keywordflow}{in}\ this.owner.pos.GetRandomPoint(2,\ \textcolor{keyword}{true},\ \textcolor{keyword}{true},\ \textcolor{keyword}{false},\ 100).Charas)}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((!this.owner.IsPCFaction\ ||\ chara.IsPCFaction)\ \&\&\ (\textcolor{keyword}{this}.owner.IsPCFaction\ ||\ !chara.IsPCFaction)\ \&\&\ chara.IsFriendOrAbove(\textcolor{keyword}{this}.owner)\ \&\&\ !chara.HasCondition<\mbox{\hyperlink{class_con_miasma}{ConMiasma}}>())}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_condition}{Condition}}\ condition\ =\ chara.AddCondition(\mbox{\hyperlink{class_condition}{Condition}}.Create<\mbox{\hyperlink{class_con_miasma}{ConMiasma}}>(base.power\ /\ 2,\ delegate(\mbox{\hyperlink{class_con_miasma}{ConMiasma}}\ con)}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ con.givenByPcParty\ =\ base.givenByPcParty;}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ con.SetElement(base.refVal);}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}),\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (condition\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ condition.value\ =\ base.value\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(2)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex.Message);}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(this.owner);}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(base.refVal);}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ base.Mod(-\/1,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001782\ RID:\ 6018\ RVA:\ 0x00098BAC\ File\ Offset:\ 0x00096DAC}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnWriteNote(List<string>\ list)}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00062}00062\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dice}{Dice}}\ dice\ =\ \mbox{\hyperlink{class_dice}{Dice}}.Create(\textcolor{stringliteral}{"{}miasma\_"{}},\ base.power,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ list.Add(\textcolor{stringliteral}{"{}hintDOT"{}}.lang(dice.ToString(),\ base.sourceElement.GetName().ToLower(),\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_con_miasma_8cs_source_l00066}00066\ \}}
+
+\end{DoxyCode}

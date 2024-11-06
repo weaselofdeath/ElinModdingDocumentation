@@ -1,0 +1,109 @@
+\doxysection{Trans\+Anime.\+cs}
+\hypertarget{_trans_anime_8cs_source}{}\label{_trans_anime_8cs_source}\index{Elin/TransAnime.cs@{Elin/TransAnime.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000186\ RID:\ 390}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00005}\mbox{\hyperlink{class_trans_anime}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_trans_anime}{TransAnime}}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000B31\ RID:\ 2865\ RVA:\ 0x000459CC\ File\ Offset:\ 0x00043BCC}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_trans_anime}{TransAnime}}\ Init()}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.data.randomFlipX\ \&\&\ Rand.rnd(2)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ this.flipX\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.data.randomDelay\ !=\ 0f)}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ this.timer\ -\/=\ UnityEngine.Random.Range(0f,\ this.data.randomDelay);}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000B32\ RID:\ 2866\ RVA:\ 0x00045A2C\ File\ Offset:\ 0x00043C2C}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ Update()}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ this.timer\ +=\ \mbox{\hyperlink{class_render_object}{RenderObject}}.gameDelta;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.timer\ >\ this.data.interval)}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ this.timer\ -\/=\ this.data.interval;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ this.frame++;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.frame\ >=\ this.data.TotalFrame)}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.data.loop)}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.point\ !=\ \textcolor{keyword}{null}\ \&\&\ this.point.cell.detail\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.point.cell.detail.anime\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.point.cell.TryDespawnDetail();}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (this.renderer\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.renderer.anime\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.frame\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ this.v\ =\ this.data.vectors[this.frame];}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.data.randomMtp\ !=\ 0f)}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ this.v\ *=\ UnityEngine.Random.Range(1f\ -\/\ this.data.randomMtp,\ 1f\ +\ \textcolor{keyword}{this}.data.randomMtp);}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.flipX)}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ this.v.x\ =\ this.v.x\ *\ -\/1f;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.data.directional)}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ this.v.y\ =\ this.dest.y\ *\ this.v.x;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ this.v.x\ =\ this.dest.x\ *\ this.v.x;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ this.v.z\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.renderer\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ RenderObject.currentParam.x\ +=\ this.v.x;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ RenderObject.currentParam.y\ +=\ this.v.y;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ RenderObject.currentParam.z\ +=\ this.v.z;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A49\ RID:\ 2633}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ v;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A4A\ RID:\ 2634}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00075}00075\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_point}{Point}}\ point;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A4B\ RID:\ 2635}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00078}00078\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_card_renderer}{CardRenderer}}\ renderer;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A4C\ RID:\ 2636}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00081}00081\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_trans_anime_data}{TransAnimeData}}\ data;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A4D\ RID:\ 2637}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00084}00084\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ frame;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00086}00086\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A4E\ RID:\ 2638}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00087}00087\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ startFrame;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00089}00089\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A4F\ RID:\ 2639}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00090}00090\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ timer;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A50\ RID:\ 2640}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00093}00093\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ dest;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00095}00095\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A51\ RID:\ 2641}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00096}00096\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ animeBlock;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00098}00098\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A52\ RID:\ 2642}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00099}00099\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ flipX;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00101}00101\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A53\ RID:\ 2643}}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00102}00102\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ drawBlock;}
+\DoxyCodeLine{\Hypertarget{_trans_anime_8cs_source_l00103}00103\ \}}
+
+\end{DoxyCode}

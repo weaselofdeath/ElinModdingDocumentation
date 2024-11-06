@@ -1,0 +1,870 @@
+.TH "Quest" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Quest
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBEClass\fP\&.
+.PP
+Inherited by \fBQuestCraft\fP, \fBQuestLumiest\fP, \fBQuestRandom\fP, and \fBQuestSequence\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBDifficultyType\fP { \fBDefault\fP, \fBDeliver\fP, \fBSupply\fP, \fBEscort\fP, \fBBulk\fP, \fBMeal\fP, \fBFarm\fP, \fBMusic\fP }"
+.br
+.ti -1c
+.RI "enum \fBSubReward\fP { \fBplat\fP, \fBgacha_coin\fP, \fBmoney2\fP, \fBticket_furniture\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBThing\fP \fBGetDestThing\fP ()"
+.br
+.ti -1c
+.RI "virtual int \fBGetExtraMoney\fP ()"
+.br
+.ti -1c
+.RI "virtual int \fBGetRewardPlat\fP (int money)"
+.br
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "virtual bool \fBIsVisibleOnQuestBoard\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBCanStartQuest\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBCanUpdateOnTalk\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "virtual \fBZone\fP \fBCreateInstanceZone\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "virtual bool \fBUpdateOnTalk\fP ()"
+.br
+.ti -1c
+.RI "void \fBInit\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnInit\fP ()"
+.br
+.ti -1c
+.RI "\fBQuest\fP \fBSetClient\fP (\fBChara\fP c, bool assignQuest=true)"
+.br
+.ti -1c
+.RI "void \fBSetTask\fP (\fBQuestTask\fP _task)"
+.br
+.ti -1c
+.RI "void \fBStart\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnStart\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnEnterZone\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnClickQuest\fP ()"
+.br
+.ti -1c
+.RI "void \fBFail\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnFail\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBShowCompleteText\fP ()"
+.br
+.ti -1c
+.RI "void \fBComplete\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnBeforeComplete\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnDropReward\fP ()"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBDropReward\fP (string id)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBDropReward\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "virtual void \fBOnComplete\fP ()"
+.br
+.ti -1c
+.RI "void \fBCompleteTask\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnCompleteTask\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnGiveItem\fP (\fBChara\fP c, \fBThing\fP t)"
+.br
+.ti -1c
+.RI "virtual void \fBOnKillChara\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "virtual void \fBOnModKarma\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBNextPhase\fP ()"
+.br
+.ti -1c
+.RI "void \fBChangePhase\fP (int a)"
+.br
+.ti -1c
+.RI "virtual void \fBOnChangePhase\fP (int a)"
+.br
+.ti -1c
+.RI "string \fBParse\fP (string s)"
+.br
+.ti -1c
+.RI "virtual string \fBGetTitle\fP ()"
+.br
+.ti -1c
+.RI "virtual string \fBGetTrackerText\fP ()"
+.br
+.ti -1c
+.RI "virtual string \fBGetDetail\fP (bool onJournal=false)"
+.br
+.ti -1c
+.RI "virtual string \fBGetDetailText\fP (bool onJournal=false)"
+.br
+.ti -1c
+.RI "virtual string \fBGetTextProgress\fP ()"
+.br
+.ti -1c
+.RI "string \fBGetRewardText\fP ()"
+.br
+.ti -1c
+.RI "virtual string \fBGetTalkProgress\fP ()"
+.br
+.ti -1c
+.RI "virtual string \fBGetTalkComplete\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateJournal\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBIsDeliverTarget\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "virtual bool \fBCanDeliverToClient\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "virtual bool \fBCanDeliverToBox\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "virtual bool \fBDeliver\fP (\fBChara\fP c, \fBThing\fP t=null)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBQuest\fP \fBCreate\fP (string _id, string _idPerson=null, \fBChara\fP c=null)"
+.br
+.ti -1c
+.RI "static List< \fBZone\fP > \fBListDeliver\fP ()"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBid\fP"
+.br
+.ti -1c
+.RI "int \fBuid\fP"
+.br
+.ti -1c
+.RI "int \fBuidClientZone\fP"
+.br
+.ti -1c
+.RI "int \fBphase\fP"
+.br
+.ti -1c
+.RI "int \fBlv\fP"
+.br
+.ti -1c
+.RI "int \fBdeadline\fP"
+.br
+.ti -1c
+.RI "int \fBdifficulty\fP"
+.br
+.ti -1c
+.RI "int \fBrewardMoney\fP"
+.br
+.ti -1c
+.RI "int \fBbonusMoney\fP"
+.br
+.ti -1c
+.RI "int \fBstartDate\fP"
+.br
+.ti -1c
+.RI "int \fBdangerLv\fP"
+.br
+.ti -1c
+.RI "bool \fBisNew\fP"
+.br
+.ti -1c
+.RI "bool \fBisComplete\fP"
+.br
+.ti -1c
+.RI "bool \fBtrack\fP"
+.br
+.ti -1c
+.RI "\fBPerson\fP \fBperson\fP"
+.br
+.ti -1c
+.RI "\fBQuestTask\fP \fBtask\fP"
+.br
+.ti -1c
+.RI "\fBRefChara\fP \fBrefChara\fP = new \fBRefChara\fP()"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBPhaseComplete\fP = 999"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBZone\fP \fBClientZone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBchara\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceQuest\&.Row\fP \fBsource\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBConfetti\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsExpired\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBHours\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBTextDeadline\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasDLC\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBidSource\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBRewardSuffix\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBFameContent\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBTextExtra\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBDangerLv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBAffinityGain\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBBaseMoney\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBKarmaOnFail\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanAbandon\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBFameOnComplete\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBRangeDeadLine\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBUseInstanceZone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBForbidTeleport\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBRequireClientInSameZone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual Quest\&.DifficultyType \fBdifficultyType\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBChara\fP \fBDestChara\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBRefDrama1\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBRefDrama2\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBRefDrama3\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBRefDrama4\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBTitlePrefix\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanAutoAdvance\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsRandomQuest\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBNameDeliver\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB7\fP of file \fBQuest\&.cs\fP\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum Quest\&.DifficultyType"
+
+.PP
+Definition at line \fB941\fP of file \fBQuest\&.cs\fP\&.
+.SS "enum Quest\&.SubReward"
+
+.PP
+Definition at line \fB962\fP of file \fBQuest\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual bool Quest\&.CanDeliverToBox (\fBThing\fP t)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB849\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual bool Quest\&.CanDeliverToClient (\fBChara\fP c)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB843\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual bool Quest\&.CanStartQuest ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB407\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual bool Quest\&.CanUpdateOnTalk (\fBChara\fP c)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB413\fP of file \fBQuest\&.cs\fP\&.
+.SS "void Quest\&.ChangePhase (int a)"
+
+.PP
+Definition at line \fB707\fP of file \fBQuest\&.cs\fP\&.
+.SS "void Quest\&.Complete ()"
+
+.PP
+Definition at line \fB591\fP of file \fBQuest\&.cs\fP\&.
+.SS "void Quest\&.CompleteTask ()"
+
+.PP
+Definition at line \fB649\fP of file \fBQuest\&.cs\fP\&.
+.SS "static \fBQuest\fP Quest\&.Create (string _id, string _idPerson = \fRnull\fP, \fBChara\fP c = \fRnull\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB10\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual \fBZone\fP Quest\&.CreateInstanceZone (\fBChara\fP c)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB439\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual bool Quest\&.Deliver (\fBChara\fP c, \fBThing\fP t = \fRnull\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB855\fP of file \fBQuest\&.cs\fP\&.
+.SS "\fBThing\fP Quest\&.DropReward (string id)"
+
+.PP
+Definition at line \fB632\fP of file \fBQuest\&.cs\fP\&.
+.SS "\fBThing\fP Quest\&.DropReward (\fBThing\fP t)"
+
+.PP
+Definition at line \fB638\fP of file \fBQuest\&.cs\fP\&.
+.SS "override bool Quest\&.Equals (object obj)"
+
+.PP
+Definition at line \fB392\fP of file \fBQuest\&.cs\fP\&.
+.SS "void Quest\&.Fail ()"
+
+.PP
+Definition at line \fB561\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual \fBThing\fP Quest\&.GetDestThing ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB302\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.GetDetail (bool onJournal = \fRfalse\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB766\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.GetDetailText (bool onJournal = \fRfalse\fP)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB786\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual int Quest\&.GetExtraMoney ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB308\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual int Quest\&.GetRewardPlat (int money)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB314\fP of file \fBQuest\&.cs\fP\&.
+.SS "string Quest\&.GetRewardText ()"
+
+.PP
+Definition at line \fB807\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.GetTalkComplete ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB824\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.GetTalkProgress ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB818\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.GetTextProgress ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB797\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.GetTitle ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB744\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.GetTrackerText ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB755\fP of file \fBQuest\&.cs\fP\&.
+.SS "void Quest\&.Init ()"
+
+.PP
+Definition at line \fB453\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual bool Quest\&.IsDeliverTarget (\fBChara\fP c)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB837\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual bool Quest\&.IsVisibleOnQuestBoard ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB401\fP of file \fBQuest\&.cs\fP\&.
+.SS "static List< \fBZone\fP > Quest\&.ListDeliver ()\fR [static]\fP"
+
+.PP
+Definition at line \fB30\fP of file \fBQuest\&.cs\fP\&.
+.SS "void Quest\&.NextPhase ()"
+
+.PP
+Definition at line \fB701\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual void Quest\&.OnBeforeComplete ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB622\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual void Quest\&.OnChangePhase (int a)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB715\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual void Quest\&.OnClickQuest ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB546\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual void Quest\&.OnComplete ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB644\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual void Quest\&.OnCompleteTask ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB656\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual void Quest\&.OnDropReward ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB627\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual void Quest\&.OnEnterZone ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB541\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual void Quest\&.OnFail ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB579\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual void Quest\&.OnGiveItem (\fBChara\fP c, \fBThing\fP t)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB662\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual void Quest\&.OnInit ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB494\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual void Quest\&.OnKillChara (\fBChara\fP c)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB675\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual void Quest\&.OnModKarma (int a)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB688\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual void Quest\&.OnStart ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB536\fP of file \fBQuest\&.cs\fP\&.
+.SS "string Quest\&.Parse (string s)"
+
+.PP
+Definition at line \fB720\fP of file \fBQuest\&.cs\fP\&.
+.SS "\fBQuest\fP Quest\&.SetClient (\fBChara\fP c, bool assignQuest = \fRtrue\fP)"
+
+.PP
+Definition at line \fB499\fP of file \fBQuest\&.cs\fP\&.
+.SS "void Quest\&.SetTask (\fBQuestTask\fP _task)"
+
+.PP
+Definition at line \fB519\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual void Quest\&.ShowCompleteText ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB584\fP of file \fBQuest\&.cs\fP\&.
+.SS "void Quest\&.Start ()"
+
+.PP
+Definition at line \fB526\fP of file \fBQuest\&.cs\fP\&.
+.SS "void Quest\&.UpdateJournal ()"
+
+.PP
+Definition at line \fB830\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual bool Quest\&.UpdateOnTalk ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB445\fP of file \fBQuest\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int Quest\&.bonusMoney"
+
+.PP
+Definition at line \fB907\fP of file \fBQuest\&.cs\fP\&.
+.SS "int Quest\&.dangerLv"
+
+.PP
+Definition at line \fB915\fP of file \fBQuest\&.cs\fP\&.
+.SS "int Quest\&.deadline"
+
+.PP
+Definition at line \fB895\fP of file \fBQuest\&.cs\fP\&.
+.SS "int Quest\&.difficulty"
+
+.PP
+Definition at line \fB899\fP of file \fBQuest\&.cs\fP\&.
+.SS "string Quest\&.id"
+
+.PP
+Definition at line \fB875\fP of file \fBQuest\&.cs\fP\&.
+.SS "bool Quest\&.isComplete"
+
+.PP
+Definition at line \fB923\fP of file \fBQuest\&.cs\fP\&.
+.SS "bool Quest\&.isNew"
+
+.PP
+Definition at line \fB919\fP of file \fBQuest\&.cs\fP\&.
+.SS "int Quest\&.lv"
+
+.PP
+Definition at line \fB891\fP of file \fBQuest\&.cs\fP\&.
+.SS "\fBPerson\fP Quest\&.person"
+
+.PP
+Definition at line \fB931\fP of file \fBQuest\&.cs\fP\&.
+.SS "int Quest\&.phase"
+
+.PP
+Definition at line \fB887\fP of file \fBQuest\&.cs\fP\&.
+.SS "const int Quest\&.PhaseComplete = 999\fR [static]\fP"
+
+.PP
+Definition at line \fB871\fP of file \fBQuest\&.cs\fP\&.
+.SS "\fBRefChara\fP Quest\&.refChara = new \fBRefChara\fP()"
+
+.PP
+Definition at line \fB938\fP of file \fBQuest\&.cs\fP\&.
+.SS "int Quest\&.rewardMoney"
+
+.PP
+Definition at line \fB903\fP of file \fBQuest\&.cs\fP\&.
+.SS "int Quest\&.startDate"
+
+.PP
+Definition at line \fB911\fP of file \fBQuest\&.cs\fP\&.
+.SS "\fBQuestTask\fP Quest\&.task"
+
+.PP
+Definition at line \fB935\fP of file \fBQuest\&.cs\fP\&.
+.SS "bool Quest\&.track"
+
+.PP
+Definition at line \fB927\fP of file \fBQuest\&.cs\fP\&.
+.SS "int Quest\&.uid"
+
+.PP
+Definition at line \fB879\fP of file \fBQuest\&.cs\fP\&.
+.SS "int Quest\&.uidClientZone"
+
+.PP
+Definition at line \fB883\fP of file \fBQuest\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual int Quest\&.AffinityGain\fR [get]\fP"
+
+.PP
+Definition at line \fB203\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual int Quest\&.BaseMoney\fR [get]\fP"
+
+.PP
+Definition at line \fB213\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual bool Quest\&.CanAbandon\fR [get]\fP"
+
+.PP
+Definition at line \fB233\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual bool Quest\&.CanAutoAdvance\fR [get]\fP"
+
+.PP
+Definition at line \fB420\fP of file \fBQuest\&.cs\fP\&.
+.SS "\fBChara\fP Quest\&.chara\fR [get]\fP"
+
+.PP
+Definition at line \fB71\fP of file \fBQuest\&.cs\fP\&.
+.SS "\fBZone\fP Quest\&.ClientZone\fR [get]\fP"
+
+.PP
+Definition at line \fB45\fP of file \fBQuest\&.cs\fP\&.
+.SS "bool Quest\&.Confetti\fR [get]\fP"
+
+.PP
+Definition at line \fB91\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual int Quest\&.DangerLv\fR [get]\fP"
+
+.PP
+Definition at line \fB193\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual \fBChara\fP Quest\&.DestChara\fR [get]\fP"
+
+.PP
+Definition at line \fB321\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual Quest\&.DifficultyType Quest\&.difficultyType\fR [get]\fP"
+
+.PP
+Definition at line \fB293\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual bool Quest\&.FameContent\fR [get]\fP"
+
+.PP
+Definition at line \fB169\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual int Quest\&.FameOnComplete\fR [get]\fP"
+
+.PP
+Definition at line \fB243\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual bool Quest\&.ForbidTeleport\fR [get]\fP"
+
+.PP
+Definition at line \fB273\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual bool Quest\&.HasDLC\fR [get]\fP"
+
+.PP
+Definition at line \fB139\fP of file \fBQuest\&.cs\fP\&.
+.SS "int Quest\&.Hours\fR [get]\fP"
+
+.PP
+Definition at line \fB111\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.idSource\fR [get]\fP"
+
+.PP
+Definition at line \fB149\fP of file \fBQuest\&.cs\fP\&.
+.SS "bool Quest\&.IsExpired\fR [get]\fP"
+
+.PP
+Definition at line \fB101\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual bool Quest\&.IsRandomQuest\fR [get]\fP"
+
+.PP
+Definition at line \fB430\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual int Quest\&.KarmaOnFail\fR [get]\fP"
+
+.PP
+Definition at line \fB223\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.NameDeliver\fR [get]\fP"
+
+.PP
+Definition at line \fB862\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual int Quest\&.RangeDeadLine\fR [get]\fP"
+
+.PP
+Definition at line \fB253\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.RefDrama1\fR [get]\fP"
+
+.PP
+Definition at line \fB331\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.RefDrama2\fR [get]\fP"
+
+.PP
+Definition at line \fB345\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.RefDrama3\fR [get]\fP"
+
+.PP
+Definition at line \fB359\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.RefDrama4\fR [get]\fP"
+
+.PP
+Definition at line \fB373\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual bool Quest\&.RequireClientInSameZone\fR [get]\fP"
+
+.PP
+Definition at line \fB283\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.RewardSuffix\fR [get]\fP"
+
+.PP
+Definition at line \fB159\fP of file \fBQuest\&.cs\fP\&.
+.SS "\fBSourceQuest\&.Row\fP Quest\&.source\fR [get]\fP"
+
+.PP
+Definition at line \fB81\fP of file \fBQuest\&.cs\fP\&.
+.SS "string Quest\&.TextDeadline\fR [get]\fP"
+
+.PP
+Definition at line \fB125\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.TextExtra\fR [get]\fP"
+
+.PP
+Definition at line \fB179\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual string Quest\&.TitlePrefix\fR [get]\fP"
+
+.PP
+Definition at line \fB383\fP of file \fBQuest\&.cs\fP\&.
+.SS "virtual bool Quest\&.UseInstanceZone\fR [get]\fP"
+
+.PP
+Definition at line \fB263\fP of file \fBQuest\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

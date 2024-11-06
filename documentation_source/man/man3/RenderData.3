@@ -1,0 +1,368 @@
+.TH "RenderData" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RenderData
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBEScriptable\fP, and \fBIRenderer\fP\&.
+.PP
+Inherited by \fBRenderDataCard\fP, \fBRenderDataEffect\fP, \fBRenderDataFish\fP, and \fBRenderDataTile\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBCardActor\fP \fBCreateActor\fP ()"
+.br
+.ti -1c
+.RI "void \fBInit\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnInit\fP ()"
+.br
+.ti -1c
+.RI "int \fBConvertTile\fP (int tile)"
+.br
+.ti -1c
+.RI "void \fBRenderToRenderCam\fP (\fBRenderParam\fP p)"
+.br
+.ti -1c
+.RI "void \fBDraw\fP (\fBRenderParam\fP p, int tile)"
+.br
+.ti -1c
+.RI "virtual void \fBDraw\fP (\fBRenderParam\fP p)"
+.br
+.ti -1c
+.RI "void \fBDrawRepeatTo\fP (\fBRenderParam\fP p, float maxY, float height, ref Vector3 peakFix, bool skipFirst=false, int fire=0, bool isBlock=false)"
+.br
+.ti -1c
+.RI "void \fBDrawRepeat\fP (\fBRenderParam\fP p, int count, float size, bool skipFirst=false)"
+.br
+.ti -1c
+.RI "virtual void \fBDrawWithRotation\fP (\fBRenderParam\fP p, float angle)"
+.br
+.ti -1c
+.RI "virtual void \fBDrawShadow\fP (\fBRenderParam\fP p)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBIRenderer\fP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBidShadow\fP"
+.br
+.ti -1c
+.RI "\fBMeshPass\fP \fBpass\fP"
+.br
+.ti -1c
+.RI "Vector3 \fBoffset\fP"
+.br
+.ti -1c
+.RI "Vector3 \fBoffsetBack\fP"
+.br
+.ti -1c
+.RI "Vector3 \fBoffsetShadow\fP"
+.br
+.ti -1c
+.RI "Vector3 \fBheldPos\fP"
+.br
+.ti -1c
+.RI "Vector2 \fBimagePivot\fP = new Vector2(0\&.5f, 0\&.25f)"
+.br
+.ti -1c
+.RI "Vector2 \fBimageScale\fP = new Vector2(1f, 1f)"
+.br
+.ti -1c
+.RI "Vector2 \fBsize\fP"
+.br
+.ti -1c
+.RI "bool \fBmultiSize\fP"
+.br
+.ti -1c
+.RI "bool \fBanimate\fP"
+.br
+.ti -1c
+.RI "bool \fBuseOffsetBack\fP"
+.br
+.ti -1c
+.RI "bool \fBpersistActor\fP"
+.br
+.ti -1c
+.RI "bool \fBsymmetry\fP = true"
+.br
+.ti -1c
+.RI "float \fBhangedFixZ\fP"
+.br
+.ti -1c
+.RI "float \fBstackZ\fP"
+.br
+.ti -1c
+.RI "\fBSubPassData\fP \fBsubCrate\fP"
+.br
+.ti -1c
+.RI "\fBSourcePref\fP \fBshadowPref\fP"
+.br
+.ti -1c
+.RI "\fBRenderData\fP \fBsubData\fP"
+.br
+.ti -1c
+.RI "bool \fBinitialized\fP"
+.br
+.ti -1c
+.RI "bool \fBhasSubPass\fP"
+.br
+.ti -1c
+.RI "bool \fBhasSnowPass\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBHeldLightMod\fP = 1572864"
+.br
+.ti -1c
+.RI "static Quaternion \fBdeadRotation\fP = Quaternion\&.Euler(0f, 0f, 90f)"
+.br
+.ti -1c
+.RI "static \fBGameSetting\&.RenderSetting\fP \fBrenderSetting\fP"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "Vector3 \fB_offset\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static Quaternion \fBshadowRotation\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static Vector3 \fBshadowScale\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static Vector3 \fBshadowOffset\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBSkipOnMap\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBpathSprite\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBprefabName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBForceAltHeldPosition\fP\fR [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Static Public Member Functions inherited from \fBEScriptable\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB5\fP of file \fBRenderData\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int RenderData\&.ConvertTile (int tile)"
+
+.PP
+Definition at line \fB111\fP of file \fBRenderData\&.cs\fP\&.
+.SS "virtual \fBCardActor\fP RenderData\&.CreateActor ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB68\fP of file \fBRenderData\&.cs\fP\&.
+.SS "virtual void RenderData\&.Draw (\fBRenderParam\fP p)\fR [virtual]\fP"
+
+.PP
+Implements \fBIRenderer\fP\&.
+.PP
+Definition at line \fB138\fP of file \fBRenderData\&.cs\fP\&.
+.SS "void RenderData\&.Draw (\fBRenderParam\fP p, int tile)"
+
+.PP
+Definition at line \fB131\fP of file \fBRenderData\&.cs\fP\&.
+.SS "void RenderData\&.DrawRepeat (\fBRenderParam\fP p, int count, float size, bool skipFirst = \fRfalse\fP)"
+
+.PP
+Definition at line \fB221\fP of file \fBRenderData\&.cs\fP\&.
+.SS "void RenderData\&.DrawRepeatTo (\fBRenderParam\fP p, float maxY, float height, ref Vector3 peakFix, bool skipFirst = \fRfalse\fP, int fire = \fR0\fP, bool isBlock = \fRfalse\fP)"
+
+.PP
+Definition at line \fB174\fP of file \fBRenderData\&.cs\fP\&.
+.SS "virtual void RenderData\&.DrawShadow (\fBRenderParam\fP p)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB258\fP of file \fBRenderData\&.cs\fP\&.
+.SS "virtual void RenderData\&.DrawWithRotation (\fBRenderParam\fP p, float angle)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB253\fP of file \fBRenderData\&.cs\fP\&.
+.SS "void RenderData\&.Init ()"
+
+.PP
+Definition at line \fB90\fP of file \fBRenderData\&.cs\fP\&.
+.SS "virtual void RenderData\&.OnInit ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB106\fP of file \fBRenderData\&.cs\fP\&.
+.SS "void RenderData\&.RenderToRenderCam (\fBRenderParam\fP p)"
+
+.PP
+Implements \fBIRenderer\fP\&.
+.PP
+Definition at line \fB117\fP of file \fBRenderData\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "Vector3 RenderData\&._offset\fR [protected]\fP"
+
+.PP
+Definition at line \fB291\fP of file \fBRenderData\&.cs\fP\&.
+.SS "bool RenderData\&.animate"
+
+.PP
+Definition at line \fB327\fP of file \fBRenderData\&.cs\fP\&.
+.SS "Quaternion RenderData\&.deadRotation = Quaternion\&.Euler(0f, 0f, 90f)\fR [static]\fP"
+
+.PP
+Definition at line \fB288\fP of file \fBRenderData\&.cs\fP\&.
+.SS "float RenderData\&.hangedFixZ"
+
+.PP
+Definition at line \fB339\fP of file \fBRenderData\&.cs\fP\&.
+.SS "bool RenderData\&.hasSnowPass"
+
+.PP
+Definition at line \fB367\fP of file \fBRenderData\&.cs\fP\&.
+.SS "bool RenderData\&.hasSubPass"
+
+.PP
+Definition at line \fB363\fP of file \fBRenderData\&.cs\fP\&.
+.SS "const int RenderData\&.HeldLightMod = 1572864\fR [static]\fP"
+
+.PP
+Definition at line \fB285\fP of file \fBRenderData\&.cs\fP\&.
+.SS "Vector3 RenderData\&.heldPos"
+
+.PP
+Definition at line \fB312\fP of file \fBRenderData\&.cs\fP\&.
+.SS "int RenderData\&.idShadow"
+
+.PP
+Definition at line \fB297\fP of file \fBRenderData\&.cs\fP\&.
+.SS "Vector2 RenderData\&.imagePivot = new Vector2(0\&.5f, 0\&.25f)"
+
+.PP
+Definition at line \fB315\fP of file \fBRenderData\&.cs\fP\&.
+.SS "Vector2 RenderData\&.imageScale = new Vector2(1f, 1f)"
+
+.PP
+Definition at line \fB318\fP of file \fBRenderData\&.cs\fP\&.
+.SS "bool RenderData\&.initialized"
+
+.PP
+Definition at line \fB355\fP of file \fBRenderData\&.cs\fP\&.
+.SS "bool RenderData\&.multiSize"
+
+.PP
+Definition at line \fB324\fP of file \fBRenderData\&.cs\fP\&.
+.SS "Vector3 RenderData\&.offset"
+
+.PP
+Definition at line \fB303\fP of file \fBRenderData\&.cs\fP\&.
+.SS "Vector3 RenderData\&.offsetBack"
+
+.PP
+Definition at line \fB306\fP of file \fBRenderData\&.cs\fP\&.
+.SS "Vector3 RenderData\&.offsetShadow"
+
+.PP
+Definition at line \fB309\fP of file \fBRenderData\&.cs\fP\&.
+.SS "\fBMeshPass\fP RenderData\&.pass"
+
+.PP
+Definition at line \fB300\fP of file \fBRenderData\&.cs\fP\&.
+.SS "bool RenderData\&.persistActor"
+
+.PP
+Definition at line \fB333\fP of file \fBRenderData\&.cs\fP\&.
+.SS "\fBGameSetting\&.RenderSetting\fP RenderData\&.renderSetting\fR [static]\fP"
+
+.PP
+Definition at line \fB294\fP of file \fBRenderData\&.cs\fP\&.
+.SS "\fBSourcePref\fP RenderData\&.shadowPref"
+
+.PP
+Definition at line \fB348\fP of file \fBRenderData\&.cs\fP\&.
+.SS "Vector2 RenderData\&.size"
+
+.PP
+Definition at line \fB321\fP of file \fBRenderData\&.cs\fP\&.
+.SS "float RenderData\&.stackZ"
+
+.PP
+Definition at line \fB342\fP of file \fBRenderData\&.cs\fP\&.
+.SS "\fBSubPassData\fP RenderData\&.subCrate"
+
+.PP
+Definition at line \fB345\fP of file \fBRenderData\&.cs\fP\&.
+.SS "\fBRenderData\fP RenderData\&.subData"
+
+.PP
+Definition at line \fB351\fP of file \fBRenderData\&.cs\fP\&.
+.SS "bool RenderData\&.symmetry = true"
+
+.PP
+Definition at line \fB336\fP of file \fBRenderData\&.cs\fP\&.
+.SS "bool RenderData\&.useOffsetBack"
+
+.PP
+Definition at line \fB330\fP of file \fBRenderData\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual bool RenderData\&.ForceAltHeldPosition\fR [get]\fP"
+
+.PP
+Definition at line \fB75\fP of file \fBRenderData\&.cs\fP\&.
+.SS "virtual string RenderData\&.pathSprite\fR [get]\fP"
+
+.PP
+Definition at line \fB49\fP of file \fBRenderData\&.cs\fP\&.
+.SS "virtual string RenderData\&.prefabName\fR [get]\fP"
+
+.PP
+Definition at line \fB59\fP of file \fBRenderData\&.cs\fP\&.
+.SS "Vector3 RenderData\&.shadowOffset\fR [static]\fP, \fR [get]\fP"
+
+.PP
+Definition at line \fB29\fP of file \fBRenderData\&.cs\fP\&.
+.SS "Quaternion RenderData\&.shadowRotation\fR [static]\fP, \fR [get]\fP"
+
+.PP
+Definition at line \fB9\fP of file \fBRenderData\&.cs\fP\&.
+.SS "Vector3 RenderData\&.shadowScale\fR [static]\fP, \fR [get]\fP"
+
+.PP
+Definition at line \fB19\fP of file \fBRenderData\&.cs\fP\&.
+.SS "virtual bool RenderData\&.SkipOnMap\fR [get]\fP"
+
+.PP
+Definition at line \fB39\fP of file \fBRenderData\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

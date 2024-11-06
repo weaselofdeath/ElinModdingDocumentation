@@ -1,0 +1,357 @@
+.TH "Area" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Area
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBBaseArea\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnLoad\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddPoint\fP (\fBPoint\fP point, bool onLoad=false)"
+.br
+.ti -1c
+.RI "void \fBRemovePoint\fP (\fBPoint\fP point)"
+.br
+.ti -1c
+.RI "virtual void \fBOnRemovePoint\fP (\fBPoint\fP point)"
+.br
+.ti -1c
+.RI "virtual void \fBOnInstallCard\fP (\fBCard\fP t)"
+.br
+.ti -1c
+.RI "virtual void \fBOnUninstallCard\fP (\fBCard\fP t)"
+.br
+.ti -1c
+.RI "void \fBOnHoverArea\fP (\fBMeshPass\fP pass)"
+.br
+.ti -1c
+.RI "virtual byte \fBGetTile\fP (int index)"
+.br
+.ti -1c
+.RI "virtual void \fBUpdate\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnRemove\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBBaseArea\fP
+.in +1c
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomFreePos\fP ()"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBGetEmptySeat\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBPoint\fP \fBGetRandomPoint\fP (bool walkable=true, bool allowChara=true)"
+.br
+.ti -1c
+.RI "void \fBChangeType\fP (string _id)"
+.br
+.ti -1c
+.RI "void \fBSetRandomName\fP (int seed=\-1)"
+.br
+.ti -1c
+.RI "string \fBGetRandomName\fP (int seed=\-1)"
+.br
+.ti -1c
+.RI "HashSet< string > \fBListRoomNames\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetSortVal\fP (UIList\&.SortMode m)"
+.br
+.ti -1c
+.RI "List< \fBBaseArea\&.Interaction\fP > \fBListInteractions\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnInspect\fP ()"
+.br
+.ti -1c
+.RI "void \fBWriteNote\fP (UINote n, Action< UINote > onWriteNote=null, IInspect\&.NoteMode mode=IInspect\&.NoteMode\&.Default, \fBRecipe\fP recipe=null)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBIInspect\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBArea\fP \fBCreate\fP (string id)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBTaskList\fP< \fBTask\fP > \fBtaskList\fP = new \fBTaskList\fP<\fBTask\fP>()"
+.br
+.ti -1c
+.RI "bool \fBisDestroyed\fP"
+.br
+.in -1c
+
+Public Attributes inherited from \fBBaseArea\fP
+.in +1c
+.ti -1c
+.RI "int \fBuid\fP"
+.br
+.ti -1c
+.RI "\fBPointList\fP \fBpoints\fP = new \fBPointList\fP()"
+.br
+.ti -1c
+.RI "\fBAreaData\fP \fBdata\fP = new \fBAreaData\fP()"
+.br
+.ti -1c
+.RI "\fBAreaType\fP \fBtype\fP = new \fBAreaTypeRoom\fP()"
+.br
+.ti -1c
+.RI "\fBTraitRoomPlate\fP \fBplate\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBisListable\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBAutoTask\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBRoomManager\fP \fBmanager\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBBaseArea\fP
+.in +1c
+.ti -1c
+.RI "virtual string \fBName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsPrivate\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceArea\&.Row\fP \fBsource\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBCanInspect\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBInspectName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBInspectPoint\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "Vector3 \fBInspectPosition\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBIInspect\fP
+.SS "Additional Inherited Members"
+
+
+Public Types inherited from \fBBaseArea\fP
+.in +1c
+.ti -1c
+.RI "enum \fBAccessType\fP { \fBPublic\fP, \fBPrivate\fP }"
+.br
+.in -1c
+
+Public Types inherited from \fBIInspect\fP
+.in +1c
+.ti -1c
+.RI "enum \fBNoteMode\fP { \fBDefault\fP, \fBRecipe\fP, \fBProduct\fP, \fBInfo\fP }"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB5\fP of file \fBArea\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Area\&.AddPoint (\fBPoint\fP point, bool onLoad = \fRfalse\fP)"
+
+.PP
+Definition at line \fB50\fP of file \fBArea\&.cs\fP\&.
+.SS "static \fBArea\fP Area\&.Create (string id)\fR [static]\fP"
+
+.PP
+Definition at line \fB136\fP of file \fBArea\&.cs\fP\&.
+.SS "virtual byte Area\&.GetTile (int index)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB104\fP of file \fBArea\&.cs\fP\&.
+.SS "void Area\&.OnHoverArea (\fBMeshPass\fP pass)"
+
+.PP
+Definition at line \fB95\fP of file \fBArea\&.cs\fP\&.
+.SS "virtual void Area\&.OnInstallCard (\fBCard\fP t)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB85\fP of file \fBArea\&.cs\fP\&.
+.SS "virtual void Area\&.OnLoad ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB38\fP of file \fBArea\&.cs\fP\&.
+.SS "void Area\&.OnRemove ()"
+
+.PP
+Definition at line \fB115\fP of file \fBArea\&.cs\fP\&.
+.SS "virtual void Area\&.OnRemovePoint (\fBPoint\fP point)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB80\fP of file \fBArea\&.cs\fP\&.
+.SS "virtual void Area\&.OnUninstallCard (\fBCard\fP t)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB90\fP of file \fBArea\&.cs\fP\&.
+.SS "void Area\&.RemovePoint (\fBPoint\fP point)"
+
+.PP
+Definition at line \fB60\fP of file \fBArea\&.cs\fP\&.
+.SS "virtual void Area\&.Update ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB110\fP of file \fBArea\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool Area\&.isDestroyed"
+
+.PP
+Definition at line \fB149\fP of file \fBArea\&.cs\fP\&.
+.SS "\fBTaskList\fP<\fBTask\fP> Area\&.taskList = new \fBTaskList\fP<\fBTask\fP>()"
+
+.PP
+Definition at line \fB146\fP of file \fBArea\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual bool Area\&.AutoTask\fR [get]\fP"
+
+.PP
+Definition at line \fB19\fP of file \fBArea\&.cs\fP\&.
+.SS "virtual bool Area\&.isListable\fR [get]\fP"
+
+.PP
+Definition at line \fB9\fP of file \fBArea\&.cs\fP\&.
+.SS "\fBRoomManager\fP Area\&.manager\fR [get]\fP"
+
+.PP
+Definition at line \fB29\fP of file \fBArea\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

@@ -1,0 +1,1941 @@
+.TH "Thing" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Thing
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBCard\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBCanAutoFire\fP (\fBChara\fP c, \fBCard\fP tg, bool reloading=false)"
+.br
+.ti -1c
+.RI "int \fBGetEfficiency\fP ()"
+.br
+.ti -1c
+.RI "override void \fBSetSource\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnCreate\fP (int genLv)"
+.br
+.ti -1c
+.RI "override void \fBApplyMaterialElements\fP (bool remove)"
+.br
+.ti -1c
+.RI "override void \fBApplyMaterial\fP (bool remove=false)"
+.br
+.ti -1c
+.RI "override string \fBGetName\fP (NameStyle style, int _num=\-1)"
+.br
+.ti -1c
+.RI "override string \fBGetHoverText\fP ()"
+.br
+.ti -1c
+.RI "override string \fBGetExtraName\fP ()"
+.br
+.ti -1c
+.RI "List< \fBElement\fP > \fBListLimitedValidTraits\fP (bool limit)"
+.br
+.ti -1c
+.RI "List< \fBElement\fP > \fBListValidTraits\fP (bool isCraft, bool limit)"
+.br
+.ti -1c
+.RI "override void \fBWriteNote\fP (UINote n, Action< UINote > onWriteNote=null, IInspect\&.NoteMode mode=IInspect\&.NoteMode\&.Default, \fBRecipe\fP recipe=null)"
+.br
+.ti -1c
+.RI "override void \fBSetRenderParam\fP (\fBRenderParam\fP p)"
+.br
+.ti -1c
+.RI "override \fBSubPassData\fP \fBGetSubPassData\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBCanStackTo\fP (\fBThing\fP to)"
+.br
+.ti -1c
+.RI "void \fBGetIngredients\fP (\fBRecipe\&.Ingredient\fP ing, List< \fBThing\fP > list)"
+.br
+.ti -1c
+.RI "bool \fBIsValidIngredient\fP (\fBRecipe\&.Ingredient\fP ing)"
+.br
+.ti -1c
+.RI "void \fBGetRecipes\fP (HashSet< \fBRecipe\fP > recipes)"
+.br
+.ti -1c
+.RI "void \fBGetDisassembles\fP (List< \fBThing\fP > list)"
+.br
+.ti -1c
+.RI "void \fBDisassemble\fP ()"
+.br
+.ti -1c
+.RI "void \fBShowSplitMenu\fP (\fBButtonGrid\fP button, \fBInvOwner\&.Transaction\fP trans=null)"
+.br
+.ti -1c
+.RI "void \fBDoAct\fP (\fBAct\fP act)"
+.br
+.ti -1c
+.RI "void \fBTryLickEnchant\fP (\fBChara\fP c, bool msg=true, \fBChara\fP tg=null, \fBBodySlot\fP slot=null)"
+.br
+.ti -1c
+.RI "\fBElement\fP \fBAddEnchant\fP (int lv=\-1)"
+.br
+.ti -1c
+.RI "void \fBRemoveEnchant\fP ()"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBIdentify\fP (bool show=true, IDTSource idtSource=IDTSource\&.Identify)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBCard\fP
+.in +1c
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "bool \fBCanReserve\fP (\fBAIAct\fP act)"
+.br
+.ti -1c
+.RI "bool \fBTryReserve\fP (\fBAIAct\fP act)"
+.br
+.ti -1c
+.RI "void \fBMod\fP ()"
+.br
+.ti -1c
+.RI "Window\&.SaveData \fBGetWindowSaveData\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsExcludeFromCraft\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetDirtyWeight\fP ()"
+.br
+.ti -1c
+.RI "void \fBChangeWeight\fP (int a)"
+.br
+.ti -1c
+.RI "int \fBEvalue\fP (int ele)"
+.br
+.ti -1c
+.RI "int \fBEvalue\fP (string alias)"
+.br
+.ti -1c
+.RI "bool \fBHasTag\fP (CTAG tag)"
+.br
+.ti -1c
+.RI "bool \fBHasEditorTag\fP (EditorTag tag)"
+.br
+.ti -1c
+.RI "void \fBAddEditorTag\fP (EditorTag tag)"
+.br
+.ti -1c
+.RI "void \fBRemoveEditorTag\fP (EditorTag tag)"
+.br
+.ti -1c
+.RI "virtual string \fBGetDetail\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetBestAttribute\fP ()"
+.br
+.ti -1c
+.RI "void \fBModExp\fP (string alias, int a)"
+.br
+.ti -1c
+.RI "void \fBModExp\fP (int ele, int a)"
+.br
+.ti -1c
+.RI "bool \fBIsChildOf\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "string \fBReferenceId\fP ()"
+.br
+.ti -1c
+.RI "void \fBCreate\fP (string _id, int _idMat=\-1, int genLv=\-1)"
+.br
+.ti -1c
+.RI "virtual void \fBOnBeforeCreate\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBApplyEditorTags\fP (EditorTag tag)"
+.br
+.ti -1c
+.RI "void \fBApplyTrait\fP ()"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBSetLv\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBAddExp\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBLevelUp\fP ()"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBChangeMaterial\fP (int idNew)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBChangeMaterial\fP (string idNew)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBChangeMaterial\fP (\fBSourceMaterial\&.Row\fP row)"
+.br
+.ti -1c
+.RI "void \fBSetReplica\fP (bool on)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBAdd\fP (string id, int num=1, int lv=1)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBAddCard\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "void \fBRemoveCard\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "void \fBNotifyAddThing\fP (\fBThing\fP t, int num)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBAddThing\fP (string id, int lv=\-1)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBAddThing\fP (\fBThing\fP t, bool tryStack=true, int destInvX=\-1, int destInvY=\-1)"
+.br
+.ti -1c
+.RI "void \fBRemoveThings\fP ()"
+.br
+.ti -1c
+.RI "void \fBRemoveThing\fP (\fBThing\fP thing)"
+.br
+.ti -1c
+.RI "bool \fBShouldTrySetDirtyInventory\fP ()"
+.br
+.ti -1c
+.RI "bool \fBTryStackTo\fP (\fBThing\fP to)"
+.br
+.ti -1c
+.RI "\fBICardParent\fP \fBGetRoot\fP ()"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBGetRootCard\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsStackable\fP (\fBThing\fP tg)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBDuplicate\fP (int num)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBSplit\fP (int a)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBSetNum\fP (int a)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBSetNoSell\fP ()"
+.br
+.ti -1c
+.RI "void \fBModNum\fP (int a, bool notify=true)"
+.br
+.ti -1c
+.RI "void \fBAddSocket\fP ()"
+.br
+.ti -1c
+.RI "void \fBApplySocket\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "void \fBApplySocket\fP (int id, int lv, \fBCard\fP mod=null)"
+.br
+.ti -1c
+.RI "void \fBEjectSockets\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnChildNumChange\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBInstall\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetPlaceState\fP (PlaceState newState, bool byPlayer=false)"
+.br
+.ti -1c
+.RI "int \fBGetTotalQuality\fP (bool applyBonus=true)"
+.br
+.ti -1c
+.RI "void \fBModEncLv\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBSetEncLv\fP (int a)"
+.br
+.ti -1c
+.RI "virtual void \fBSetBlessedState\fP (BlessedState s)"
+.br
+.ti -1c
+.RI "virtual void \fBChangeRarity\fP (Rarity q)"
+.br
+.ti -1c
+.RI "bool \fBTryPay\fP (int a, string id='money')"
+.br
+.ti -1c
+.RI "void \fBSetCharge\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBModCharge\fP (int a, bool destroy=false)"
+.br
+.ti -1c
+.RI "void \fBModCurrency\fP (int a, string id='money')"
+.br
+.ti -1c
+.RI "int \fBGetCurrency\fP (string id='money')"
+.br
+.ti -1c
+.RI "virtual void \fBHealHPHost\fP (int a, HealSource origin=HealSource\&.None)"
+.br
+.ti -1c
+.RI "virtual void \fBHealHP\fP (int a, HealSource origin=HealSource\&.None)"
+.br
+.ti -1c
+.RI "virtual int \fBGetArmorSkill\fP ()"
+.br
+.ti -1c
+.RI "virtual int \fBApplyProtection\fP (int dmg, int mod=100)"
+.br
+.ti -1c
+.RI "void \fBDamageHP\fP (int dmg, AttackSource attackSource=AttackSource\&.None, \fBCard\fP origin=null)"
+.br
+.ti -1c
+.RI "void \fBDamageHP\fP (int dmg, int ele, int eleP=100, AttackSource attackSource=AttackSource\&.None, \fBCard\fP origin=null, bool showEffect=true)"
+.br
+.ti -1c
+.RI "virtual void \fBDie\fP (\fBElement\fP e=null, \fBCard\fP origin=null, AttackSource attackSource=AttackSource\&.None)"
+.br
+.ti -1c
+.RI "void \fBExplode\fP (\fBPoint\fP p, \fBCard\fP origin)"
+.br
+.ti -1c
+.RI "void \fBDeconstruct\fP ()"
+.br
+.ti -1c
+.RI "void \fBDestroy\fP ()"
+.br
+.ti -1c
+.RI "void \fBSpawnLoot\fP (\fBCard\fP origin)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBTryMakeRandomItem\fP (int lv=\-1)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBMakeFoodFrom\fP (string _id)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBMakeFoodFrom\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "void \fBMakeFoodRef\fP (\fBCard\fP c1, \fBCard\fP c2=null)"
+.br
+.ti -1c
+.RI "string \fBTryGetFoodName\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "string \fBGetFoodName\fP (string s)"
+.br
+.ti -1c
+.RI "void \fBMakeFigureFrom\fP (string id)"
+.br
+.ti -1c
+.RI "void \fBMakeRefFrom\fP (string id)"
+.br
+.ti -1c
+.RI "void \fBMakeRefFrom\fP (\fBCard\fP c1, \fBCard\fP c2=null)"
+.br
+.ti -1c
+.RI "void \fBSetHidden\fP (bool hide=true)"
+.br
+.ti -1c
+.RI "virtual Card\&.MoveResult \fB_Move\fP (\fBPoint\fP p, Card\&.MoveType type=Card\&.MoveType\&.Walk)"
+.br
+.ti -1c
+.RI "unsafe void \fBMoveImmediate\fP (\fBPoint\fP p, bool focus=true, bool cancelAI=true)"
+.br
+.ti -1c
+.RI "unsafe void \fBTeleport\fP (\fBPoint\fP point, bool silent=false, bool force=false)"
+.br
+.ti -1c
+.RI "virtual void \fBOnLand\fP ()"
+.br
+.ti -1c
+.RI "int \fBResistLvFrom\fP (int ele)"
+.br
+.ti -1c
+.RI "int \fBResistLv\fP (int res)"
+.br
+.ti -1c
+.RI "bool \fBHasElement\fP (int ele, int req=1)"
+.br
+.ti -1c
+.RI "bool \fBHasElement\fP (string id, int req=1)"
+.br
+.ti -1c
+.RI "virtual \fBCardRenderer\fP \fB_CreateRenderer\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddBlood\fP (int a=1, int id=\-1)"
+.br
+.ti -1c
+.RI "\fBRenderParam\fP \fBGetRenderParam\fP ()"
+.br
+.ti -1c
+.RI "void \fBDyeRandom\fP ()"
+.br
+.ti -1c
+.RI "void \fBDye\fP (string idMat)"
+.br
+.ti -1c
+.RI "void \fBDye\fP (\fBSourceMaterial\&.Row\fP mat)"
+.br
+.ti -1c
+.RI "void \fBRefreshColor\fP ()"
+.br
+.ti -1c
+.RI "ref Color \fBGetRandomColor\fP ()"
+.br
+.ti -1c
+.RI "virtual Sprite \fBGetSprite\fP (int dir=0)"
+.br
+.ti -1c
+.RI "virtual Sprite \fBGetImageSprite\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetImage\fP (Image image, int dir, int idSkin=0)"
+.br
+.ti -1c
+.RI "virtual void \fBSetImage\fP (Image image)"
+.br
+.ti -1c
+.RI "void \fBShowEmo\fP (Emo _emo=Emo\&.none, float duration=0f, bool skipSame=true)"
+.br
+.ti -1c
+.RI "void \fBPlaySoundHold\fP (bool spatial=true)"
+.br
+.ti -1c
+.RI "void \fBPlaySoundDrop\fP (bool spatial=true)"
+.br
+.ti -1c
+.RI "SoundSource \fBPlaySound\fP (string id, float v=1f, bool spatial=true)"
+.br
+.ti -1c
+.RI "void \fBKillAnime\fP ()"
+.br
+.ti -1c
+.RI "void \fBPlayAnime\fP (AnimeID id, bool force=false)"
+.br
+.ti -1c
+.RI "void \fBPlayAnime\fP (AnimeID id, \fBPoint\fP dest, bool force=false)"
+.br
+.ti -1c
+.RI "void \fBPlayAnimeLoot\fP ()"
+.br
+.ti -1c
+.RI "unsafe \fBEffect\fP \fBPlayEffect\fP (string id, bool useRenderPos=true, float range=0f, Vector3 fix=default(Vector3))"
+.br
+.ti -1c
+.RI "unsafe void \fBPlayEffect\fP (int ele, bool useRenderPos=true, float range=0f)"
+.br
+.ti -1c
+.RI "virtual void \fBSetDir\fP (int d)"
+.br
+.ti -1c
+.RI "void \fBSetRandomDir\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBLookAt\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "virtual void \fBLookAt\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "virtual void \fBRotate\fP (bool reverse=false)"
+.br
+.ti -1c
+.RI "void \fBChangeAltitude\fP (int a)"
+.br
+.ti -1c
+.RI "unsafe void \fBSetFreePos\fP (\fBPoint\fP point)"
+.br
+.ti -1c
+.RI "unsafe void \fBRenderMarker\fP (\fBPoint\fP point, bool active, HitResult result, bool main, int dir, bool useCurrentPosition=false)"
+.br
+.ti -1c
+.RI "void \fBRecalculateFOV\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHasLight\fP ()"
+.br
+.ti -1c
+.RI "float \fBGetLightPower\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetSightRadius\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetLightRadius\fP ()"
+.br
+.ti -1c
+.RI "void \fBCalculateFOV\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetRandomLightColors\fP ()"
+.br
+.ti -1c
+.RI "\fBFov\fP \fBCreateFov\fP ()"
+.br
+.ti -1c
+.RI "void \fBClearFOV\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnSimulateHour\fP (\fBVirtualDate\fP date)"
+.br
+.ti -1c
+.RI "void \fBDecayNatural\fP (int hour=1)"
+.br
+.ti -1c
+.RI "void \fBDecay\fP (int a=10)"
+.br
+.ti -1c
+.RI "void \fBTalk\fP (string idTopic, string ref1=null, string ref2=null, bool forceSync=false)"
+.br
+.ti -1c
+.RI "void \fBTalkRaw\fP (string text, string ref1=null, string ref2=null, bool forceSync=false)"
+.br
+.ti -1c
+.RI "string \fBApplyNewLine\fP (string text)"
+.br
+.ti -1c
+.RI "void \fBSayRaw\fP (string text, string ref1=null, string ref2=null)"
+.br
+.ti -1c
+.RI "void \fBSayNothingHappans\fP ()"
+.br
+.ti -1c
+.RI "void \fBSay\fP (string lang, string ref1=null, string ref2=null)"
+.br
+.ti -1c
+.RI "void \fBSay\fP (string lang, \fBCard\fP c1, \fBCard\fP c2, string ref1=null, string ref2=null)"
+.br
+.ti -1c
+.RI "void \fBSay\fP (string lang, \fBCard\fP c1, string ref1=null, string ref2=null)"
+.br
+.ti -1c
+.RI "string \fBGetTalkText\fP (string idTopic, bool stripPun=false, bool useDefault=true)"
+.br
+.ti -1c
+.RI "string \fBApplyTone\fP (string text, bool stripPun=false)"
+.br
+.ti -1c
+.RI "void \fBSetRandomTalk\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetRandomTone\fP ()"
+.br
+.ti -1c
+.RI "void \fBTryStack\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "void \fBApplyBacker\fP (int bid)"
+.br
+.ti -1c
+.RI "void \fBRemoveBacker\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetPaintData\fP ()"
+.br
+.ti -1c
+.RI "byte[] \fBGetPaintData\fP ()"
+.br
+.ti -1c
+.RI "void \fBClearPaintSprite\fP ()"
+.br
+.ti -1c
+.RI "Sprite \fBGetPaintSprite\fP ()"
+.br
+.ti -1c
+.RI "void \fBTryUnrestrain\fP (bool force=false, \fBChara\fP c=null)"
+.br
+.ti -1c
+.RI "\fBTraitShackle\fP \fBGetRestrainer\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBTick\fP ()"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBSetPriceFix\fP (int a)"
+.br
+.ti -1c
+.RI "int \fBGetEquipValue\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetSale\fP (bool sale)"
+.br
+.ti -1c
+.RI "int \fBGetValue\fP (bool sell=false)"
+.br
+.ti -1c
+.RI "virtual int \fBGetPrice\fP (CurrencyType currency=CurrencyType\&.Money, bool sell=false, PriceType priceType=PriceType\&.Default, \fBChara\fP c=null)"
+.br
+.ti -1c
+.RI "virtual string \fBGetHoverText2\fP ()"
+.br
+.ti -1c
+.RI "int \fBDist\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "int \fBDist\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "bool \fBIsInMutterDistance\fP (int d=10)"
+.br
+.ti -1c
+.RI "void \fBSetCensored\fP (bool enable)"
+.br
+.ti -1c
+.RI "void \fBSetDeconstruct\fP (bool deconstruct)"
+.br
+.ti -1c
+.RI "virtual void \fBSetSortVal\fP (UIList\&.SortMode m, CurrencyType currency=CurrencyType\&.Money)"
+.br
+.ti -1c
+.RI "virtual int \fBSecondaryCompare\fP (UIList\&.SortMode m, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "void \fBForeachFOV\fP (Func< \fBPoint\fP, bool > func)"
+.br
+.ti -1c
+.RI "void \fBForeachPoint\fP (Action< \fBPoint\fP, bool > action)"
+.br
+.ti -1c
+.RI "void \fBOnInspect\fP ()"
+.br
+.ti -1c
+.RI "void \fBInspect\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBHasCondition< T >\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHaveFur\fP ()"
+.br
+.ti -1c
+.RI "bool \fBCanBeSheared\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBBaseCard\fP
+.in +1c
+.ti -1c
+.RI "bool \fBGetBool\fP (int id)"
+.br
+.ti -1c
+.RI "void \fBSetBool\fP (int id, bool enable)"
+.br
+.ti -1c
+.RI "int \fBGetInt\fP (int id, int? defaultInt=null)"
+.br
+.ti -1c
+.RI "void \fBAddInt\fP (int id, int value)"
+.br
+.ti -1c
+.RI "void \fBSetInt\fP (int id, int value=0)"
+.br
+.ti -1c
+.RI "string \fBGetStr\fP (int id, string defaultStr=null)"
+.br
+.ti -1c
+.RI "void \fBSetStr\fP (int id, string value=null)"
+.br
+.ti -1c
+.RI "T \fBGetObj< T >\fP (int id)"
+.br
+.ti -1c
+.RI "void \fBSetObj\fP (int id, object o)"
+.br
+.ti -1c
+.RI "T \fBSetObj< T >\fP (int id, object o)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBICardParent\fP
+
+Public Member Functions inherited from \fBIGlobalValue\fP
+
+Public Member Functions inherited from \fBIInspect\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBAddAttackEvaluation\fP (UINote n, \fBChara\fP chara, \fBThing\fP current=null)"
+.br
+.ti -1c
+.RI "static Tuple< \fBSourceElement\&.Row\fP, int > \fBGetEnchant\fP (int lv, Func< \fBSourceElement\&.Row\fP, bool > func, bool neg)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBCard\fP
+.in +1c
+.ti -1c
+.RI "static string \fBApplyTone\fP (\fBChara\fP c, ref string text, string _tones, int gender, bool stripPun=false)"
+.br
+.ti -1c
+.RI "static int \fBGetTilePrice\fP (\fBTileRow\fP row, \fBSourceMaterial\&.Row\fP mat)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBSourceThing\&.Row\fP \fBsource\fP"
+.br
+.ti -1c
+.RI "int \fBstackOrder\fP"
+.br
+.ti -1c
+.RI "string \fBtempName\fP"
+.br
+.in -1c
+
+Public Attributes inherited from \fBCard\fP
+.in +1c
+.ti -1c
+.RI "int[] \fB_ints\fP = new int[30]"
+.br
+.ti -1c
+.RI "string \fBid\fP = ''"
+.br
+.ti -1c
+.RI "\fBThingContainer\fP \fBthings\fP = new \fBThingContainer\fP()"
+.br
+.ti -1c
+.RI "\fBElementContainerCard\fP \fBelements\fP = new \fBElementContainerCard\fP()"
+.br
+.ti -1c
+.RI "\fBBiography\fP \fBbio\fP"
+.br
+.ti -1c
+.RI "List< int > \fBsockets\fP"
+.br
+.ti -1c
+.RI "\fBAIAct\fP \fBreservedAct\fP"
+.br
+.ti -1c
+.RI "\fBProps\fP \fBprops\fP"
+.br
+.ti -1c
+.RI "\fBTrait\fP \fBtrait\fP"
+.br
+.ti -1c
+.RI "\fBICardParent\fP \fBparent\fP"
+.br
+.ti -1c
+.RI "\fBFov\fP \fBfov\fP"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBpos\fP = new \fBPoint\fP()"
+.br
+.ti -1c
+.RI "\fBCardRenderer\fP \fBrenderer\fP"
+.br
+.ti -1c
+.RI "int \fBturn\fP"
+.br
+.ti -1c
+.RI "int \fB_colorInt\fP"
+.br
+.ti -1c
+.RI "float \fBroundTimer\fP"
+.br
+.ti -1c
+.RI "float \fBangle\fP = 180f"
+.br
+.ti -1c
+.RI "bool \fBisDestroyed\fP"
+.br
+.ti -1c
+.RI "\fBCardBlueprint\fP \fBbp\fP"
+.br
+.ti -1c
+.RI "BitArray32 \fB_bits1\fP"
+.br
+.ti -1c
+.RI "BitArray32 \fB_bits2\fP"
+.br
+.ti -1c
+.RI "PlaceState \fBplaceState\fP"
+.br
+.ti -1c
+.RI "bool \fBdirtyWeight\fP = true"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fB_material\fP"
+.br
+.ti -1c
+.RI "Emo \fBlastEmo\fP"
+.br
+.ti -1c
+.RI "int \fBsortVal\fP"
+.br
+.in -1c
+
+Public Attributes inherited from \fBBaseCard\fP
+.in +1c
+.ti -1c
+.RI "Dictionary< int, object > \fBmapObj\fP = new Dictionary<int, object>()"
+.br
+.ti -1c
+.RI "Dictionary< int, int > \fBmapInt\fP = new Dictionary<int, int>()"
+.br
+.ti -1c
+.RI "Dictionary< int, string > \fBmapStr\fP = new Dictionary<int, string>()"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBMaxFurnitureEnc\fP = 12"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBisEquipped\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMeleeWithAmmo\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBrange\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBPenetration\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBisThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override \fBCardRow\fP \fBsourceCard\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override \fBSourcePref\fP \fBPref\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override int \fBSelfWeight\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override int[] \fBTiles\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBCanSearchContents\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSharedContainer\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBCard\fP
+.in +1c
+.ti -1c
+.RI "\fBCard\fP \fBparentCard\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBparentThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBcolorInt\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsHotItem\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBuid\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBidMaterial\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdir\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBNum\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fB_x\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fB_z\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBrefVal\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdecay\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBaltitude\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBhp\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "float \fBfx\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "float \fBfy\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "BlessedState \fBblessedState\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "PlaceState \fB_placeState\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBrarityLv\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "Rarity \fBrarity\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBencLV\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBposInvX\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBposInvY\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBidSkin\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBfeat\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBLV\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBexp\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBqualityTier\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisCensored\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisDeconstructing\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisDyed\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisModified\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisNew\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisPlayerCreation\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBignoreAutoPick\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBfreePos\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisHidden\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisOn\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisNPCProperty\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisRestrained\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisRoofItem\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisMasked\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBdisableAutoToggle\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisImported\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBautoRefuel\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBignoreStackHeight\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisFloating\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisWeightChanged\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisFireproof\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisAcidproof\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisReplica\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisSummon\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisElemental\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisBroken\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisSubsetCard\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBnoSnow\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBnoMove\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisGifted\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisCrafted\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisLostProperty\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBnoShadow\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBnoSell\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisLeashed\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisStolen\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisSale\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisCopy\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisRestocking\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisBackerContent\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceBacker\&.Row\fP \fBsourceBacker\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "BedType \fBc_bedType\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_equippedSlot\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_lockLv\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "Hostility \fBc_originalHostility\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "MinionType \fBc_minionType\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_vomit\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBc_isImportant\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBc_lockedHard\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBc_revealLock\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBc_isTrained\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBc_isPrayed\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_lightColor\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "Color \fBLightColor\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBc_uidZone\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_uidRefCard\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_priceFix\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_priceAdd\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_dyeMat\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "VisitorState \fBvisitorState\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "RescueState \fBc_rescueState\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "BossType \fBc_bossType\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_dateStockExpire\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_IDTState\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_charges\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_bill\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_invest\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_seed\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_allowance\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_fur\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_containerSize\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_weight\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_diceDim\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_indexContainerIcon\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_idMainElement\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_summonDuration\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_idBacker\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_uidMaster\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_ammo\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBc_daysWithGod\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idPortrait\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idRace\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idJob\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idTone\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_color\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idTalk\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idDeity\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_altName\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_altName2\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_refText\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idRefName\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idRidePCC\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idAbility\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_context\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idEditor\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_editorTags\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_editorTraitVal\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idTrait\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idRefCard\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_idRefCard2\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBc_note\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBUniqueData\fP \fBc_uniqueData\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBammoData\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBc_copyContainer\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "Window\&.SaveData \fBc_windowSaveData\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBCharaUpgrade\fP \fBc_upgrades\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBCharaGenes\fP \fBc_genes\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBContainerUpgrade\fP \fBc_containerUpgrade\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBDNA\fP \fBc_DNA\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBCharaList\fP \fBc_charaList\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "byte[] \fBc_textureData\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBDyeMat\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBinvX\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBinvY\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBCardRow\fP \fBrefCard\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCardRow\fP \fBrefCard2\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBExpToNext\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBDefaultLV\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBChildrenWeight\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBChildrenAndSelfWeight\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBChildrenAndSelfWeightSingle\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBSelfWeight\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBWeightLimit\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceCategory\&.Row\fP \fBcategory\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmaterial\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBAliasMaterialOnCreate\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBCell\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBThing\fP \fBThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBChara\fP \fBChara\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBisThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBisChara\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBExistsOnMap\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBisSynced\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsContainer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsUnique\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsPowerful\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsImportant\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBSourcePref\fP \fBPref\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsDeadOrSleeping\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsDisabled\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsMoving\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBflipX\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsAliveInCurrentZone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBactorPrefab\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBCardRow\fP \fBsourceCard\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBCardRow\fP \fBsourceRenderCard\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBTileType\fP \fBTileType\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBNameSimple\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsPC\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fB_IsPC\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsPCC\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsPCParty\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsMinion\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsPCPartyMinion\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsPCFactionMinion\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsMultisize\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsToolbelt\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsLightsource\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsEquipment\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFood\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBShowFoodEnc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsWeapon\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsEquipmentOrRanged\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMeleeWeapon\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsRangedWeapon\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsThrownWeapon\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsAmmo\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsAgent\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFurniture\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsBlessed\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCursed\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsRestrainedResident\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsPCFaction\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsPCFactionOrMinion\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsGlobal\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBMaxDecay\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDecayed\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsRotting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFresn\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBMaxHP\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBPower\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBFameLv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int[] \fBTiles\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBPrefIndex\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsVariation\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBDV\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBPV\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBHIT\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBDMG\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBSTR\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBDEX\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBEND\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBPER\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBLER\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBWIL\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBMAG\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBCHA\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBINT\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBLUC\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBW\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBH\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsIdentified\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBTextRarity\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInstalled\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMale\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsNegativeGift\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasContainerSize\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBTool\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBSourceMaterial\&.Row\fP \fBDefaultMaterial\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasHost\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBQuality\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBQualityLv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBThisOrParentPos\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "LightData \fBLightData\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCardRenderer\fP \fBHostRenderer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBShouldShowMsg\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBCanInspect\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBInspectName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBInspectPoint\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "Vector3 \fBInspectPosition\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBIInspect\fP
+.SS "Additional Inherited Members"
+
+
+Public Types inherited from \fBCard\fP
+.in +1c
+.ti -1c
+.RI "enum \fBMoveResult\fP { \fBFail\fP, \fBSuccess\fP, \fBDoor\fP }"
+.br
+.ti -1c
+.RI "enum \fBMoveType\fP { \fBWalk\fP, \fBForce\fP }"
+.br
+.in -1c
+
+Public Types inherited from \fBIInspect\fP
+.in +1c
+.ti -1c
+.RI "enum \fBNoteMode\fP { \fBDefault\fP, \fBRecipe\fP, \fBProduct\fP, \fBInfo\fP }"
+.br
+.in -1c
+
+Protected Member Functions inherited from \fBCard\fP
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnSerializing\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnDeserialized\fP ()"
+.br
+.in -1c
+
+Static Package Functions inherited from \fBCard\fP
+.SH "Detailed Description"
+.PP 
+Definition at line \fB9\fP of file \fBThing\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static void Thing\&.AddAttackEvaluation (UINote n, \fBChara\fP chara, \fBThing\fP current = \fRnull\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB1483\fP of file \fBThing\&.cs\fP\&.
+.SS "\fBElement\fP Thing\&.AddEnchant (int lv = \fR\-1\fP)"
+
+.PP
+Definition at line \fB1957\fP of file \fBThing\&.cs\fP\&.
+.SS "override void Thing\&.ApplyMaterial (bool remove = \fRfalse\fP)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBCard\fP\&.
+.PP
+Definition at line \fB333\fP of file \fBThing\&.cs\fP\&.
+.SS "override void Thing\&.ApplyMaterialElements (bool remove)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBCard\fP\&.
+.PP
+Definition at line \fB313\fP of file \fBThing\&.cs\fP\&.
+.SS "bool Thing\&.CanAutoFire (\fBChara\fP c, \fBCard\fP tg, bool reloading = \fRfalse\fP)"
+
+.PP
+Definition at line \fB118\fP of file \fBThing\&.cs\fP\&.
+.SS "override bool Thing\&.CanStackTo (\fBThing\fP to)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBCard\fP\&.
+.PP
+Definition at line \fB1633\fP of file \fBThing\&.cs\fP\&.
+.SS "void Thing\&.Disassemble ()"
+
+.PP
+Definition at line \fB1770\fP of file \fBThing\&.cs\fP\&.
+.SS "void Thing\&.DoAct (\fBAct\fP act)"
+
+.PP
+Definition at line \fB1825\fP of file \fBThing\&.cs\fP\&.
+.SS "void Thing\&.GetDisassembles (List< \fBThing\fP > list)"
+
+.PP
+Definition at line \fB1765\fP of file \fBThing\&.cs\fP\&.
+.SS "int Thing\&.GetEfficiency ()"
+
+.PP
+Definition at line \fB152\fP of file \fBThing\&.cs\fP\&.
+.SS "static Tuple< \fBSourceElement\&.Row\fP, int > Thing\&.GetEnchant (int lv, Func< \fBSourceElement\&.Row\fP, bool > func, bool neg)\fR [static]\fP"
+
+.PP
+Definition at line \fB1869\fP of file \fBThing\&.cs\fP\&.
+.SS "override string Thing\&.GetExtraName ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBCard\fP\&.
+.PP
+Definition at line \fB846\fP of file \fBThing\&.cs\fP\&.
+.SS "override string Thing\&.GetHoverText ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBCard\fP\&.
+.PP
+Definition at line \fB810\fP of file \fBThing\&.cs\fP\&.
+.SS "void Thing\&.GetIngredients (\fBRecipe\&.Ingredient\fP ing, List< \fBThing\fP > list)"
+
+.PP
+Definition at line \fB1738\fP of file \fBThing\&.cs\fP\&.
+.SS "override string Thing\&.GetName (NameStyle style, int _num = \fR\-1\fP)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBCard\fP\&.
+.PP
+Definition at line \fB505\fP of file \fBThing\&.cs\fP\&.
+.SS "void Thing\&.GetRecipes (HashSet< \fBRecipe\fP > recipes)"
+
+.PP
+Definition at line \fB1760\fP of file \fBThing\&.cs\fP\&.
+.SS "override \fBSubPassData\fP Thing\&.GetSubPassData ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBCard\fP\&.
+.PP
+Definition at line \fB1618\fP of file \fBThing\&.cs\fP\&.
+.SS "\fBThing\fP Thing\&.Identify (bool show = \fRtrue\fP, IDTSource idtSource = \fRIDTSource::Identify\fP)"
+
+.PP
+Definition at line \fB1977\fP of file \fBThing\&.cs\fP\&.
+.SS "bool Thing\&.IsValidIngredient (\fBRecipe\&.Ingredient\fP ing)"
+
+.PP
+Definition at line \fB1754\fP of file \fBThing\&.cs\fP\&.
+.SS "List< \fBElement\fP > Thing\&.ListLimitedValidTraits (bool limit)"
+
+.PP
+Definition at line \fB872\fP of file \fBThing\&.cs\fP\&.
+.SS "List< \fBElement\fP > Thing\&.ListValidTraits (bool isCraft, bool limit)"
+
+.PP
+Definition at line \fB898\fP of file \fBThing\&.cs\fP\&.
+.SS "override void Thing\&.OnCreate (int genLv)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBCard\fP\&.
+.PP
+Definition at line \fB175\fP of file \fBThing\&.cs\fP\&.
+.SS "void Thing\&.RemoveEnchant ()"
+
+.PP
+Definition at line \fB1972\fP of file \fBThing\&.cs\fP\&.
+.SS "override void Thing\&.SetRenderParam (\fBRenderParam\fP p)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBCard\fP\&.
+.PP
+Definition at line \fB1511\fP of file \fBThing\&.cs\fP\&.
+.SS "override void Thing\&.SetSource ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBCard\fP\&.
+.PP
+Definition at line \fB158\fP of file \fBThing\&.cs\fP\&.
+.SS "void Thing\&.ShowSplitMenu (\fBButtonGrid\fP button, \fBInvOwner\&.Transaction\fP trans = \fRnull\fP)"
+
+.PP
+Definition at line \fB1775\fP of file \fBThing\&.cs\fP\&.
+.SS "void Thing\&.TryLickEnchant (\fBChara\fP c, bool msg = \fRtrue\fP, \fBChara\fP tg = \fRnull\fP, \fBBodySlot\fP slot = \fRnull\fP)"
+
+.PP
+Definition at line \fB1904\fP of file \fBThing\&.cs\fP\&.
+.SS "override void Thing\&.WriteNote (UINote n, Action< UINote > onWriteNote = \fRnull\fP, IInspect\&.NoteMode mode = \fRIInspect::NoteMode::Default\fP, \fBRecipe\fP recipe = \fRnull\fP)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBCard\fP\&.
+.PP
+Definition at line \fB924\fP of file \fBThing\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const int Thing\&.MaxFurnitureEnc = 12\fR [static]\fP"
+
+.PP
+Definition at line \fB2045\fP of file \fBThing\&.cs\fP\&.
+.SS "\fBSourceThing\&.Row\fP Thing\&.source"
+
+.PP
+Definition at line \fB2048\fP of file \fBThing\&.cs\fP\&.
+.SS "int Thing\&.stackOrder"
+
+.PP
+Definition at line \fB2051\fP of file \fBThing\&.cs\fP\&.
+.SS "string Thing\&.tempName"
+
+.PP
+Definition at line \fB2054\fP of file \fBThing\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool Thing\&.CanSearchContents\fR [get]\fP"
+
+.PP
+Definition at line \fB1845\fP of file \fBThing\&.cs\fP\&.
+.SS "bool Thing\&.isEquipped\fR [get]\fP"
+
+.PP
+Definition at line \fB13\fP of file \fBThing\&.cs\fP\&.
+.SS "bool Thing\&.IsMeleeWithAmmo\fR [get]\fP"
+
+.PP
+Definition at line \fB23\fP of file \fBThing\&.cs\fP\&.
+.SS "bool Thing\&.IsSharedContainer\fR [get]\fP"
+
+.PP
+Definition at line \fB1855\fP of file \fBThing\&.cs\fP\&.
+.SS "override bool Thing\&.isThing\fR [get]\fP"
+
+.PP
+Definition at line \fB57\fP of file \fBThing\&.cs\fP\&.
+.SS "int Thing\&.Penetration\fR [get]\fP"
+
+.PP
+Definition at line \fB43\fP of file \fBThing\&.cs\fP\&.
+.SS "override \fBSourcePref\fP Thing\&.Pref\fR [get]\fP"
+
+.PP
+Definition at line \fB77\fP of file \fBThing\&.cs\fP\&.
+.SS "int Thing\&.range\fR [get]\fP"
+
+.PP
+Definition at line \fB33\fP of file \fBThing\&.cs\fP\&.
+.SS "override int Thing\&.SelfWeight\fR [get]\fP"
+
+.PP
+Definition at line \fB91\fP of file \fBThing\&.cs\fP\&.
+.SS "override \fBCardRow\fP Thing\&.sourceCard\fR [get]\fP"
+
+.PP
+Definition at line \fB67\fP of file \fBThing\&.cs\fP\&.
+.SS "override int [] Thing\&.Tiles\fR [get]\fP"
+
+.PP
+Definition at line \fB109\fP of file \fBThing\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

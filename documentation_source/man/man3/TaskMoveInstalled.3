@@ -1,0 +1,1117 @@
+.TH "TaskMoveInstalled" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TaskMoveInstalled
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBTaskBaseBuild\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override HitResult \fBGetHitResult\fP ()"
+.br
+.ti -1c
+.RI "override IEnumerable< AIAct\&.Status > \fBRun\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnProgressComplete\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBTaskBaseBuild\fP
+.in +1c
+.ti -1c
+.RI "bool \fBCanPlaceCard\fP (\fBPoint\fP pos, \fBCard\fP c)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBTaskDesignation\fP
+.in +1c
+.ti -1c
+.RI "virtual string \fBGetTextOrbit\fP ()"
+.br
+.ti -1c
+.RI "bool \fBPointHasOtherDesignation\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBDrawMarker\fP (int x, int z, \fBRenderParam\fP p)"
+.br
+.ti -1c
+.RI "virtual void \fBDraw\fP (int x, int z, \fBRenderParam\fP p)"
+.br
+.ti -1c
+.RI "virtual void \fBOnEnterScreen\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnLeaveScreen\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBTrySpawnOrbit\fP ()"
+.br
+.ti -1c
+.RI "void \fBDespawnOrbit\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBTaskPoint\fP
+.in +1c
+.ti -1c
+.RI "override bool \fBCanManualCancel\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBCanPerform\fP ()"
+.br
+.ti -1c
+.RI "override bool \fB_CanPerformTask\fP (\fBChara\fP chara, int radius)"
+.br
+.ti -1c
+.RI "override IEnumerable< AIAct\&.Status > \fBRun\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnInspect\fP ()"
+.br
+.ti -1c
+.RI "void \fBWriteNote\fP (UINote n, Action< UINote > onWriteNote=null, IInspect\&.NoteMode mode=IInspect\&.NoteMode\&.Default, \fBRecipe\fP recipe=null)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBTask\fP
+.in +1c
+.ti -1c
+.RI "override void \fBOnSuccess\fP ()"
+.br
+.ti -1c
+.RI "void \fBTryLayer\fP (int min=30)"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBDestroy\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnDestroy\fP ()"
+.br
+.ti -1c
+.RI "override AIAct\&.Status \fBCancel\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnReset\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBCanProgress\fP ()"
+.br
+.ti -1c
+.RI "bool \fBCanPerformTask\fP (\fBChara\fP chara, int radius)"
+.br
+.ti -1c
+.RI "virtual void \fBOnAdd\fP ()"
+.br
+.ti -1c
+.RI "void \fBToggleSuspend\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBAIAct\fP
+.in +1c
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "override \fBMultiSprite\fP \fBGetStateIcon\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBPoint\fP \fBGetDestination\fP ()"
+.br
+.ti -1c
+.RI "\fBAIProgress\fP \fBGetProgress\fP ()"
+.br
+.ti -1c
+.RI "string \fBGetCurrentActionText\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBIsToolValid\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnStart\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetOwner\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "virtual void \fBOnSetOwner\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetChild\fP (\fBAIAct\fP seq, Func< AIAct\&.Status > _onChildFail=null)"
+.br
+.ti -1c
+.RI "void \fBStart\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBPerform\fP ()"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBRestart\fP ()"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBSuccess\fP (Action action=null)"
+.br
+.ti -1c
+.RI "bool \fBTryCancel\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "virtual void \fBOnCancel\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnCancelOrSuccess\fP ()"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBKeepRunning\fP ()"
+.br
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBTick\fP ()"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBTickChild\fP ()"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBDo\fP (\fBAIAct\fP _seq, Func< AIAct\&.Status > _onChildFail=null)"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBDoGotoInteraction\fP (\fBPoint\fP pos, Func< AIAct\&.Status > _onChildFail=null)"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBDoGoto\fP (\fBPoint\fP pos, int dist=0, bool ignoreConnection=false, Func< AIAct\&.Status > _onChildFail=null)"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBDoGoto\fP (\fBCard\fP card, Func< AIAct\&.Status > _onChildFail=null)"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBDoGoto\fP (\fBCard\fP card, int dist, Func< AIAct\&.Status > _onChildFail=null)"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBDoGotoSpot\fP (\fBCard\fP card, Func< AIAct\&.Status > _onChildFail=null)"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBDoGoto< T >\fP (Func< AIAct\&.Status > _onChildFail=null)"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBDoGotoSpot< T >\fP (Func< AIAct\&.Status > _onChildFail=null)"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBDoGrab\fP (\fBCard\fP card, int num=\-1, bool pickHeld=false, Func< AIAct\&.Status > _onChildFail=null)"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBDoGrab< T >\fP ()"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBDoProgress\fP ()"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBDoIdle\fP (int repeat=3)"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBDoWait\fP (int count=1)"
+.br
+.ti -1c
+.RI "virtual \fBAIProgress\fP \fBCreateProgress\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnCreateProgress\fP (\fBProgress_Custom\fP p)"
+.br
+.ti -1c
+.RI "virtual void \fBOnBeforeProgress\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnProgress\fP ()"
+.br
+.ti -1c
+.RI "void \fBSimulateZone\fP (int days)"
+.br
+.ti -1c
+.RI "virtual void \fBOnSimulateZone\fP (int days)"
+.br
+.ti -1c
+.RI "virtual void \fBOnSimulatePosition\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBAct\fP
+.in +1c
+.ti -1c
+.RI "virtual CursorInfo \fBGetCursorIcon\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "override Sprite \fBGetSprite\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBShowMouseHint\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "virtual bool \fBIsValidTC\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "virtual string \fBGetHintText\fP (string str='')"
+.br
+.ti -1c
+.RI "virtual string \fBGetText\fP (string str='')"
+.br
+.ti -1c
+.RI "virtual string \fBGetTextSmall\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "virtual Color \fBGetActPlanColor\fP ()"
+.br
+.ti -1c
+.RI "bool \fBPerform\fP (\fBChara\fP _cc, \fBCard\fP _tc=null, \fBPoint\fP _tp=null)"
+.br
+.ti -1c
+.RI "bool \fBCanPerform\fP (\fBChara\fP _cc, \fBCard\fP _tc=null, \fBPoint\fP _tp=null)"
+.br
+.ti -1c
+.RI "new void \fBSetImage\fP (Image image)"
+.br
+.ti -1c
+.RI "virtual void \fBOnMarkMapHighlights\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBShouldMapHighlight\fP (\fBPoint\fP p)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBElement\fP
+.in +1c
+.ti -1c
+.RI "virtual \fBSourceElement\&.Row\fP \fBGetSource\fP ()"
+.br
+.ti -1c
+.RI "virtual int \fBGetSourcePotential\fP (int v)"
+.br
+.ti -1c
+.RI "int \fBGetMaterialSourceValue\fP (\fBThing\fP t, int v)"
+.br
+.ti -1c
+.RI "virtual int \fBGetSourceValue\fP (int v, int lv, SourceValueType type)"
+.br
+.ti -1c
+.RI "virtual Sprite \fBGetIcon\fP (string suffix='')"
+.br
+.ti -1c
+.RI "int \fBSortVal\fP (bool charaSheet=false)"
+.br
+.ti -1c
+.RI "virtual bool \fBCanLink\fP (\fBElementContainer\fP owner)"
+.br
+.ti -1c
+.RI "bool \fBHasTag\fP (string tag)"
+.br
+.ti -1c
+.RI "void \fBSetImage\fP (Image i)"
+.br
+.ti -1c
+.RI "virtual string \fBGetDetail\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsFactionElement\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "\fBElement\fP \fBGetParent\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "void \fBWriteNote\fP (UINote n, \fBElementContainer\fP owner=null, Action< UINote > onWriteNote=null)"
+.br
+.ti -1c
+.RI "void \fBWriteNoteWithRef\fP (UINote n, \fBElementContainer\fP owner, Action< UINote > onWriteNote, \fBElement\fP refEle)"
+.br
+.ti -1c
+.RI "void \fB_WriteNote\fP (UINote n, \fBChara\fP c, \fBAct\fP act)"
+.br
+.ti -1c
+.RI "void \fB_WriteNote\fP (UINote n, \fBElementContainer\fP owner, Action< UINote > onWriteNote, bool isRef, bool addHeader=true)"
+.br
+.ti -1c
+.RI "virtual void \fBOnWriteNote\fP (UINote n, \fBElementContainer\fP owner)"
+.br
+.ti -1c
+.RI "virtual void \fBOnChangeValue\fP ()"
+.br
+.ti -1c
+.RI "void \fBCheckLevelBonus\fP (\fBElementContainer\fP owner, UINote n=null)"
+.br
+.ti -1c
+.RI "int \fBGetSortVal\fP (UIList\&.SortMode m)"
+.br
+.ti -1c
+.RI "virtual \fBAct\&.Cost\fP \fBGetCost\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "virtual int \fBGetPower\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "virtual void \fBSetTextValue\fP (UIText text)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBIInspect\fP
+
+Public Member Functions inherited from \fBISyncScreen\fP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBCard\fP \fBtarget\fP"
+.br
+.ti -1c
+.RI "int \fBdir\fP"
+.br
+.ti -1c
+.RI "int \fBaltitude\fP"
+.br
+.in -1c
+
+Public Attributes inherited from \fBTaskDesignation\fP
+.in +1c
+.ti -1c
+.RI "long \fBsync\fP"
+.br
+.ti -1c
+.RI "bool \fBisSynced\fP"
+.br
+.ti -1c
+.RI "\fBTCOrbitTask\fP \fBorbit\fP"
+.br
+.in -1c
+
+Public Attributes inherited from \fBTaskPoint\fP
+.in +1c
+.ti -1c
+.RI "\fBPoint\fP \fBpos\fP = new \fBPoint\fP()"
+.br
+.ti -1c
+.RI "bool \fBisRepeated\fP"
+.br
+.in -1c
+
+Public Attributes inherited from \fBTask\fP
+.in +1c
+.ti -1c
+.RI "\fBTaskList\fP \fBtaskList\fP"
+.br
+.ti -1c
+.RI "bool \fBisDestroyed\fP"
+.br
+.ti -1c
+.RI "int \fBnextTry\fP"
+.br
+.ti -1c
+.RI "bool \fBsuspended\fP"
+.br
+.in -1c
+
+Public Attributes inherited from \fBAIAct\fP
+.in +1c
+.ti -1c
+.RI "new \fBChara\fP \fBowner\fP"
+.br
+.ti -1c
+.RI "AIAct\&.Status \fBstatus\fP"
+.br
+.ti -1c
+.RI "IEnumerator< AIAct\&.Status > \fBEnumerator\fP"
+.br
+.ti -1c
+.RI "\fBAIAct\fP \fBchild\fP"
+.br
+.ti -1c
+.RI "\fBAIAct\fP \fBparent\fP"
+.br
+.ti -1c
+.RI "byte \fBrestartCount\fP"
+.br
+.ti -1c
+.RI "Func< AIAct\&.Status > \fBonChildFail\fP"
+.br
+.ti -1c
+.RI "Func< bool > \fBisFail\fP"
+.br
+.in -1c
+
+Public Attributes inherited from \fBElement\fP
+.in +1c
+.ti -1c
+.RI "\fBSourceElement\&.Row\fP \fB_source\fP"
+.br
+.ti -1c
+.RI "int \fBid\fP"
+.br
+.ti -1c
+.RI "int \fBvBase\fP"
+.br
+.ti -1c
+.RI "int \fBvExp\fP"
+.br
+.ti -1c
+.RI "int \fBvPotential\fP"
+.br
+.ti -1c
+.RI "int \fBvTempPotential\fP"
+.br
+.ti -1c
+.RI "int \fBvLink\fP"
+.br
+.ti -1c
+.RI "int \fBvSource\fP"
+.br
+.ti -1c
+.RI "int \fBvSourcePotential\fP"
+.br
+.ti -1c
+.RI "\fBElementContainer\fP \fBowner\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override int \fBW\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override int \fBH\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBTaskDesignation\fP
+.in +1c
+.ti -1c
+.RI "override bool \fBHasProgress\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBidMarker\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBW\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBH\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowOrbit\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBWorking\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBShowAuto\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override CursorInfo \fBCursorIcon\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBTaskManager\&.Designations\fP \fBDesignations\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "long \fBSync\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBTaskPoint\fP
+.in +1c
+.ti -1c
+.RI "override bool \fBHasProgress\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBdestDist\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBdestIgnoreConnection\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBisBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBLoop\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBCanInspect\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBInspectName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBInspectPoint\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "unsafe Vector3 \fBInspectPosition\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBTask\fP
+.in +1c
+.ti -1c
+.RI "override \fBTargetType\fP \fBTargetType\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBAIAct\fP
+.in +1c
+.ti -1c
+.RI "virtual bool \fBIsRunning\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsChildRunning\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMoveAI\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBMaxRestart\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual new string \fBName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBMultiSprite\fP \fBstateIcon\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual Sprite \fBactionIcon\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsNoGoal\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsAutoTurn\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsIdle\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBPushChara\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBMaxProgress\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowProgress\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBUseTurbo\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBCurrentProgress\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowCursor\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCancelWhenDamaged\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCancelWhenMoved\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBInformCancel\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBThing\fP \fBRenderThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBAIAct\fP \fBCurrent\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsAct\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBShowPotential\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBUsePotential\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBShowRelativeAttribute\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasProgress\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBAct\fP
+.in +1c
+.ti -1c
+.RI "override bool \fBShowPotential\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBUsePotential\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBShowRelativeAttribute\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual CursorInfo \fBCursorIcon\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBID\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsAct\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBWillEndTurn\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCloseLayers\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBLeftHand\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBRightHand\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBElementPowerMod\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowMapHighlight\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowMapHighlightBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBPickHeldOnStart\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBDropHeldOnStart\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanPressRepeat\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanAutofire\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBResetAxis\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBRequireTool\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsHostileAct\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHideRightInfo\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHaveLongPressAction\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual float \fBRadius\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBPerformDistance\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBMaxRadius\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBTargetType\fP \fBTargetType\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBLocalAct\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanRapidFire\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual float \fBRapidDelay\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowAuto\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsCrime\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBElement\fP
+.in +1c
+.ti -1c
+.RI "\fBSourceElement\&.Row\fP \fBsource\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBDisplayValue\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBMinValue\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBValue\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBValueWithoutLink\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBMinPotential\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBPotential\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanGainExp\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFlag\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBFullName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBExpToNext\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBUseExpMod\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBCostTrain\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBCostLearn\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowXP\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowMsgOnValueChanged\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowValue\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowPotential\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBUsePotential\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBPotentialAsStock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowRelativeAttribute\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBShortName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsGlobalElement\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFactionWideElement\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsPartyWideElement\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowEncNumber\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsTrait\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFoodTrait\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFoodTraitMain\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMainAttribute\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBAct\fP \fBact\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBIInspect\fP
+
+Properties inherited from \fBISyncScreen\fP
+.SS "Additional Inherited Members"
+
+
+Public Types inherited from \fBAIAct\fP
+.in +1c
+.ti -1c
+.RI "enum \fBStatus\fP { \fBRunning\fP, \fBFail\fP, \fBSuccess\fP }"
+.br
+.in -1c
+
+Public Types inherited from \fBAct\fP
+.in +1c
+.ti -1c
+.RI "enum \fBCostType\fP { \fBNone\fP, \fBMP\fP, \fBSP\fP }"
+.br
+.in -1c
+
+Public Types inherited from \fBIInspect\fP
+.in +1c
+.ti -1c
+.RI "enum \fBNoteMode\fP { \fBDefault\fP, \fBRecipe\fP, \fBProduct\fP, \fBInfo\fP }"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBAct\fP
+.in +1c
+.ti -1c
+.RI "static void \fBSetReference\fP (\fBChara\fP _cc, \fBCard\fP _tc=null, \fBPoint\fP _tp=null)"
+.br
+.ti -1c
+.RI "static void \fBSetTool\fP (\fBThing\fP t)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBElement\fP
+.in +1c
+.ti -1c
+.RI "static string \fBGetName\fP (string alias)"
+.br
+.ti -1c
+.RI "static \fBSourceElement\&.Row\fP \fBGet\fP (int id)"
+.br
+.ti -1c
+.RI "static Dictionary< int, int > \fBGetElementMap\fP (int[] list)"
+.br
+.ti -1c
+.RI "static Dictionary< int, int > \fBGetElementMap\fP (int[] list, Dictionary< int, int > map)"
+.br
+.ti -1c
+.RI "static \fBSourceElement\&.Row\fP \fBGetRandomElement\fP (int lv=1)"
+.br
+.ti -1c
+.RI "static \fBElement\fP \fBCreate\fP (int id, int v=0)"
+.br
+.ti -1c
+.RI "static \fBElement\fP \fBCreate\fP (string id, int v=1)"
+.br
+.ti -1c
+.RI "static int \fBGetId\fP (string alias)"
+.br
+.ti -1c
+.RI "static int \fBGetResistLv\fP (int v)"
+.br
+.ti -1c
+.RI "static int \fBGetResistDamage\fP (int dmg, int v)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBAct\fP
+.in +1c
+.ti -1c
+.RI "static \fBChara\fP \fBCC\fP"
+.br
+.ti -1c
+.RI "static \fBCard\fP \fBTC\fP"
+.br
+.ti -1c
+.RI "static \fBPoint\fP \fBTP\fP = new \fBPoint\fP()"
+.br
+.ti -1c
+.RI "static \fBThing\fP \fBTOOL\fP"
+.br
+.ti -1c
+.RI "static int \fBpowerMod\fP = 100"
+.br
+.ti -1c
+.RI "static bool \fBforcePt\fP"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBElement\fP
+.in +1c
+.ti -1c
+.RI "const int \fBDiv\fP = 5"
+.br
+.ti -1c
+.RI "static \fBElement\fP \fBVoid\fP = new \fBElement\fP()"
+.br
+.ti -1c
+.RI "static int[] \fBList_MainAttributes\fP"
+.br
+.ti -1c
+.RI "static int[] \fBList_MainAttributesMajor\fP"
+.br
+.ti -1c
+.RI "static int[] \fBList_Body\fP"
+.br
+.ti -1c
+.RI "static int[] \fBList_Mind\fP"
+.br
+.ti -1c
+.RI "static List< \fBSourceElement\&.Row\fP > \fBListElements\fP = new List<\fBSourceElement\&.Row\fP>()"
+.br
+.ti -1c
+.RI "static List< \fBSourceElement\&.Row\fP > \fBListAttackElements\fP = new List<\fBSourceElement\&.Row\fP>()"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+
+Static Package Functions inherited from \fBElement\fP
+
+Static Package Attributes inherited from \fBTaskBaseBuild\fP
+.SH "Detailed Description"
+.PP 
+Definition at line \fB7\fP of file \fBTaskMoveInstalled\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override HitResult TaskMoveInstalled\&.GetHitResult ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBTask\fP\&.
+.PP
+Definition at line \fB38\fP of file \fBTaskMoveInstalled\&.cs\fP\&.
+.SS "override void TaskMoveInstalled\&.OnProgressComplete ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBAIAct\fP\&.
+.PP
+Definition at line \fB95\fP of file \fBTaskMoveInstalled\&.cs\fP\&.
+.SS "override IEnumerable< AIAct\&.Status > TaskMoveInstalled\&.Run ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBAIAct\fP\&.
+.PP
+Definition at line \fB56\fP of file \fBTaskMoveInstalled\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int TaskMoveInstalled\&.altitude"
+
+.PP
+Definition at line \fB134\fP of file \fBTaskMoveInstalled\&.cs\fP\&.
+.SS "int TaskMoveInstalled\&.dir"
+
+.PP
+Definition at line \fB130\fP of file \fBTaskMoveInstalled\&.cs\fP\&.
+.SS "\fBCard\fP TaskMoveInstalled\&.target"
+
+.PP
+Definition at line \fB126\fP of file \fBTaskMoveInstalled\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "override int TaskMoveInstalled\&.H\fR [get]\fP"
+
+.PP
+Definition at line \fB25\fP of file \fBTaskMoveInstalled\&.cs\fP\&.
+.SS "override int TaskMoveInstalled\&.W\fR [get]\fP"
+
+.PP
+Definition at line \fB11\fP of file \fBTaskMoveInstalled\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

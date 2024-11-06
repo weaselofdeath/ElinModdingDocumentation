@@ -1,0 +1,305 @@
+\doxysection{Hoard.\+cs}
+\hypertarget{_hoard_8cs_source}{}\label{_hoard_8cs_source}\index{Elin/Hoard.cs@{Elin/Hoard.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Runtime.Serialization;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00008}00008\ \textcolor{comment}{//\ Token:\ 0x02000517\ RID:\ 1303}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00009}\mbox{\hyperlink{class_hoard}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_hoard}{Hoard}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002303\ RID:\ 8963\ RVA:\ 0x000C5214\ File\ Offset:\ 0x000C3414}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00012}00012\ \ \ \ \ [OnDeserialized]}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnDeserialized(StreamingContext\ context)}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_hoard}{Hoard}}.\mbox{\hyperlink{class_hoard_1_1_item}{Item}}\ item\ in\ \textcolor{keyword}{this}.list)}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ this.items.Add(item.id,\ item);}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002304\ RID:\ 8964\ RVA:\ 0x000C5274\ File\ Offset:\ 0x000C3474}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_hoard_1_1_item}{Hoard.Item}}\ AddRandom(\textcolor{keywordtype}{int}\ r,\ \textcolor{keywordtype}{bool}\ msg\ =\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ IEnumerable<\mbox{\hyperlink{class_source_collectible}{SourceCollectible}}.\mbox{\hyperlink{class_source_collectible_1_1_row}{Row}}>\ ie\ =\ from\ a\ in\ EClass.sources.collectibles.rows}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ where\ a.rarity\ ==\ r}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ select\ a;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.Add(ie.RandomItem<\mbox{\hyperlink{class_source_collectible}{SourceCollectible}}.\mbox{\hyperlink{class_source_collectible_1_1_row}{Row}}>().id,\ 1,\ msg);}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002305\ RID:\ 8965\ RVA:\ 0x000C52C4\ File\ Offset:\ 0x000C34C4}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_hoard_1_1_item}{Hoard.Item}}\ AddRandom(\textcolor{keywordtype}{bool}\ msg\ =\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00032}00032\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.collectibles.rows.RandomItem<\mbox{\hyperlink{class_source_collectible}{SourceCollectible}}.\mbox{\hyperlink{class_source_collectible_1_1_row}{Row}}>().\textcolor{keywordtype}{id};}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.Add(\textcolor{keywordtype}{id},\ 1,\ msg);}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002306\ RID:\ 8966\ RVA:\ 0x000C52F4\ File\ Offset:\ 0x000C34F4}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_hoard_1_1_item}{Hoard.Item}}\ Add(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_source_collectible_1_1_row}{SourceCollectible.Row}}\ row\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.collectibles.map[id];}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ (row.num\ ==\ 0)\ ?\ 10\ :\ row.num;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ !=\ 1)}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ num\ *=\ 2;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_hoard_1_1_item}{Hoard.Item}}\ item\ =\ this.Add(row.id,\ num,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ item.random\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ item;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002307\ RID:\ 8967\ RVA:\ 0x000C5348\ File\ Offset:\ 0x000C3548}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00052}00052\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_hoard_1_1_item}{Hoard.Item}}\ Add(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ num,\ \textcolor{keywordtype}{bool}\ msg\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00053}00053\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.items.TryGetValue(\textcolor{keywordtype}{id},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_hoard_1_1_item}{Hoard.Item}}\ item\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.items.TryGetValue(\textcolor{keywordtype}{id},\ out\ item))}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ item\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_hoard_1_1_item}{Hoard.Item}}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ \textcolor{keywordtype}{id}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ this.list.Add(item);}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ this.items[id]\ =\ item;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (item.num\ ==\ item.show)}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ item.show\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ item.num\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (item.IsUnique\ \&\&\ item.show\ >\ 1)}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ item.show\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg)}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_msg}{Msg}}.SetColor(\mbox{\hyperlink{class_e_class}{EClass}}.Colors.GetRarityColor(item.Source.rarity,\ \textcolor{keyword}{true}));}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_msg}{Msg}}.AquireItem(item.Name(num));}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.hentai)}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ item.show\ =\ item.num;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ item;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00089}00089\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002308\ RID:\ 8968\ RVA:\ 0x000C541F\ File\ Offset:\ 0x000C361F}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00090}00090\ \ \ \ \ \textcolor{keyword}{public}\ Sprite\ GetSprite(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00091}00091\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ SpriteSheet.Add(\textcolor{stringliteral}{"{}UI/Layer/Hoard/Molds/\_sprites\_hoard"{}});}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ SpriteSheet.Get(\textcolor{stringliteral}{"{}\_sprites\_hoard\_"{}}\ +\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00094}00094\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002309\ RID:\ 8969\ RVA:\ 0x000C543C\ File\ Offset:\ 0x000C363C}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00097}00097\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ GetActor(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00098}00098\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.sources.collectibles.Init();}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_source_collectible_1_1_row}{SourceCollectible.Row}}\ row\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.collectibles.map[id];}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ SpriteRenderer\ spriteRenderer\ =\ UnityEngine.Object.Instantiate<SpriteRenderer>(ResourceCache.Load<SpriteRenderer>(\textcolor{stringliteral}{"{}UI/Layer/Hoard/Molds/"{}}\ +\ row.prefab.IsEmpty(\textcolor{stringliteral}{"{}default"{}})));}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ spriteRenderer.sprite\ =\ this.GetSprite(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ spriteRenderer.gameObject;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00106}00106\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600230A\ RID:\ 8970\ RVA:\ 0x000C54A4\ File\ Offset:\ 0x000C36A4}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00107}00107\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Clear()}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00108}00108\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ this.items.Clear();}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ this.list.Clear();}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00113}00113\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001276\ RID:\ 4726}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00114}00114\ \ \ \ \ \textcolor{keyword}{public}\ Dictionary<string,\ \mbox{\hyperlink{class_hoard}{Hoard}}.\mbox{\hyperlink{class_hoard_1_1_item}{Item}}>\ items\ =\ \textcolor{keyword}{new}\ Dictionary<string,\ \mbox{\hyperlink{class_hoard}{Hoard}}.\mbox{\hyperlink{class_hoard_1_1_item}{Item}}>();}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00116}00116\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001277\ RID:\ 4727}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00117}00117\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00118}00118\ \ \ \ \ \textcolor{keyword}{public}\ List<\mbox{\hyperlink{class_hoard}{Hoard}}.\mbox{\hyperlink{class_hoard_1_1_item}{Item}}>\ list\ =\ \textcolor{keyword}{new}\ List<\mbox{\hyperlink{class_hoard}{Hoard}}.\mbox{\hyperlink{class_hoard_1_1_item}{Item}}>();}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00120}00120\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001278\ RID:\ 4728}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00121}00121\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00122}00122\ \ \ \ \ \textcolor{keyword}{public}\ Hoard.Mode\ mode;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00124}00124\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001279\ RID:\ 4729}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00125}00125\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00126}00126\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ bg;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00128}00128\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400127A\ RID:\ 4730}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00129}00129\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00130}00130\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ reflection\ =\ 100;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00132}00132\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400127B\ RID:\ 4731}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00133}00133\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00134}00134\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ maxSounds\ =\ 28;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00136}00136\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400127C\ RID:\ 4732}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00137}00137\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00138}00138\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ volume\ =\ 40;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00140}00140\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400127D\ RID:\ 4733}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00141}00141\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00142}00142\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ hiScore;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00144}00144\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400127E\ RID:\ 4734}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00145}00145\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00146}00146\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ score;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00148}00148\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400127F\ RID:\ 4735}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00149}00149\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ shadow\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00151}00151\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001280\ RID:\ 4736}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00152}00152\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ voice\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00154}00154\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001281\ RID:\ 4737}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00155}00155\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ pixelPerfect;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00157}00157\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001282\ RID:\ 4738}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00158}00158\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ hentai;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00160}00160\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000A27\ RID:\ 2599}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00161}00161\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ Mode}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00162}00162\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040029C8\ RID:\ 10696}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ all,}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040029C9\ RID:\ 10697}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ lux,}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040029CA\ RID:\ 10698}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ junk}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00169}00169\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00171}00171\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000A28\ RID:\ 2600}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00172}\mbox{\hyperlink{class_hoard_1_1_item}{00172}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_hoard_1_1_item}{Item}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00173}00173\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170011D8\ RID:\ 4568}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06003FD9\ RID:\ 16345\ RVA:\ 0x0014DAE9\ File\ Offset:\ 0x0014BCE9}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (set)\ Token:\ 0x06003FDA\ RID:\ 16346\ RVA:\ 0x0014DAF3\ File\ Offset:\ 0x0014BCF3}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ num}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.ints[1];}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.ints[1]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170011D9\ RID:\ 4569}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06003FDB\ RID:\ 16347\ RVA:\ 0x0014DAFE\ File\ Offset:\ 0x0014BCFE}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (set)\ Token:\ 0x06003FDC\ RID:\ 16348\ RVA:\ 0x0014DB08\ File\ Offset:\ 0x0014BD08}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ show}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.ints[2];}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.ints[2]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170011DA\ RID:\ 4570}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06003FDD\ RID:\ 16349\ RVA:\ 0x0014DB13\ File\ Offset:\ 0x0014BD13}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (set)\ Token:\ 0x06003FDE\ RID:\ 16350\ RVA:\ 0x0014DB21\ File\ Offset:\ 0x0014BD21}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ random}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.bits[0];}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.bits[0]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170011DB\ RID:\ 4571}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06003FDF\ RID:\ 16351\ RVA:\ 0x0014DB30\ File\ Offset:\ 0x0014BD30}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (set)\ Token:\ 0x06003FE0\ RID:\ 16352\ RVA:\ 0x0014DB3E\ File\ Offset:\ 0x0014BD3E}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ floating}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.bits[1];}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.bits[1]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170011DC\ RID:\ 4572}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06003FE1\ RID:\ 16353\ RVA:\ 0x0014DB4D\ File\ Offset:\ 0x0014BD4D}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source_collectible_1_1_row}{SourceCollectible.Row}}\ Source}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.sources.collectibles.initialized)}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.sources.collectibles.Init();}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.collectibles.map[this.id];}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170011DD\ RID:\ 4573}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06003FE2\ RID:\ 16354\ RVA:\ 0x0014DB89\ File\ Offset:\ 0x0014BD89}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsUnique}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.Source.tag.Contains(\textcolor{stringliteral}{"{}unique"{}});}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003FE3\ RID:\ 16355\ RVA:\ 0x0014DBA0\ File\ Offset:\ 0x0014BDA0}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ [OnSerializing]}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ \textcolor{keyword}{internal}\ \textcolor{keywordtype}{void}\ OnSerializing(StreamingContext\ context)}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ this.ints[0]\ =\ (int)this.bits.Bits;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003FE4\ RID:\ 16356\ RVA:\ 0x0014DBB5\ File\ Offset:\ 0x0014BDB5}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ [OnDeserialized]}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \textcolor{keyword}{internal}\ \textcolor{keywordtype}{void}\ \_OnDeserialized(StreamingContext\ context)}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00268}00268\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ this.bits.Bits\ =\ (uint)this.ints[0];}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003FE5\ RID:\ 16357\ RVA:\ 0x0014DBCC\ File\ Offset:\ 0x0014BDCC}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ Name(\textcolor{keywordtype}{int}\ n)}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{string}.Concat(\textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}("{}},}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}collectible"{}}.lang(),}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{})\ ["{}},}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Lang.\_rarity(this.Source.rarity),}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}]\ "{}},}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Source.GetName(),}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ x\ "{}},}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.ToString()}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00286}00286\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040029CB\ RID:\ 10699}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ id;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00292}00292\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040029CC\ RID:\ 10700}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00293}00293\ \ \ \ \ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}[]\ ints\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{int}[5];}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00296}00296\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040029CD\ RID:\ 10701}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ BitArray32\ bits;}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00298}00298\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hoard_8cs_source_l00299}00299\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,436 @@
+.TH "Dialog" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Dialog
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBELayer\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBInputType\fP { \fBNone\fP, \fBDefault\fP, \fBPassword\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBOnAfterInit\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddButton\fP (string text, Action onClick=null, bool close=true)"
+.br
+.ti -1c
+.RI "override void \fBOnUpdateInput\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnEnterInput\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnKill\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBELayer\fP
+.in +1c
+.ti -1c
+.RI "override void \fBOnBeforeAddLayer\fP ()"
+.br
+.ti -1c
+.RI "void \fBInitInspector\fP ()"
+.br
+.ti -1c
+.RI "override void \fBInit\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnAfterAddLayer\fP ()"
+.br
+.ti -1c
+.RI "void \fBTryShowHelp\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddLayerToUI\fP (string id)"
+.br
+.ti -1c
+.RI "void \fBTryShowHint\fP (string _langHint=null)"
+.br
+.ti -1c
+.RI "void \fBTalkHomeMemeber\fP (string id)"
+.br
+.ti -1c
+.RI "void \fBTalkMaid\fP (string id)"
+.br
+.ti -1c
+.RI "override void \fBOnRightClick\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBDialog\fP \fBCreateNarration\fP (string idImage, string idText)"
+.br
+.ti -1c
+.RI "static \fBDialog\fP \fBOk\fP (string langDetail)"
+.br
+.ti -1c
+.RI "static \fBDialog\fP \fBChoice\fP (string langDetail, Action< \fBDialog\fP > action)"
+.br
+.ti -1c
+.RI "static \fBDialog\fP \fBYesNo\fP (string langDetail, Action actionYes, Action actionNo=null, string langYes='yes', string langNo='no')"
+.br
+.ti -1c
+.RI "static \fBDialog\fP \fBList< TValue >\fP (string langDetail, ICollection< TValue > items, Func< TValue, string > getString, Func< int, string, bool > onSelect, bool canCancel=false)"
+.br
+.ti -1c
+.RI "static void \fBTryWarnCrime\fP (Action action)"
+.br
+.ti -1c
+.RI "static void \fBTryWarnMana\fP (Action action)"
+.br
+.ti -1c
+.RI "static void \fBTryWarnDisassemble\fP (Action action)"
+.br
+.ti -1c
+.RI "static \fBDialog\fP \fBGift\fP (string langHeader, bool autoAdd, params \fBCard\fP[] cards)"
+.br
+.ti -1c
+.RI "static \fBDialog\fP \fBGift\fP (string langHeader, bool autoAdd, List< \fBCard\fP > list)"
+.br
+.ti -1c
+.RI "static \fBDialog\fP \fBGift\fP (string langHeader, bool autoAdd, List< \fBGridItem\fP > list)"
+.br
+.ti -1c
+.RI "static \fBDialog\fP \fBRecipe\fP (List< \fBRecipeSource\fP > list)"
+.br
+.ti -1c
+.RI "static \fBDialog\fP \fBConfetti\fP (string langTitle, string langDetail, string langConfetti='Grats!')"
+.br
+.ti -1c
+.RI "static \fBDialog\fP \fBConfettiSimple\fP (string langTitle, string langDetail, string langConfetti='Grats!')"
+.br
+.ti -1c
+.RI "static \fBDialog\fP \fB_Confetti\fP (string idPrefab, string langTitle, string langDetail, string langConfetti='Grats!')"
+.br
+.ti -1c
+.RI "static \fBDialog\fP \fBKeymap\fP (EInput\&.KeyMap keymap)"
+.br
+.ti -1c
+.RI "static \fBDialog\fP \fBInputName\fP (string langDetail, string text, Action< bool, string > onClose, Dialog\&.InputType inputType=Dialog\&.InputType\&.Default)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBELayer\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "Text \fBtextConfetti\fP"
+.br
+.ti -1c
+.RI "Image \fBimage\fP"
+.br
+.ti -1c
+.RI "UIText \fBtextDetail\fP"
+.br
+.ti -1c
+.RI "UINote \fBnote\fP"
+.br
+.ti -1c
+.RI "UIButtonList \fBlist\fP"
+.br
+.ti -1c
+.RI "LayoutGroup \fBlayout\fP"
+.br
+.ti -1c
+.RI "\fBScreenEffect\fP \fBeffect\fP"
+.br
+.ti -1c
+.RI "UIList \fBlistGrid\fP"
+.br
+.ti -1c
+.RI "Transform \fBspacer\fP"
+.br
+.ti -1c
+.RI "List< \fBGridItem\fP > \fBgridItems\fP = new List<\fBGridItem\fP>()"
+.br
+.ti -1c
+.RI "UIInputText \fBinput\fP"
+.br
+.ti -1c
+.RI "Dialog\&.InputType \fBinputType\fP"
+.br
+.ti -1c
+.RI "EInput\&.KeyMap \fBkeymap\fP"
+.br
+.ti -1c
+.RI "bool \fBisInputEnter\fP"
+.br
+.ti -1c
+.RI "Action< bool, string > \fBonEnterInput\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBwarned\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Member Functions inherited from \fBELayer\fP
+.in +1c
+.ti -1c
+.RI "override void \fB_Close\fP ()"
+.br
+.ti -1c
+.RI "override void \fBKill\fP ()"
+.br
+.in -1c
+
+Properties inherited from \fBELayer\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreConfig\fP \fBconfig\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFloat\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBIdHelp\fP\fR [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB7\fP of file \fBDialog\&.cs\fP\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum Dialog\&.InputType"
+
+.PP
+Definition at line \fB542\fP of file \fBDialog\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBDialog\fP Dialog\&._Confetti (string idPrefab, string langTitle, string langDetail, string langConfetti = \fR'Grats!'\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB440\fP of file \fBDialog\&.cs\fP\&.
+.SS "void Dialog\&.AddButton (string text, Action onClick = \fRnull\fP, bool close = \fRtrue\fP)"
+
+.PP
+Definition at line \fB60\fP of file \fBDialog\&.cs\fP\&.
+.SS "static \fBDialog\fP Dialog\&.Choice (string langDetail, Action< \fBDialog\fP > action)\fR [static]\fP"
+
+.PP
+Definition at line \fB197\fP of file \fBDialog\&.cs\fP\&.
+.SS "static \fBDialog\fP Dialog\&.Confetti (string langTitle, string langDetail, string langConfetti = \fR'Grats!'\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB426\fP of file \fBDialog\&.cs\fP\&.
+.SS "static \fBDialog\fP Dialog\&.ConfettiSimple (string langTitle, string langDetail, string langConfetti = \fR'Grats!'\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB433\fP of file \fBDialog\&.cs\fP\&.
+.SS "static \fBDialog\fP Dialog\&.CreateNarration (string idImage, string idText)\fR [static]\fP"
+
+.PP
+Definition at line \fB176\fP of file \fBDialog\&.cs\fP\&.
+.SS "static \fBDialog\fP Dialog\&.Gift (string langHeader, bool autoAdd, List< \fBCard\fP > list)\fR [static]\fP"
+
+.PP
+Definition at line \fB354\fP of file \fBDialog\&.cs\fP\&.
+.SS "static \fBDialog\fP Dialog\&.Gift (string langHeader, bool autoAdd, List< \fBGridItem\fP > list)\fR [static]\fP"
+
+.PP
+Definition at line \fB368\fP of file \fBDialog\&.cs\fP\&.
+.SS "static \fBDialog\fP Dialog\&.Gift (string langHeader, bool autoAdd, params \fBCard\fP[] cards)\fR [static]\fP"
+
+.PP
+Definition at line \fB348\fP of file \fBDialog\&.cs\fP\&.
+.SS "static \fBDialog\fP Dialog\&.InputName (string langDetail, string text, Action< bool, string > onClose, Dialog\&.InputType inputType = \fRDialog::InputType::Default\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB464\fP of file \fBDialog\&.cs\fP\&.
+.SS "static \fBDialog\fP Dialog\&.Keymap (EInput\&.KeyMap keymap)\fR [static]\fP"
+
+.PP
+Definition at line \fB454\fP of file \fBDialog\&.cs\fP\&.
+.SS "static \fBDialog\fP Dialog\&.List< TValue > (string langDetail, ICollection< TValue > items, Func< TValue, string > getString, Func< int, string, bool > onSelect, bool canCancel = \fRfalse\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB232\fP of file \fBDialog\&.cs\fP\&.
+.SS "static \fBDialog\fP Dialog\&.Ok (string langDetail)\fR [static]\fP"
+
+.PP
+Definition at line \fB187\fP of file \fBDialog\&.cs\fP\&.
+.SS "override void Dialog\&.OnAfterInit ()"
+
+.PP
+Definition at line \fB10\fP of file \fBDialog\&.cs\fP\&.
+.SS "void Dialog\&.OnEnterInput ()"
+
+.PP
+Definition at line \fB158\fP of file \fBDialog\&.cs\fP\&.
+.SS "override void Dialog\&.OnKill ()"
+
+.PP
+Definition at line \fB165\fP of file \fBDialog\&.cs\fP\&.
+.SS "override void Dialog\&.OnUpdateInput ()"
+
+.PP
+Definition at line \fB85\fP of file \fBDialog\&.cs\fP\&.
+.SS "static \fBDialog\fP Dialog\&.Recipe (List< \fBRecipeSource\fP > list)\fR [static]\fP"
+
+.PP
+Definition at line \fB393\fP of file \fBDialog\&.cs\fP\&.
+.SS "static void Dialog\&.TryWarnCrime (Action action)\fR [static]\fP"
+
+.PP
+Definition at line \fB307\fP of file \fBDialog\&.cs\fP\&.
+.SS "static void Dialog\&.TryWarnDisassemble (Action action)\fR [static]\fP"
+
+.PP
+Definition at line \fB335\fP of file \fBDialog\&.cs\fP\&.
+.SS "static void Dialog\&.TryWarnMana (Action action)\fR [static]\fP"
+
+.PP
+Definition at line \fB321\fP of file \fBDialog\&.cs\fP\&.
+.SS "static \fBDialog\fP Dialog\&.YesNo (string langDetail, Action actionYes, Action actionNo = \fRnull\fP, string langYes = \fR'yes'\fP, string langNo = \fR'no'\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB207\fP of file \fBDialog\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBScreenEffect\fP Dialog\&.effect"
+
+.PP
+Definition at line \fB510\fP of file \fBDialog\&.cs\fP\&.
+.SS "List<\fBGridItem\fP> Dialog\&.gridItems = new List<\fBGridItem\fP>()"
+
+.PP
+Definition at line \fB519\fP of file \fBDialog\&.cs\fP\&.
+.SS "Image Dialog\&.image"
+
+.PP
+Definition at line \fB495\fP of file \fBDialog\&.cs\fP\&.
+.SS "UIInputText Dialog\&.input"
+
+.PP
+Definition at line \fB522\fP of file \fBDialog\&.cs\fP\&.
+.SS "Dialog\&.InputType Dialog\&.inputType"
+
+.PP
+Definition at line \fB525\fP of file \fBDialog\&.cs\fP\&.
+.SS "bool Dialog\&.isInputEnter"
+
+.PP
+Definition at line \fB533\fP of file \fBDialog\&.cs\fP\&.
+.SS "EInput\&.KeyMap Dialog\&.keymap"
+
+.PP
+Definition at line \fB529\fP of file \fBDialog\&.cs\fP\&.
+.SS "LayoutGroup Dialog\&.layout"
+
+.PP
+Definition at line \fB507\fP of file \fBDialog\&.cs\fP\&.
+.SS "UIButtonList Dialog\&.list"
+
+.PP
+Definition at line \fB504\fP of file \fBDialog\&.cs\fP\&.
+.SS "UIList Dialog\&.listGrid"
+
+.PP
+Definition at line \fB513\fP of file \fBDialog\&.cs\fP\&.
+.SS "UINote Dialog\&.note"
+
+.PP
+Definition at line \fB501\fP of file \fBDialog\&.cs\fP\&.
+.SS "Action<bool, string> Dialog\&.onEnterInput"
+
+.PP
+Definition at line \fB536\fP of file \fBDialog\&.cs\fP\&.
+.SS "Transform Dialog\&.spacer"
+
+.PP
+Definition at line \fB516\fP of file \fBDialog\&.cs\fP\&.
+.SS "Text Dialog\&.textConfetti"
+
+.PP
+Definition at line \fB492\fP of file \fBDialog\&.cs\fP\&.
+.SS "UIText Dialog\&.textDetail"
+
+.PP
+Definition at line \fB498\fP of file \fBDialog\&.cs\fP\&.
+.SS "bool Dialog\&.warned\fR [static]\fP"
+
+.PP
+Definition at line \fB539\fP of file \fBDialog\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

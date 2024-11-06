@@ -1,0 +1,375 @@
+.TH "ButtonGrid" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ButtonGrid
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits UIButton, \fBIMouseHint\fP, and \fBIPrefImage\fP\&.
+.PP
+Inherited by \fBButtonGridDrag\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMode\fP { \fBDefault\fP, \fBGrid\fP, \fBIngredient\fP, \fBRecipe\fP, \fBRecipeGrid\fP, \fBSearch\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "T \fBAttach< T >\fP (string id, bool rightAttach=true)"
+.br
+.ti -1c
+.RI "Transform \fBAttach\fP (string id, bool rightAttach=true)"
+.br
+.ti -1c
+.RI "void \fBDettach\fP (string id)"
+.br
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetBodySlot\fP (\fBBodySlot\fP b, \fBInvOwner\fP owner)"
+.br
+.ti -1c
+.RI "void \fBRedraw\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetCardGrid\fP (\fBCard\fP c, \fBInvOwner\fP owner=null)"
+.br
+.ti -1c
+.RI "void \fBSetCard\fP (\fBCard\fP c, ButtonGrid\&.Mode mode=ButtonGrid\&.Mode\&.Default, Action< UINote > onWriteNote=null)"
+.br
+.ti -1c
+.RI "void \fBSetArea\fP (\fBArea\fP a)"
+.br
+.ti -1c
+.RI "void \fBSetItem\fP (\fBGridItem\fP i)"
+.br
+.ti -1c
+.RI "void \fBSetObject\fP (object o)"
+.br
+.ti -1c
+.RI "void \fBSetDummy\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBSetDragParent\fP (IDragParent p)"
+.br
+.ti -1c
+.RI "void \fBSetIngredient\fP (\fBRecipe\fP r, \fBRecipe\&.Ingredient\fP _ing)"
+.br
+.ti -1c
+.RI "void \fBSetIngredient\fP (\fBRecipe\fP r, \fBThing\fP t)"
+.br
+.ti -1c
+.RI "void \fBSetRecipeVariation\fP (\fBUIRecipeInfo\&.RecipeVariation\fP a)"
+.br
+.ti -1c
+.RI "void \fBSetRecipe\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetRecipe\fP (\fBArea\fP a)"
+.br
+.ti -1c
+.RI "void \fBSetRecipe\fP (\fBRecipe\fP r)"
+.br
+.ti -1c
+.RI "void \fBRefreshCraftable\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetCraftRecipe\fP (\fBRecipe\fP r, ButtonGrid\&.Mode mode, bool tooltip=false)"
+.br
+.ti -1c
+.RI "void \fBWriteReqMat\fP (UINote n, \fBRecipe\fP r)"
+.br
+.ti -1c
+.RI "bool \fBShowMouseHintLeft\fP ()"
+.br
+.ti -1c
+.RI "string \fBGetTextMouseHintLeft\fP ()"
+.br
+.ti -1c
+.RI "bool \fBShowMouseHintRight\fP ()"
+.br
+.ti -1c
+.RI "string \fBGetTextMouseHintRight\fP ()"
+.br
+.ti -1c
+.RI "\fBRenderRow\fP \fBGetRenderRow\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnRefreshPref\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBCanMiddleClick\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnMiddleClick\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBIMouseHint\fP
+
+Public Member Functions inherited from \fBIPrefImage\fP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBArea\fP \fBarea\fP"
+.br
+.ti -1c
+.RI "\fBRecipe\fP \fBrecipe\fP"
+.br
+.ti -1c
+.RI "\fBRecipe\&.Ingredient\fP \fBing\fP"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBcard\fP"
+.br
+.ti -1c
+.RI "int \fBindex\fP"
+.br
+.ti -1c
+.RI "\fBInvOwner\fP \fBinvOwner\fP"
+.br
+.ti -1c
+.RI "bool \fBkeepBg\fP"
+.br
+.ti -1c
+.RI "List< Transform > \fBlistAttach\fP = new List<Transform>()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBOnDestroy\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBCard\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual float \fBextFixY\fP\fR [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB7\fP of file \fBButtonGrid\&.cs\fP\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum ButtonGrid\&.Mode"
+
+.PP
+Definition at line \fB831\fP of file \fBButtonGrid\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "Transform ButtonGrid\&.Attach (string id, bool rightAttach = \fRtrue\fP)"
+
+.PP
+Definition at line \fB61\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "T ButtonGrid\&.Attach< T > (string id, bool rightAttach = \fRtrue\fP)"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIComponent\fP
+.PP
+Definition at line \fB55\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "override bool ButtonGrid\&.CanMiddleClick ()"
+
+.PP
+Definition at line \fB771\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.Dettach (string id)"
+
+.PP
+Definition at line \fB77\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "\fBRenderRow\fP ButtonGrid\&.GetRenderRow ()"
+
+.PP
+Implements \fBIPrefImage\fP\&.
+.PP
+Definition at line \fB734\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "string ButtonGrid\&.GetTextMouseHintLeft ()"
+
+.PP
+Implements \fBIMouseHint\fP\&.
+.PP
+Definition at line \fB704\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "string ButtonGrid\&.GetTextMouseHintRight ()"
+
+.PP
+Implements \fBIMouseHint\fP\&.
+.PP
+Definition at line \fB728\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "override void ButtonGrid\&.OnDestroy ()\fR [protected]\fP"
+
+.PP
+Definition at line \fB113\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "override void ButtonGrid\&.OnMiddleClick ()"
+
+.PP
+Definition at line \fB777\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.OnRefreshPref ()"
+
+.PP
+Implements \fBIPrefImage\fP\&.
+.PP
+Definition at line \fB752\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.Redraw ()"
+
+.PP
+Definition at line \fB132\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.RefreshCraftable ()"
+
+.PP
+Definition at line \fB591\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.Reset ()"
+
+.PP
+Definition at line \fB94\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.SetArea (\fBArea\fP a)"
+
+.PP
+Definition at line \fB390\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.SetBodySlot (\fBBodySlot\fP b, \fBInvOwner\fP owner)"
+
+.PP
+Definition at line \fB123\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.SetCard (\fBCard\fP c, ButtonGrid\&.Mode mode = \fRButtonGrid::Mode::Default\fP, Action< UINote > onWriteNote = \fRnull\fP)"
+
+.PP
+Definition at line \fB193\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.SetCardGrid (\fBCard\fP c, \fBInvOwner\fP owner = \fRnull\fP)"
+
+.PP
+Definition at line \fB138\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.SetCraftRecipe (\fBRecipe\fP r, ButtonGrid\&.Mode mode, bool tooltip = \fRfalse\fP)"
+
+.PP
+Definition at line \fB601\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "virtual void ButtonGrid\&.SetDragParent (IDragParent p)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB436\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.SetDummy ()"
+
+.PP
+Definition at line \fB421\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.SetIngredient (\fBRecipe\fP r, \fBRecipe\&.Ingredient\fP _ing)"
+
+.PP
+Definition at line \fB441\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.SetIngredient (\fBRecipe\fP r, \fBThing\fP t)"
+
+.PP
+Definition at line \fB512\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.SetItem (\fBGridItem\fP i)"
+
+.PP
+Definition at line \fB399\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.SetObject (object o)"
+
+.PP
+Definition at line \fB407\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.SetRecipe ()"
+
+.PP
+Definition at line \fB541\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.SetRecipe (\fBArea\fP a)"
+
+.PP
+Definition at line \fB547\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.SetRecipe (\fBRecipe\fP r)"
+
+.PP
+Definition at line \fB557\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.SetRecipeVariation (\fBUIRecipeInfo\&.RecipeVariation\fP a)"
+
+.PP
+Definition at line \fB525\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "bool ButtonGrid\&.ShowMouseHintLeft ()"
+
+.PP
+Implements \fBIMouseHint\fP\&.
+.PP
+Definition at line \fB698\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "bool ButtonGrid\&.ShowMouseHintRight ()"
+
+.PP
+Implements \fBIMouseHint\fP\&.
+.PP
+Definition at line \fB722\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "override string ButtonGrid\&.ToString ()"
+
+.PP
+Definition at line \fB44\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "void ButtonGrid\&.WriteReqMat (UINote n, \fBRecipe\fP r)"
+
+.PP
+Definition at line \fB668\fP of file \fBButtonGrid\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBArea\fP ButtonGrid\&.area"
+
+.PP
+Definition at line \fB803\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "\fBCard\fP ButtonGrid\&.card"
+
+.PP
+Definition at line \fB812\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "int ButtonGrid\&.index"
+
+.PP
+Definition at line \fB815\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "\fBRecipe\&.Ingredient\fP ButtonGrid\&.ing"
+
+.PP
+Definition at line \fB809\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "\fBInvOwner\fP ButtonGrid\&.invOwner"
+
+.PP
+Definition at line \fB818\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "bool ButtonGrid\&.keepBg"
+
+.PP
+Definition at line \fB821\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "List<Transform> ButtonGrid\&.listAttach = new List<Transform>()"
+
+.PP
+Definition at line \fB825\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "\fBRecipe\fP ButtonGrid\&.recipe"
+
+.PP
+Definition at line \fB806\fP of file \fBButtonGrid\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBCard\fP ButtonGrid\&.Card\fR [get]\fP"
+
+.PP
+Definition at line \fB21\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "\fBColorProfile\fP ButtonGrid\&.Colors\fR [get]\fP"
+
+.PP
+Definition at line \fB11\fP of file \fBButtonGrid\&.cs\fP\&.
+.SS "virtual float ButtonGrid\&.extFixY\fR [get]\fP"
+
+.PP
+Definition at line \fB35\fP of file \fBButtonGrid\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

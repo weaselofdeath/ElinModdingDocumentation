@@ -1,0 +1,98 @@
+\doxysection{World.\+cs}
+\hypertarget{_world_8cs_source}{}\label{_world_8cs_source}\index{Elin/World.cs@{Elin/World.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x020006EC\ RID:\ 1772}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00005}\mbox{\hyperlink{class_world}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_world}{World}}\ :\ \mbox{\hyperlink{class_spatial}{Spatial}}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000F72\ RID:\ 3954}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06003380\ RID:\ 13184\ RVA:\ 0x00119208\ File\ Offset:\ 0x00117408}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_region}{Region}}\ region}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.children[0]\ as\ \mbox{\hyperlink{class_region}{Region}};}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003381\ RID:\ 13185\ RVA:\ 0x0011921C\ File\ Offset:\ 0x0011741C}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnCreate()}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_prologue}{Prologue}}\ prologue\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.game.Prologue;}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ this.date.year\ =\ prologue.year;}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ this.date.month\ =\ prologue.month;}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ this.date.day\ =\ prologue.day;}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ this.date.hour\ =\ prologue.hour;}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 5;\ i++)}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ this.schedule.list.Add(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_schedule}{Schedule}}.\mbox{\hyperlink{class_schedule_1_1_item}{Item}}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ date\ =\ this.date.Copy()}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ this.weather.\_currentCondition\ =\ prologue.weather;}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ this.CreateDayData();}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003382\ RID:\ 13186\ RVA:\ 0x001192C4\ File\ Offset:\ 0x001174C4}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ CreateDayData()}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00038}00038\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ this.dayData\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_day_data}{DayData}}();}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(100);}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_day_data}{DayData}}.LuckRange.Length;\ i++)}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ >=\ \mbox{\hyperlink{class_day_data}{DayData}}.LuckRange[i])}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.dayData.luck\ =\ i.ToEnum<\mbox{\hyperlink{class_day_data}{DayData}}.Luck>();}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ this.dayData.seed\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(100000);}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003383\ RID:\ 13187\ RVA:\ 0x00119328\ File\ Offset:\ 0x00117528}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ ModEther(\textcolor{keywordtype}{int}\ a\ =\ 3)}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00054}00054\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ this.ether\ +=\ a;}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.ether\ >=\ 100)}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ this.ether\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ this.weather.SetCondition(\mbox{\hyperlink{class_weather}{Weather}}.Condition.Ether,\ 24,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003384\ RID:\ 13188\ RVA:\ 0x00119358\ File\ Offset:\ 0x00117558}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SendPackage(\mbox{\hyperlink{class_thing}{Thing}}\ p)}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.game.cards.listPackage.Add(p);}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001C13\ RID:\ 7187}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00070}00070\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00071}00071\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_game_date}{GameDate}}\ date\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_game_date}{GameDate}}();}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001C14\ RID:\ 7188}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00074}00074\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00075}00075\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_season}{Season}}\ season\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_season}{Season}}();}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001C15\ RID:\ 7189}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00078}00078\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_weather}{Weather}}\ weather\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_weather}{Weather}}();}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001C16\ RID:\ 7190}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00082}00082\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00083}00083\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_schedule}{Schedule}}\ schedule\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_schedule}{Schedule}}();}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001C17\ RID:\ 7191}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00086}00086\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00087}00087\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_day_data}{DayData}}\ dayData;}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00089}00089\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001C18\ RID:\ 7192}}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00090}00090\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00091}00091\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ ether;}
+\DoxyCodeLine{\Hypertarget{_world_8cs_source_l00092}00092\ \}}
+
+\end{DoxyCode}

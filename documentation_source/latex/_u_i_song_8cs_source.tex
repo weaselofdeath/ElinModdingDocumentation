@@ -1,0 +1,81 @@
+\doxysection{UISong.\+cs}
+\hypertarget{_u_i_song_8cs_source}{}\label{_u_i_song_8cs_source}\index{Elin/UISong.cs@{Elin/UISong.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x020005EB\ RID:\ 1515}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00006}\mbox{\hyperlink{class_u_i_song}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_u_i_song}{UISong}}\ :\ \mbox{\hyperlink{class_e_mono}{EMono}}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060029B7\ RID:\ 10679\ RVA:\ 0x000EB51A\ File\ Offset:\ 0x000E971A}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Awake()}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ UISong.Instance\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060029B8\ RID:\ 10680\ RVA:\ 0x000EB522\ File\ Offset:\ 0x000E9722}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetSong(SoundSource\ \_source,\ BGMData\ \_bgm,\ BGMData.Part\ \_part)}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ this.source\ =\ \_source;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ this.part\ =\ \_part;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ this.bgm\ =\ \_bgm;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060029B9\ RID:\ 10681\ RVA:\ 0x000EB53C\ File\ Offset:\ 0x000E973C}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.source.source\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ this.Kill();}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ AudioSource\ audioSource\ =\ this.source.source;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ this.ratio\ =\ Mathf.Clamp((audioSource.time\ -\/\ \textcolor{keyword}{this}.part.start)\ /\ (\textcolor{keyword}{this}.part.duration\ +\ \textcolor{keyword}{this}.bgm.song.fadeIn),\ 0f,\ 1f);}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_mono}{EMono}}.game\ ==\ \textcolor{keyword}{null}\ ||\ !\mbox{\hyperlink{class_e_mono}{EMono}}.core.IsGameStarted\ ||\ \textcolor{keyword}{this}.source\ ==\ \textcolor{keyword}{null}\ ||\ !\textcolor{keyword}{this}.source.isPlaying\ ||\ \textcolor{keyword}{this}.ratio\ >=\ 0.99f\ ||\ (\textcolor{keyword}{this}.ratio\ <=\ 0f\ \&\&\ !(\mbox{\hyperlink{class_e_mono}{EMono}}.pc.ai\ is\ \mbox{\hyperlink{class_a_i___play_music}{AI\_PlayMusic}})))}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ this.timer\ +=\ Core.delta;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.timer\ >\ 0.3f)}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Kill();}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ this.timer\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ RectTransform\ rectTransform\ =\ this.bar.rectTransform;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ rectTransform.sizeDelta\ =\ \textcolor{keyword}{new}\ Vector2(this.gauge.originalWidth\ *\ \textcolor{keyword}{this}.ratio,\ rectTransform.sizeDelta.y);}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060029BA\ RID:\ 10682\ RVA:\ 0x000EB671\ File\ Offset:\ 0x000E9871}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Kill()}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ UnityEngine.Object.DestroyImmediate(base.gameObject);}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001791\ RID:\ 6033}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_u_i_song}{UISong}}\ Instance;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001792\ RID:\ 6034}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{public}\ Gauge\ gauge;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001793\ RID:\ 6035}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{public}\ Image\ bar;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001794\ RID:\ 6036}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{public}\ SoundSource\ source;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001795\ RID:\ 6037}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{public}\ BGMData.Part\ part;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001796\ RID:\ 6038}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00068}00068\ \ \ \ \ \textcolor{keyword}{public}\ BGMData\ bgm;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001797\ RID:\ 6039}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00071}00071\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ ratio;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001798\ RID:\ 6040}}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00074}00074\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ timer;}
+\DoxyCodeLine{\Hypertarget{_u_i_song_8cs_source_l00075}00075\ \}}
+
+\end{DoxyCode}

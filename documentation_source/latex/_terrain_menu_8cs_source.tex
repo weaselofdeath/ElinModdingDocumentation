@@ -1,0 +1,64 @@
+\doxysection{Terrain\+Menu.\+cs}
+\hypertarget{_terrain_menu_8cs_source}{}\label{_terrain_menu_8cs_source}\index{Elin/TerrainMenu.cs@{Elin/TerrainMenu.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00003}00003\ \textcolor{comment}{//\ Token:\ 0x020004FB\ RID:\ 1275}}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00004}\mbox{\hyperlink{class_terrain_menu}{00004}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_terrain_menu}{TerrainMenu}}\ :\ \mbox{\hyperlink{class_e_mono}{EMono}}}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600220A\ RID:\ 8714\ RVA:\ 0x000BCAF8\ File\ Offset:\ 0x000BACF8}}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00007}00007\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Show(\mbox{\hyperlink{class_action_mode}{ActionMode}}\ \_am)}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00008}00008\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ useSubMenu\ =\ \_am.UseSubMenu;}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ this.am\ =\ \_am;}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ base.gameObject.SetActive(useSubMenu);}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!useSubMenu)}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ this.sliderRadius.value\ =\ (float)this.am.brushRadius;}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ this.sliderRadius.transform.parent.SetActive(this.am.UseSubMenuSlider);}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ this.group.checkbox\ =\ !this.am.SubMenuAsGroup;}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (UIButton\ c\ \textcolor{keywordflow}{in}\ this.group.GetComponentsInDirectChildren(\textcolor{keyword}{true}))}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ c.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ this.group.Init(this.am.SubMenuModeIndex,\ delegate(\textcolor{keywordtype}{int}\ a)}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ this.am.OnClickSubMenu(a);}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ this.group.list.Count;\ i++)}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ UIButton\ uibutton\ =\ this.group.list[i];}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ this.am.OnSetSubMenuButton(i,\ uibutton);}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.SetActive(text\ !=\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (text\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.mainText.SetText(text.lang());}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ this.RebuildLayout(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600220B\ RID:\ 8715\ RVA:\ 0x000BCC44\ File\ Offset:\ 0x000BAE44}}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnChangeRadius(\textcolor{keywordtype}{float}\ a)}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00042}00042\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ this.am.brushRadius\ =\ (int)a;}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ this.sliderRadius.textMain.text\ =\ \textcolor{stringliteral}{"{}radius"{}}.lang()\ +\ \textcolor{stringliteral}{"{}:\ "{}}\ +\ this.am.brushRadius.ToString();}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001197\ RID:\ 4503}}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00048}00048\ \ \ \ \ \textcolor{keyword}{public}\ UISlider\ sliderRadius;}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001198\ RID:\ 4504}}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00051}00051\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_action_mode}{ActionMode}}\ am;}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001199\ RID:\ 4505}}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00054}00054\ \ \ \ \ \textcolor{keyword}{public}\ UISelectableGroup\ group;}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400119A\ RID:\ 4506}}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ radius;}
+\DoxyCodeLine{\Hypertarget{_terrain_menu_8cs_source_l00058}00058\ \}}
+
+\end{DoxyCode}

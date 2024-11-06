@@ -1,0 +1,492 @@
+.TH "Date" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Date
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBEClass\fP\&.
+.PP
+Inherited by \fBGameDate\fP, and \fBVirtualDate\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBTextFormat\fP { \fBDefault\fP, \fBLog\fP, \fBWidget\fP, \fBSchedule\fP, \fBTravel\fP, \fBYearMonthDay\fP, \fBLogPlusYear\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDate\fP \fBCopy\fP ()"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddHour\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBAddDay\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBAddMonth\fP (int a)"
+.br
+.ti -1c
+.RI "string \fBGetText\fP (Date\&.TextFormat format)"
+.br
+.ti -1c
+.RI "int \fBGetRawReal\fP (int offsetHours=0)"
+.br
+.ti -1c
+.RI "int \fBGetRaw\fP (int offsetHours=0)"
+.br
+.ti -1c
+.RI "int \fBGetRawDay\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsExpired\fP (int time)"
+.br
+.ti -1c
+.RI "int \fBGetRemainingHours\fP (int rawDeadLine)"
+.br
+.ti -1c
+.RI "int \fBGetRemainingSecs\fP (int rawDeadLine)"
+.br
+.ti -1c
+.RI "int \fBGetElapsedMins\fP (int rawDate)"
+.br
+.ti -1c
+.RI "int \fBGetElapsedHour\fP (int rawDate)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBGetText\fP (int raw, Date\&.TextFormat format)"
+.br
+.ti -1c
+.RI "static string \fBGetText\fP (int hour)"
+.br
+.ti -1c
+.RI "static string \fBGetText2\fP (int hour)"
+.br
+.ti -1c
+.RI "static string \fBSecToDate\fP (int sec)"
+.br
+.ti -1c
+.RI "static string \fBMinToDayAndHour\fP (int min)"
+.br
+.ti -1c
+.RI "static int[] \fBGetDateArray\fP (int raw)"
+.br
+.ti -1c
+.RI "static \fBDate\fP \fBToDate\fP (int raw)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int[] \fBraw\fP = new int[6]"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBShippingHour\fP = 5"
+.br
+.ti -1c
+.RI "const int \fBHourToken\fP = 60"
+.br
+.ti -1c
+.RI "const int \fBDayToken\fP = 1440"
+.br
+.ti -1c
+.RI "const int \fBMonthToken\fP = 43200"
+.br
+.ti -1c
+.RI "const int \fBYearToken\fP = 518400"
+.br
+.ti -1c
+.RI "const int \fBHourTokenReal\fP = 60"
+.br
+.ti -1c
+.RI "const int \fBDayTokenReal\fP = 1440"
+.br
+.ti -1c
+.RI "const int \fBMonthTokenReal\fP = 46080"
+.br
+.ti -1c
+.RI "const int \fBYearTokenReal\fP = 552960"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fByear\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBmonth\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBday\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBhour\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBmin\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBsec\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDay\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsNight\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "PeriodOfDay \fBperiodOfDay\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBNameMonth\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBNameMonthShort\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBNameTime\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSpring\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSummer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsAutumn\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsWinter\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB5\fP of file \fBDate\&.cs\fP\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum Date\&.TextFormat"
+
+.PP
+Definition at line \fB526\fP of file \fBDate\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Date\&.AddDay (int a)"
+
+.PP
+Definition at line \fB241\fP of file \fBDate\&.cs\fP\&.
+.SS "void Date\&.AddHour (int a)"
+
+.PP
+Definition at line \fB230\fP of file \fBDate\&.cs\fP\&.
+.SS "void Date\&.AddMonth (int a)"
+
+.PP
+Definition at line \fB252\fP of file \fBDate\&.cs\fP\&.
+.SS "\fBDate\fP Date\&.Copy ()"
+
+.PP
+Definition at line \fB98\fP of file \fBDate\&.cs\fP\&.
+.SS "static int[] Date\&.GetDateArray (int raw)\fR [static]\fP"
+
+.PP
+Definition at line \fB450\fP of file \fBDate\&.cs\fP\&.
+.SS "int Date\&.GetElapsedHour (int rawDate)"
+
+.PP
+Definition at line \fB410\fP of file \fBDate\&.cs\fP\&.
+.SS "int Date\&.GetElapsedMins (int rawDate)"
+
+.PP
+Definition at line \fB404\fP of file \fBDate\&.cs\fP\&.
+.SS "int Date\&.GetRaw (int offsetHours = \fR0\fP)"
+
+.PP
+Definition at line \fB374\fP of file \fBDate\&.cs\fP\&.
+.SS "int Date\&.GetRawDay ()"
+
+.PP
+Definition at line \fB380\fP of file \fBDate\&.cs\fP\&.
+.SS "int Date\&.GetRawReal (int offsetHours = \fR0\fP)"
+
+.PP
+Definition at line \fB368\fP of file \fBDate\&.cs\fP\&.
+.SS "int Date\&.GetRemainingHours (int rawDeadLine)"
+
+.PP
+Definition at line \fB392\fP of file \fBDate\&.cs\fP\&.
+.SS "int Date\&.GetRemainingSecs (int rawDeadLine)"
+
+.PP
+Definition at line \fB398\fP of file \fBDate\&.cs\fP\&.
+.SS "string Date\&.GetText (Date\&.TextFormat format)"
+
+.PP
+Definition at line \fB264\fP of file \fBDate\&.cs\fP\&.
+.SS "static string Date\&.GetText (int hour)\fR [static]\fP"
+
+.PP
+Definition at line \fB340\fP of file \fBDate\&.cs\fP\&.
+.SS "static string Date\&.GetText (int raw, Date\&.TextFormat format)\fR [static]\fP"
+
+.PP
+Definition at line \fB334\fP of file \fBDate\&.cs\fP\&.
+.SS "static string Date\&.GetText2 (int hour)\fR [static]\fP"
+
+.PP
+Definition at line \fB354\fP of file \fBDate\&.cs\fP\&.
+.SS "bool Date\&.IsExpired (int time)"
+
+.PP
+Definition at line \fB386\fP of file \fBDate\&.cs\fP\&.
+.SS "static string Date\&.MinToDayAndHour (int min)\fR [static]\fP"
+
+.PP
+Definition at line \fB434\fP of file \fBDate\&.cs\fP\&.
+.SS "static string Date\&.SecToDate (int sec)\fR [static]\fP"
+
+.PP
+Definition at line \fB420\fP of file \fBDate\&.cs\fP\&.
+.SS "static \fBDate\fP Date\&.ToDate (int raw)\fR [static]\fP"
+
+.PP
+Definition at line \fB463\fP of file \fBDate\&.cs\fP\&.
+.SS "override string Date\&.ToString ()"
+
+.PP
+Definition at line \fB184\fP of file \fBDate\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const int Date\&.DayToken = 1440\fR [static]\fP"
+
+.PP
+Definition at line \fB505\fP of file \fBDate\&.cs\fP\&.
+.SS "const int Date\&.DayTokenReal = 1440\fR [static]\fP"
+
+.PP
+Definition at line \fB517\fP of file \fBDate\&.cs\fP\&.
+.SS "const int Date\&.HourToken = 60\fR [static]\fP"
+
+.PP
+Definition at line \fB502\fP of file \fBDate\&.cs\fP\&.
+.SS "const int Date\&.HourTokenReal = 60\fR [static]\fP"
+
+.PP
+Definition at line \fB514\fP of file \fBDate\&.cs\fP\&.
+.SS "const int Date\&.MonthToken = 43200\fR [static]\fP"
+
+.PP
+Definition at line \fB508\fP of file \fBDate\&.cs\fP\&.
+.SS "const int Date\&.MonthTokenReal = 46080\fR [static]\fP"
+
+.PP
+Definition at line \fB520\fP of file \fBDate\&.cs\fP\&.
+.SS "int [] Date\&.raw = new int[6]"
+
+.PP
+Definition at line \fB499\fP of file \fBDate\&.cs\fP\&.
+.SS "const int Date\&.ShippingHour = 5\fR [static]\fP"
+
+.PP
+Definition at line \fB495\fP of file \fBDate\&.cs\fP\&.
+.SS "const int Date\&.YearToken = 518400\fR [static]\fP"
+
+.PP
+Definition at line \fB511\fP of file \fBDate\&.cs\fP\&.
+.SS "const int Date\&.YearTokenReal = 552960\fR [static]\fP"
+
+.PP
+Definition at line \fB523\fP of file \fBDate\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "int Date\&.day\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB40\fP of file \fBDate\&.cs\fP\&.
+.SS "int Date\&.hour\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB55\fP of file \fBDate\&.cs\fP\&.
+.SS "bool Date\&.IsAutumn\fR [get]\fP"
+
+.PP
+Definition at line \fB211\fP of file \fBDate\&.cs\fP\&.
+.SS "bool Date\&.IsDay\fR [get]\fP"
+
+.PP
+Definition at line \fB113\fP of file \fBDate\&.cs\fP\&.
+.SS "bool Date\&.IsNight\fR [get]\fP"
+
+.PP
+Definition at line \fB123\fP of file \fBDate\&.cs\fP\&.
+.SS "bool Date\&.IsSpring\fR [get]\fP"
+
+.PP
+Definition at line \fB191\fP of file \fBDate\&.cs\fP\&.
+.SS "bool Date\&.IsSummer\fR [get]\fP"
+
+.PP
+Definition at line \fB201\fP of file \fBDate\&.cs\fP\&.
+.SS "bool Date\&.IsWinter\fR [get]\fP"
+
+.PP
+Definition at line \fB221\fP of file \fBDate\&.cs\fP\&.
+.SS "int Date\&.min\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB70\fP of file \fBDate\&.cs\fP\&.
+.SS "int Date\&.month\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB25\fP of file \fBDate\&.cs\fP\&.
+.SS "string Date\&.NameMonth\fR [get]\fP"
+
+.PP
+Definition at line \fB155\fP of file \fBDate\&.cs\fP\&.
+.SS "string Date\&.NameMonthShort\fR [get]\fP"
+
+.PP
+Definition at line \fB165\fP of file \fBDate\&.cs\fP\&.
+.SS "string Date\&.NameTime\fR [get]\fP"
+
+.PP
+Definition at line \fB175\fP of file \fBDate\&.cs\fP\&.
+.SS "PeriodOfDay Date\&.periodOfDay\fR [get]\fP"
+
+.PP
+Definition at line \fB133\fP of file \fBDate\&.cs\fP\&.
+.SS "int Date\&.sec\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB85\fP of file \fBDate\&.cs\fP\&.
+.SS "int Date\&.year\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB10\fP of file \fBDate\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

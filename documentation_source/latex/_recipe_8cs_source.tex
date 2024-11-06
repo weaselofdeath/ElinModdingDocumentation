@@ -1,0 +1,1163 @@
+\doxysection{Recipe.\+cs}
+\hypertarget{_recipe_8cs_source}{}\label{_recipe_8cs_source}\index{Elin/Recipe.cs@{Elin/Recipe.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Runtime.CompilerServices;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00008}00008\ \textcolor{comment}{//\ Token:\ 0x02000058\ RID:\ 88}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00009}\mbox{\hyperlink{class_recipe}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_recipe}{Recipe}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060001F8\ RID:\ 504\ RVA:\ 0x000100E8\ File\ Offset:\ 0x0000E2E8}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_recipe}{Recipe}}\ GetOrCreate(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00013}00013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe}{Recipe}}\ recipe\ =\ \mbox{\hyperlink{class_recipe}{Recipe}}.recipeCache.TryGetValue(\textcolor{keywordtype}{id},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recipe\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ recipeSource\ =\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.dict.TryGetValue(\textcolor{keywordtype}{id},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recipeSource\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ recipe\ =\ \mbox{\hyperlink{class_recipe}{Recipe}}.Create(recipeSource,\ -\/1,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe}{Recipe}}.recipeCache.Add(\textcolor{keywordtype}{id},\ recipe);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ recipe;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060001F9\ RID:\ 505\ RVA:\ 0x0001012C\ File\ Offset:\ 0x0000E32C}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00028}00028\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_recipe}{Recipe}}\ Create(\mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ \_source,\ \textcolor{keywordtype}{int}\ idMat\ =\ -\/1,\ \mbox{\hyperlink{class_thing}{Thing}}\ ing\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ type\ =\ \_source.type;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe}{Recipe}}\ recipe\ =\ \_source.isBridgePillar\ ?\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_recipe_bridge_pillar}{RecipeBridgePillar}}()\ :\ (type.IsEmpty()\ ?\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_recipe_card}{RecipeCard}}()\ :\ ((type\ ==\ \textcolor{stringliteral}{"{}Custom"{}})\ ?\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_recipe_custom}{RecipeCustom}}()\ :\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_recipe}{Recipe}}()));}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ recipe.id\ =\ \_source.id;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ recipe.\_source\ =\ \_source;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ recipe.idMat\ =\ idMat;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ing\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ recipe.BuildIngredientList(ing);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ing.trait\ is\ \mbox{\hyperlink{class_trait_tile}{TraitTile}})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ recipe.VirtualBlock\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ recipe;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060001FA\ RID:\ 506\ RVA:\ 0x000101B4\ File\ Offset:\ 0x0000E3B4}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_recipe}{Recipe}}\ Create(\mbox{\hyperlink{class_thing}{Thing}}\ t)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ recipeSource\ =\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.dict.TryGetValue(t.id,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recipeSource\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_card}{RecipeCard}}\ recipeCard\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_recipe_card}{RecipeCard}}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ recipeSource.id,}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \_source\ =\ recipeSource,}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ IngAsProduct\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ idSkin\ =\ t.idSkin}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ recipeCard.BuildIngredientList(t);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t.uid\ ==\ 0\ ||\ recipeCard.ingredients[0].uid\ ==\ 0\ ||\ recipeCard.ingredients[0].thing\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}expection:\ invalid\ ingredient\ "{}}\ +\ ((t\ !=\ \textcolor{keyword}{null})\ ?\ t.ToString()\ :\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ recipeCard;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060001FB\ RID:\ 507\ RVA:\ 0x00010258\ File\ Offset:\ 0x0000E458}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00070}00070\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ DropIngredients(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{string}\ idMatMain,\ \textcolor{keywordtype}{int}\ num\ =\ 1)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00071}00071\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.BuildList();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe}{Recipe}}\ orCreate\ =\ \mbox{\hyperlink{class_recipe}{Recipe}}.GetOrCreate(\mbox{\hyperlink{class_e_class}{EClass}}.sources.cards.map[\textcolor{keywordtype}{id}].RecipeID);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ orCreate.BuildIngredientList();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_msg}{Msg}}.Say(\textcolor{stringliteral}{"{}dropReward"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_recipe}{Recipe}}.\mbox{\hyperlink{class_recipe_1_1_ingredient}{Ingredient}}\ ingredient\ in\ orCreate.ingredients)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ thing\ =\ \mbox{\hyperlink{class_thing_gen}{ThingGen}}.Create(ingredient.id,\ -\/1,\ -\/1).SetNum(ingredient.req);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ingredient\ ==\ orCreate.ingredients[0])}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ thing.ChangeMaterial(idMatMain);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ thing.SetNum(num);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.player.DropReward(thing,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00088}00088\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000054\ RID:\ 84}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00089}00089\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060001FC\ RID:\ 508\ RVA:\ 0x00010320\ File\ Offset:\ 0x0000E520}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00090}00090\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ source}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00091}00091\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ result;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((result\ =\ this.\_source)\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ (this.\_source\ =\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.Get(this.\textcolor{keywordtype}{id}));}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00103}00103\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000055\ RID:\ 85}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00104}00104\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060001FD\ RID:\ 509\ RVA:\ 0x0001034B\ File\ Offset:\ 0x0000E54B}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00105}00105\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source_material_1_1_row}{SourceMaterial.Row}}\ DefaultMaterial}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00106}00106\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.renderRow.DefaultMaterial;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00113}00113\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000056\ RID:\ 86}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00114}00114\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060001FE\ RID:\ 510\ RVA:\ 0x00010358\ File\ Offset:\ 0x0000E558}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00115}00115\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_tile_row}{TileRow}}\ tileRow}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00116}00116\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.source.row\ as\ \mbox{\hyperlink{class_tile_row}{TileRow}};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00121}00121\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00123}00123\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000057\ RID:\ 87}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00124}00124\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060001FF\ RID:\ 511\ RVA:\ 0x0001036A\ File\ Offset:\ 0x0000E56A}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00125}00125\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_render_row}{RenderRow}}\ renderRow}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00126}00126\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.source.row;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00131}00131\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00133}00133\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000058\ RID:\ 88}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00134}00134\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000200\ RID:\ 512\ RVA:\ 0x00010377\ File\ Offset:\ 0x0000E577}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00135}00135\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ Name}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00136}00136\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.GetName();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00141}00141\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00143}00143\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000059\ RID:\ 89}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00144}00144\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000201\ RID:\ 513\ RVA:\ 0x00010380\ File\ Offset:\ 0x0000E580}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00145}00145\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_tile_type}{TileType}}\ tileType}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00146}00146\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(this.source.type\ ==\ \textcolor{stringliteral}{"{}Bridge"{}})\ ||\ \textcolor{keyword}{this}.source.row.tileType\ is\ \mbox{\hyperlink{class_tile_type_bridge}{TileTypeBridge}})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.renderRow.tileType;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_tile_type}{TileType}}.Bridge;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00155}00155\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00157}00157\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700005A\ RID:\ 90}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00158}00158\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000202\ RID:\ 514\ RVA:\ 0x000103CC\ File\ Offset:\ 0x0000E5CC}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00159}00159\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ IsFloorOrBridge}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00160}00160\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.tileType.IsFloorOrBridge;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00165}00165\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00167}00167\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700005B\ RID:\ 91}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00168}00168\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000203\ RID:\ 515\ RVA:\ 0x000103D9\ File\ Offset:\ 0x0000E5D9}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00169}00169\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ MaxAltitude}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00170}00170\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.IsThing\ ||\ this.IsBridge\ ||\ this.tileType.blockRenderMode\ ==\ BlockRenderMode.Pillar)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.tileType.MaxAltitude;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00179}00179\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00181}00181\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700005C\ RID:\ 92}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00182}00182\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000204\ RID:\ 516\ RVA:\ 0x00010406\ File\ Offset:\ 0x0000E606}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00183}00183\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ RecipeLv}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00184}00184\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_class}{EClass}}.player.recipes.knownRecipes.TryGetValue(this.\textcolor{keywordtype}{id},\ 0);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00189}00189\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00191}00191\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700005D\ RID:\ 93}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00192}00192\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000205\ RID:\ 517\ RVA:\ 0x00010423\ File\ Offset:\ 0x0000E623}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00193}00193\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsFloor}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00194}00194\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.tileType.IsFloor;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00199}00199\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00201}00201\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700005E\ RID:\ 94}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00202}00202\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000206\ RID:\ 518\ RVA:\ 0x00010430\ File\ Offset:\ 0x0000E630}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00203}00203\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsObj}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00204}00204\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.tileRow\ is\ \mbox{\hyperlink{class_source_obj}{SourceObj}}.\mbox{\hyperlink{class_source_obj_1_1_row}{Row}};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00209}00209\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00211}00211\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700005F\ RID:\ 95}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00212}00212\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000207\ RID:\ 519\ RVA:\ 0x00010440\ File\ Offset:\ 0x0000E640}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00213}00213\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ IsBlock}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00214}00214\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !this.IsFloorOrBridge;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00219}00219\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00221}00221\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000060\ RID:\ 96}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00222}00222\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000208\ RID:\ 520\ RVA:\ 0x0001044B\ File\ Offset:\ 0x0000E64B}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00223}00223\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsWallOrFence}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00224}00224\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.tileType.IsWallOrFence;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00229}00229\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00231}00231\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000061\ RID:\ 97}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00232}00232\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000209\ RID:\ 521\ RVA:\ 0x00010458\ File\ Offset:\ 0x0000E658}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00233}00233\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsBridge}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00234}00234\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.source.type\ ==\ \textcolor{stringliteral}{"{}Bridge"{}};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00239}00239\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00241}00241\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000062\ RID:\ 98}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00242}00242\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600020A\ RID:\ 522\ RVA:\ 0x0001046F\ File\ Offset:\ 0x0000E66F}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00243}00243\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ IsThing}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00244}00244\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00249}00249\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00251}00251\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000063\ RID:\ 99}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00252}00252\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600020B\ RID:\ 523\ RVA:\ 0x00010472\ File\ Offset:\ 0x0000E672}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00253}00253\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_card}{Card}}\ Mold}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00254}00254\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00259}00259\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00261}00261\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600020C\ RID:\ 524\ RVA:\ 0x00010478\ File\ Offset:\ 0x0000E678}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00262}00262\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsStaticLV()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00263}00263\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ idFactory\ =\ this.source.idFactory;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ idFactory\ ==\ \textcolor{stringliteral}{"{}factory\_floor"{}}\ ||\ idFactory\ ==\ \textcolor{stringliteral}{"{}factory\_block"{}}\ ||\ idFactory\ ==\ \textcolor{stringliteral}{"{}factory\_wall"{}}\ ||\ idFactory\ ==\ \textcolor{stringliteral}{"{}factory\_platform"{}}\ ||\ this.renderRow.Category.IsChildOf(\textcolor{stringliteral}{"{}block"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00266}00266\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00268}00268\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600020D\ RID:\ 525\ RVA:\ 0x000104DC\ File\ Offset:\ 0x0000E6DC}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00269}00269\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ GetQualityBonus()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00270}00270\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00271}00271\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.IsStaticLV())}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_element}{Element}}\ reqSkill\ =\ this.source.GetReqSkill();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ reqSkill.Value\ -\/\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.Evalue(reqSkill.id);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ <=\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ num2\ +=\ \mbox{\hyperlink{class_e_class}{EClass}}.curve(-\/num,\ 10,\ 20,\ 80)\ /\ 10\ *\ 10\ +\ 10;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.RecipeLv\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num2\ +=\ (int)Mathf.Sqrt((\textcolor{keywordtype}{float})(\textcolor{keyword}{this}.RecipeLv\ -\/\ 1))\ *\ 10;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ num2;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00286}00286\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ <\ 5)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/(num\ -\/\ 4)\ *\ 10;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00292}00292\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00293}00293\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00294}00294\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000064\ RID:\ 100}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00295}00295\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600020E\ RID:\ 526\ RVA:\ 0x00010563\ File\ Offset:\ 0x0000E763}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00296}00296\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ W}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00297}00297\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\_dir\ \%\ 2\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.renderRow.H;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.renderRow.W;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00305}00305\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00306}00306\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00308}00308\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000065\ RID:\ 101}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00309}00309\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600020F\ RID:\ 527\ RVA:\ 0x00010586\ File\ Offset:\ 0x0000E786}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00310}00310\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ H}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00311}00311\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00312}00312\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00313}00313\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\_dir\ \%\ 2\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.renderRow.W;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.renderRow.H;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00319}00319\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00320}00320\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00322}00322\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000066\ RID:\ 102}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00323}00323\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000210\ RID:\ 528\ RVA:\ 0x000105A9\ File\ Offset:\ 0x0000E7A9}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00324}00324\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ RequireIngredients}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00325}00325\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00326}00326\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00327}00327\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00329}00329\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00330}00330\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00331}00331\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00332}00332\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000211\ RID:\ 529\ RVA:\ 0x000105AC\ File\ Offset:\ 0x0000E7AC}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00333}00333\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ GetRefVal()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00334}00334\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00335}00335\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.source.row\ is\ \mbox{\hyperlink{class_source_block}{SourceBlock}}.\mbox{\hyperlink{class_source_block_1_1_row}{Row}})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00336}00336\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (this.source.row\ as\ \mbox{\hyperlink{class_source_block}{SourceBlock}}.\mbox{\hyperlink{class_source_block_1_1_row}{Row}}).id;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00338}00338\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00339}00339\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.source.row\ is\ \mbox{\hyperlink{class_source_floor}{SourceFloor}}.\mbox{\hyperlink{class_source_floor_1_1_row}{Row}})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00340}00340\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (this.source.row\ as\ \mbox{\hyperlink{class_source_floor}{SourceFloor}}.\mbox{\hyperlink{class_source_floor_1_1_row}{Row}}).id;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00342}00342\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00343}00343\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.source.row\ is\ \mbox{\hyperlink{class_source_obj}{SourceObj}}.\mbox{\hyperlink{class_source_obj_1_1_row}{Row}})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00344}00344\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (this.source.row\ as\ \mbox{\hyperlink{class_source_obj}{SourceObj}}.\mbox{\hyperlink{class_source_obj_1_1_row}{Row}}).id;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00346}00346\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00347}00347\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00348}00348\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00349}00349\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00350}00350\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000212\ RID:\ 530\ RVA:\ 0x00010634\ File\ Offset:\ 0x0000E834}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00351}00351\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{string}\ GetIdThing()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00352}00352\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00353}00353\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.source.row\ is\ \mbox{\hyperlink{class_source_block}{SourceBlock}}.\mbox{\hyperlink{class_source_block_1_1_row}{Row}})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00354}00354\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (this.source.row\ as\ \mbox{\hyperlink{class_source_block}{SourceBlock}}.\mbox{\hyperlink{class_source_block_1_1_row}{Row}}).idThing;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00356}00356\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00357}00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.source.row\ is\ \mbox{\hyperlink{class_source_floor}{SourceFloor}}.\mbox{\hyperlink{class_source_floor_1_1_row}{Row}})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00358}00358\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.IsBridge)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}floor"{}};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}platform"{}};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00364}00364\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00365}00365\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00366}00366\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.source.row\ is\ \mbox{\hyperlink{class_source_obj}{SourceObj}}.\mbox{\hyperlink{class_source_obj_1_1_row}{Row}})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}obj"{}};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00372}00372\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00373}00373\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00374}00374\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00375}00375\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000067\ RID:\ 103}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00376}00376\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000213\ RID:\ 531\ RVA:\ 0x000106A8\ File\ Offset:\ 0x0000E8A8}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00377}00377\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ MultiSize}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00378}00378\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00379}00379\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00380}00380\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.W\ !=\ 1\ ||\ this.H\ !=\ 1;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00382}00382\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00383}00383\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00384}00384\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00385}00385\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000214\ RID:\ 532\ RVA:\ 0x000106C1\ File\ Offset:\ 0x0000E8C1}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00386}00386\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ ShouldShowHighlight(HitResult\ r)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00387}00387\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00388}00388\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ r\ !=\ HitResult.Valid;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00389}00389\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00390}00390\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00391}00391\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000215\ RID:\ 533\ RVA:\ 0x000106CA\ File\ Offset:\ 0x0000E8CA}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00392}00392\ \ \ \ \ \textcolor{keyword}{public}\ BaseTileSelector.BoxType\ GetBoxType()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00393}00393\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00394}00394\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.tileType.BoxType\ !=\ \mbox{\hyperlink{class_base_tile_selector}{BaseTileSelector}}.BoxType.Fence)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00395}00395\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_base_tile_selector}{BaseTileSelector}}.BoxType.Box;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00397}00397\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00398}00398\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_base_tile_selector}{BaseTileSelector}}.BoxType.Fence;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00399}00399\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00401}00401\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000068\ RID:\ 104}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00402}00402\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000216\ RID:\ 534\ RVA:\ 0x000106DD\ File\ Offset:\ 0x0000E8DD}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00403}00403\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_base_tile_selector}{BaseTileSelector}}\ tileSelector}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00404}00404\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00405}00405\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00406}00406\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_class}{EClass}}.screen.tileSelector;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00408}00408\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00409}00409\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00410}00410\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00411}00411\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000217\ RID:\ 535\ RVA:\ 0x000106EC\ File\ Offset:\ 0x0000E8EC}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00412}00412\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ GetDefaultColor()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00413}00413\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00414}00414\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.UseStock)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00415}00415\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ thing\ =\ this.ingredients[0].thing;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00417}00417\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.renderRow.GetColorInt(thing.isDyed\ ?\ thing.DyeMat\ :\ thing.material);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00418}00418\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00419}00419\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.renderRow.GetColorInt(this.DefaultMaterial);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00420}00420\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00421}00421\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00422}00422\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000218\ RID:\ 536\ RVA:\ 0x00010748\ File\ Offset:\ 0x0000E948}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00423}00423\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_source_material_1_1_row}{SourceMaterial.Row}}\ GetMainMaterial()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00424}00424\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00425}00425\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00426}00426\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.ingredients.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00427}00427\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.ingredients[0].thing\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00429}00429\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00430}00430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ this.ingredients[0].thing.material.id;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00431}00431\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00432}00432\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00433}00433\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00434}00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ this.ingredients[0].mat;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00435}00435\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00436}00436\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00437}00437\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ ==\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00438}00438\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00439}00439\ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00440}00440\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00441}00441\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.materials.rows[num];}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00442}00442\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00443}00443\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00444}00444\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000219\ RID:\ 537\ RVA:\ 0x000107C4\ File\ Offset:\ 0x0000E9C4}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00445}00445\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_source_material_1_1_row}{SourceMaterial.Row}}\ GetColorMaterial()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00446}00446\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00447}00447\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.idMat\ !=\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00448}00448\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.materials.rows[this.idMat];}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00450}00450\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00451}00451\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.UseStock)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00452}00452\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ (this.ingredients.Count\ >\ 0)\ ?\ this.ingredients[this.source.colorIng].mat\ :\ 3;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ ==\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00455}00455\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00456}00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00457}00457\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00458}00458\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.materials.rows[num];}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00459}00459\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00460}00460\ \ \ \ \ \ \ \ \ this.ingredients[0].RefreshThing();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00461}00461\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ thing\ =\ this.ingredients[0].thing;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00462}00462\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (thing\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00463}00463\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00464}00464\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.materials.rows[3];}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00465}00465\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00466}00466\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!thing.isDyed)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00467}00467\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ thing.material;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00469}00469\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00470}00470\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ thing.DyeMat;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00471}00471\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00472}00472\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00473}00473\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000069\ RID:\ 105}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00474}00474\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600021A\ RID:\ 538\ RVA:\ 0x00010898\ File\ Offset:\ 0x0000EA98}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00475}00475\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ CostMoney}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00476}00476\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00477}00477\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00478}00478\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00480}00480\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00481}00481\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00482}00482\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00483}00483\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600021B\ RID:\ 539\ RVA:\ 0x0001089B\ File\ Offset:\ 0x0000EA9B}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00484}00484\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ BuildIngredientList()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00485}00485\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00486}00486\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.UseStock\ ||\ !this.RequireIngredients)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00487}00487\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00488}00488\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00489}00489\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00490}00490\ \ \ \ \ \ \ \ \ this.ingredients\ =\ this.source.GetIngredients();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00491}00491\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00492}00492\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00493}00493\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600021C\ RID:\ 540\ RVA:\ 0x000108C0\ File\ Offset:\ 0x0000EAC0}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00494}00494\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ BuildIngredientList(\mbox{\hyperlink{class_thing}{Thing}}\ t)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00495}00495\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00496}00496\ \ \ \ \ \ \ \ \ this.UseStock\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00497}00497\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_1_1_ingredient}{Recipe.Ingredient}}\ item\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_recipe_1_1_ingredient}{Recipe.Ingredient}}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00498}00498\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ t.id,}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ tag\ =\ \textcolor{keyword}{null},}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ req\ =\ 1,}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ uid\ =\ t.uid,}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ thing\ =\ t,}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ mat\ =\ t.material.id}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00505}00505\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00506}00506\ \ \ \ \ \ \ \ \ this.ingredients.Add(item);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00507}00507\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00508}00508\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00509}00509\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600021D\ RID:\ 541\ RVA:\ 0x00010924\ File\ Offset:\ 0x0000EB24}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00510}00510\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OnChangeIngredient()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00511}00511\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00512}00512\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00513}00513\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00514}00514\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700006A\ RID:\ 106}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00515}00515\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600021E\ RID:\ 542\ RVA:\ 0x00010926\ File\ Offset:\ 0x0000EB26}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00516}00516\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ CanRotate}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00517}00517\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00518}00518\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00519}00519\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00520}00520\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.tileType.CanRotate(\textcolor{keyword}{true})\ \&\&\ this.tileRow.\_tiles.Length\ >\ 1;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00521}00521\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00522}00522\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00523}00523\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00524}00524\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600021F\ RID:\ 543\ RVA:\ 0x00010948\ File\ Offset:\ 0x0000EB48}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00525}00525\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_thing}{Thing}}\ Craft(BlessedState\ blessed,\ \textcolor{keywordtype}{bool}\ sound\ =\ \textcolor{keyword}{false},\ List<Thing>\ ings\ =\ \textcolor{keyword}{null},\ \textcolor{keywordtype}{bool}\ model\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00526}00526\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00527}00527\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ type\ =\ this.source.type;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00528}00528\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ thing;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00529}00529\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(type\ ==\ \textcolor{stringliteral}{"{}Block"{}}))}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00530}00530\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00531}00531\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(type\ ==\ \textcolor{stringliteral}{"{}Obj"{}}))}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00532}00532\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00533}00533\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ thing\ =\ \mbox{\hyperlink{class_thing_gen}{ThingGen}}.CreateFloor(this.tileRow.id,\ \textcolor{keyword}{this}.GetMainMaterial().id,\ \textcolor{keyword}{this}.source.isBridge);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00535}00535\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00536}00536\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00537}00537\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ thing\ =\ \mbox{\hyperlink{class_thing_gen}{ThingGen}}.CreateObj(this.tileRow.id,\ \textcolor{keyword}{this}.GetMainMaterial().id);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00538}00538\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00539}00539\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00540}00540\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00541}00541\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00542}00542\ \ \ \ \ \ \ \ \ \ \ \ \ thing\ =\ \mbox{\hyperlink{class_thing_gen}{ThingGen}}.CreateBlock(this.tileRow.id,\ \textcolor{keyword}{this}.GetMainMaterial().id);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00543}00543\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00544}00544\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (thing\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00545}00545\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00546}00546\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00547}00547\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00548}00548\ \ \ \ \ \ \ \ \ thing.trait.OnCrafted(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00549}00549\ \ \ \ \ \ \ \ \ thing.SetBlessedState(blessed);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00550}00550\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (model)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00551}00551\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00552}00552\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ thing;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00553}00553\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00554}00554\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_msg}{Msg}}.Say(\textcolor{stringliteral}{"{}crafted"{}},\ thing,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00555}00555\ \ \ \ \ \ \ \ \ thing\ =\ (\mbox{\hyperlink{class_e_class}{EClass}}.pc.AddCard(thing)\ as\ \mbox{\hyperlink{class_thing}{Thing}});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00556}00556\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (thing.GetRootCard()\ ==\ \mbox{\hyperlink{class_e_class}{EClass}}.pc)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00557}00557\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00558}00558\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.pc.HoldCard(thing,\ -\/1);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00559}00559\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00560}00560\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ thing;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00561}00561\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00562}00562\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00563}00563\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000220\ RID:\ 544\ RVA:\ 0x00010A3C\ File\ Offset:\ 0x0000EC3C}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00564}00564\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ HasSameTile(\mbox{\hyperlink{class_point}{Point}}\ point,\ \textcolor{keywordtype}{int}\ dir,\ \textcolor{keywordtype}{int}\ altitude,\ \textcolor{keywordtype}{int}\ bridgeHeight)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00565}00565\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00566}00566\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.IsObj)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00567}00567\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00568}00568\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (point.growth\ !=\ \textcolor{keyword}{null}\ \&\&\ point.sourceObj\ ==\ \textcolor{keyword}{this}.tileRow\ \&\&\ point.cell.matObj\ ==\ \textcolor{keyword}{this}.GetColorMaterial())}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00569}00569\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00570}00570\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00571}00571\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00572}00572\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dir\ ==\ point.cell.objDir\ \&\&\ point.cell.matObj\ ==\ \textcolor{keyword}{this}.GetColorMaterial()\ \&\&\ point.sourceObj\ ==\ \textcolor{keyword}{this}.tileRow)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00573}00573\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00574}00574\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00575}00575\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00576}00576\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00577}00577\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (this.IsBridge)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00578}00578\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00579}00579\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dir\ ==\ point.cell.floorDir\ \&\&\ point.matBridge\ ==\ \textcolor{keyword}{this}.GetColorMaterial()\ \&\&\ point.sourceBridge\ ==\ \textcolor{keyword}{this}.tileRow\ \&\&\ Mathf.Clamp(bridgeHeight\ +\ altitude,\ 0,\ 255)\ ==\ (\textcolor{keywordtype}{int})point.cell.bridgeHeight)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00580}00580\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00581}00581\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00582}00582\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00583}00583\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00584}00584\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (this.IsFloorOrBridge)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00585}00585\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00586}00586\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dir\ ==\ point.cell.floorDir\ \&\&\ point.matFloor\ ==\ \textcolor{keyword}{this}.GetColorMaterial()\ \&\&\ point.sourceFloor\ ==\ \textcolor{keyword}{this}.tileRow)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00587}00587\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00588}00588\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00589}00589\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00590}00590\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00591}00591\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (this.IsWallOrFence)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00592}00592\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00593}00593\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (point.matBlock\ ==\ \textcolor{keyword}{this}.GetColorMaterial()\ \&\&\ point.sourceBlock\ ==\ \textcolor{keyword}{this}.tileRow\ \&\&\ dir\ ==\ point.cell.blockDir)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00594}00594\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00595}00595\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00596}00596\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00597}00597\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00598}00598\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (this.IsBlock\ \&\&\ point.matBlock\ ==\ \textcolor{keyword}{this}.GetColorMaterial()\ \&\&\ point.sourceBlock\ ==\ \textcolor{keyword}{this}.tileRow)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00599}00599\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00600}00600\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !point.sourceBlock.tileType.AltitudeAsDir\ ||\ dir\ ==\ point.cell.objDir;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00601}00601\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00602}00602\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00603}00603\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00604}00604\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00605}00605\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000221\ RID:\ 545\ RVA:\ 0x00010BCC\ File\ Offset:\ 0x0000EDCC}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00606}00606\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Build(\mbox{\hyperlink{class_task_build}{TaskBuild}}\ task)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00607}00607\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00608}00608\ \ \ \ \ \ \ \ \ this.Build(task.owner,\ \textcolor{keyword}{null},\ task.pos,\ (\textcolor{keyword}{this}.ingredients.Count\ >\ 0)\ ?\ \textcolor{keyword}{this}.ingredients[0].mat\ :\ task.recipe.idMat,\ task.dir,\ task.altitude,\ task.bridgeHeight);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00609}00609\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00610}00610\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00611}00611\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000222\ RID:\ 546\ RVA:\ 0x00010C2C\ File\ Offset:\ 0x0000EE2C}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00612}00612\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Build(\mbox{\hyperlink{class_chara}{Chara}}\ chara,\ \mbox{\hyperlink{class_card}{Card}}\ t,\ \mbox{\hyperlink{class_point}{Point}}\ pos,\ \textcolor{keywordtype}{int}\ mat,\ \textcolor{keywordtype}{int}\ dir,\ \textcolor{keywordtype}{int}\ altitude,\ \textcolor{keywordtype}{int}\ bridgeHeight)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00613}00613\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00614}00614\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mat\ ==\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00615}00615\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00616}00616\ \ \ \ \ \ \ \ \ \ \ \ \ mat\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00617}00617\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00618}00618\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.pc.PlaySound(\mbox{\hyperlink{class_e_class}{EClass}}.sources.materials.rows[mat].GetSoundImpact(\textcolor{keyword}{null}),\ 1f,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00619}00619\ \ \ \ \ \ \ \ \ pos.cell.isModified\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00620}00620\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ type\ =\ this.source.type;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00621}00621\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(type\ ==\ \textcolor{stringliteral}{"{}Block"{}}))}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00622}00622\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00623}00623\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}Floor"{}})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00624}00624\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00625}00625\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pos.sourceObj.tileType.RemoveOnFloorChange\ \&\&\ (!\mbox{\hyperlink{class_build_menu}{BuildMenu}}.Instance\ ||\ !\mbox{\hyperlink{class_e_class}{EClass}}.debug.ignoreBuildRule))}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00626}00626\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00627}00627\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.SetObj(pos.x,\ pos.z,\ 0,\ 1,\ 0);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00628}00628\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00629}00629\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.SetFloor(pos.x,\ pos.z,\ mat,\ \textcolor{keyword}{this}.tileRow.id,\ dir);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00630}00630\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00631}00631\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00632}00632\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}Bridge"{}})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00633}00633\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00634}00634\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pos.sourceObj.tileType.RemoveOnFloorChange)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00635}00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00636}00636\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.SetObj(pos.x,\ pos.z,\ 0,\ 1,\ 0);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00637}00637\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00638}00638\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.SetBridge(pos.x,\ pos.z,\ Mathf.Clamp(bridgeHeight\ +\ altitude,\ 0,\ 255),\ mat,\ \textcolor{keyword}{this}.tileRow.id,\ dir);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00639}00639\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00640}00640\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00641}00641\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(type\ ==\ \textcolor{stringliteral}{"{}Obj"{}}))}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00642}00642\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00643}00643\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00644}00644\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00645}00645\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.SetObj(pos.x,\ pos.z,\ mat,\ \textcolor{keyword}{this}.tileRow.id,\ 1,\ dir);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00646}00646\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.tileType.ChangeBlockDir)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00647}00647\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00648}00648\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.SetBlockDir(pos.x,\ pos.z,\ dir);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00649}00649\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00650}00650\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pos.growth\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00651}00651\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00652}00652\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos.growth.SetDefaultStage();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00653}00653\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00654}00654\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00655}00655\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00656}00656\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00657}00657\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00658}00658\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ramp\ =\ this.tileRow.id;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00659}00659\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ramp\ ==\ 3)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00660}00660\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00661}00661\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ramp\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.materials.rows[mat].ramp;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00662}00662\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00663}00663\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.scene.actionMode.IsRoofEditMode(\textcolor{keyword}{null}))}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00664}00664\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00665}00665\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.SetRoofBlock(pos.x,\ pos.z,\ mat,\ ramp,\ dir,\ altitude);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00666}00666\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00667}00667\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00668}00668\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pos.HasObj\ \&\&\ !pos.sourceObj.tileType.CanBuiltOnBlock)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00669}00669\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00670}00670\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.MineObjSound(pos);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00671}00671\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.SetObj(pos.x,\ pos.z,\ 0,\ 1,\ 0);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00672}00672\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00673}00673\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.SetBlock(pos.x,\ pos.z,\ mat,\ ramp,\ dir);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00674}00674\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.tileType.IsBlockPass\ \&\&\ pos.HasChara)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00675}00675\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00676}00676\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_chara}{Chara}}\ t2\ \textcolor{keywordflow}{in}\ pos.ListCharas())}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00677}00677\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00678}00678\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chara.Kick(t2,\ \textcolor{keyword}{false},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00679}00679\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00680}00680\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00681}00681\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.tileType.AltitudeAsDir)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00682}00682\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00683}00683\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos.cell.objDir\ =\ dir;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00684}00684\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00685}00685\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_card}{Card}}\ card\ \textcolor{keywordflow}{in}\ pos.ListCards(\textcolor{keyword}{false}))}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00686}00686\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00687}00687\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (card.isThing\ \&\&\ card.placeState\ ==\ PlaceState.roaming)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00688}00688\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00689}00689\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ card.\_Move(card.pos.GetNearestPoint(\textcolor{keyword}{false},\ \textcolor{keyword}{true},\ \textcolor{keyword}{true},\ \textcolor{keyword}{false}),\ \mbox{\hyperlink{class_card}{Card}}.MoveType.Walk);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00690}00690\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00691}00691\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00692}00692\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00693}00693\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00694}00694\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00695}00695\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00696}00696\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000223\ RID:\ 547\ RVA:\ 0x00010F84\ File\ Offset:\ 0x0000F184}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00697}00697\ \ \ \ \ \textcolor{keyword}{public}\ unsafe\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OnRenderMarker(\mbox{\hyperlink{class_point}{Point}}\ point,\ \textcolor{keywordtype}{bool}\ active,\ HitResult\ result,\ \textcolor{keywordtype}{bool}\ main,\ \textcolor{keywordtype}{int}\ dir,\ \textcolor{keywordtype}{int}\ bridgeHeight)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00698}00698\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00699}00699\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dir\ !=\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00700}00700\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00701}00701\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_dir\ =\ dir;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00702}00702\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00703}00703\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_param}{RenderParam}}\ renderParam\ =\ this.tileRow.GetRenderParam(this.DefaultMaterial,\ this.\_dir,\ point,\ bridgeHeight);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00704}00704\ \ \ \ \ \ \ \ \ renderParam.matColor\ =\ (float)(active\ ?\ \mbox{\hyperlink{class_e_class}{EClass}}.Colors.blockColors.Active\ :\ \mbox{\hyperlink{class_e_class}{EClass}}.Colors.blockColors.Inactive);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00705}00705\ \ \ \ \ \ \ \ \ point.ApplyAnime(renderParam);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00706}00706\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.tileType.IsWater)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00707}00707\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00708}00708\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.screen.guide.isActive)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00709}00709\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00710}00710\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.screen.guide.passGuideFloor.Add(point,\ (\textcolor{keywordtype}{float})result,\ 0.3f);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00711}00711\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00712}00712\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00713}00713\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00714}00714\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.tileType.IsWallOrFence\ \&\&\ point.HasNonWallBlock)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00715}00715\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00716}00716\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ vector\ =\ *point.Position();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00717}00717\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.screen.guide.isActive)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00718}00718\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00719}00719\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.screen.guide.passGuideBlock.Add(ref\ vector,\ 5f,\ 0f);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00720}00720\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00721}00721\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00722}00722\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.renderRow.renderData.pass\ ==\ \mbox{\hyperlink{class_e_class}{EClass}}.screen.tileMap.passBlock\ ||\ \textcolor{keyword}{this}.renderRow.renderData.pass\ ==\ \mbox{\hyperlink{class_e_class}{EClass}}.screen.tileMap.passBlockEx\ ||\ \textcolor{keyword}{this}.renderRow.renderData.pass\ ==\ \mbox{\hyperlink{class_e_class}{EClass}}.screen.tileMap.passLiquid)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00723}00723\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00724}00724\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bridgeHeight\ >\ 0\ \&\&\ !point.cell.skipRender\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.screen.guide.isActive)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00725}00725\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00726}00726\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.screen.guide.passGuideFloor.Add(point,\ (\textcolor{keywordtype}{float})result,\ 0.3f);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00727}00727\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00728}00728\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.tileType.IsWallOrFence\ \&\&\ (point.HasChara\ ||\ (point.HasObj\ \&\&\ point.cell.blocked)))}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00729}00729\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00730}00730\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ vector2\ =\ *point.Position();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00731}00731\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.screen.guide.isActive)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00732}00732\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00733}00733\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.screen.guide.passGuideBlock.Add(ref\ vector2,\ 5f,\ 0f);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00734}00734\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00735}00735\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00736}00736\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00737}00737\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.scene.actionMode.IsRoofEditMode(\textcolor{keyword}{null}))}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00738}00738\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00739}00739\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.screen.tileMap.SetRoofHeight(renderParam,\ point.cell,\ point.x,\ point.z,\ 0,\ bridgeHeight,\ \textcolor{keyword}{this}.tileType.IsWallOrFence\ ?\ \textcolor{keyword}{this}.\_dir\ :\ -\/1,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00740}00740\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00741}00741\ \ \ \ \ \ \ \ \ \ \ \ \ renderParam.y\ =\ renderParam.y\ -\/\ EClass.screen.tileMap.rendererBlockMarker.offset.y\ +\ this.renderRow.renderData.offset.y;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00742}00742\ \ \ \ \ \ \ \ \ \ \ \ \ renderParam.z\ +=\ \mbox{\hyperlink{class_e_class}{EClass}}.setting.render.tileMarkerZ;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00743}00743\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ (this.tileType.blockRenderMode\ ==\ BlockRenderMode.Pillar)\ ?\ (this.\_dir\ +\ 1\ +\ ((this.\_dir\ >=\ 7)\ ?\ this.\_dir\ :\ 0))\ :\ 1;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00744}00744\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ ==\ 1)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00745}00745\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00746}00746\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.screen.tileMap.rendererBlockMarker.Draw(renderParam);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00747}00747\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00748}00748\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00749}00749\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.screen.tileMap.rendererBlockMarker.DrawRepeat(renderParam,\ num,\ this.tileType.RepeatSize,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00750}00750\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00751}00751\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00752}00752\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00753}00753\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00754}00754\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.renderRow.renderData.pass\ ==\ \mbox{\hyperlink{class_e_class}{EClass}}.screen.tileMap.passFloor\ ||\ \textcolor{keyword}{this}.renderRow.renderData.pass\ ==\ \mbox{\hyperlink{class_e_class}{EClass}}.screen.tileMap.passFloorEx\ ||\ \textcolor{keyword}{this}.renderRow.renderData.pass\ ==\ \mbox{\hyperlink{class_e_class}{EClass}}.screen.tileMap.passFloorWater)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00755}00755\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00756}00756\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (point.HasObj)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00757}00757\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00758}00758\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ point.Position();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00759}00759\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00760}00760\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ renderParam.z\ +=\ ((point.cell.liquidLv\ >\ 0)\ ?\ -\/0.01f\ :\ \mbox{\hyperlink{class_e_class}{EClass}}.setting.render.tileMarkerZFloor);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00761}00761\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.screen.tileMap.rendererFloorMarker.Draw(renderParam);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00762}00762\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00763}00763\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00764}00764\ \ \ \ \ \ \ \ \ \ \ \ \ renderParam.z\ +=\ \mbox{\hyperlink{class_e_class}{EClass}}.setting.render.tileMarkerZ;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00765}00765\ \ \ \ \ \ \ \ \ \ \ \ \ this.renderRow.renderData.Draw(renderParam);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00766}00766\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00767}00767\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00768}00768\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00769}00769\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00770}00770\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000224\ RID:\ 548\ RVA:\ 0x0001139C\ File\ Offset:\ 0x0000F59C}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00771}00771\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ GetName()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00772}00772\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00773}00773\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.UseStock\ \&\&\ this.ingredients[0].thing\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00774}00774\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00775}00775\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00776}00776\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00777}00777\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ this.UseStock\ ?\ this.ingredients[0].thing.Name\ :\ this.source.Name;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00778}00778\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (text\ ==\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00779}00779\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00780}00780\ \ \ \ \ \ \ \ \ \ \ \ \ text\ =\ (\textcolor{stringliteral}{"{}card\_"{}}\ +\ this.source.id).lang();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00781}00781\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00782}00782\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (text\ ==\ \textcolor{stringliteral}{"{}*r"{}})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00783}00783\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00784}00784\ \ \ \ \ \ \ \ \ \ \ \ \ text\ =\ this.source.row.GetText(\textcolor{stringliteral}{"{}aka"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00785}00785\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00786}00786\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (text\ ==\ \textcolor{stringliteral}{"{}*r"{}})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00787}00787\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00788}00788\ \ \ \ \ \ \ \ \ \ \ \ \ text\ =\ \textcolor{stringliteral}{"{}("{}}\ +\ this.source.row.GetField(\textcolor{stringliteral}{"{}id"{}})\ +\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00789}00789\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00790}00790\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ text.ToTitleCase(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00791}00791\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00792}00792\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00793}00793\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000225\ RID:\ 549\ RVA:\ 0x0001147B\ File\ Offset:\ 0x0000F67B}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00794}00794\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{string}\ GetDetail()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00795}00795\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00796}00796\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.renderRow.GetText(\textcolor{stringliteral}{"{}detail"{}},\ \textcolor{keyword}{false}).IsEmpty(this.source.GetDetail());}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00797}00797\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00798}00798\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00799}00799\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000226\ RID:\ 550\ RVA:\ 0x0001149E\ File\ Offset:\ 0x0000F69E}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00800}00800\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ WriteNote(UINote\ n)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00801}00801\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00802}00802\ \ \ \ \ \ \ \ \ n.Clear();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00803}00803\ \ \ \ \ \ \ \ \ n.Build();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00804}00804\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00805}00805\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00806}00806\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000227\ RID:\ 551\ RVA:\ 0x000114AC\ File\ Offset:\ 0x0000F6AC}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00807}00807\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ WriteReqFactory(UINote\ n,\ \textcolor{keywordtype}{bool}\ hasFactory\ =\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00808}00808\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00809}00809\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.source.NeedFactory)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00810}00810\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00811}00811\ \ \ \ \ \ \ \ \ \ \ \ \ n.AddHeaderTopic(\textcolor{stringliteral}{"{}reqFactory"{}}.lang(this.source.NameFactory.TagColor(hasFactory\ ?\ FontColor.Default\ :\ FontColor.Bad,\ \textcolor{keyword}{null}),\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}),\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00812}00812\ \ \ \ \ \ \ \ \ \ \ \ \ n.Space(8,\ 1);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00813}00813\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00814}00814\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00815}00815\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00816}00816\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000228\ RID:\ 552\ RVA:\ 0x000114FC\ File\ Offset:\ 0x0000F6FC}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00817}00817\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ WriteReqSkill(UINote\ n)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00818}00818\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00819}00819\ \ \ \ \ \ \ \ \ n.AddHeaderTopic(\textcolor{stringliteral}{"{}reqSkill"{}},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00820}00820\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_element}{Element}}\ reqSkill\ =\ this.source.GetReqSkill();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00821}00821\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ value\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.elements.GetOrCreateElement(reqSkill).Value;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00822}00822\ \ \ \ \ \ \ \ \ Color\ textColor\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.Colors.Skin.GetTextColor((value\ >=\ reqSkill.Value)\ ?\ FontColor.Good\ :\ FontColor.Warning);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00823}00823\ \ \ \ \ \ \ \ \ n.AddText(\textcolor{keyword}{null},\ \textcolor{keywordtype}{string}.Concat(\textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00824}00824\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00825}00825\ \ \ \ \ \ \ \ \ \ \ \ \ reqSkill.Name,}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00826}00826\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ "{}},}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00827}00827\ \ \ \ \ \ \ \ \ \ \ \ \ reqSkill.Value.ToString(),}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00828}00828\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ ("{}},}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00829}00829\ \ \ \ \ \ \ \ \ \ \ \ \ value.ToString(),}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00830}00830\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{})"{}}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00831}00831\ \ \ \ \ \ \ \ \ \}),\ textColor).text1.SetSize(-\/1);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00832}00832\ \ \ \ \ \ \ \ \ n.Space(8,\ 1);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00833}00833\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00834}00834\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00835}00835\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000229\ RID:\ 553\ RVA:\ 0x000115B9\ File\ Offset:\ 0x0000F7B9}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00836}00836\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{interface_i_renderer}{IRenderer}}\ GetRenderer()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00837}00837\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00838}00838\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.tileRow.renderData;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00839}00839\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00840}00840\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00841}00841\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600022A\ RID:\ 554\ RVA:\ 0x000115C6\ File\ Offset:\ 0x0000F7C6}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00842}00842\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OnSelected()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00843}00843\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00844}00844\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00845}00845\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00846}00846\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600022B\ RID:\ 555\ RVA:\ 0x000115C8\ File\ Offset:\ 0x0000F7C8}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00847}00847\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OnChangeAltitude(\textcolor{keywordtype}{int}\ a)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00848}00848\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00849}00849\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00850}00850\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00851}00851\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600022C\ RID:\ 556\ RVA:\ 0x000115CC\ File\ Offset:\ 0x0000F7CC}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00852}00852\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Rotate()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00853}00853\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00854}00854\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (EInput.isShiftDown\ ||\ Input.GetMouseButton(1))}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00855}00855\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00856}00856\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_dir-\/-\/;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00857}00857\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00858}00858\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00859}00859\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00860}00860\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_dir++;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00861}00861\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00862}00862\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.tileType.AltitudeAsDir)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00863}00863\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00864}00864\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\_dir\ >=\ this.tileType.MaxAltitude)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00865}00865\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00866}00866\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\_dir\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00867}00867\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00868}00868\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\_dir\ <\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00869}00869\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00870}00870\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\_dir\ =\ this.tileType.MaxAltitude\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00871}00871\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00872}00872\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00873}00873\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00874}00874\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00875}00875\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ this.tileRow.\_tiles.Length;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00876}00876\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.tileRow.tileType\ ==\ \mbox{\hyperlink{class_tile_type}{TileType}}.Door)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00877}00877\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00878}00878\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00879}00879\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00880}00880\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\_dir\ <\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00881}00881\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00882}00882\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\_dir\ =\ num\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00883}00883\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00884}00884\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\_dir\ >=\ num)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00885}00885\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00886}00886\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\_dir\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00887}00887\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00888}00888\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00889}00889\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_build_menu}{BuildMenu}}.Instance)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00890}00890\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00891}00891\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_build_menu}{BuildMenu}}.Instance.info1.OnRotate();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00892}00892\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00893}00893\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00894}00894\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00895}00895\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600022D\ RID:\ 557\ RVA:\ 0x000116AA\ File\ Offset:\ 0x0000F8AA}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00896}00896\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ SetDir(\textcolor{keywordtype}{int}\ d)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00897}00897\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00898}00898\ \ \ \ \ \ \ \ \ this.\_dir\ =\ d;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00899}00899\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_build_menu}{BuildMenu}}.Instance)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00900}00900\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00901}00901\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_build_menu}{BuildMenu}}.Instance.info1.OnRotate();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00902}00902\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00903}00903\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00904}00904\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00905}00905\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600022E\ RID:\ 558\ RVA:\ 0x000116CE\ File\ Offset:\ 0x0000F8CE}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00906}00906\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_recipe}{Recipe}}\ Duplicate()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00907}00907\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00908}00908\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IO.DeepCopy<\mbox{\hyperlink{class_recipe}{Recipe}}>(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00909}00909\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00910}00910\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00911}00911\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600022F\ RID:\ 559\ RVA:\ 0x000116D8\ File\ Offset:\ 0x0000F8D8}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00912}00912\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ SetImage(Image\ icon)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00913}00913\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00914}00914\ \ \ \ \ \ \ \ \ this.renderRow.SetImage(icon,\ \textcolor{keyword}{null},\ this.renderRow.GetColorInt((\textcolor{keyword}{this}.ingredients\ !=\ \textcolor{keyword}{null}\ \&\&\ \textcolor{keyword}{this}.ingredients.Count\ >\ 0\ \&\&\ \textcolor{keyword}{this}.ingredients[0].thing\ !=\ \textcolor{keyword}{null})\ ?\ \textcolor{keyword}{this}.ingredients[0].thing.material\ :\ \textcolor{keyword}{this}.DefaultMaterial),\ \textcolor{keyword}{true},\ 0,\ \textcolor{keyword}{this}.idSkin);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00915}00915\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00916}00916\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00917}00917\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000230\ RID:\ 560\ RVA:\ 0x0001174C\ File\ Offset:\ 0x0000F94C}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00918}00918\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsCraftable()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00919}00919\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00920}00920\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_recipe}{Recipe}}.\mbox{\hyperlink{class_recipe_1_1_ingredient}{Ingredient}}\ ingredient\ in\ \textcolor{keyword}{this}.ingredients)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00921}00921\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00922}00922\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!ingredient.optional\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.Stocked.ListThingStack(ingredient,\ StockSearchMode.AroundPC).max\ <\ ingredient.req)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00923}00923\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00924}00924\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00925}00925\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00926}00926\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00927}00927\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00928}00928\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00929}00929\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00930}00930\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000231\ RID:\ 561\ RVA:\ 0x000117C8\ File\ Offset:\ 0x0000F9C8}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00931}00931\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ GetMaxCount()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00932}00932\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00933}00933\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ 999;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00934}00934\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ this.ingredients.Count;\ i++)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00935}00935\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00936}00936\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_1_1_ingredient}{Recipe.Ingredient}}\ ingredient\ =\ this.ingredients[i];}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00937}00937\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ thing\ =\ ingredient.thing;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00938}00938\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00939}00939\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!ingredient.optional\ ||\ thing\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00940}00940\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00941}00941\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (thing\ !=\ \textcolor{keyword}{null}\ \&\&\ !thing.isDestroyed)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00942}00942\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00943}00943\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num2\ =\ thing.Num\ /\ ingredient.req;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00944}00944\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00945}00945\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num2\ <\ num)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00946}00946\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00947}00947\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ num2;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00948}00948\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00949}00949\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00950}00950\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00951}00951\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ num;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00952}00952\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00953}00953\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00954}00954\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000232\ RID:\ 562\ RVA:\ 0x00011838\ File\ Offset:\ 0x0000FA38}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00955}00955\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetTextDifficulty(UIText\ text)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00956}00956\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00957}00957\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_element}{Element}}\ reqSkill\ =\ this.source.GetReqSkill();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00958}00958\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ value\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.elements.GetOrCreateElement(reqSkill).Value;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00959}00959\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text2\ =\ reqSkill.Name\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ reqSkill.Value.ToString();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00960}00960\ \ \ \ \ \ \ \ \ text.SetText(text2);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00961}00961\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00962}00962\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00963}00963\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000233\ RID:\ 563\ RVA:\ 0x00011890\ File\ Offset:\ 0x0000FA90}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00964}00964\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ GetSortVal()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00965}00965\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00966}00966\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_element}{Element}}\ reqSkill\ =\ this.source.GetReqSkill();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00967}00967\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ reqSkill.source.id\ *\ 10000\ -\/\ reqSkill.Value;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00968}00968\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00969}00969\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00970}00970\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040004E9\ RID:\ 1257}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00971}00971\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ Dictionary<string,\ Recipe>\ recipeCache\ =\ \textcolor{keyword}{new}\ Dictionary<string,\ Recipe>();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00972}00972\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00973}00973\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040004EA\ RID:\ 1258}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00974}00974\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00975}00975\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ id;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00976}00976\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00977}00977\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040004EB\ RID:\ 1259}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00978}00978\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00979}00979\ \ \ \ \ \textcolor{keyword}{public}\ List<\mbox{\hyperlink{class_recipe}{Recipe}}.\mbox{\hyperlink{class_recipe_1_1_ingredient}{Ingredient}}>\ ingredients\ =\ \textcolor{keyword}{new}\ List<\mbox{\hyperlink{class_recipe}{Recipe}}.\mbox{\hyperlink{class_recipe_1_1_ingredient}{Ingredient}}>();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00980}00980\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00981}00981\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040004EC\ RID:\ 1260}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00982}00982\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00983}00983\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ UseStock;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00984}00984\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00985}00985\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040004ED\ RID:\ 1261}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00986}00986\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00987}00987\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IngAsProduct;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00988}00988\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00989}00989\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040004EE\ RID:\ 1262}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00990}00990\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00991}00991\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ VirtualBlock;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00992}00992\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00993}00993\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040004EF\ RID:\ 1263}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00994}00994\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \_dir;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00995}00995\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00996}00996\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040004F0\ RID:\ 1264}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00997}00997\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ sync;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00998}00998\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l00999}00999\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040004F1\ RID:\ 1265}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01000}01000\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ idMat\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01001}01001\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01002}01002\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040004F2\ RID:\ 1266}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01003}01003\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ idSkin;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01004}01004\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01005}01005\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040004F3\ RID:\ 1267}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01006}01006\ \ \ \ \ \textcolor{keyword}{public}\ Recipe.State\ state;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01007}01007\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01008}01008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040004F4\ RID:\ 1268}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01009}01009\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ \_source;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01010}01010\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01011}01011\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x020007CD\ RID:\ 1997}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01012}01012\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ State}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01013}01013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01014}01014\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040021DB\ RID:\ 8667}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01015}01015\ \ \ \ \ \ \ \ \ Valid,}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01016}01016\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040021DC\ RID:\ 8668}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01017}01017\ \ \ \ \ \ \ \ \ Invalid}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01018}01018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01019}01019\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01020}01020\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x020007CE\ RID:\ 1998}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01021}\mbox{\hyperlink{class_recipe_1_1_ingredient}{01021}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_recipe_1_1_ingredient}{Ingredient}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01022}01022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01023}01023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17001119\ RID:\ 4377}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01024}01024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060037CF\ RID:\ 14287\ RVA:\ 0x0012B73D\ File\ Offset:\ 0x0012993D}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01025}01025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsThingSpecified}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01026}01026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01027}01027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01028}01028\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01029}01029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.uid\ !=\ 0;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01030}01030\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01031}01031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01032}01032\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01033}01033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700111A\ RID:\ 4378}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01034}01034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060037D0\ RID:\ 14288\ RVA:\ 0x0012B748\ File\ Offset:\ 0x00129948}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01035}01035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ IdThing}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01036}01036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01037}01037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01038}01038\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01039}01039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.useCat)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01040}01040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01041}01041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.id;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01042}01042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01043}01043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.categories.map[this.id].GetIdThing();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01044}01044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01045}01045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01046}01046\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01047}01047\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060037D1\ RID:\ 14289\ RVA:\ 0x0012B778\ File\ Offset:\ 0x00129978}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01048}01048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_thing}{Thing}}\ RefreshThing()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01049}01049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01050}01050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.thing\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01051}01051\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01052}01052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.thing\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.things.Find(this.uid);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01053}01053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.thing\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01054}01054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01055}01055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.thing\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.Stocked.Find(this.uid);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01056}01056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.thing\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01057}01057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01058}01058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.thing\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.things.Find(this.\textcolor{keywordtype}{id},\ this.mat,\ this.refVal);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01059}01059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.thing\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01060}01060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01061}01061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.thing\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.Stocked.Find(this.\textcolor{keywordtype}{id},\ this.mat,\ this.refVal,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01062}01062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01063}01063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01064}01064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01065}01065\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01066}01066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.thing;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01067}01067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01068}01068\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01069}01069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060037D2\ RID:\ 14290\ RVA:\ 0x0012B833\ File\ Offset:\ 0x00129A33}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01070}01070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ CanSetThing(\mbox{\hyperlink{class_thing}{Thing}}\ t)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01071}01071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01072}01072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !(t.id\ !=\ this.id)\ \&\&\ t.Num\ >=\ \textcolor{keyword}{this}.req;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01073}01073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01074}01074\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01075}01075\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060037D3\ RID:\ 14291\ RVA:\ 0x0012B859\ File\ Offset:\ 0x00129A59}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01076}01076\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetThing(\mbox{\hyperlink{class_thing}{Thing}}\ t\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01077}01077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01078}01078\ \ \ \ \ \ \ \ \ \ \ \ \ this.uid\ =\ ((t\ !=\ \textcolor{keyword}{null})\ ?\ t.uid\ :\ 0);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01079}01079\ \ \ \ \ \ \ \ \ \ \ \ \ this.thing\ =\ t;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01080}01080\ \ \ \ \ \ \ \ \ \ \ \ \ this.mat\ =\ ((t\ !=\ \textcolor{keyword}{null})\ ?\ t.material.id\ :\ -\/1);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01081}01081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01082}01082\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01083}01083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060037D4\ RID:\ 14292\ RVA:\ 0x0012B88C\ File\ Offset:\ 0x00129A8C}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01084}01084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ GetName()}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01085}01085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01086}01086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.useCat)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01087}01087\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01088}01088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ \mbox{\hyperlink{class_recipe}{Recipe}}.\mbox{\hyperlink{class_recipe_1_1_ingredient}{Ingredient}}.<GetName>g\_\_CatName|18\_0(this.\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01089}01089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.idOther.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01090}01090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01091}01091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\textcolor{keywordtype}{string}\ text2\ \textcolor{keywordflow}{in}\ this.idOther)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01092}01092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01093}01093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text\ =\ text\ +\ \textcolor{stringliteral}{"{},\ "{}}\ +\ \mbox{\hyperlink{class_recipe}{Recipe}}.\mbox{\hyperlink{class_recipe_1_1_ingredient}{Ingredient}}.<GetName>g\_\_CatName|18\_0(text2);}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01094}01094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01095}01095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01096}01096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ingCat"{}}.lang(text,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01097}01097\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01098}01098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.cards.map[this.id].GetName().IsEmpty((\textcolor{stringliteral}{"{}card\_"{}}\ +\ this.\textcolor{keywordtype}{id}).lang());}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01099}01099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text3\ =\ this.tag.IsEmpty()\ ?\ \textcolor{stringliteral}{"{}"{}}\ :\ (\textcolor{stringliteral}{"{}("{}}\ +\ (\textcolor{stringliteral}{"{}tag\_"{}}\ +\ this.tag).lang()\ +\ \textcolor{stringliteral}{"{})"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01100}01100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.idOther.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01101}01101\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01102}01102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\textcolor{keywordtype}{string}\ key\ \textcolor{keywordflow}{in}\ this.idOther)}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01103}01103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01104}01104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text3\ =\ text3\ +\ \textcolor{stringliteral}{"{},\ "{}}\ +\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.cards.map[key].GetName();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01105}01105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01106}01106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01107}01107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ str\ +\ text3;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01108}01108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01109}01109\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01110}01110\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060037D6\ RID:\ 14294\ RVA:\ 0x0012BA2D\ File\ Offset:\ 0x00129C2D}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01111}01111\ \ \ \ \ \ \ \ \ [CompilerGenerated]}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01112}01112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{internal}\ \textcolor{keyword}{static}\ string\ <GetName>g\_\_CatName|18\_0(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01113}01113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01114}01114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.categories.map[id].GetName();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01115}01115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01116}01116\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01117}01117\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040021DD\ RID:\ 8669}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01118}01118\ \ \ \ \ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01119}01119\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ uid;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01120}01120\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01121}01121\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040021DE\ RID:\ 8670}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01122}01122\ \ \ \ \ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01123}01123\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ req;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01124}01124\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01125}01125\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040021DF\ RID:\ 8671}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01126}01126\ \ \ \ \ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01127}01127\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ mat\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01128}01128\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01129}01129\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040021E0\ RID:\ 8672}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01130}01130\ \ \ \ \ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01131}01131\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ refVal\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01132}01132\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01133}01133\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040021E1\ RID:\ 8673}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01134}01134\ \ \ \ \ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01135}01135\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ id;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01136}01136\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01137}01137\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040021E2\ RID:\ 8674}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01138}01138\ \ \ \ \ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01139}01139\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ tag;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01140}01140\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01141}01141\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040021E3\ RID:\ 8675}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01142}01142\ \ \ \ \ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01143}01143\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ List<string>\ idOther\ =\ \textcolor{keyword}{new}\ List<string>();}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01144}01144\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01145}01145\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040021E4\ RID:\ 8676}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01146}01146\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_thing}{Thing}}\ thing;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01147}01147\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01148}01148\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040021E5\ RID:\ 8677}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01149}01149\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ optional;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01150}01150\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01151}01151\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040021E6\ RID:\ 8678}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01152}01152\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ dye;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01153}01153\ }
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01154}01154\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040021E7\ RID:\ 8679}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01155}01155\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ useCat;}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01156}01156\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_8cs_source_l01157}01157\ \}}
+
+\end{DoxyCode}

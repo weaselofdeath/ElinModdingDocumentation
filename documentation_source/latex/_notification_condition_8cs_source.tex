@@ -1,0 +1,91 @@
+\doxysection{Notification\+Condition.\+cs}
+\hypertarget{_notification_condition_8cs_source}{}\label{_notification_condition_8cs_source}\index{Elin/NotificationCondition.cs@{Elin/NotificationCondition.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x0200063F\ RID:\ 1599}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00005}\mbox{\hyperlink{class_notification_condition}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_notification_condition}{NotificationCondition}}\ :\ \mbox{\hyperlink{class_base_notification}{BaseNotification}}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000CBC\ RID:\ 3260}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06002CE7\ RID:\ 11495\ RVA:\ 0x000FB5AD\ File\ Offset:\ 0x000F97AD}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ Visible}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !this.text.IsEmpty();}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002CE8\ RID:\ 11496\ RVA:\ 0x000FB5BD\ File\ Offset:\ 0x000F97BD}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ ShouldRemove()}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.condition.IsKilled\ ||\ (EClass.core.IsGameStarted\ \&\&\ !\mbox{\hyperlink{class_e_class}{EClass}}.pc.conditions.Contains(this.condition));}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000CBD\ RID:\ 3261}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06002CE9\ RID:\ 11497\ RVA:\ 0x000FB5F4\ File\ Offset:\ 0x000F97F4}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ Interactable}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !this.condition.source.GetDetail().IsEmpty();}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000CBE\ RID:\ 3262}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06002CEA\ RID:\ 11498\ RVA:\ 0x000FB60E\ File\ Offset:\ 0x000F980E}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ Action<UITooltip>\ onShowTooltip}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ delegate(UITooltip\ t)}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.condition.WriteNote(t.note,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000CBF\ RID:\ 3263}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06002CEB\ RID:\ 11499\ RVA:\ 0x000FB61C\ File\ Offset:\ 0x000F981C}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00048}00048\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ Sprite\ Sprite}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00049}00049\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.condition.GetSprite();}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002CEC\ RID:\ 11500\ RVA:\ 0x000FB62C\ File\ Offset:\ 0x000F982C}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnClick()}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00058}00058\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.condition.CanManualRemove)}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ SE.Trash();}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ this.condition.Kill(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_widget_stats}{WidgetStats}}.RefreshAll();}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_widget_stats}{WidgetStats}}.Instance)}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_widget_stats}{WidgetStats}}.Instance.layout.RebuildLayout(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ SE.Beep();}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002CED\ RID:\ 11501\ RVA:\ 0x000FB680\ File\ Offset:\ 0x000F9880}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00077}00077\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnRefresh()}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00078}00078\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ this.text\ =\ this.condition.GetText()\ +\ (EClass.debug.showExtra\ ?\ (\textcolor{stringliteral}{"{}\ "{}}\ +\ this.condition.value.ToString())\ :\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ this.item.button.mainText.color\ =\ this.condition.GetColor(this.item.button.skinRoot.GetButton().colorProf);}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400191D\ RID:\ 6429}}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00084}00084\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_condition}{Condition}}\ condition;}
+\DoxyCodeLine{\Hypertarget{_notification_condition_8cs_source_l00085}00085\ \}}
+
+\end{DoxyCode}

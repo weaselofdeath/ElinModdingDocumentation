@@ -1,0 +1,372 @@
+.TH "ThingContainer" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ThingContainer
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits List< Thing >\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBDestData\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSetOwner\fP (\fBCard\fP owner)"
+.br
+.ti -1c
+.RI "void \fBChangeSize\fP (int w, int h)"
+.br
+.ti -1c
+.RI "void \fBRefreshGridRecursive\fP ()"
+.br
+.ti -1c
+.RI "void \fBRefreshGrid\fP ()"
+.br
+.ti -1c
+.RI "void \fBRefreshGrid\fP (\fBUIMagicChest\fP magic, Window\&.SaveData data)"
+.br
+.ti -1c
+.RI "bool \fBIsOccupied\fP (int x, int y)"
+.br
+.ti -1c
+.RI "bool \fBShouldShowOnGrid\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "void \fBOnAdd\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "bool \fBIsFull\fP (int y=0)"
+.br
+.ti -1c
+.RI "bool \fBIsOverflowing\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetFreeGridIndex\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnRemove\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "void \fBSetSize\fP (int w, int h)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBTryStack\fP (\fBThing\fP target, int destInvX=\-1, int destInvY=\-1)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBCanStack\fP (\fBThing\fP target, int destInvX=\-1, int destInvY=\-1)"
+.br
+.ti -1c
+.RI "\fBThingContainer\&.DestData\fP \fBGetDest\fP (\fBThing\fP t, bool tryStack=true)"
+.br
+.ti -1c
+.RI "bool \fBIsFull\fP (\fBThing\fP t, bool recursive=true, bool tryStack=true)"
+.br
+.ti -1c
+.RI "void \fBAddCurrency\fP (\fBCard\fP owner, string id, int a, \fBSourceMaterial\&.Row\fP mat=null)"
+.br
+.ti -1c
+.RI "void \fBDestroyAll\fP (Func< \fBThing\fP, bool > funcExclude=null)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFind\fP (int uid)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFind< T >\fP ()"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFind\fP (Func< \fBThing\fP, bool > func, bool recursive=true)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFind\fP (string id, string idMat)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFind\fP (string id, int idMat=\-1, int refVal=\-1)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFindStealable\fP ()"
+.br
+.ti -1c
+.RI "\fBThingStack\fP \fBGetThingStack\fP (string id, int refVal=\-1)"
+.br
+.ti -1c
+.RI "\fBThingStack\fP \fBGetThingStack\fP (string id, \fBThingStack\fP s, bool isOrigin, int refVal=\-1)"
+.br
+.ti -1c
+.RI "\fBThingStack\fP \fBGetThingStack\fP (string id)"
+.br
+.ti -1c
+.RI "\fBThingStack\fP \fBGetThingStack\fP (string id, \fBThingStack\fP s, bool isOrigin)"
+.br
+.ti -1c
+.RI "int \fBGetCurrency\fP (string id, ref int sum, \fBSourceMaterial\&.Row\fP mat=null)"
+.br
+.ti -1c
+.RI "List< \fBThing\fP > \fBListCurrency\fP (string id)"
+.br
+.ti -1c
+.RI "List< \fBThing\fP > \fBList\fP (Func< \fBThing\fP, bool > func, bool onlyAccessible=false)"
+.br
+.ti -1c
+.RI "void \fB_List\fP (Func< \fBThing\fP, bool > func, bool onlyAccessible=false)"
+.br
+.ti -1c
+.RI "void \fBAddFactory\fP (HashSet< string > hash)"
+.br
+.ti -1c
+.RI "void \fBForeach\fP (Action< \fBThing\fP > action, bool onlyAccessible=true)"
+.br
+.ti -1c
+.RI "void \fBForeach\fP (Func< \fBThing\fP, bool > action, bool onlyAccessible=true)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBwidth\fP"
+.br
+.ti -1c
+.RI "int \fBheight\fP"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBowner\fP"
+.br
+.ti -1c
+.RI "List< \fBThing\fP > \fBgrid\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static List< \fBThing\fP > \fBlistUnassigned\fP = new List<\fBThing\fP>()"
+.br
+.ti -1c
+.RI "const int \fBInvYHotbar\fP = 1"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBGridSize\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasGrid\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMagicChest\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBMaxCapacity\fP\fR [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB8\fP of file \fBThingContainer\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ThingContainer\&._List (Func< \fBThing\fP, bool > func, bool onlyAccessible = \fRfalse\fP)"
+
+.PP
+Definition at line \fB693\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "void ThingContainer\&.AddCurrency (\fBCard\fP owner, string id, int a, \fBSourceMaterial\&.Row\fP mat = \fRnull\fP)"
+
+.PP
+Definition at line \fB425\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "void ThingContainer\&.AddFactory (HashSet< string > hash)"
+
+.PP
+Definition at line \fB709\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "\fBThing\fP ThingContainer\&.CanStack (\fBThing\fP target, int destInvX = \fR\-1\fP, int destInvY = \fR\-1\fP)"
+
+.PP
+Definition at line \fB359\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "void ThingContainer\&.ChangeSize (int w, int h)"
+
+.PP
+Definition at line \fB72\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "void ThingContainer\&.DestroyAll (Func< \fBThing\fP, bool > funcExclude = \fRnull\fP)"
+
+.PP
+Definition at line \fB464\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "\fBThing\fP ThingContainer\&.Find (Func< \fBThing\fP, bool > func, bool recursive = \fRtrue\fP)"
+
+.PP
+Definition at line \fB527\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "\fBThing\fP ThingContainer\&.Find (int uid)"
+
+.PP
+Definition at line \fB485\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "\fBThing\fP ThingContainer\&.Find (string id, int idMat = \fR\-1\fP, int refVal = \fR\-1\fP)"
+
+.PP
+Definition at line \fB554\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "\fBThing\fP ThingContainer\&.Find (string id, string idMat)"
+
+.PP
+Definition at line \fB548\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "\fBThing\fP ThingContainer\&.Find< T > ()"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fI\fBTrait\fP\fP
+.PP
+Definition at line \fB506\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "\fBThing\fP ThingContainer\&.FindStealable ()"
+
+.PP
+Definition at line \fB575\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "void ThingContainer\&.Foreach (Action< \fBThing\fP > action, bool onlyAccessible = \fRtrue\fP)"
+
+.PP
+Definition at line \fB729\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "void ThingContainer\&.Foreach (Func< \fBThing\fP, bool > action, bool onlyAccessible = \fRtrue\fP)"
+
+.PP
+Definition at line \fB742\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "int ThingContainer\&.GetCurrency (string id, ref int sum, \fBSourceMaterial\&.Row\fP mat = \fRnull\fP)"
+
+.PP
+Definition at line \fB644\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "\fBThingContainer\&.DestData\fP ThingContainer\&.GetDest (\fBThing\fP t, bool tryStack = \fRtrue\fP)"
+
+.PP
+Definition at line \fB372\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "int ThingContainer\&.GetFreeGridIndex ()"
+
+.PP
+Definition at line \fB304\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "\fBThingStack\fP ThingContainer\&.GetThingStack (string id)"
+
+.PP
+Definition at line \fB619\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "\fBThingStack\fP ThingContainer\&.GetThingStack (string id, int refVal = \fR\-1\fP)"
+
+.PP
+Definition at line \fB594\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "\fBThingStack\fP ThingContainer\&.GetThingStack (string id, \fBThingStack\fP s, bool isOrigin)"
+
+.PP
+Definition at line \fB627\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "\fBThingStack\fP ThingContainer\&.GetThingStack (string id, \fBThingStack\fP s, bool isOrigin, int refVal = \fR\-1\fP)"
+
+.PP
+Definition at line \fB602\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "bool ThingContainer\&.IsFull (int y = \fR0\fP)"
+
+.PP
+Definition at line \fB264\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "bool ThingContainer\&.IsFull (\fBThing\fP t, bool recursive = \fRtrue\fP, bool tryStack = \fRtrue\fP)"
+
+.PP
+Definition at line \fB419\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "bool ThingContainer\&.IsOccupied (int x, int y)"
+
+.PP
+Definition at line \fB222\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "bool ThingContainer\&.IsOverflowing ()"
+
+.PP
+Definition at line \fB286\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "List< \fBThing\fP > ThingContainer\&.List (Func< \fBThing\fP, bool > func, bool onlyAccessible = \fRfalse\fP)"
+
+.PP
+Definition at line \fB685\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "List< \fBThing\fP > ThingContainer\&.ListCurrency (string id)"
+
+.PP
+Definition at line \fB661\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "void ThingContainer\&.OnAdd (\fBThing\fP t)"
+
+.PP
+Definition at line \fB245\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "void ThingContainer\&.OnRemove (\fBThing\fP t)"
+
+.PP
+Definition at line \fB317\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "void ThingContainer\&.RefreshGrid ()"
+
+.PP
+Definition at line \fB104\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "void ThingContainer\&.RefreshGrid (\fBUIMagicChest\fP magic, Window\&.SaveData data)"
+
+.PP
+Definition at line \fB139\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "void ThingContainer\&.RefreshGridRecursive ()"
+
+.PP
+Definition at line \fB91\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "void ThingContainer\&.SetOwner (\fBCard\fP owner)"
+
+.PP
+Definition at line \fB59\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "void ThingContainer\&.SetSize (int w, int h)"
+
+.PP
+Definition at line \fB331\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "bool ThingContainer\&.ShouldShowOnGrid (\fBThing\fP t)"
+
+.PP
+Definition at line \fB235\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "\fBThing\fP ThingContainer\&.TryStack (\fBThing\fP target, int destInvX = \fR\-1\fP, int destInvY = \fR\-1\fP)"
+
+.PP
+Definition at line \fB338\fP of file \fBThingContainer\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "List<\fBThing\fP> ThingContainer\&.grid"
+
+.PP
+Definition at line \fB870\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "int ThingContainer\&.height"
+
+.PP
+Definition at line \fB862\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "const int ThingContainer\&.InvYHotbar = 1\fR [static]\fP"
+
+.PP
+Definition at line \fB854\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "List<\fBThing\fP> ThingContainer\&.listUnassigned = new List<\fBThing\fP>()\fR [static]\fP"
+
+.PP
+Definition at line \fB850\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "\fBCard\fP ThingContainer\&.owner"
+
+.PP
+Definition at line \fB866\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "int ThingContainer\&.width"
+
+.PP
+Definition at line \fB858\fP of file \fBThingContainer\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "int ThingContainer\&.GridSize\fR [get]\fP"
+
+.PP
+Definition at line \fB13\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "bool ThingContainer\&.HasGrid\fR [get]\fP"
+
+.PP
+Definition at line \fB24\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "bool ThingContainer\&.IsMagicChest\fR [get]\fP"
+
+.PP
+Definition at line \fB35\fP of file \fBThingContainer\&.cs\fP\&.
+.SS "int ThingContainer\&.MaxCapacity\fR [get]\fP"
+
+.PP
+Definition at line \fB46\fP of file \fBThingContainer\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

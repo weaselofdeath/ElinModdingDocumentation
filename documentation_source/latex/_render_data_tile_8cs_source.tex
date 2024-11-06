@@ -1,0 +1,83 @@
+\doxysection{Render\+Data\+Tile.\+cs}
+\hypertarget{_render_data_tile_8cs_source}{}\label{_render_data_tile_8cs_source}\index{Elin/RenderDataTile.cs@{Elin/RenderDataTile.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00003}00003\ \textcolor{comment}{//\ Token:\ 0x020001A4\ RID:\ 420}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00004}\mbox{\hyperlink{class_render_data_tile}{00004}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_render_data_tile}{RenderDataTile}}\ :\ \mbox{\hyperlink{class_render_data}{RenderData}}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000BFB\ RID:\ 3067\ RVA:\ 0x0004A598\ File\ Offset:\ 0x00048798}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00007}00007\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ Draw(\mbox{\hyperlink{class_render_param}{RenderParam}}\ p)}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00008}00008\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.useOffsetBack)}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_offset\ =\ ((p.dir\ \%\ 4\ >=\ 2)\ ?\ this.offsetBack\ :\ this.offset);}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ (p.tile\ \%\ 2f\ ==\ 1f\ ||\ p.tile\ <\ 0f\ ||\ !this.symmetry)\ ?\ 1\ :\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ (p.tile\ <\ 0f)\ ?\ -\/1\ :\ 1;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_batch}{MeshBatch}}\ meshBatch\ =\ this.pass.batches[this.pass.batchIdx];}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ meshBatch.matrices[this.pass.idx].m03\ =\ p.x\ +\ this.\_offset.x\ *\ (float)num;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ meshBatch.matrices[this.pass.idx].m13\ =\ p.y\ +\ this.\_offset.y;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ meshBatch.matrices[this.pass.idx].m23\ =\ p.z\ +\ this.\_offset.z;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ meshBatch.tiles[this.pass.idx]\ =\ p.tile\ +\ (float)(this.liquid\ ?\ (p.liquidLv\ *\ 10000\ *\ num2)\ :\ 0);}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ meshBatch.colors[this.pass.idx]\ =\ p.color;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ meshBatch.matColors[this.pass.idx]\ =\ p.matColor;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ this.pass.idx++;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.pass.idx\ ==\ \textcolor{keyword}{this}.pass.batchSize)}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ this.pass.NextBatch();}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.multiSize)}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ meshBatch.matrices[this.pass.idx].m03\ =\ p.x\ +\ this.\_offset.x\ *\ (float)num;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ meshBatch.matrices[this.pass.idx].m13\ =\ p.y\ +\ this.\_offset.y\ +\ this.pass.pmesh.size.y;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ meshBatch.matrices[this.pass.idx].m23\ =\ p.z\ +\ this.\_offset.z\ +\ \mbox{\hyperlink{class_render_data}{RenderData}}.renderSetting.vFix.z;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ meshBatch.tiles[this.pass.idx]\ =\ p.tile\ -\/\ this.pass.pmesh.tiling.x\ +\ (float)(this.liquid\ ?\ (p.liquidLv\ *\ 10000\ *\ num2)\ :\ 0);}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ meshBatch.colors[this.pass.idx]\ =\ p.color;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ meshBatch.matColors[this.pass.idx]\ =\ p.matColor;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ this.pass.idx++;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.pass.idx\ ==\ \textcolor{keyword}{this}.pass.batchSize)}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.pass.NextBatch();}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p.snow\ \&\&\ \textcolor{keyword}{this}.hasSnowPass)}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_pass}{MeshPass}}\ snowPass\ =\ this.pass.snowPass;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ meshBatch\ =\ snowPass.batches[snowPass.batchIdx];}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ meshBatch.colors[snowPass.idx]\ =\ p.color;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ meshBatch.matrices[snowPass.idx].m03\ =\ p.x\ +\ this.\_offset.x\ *\ (float)num;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ meshBatch.matrices[snowPass.idx].m13\ =\ p.y\ +\ this.\_offset.y;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ meshBatch.matrices[snowPass.idx].m23\ =\ p.z\ +\ this.\_offset.z\ +\ this.snowZ;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ meshBatch.tiles[snowPass.idx]\ =\ p.tile\ +\ (float)(p.liquidLv\ *\ 10000\ *\ num2);}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ meshBatch.matColors[snowPass.idx]\ =\ 104025f;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ snowPass.idx++;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (snowPass.idx\ ==\ snowPass.batchSize)}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ snowPass.NextBatch();}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00059}00059\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000BFC\ RID:\ 3068\ RVA:\ 0x0004A9D4\ File\ Offset:\ 0x00048BD4}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00060}00060\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ DrawWithRotation(\mbox{\hyperlink{class_render_param}{RenderParam}}\ p,\ \textcolor{keywordtype}{float}\ angle)}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00061}00061\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_pass}{MeshPass}}\ subPass\ =\ this.pass.subPass;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ p.NewVector3\ +\ this.offset;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000BFD\ RID:\ 3069\ RVA:\ 0x0004A9F4\ File\ Offset:\ 0x00048BF4}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00067}00067\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnValidate()}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00068}00068\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ this.\_offset\ =\ this.offset;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000AE5\ RID:\ 2789}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ liquid;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000AE6\ RID:\ 2790}}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00076}00076\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ snowZ\ =\ -\/0.01f;}
+\DoxyCodeLine{\Hypertarget{_render_data_tile_8cs_source_l00077}00077\ \}}
+
+\end{DoxyCode}

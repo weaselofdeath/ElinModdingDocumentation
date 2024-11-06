@@ -1,0 +1,73 @@
+\doxysection{Trait\+Story\+Book.\+cs}
+\hypertarget{_trait_story_book_8cs_source}{}\label{_trait_story_book_8cs_source}\index{Elin/TraitStoryBook.cs@{Elin/TraitStoryBook.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Runtime.CompilerServices;}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x02000369\ RID:\ 873}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00006}\mbox{\hyperlink{class_trait_story_book}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_trait_story_book}{TraitStoryBook}}\ :\ \mbox{\hyperlink{class_trait_scroll}{TraitScroll}}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170007EF\ RID:\ 2031}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06001B01\ RID:\ 6913\ RVA:\ 0x000A6E21\ File\ Offset:\ 0x000A5021}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{string}\ IdBook}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}\_main"{}};}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00016}00016\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001B02\ RID:\ 6914\ RVA:\ 0x000A6E28\ File\ Offset:\ 0x000A5028}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnRead(\mbox{\hyperlink{class_chara}{Chara}}\ c)}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ is\ \mbox{\hyperlink{class_trait_tutorial_book}{TraitTutorialBook}})}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ Tutorial.debugSkip\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ ExcelData\ excelData\ =\ \textcolor{keyword}{new}\ ExcelData();}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ excelData.path\ =\ CorePath.DramaData\ +\ this.IdBook\ +\ \textcolor{stringliteral}{"{}.xlsx"{}};}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!Lang.isBuiltin)}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ excelData.path\ =\ CorePath.DramaDataLocal\ +\ this.IdBook\ +\ \textcolor{stringliteral}{"{}.xlsx"{}};}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ excelData.BuildList(\textcolor{stringliteral}{"{}index"{}});}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ ExcelData.Sheet\ sheet\ =\ excelData.sheets[\textcolor{stringliteral}{"{}index"{}}];}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ List<Dictionary<string,\ string>>\ rows\ =\ sheet.list;}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.debug.allStory)}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ rows.ForeachReverse(delegate(Dictionary<string,\ string>\ a)}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ a[\textcolor{stringliteral}{"{}id"{}}].ToInt();}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.player.flags.IsStoryPlayed(num)\ ||\ num\ >=\ 950)}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rows.Remove(a);}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.ui.AddLayer<\mbox{\hyperlink{class_layer_list}{LayerList}}>().SetSize(450f,\ -\/1f).SetList2<Dictionary<string,\ string>>(rows,\ (Dictionary<string,\ string>\ a)\ =>\ \mbox{\hyperlink{class_trait_story_book}{TraitStoryBook}}.<OnRead>g\_\_GetText|2\_1(a,\ \textcolor{stringliteral}{"{}text"{}}),\ delegate(Dictionary<string,\ string>\ a,\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}\ b)}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.player.flags.PlayStory(this.IdBook,\ a[\textcolor{stringliteral}{"{}id"{}}].ToInt(),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \},\ delegate(Dictionary<string,\ string>\ a,\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}\ b)}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001B04\ RID:\ 6916\ RVA:\ 0x000A6F58\ File\ Offset:\ 0x000A5158}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00054}00054\ \ \ \ \ [CompilerGenerated]}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00055}00055\ \ \ \ \ \textcolor{keyword}{internal}\ \textcolor{keyword}{static}\ string\ <OnRead>g\_\_GetText|2\_1(Dictionary<string,\ string>\ dict,\ \textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00056}00056\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!Lang.isBuiltin)}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dict[id];}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!dict.ContainsKey(\textcolor{keywordtype}{id}\ +\ \textcolor{stringliteral}{"{}\_"{}}\ +\ Lang.langCode))}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dict[\textcolor{keywordtype}{id}\ +\ \textcolor{stringliteral}{"{}\_JP"{}}];}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dict[\textcolor{keywordtype}{id}\ +\ \textcolor{stringliteral}{"{}\_"{}}\ +\ Lang.langCode];}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_story_book_8cs_source_l00067}00067\ \}}
+
+\end{DoxyCode}

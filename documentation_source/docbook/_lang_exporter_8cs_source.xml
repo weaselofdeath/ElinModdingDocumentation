@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__lang_exporter_8cs_source" xml:lang="en-US">
+<title>LangExporter.cs</title>
+<indexterm><primary>Elin/LangExporter.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__lang_exporter_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__lang_exporter_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.IO;
+<anchor xml:id="__lang_exporter_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>NPOI.SS.UserModel;
+<anchor xml:id="__lang_exporter_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>NPOI.XSSF.UserModel;
+<anchor xml:id="__lang_exporter_8cs_source_1l00005"/>00005 
+<anchor xml:id="__lang_exporter_8cs_source_1l00006"/>00006 <emphasis role="comment">//&#32;Token:&#32;0x0200004B&#32;RID:&#32;75</emphasis>
+<anchor xml:id="__lang_exporter_8cs_source_1l00007"/><link linkend="_class_lang_exporter">00007</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_lang_exporter">LangExporter</link>&#32;:&#32;<link linkend="_class_e_class">EClass</link>
+<anchor xml:id="__lang_exporter_8cs_source_1l00008"/>00008 {
+<anchor xml:id="__lang_exporter_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060001A5&#32;RID:&#32;421&#32;RVA:&#32;0x0000E604&#32;File&#32;Offset:&#32;0x0000C804</emphasis>
+<anchor xml:id="__lang_exporter_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Export()
+<anchor xml:id="__lang_exporter_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__lang_exporter_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;str&#32;=&#32;CorePath.packageCore&#32;+&#32;<emphasis role="stringliteral">&quot;Lang/Template/&quot;</emphasis>;
+<anchor xml:id="__lang_exporter_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;str2&#32;=&#32;<emphasis role="stringliteral">&quot;sample.xlsx&quot;</emphasis>;
+<anchor xml:id="__lang_exporter_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;XSSFWorkbook&#32;xssfworkbook&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;XSSFWorkbook();
+<anchor xml:id="__lang_exporter_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LangExporter.currentSheet&#32;=&#32;xssfworkbook.CreateSheet(<emphasis role="stringliteral">&quot;newSheet&quot;</emphasis>);
+<anchor xml:id="__lang_exporter_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">using</emphasis>&#32;(FileStream&#32;fileStream&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;FileStream(str&#32;+&#32;str2,&#32;FileMode.Create))
+<anchor xml:id="__lang_exporter_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__lang_exporter_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xssfworkbook.Write(fileStream);
+<anchor xml:id="__lang_exporter_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__lang_exporter_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__lang_exporter_8cs_source_1l00021"/>00021 
+<anchor xml:id="__lang_exporter_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060001A6&#32;RID:&#32;422&#32;RVA:&#32;0x0000E66C&#32;File&#32;Offset:&#32;0x0000C86C</emphasis>
+<anchor xml:id="__lang_exporter_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;ICell&#32;GetCell(<emphasis role="keywordtype">int</emphasis>&#32;x,&#32;<emphasis role="keywordtype">int</emphasis>&#32;y)
+<anchor xml:id="__lang_exporter_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__lang_exporter_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;IRow&#32;row&#32;=&#32;<link linkend="_class_lang_exporter">LangExporter</link>.currentSheet.GetRow(y)&#32;??&#32;<link linkend="_class_lang_exporter">LangExporter</link>.currentSheet.CreateRow(y);
+<anchor xml:id="__lang_exporter_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;row.GetCell(x)&#32;??&#32;row.CreateCell(x);
+<anchor xml:id="__lang_exporter_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__lang_exporter_8cs_source_1l00028"/>00028 
+<anchor xml:id="__lang_exporter_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060001A7&#32;RID:&#32;423&#32;RVA:&#32;0x0000E6A6&#32;File&#32;Offset:&#32;0x0000C8A6</emphasis>
+<anchor xml:id="__lang_exporter_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;WriteCell(<emphasis role="keywordtype">int</emphasis>&#32;x,&#32;<emphasis role="keywordtype">int</emphasis>&#32;y,&#32;<emphasis role="keywordtype">string</emphasis>&#32;value)
+<anchor xml:id="__lang_exporter_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__lang_exporter_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lang_exporter">LangExporter</link>.GetCell(x,&#32;y).SetCellValue(value);
+<anchor xml:id="__lang_exporter_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__lang_exporter_8cs_source_1l00034"/>00034 
+<anchor xml:id="__lang_exporter_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060001A8&#32;RID:&#32;424&#32;RVA:&#32;0x0000E6B5&#32;File&#32;Offset:&#32;0x0000C8B5</emphasis>
+<anchor xml:id="__lang_exporter_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;WriteCell(<emphasis role="keywordtype">int</emphasis>&#32;x,&#32;<emphasis role="keywordtype">int</emphasis>&#32;y,&#32;<emphasis role="keywordtype">double</emphasis>&#32;value)
+<anchor xml:id="__lang_exporter_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__lang_exporter_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lang_exporter">LangExporter</link>.GetCell(x,&#32;y).SetCellValue(value);
+<anchor xml:id="__lang_exporter_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__lang_exporter_8cs_source_1l00040"/>00040 
+<anchor xml:id="__lang_exporter_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000467&#32;RID:&#32;1127</emphasis>
+<anchor xml:id="__lang_exporter_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;ISheet&#32;currentSheet;
+<anchor xml:id="__lang_exporter_8cs_source_1l00043"/>00043 }
+</programlisting></section>

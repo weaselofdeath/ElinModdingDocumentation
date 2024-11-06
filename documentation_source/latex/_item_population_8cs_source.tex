@@ -1,0 +1,49 @@
+\doxysection{Item\+Population.\+cs}
+\hypertarget{_item_population_8cs_source}{}\label{_item_population_8cs_source}\index{Elin/ItemPopulation.cs@{Elin/ItemPopulation.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00006}00006\ \textcolor{comment}{//\ Token:\ 0x02000597\ RID:\ 1431}}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00007}\mbox{\hyperlink{class_item_population}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_item_population}{ItemPopulation}}\ :\ \mbox{\hyperlink{class_e_mono}{EMono}}}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600273D\ RID:\ 10045\ RVA:\ 0x000DE528\ File\ Offset:\ 0x000DC728}}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetTopic(\mbox{\hyperlink{class_content_population}{ContentPopulation}}.\mbox{\hyperlink{class_content_population_1_1_topic}{Topic}}\ t)}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ this.header.text1.text\ =\ t.header\ +\ \textcolor{stringliteral}{"{}\ \ (\ "{}}\ +\ t.list.Count.ToString()\ +\ \textcolor{stringliteral}{"{}\ )"{}};}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ this.header.image1.color\ =\ \mbox{\hyperlink{class_content_population}{ContentPopulation}}.Instance.colors[t.color];}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ UIButton\ t2\ =\ this.layout.CreateMold(\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (List<Chara>.Enumerator\ enumerator\ =\ t.list.GetEnumerator())}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (enumerator.MoveNext())}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chara}{Chara}}\ c\ =\ enumerator.Current;}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UIButton\ uibutton\ =\ Util.Instantiate<UIButton>(t2,\ this.layout);}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.icon.sprite\ =\ c.GetSprite(0);}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.icon.SetNativeSize();}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.icon.transform.localScale\ =\ (c.IsPCC\ ?\ Vector3.one\ :\ \textcolor{keyword}{new}\ Vector3(0.7f,\ 0.7f,\ 1f));}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.icon.rectTransform.pivot\ =\ (c.IsPCC\ ?\ \textcolor{keyword}{new}\ Vector2(0.5f,\ 0f)\ :\ \textcolor{keyword}{new}\ Vector2(0.5f,\ 0.1f));}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.icon.rectTransform.anchoredPosition\ =\ Vector2.zero;}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.onClick.AddListener(delegate()}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_mono}{EMono}}.ui.AddLayerDontCloseOthers<\mbox{\hyperlink{class_layer_chara}{LayerChara}}>().SetChara(c);}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.tooltip.onShowTooltip\ =\ delegate(UITooltip\ a)}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a.textMain.text\ =\ c.Name;}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015BB\ RID:\ 5563}}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{public}\ UIItem\ header;}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015BC\ RID:\ 5564}}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{public}\ LayoutGroup\ layout;}
+\DoxyCodeLine{\Hypertarget{_item_population_8cs_source_l00043}00043\ \}}
+
+\end{DoxyCode}

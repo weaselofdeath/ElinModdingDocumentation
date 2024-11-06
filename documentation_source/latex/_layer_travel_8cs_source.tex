@@ -1,0 +1,243 @@
+\doxysection{Layer\+Travel.\+cs}
+\hypertarget{_layer_travel_8cs_source}{}\label{_layer_travel_8cs_source}\index{Elin/LayerTravel.cs@{Elin/LayerTravel.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }CreativeSpore.SuperTilemapEditor;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }DG.Tweening;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }DG.Tweening.Core;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }DG.Tweening.Plugins.Options;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00010}00010\ \textcolor{comment}{//\ Token:\ 0x020005C5\ RID:\ 1477}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00011}\mbox{\hyperlink{class_layer_travel}{00011}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_layer_travel}{LayerTravel}}\ :\ \mbox{\hyperlink{class_e_layer}{ELayer}}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00012}00012\ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000BCA\ RID:\ 3018}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600287E\ RID:\ 10366\ RVA:\ 0x000E5113\ File\ Offset:\ 0x000E3313}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ blockWidgetClick}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600287F\ RID:\ 10367\ RVA:\ 0x000E5118\ File\ Offset:\ 0x000E3318}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnInit()}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.useZoom)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.screen.SetZoom(\mbox{\hyperlink{class_e_layer}{ELayer}}.screen.TargetZoom);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ DOTween.To(()\ =>\ \mbox{\hyperlink{class_e_layer}{ELayer}}.scene.screenElona.zoom,\ delegate(\textcolor{keywordtype}{float}\ x)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ELayer.scene.screenElona.zoom\ =\ x;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \},\ this.endZoom,\ this.timeZoom).SetEase(this.easeZoom);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.useBG)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ this.bg.DOFade(this.fadeAlpha,\ this.fadeTime).SetEase(this.easeFade);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.layerFloat.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002880\ RID:\ 10368\ RVA:\ 0x000E51D7\ File\ Offset:\ 0x000E33D7}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnKill()}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00043}00043\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.useBG)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.layerFloat.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.useZoom)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.screen.SetZoom(\mbox{\hyperlink{class_e_layer}{ELayer}}.screen.TargetZoom);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002881\ RID:\ 10369\ RVA:\ 0x000E520D\ File\ Offset:\ 0x000E340D}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00055}00055\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnSwitchContent(Window\ window)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00056}00056\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ this.Refresh();}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002882\ RID:\ 10370\ RVA:\ 0x000E5215\ File\ Offset:\ 0x000E3415}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ GetTravelFood(\mbox{\hyperlink{class_zone}{Zone}}\ z)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00062}00062\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (z.tempDist\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1\ +\ this.GetTravelHours(z)\ /\ (12\ +\ \mbox{\hyperlink{class_e_layer}{ELayer}}.pc.Evalue(407)\ /\ 2)\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002883\ RID:\ 10371\ RVA:\ 0x000E5241\ File\ Offset:\ 0x000E3441}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00071}00071\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ GetTravelHours(\mbox{\hyperlink{class_zone}{Zone}}\ z)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00072}00072\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ z.tempDist\ *\ 3;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002884\ RID:\ 10372\ RVA:\ 0x000E524B\ File\ Offset:\ 0x000E344B}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00077}00077\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ GetSortVal(\mbox{\hyperlink{class_zone}{Zone}}\ z)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00078}00078\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_layer}{ELayer}}.pc.homeZone\ ==\ z)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.GetTravelHours(z);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00086}00086\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002885\ RID:\ 10373\ RVA:\ 0x000E5264\ File\ Offset:\ 0x000E3464}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00087}00087\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Refresh()}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00088}00088\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ this.currentZone\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.scene.elomap.GetZone(\mbox{\hyperlink{class_e_layer}{ELayer}}.pc.pos);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.currentZone\ !=\ \textcolor{keyword}{null}\ \&\&\ !this.currentZone.isKnown)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ this.currentZone\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ this.list.callbacks\ =\ \textcolor{keyword}{new}\ UIList.Callback<\mbox{\hyperlink{class_zone}{Zone}},\ UIButton>}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ onInstantiate\ =\ delegate(\mbox{\hyperlink{class_zone}{Zone}}\ a,\ UIButton\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ \textcolor{stringliteral}{"{}travelZone"{}}.lang(a.Name,\ a.tempDist.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a\ ==\ \mbox{\hyperlink{class_e_layer}{ELayer}}.pc.homeZone)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text\ =\ \textcolor{stringliteral}{"{}travelHome"{}}.lang()\ +\ text;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a.isRandomSite)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text\ +=\ \textcolor{keywordtype}{string}.Concat(\textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ ("{}},}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}days1"{}}.lang(),}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\mbox{\hyperlink{class_e_layer}{ELayer}}.world.date.GetRemainingHours(a.dateExpire)\ /\ 24\ +\ 1).ToString(),}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}days2"{}}.lang(),}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{})"{}}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}).TagSize(13);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.mainText.SetText(text);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.icon.sprite\ =\ (TilemapUtils.GetOrCreateTileSprite(\mbox{\hyperlink{class_e_layer}{ELayer}}.scene.elomap.actor.tileset,\ a.icon,\ 0f)\ ??\ b.icon.sprite);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.icon.SetNativeSize();}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.refObj\ =\ a;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ travelFood\ =\ this.GetTravelFood(a);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currency\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.pc.GetCurrency(\textcolor{stringliteral}{"{}ration"{}});}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.subText.SetText(travelFood.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ (currency\ >=\ travelFood)\ ?\ FontColor.Good\ :\ FontColor.Bad);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.subText2.SetText(\mbox{\hyperlink{class_date}{Date}}.GetText2(\textcolor{keyword}{this}.GetTravelHours(a)));}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ onClick\ =\ delegate(\mbox{\hyperlink{class_zone}{Zone}}\ a,\ UIButton\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a\ ==\ this.currentZone)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Close();}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.player.EnterLocalZone(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_layer}{ELayer}}.pc.TryPay(\textcolor{keyword}{this}.GetTravelFood(a),\ \textcolor{stringliteral}{"{}ration"{}}))}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_layer}{ELayer}}.pc.burden.GetPhase()\ >=\ 3)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_msg}{Msg}}.Say(\textcolor{stringliteral}{"{}errorOverweightTravel"{}});}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Close();}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ELayer.player.distanceTravel\ =\ a.tempDist;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ELayer.player.dateTravel\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.world.date.GetRaw(0);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (UIList.ButtonPair\ buttonPair\ in\ \textcolor{keyword}{this}.list.buttons)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UIButton\ uibutton\ =\ buttonPair.component\ as\ UIButton;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (uibutton\ \&\&\ uibutton\ !=\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.GetComponent<CanvasGroup>().alpha\ =\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ time\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ h\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ maxHours\ =\ this.GetTravelHours(a);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer<\mbox{\hyperlink{class_layer_cover}{LayerCover}}>().SetCondition(delegate(\textcolor{keywordtype}{float}\ delta)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ time\ +=\ delta;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (time\ >=\ 0.035f)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ time\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ h\ =\ h;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h++;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.world.date.AdvanceHour();}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (h\ >=\ maxHours)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Close();}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.pc.MoveImmediate(a.RegionPos,\ \textcolor{keyword}{true},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ELayer.player.lastZonePos\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ZoneTransition.EnterState\ state\ =\ (a.RegionEnterState\ ==\ \mbox{\hyperlink{class_zone_transition}{ZoneTransition}}.EnterState.Dir)\ ?\ \mbox{\hyperlink{class_zone_transition}{ZoneTransition}}.DirToState(\mbox{\hyperlink{class_e_layer}{ELayer}}.pc.GetCurrentDir())\ :\ a.RegionEnterState;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a\ is\ \mbox{\hyperlink{class_zone___lumiest}{Zone\_Lumiest}})}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ \mbox{\hyperlink{class_zone_transition}{ZoneTransition}}.EnterState.Right;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.pc.MoveZone(a,\ state);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ onList\ =\ delegate(UIList.SortMode\ m)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<Zone>\ list\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.game.activeZone.Region.ListTravelZones(100);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list.Sort((\mbox{\hyperlink{class_zone}{Zone}}\ a,\ \mbox{\hyperlink{class_zone}{Zone}}\ b)\ =>\ this.GetSortVal(a)\ -\/\ this.GetSortVal(b));}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_zone}{Zone}}\ o\ \textcolor{keywordflow}{in}\ list)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.windows[0].idTab\ !=\ 1)}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.list.Add(o);}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ this.list.List(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00194}00194\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00196}00196\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016B3\ RID:\ 5811}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00197}00197\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ list;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00199}00199\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016B4\ RID:\ 5812}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00200}00200\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_zone}{Zone}}\ currentZone;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00202}00202\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016B5\ RID:\ 5813}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00203}00203\ \ \ \ \ \textcolor{keyword}{public}\ Image\ bg;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00205}00205\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016B6\ RID:\ 5814}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00206}00206\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ fadeAlpha;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00208}00208\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016B7\ RID:\ 5815}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00209}00209\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ fadeTime;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00211}00211\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016B8\ RID:\ 5816}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00212}00212\ \ \ \ \ \textcolor{keyword}{public}\ Ease\ easeFade;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00214}00214\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016B9\ RID:\ 5817}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00215}00215\ \ \ \ \ \textcolor{keyword}{public}\ Ease\ easeZoom;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00217}00217\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016BA\ RID:\ 5818}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00218}00218\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ startZoom;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00220}00220\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016BB\ RID:\ 5819}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00221}00221\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ endZoom;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00223}00223\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016BC\ RID:\ 5820}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00224}00224\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ timeZoom;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00226}00226\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016BD\ RID:\ 5821}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00227}00227\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ highlightZone;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00229}00229\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016BE\ RID:\ 5822}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00230}00230\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ useBG;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00232}00232\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016BF\ RID:\ 5823}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00233}00233\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ useZoom;}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00235}00235\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016C0\ RID:\ 5824}}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00236}00236\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_point}{Point}}\ posHighlight\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_point}{Point}}();}
+\DoxyCodeLine{\Hypertarget{_layer_travel_8cs_source_l00237}00237\ \}}
+
+\end{DoxyCode}

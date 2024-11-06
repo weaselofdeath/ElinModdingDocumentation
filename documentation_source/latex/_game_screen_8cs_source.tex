@@ -1,0 +1,54 @@
+\doxysection{Game\+Screen.\+cs}
+\hypertarget{_game_screen_8cs_source}{}\label{_game_screen_8cs_source}\index{Elin/GameScreen.cs@{Elin/GameScreen.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000163\ RID:\ 355}}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00005}\mbox{\hyperlink{class_game_screen}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_screen}{GameScreen}}\ :\ \mbox{\hyperlink{class_base_game_screen}{BaseGameScreen}}}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170002A5\ RID:\ 677}}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000A71\ RID:\ 2673\ RVA:\ 0x0003F29C\ File\ Offset:\ 0x0003D49C}}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ IsLocalMap}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000A72\ RID:\ 2674\ RVA:\ 0x0003F2A0\ File\ Offset:\ 0x0003D4A0}}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnActivate()}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ indoor\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.\_map.config.indoor;}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ this.moons[0].SetLocalPositionY((\textcolor{keywordtype}{float})this.moonLevel\ *\ -\/this.planeSpeed.y);}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ this.moons[1].SetLocalPositionY((\textcolor{keywordtype}{float})this.moonLevel\ *\ -\/this.planeSpeed.y\ +\ 1.4f);}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ Transform[]\ array\ =\ this.moons;}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ array.Length;\ i++)}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ array[i].SetActive(!indoor);}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_mono}{EMono}}.scene.RefreshBG();}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000A73\ RID:\ 2675\ RVA:\ 0x0003F330\ File\ Offset:\ 0x0003D530}}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ SetUnitSize()}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ this.tileAlign\ =\ \textcolor{keyword}{new}\ Vector2(this.tileSize.x\ *\ 0.005f,\ \textcolor{keyword}{this}.tileSize.y\ *\ 0.005f);}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ this.tileWorldSize\ =\ \textcolor{keyword}{new}\ Vector2(this.tileSize.x\ *\ 0.01f,\ \textcolor{keyword}{this}.tileSize.y\ *\ 0.01f);}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x\ =\ this.tileSize.x;}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ num\ =\ 100f\ /\ x;}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ num2\ =\ num\ *\ 100f;}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ num3\ =\ num\ *\ 100f\ /\ 4f;}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ this.tileViewSize\ =\ \textcolor{keyword}{new}\ Vector2(num2\ *\ 0.01f,\ num3\ *\ 0.01f);}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000931\ RID:\ 2353}}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{public}\ Transform[]\ moons;}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000932\ RID:\ 2354}}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_render_data}{RenderData}}\ renderTempEQ;}
+\DoxyCodeLine{\Hypertarget{_game_screen_8cs_source_l00048}00048\ \}}
+
+\end{DoxyCode}

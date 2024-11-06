@@ -1,0 +1,609 @@
+.TH "LogicalPoint" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LogicalPoint
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBPoint\fP\&.
+.PP
+Inherited by \fBLogicalFire\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "new void \fBSet\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "virtual void \fBUpdate\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBKill\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBPoint\fP
+.in +1c
+.ti -1c
+.RI "bool \fBWithin\fP (int _x, int _z, int _w, int _h)"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBFirstVisibleChara\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHasRoomOrArea\fP (\fBBaseArea\fP a)"
+.br
+.ti -1c
+.RI "bool \fBIsPublicSpace\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "\fBPoint\fP (int _x, int _z)"
+.br
+.ti -1c
+.RI "\fBPoint\fP (int _index)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBCopy\fP ()"
+.br
+.ti -1c
+.RI "T \fBCopy< T >\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBSet\fP (int _x, int _z)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBSet\fP (int index)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBSet\fP (\fBPoint\fP point)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "void \fBSet\fP (Vector3 v)"
+.br
+.ti -1c
+.RI "ref Vector3 \fBPositionAuto\fP ()"
+.br
+.ti -1c
+.RI "ref Vector3 \fBPosition\fP (int height)"
+.br
+.ti -1c
+.RI "ref Vector3 \fBPosition\fP ()"
+.br
+.ti -1c
+.RI "ref Vector3 \fBPositionTopdown\fP ()"
+.br
+.ti -1c
+.RI "ref Vector3 \fBPositionTopdownTreasure\fP ()"
+.br
+.ti -1c
+.RI "ref Vector3 \fBPositionCenter\fP ()"
+.br
+.ti -1c
+.RI "Quaternion \fBGetRotation\fP (\fBPoint\fP to)"
+.br
+.ti -1c
+.RI "unsafe float \fBGetAngle\fP (\fBPoint\fP to)"
+.br
+.ti -1c
+.RI "float \fBGetAngle2\fP (\fBPoint\fP to)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetNearestPoint\fP (bool allowBlock=false, bool allowChara=true, bool allowInstalled=true, bool ignoreCenter=false)"
+.br
+.ti -1c
+.RI "bool \fBForeachNearestPoint\fP (Func< \fBPoint\fP, bool > endFunc, bool allowBlock=false, bool allowChara=true, bool allowInstalled=true, bool ignoreCenter=false)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomNeighbor\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomPoint\fP (int radius, bool requireLos=true, bool allowChara=true, bool allowBlocked=false, int tries=100)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetPointTowards\fP (\fBPoint\fP dest)"
+.br
+.ti -1c
+.RI "void \fBTalkWitnesses\fP (\fBChara\fP criminal, string idTalk, int radius=4, WitnessType type=WitnessType\&.everyone, Func< \fBChara\fP, bool > talkIf=null, int chance=3)"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBListWitnesses\fP (\fBChara\fP criminal, int radius=4, WitnessType type=WitnessType\&.crime, \fBChara\fP target=null)"
+.br
+.ti -1c
+.RI "bool \fBTryWitnessCrime\fP (\fBChara\fP criminal, \fBChara\fP target=null, int radius=4, Func< \fBChara\fP, bool > funcWitness=null)"
+.br
+.ti -1c
+.RI "void \fBCallGuard\fP (\fBChara\fP criminal, \fBChara\fP caller)"
+.br
+.ti -1c
+.RI "void \fBSetBlock\fP (int idMat=0, int idBlock=0)"
+.br
+.ti -1c
+.RI "void \fBSetFloor\fP (int idMat=0, int idFloor=0)"
+.br
+.ti -1c
+.RI "void \fBSetObj\fP (int id=0, int value=1, int dir=0)"
+.br
+.ti -1c
+.RI "void \fBModFire\fP (int value)"
+.br
+.ti -1c
+.RI "void \fBPlow\fP ()"
+.br
+.ti -1c
+.RI "bool \fBEquals\fP (int _x, int _z)"
+.br
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.ti -1c
+.RI "int \fBDistance\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "int \fBDistance\fP (int tx, int tz)"
+.br
+.ti -1c
+.RI "bool \fBIsBlockByHeight\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBClamp\fP (bool useBounds=false)"
+.br
+.ti -1c
+.RI "List< \fBCard\fP > \fBListCards\fP (bool includeMasked=false)"
+.br
+.ti -1c
+.RI "List< \fBCard\fP > \fBListVisibleCards\fP ()"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBFindAttackTarget\fP ()"
+.br
+.ti -1c
+.RI "T \fBFindThing< T >\fP ()"
+.br
+.ti -1c
+.RI "List< \fBCard\fP > \fBListThings< T >\fP (bool onlyInstalled=true)"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBListCharas\fP ()"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBListVisibleCharas\fP ()"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBListCharasInNeighbor\fP (Func< \fBChara\fP, bool > func)"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBListCharasInRadius\fP (\fBChara\fP cc, int dist, Func< \fBChara\fP, bool > func)"
+.br
+.ti -1c
+.RI "T \fBGetInstalled< T >\fP ()"
+.br
+.ti -1c
+.RI "\fBEffect\fP \fBPlayEffect\fP (string id)"
+.br
+.ti -1c
+.RI "unsafe SoundSource \fBPlaySound\fP (string id, bool synced=true, float v=1f, bool spatial=true)"
+.br
+.ti -1c
+.RI "void \fBRefreshNeighborTiles\fP ()"
+.br
+.ti -1c
+.RI "void \fBRefreshTile\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHasNonHomeProperty\fP (\fBThing\fP exclude=null)"
+.br
+.ti -1c
+.RI "void \fBAnimate\fP (AnimeID id, bool animeBlock=false)"
+.br
+.ti -1c
+.RI "\fBRenderParam\fP \fBApplyAnime\fP (\fBRenderParam\fP p)"
+.br
+.ti -1c
+.RI "Vector3 \fBApplyAnime\fP (ref Vector3 p)"
+.br
+.ti -1c
+.RI "List< \fBIInspect\fP > \fBListInspectorTargets\fP ()"
+.br
+.ti -1c
+.RI "void \fBForeachMultiSize\fP (int w, int h, Action< \fBPoint\fP, bool > action)"
+.br
+.ti -1c
+.RI "void \fBForeachNeighbor\fP (Action< \fBPoint\fP > action, bool diagonal=true)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBToRegionPos\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "new int \fBindex\fP"
+.br
+.ti -1c
+.RI "bool \fBopen\fP"
+.br
+.ti -1c
+.RI "int \fBlife\fP = 5"
+.br
+.in -1c
+
+Public Attributes inherited from \fBPoint\fP
+.in +1c
+.ti -1c
+.RI "int \fBx\fP"
+.br
+.ti -1c
+.RI "int \fBz\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBLogicalPointManager\fP \fBmanager\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBPoint\fP
+.in +1c
+.ti -1c
+.RI "int \fBindex\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBcell\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmatRoofBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmatBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmatFloor\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBmatBridge\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceBlock\&.Row\fP \fBsourceRoofBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceBlock\&.Row\fP \fBsourceBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceFloor\&.Row\fP \fBsourceFloor\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceFloor\&.Row\fP \fBsourceBridge\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceObj\&.Row\fP \fBsourceObj\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBCellDetail\fP \fBdetail\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBArea\fP \fBarea\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBFront\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBGrowSystem\fP \fBgrowth\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBeloX\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBeloY\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasDesignation\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasDirt\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsValid\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInBounds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInBoundsPlus\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFarmField\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsWater\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasRamp\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasRail\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasRampOrLadder\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasObj\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasDecal\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasMinableBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasWallOrFence\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasWall\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasFence\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasNonWallBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasTaskBuild\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasBlockRecipe\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasFloor\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasBridge\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSky\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasArea\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasChara\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasMultipleChara\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBFirstChara\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFirstThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBLastThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBInstalled\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "List< \fBThing\fP > \fBThings\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBCharas\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSeen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSync\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsHidden\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsBlocked\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Static Public Member Functions inherited from \fBPoint\fP
+.in +1c
+.ti -1c
+.RI "static \fBPoint\fP \fBGetShared\fP (int x, int z)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBPoint\fP
+.in +1c
+.ti -1c
+.RI "static readonly \fBXY\fP[] \fBSurrounds\fP"
+.br
+.ti -1c
+.RI "static Vector3 \fBfixedPos\fP"
+.br
+.ti -1c
+.RI "static \fBPoint\fP \fBshared\fP = new \fBPoint\fP()"
+.br
+.ti -1c
+.RI "static \fBPoint\fP \fBshared2\fP = new \fBPoint\fP()"
+.br
+.ti -1c
+.RI "static \fBPoint\fP \fBshared3\fP = new \fBPoint\fP()"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fBmap\fP"
+.br
+.ti -1c
+.RI "static \fBPoint\fP \fBInvalid\fP"
+.br
+.ti -1c
+.RI "static \fBPoint\fP \fBZero\fP = new \fBPoint\fP()"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fB_screen\fP"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB4\fP of file \fBLogicalPoint\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void LogicalPoint\&.Kill ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB30\fP of file \fBLogicalPoint\&.cs\fP\&.
+.SS "new void LogicalPoint\&.Set (\fBPoint\fP p)"
+
+.PP
+Definition at line \fB17\fP of file \fBLogicalPoint\&.cs\fP\&.
+.SS "virtual void LogicalPoint\&.Update ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB25\fP of file \fBLogicalPoint\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "new int LogicalPoint\&.index"
+
+.PP
+Definition at line \fB36\fP of file \fBLogicalPoint\&.cs\fP\&.
+.SS "int LogicalPoint\&.life = 5"
+
+.PP
+Definition at line \fB42\fP of file \fBLogicalPoint\&.cs\fP\&.
+.SS "bool LogicalPoint\&.open"
+
+.PP
+Definition at line \fB39\fP of file \fBLogicalPoint\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual \fBLogicalPointManager\fP LogicalPoint\&.manager\fR [get]\fP"
+
+.PP
+Definition at line \fB8\fP of file \fBLogicalPoint\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

@@ -1,0 +1,330 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__layer_edit_playlist_8cs_source" xml:lang="en-US">
+<title>LayerEditPlaylist.cs</title>
+<indexterm><primary>Elin/LayerEditPlaylist.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__layer_edit_playlist_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>UnityEngine.Events;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00005"/>00005 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00006"/>00006 <emphasis role="comment">//&#32;Token:&#32;0x0200053F&#32;RID:&#32;1343</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00007"/><link linkend="_class_layer_edit_playlist">00007</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>&#32;:&#32;<link linkend="_class_e_layer">ELayer</link>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00008"/>00008 {
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000B1E&#32;RID:&#32;2846</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x0600246D&#32;RID:&#32;9325&#32;RVA:&#32;0x000CD51E&#32;File&#32;Offset:&#32;0x000CB71E</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Dictionary&lt;int,&#32;BGMData&gt;&#32;bgms
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_e_layer">ELayer</link>.core.refs.dictBGM;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00018"/>00018 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600246E&#32;RID:&#32;9326&#32;RVA:&#32;0x000CD52F&#32;File&#32;Offset:&#32;0x000CB72F</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnInit()
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00023"/>00023 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600246F&#32;RID:&#32;9327&#32;RVA:&#32;0x000CD531&#32;File&#32;Offset:&#32;0x000CB731</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Activate(<link linkend="_class_trait_juke_box">TraitJukeBox</link>&#32;_box)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.jukebox&#32;=&#32;_box;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.single&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Activate(<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>.Mode.LotBGM);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00031"/>00031 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002470&#32;RID:&#32;9328&#32;RVA:&#32;0x000CD548&#32;File&#32;Offset:&#32;0x000CB748</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Activate(<link linkend="_class_trait_house_board">TraitHouseBoard</link>&#32;_board)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.board&#32;=&#32;_board;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.single&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Activate(<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>.Mode.LotBGM);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00039"/>00039 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002471&#32;RID:&#32;9329&#32;RVA:&#32;0x000CD560&#32;File&#32;Offset:&#32;0x000CB760</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Activate(<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>.Mode&#32;_mode&#32;=&#32;<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>.Mode.Playlist)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.mode&#32;=&#32;_mode;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_msg">Msg</link>.Nerun(<emphasis role="stringliteral">&quot;nPlaylist&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;UN_nerun_smile3&quot;</emphasis>);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.mode&#32;==&#32;<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>.Mode.Playlist)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.dayNight)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.windows[0].AddBottomButton(<emphasis role="stringliteral">&quot;togglePlaylist&quot;</emphasis>,&#32;<emphasis role="keyword">new</emphasis>&#32;UnityAction(this.TogglePL),&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;key&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_e_layer">ELayer</link>._map._plDay)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.bgms.ContainsKey(key))
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.itemsDay.Add(this.bgms[key]);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">using</emphasis>&#32;(List&lt;int&gt;.Enumerator&#32;enumerator&#32;=&#32;<link linkend="_class_e_layer">ELayer</link>._map._plNight.GetEnumerator())
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(enumerator.MoveNext())
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;key2&#32;=&#32;enumerator.Current;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.bgms.ContainsKey(key2))
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.itemsNight.Add(this.bgms[key2]);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">goto</emphasis>&#32;IL_12C;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.windows[1].SetActive(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.windows[0].SetPosition();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.multi.Double&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;IL_12C:
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Refresh();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_list_owner">ListOwner</link>&#32;listOwner&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.multi.owners)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;listOwner.OnSwitchContent();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00081"/>00081 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002472&#32;RID:&#32;9330&#32;RVA:&#32;0x000CD700&#32;File&#32;Offset:&#32;0x000CB900</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Refresh()
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;List&lt;BGMData&gt;&#32;list&#32;=&#32;(this.mode&#32;==&#32;<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>.Mode.LotBGM)&#32;?&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;BGMData&gt;()&#32;:&#32;(this.day&#32;?&#32;this.itemsDay&#32;:&#32;this.itemsNight);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;List&lt;BGMData&gt;&#32;list2&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;BGMData&gt;();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(BGMData&#32;bgmdata&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.bgms.Values)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_layer">ELayer</link>.debug.allBGM&#32;||&#32;<link linkend="_class_e_layer">ELayer</link>.player.knownBGMs.Contains(bgmdata.id))
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.mode&#32;==&#32;<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>.Mode.LotBGM)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.Add(bgmdata);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;flag&#32;=&#32;bgmdata.id&#32;!=&#32;0;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">using</emphasis>&#32;(List&lt;BGMData&gt;.Enumerator&#32;enumerator2&#32;=&#32;list.GetEnumerator())
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(enumerator2.MoveNext())
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(enumerator2.Current.id&#32;==&#32;bgmdata.id)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;flag&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(flag)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list2.Add(bgmdata);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.multi.Clear();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.mode&#32;==&#32;<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>.Mode.LotBGM)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.multi.AddOwner(0,&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>.<link linkend="_class_layer_edit_playlist_1_1_list_b_g_m">ListBGM</link>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;items&#32;=&#32;list,
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;idTitle&#32;=&#32;<emphasis role="stringliteral">&quot;wBGMLot&quot;</emphasis>,
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;single&#32;=&#32;true
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.multi.AddOwner(0,&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>.<link linkend="_class_layer_edit_playlist_1_1_list_b_g_m">ListBGM</link>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;items&#32;=&#32;list,
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;idTitle&#32;=&#32;<emphasis role="stringliteral">&quot;wPlaylist&quot;</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.multi.AddOwner(1,&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>.<link linkend="_class_layer_edit_playlist_1_1_list_b_g_m">ListBGM</link>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;items&#32;=&#32;list2,
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;idTitle&#32;=&#32;<emphasis role="stringliteral">&quot;wPlaylist2&quot;</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.multi.Build(UIList.SortMode.ByNone);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00141"/>00141 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002473&#32;RID:&#32;9331&#32;RVA:&#32;0x000CD8AC&#32;File&#32;Offset:&#32;0x000CBAAC</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;TogglePL()
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.day&#32;=&#32;!this.day;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Refresh();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.multi.Refresh();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.Click();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00150"/>00150 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002474&#32;RID:&#32;9332&#32;RVA:&#32;0x000CD8D4&#32;File&#32;Offset:&#32;0x000CBAD4</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnKill()
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.mode&#32;==&#32;<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>.Mode.LotBGM)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.Sound.StopBGM(0f,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>._zone.RefreshBGM();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>._map._plDay.Clear();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>._map._plNight.Clear();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(BGMData&#32;bgmdata&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.itemsDay)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>._map._plDay.Add(bgmdata.id);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(BGMData&#32;bgmdata2&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.itemsNight)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>._map._plNight.Add(bgmdata2.id);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UnityEngine.Object.DestroyImmediate(<link linkend="_class_e_layer">ELayer</link>._map.plDay);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ELayer._map.plDay&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>._zone.RefreshPlaylist();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.keepPlaying)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.Sound.StopBGM(0f,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00176"/>00176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>._zone.RefreshBGM();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00179"/>00179 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002475&#32;RID:&#32;9333&#32;RVA:&#32;0x000CDA10&#32;File&#32;Offset:&#32;0x000CBC10</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnSwitchContent(Window&#32;window)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00182"/>00182 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.multi.owners.Count&#32;&gt;&#32;0)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00185"/>00185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.multi.owners[window.windowIndex].OnSwitchContent();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00187"/>00187 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00188"/>00188 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040013D8&#32;RID:&#32;5080</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00190"/>00190 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;BGMData&gt;&#32;itemsDay&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;BGMData&gt;();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00191"/>00191 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040013D9&#32;RID:&#32;5081</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00193"/>00193 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;BGMData&gt;&#32;itemsNight&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;BGMData&gt;();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00194"/>00194 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040013DA&#32;RID:&#32;5082</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00196"/>00196 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_u_i_multi_list">UIMultiList</link>&#32;multi;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00197"/>00197 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040013DB&#32;RID:&#32;5083</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00199"/>00199 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;day;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00200"/>00200 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040013DC&#32;RID:&#32;5084</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00202"/>00202 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;keepPlaying;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00203"/>00203 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00204"/>00204 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040013DD&#32;RID:&#32;5085</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00205"/>00205 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;single;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00206"/>00206 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00207"/>00207 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040013DE&#32;RID:&#32;5086</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00208"/>00208 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;dayNight;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00209"/>00209 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00210"/>00210 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040013DF&#32;RID:&#32;5087</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00211"/>00211 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;LayerEditPlaylist.Mode&#32;mode;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00212"/>00212 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00213"/>00213 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040013E0&#32;RID:&#32;5088</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00214"/>00214 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_trait_house_board">TraitHouseBoard</link>&#32;board;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00215"/>00215 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00216"/>00216 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040013E1&#32;RID:&#32;5089</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00217"/>00217 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_trait_juke_box">TraitJukeBox</link>&#32;jukebox;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00218"/>00218 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00219"/>00219 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x02000A5B&#32;RID:&#32;2651</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00220"/>00220 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">enum</emphasis>&#32;Mode
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00221"/>00221 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002A7D&#32;RID:&#32;10877</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Playlist,
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002A7E&#32;RID:&#32;10878</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LotBGM
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00226"/>00226 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00227"/>00227 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00228"/>00228 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x02000A5C&#32;RID:&#32;2652</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00229"/><link linkend="_class_layer_edit_playlist_1_1_list_b_g_m">00229</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_layer_edit_playlist_1_1_list_b_g_m">ListBGM</link>&#32;:&#32;<link linkend="_class_list_owner">ListOwner</link>&lt;BGMData,&#32;ItemGeneral&gt;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00230"/>00230 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00231"/>00231 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170011DE&#32;RID:&#32;4574</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060040A3&#32;RID:&#32;16547&#32;RVA:&#32;0x0014F8E4&#32;File&#32;Offset:&#32;0x0014DAE4</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00233"/>00233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>&#32;layer
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00234"/>00234 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00235"/>00235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00237"/>00237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.layer&#32;as&#32;<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00239"/>00239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00240"/>00240 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00241"/>00241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170011DF&#32;RID:&#32;4575</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00242"/>00242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060040A4&#32;RID:&#32;16548&#32;RVA:&#32;0x0014F8F1&#32;File&#32;Offset:&#32;0x0014DAF1</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;IdTitle
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00247"/>00247 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.idTitle;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00249"/>00249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00250"/>00250 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060040A5&#32;RID:&#32;16549&#32;RVA:&#32;0x0014F8FC&#32;File&#32;Offset:&#32;0x0014DAFC</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;List()
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00253"/>00253 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list.callbacks&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;UIList.Callback&lt;BGMData,&#32;<link linkend="_class_item_general">ItemGeneral</link>&gt;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00256"/>00256 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;onInstantiate&#32;=&#32;delegate(BGMData&#32;a,&#32;<link linkend="_class_item_general">ItemGeneral</link>&#32;b)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.SetMainText(((a.id&#32;&gt;&#32;1)&#32;?&#32;<emphasis role="stringliteral">&quot;♪&#32;&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>)&#32;+&#32;a._name.IsEmpty(a.name).ToTitleCase(<emphasis role="keyword">false</emphasis>),&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00259"/>00259 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.button1.keyText.text&#32;=&#32;(a.id.ToString()&#32;??&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00260"/>00260 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(a.id&#32;!=&#32;0&#32;&amp;&amp;&#32;<emphasis role="keyword">this</emphasis>.layer.jukebox&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.AddSubButton(<link linkend="_class_e_class">EClass</link>.core.refs.icons.resume,&#32;delegate
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.Sound.PlayBGM(a,&#32;0f,&#32;0f);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00267"/>00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.main&#32;&amp;&amp;&#32;this.layer.mode&#32;==&#32;<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>.Mode.Playlist)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.AddSubButton(<link linkend="_class_e_class">EClass</link>.core.refs.icons.down,&#32;delegate
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00271"/>00271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BGMData&#32;select&#32;=&#32;this.items.Move(a,&#32;1);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list.OnMove(a,&#32;select);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.AddSubButton(<link linkend="_class_e_class">EClass</link>.core.refs.icons.up,&#32;delegate
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BGMData&#32;select&#32;=&#32;this.items.Move(a,&#32;-1);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00277"/>00277 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list.OnMove(a,&#32;select);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00278"/>00278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00279"/>00279 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00280"/>00280 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.Build();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00281"/>00281 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.single)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00282"/>00282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00283"/>00283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.button1.soundClick&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00284"/>00284 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00285"/>00285 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00286"/>00286 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;onClick&#32;=&#32;delegate(BGMData&#32;c,&#32;<link linkend="_class_item_general">ItemGeneral</link>&#32;i)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00287"/>00287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00288"/>00288 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.layer.mode&#32;==&#32;<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>.Mode.Playlist)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00289"/>00289 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00290"/>00290 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.items.Remove(c);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00291"/>00291 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(this.other&#32;as&#32;<link linkend="_class_layer_edit_playlist">LayerEditPlaylist</link>.<link linkend="_class_layer_edit_playlist_1_1_list_b_g_m">ListBGM</link>).items.Add(c);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.MoveToOther(c);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00295"/>00295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.layer.board&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00296"/>00296 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00297"/>00297 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.layer.board.data.idBGM&#32;=&#32;((this.layer.board.data.idBGM&#32;==&#32;c.id)&#32;?&#32;0&#32;:&#32;c.id);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00298"/>00298 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.layer.board.ApplyData();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00299"/>00299 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.layer.Close();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00300"/>00300 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00301"/>00301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.layer.jukebox.OnSetBGM(c);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.layer.Close();
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;onList&#32;=&#32;delegate(UIList.SortMode&#32;m)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00307"/>00307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(BGMData&#32;o&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.items)
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00308"/>00308 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00309"/>00309 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list.Add(o);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00310"/>00310 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00312"/>00312 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00313"/>00313 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list.List(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00314"/>00314 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00315"/>00315 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00316"/>00316 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002A7F&#32;RID:&#32;10879</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00317"/>00317 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;BGMData&gt;&#32;items;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00318"/>00318 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00319"/>00319 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002A80&#32;RID:&#32;10880</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00320"/>00320 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;idTitle;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00321"/>00321 
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002A81&#32;RID:&#32;10881</emphasis>
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00323"/>00323 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;single;
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00324"/>00324 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_edit_playlist_8cs_source_1l00325"/>00325 }
+</programlisting></section>

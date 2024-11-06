@@ -1,0 +1,46 @@
+\doxysection{Grow\+System\+Pasture.\+cs}
+\hypertarget{_grow_system_pasture_8cs_source}{}\label{_grow_system_pasture_8cs_source}\index{Elin/GrowSystemPasture.cs@{Elin/GrowSystemPasture.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x0200067F\ RID:\ 1663}}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00005}\mbox{\hyperlink{class_grow_system_pasture}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_grow_system_pasture}{GrowSystemPasture}}\ :\ \mbox{\hyperlink{class_grow_system_wheat}{GrowSystemWheat}}}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000D47\ RID:\ 3399}}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06002EB7\ RID:\ 11959\ RVA:\ 0x00106764\ File\ Offset:\ 0x00104964}}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{int}\ HarvestStage}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002EB8\ RID:\ 11960\ RVA:\ 0x00106767\ File\ Offset:\ 0x00104967}}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ CanReapSeed()}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ base.stage.idx\ >=\ 1;}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002EB9\ RID:\ 11961\ RVA:\ 0x0010677C\ File\ Offset:\ 0x0010497C}}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnMineObj(\mbox{\hyperlink{class_chara}{Chara}}\ c\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (base.IsWithered()\ ||\ base.stage.idx\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnMineObj(c);}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ 1\ +\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(base.stage.idx);}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_plant_data}{PlantData}}\ plantData\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.TryGetPlant(\mbox{\hyperlink{class_grow_system}{GrowSystem}}.cell);}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ thing\ =\ (plantData\ !=\ \textcolor{keyword}{null})\ ?\ plantData.seed\ :\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (thing\ !=\ \textcolor{keyword}{null}\ \&\&\ thing.encLV\ >\ 1)}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ num\ +=\ \mbox{\hyperlink{class_e_class}{EClass}}.rndHalf((\textcolor{keywordtype}{int})Mathf.Sqrt((\textcolor{keywordtype}{float})thing.encLV)\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ base.PopHarvest(c,\ \textcolor{stringliteral}{"{}pasture"{}},\ num);}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_grow_system_pasture_8cs_source_l00040}00040\ \}}
+
+\end{DoxyCode}

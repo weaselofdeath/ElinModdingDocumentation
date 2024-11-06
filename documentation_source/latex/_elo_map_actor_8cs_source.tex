@@ -1,0 +1,133 @@
+\doxysection{Elo\+Map\+Actor.\+cs}
+\hypertarget{_elo_map_actor_8cs_source}{}\label{_elo_map_actor_8cs_source}\index{Elin/EloMapActor.cs@{Elin/EloMapActor.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }CreativeSpore.SuperTilemapEditor;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00006}00006\ \textcolor{comment}{//\ Token:\ 0x02000656\ RID:\ 1622}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00007}\mbox{\hyperlink{class_elo_map_actor}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_elo_map_actor}{EloMapActor}}\ :\ \mbox{\hyperlink{class_e_mono}{EMono}}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000CEE\ RID:\ 3310}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06002D9E\ RID:\ 11678\ RVA:\ 0x000FF87F\ File\ Offset:\ 0x000FDA7F}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsActive}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00012}00012\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ base.gameObject.activeSelf;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00017}00017\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002D9F\ RID:\ 11679\ RVA:\ 0x000FF88C\ File\ Offset:\ 0x000FDA8C}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00020}00020\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Awake()}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ this.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002DA0\ RID:\ 11680\ RVA:\ 0x000FF898\ File\ Offset:\ 0x000FDA98}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Initialize(\mbox{\hyperlink{class_elo_map}{EloMap}}\ \_elomap)}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00027}00027\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ this.elomap\ =\ \_elomap;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.transMap)}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ this.transMap\ =\ Util.Instantiate<Transform>(this.elomap.idMap,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ this.transLight\ =\ UnityEngine.Object.Instantiate<Transform>(this.moldLight);}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ this.lights.Clear();}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ this.transMap.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ this.transLight.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_mono}{EMono}}.scene.screenElona.SetUnitSize();}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.elomap.initialized)}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ this.elomap.Init(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ STETilemap\ fogmap\ =\ this.elomap.fogmap;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ this.transMap.position\ =\ \textcolor{keyword}{new}\ Vector3((\textcolor{keywordtype}{float})(-\/(\textcolor{keywordtype}{float})fogmap.MinGridX)\ *\ \mbox{\hyperlink{class_e_mono}{EMono}}.scene.screenElona.tileAlign.x\ +\ \mbox{\hyperlink{class_e_mono}{EMono}}.scene.screenElona.actorPos.x,\ (\textcolor{keywordtype}{float})(-\/(\textcolor{keywordtype}{float})fogmap.MinGridY)\ *\ \mbox{\hyperlink{class_e_mono}{EMono}}.scene.screenElona.tileAlign.y\ +\ \mbox{\hyperlink{class_e_mono}{EMono}}.scene.screenElona.actorPos.y,\ \mbox{\hyperlink{class_e_mono}{EMono}}.scene.screenElona.actorPos.z);}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002DA1\ RID:\ 11681\ RVA:\ 0x000FF9C0\ File\ Offset:\ 0x000FDBC0}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnActivate()}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ this.transLight.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_elo_map_light}{EloMapLight}}\ eloMapLight\ \textcolor{keywordflow}{in}\ this.lights)}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ eloMapLight.sr.transform.position\ =\ TilemapUtils.GetGridWorldPos(this.elomap.fogmap,\ eloMapLight.gx,\ eloMapLight.gy);}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ this.OnChangeHour();}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ this.elomap.objmap.UpdateMesh();}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002DA2\ RID:\ 11682\ RVA:\ 0x000FFA5C\ File\ Offset:\ 0x000FDC5C}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnDeactivate()}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00060}00060\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.transMap)}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ this.transMap.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.transLight)}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ this.transLight.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002DA3\ RID:\ 11683\ RVA:\ 0x000FFA90\ File\ Offset:\ 0x000FDC90}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnChangeHour()}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00073}00073\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ Color\ white\ =\ Color.white;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ white.a\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.scene.profile.light.orbitAlphaCurve.Evaluate(\mbox{\hyperlink{class_e_mono}{EMono}}.scene.timeRatio);}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ white.a\ *=\ white.a;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_elo_map_light}{EloMapLight}}\ eloMapLight\ \textcolor{keywordflow}{in}\ this.lights)}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ eloMapLight.sr.color\ =\ white;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002DA4\ RID:\ 11684\ RVA:\ 0x000FFB2C\ File\ Offset:\ 0x000FDD2C}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00084}00084\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_elo_map}{EloMap}}\ GetEloMap()}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00085}00085\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ this.Initialize(\mbox{\hyperlink{class_e_mono}{EMono}}.world.region.elomap);}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.elomap;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00088}00088\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00090}00090\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002DA5\ RID:\ 11685\ RVA:\ 0x000FFB4C\ File\ Offset:\ 0x000FDD4C}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00091}00091\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnKillGame()}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00092}00092\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ this.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.transMap)}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ this.transLight.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ this.transMap.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.transMap)}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ UnityEngine.Object.DestroyImmediate(this.transMap.gameObject);}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ UnityEngine.Object.DestroyImmediate(this.transLight.gameObject);}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ this.lights.Clear();}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00105}00105\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00107}00107\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040019A8\ RID:\ 6568}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00108}00108\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_elo_map}{EloMap}}\ elomap;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00110}00110\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040019A9\ RID:\ 6569}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00111}00111\ \ \ \ \ \textcolor{keyword}{public}\ Transform\ transMap;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00113}00113\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040019AA\ RID:\ 6570}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00114}00114\ \ \ \ \ \textcolor{keyword}{public}\ Transform\ transLight;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00116}00116\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040019AB\ RID:\ 6571}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00117}00117\ \ \ \ \ \textcolor{keyword}{public}\ Transform\ moldLight;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00119}00119\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040019AC\ RID:\ 6572}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00120}00120\ \ \ \ \ \textcolor{keyword}{public}\ Tileset\ tileset;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00122}00122\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040019AD\ RID:\ 6573}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00123}00123\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_elo_map_tile_selector}{EloMapTileSelector}}\ selector;}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00125}00125\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040019AE\ RID:\ 6574}}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00126}00126\ \ \ \ \ \textcolor{keyword}{public}\ List<EloMapLight>\ lights\ =\ \textcolor{keyword}{new}\ List<EloMapLight>();}
+\DoxyCodeLine{\Hypertarget{_elo_map_actor_8cs_source_l00127}00127\ \}}
+
+\end{DoxyCode}

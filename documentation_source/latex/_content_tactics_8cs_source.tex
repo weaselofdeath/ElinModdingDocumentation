@@ -1,0 +1,171 @@
+\doxysection{Content\+Tactics.\+cs}
+\hypertarget{_content_tactics_8cs_source}{}\label{_content_tactics_8cs_source}\index{Elin/ContentTactics.cs@{Elin/ContentTactics.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00006}00006\ \textcolor{comment}{//\ Token:\ 0x02000513\ RID:\ 1299}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00007}\mbox{\hyperlink{class_content_tactics}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_content_tactics}{ContentTactics}}\ :\ \mbox{\hyperlink{class_content_config}{ContentConfig}}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022D5\ RID:\ 8917\ RVA:\ 0x000C26DA\ File\ Offset:\ 0x000C08DA}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnInstantiate()}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ this.Refresh();}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00013}00013\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00015}00015\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022D6\ RID:\ 8918\ RVA:\ 0x000C26E4\ File\ Offset:\ 0x000C08E4}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Refresh()}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00017}00017\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_config_auto_combat}{ConfigAutoCombat}}\ at\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.game.config.autoCombat;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_config_preference}{ConfigPreference}}\ pref\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.game.config.preference;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ List<\mbox{\hyperlink{class_source_tactics}{SourceTactics}}.\mbox{\hyperlink{class_source_tactics_1_1_row}{Row}}>\ list\ =\ (from\ t\ in\ EClass.sources.tactics.rows}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ where\ t.tag.Contains(\textcolor{stringliteral}{"{}pc"{}})}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ select\ t).ToList<\mbox{\hyperlink{class_source_tactics}{SourceTactics}}.\mbox{\hyperlink{class_source_tactics_1_1_row}{Row}}>();}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ this.toggleDetail.SetToggle(at.detail,\ delegate(\textcolor{keywordtype}{bool}\ a)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ at.detail\ =\ !at.detail;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ this.Refresh();}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ this.transDetail.SetActive(at.detail);}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ this.ddTactics.SetList<\mbox{\hyperlink{class_source_tactics}{SourceTactics}}.\mbox{\hyperlink{class_source_tactics_1_1_row}{Row}}>(list.FindIndex((\mbox{\hyperlink{class_source_tactics}{SourceTactics}}.\mbox{\hyperlink{class_source_tactics_1_1_row}{Row}}\ t)\ =>\ t.id\ ==\ at.idType),\ list,\ (\mbox{\hyperlink{class_source_tactics}{SourceTactics}}.\mbox{\hyperlink{class_source_tactics_1_1_row}{Row}}\ a,\ \textcolor{keywordtype}{int}\ b)\ =>\ a.GetName(),\ delegate(\textcolor{keywordtype}{int}\ a,\ \mbox{\hyperlink{class_source_tactics}{SourceTactics}}.\mbox{\hyperlink{class_source_tactics_1_1_row}{Row}}\ b)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ at.idType\ =\ b.id;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ EClass.pc.\_tactics\ =\ null;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ this.togglePrefKeepPlaying.SetToggle(pref.keepPlayingMusic,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ pref.keepPlayingMusic\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ this.togglePickFish.SetToggle(pref.pickFish,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ pref.pickFish\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ this.toggleAbortOnKill.SetToggle(at.abortOnKill,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ at.abortOnKill\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ this.toggleAbortOnAllyDying.SetToggle(at.abortOnAllyDying,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ at.abortOnAllyDying\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ this.toggleAbortOnAllyDead.SetToggle(at.abortOnAllyDead,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ at.abortOnAllyDead\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ this.toggleOnEnemyDead.SetToggle(at.abortOnEnemyDead,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ at.abortOnEnemyDead\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ this.toggleOnHalfHP.SetToggle(at.abortOnHalfHP,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ at.abortOnHalfHP\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ this.toggleBUseHotbar.SetToggle(at.bUseHotBar,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ at.bUseHotBar\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ this.toggleBUseFav.SetToggle(at.bUseFav,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ at.bUseFav\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ this.toggleBCastParty.SetToggle(at.bCastParty,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ at.bCastParty\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ this.toggleBUseInventory.SetToggle(at.bUseInventory,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ at.bUseInventory\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ this.toggleBDontAutoAttackNeutral.SetToggle(at.bDontAutoAttackNeutral,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ at.bDontAutoAttackNeutral\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ this.toggleBTurbo.SetToggle(at.turbo,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ at.turbo\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ this.toggleBDontChangeTarget.SetToggle(at.bDontChangeTarget,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ at.bDontChangeTarget\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ this.toggleBDontChase.SetToggle(at.bDontChase,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ at.bDontChase\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ this.toggleFollowDist.SetToggle(\mbox{\hyperlink{class_e_class}{EClass}}.game.config.tactics.allyKeepDistance,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ EClass.game.config.tactics.allyKeepDistance\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ this.toggleDontWander.SetToggle(\mbox{\hyperlink{class_e_class}{EClass}}.game.config.tactics.dontWander,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ EClass.game.config.tactics.dontWander\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ base.transform.RebuildLayout(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ base.transform.RebuildLayoutTo<Layer>();}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00106}00106\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400122C\ RID:\ 4652}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00107}00107\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleFollowDist;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00109}00109\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400122D\ RID:\ 4653}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00110}00110\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleDontWander;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00112}00112\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400122E\ RID:\ 4654}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00113}00113\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleAbortOnAllyDying;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00115}00115\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400122F\ RID:\ 4655}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00116}00116\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleAbortOnAllyDead;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00118}00118\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001230\ RID:\ 4656}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00119}00119\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleAbortOnKill;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00121}00121\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001231\ RID:\ 4657}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00122}00122\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleOnEnemyDead;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00124}00124\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001232\ RID:\ 4658}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00125}00125\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleOnHalfHP;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00127}00127\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001233\ RID:\ 4659}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00128}00128\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleBUseHotbar;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00130}00130\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001234\ RID:\ 4660}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00131}00131\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleBUseFav;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00133}00133\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001235\ RID:\ 4661}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00134}00134\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleBUseInventory;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00136}00136\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001236\ RID:\ 4662}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00137}00137\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleBTurbo;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00139}00139\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001237\ RID:\ 4663}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00140}00140\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleBCastParty;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00142}00142\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001238\ RID:\ 4664}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00143}00143\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleBDontChangeTarget;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00145}00145\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001239\ RID:\ 4665}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00146}00146\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleBDontAutoAttackNeutral;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00148}00148\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400123A\ RID:\ 4666}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00149}00149\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleBDontChase;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00151}00151\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400123B\ RID:\ 4667}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00152}00152\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleDetail;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00154}00154\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400123C\ RID:\ 4668}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00155}00155\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ togglePrefKeepPlaying;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00157}00157\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400123D\ RID:\ 4669}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00158}00158\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ togglePickFish;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00160}00160\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400123E\ RID:\ 4670}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00161}00161\ \ \ \ \ \textcolor{keyword}{public}\ UIDropdown\ ddTactics;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00163}00163\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400123F\ RID:\ 4671}}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00164}00164\ \ \ \ \ \textcolor{keyword}{public}\ Transform\ transDetail;}
+\DoxyCodeLine{\Hypertarget{_content_tactics_8cs_source_l00165}00165\ \}}
+
+\end{DoxyCode}

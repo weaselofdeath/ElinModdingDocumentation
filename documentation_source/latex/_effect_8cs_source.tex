@@ -1,0 +1,390 @@
+\doxysection{Effect.\+cs}
+\hypertarget{_effect_8cs_source}{}\label{_effect_8cs_source}\index{Elin/Effect.cs@{Elin/Effect.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }DG.Tweening;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }DG.Tweening.Core;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }DG.Tweening.Plugins.Options;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00008}00008\ \textcolor{comment}{//\ Token:\ 0x0200011D\ RID:\ 285}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00009}\mbox{\hyperlink{class_effect}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_effect}{Effect}}\ :\ \mbox{\hyperlink{class_scene_object}{SceneObject}}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007B0\ RID:\ 1968\ RVA:\ 0x00031BB9\ File\ Offset:\ 0x0002FDB9}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_effect}{Effect}}\ Get(\mbox{\hyperlink{class_effect}{Effect}}\ original)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00013}00013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ UnityEngine.Object.Instantiate<\mbox{\hyperlink{class_effect}{Effect}}>(original);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007B1\ RID:\ 1969\ RVA:\ 0x00031BC1\ File\ Offset:\ 0x0002FDC1}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_effect}{Effect}}\ Get(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_effect}{Effect}}.manager.effects.Get(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007B2\ RID:\ 1970\ RVA:\ 0x00031BD3\ File\ Offset:\ 0x0002FDD3}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ T\ Get<T>(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})\ where\ T\ :\ \mbox{\hyperlink{class_effect}{Effect}}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_effect}{Effect}}.manager.effects.Get(\textcolor{keywordtype}{id})\ as\ T;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170001C4\ RID:\ 452}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060007B3\ RID:\ 1971\ RVA:\ 0x00031BEF\ File\ Offset:\ 0x0002FDEF}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_effect_manager}{EffectManager}}\ manager}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00032}00032\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_effect_manager}{EffectManager}}.Instance;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007B4\ RID:\ 1972\ RVA:\ 0x00031BF8\ File\ Offset:\ 0x0002FDF8}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Play(\textcolor{keywordtype}{float}\ delay,\ \mbox{\hyperlink{class_point}{Point}}\ from,\ \textcolor{keywordtype}{float}\ fixY\ =\ 0f,\ \mbox{\hyperlink{class_point}{Point}}\ to\ =\ \textcolor{keyword}{null},\ Sprite\ sprite\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ \_from\ =\ from.Copy();}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ \_to\ =\ ((to\ !=\ \textcolor{keyword}{null})\ ?\ to.Copy()\ :\ \textcolor{keyword}{null})\ ??\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ TweenUtil.Tween(delay,\ delegate()}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ this.Play(\_from,\ fixY,\ \_to,\ sprite);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007B5\ RID:\ 1973\ RVA:\ 0x00031C5A\ File\ Offset:\ 0x0002FE5A}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00051}00051\ \ \ \ \ \textcolor{keyword}{public}\ unsafe\ \mbox{\hyperlink{class_effect}{Effect}}\ Play(\mbox{\hyperlink{class_point}{Point}}\ from,\ \textcolor{keywordtype}{float}\ fixY\ =\ 0f,\ \mbox{\hyperlink{class_point}{Point}}\ to\ =\ \textcolor{keyword}{null},\ Sprite\ sprite\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00052}00052\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.\_Play(from,\ *from.Position(),\ fixY,\ to,\ sprite);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007B6\ RID:\ 1974\ RVA:\ 0x00031C74\ File\ Offset:\ 0x0002FE74}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{public}\ unsafe\ \mbox{\hyperlink{class_effect}{Effect}}\ \_Play(\mbox{\hyperlink{class_point}{Point}}\ from,\ Vector3\ fromV,\ \textcolor{keywordtype}{float}\ fixY\ =\ 0f,\ \mbox{\hyperlink{class_point}{Point}}\ to\ =\ \textcolor{keyword}{null},\ Sprite\ sprite\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00058}00058\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_mono}{EMono}}.core.IsGameStarted)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ this.Kill();}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sprite)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ this.sr.sprite\ =\ sprite;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.setColor)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ num\ =\ 0.07f\ *\ (float)from.cell.light\ +\ \mbox{\hyperlink{class_e_mono}{EMono}}.core.screen.tileMap.\_baseBrightness;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ num\ +=\ ((from.cell.HasRoof\ ||\ from.cell.isShadowed)\ ?\ -\/0.2f\ :\ 0f);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.sr)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.sr.material.SetVector(\textcolor{stringliteral}{"{}\_Color"{}},\ \textcolor{keyword}{new}\ Vector4(num,\ num,\ num,\ 1f));}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ fromV\ +=\ this.posFix;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ fromV.y\ +=\ fixY;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (to\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ fromV\ +=\ this.randomRange.Random();}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ this.fromV\ =\ fromV;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ this.destPos\ =\ (to\ ??\ from);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ base.transform.position\ =\ fromV;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.randomFlip)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ this.sr.flipX\ =\ (\mbox{\hyperlink{class_e_mono}{EMono}}.rnd(2)\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (to\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ num2\ =\ Mathf.Min(this.speed\ *\ (\textcolor{keywordtype}{float})from.Distance(to),\ \textcolor{keyword}{this}.duration);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ this.destV\ =\ *to.Position()\ +\ this.posFix\ +\ this.randomRange.Random();}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.rotate)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ base.transform.rotation\ =\ from.GetRotation(to);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ this.moveTween\ =\ base.transform.DOMove(this.destV,\ num2,\ \textcolor{keyword}{false}).SetEase(Ease.Linear).SetDelay(this.startDelay);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ this.Activate();}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ this.OnPlay();}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ this.OnUpdate();}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00106}00106\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007B7\ RID:\ 1975\ RVA:\ 0x00031E4C\ File\ Offset:\ 0x0003004C}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00107}00107\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_effect}{Effect}}\ Play(Vector3\ v)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00108}00108\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_mono}{EMono}}.core.IsGameStarted)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ this.Kill();}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ this.fromV\ =\ v;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ base.transform.position\ =\ this.fromV\ +\ this.posFix;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ this.Activate();}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ this.OnPlay();}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ this.OnUpdate();}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00120}00120\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00122}00122\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007B8\ RID:\ 1976\ RVA:\ 0x00031EA4\ File\ Offset:\ 0x000300A4}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00123}00123\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{void}\ Activate()}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00124}00124\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.sprites.Length\ !=\ 0\ \&\&\ \textcolor{keyword}{this}.type\ !=\ \mbox{\hyperlink{class_effect}{Effect}}.Type.Firework)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ this.sr.enabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_effect}{Effect}}.manager.Add(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ this.killTimer\ =\ TweenUtil.Tween(this.startDelay\ +\ this.duration\ +\ 0.01f\ +\ (\textcolor{keywordtype}{float})this.sprites.Length\ *\ 0.01f,\ \textcolor{keyword}{null},\ \textcolor{keyword}{new}\ Action(this.Kill));}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00131}00131\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00133}00133\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007B9\ RID:\ 1977\ RVA:\ 0x00031F18\ File\ Offset:\ 0x00030118}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00134}00134\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_effect}{Effect}}\ Flip(\textcolor{keywordtype}{bool}\ x\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ y\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00135}00135\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.sr)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ this.sr.flipX\ =\ (this.sr.flipX\ ?\ (!x)\ :\ x);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ this.sr.flipY\ =\ (this.sr.flipY\ ?\ (!y)\ :\ y);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00142}00142\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00144}00144\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007BA\ RID:\ 1978\ RVA:\ 0x00031F71\ File\ Offset:\ 0x00030171}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00145}00145\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_effect}{Effect}}\ SetStartDelay(\textcolor{keywordtype}{float}\ a)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00146}00146\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ this.startDelay\ =\ a;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00149}00149\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00151}00151\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007BB\ RID:\ 1979\ RVA:\ 0x00031F7B\ File\ Offset:\ 0x0003017B}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00152}00152\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OnPlay()}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00153}00153\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00154}00154\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00156}00156\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007BC\ RID:\ 1980\ RVA:\ 0x00031F80\ File\ Offset:\ 0x00030180}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00157}00157\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OnUpdate()}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00158}00158\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!base.gameObject.activeSelf)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ base.gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ this.timer\ +=\ (this.randomSpeed\ ?\ UnityEngine.Random.Range(Time.deltaTime,\ Time.deltaTime\ *\ 1.5f)\ :\ Time.deltaTime);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.startDelay\ !=\ 0f)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.timer\ <\ this.startDelay)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ this.timer\ =\ (this.startDelay\ =\ 0f);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.sprites.Length\ !=\ 0\ \&\&\ \textcolor{keyword}{this}.type\ !=\ \mbox{\hyperlink{class_effect}{Effect}}.Type.Firework\ \&\&\ \textcolor{keyword}{this}.timer\ >\ \textcolor{keyword}{this}.duration\ /\ (\textcolor{keywordtype}{float})\textcolor{keyword}{this}.sprites.Length)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ this.timer\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ this.spriteIndex++;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.spriteIndex\ >=\ this.sprites.Length)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Kill();}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ this.sr.enabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ this.sr.sprite\ =\ this.sprites[this.spriteIndex];}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00184}00184\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00186}00186\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007BD\ RID:\ 1981\ RVA:\ 0x00032088\ File\ Offset:\ 0x00030288}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00187}00187\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Kill()}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00188}00188\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ TweenUtil.KillTween(ref\ this.killTimer,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ TweenUtil.KillTween(ref\ this.moveTween,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ this.killed\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_effect}{Effect}}.manager.Remove(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.pool\ \&\&\ \mbox{\hyperlink{class_effect}{Effect}}.manager.effects.usePool)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ PoolManager.DespawnOrDestroy(base.transform);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (base.gameObject)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ UnityEngine.Object.Destroy(base.gameObject);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00202}00202\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00204}00204\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007BE\ RID:\ 1982\ RVA:\ 0x000320FE\ File\ Offset:\ 0x000302FE}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00205}00205\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnDisable()}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00206}00206\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (base.transform.parent\ \&\&\ !\textcolor{keyword}{this}.test)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ this.Kill();}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00211}00211\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00213}00213\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007BF\ RID:\ 1983\ RVA:\ 0x00032120\ File\ Offset:\ 0x00030320}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00214}00214\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnDestroy()}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00215}00215\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.materialsToDestroy\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (Material\ obj\ \textcolor{keywordflow}{in}\ this.materialsToDestroy)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UnityEngine.Object.Destroy(obj);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00223}00223\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00225}00225\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007C0\ RID:\ 1984\ RVA:\ 0x00032178\ File\ Offset:\ 0x00030378}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00226}00226\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_effect}{Effect}}\ Emit(\textcolor{keywordtype}{int}\ num)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00227}00227\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ ParticleSystem[]\ array\ =\ this.systems;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ array.Length;\ i++)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ array[i].Emit(num);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00234}00234\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00236}00236\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007C1\ RID:\ 1985\ RVA:\ 0x000321A4\ File\ Offset:\ 0x000303A4}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00237}00237\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_effect}{Effect}}\ SetParticleColor(Color\ c)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00238}00238\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ ParticleSystem[]\ array\ =\ this.systems;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ array.Length;\ i++)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ array[i].main.startColor\ =\ c;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00245}00245\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00247}00247\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007C2\ RID:\ 1986\ RVA:\ 0x000321E0\ File\ Offset:\ 0x000303E0}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00248}00248\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_effect}{Effect}}\ SetParticleColor(Color\ color,\ \textcolor{keywordtype}{bool}\ changeMaterial\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{string}\ idCol\ =\ \textcolor{stringliteral}{"{}\_Color"{}})}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00249}00249\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (changeMaterial)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ this.materialsToDestroy\ =\ \textcolor{keyword}{new}\ List<Material>();}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (ParticleSystem\ particleSystem\ \textcolor{keywordflow}{in}\ this.systems)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (changeMaterial)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Material\ material\ =\ particleSystem.GetComponent<ParticleSystemRenderer>().material;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.materialsToDestroy.Add(material);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ material.SetColor(idCol,\ color);}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ particleSystem.main.startColor\ =\ color;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00268}00268\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00270}00270\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007C3\ RID:\ 1987\ RVA:\ 0x0003224F\ File\ Offset:\ 0x0003044F}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00271}00271\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_effect}{Effect}}\ SetScale(\textcolor{keywordtype}{float}\ a)}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00272}00272\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ base.transform.localScale\ *=\ a;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00275}00275\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00276}00276\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00277}00277\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007B3\ RID:\ 1971}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00278}00278\ \ \ \ \ \textcolor{keyword}{public}\ Effect.Type\ type;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00280}00280\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007B4\ RID:\ 1972}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00281}00281\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ duration\ =\ 1f;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00283}00283\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007B5\ RID:\ 1973}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00284}00284\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ speed;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00286}00286\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007B6\ RID:\ 1974}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00287}00287\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ startDelay;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00289}00289\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007B7\ RID:\ 1975}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00290}00290\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ lookAtTarget;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00292}00292\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007B8\ RID:\ 1976}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00293}00293\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ rotate;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00295}00295\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007B9\ RID:\ 1977}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00296}00296\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ pool;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00298}00298\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007BA\ RID:\ 1978}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00299}00299\ \ \ \ \ \textcolor{keyword}{public}\ SpriteRenderer\ sr;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00301}00301\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007BB\ RID:\ 1979}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00302}00302\ \ \ \ \ \textcolor{keyword}{public}\ ParticleSystem[]\ systems;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00303}00303\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00304}00304\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007BC\ RID:\ 1980}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00305}00305\ \ \ \ \ \textcolor{keyword}{public}\ Vector3[]\ dirs;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00307}00307\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007BD\ RID:\ 1981}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00308}00308\ \ \ \ \ \textcolor{keyword}{public}\ Ease\ ease;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00310}00310\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007BE\ RID:\ 1982}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00311}00311\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ posFix;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00313}00313\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007BF\ RID:\ 1983}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00314}00314\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ randomRange;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00315}00315\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00316}00316\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007C0\ RID:\ 1984}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00317}00317\ \ \ \ \ \textcolor{keyword}{public}\ Tween\ moveTween;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00319}00319\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007C1\ RID:\ 1985}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00320}00320\ \ \ \ \ \textcolor{keyword}{public}\ Sprite[]\ sprites;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00322}00322\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007C2\ RID:\ 1986}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00323}00323\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ randomFlip;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00325}00325\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007C3\ RID:\ 1987}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00326}00326\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ randomSpeed;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00327}00327\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00328}00328\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007C4\ RID:\ 1988}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00329}00329\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ test;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00330}00330\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00331}00331\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007C5\ RID:\ 1989}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00332}00332\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ setColor\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00334}00334\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007C6\ RID:\ 1990}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00335}00335\ \ \ \ \ \textcolor{keyword}{public}\ Action\ onComplete;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00337}00337\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007C7\ RID:\ 1991}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00338}00338\ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00339}00339\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ spriteIndex;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00341}00341\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007C8\ RID:\ 1992}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00342}00342\ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00343}00343\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ timer;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00345}00345\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007C9\ RID:\ 1993}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00346}00346\ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00347}00347\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ fromV;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00349}00349\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007CA\ RID:\ 1994}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00350}00350\ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00351}00351\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ destV;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00352}00352\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00353}00353\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007CB\ RID:\ 1995}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00354}00354\ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00355}00355\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ pooled;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00356}00356\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00357}00357\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007CC\ RID:\ 1996}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00358}00358\ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00359}00359\ \ \ \ \ \textcolor{keyword}{public}\ Transform\ poolParent;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00360}00360\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00361}00361\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007CD\ RID:\ 1997}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00362}00362\ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00363}00363\ \ \ \ \ \textcolor{keyword}{public}\ List<Material>\ materialsToDestroy;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00364}00364\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00365}00365\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007CE\ RID:\ 1998}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00366}00366\ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00367}00367\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_point}{Point}}\ destPos;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00368}00368\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00369}00369\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007CF\ RID:\ 1999}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00370}00370\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{bool}\ killed;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00371}00371\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00372}00372\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007D0\ RID:\ 2000}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00373}00373\ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00374}00374\ \ \ \ \ \textcolor{keyword}{public}\ Tween\ killTimer;}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00375}00375\ }
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00376}00376\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0200084C\ RID:\ 2124}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00377}00377\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ Type}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00378}00378\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00379}00379\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400238D\ RID:\ 9101}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00380}00380\ \ \ \ \ \ \ \ \ Default,}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00381}00381\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400238E\ RID:\ 9102}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00382}00382\ \ \ \ \ \ \ \ \ Firework}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00383}00383\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_effect_8cs_source_l00384}00384\ \}}
+
+\end{DoxyCode}

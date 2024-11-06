@@ -1,0 +1,92 @@
+\doxysection{Core\+Extension.\+cs}
+\hypertarget{_core_extension_8cs_source}{}\label{_core_extension_8cs_source}\index{Elin/CoreExtension.cs@{Elin/CoreExtension.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000007\ RID:\ 7}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00005}00005\ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{class\ }CoreExtension}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600005F\ RID:\ 95\ RVA:\ 0x00003764\ File\ Offset:\ 0x00001964}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ Color\ GetFixedColor(Color\ c,\ \textcolor{keywordtype}{bool}\ dark)}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ SkinColorProfile\ @\textcolor{keywordflow}{default}\ =\ (dark\ ?\ SkinManager.Instance.skinDark.colors\ :\ SkinManager.CurrentSkin.colors).\_default;}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ num\ =\ 1f\ +\ @\textcolor{keywordflow}{default}.contrast;}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ num2;}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c.r\ +\ c.g\ +\ c.b\ >\ 1.5f)}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ num2\ =\ 0.5f\ +\ @\textcolor{keywordflow}{default}.strength;}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ num2\ =\ 0.5f\ -\/\ @\textcolor{keywordflow}{default}.strength;}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ c.r\ =\ Mathf.Clamp((c.r\ -\/\ 0.5f)\ *\ num\ +\ num2,\ 0f,\ 1f);}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ c.g\ =\ Mathf.Clamp((c.g\ -\/\ 0.5f)\ *\ num\ +\ num2,\ 0f,\ 1f);}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ c.b\ =\ Mathf.Clamp((c.b\ -\/\ 0.5f)\ *\ num\ +\ num2,\ 0f,\ 1f);}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ c;}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000060\ RID:\ 96\ RVA:\ 0x00003854\ File\ Offset:\ 0x00001A54}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00028}00028\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ TagColorGoodBad(\textcolor{keyword}{this}\ \textcolor{keywordtype}{string}\ s,\ Func<bool>\ funcGood,\ \textcolor{keywordtype}{bool}\ dark\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ SkinColorProfile\ @\textcolor{keywordflow}{default}\ =\ (dark\ ?\ SkinManager.Instance.skinDark.colors\ :\ SkinManager.CurrentSkin.colors).\_default;}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{string}.Concat(\textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}<color="{}},}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ CoreExtension.GetFixedColor(funcGood()\ ?\ @\textcolor{keywordflow}{default}.textGood\ :\ @\textcolor{keywordflow}{default}.textBad,\ dark).ToHex(),}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}>"{}},}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ s,}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}</color>"{}}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000061\ RID:\ 97\ RVA:\ 0x000038D0\ File\ Offset:\ 0x00001AD0}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ TagColorGoodBad(\textcolor{keyword}{this}\ \textcolor{keywordtype}{string}\ s,\ Func<bool>\ funcGood,\ Func<bool>\ funcBad,\ \textcolor{keywordtype}{bool}\ dark\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00043}00043\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ SkinColorProfile\ @\textcolor{keywordflow}{default}\ =\ (dark\ ?\ SkinManager.Instance.skinDark.colors\ :\ SkinManager.CurrentSkin.colors).\_default;}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ funcGood();}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag2\ =\ funcBad();}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!flag\ \&\&\ !flag2)}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ s;}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{string}.Concat(\textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}<color="{}},}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ CoreExtension.GetFixedColor(flag\ ?\ @\textcolor{keywordflow}{default}.textGood\ :\ @\textcolor{keywordflow}{default}.textBad,\ dark).ToHex(),}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}>"{}},}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ s,}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}</color>"{}}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000062\ RID:\ 98\ RVA:\ 0x0000395D\ File\ Offset:\ 0x00001B5D}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_u_i_currency}{UICurrency}}\ AttachCurrency(\textcolor{keyword}{this}\ Window\ window)}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00063}00063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Util.Instantiate<\mbox{\hyperlink{class_u_i_currency}{UICurrency}}>(\textcolor{stringliteral}{"{}UI/Util/UICurrency"{}},\ window.transform);}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000063\ RID:\ 99\ RVA:\ 0x0000396F\ File\ Offset:\ 0x00001B6F}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00068}00068\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ TagColor(\textcolor{keyword}{this}\ \textcolor{keywordtype}{string}\ s,\ FontColor\ c,\ SkinColorProfile\ colors\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00069}00069\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ s.TagColor((colors\ ??\ SkinManager.CurrentColors).GetTextColor(c));}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000064\ RID:\ 100\ RVA:\ 0x00003988\ File\ Offset:\ 0x00001B88}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00074}00074\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ TagColor(\textcolor{keyword}{this}\ \textcolor{keywordtype}{string}\ text,\ Func<bool>\ funcGood,\ SkinColorProfile\ colors\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00075}00075\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ SkinColorProfile\ skinColorProfile\ =\ colors\ ??\ SkinManager.CurrentColors;}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ text.TagColor(funcGood()\ ?\ skinColorProfile.textGood\ :\ skinColorProfile.textBad);}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000065\ RID:\ 101\ RVA:\ 0x000039BC\ File\ Offset:\ 0x00001BBC}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00081}00081\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ TagColor(\textcolor{keyword}{this}\ \textcolor{keywordtype}{string}\ text,\ Func<bool>\ funcGood,\ Func<bool>\ funcBad,\ SkinColorProfile\ colors\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00082}00082\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ SkinColorProfile\ skinColorProfile\ =\ colors\ ??\ SkinManager.CurrentColors;}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ text.TagColor(funcGood()\ ?\ skinColorProfile.textGood\ :\ ((funcBad\ !=\ \textcolor{keyword}{null}\ \&\&\ funcBad())\ ?\ skinColorProfile.textBad\ :\ skinColorProfile.textDefault));}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_core_extension_8cs_source_l00086}00086\ \}}
+
+\end{DoxyCode}

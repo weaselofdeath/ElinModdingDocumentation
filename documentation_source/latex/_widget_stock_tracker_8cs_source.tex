@@ -1,0 +1,87 @@
+\doxysection{Widget\+Stock\+Tracker.\+cs}
+\hypertarget{_widget_stock_tracker_8cs_source}{}\label{_widget_stock_tracker_8cs_source}\index{Elin/WidgetStockTracker.cs@{Elin/WidgetStockTracker.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x0200064D\ RID:\ 1613}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00005}\mbox{\hyperlink{class_widget_stock_tracker}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_widget_stock_tracker}{WidgetStockTracker}}\ :\ \mbox{\hyperlink{class_widget}{Widget}}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002D5D\ RID:\ 11613\ RVA:\ 0x000FCA7F\ File\ Offset:\ 0x000FAC7F}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnActivate()}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ WidgetStockTracker.Instance\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_widget_stock_tracker}{WidgetStockTracker}}.Refresh();}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002D5E\ RID:\ 11614\ RVA:\ 0x000FCA8C\ File\ Offset:\ 0x000FAC8C}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Refresh()}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_widget_stock_tracker}{WidgetStockTracker}}.Instance)}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_widget_stock_tracker}{WidgetStockTracker}}.Instance.\_Refresh();}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002D5F\ RID:\ 11615\ RVA:\ 0x000FCAA4\ File\ Offset:\ 0x000FACA4}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \_Refresh()}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ this.sb.Clear();}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ this.sbNum.Clear();}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ HashSet<string>\ trackedCards\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.player.trackedCards;}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ HashSet<string>\ trackedCategories\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.player.trackedCategories;}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (trackedCards.Count\ ==\ 0\ \&\&\ trackedCategories.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ this.sb.Append(\textcolor{stringliteral}{"{}何もトラックしてない\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\textcolor{keywordtype}{string}\ key\ \textcolor{keywordflow}{in}\ trackedCards)}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_prop_set}{PropSet}}\ propSet\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.\_map.Stocked.cardMap.TryGetValue(key,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ (propSet\ !=\ \textcolor{keyword}{null})\ ?\ propSet.num\ :\ 0;}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.sb.Append(\mbox{\hyperlink{class_e_mono}{EMono}}.sources.cards.map[key].GetName()\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.sbNum.Append(num.ToString()\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\textcolor{keywordtype}{string}\ key2\ \textcolor{keywordflow}{in}\ trackedCategories)}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_prop_set_category}{PropSetCategory}}\ propSetCategory\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.\_map.Stocked.categoryMap[key2];}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.sb.Append(propSetCategory.source.GetText(\textcolor{stringliteral}{"{}name"{}},\ \textcolor{keyword}{false})\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.sbNum.Append(propSetCategory.sum.ToString()\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.sb.Equals(\textcolor{keyword}{this}.lastSb)\ \&\&\ \textcolor{keyword}{this}.sbNum.Equals(\textcolor{keyword}{this}.lastSbNum))}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ this.text.text\ =\ this.sb.ToString();}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ this.textNum.text\ =\ this.sbNum.ToString();}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ this.lastSb.Set(this.sb);}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ this.lastSbNum.Set(this.sbNum);}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ this.RebuildLayout(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001935\ RID:\ 6453}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_widget_stock_tracker}{WidgetStockTracker}}\ Instance;}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001936\ RID:\ 6454}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ text;}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001937\ RID:\ 6455}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00068}00068\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textNum;}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001938\ RID:\ 6456}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00071}00071\ \ \ \ \ \textcolor{keyword}{private}\ FastString\ sb\ =\ \textcolor{keyword}{new}\ FastString(32);}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001939\ RID:\ 6457}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00074}00074\ \ \ \ \ \textcolor{keyword}{private}\ FastString\ lastSb\ =\ \textcolor{keyword}{new}\ FastString(32);}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400193A\ RID:\ 6458}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00077}00077\ \ \ \ \ \textcolor{keyword}{private}\ FastString\ sbNum\ =\ \textcolor{keyword}{new}\ FastString(32);}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400193B\ RID:\ 6459}}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00080}00080\ \ \ \ \ \textcolor{keyword}{private}\ FastString\ lastSbNum\ =\ \textcolor{keyword}{new}\ FastString(32);}
+\DoxyCodeLine{\Hypertarget{_widget_stock_tracker_8cs_source_l00081}00081\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,406 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__weather_8cs_source" xml:lang="en-US">
+<title>Weather.cs</title>
+<indexterm><primary>Elin/Weather.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__weather_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__weather_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__weather_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>System.Linq;
+<anchor xml:id="__weather_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>Newtonsoft.Json;
+<anchor xml:id="__weather_8cs_source_1l00005"/>00005 
+<anchor xml:id="__weather_8cs_source_1l00006"/>00006 <emphasis role="comment">//&#32;Token:&#32;0x020006F3&#32;RID:&#32;1779</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00007"/><link linkend="_class_weather">00007</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_weather">Weather</link>&#32;:&#32;<link linkend="_class_e_class">EClass</link>
+<anchor xml:id="__weather_8cs_source_1l00008"/>00008 {
+<anchor xml:id="__weather_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000F89&#32;RID:&#32;3977</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060033D1&#32;RID:&#32;13265&#32;RVA:&#32;0x0011B23E&#32;File&#32;Offset:&#32;0x0011943E</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Weather.Condition&#32;CurrentCondition
+<anchor xml:id="__weather_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>._map.config.fixedCondition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.None)
+<anchor xml:id="__weather_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this._currentCondition;
+<anchor xml:id="__weather_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_e_class">EClass</link>._map.config.fixedCondition;
+<anchor xml:id="__weather_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00022"/>00022 
+<anchor xml:id="__weather_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000F8A&#32;RID:&#32;3978</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060033D2&#32;RID:&#32;13266&#32;RVA:&#32;0x0011B268&#32;File&#32;Offset:&#32;0x00119468</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_season">Season</link>&#32;season
+<anchor xml:id="__weather_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.world.season;
+<anchor xml:id="__weather_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00032"/>00032 
+<anchor xml:id="__weather_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000F8B&#32;RID:&#32;3979</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060033D3&#32;RID:&#32;13267&#32;RVA:&#32;0x0011B274&#32;File&#32;Offset:&#32;0x00119474</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsHazard
+<anchor xml:id="__weather_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.CurrentCondition&#32;==&#32;Weather.Condition.Rain&#32;||&#32;this.CurrentCondition&#32;==&#32;Weather.Condition.RainHeavy&#32;||&#32;this.CurrentCondition&#32;==&#32;Weather.Condition.Snow&#32;||&#32;this.CurrentCondition&#32;==&#32;Weather.Condition.SnowHeavy&#32;||&#32;this.CurrentCondition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.Ether;
+<anchor xml:id="__weather_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00042"/>00042 
+<anchor xml:id="__weather_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000F8C&#32;RID:&#32;3980</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060033D4&#32;RID:&#32;13268&#32;RVA:&#32;0x0011B2A5&#32;File&#32;Offset:&#32;0x001194A5</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsFineOrCloudy
+<anchor xml:id="__weather_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.CurrentCondition&#32;==&#32;Weather.Condition.Fine&#32;||&#32;this.CurrentCondition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.Cloudy;
+<anchor xml:id="__weather_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00052"/>00052 
+<anchor xml:id="__weather_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000F8D&#32;RID:&#32;3981</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060033D5&#32;RID:&#32;13269&#32;RVA:&#32;0x0011B2BA&#32;File&#32;Offset:&#32;0x001194BA</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsRaining
+<anchor xml:id="__weather_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.CurrentCondition&#32;==&#32;Weather.Condition.Rain&#32;||&#32;this.CurrentCondition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.RainHeavy;
+<anchor xml:id="__weather_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00062"/>00062 
+<anchor xml:id="__weather_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000F8E&#32;RID:&#32;3982</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060033D6&#32;RID:&#32;13270&#32;RVA:&#32;0x0011B2D0&#32;File&#32;Offset:&#32;0x001194D0</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsSnowing
+<anchor xml:id="__weather_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.CurrentCondition&#32;==&#32;Weather.Condition.Snow&#32;||&#32;this.CurrentCondition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.SnowHeavy;
+<anchor xml:id="__weather_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00072"/>00072 
+<anchor xml:id="__weather_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000F8F&#32;RID:&#32;3983</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060033D7&#32;RID:&#32;13271&#32;RVA:&#32;0x0011B2E6&#32;File&#32;Offset:&#32;0x001194E6</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsBlossom
+<anchor xml:id="__weather_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.CurrentCondition&#32;==&#32;Weather.Condition.Blossom&#32;||&#32;(this.IsFineOrCloudy&#32;&amp;&amp;&#32;<link linkend="_class_e_class">EClass</link>._map.config.blossom);
+<anchor xml:id="__weather_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00082"/>00082 
+<anchor xml:id="__weather_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000F90&#32;RID:&#32;3984</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x060033D8&#32;RID:&#32;13272&#32;RVA:&#32;0x0011B30C&#32;File&#32;Offset:&#32;0x0011950C</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsEther
+<anchor xml:id="__weather_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.CurrentCondition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.Ether;
+<anchor xml:id="__weather_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00092"/>00092 
+<anchor xml:id="__weather_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033D9&#32;RID:&#32;13273&#32;RVA:&#32;0x0011B317&#32;File&#32;Offset:&#32;0x00119517</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;GetName()
+<anchor xml:id="__weather_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.GetName(this.CurrentCondition);
+<anchor xml:id="__weather_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00098"/>00098 
+<anchor xml:id="__weather_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033DA&#32;RID:&#32;13274&#32;RVA:&#32;0x0011B325&#32;File&#32;Offset:&#32;0x00119525</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;GetName(<link linkend="_class_weather">Weather</link>.Condition&#32;condition)
+<anchor xml:id="__weather_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<emphasis role="stringliteral">&quot;weather&quot;</emphasis>&#32;+&#32;condition.ToString()).lang();
+<anchor xml:id="__weather_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00104"/>00104 
+<anchor xml:id="__weather_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033DB&#32;RID:&#32;13275&#32;RVA:&#32;0x0011B344&#32;File&#32;Offset:&#32;0x00119544</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshWeather()
+<anchor xml:id="__weather_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>._map.IsIndoor)
+<anchor xml:id="__weather_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__weather_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;flag&#32;=&#32;<link linkend="_class_e_class">EClass</link>._zone.IsSnowCovered;
+<anchor xml:id="__weather_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>._zone&#32;is&#32;<link linkend="_class_region">Region</link>)
+<anchor xml:id="__weather_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_elo_map">EloMap</link>&#32;elomap&#32;=&#32;<link linkend="_class_e_class">EClass</link>.scene.elomapActor.elomap;
+<anchor xml:id="__weather_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_elo_map_1_1_tile_info">EloMap.TileInfo</link>&#32;tileInfo&#32;=&#32;elomap.GetTileInfo(<link linkend="_class_e_class">EClass</link>.pc.pos.x&#32;+&#32;elomap.minX,&#32;<link linkend="_class_e_class">EClass</link>.pc.pos.z&#32;+&#32;elomap.minY);
+<anchor xml:id="__weather_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;flag&#32;=&#32;(tileInfo&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;tileInfo.IsSnow);
+<anchor xml:id="__weather_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.world.season.isWinter)
+<anchor xml:id="__weather_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;flag&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__weather_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.IsSnowing)
+<anchor xml:id="__weather_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!flag)
+<anchor xml:id="__weather_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this._currentCondition&#32;=&#32;((this._currentCondition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.Snow)&#32;?&#32;Weather.Condition.Rain&#32;:&#32;<link linkend="_class_weather">Weather</link>.Condition.RainHeavy);
+<anchor xml:id="__weather_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__weather_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.IsRaining&#32;&amp;&amp;&#32;flag)
+<anchor xml:id="__weather_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this._currentCondition&#32;=&#32;((this._currentCondition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.Rain)&#32;?&#32;Weather.Condition.Snow&#32;:&#32;<link linkend="_class_weather">Weather</link>.Condition.SnowHeavy);
+<anchor xml:id="__weather_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00136"/>00136 
+<anchor xml:id="__weather_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033DC&#32;RID:&#32;13276&#32;RVA:&#32;0x0011B414&#32;File&#32;Offset:&#32;0x00119614</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnChangeHour()
+<anchor xml:id="__weather_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.duration--;
+<anchor xml:id="__weather_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.duration&#32;&lt;&#32;0)
+<anchor xml:id="__weather_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetConditionFromForecast(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__weather_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00146"/>00146 
+<anchor xml:id="__weather_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033DD&#32;RID:&#32;13277&#32;RVA:&#32;0x0011B434&#32;File&#32;Offset:&#32;0x00119634</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_weather_1_1_forecast">Weather.Forecast</link>&#32;GetForecast(<link linkend="_class_date">Date</link>&#32;date,&#32;<link linkend="_class_weather">Weather</link>.Condition&#32;current)
+<anchor xml:id="__weather_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_weather_1_1_forecast">Weather.Forecast</link>&#32;forecast&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_weather">Weather</link>.<link linkend="_class_weather_1_1_forecast">Forecast</link>();
+<anchor xml:id="__weather_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;forecast.condition&#32;=&#32;((<link linkend="_class_e_class">EClass</link>.rnd(4)&#32;!=&#32;0)&#32;?&#32;<link linkend="_class_weather">Weather</link>.Condition.Fine&#32;:&#32;<emphasis role="keyword">this</emphasis>.season.GetRandomWeather(date,&#32;current));
+<anchor xml:id="__weather_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;forecast.duration&#32;=&#32;<link linkend="_class_e_class">EClass</link>.rnd(24)&#32;+&#32;10;
+<anchor xml:id="__weather_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;date.AddHour(forecast.duration);
+<anchor xml:id="__weather_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;forecast;
+<anchor xml:id="__weather_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00156"/>00156 
+<anchor xml:id="__weather_8cs_source_1l00157"/>00157 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033DE&#32;RID:&#32;13278&#32;RVA:&#32;0x0011B484&#32;File&#32;Offset:&#32;0x00119684</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;<link linkend="_class_weather">Weather</link>.<link linkend="_class_weather_1_1_weather_forecast">WeatherForecast</link>&gt;&#32;GetWeatherForecast()
+<anchor xml:id="__weather_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshForecasts();
+<anchor xml:id="__weather_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;List&lt;<link linkend="_class_weather">Weather</link>.<link linkend="_class_weather_1_1_weather_forecast">WeatherForecast</link>&gt;&#32;list&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;<link linkend="_class_weather">Weather</link>.<link linkend="_class_weather_1_1_weather_forecast">WeatherForecast</link>&gt;();
+<anchor xml:id="__weather_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_date">Date</link>&#32;date&#32;=&#32;<link linkend="_class_e_class">EClass</link>.world.date.Copy();
+<anchor xml:id="__weather_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_weather_1_1_weather_forecast">Weather.WeatherForecast</link>&#32;weatherForecast&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_weather_1_1_weather_forecast">Weather.WeatherForecast</link>
+<anchor xml:id="__weather_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;date&#32;=&#32;date.Copy()
+<anchor xml:id="__weather_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__weather_8cs_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.Add(weatherForecast);
+<anchor xml:id="__weather_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_weather_1_1_forecast">Weather.Forecast</link>&#32;forecast&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_weather_1_1_forecast">Weather.Forecast</link>
+<anchor xml:id="__weather_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;condition&#32;=&#32;this._currentCondition,
+<anchor xml:id="__weather_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;duration&#32;=&#32;this.duration
+<anchor xml:id="__weather_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__weather_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;forecast.duration;
+<anchor xml:id="__weather_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num2&#32;=&#32;-1;
+<anchor xml:id="__weather_8cs_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;10000;&#32;i++)
+<anchor xml:id="__weather_8cs_source_1l00176"/>00176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num--;
+<anchor xml:id="__weather_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;weatherForecast.Add(forecast.condition,&#32;1);
+<anchor xml:id="__weather_8cs_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;&lt;&#32;0)
+<anchor xml:id="__weather_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num2++;
+<anchor xml:id="__weather_8cs_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.forecasts.Count&#32;&lt;=&#32;num2)
+<anchor xml:id="__weather_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.Remove(weatherForecast);
+<anchor xml:id="__weather_8cs_source_1l00185"/>00185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__weather_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00187"/>00187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;forecast&#32;=&#32;this.forecasts[num2];
+<anchor xml:id="__weather_8cs_source_1l00188"/>00188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num&#32;=&#32;forecast.duration;
+<anchor xml:id="__weather_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00190"/>00190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;date.AddHour(1);
+<anchor xml:id="__weather_8cs_source_1l00191"/>00191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(date.day&#32;!=&#32;weatherForecast.date.day)
+<anchor xml:id="__weather_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00193"/>00193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;weatherForecast.Finish();
+<anchor xml:id="__weather_8cs_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;weatherForecast&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_weather_1_1_weather_forecast">Weather.WeatherForecast</link>
+<anchor xml:id="__weather_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00196"/>00196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;date&#32;=&#32;date.Copy()
+<anchor xml:id="__weather_8cs_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__weather_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.Add(weatherForecast);
+<anchor xml:id="__weather_8cs_source_1l00199"/>00199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00200"/>00200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;list;
+<anchor xml:id="__weather_8cs_source_1l00202"/>00202 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00203"/>00203 
+<anchor xml:id="__weather_8cs_source_1l00204"/>00204 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033DF&#32;RID:&#32;13279&#32;RVA:&#32;0x0011B594&#32;File&#32;Offset:&#32;0x00119794</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00205"/>00205 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshForecasts()
+<anchor xml:id="__weather_8cs_source_1l00206"/>00206 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00207"/>00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.forecasts.Count&#32;&lt;&#32;10)
+<anchor xml:id="__weather_8cs_source_1l00208"/>00208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_date">Date</link>&#32;date&#32;=&#32;<link linkend="_class_e_class">EClass</link>.world.date.Copy();
+<anchor xml:id="__weather_8cs_source_1l00210"/>00210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Weather.Condition&#32;current&#32;=&#32;<link linkend="_class_weather">Weather</link>.Condition.Fine;
+<anchor xml:id="__weather_8cs_source_1l00211"/>00211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;10;&#32;i++)
+<anchor xml:id="__weather_8cs_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.forecasts.Count&#32;&gt;&#32;i)
+<anchor xml:id="__weather_8cs_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_weather_1_1_forecast">Weather.Forecast</link>&#32;forecast&#32;=&#32;this.forecasts[i];
+<anchor xml:id="__weather_8cs_source_1l00216"/>00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;date.AddHour(forecast.duration);
+<anchor xml:id="__weather_8cs_source_1l00217"/>00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;current&#32;=&#32;forecast.condition;
+<anchor xml:id="__weather_8cs_source_1l00218"/>00218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_weather_1_1_forecast">Weather.Forecast</link>&#32;forecast2&#32;=&#32;this.GetForecast(date,&#32;current);
+<anchor xml:id="__weather_8cs_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.forecasts.Add(forecast2);
+<anchor xml:id="__weather_8cs_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;current&#32;=&#32;forecast2.condition;
+<anchor xml:id="__weather_8cs_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00226"/>00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00227"/>00227 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00228"/>00228 
+<anchor xml:id="__weather_8cs_source_1l00229"/>00229 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033E0&#32;RID:&#32;13280&#32;RVA:&#32;0x0011B61E&#32;File&#32;Offset:&#32;0x0011981E</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00230"/>00230 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;GetTimeSinceLastRain()
+<anchor xml:id="__weather_8cs_source_1l00231"/>00231 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.CurrentCondition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.Rain&#32;||&#32;<emphasis role="keyword">this</emphasis>.CurrentCondition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.RainHeavy)
+<anchor xml:id="__weather_8cs_source_1l00233"/>00233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00234"/>00234 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0L;
+<anchor xml:id="__weather_8cs_source_1l00235"/>00235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<emphasis role="keywordtype">long</emphasis>)<link linkend="_class_e_class">EClass</link>.world.date.GetElapsedMins(this.lastRain);
+<anchor xml:id="__weather_8cs_source_1l00237"/>00237 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00238"/>00238 
+<anchor xml:id="__weather_8cs_source_1l00239"/>00239 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033E1&#32;RID:&#32;13281&#32;RVA:&#32;0x0011B64B&#32;File&#32;Offset:&#32;0x0011984B</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00240"/>00240 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetRandomCondition()
+<anchor xml:id="__weather_8cs_source_1l00241"/>00241 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00242"/>00242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetCondition(Util.RandomEnum&lt;<link linkend="_class_weather">Weather</link>.Condition&gt;(),&#32;20,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__weather_8cs_source_1l00243"/>00243 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00244"/>00244 
+<anchor xml:id="__weather_8cs_source_1l00245"/>00245 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033E2&#32;RID:&#32;13282&#32;RVA:&#32;0x0011B65C&#32;File&#32;Offset:&#32;0x0011985C</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00246"/>00246 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetConditionFromForecast(<emphasis role="keywordtype">bool</emphasis>&#32;silent&#32;=&#32;<emphasis role="keyword">false</emphasis>)
+<anchor xml:id="__weather_8cs_source_1l00247"/>00247 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshForecasts();
+<anchor xml:id="__weather_8cs_source_1l00249"/>00249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_weather_1_1_forecast">Weather.Forecast</link>&#32;forecast&#32;=&#32;this.forecasts[0];
+<anchor xml:id="__weather_8cs_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetCondition(forecast.condition,&#32;forecast.duration,&#32;silent);
+<anchor xml:id="__weather_8cs_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.forecasts.RemoveAt(0);
+<anchor xml:id="__weather_8cs_source_1l00252"/>00252 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00253"/>00253 
+<anchor xml:id="__weather_8cs_source_1l00254"/>00254 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033E3&#32;RID:&#32;13283&#32;RVA:&#32;0x0011B69C&#32;File&#32;Offset:&#32;0x0011989C</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00255"/>00255 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetCondition(<link linkend="_class_weather">Weather</link>.Condition&#32;condition,&#32;<emphasis role="keywordtype">int</emphasis>&#32;_duration&#32;=&#32;20,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;silent&#32;=&#32;<emphasis role="keyword">false</emphasis>)
+<anchor xml:id="__weather_8cs_source_1l00256"/>00256 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(condition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.Fine)
+<anchor xml:id="__weather_8cs_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00259"/>00259 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_chara">Chara</link>&#32;chara&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.pc.party.members)
+<anchor xml:id="__weather_8cs_source_1l00260"/>00260 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(chara.HasElement(1558,&#32;1)&#32;&amp;&amp;&#32;<link linkend="_class_e_class">EClass</link>.rnd(4)&#32;==&#32;0)
+<anchor xml:id="__weather_8cs_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;condition&#32;=&#32;<link linkend="_class_weather">Weather</link>.Condition.Rain;
+<anchor xml:id="__weather_8cs_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_msg">Msg</link>.Say(<emphasis role="stringliteral">&quot;drawRain&quot;</emphasis>,&#32;chara,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__weather_8cs_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__weather_8cs_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00267"/>00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.world.season.isWinter)
+<anchor xml:id="__weather_8cs_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00271"/>00271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(condition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.Rain)
+<anchor xml:id="__weather_8cs_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;condition&#32;=&#32;<link linkend="_class_weather">Weather</link>.Condition.Snow;
+<anchor xml:id="__weather_8cs_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(condition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.RainHeavy)
+<anchor xml:id="__weather_8cs_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00277"/>00277 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;condition&#32;=&#32;<link linkend="_class_weather">Weather</link>.Condition.SnowHeavy;
+<anchor xml:id="__weather_8cs_source_1l00278"/>00278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00279"/>00279 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00280"/>00280 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_class">EClass</link>._zone.IsSnowZone&#32;&amp;&amp;&#32;!<link linkend="_class_e_class">EClass</link>._map.IsIndoor)
+<anchor xml:id="__weather_8cs_source_1l00281"/>00281 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00282"/>00282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(condition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.Snow)
+<anchor xml:id="__weather_8cs_source_1l00283"/>00283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00284"/>00284 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;condition&#32;=&#32;<link linkend="_class_weather">Weather</link>.Condition.Rain;
+<anchor xml:id="__weather_8cs_source_1l00285"/>00285 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00286"/>00286 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(condition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.SnowHeavy)
+<anchor xml:id="__weather_8cs_source_1l00287"/>00287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00288"/>00288 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;condition&#32;=&#32;<link linkend="_class_weather">Weather</link>.Condition.RainHeavy;
+<anchor xml:id="__weather_8cs_source_1l00289"/>00289 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00290"/>00290 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00291"/>00291 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this._currentCondition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.Rain&#32;||&#32;<emphasis role="keyword">this</emphasis>._currentCondition&#32;==&#32;<link linkend="_class_weather">Weather</link>.Condition.RainHeavy)
+<anchor xml:id="__weather_8cs_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.lastRain&#32;=&#32;<link linkend="_class_e_class">EClass</link>.world.date.GetRaw(0);
+<anchor xml:id="__weather_8cs_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00295"/>00295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.duration&#32;=&#32;_duration;
+<anchor xml:id="__weather_8cs_source_1l00296"/>00296 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(condition&#32;==&#32;this._currentCondition)
+<anchor xml:id="__weather_8cs_source_1l00297"/>00297 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00298"/>00298 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__weather_8cs_source_1l00299"/>00299 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00300"/>00300 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this._currentCondition&#32;=&#32;condition;
+<anchor xml:id="__weather_8cs_source_1l00301"/>00301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshWeather();
+<anchor xml:id="__weather_8cs_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_msg">Msg</link>.Say(<emphasis role="stringliteral">&quot;weather_&quot;</emphasis>&#32;+&#32;condition.ToString());
+<anchor xml:id="__weather_8cs_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.IsRaining)
+<anchor xml:id="__weather_8cs_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>._zone.RainWater();
+<anchor xml:id="__weather_8cs_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00307"/>00307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.core.screen.RefreshSky();
+<anchor xml:id="__weather_8cs_source_1l00308"/>00308 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00309"/>00309 
+<anchor xml:id="__weather_8cs_source_1l00310"/>00310 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C35&#32;RID:&#32;7221</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00311"/>00311 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;maxForecasts&#32;=&#32;10;
+<anchor xml:id="__weather_8cs_source_1l00312"/>00312 
+<anchor xml:id="__weather_8cs_source_1l00313"/>00313 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C36&#32;RID:&#32;7222</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00314"/>00314 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__weather_8cs_source_1l00315"/>00315 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Weather.Condition&#32;_currentCondition;
+<anchor xml:id="__weather_8cs_source_1l00316"/>00316 
+<anchor xml:id="__weather_8cs_source_1l00317"/>00317 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C37&#32;RID:&#32;7223</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00318"/>00318 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__weather_8cs_source_1l00319"/>00319 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;duration&#32;=&#32;8;
+<anchor xml:id="__weather_8cs_source_1l00320"/>00320 
+<anchor xml:id="__weather_8cs_source_1l00321"/>00321 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C38&#32;RID:&#32;7224</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00322"/>00322 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__weather_8cs_source_1l00323"/>00323 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;lastRain;
+<anchor xml:id="__weather_8cs_source_1l00324"/>00324 
+<anchor xml:id="__weather_8cs_source_1l00325"/>00325 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C39&#32;RID:&#32;7225</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00326"/>00326 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__weather_8cs_source_1l00327"/>00327 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;<link linkend="_class_weather">Weather</link>.<link linkend="_class_weather_1_1_forecast">Forecast</link>&gt;&#32;forecasts&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;<link linkend="_class_weather">Weather</link>.<link linkend="_class_weather_1_1_forecast">Forecast</link>&gt;();
+<anchor xml:id="__weather_8cs_source_1l00328"/>00328 
+<anchor xml:id="__weather_8cs_source_1l00329"/>00329 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x02000C13&#32;RID:&#32;3091</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00330"/>00330 &#32;&#32;&#32;&#32;[JsonObject(MemberSerialization.OptOut)]
+<anchor xml:id="__weather_8cs_source_1l00331"/><link linkend="_class_weather_1_1_forecast">00331</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_weather_1_1_forecast">Forecast</link>
+<anchor xml:id="__weather_8cs_source_1l00332"/>00332 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00333"/>00333 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400300A&#32;RID:&#32;12298</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00334"/>00334 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;duration;
+<anchor xml:id="__weather_8cs_source_1l00335"/>00335 
+<anchor xml:id="__weather_8cs_source_1l00336"/>00336 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400300B&#32;RID:&#32;12299</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00337"/>00337 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Weather.Condition&#32;condition;
+<anchor xml:id="__weather_8cs_source_1l00338"/>00338 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00339"/>00339 
+<anchor xml:id="__weather_8cs_source_1l00340"/>00340 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x02000C14&#32;RID:&#32;3092</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00341"/>00341 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">enum</emphasis>&#32;<link linkend="_class_condition">Condition</link>
+<anchor xml:id="__weather_8cs_source_1l00342"/>00342 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00343"/>00343 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400300D&#32;RID:&#32;12301</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00344"/>00344 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Fine,
+<anchor xml:id="__weather_8cs_source_1l00345"/>00345 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400300E&#32;RID:&#32;12302</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00346"/>00346 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Cloudy,
+<anchor xml:id="__weather_8cs_source_1l00347"/>00347 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400300F&#32;RID:&#32;12303</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00348"/>00348 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Rain,
+<anchor xml:id="__weather_8cs_source_1l00349"/>00349 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04003010&#32;RID:&#32;12304</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00350"/>00350 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;RainHeavy,
+<anchor xml:id="__weather_8cs_source_1l00351"/>00351 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04003011&#32;RID:&#32;12305</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00352"/>00352 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Snow,
+<anchor xml:id="__weather_8cs_source_1l00353"/>00353 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04003012&#32;RID:&#32;12306</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00354"/>00354 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SnowHeavy,
+<anchor xml:id="__weather_8cs_source_1l00355"/>00355 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04003013&#32;RID:&#32;12307</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00356"/>00356 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Ether,
+<anchor xml:id="__weather_8cs_source_1l00357"/>00357 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04003014&#32;RID:&#32;12308</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00358"/>00358 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Blossom,
+<anchor xml:id="__weather_8cs_source_1l00359"/>00359 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04003015&#32;RID:&#32;12309</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00360"/>00360 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;None
+<anchor xml:id="__weather_8cs_source_1l00361"/>00361 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00362"/>00362 
+<anchor xml:id="__weather_8cs_source_1l00363"/>00363 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x02000C15&#32;RID:&#32;3093</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00364"/><link linkend="_class_weather_1_1_weather_forecast">00364</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_weather_1_1_weather_forecast">WeatherForecast</link>
+<anchor xml:id="__weather_8cs_source_1l00365"/>00365 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00366"/>00366 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06004629&#32;RID:&#32;17961&#32;RVA:&#32;0x00160D04&#32;File&#32;Offset:&#32;0x0015EF04</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00367"/>00367 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Add(<link linkend="_class_weather">Weather</link>.Condition&#32;con,&#32;<emphasis role="keywordtype">int</emphasis>&#32;h)
+<anchor xml:id="__weather_8cs_source_1l00368"/>00368 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00369"/>00369 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.cons.ContainsKey(con))
+<anchor xml:id="__weather_8cs_source_1l00370"/>00370 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00371"/>00371 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dictionary&lt;<link linkend="_class_weather">Weather</link>.Condition,&#32;<emphasis role="keywordtype">int</emphasis>&gt;&#32;dictionary&#32;=&#32;this.cons;
+<anchor xml:id="__weather_8cs_source_1l00372"/>00372 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dictionary[con]&#32;+=&#32;h;
+<anchor xml:id="__weather_8cs_source_1l00373"/>00373 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__weather_8cs_source_1l00374"/>00374 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00375"/>00375 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.cons[con]&#32;=&#32;h;
+<anchor xml:id="__weather_8cs_source_1l00376"/>00376 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00377"/>00377 
+<anchor xml:id="__weather_8cs_source_1l00378"/>00378 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600462A&#32;RID:&#32;17962&#32;RVA:&#32;0x00160D48&#32;File&#32;Offset:&#32;0x0015EF48</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00379"/>00379 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Finish()
+<anchor xml:id="__weather_8cs_source_1l00380"/>00380 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00381"/>00381 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.cons.Count&#32;==&#32;0)
+<anchor xml:id="__weather_8cs_source_1l00382"/>00382 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00383"/>00383 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__weather_8cs_source_1l00384"/>00384 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00385"/>00385 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;this.cons.Sum((KeyValuePair&lt;Weather.Condition,&#32;int&gt;&#32;c)&#32;=&gt;&#32;c.Value);
+<anchor xml:id="__weather_8cs_source_1l00386"/>00386 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;!=&#32;0)
+<anchor xml:id="__weather_8cs_source_1l00387"/>00387 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00388"/>00388 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_weather">Weather</link>.Condition&#32;key&#32;in&#32;<emphasis role="keyword">this</emphasis>.cons.Keys.ToList&lt;<link linkend="_class_weather">Weather</link>.Condition&gt;())
+<anchor xml:id="__weather_8cs_source_1l00389"/>00389 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__weather_8cs_source_1l00390"/>00390 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.cons[key]&#32;=&#32;this.cons[key]&#32;*&#32;100&#32;/&#32;num;
+<anchor xml:id="__weather_8cs_source_1l00391"/>00391 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00392"/>00392 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00393"/>00393 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00394"/>00394 
+<anchor xml:id="__weather_8cs_source_1l00395"/>00395 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04003016&#32;RID:&#32;12310</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00396"/>00396 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_date">Date</link>&#32;date;
+<anchor xml:id="__weather_8cs_source_1l00397"/>00397 
+<anchor xml:id="__weather_8cs_source_1l00398"/>00398 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04003017&#32;RID:&#32;12311</emphasis>
+<anchor xml:id="__weather_8cs_source_1l00399"/>00399 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Dictionary&lt;<link linkend="_class_weather">Weather</link>.Condition,&#32;<emphasis role="keywordtype">int</emphasis>&gt;&#32;cons&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Dictionary&lt;<link linkend="_class_weather">Weather</link>.Condition,&#32;<emphasis role="keywordtype">int</emphasis>&gt;();
+<anchor xml:id="__weather_8cs_source_1l00400"/>00400 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__weather_8cs_source_1l00401"/>00401 }
+</programlisting></section>

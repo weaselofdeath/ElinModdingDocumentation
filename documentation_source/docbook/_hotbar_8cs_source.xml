@@ -1,0 +1,363 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__hotbar_8cs_source" xml:lang="en-US">
+<title>Hotbar.cs</title>
+<indexterm><primary>Elin/Hotbar.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__hotbar_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__hotbar_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__hotbar_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>Newtonsoft.Json;
+<anchor xml:id="__hotbar_8cs_source_1l00004"/>00004 
+<anchor xml:id="__hotbar_8cs_source_1l00005"/>00005 <emphasis role="comment">//&#32;Token:&#32;0x02000602&#32;RID:&#32;1538</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00006"/><link linkend="_class_hotbar">00006</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_hotbar">Hotbar</link>&#32;:&#32;<link linkend="_class_e_class">EClass</link>
+<anchor xml:id="__hotbar_8cs_source_1l00007"/>00007 {
+<anchor xml:id="__hotbar_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000C2E&#32;RID:&#32;3118</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06002AB7&#32;RID:&#32;10935&#32;RVA:&#32;0x000F11B5&#32;File&#32;Offset:&#32;0x000EF3B5</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_hotbar_manager">HotbarManager</link>&#32;manager
+<anchor xml:id="__hotbar_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.player.hotbars;
+<anchor xml:id="__hotbar_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00017"/>00017 
+<anchor xml:id="__hotbar_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000C2F&#32;RID:&#32;3119</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06002AB8&#32;RID:&#32;10936&#32;RVA:&#32;0x000F11C1&#32;File&#32;Offset:&#32;0x000EF3C1</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_hot_item">HotItem</link>&#32;SelectedItem
+<anchor xml:id="__hotbar_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.pages[this.currentPage].SelectedItem;
+<anchor xml:id="__hotbar_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00027"/>00027 
+<anchor xml:id="__hotbar_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000C30&#32;RID:&#32;3120</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06002AB9&#32;RID:&#32;10937&#32;RVA:&#32;0x000F11D9&#32;File&#32;Offset:&#32;0x000EF3D9</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_hot_item">HotItem</link>&#32;DefaultItem
+<anchor xml:id="__hotbar_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__hotbar_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00037"/>00037 
+<anchor xml:id="__hotbar_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000C31&#32;RID:&#32;3121</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06002ABA&#32;RID:&#32;10938&#32;RVA:&#32;0x000F11DC&#32;File&#32;Offset:&#32;0x000EF3DC</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsLocked
+<anchor xml:id="__hotbar_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.id&#32;==&#32;3;
+<anchor xml:id="__hotbar_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00047"/>00047 
+<anchor xml:id="__hotbar_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000C32&#32;RID:&#32;3122</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06002ABB&#32;RID:&#32;10939&#32;RVA:&#32;0x000F11E7&#32;File&#32;Offset:&#32;0x000EF3E7</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsUserHotbar
+<anchor xml:id="__hotbar_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.id&#32;==&#32;5&#32;||&#32;this.id&#32;==&#32;6;
+<anchor xml:id="__hotbar_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00057"/>00057 
+<anchor xml:id="__hotbar_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000C33&#32;RID:&#32;3123</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06002ABC&#32;RID:&#32;10940&#32;RVA:&#32;0x000F11FD&#32;File&#32;Offset:&#32;0x000EF3FD</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ShowFunctionKey
+<anchor xml:id="__hotbar_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.id&#32;==&#32;5;
+<anchor xml:id="__hotbar_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00067"/>00067 
+<anchor xml:id="__hotbar_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000C34&#32;RID:&#32;3124</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06002ABD&#32;RID:&#32;10941&#32;RVA:&#32;0x000F1208&#32;File&#32;Offset:&#32;0x000EF408</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_hotbar_1_1_page">Hotbar.Page</link>&#32;CurrentPage
+<anchor xml:id="__hotbar_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.pages[(this.currentPage&#32;&gt;=&#32;0)&#32;?&#32;this.currentPage&#32;:&#32;0];
+<anchor xml:id="__hotbar_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00077"/>00077 
+<anchor xml:id="__hotbar_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002ABE&#32;RID:&#32;10942&#32;RVA:&#32;0x000F1228&#32;File&#32;Offset:&#32;0x000EF428</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetSlotNum(<emphasis role="keywordtype">int</emphasis>&#32;a)
+<anchor xml:id="__hotbar_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.itemsPerPage&#32;=&#32;a;
+<anchor xml:id="__hotbar_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_hotbar">Hotbar</link>.<link linkend="_class_hotbar_1_1_page">Page</link>&#32;page&#32;in&#32;<emphasis role="keyword">this</emphasis>.pages)
+<anchor xml:id="__hotbar_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.ValidatePage(page,&#32;-1);
+<anchor xml:id="__hotbar_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00087"/>00087 
+<anchor xml:id="__hotbar_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002ABF&#32;RID:&#32;10943&#32;RVA:&#32;0x000F1284&#32;File&#32;Offset:&#32;0x000EF484</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddPage()
+<anchor xml:id="__hotbar_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_hotbar_1_1_page">Hotbar.Page</link>&#32;page&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_hotbar">Hotbar</link>.<link linkend="_class_hotbar_1_1_page">Page</link>();
+<anchor xml:id="__hotbar_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.pages.Add(page);
+<anchor xml:id="__hotbar_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.ValidatePage(page,&#32;-1);
+<anchor xml:id="__hotbar_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00095"/>00095 
+<anchor xml:id="__hotbar_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002AC0&#32;RID:&#32;10944&#32;RVA:&#32;0x000F12AC&#32;File&#32;Offset:&#32;0x000EF4AC</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ValidatePage(<link linkend="_class_hotbar">Hotbar</link>.<link linkend="_class_hotbar_1_1_page">Page</link>&#32;page,&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;-1)
+<anchor xml:id="__hotbar_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;!=&#32;-1&#32;&amp;&amp;&#32;this.itemsPerPage&#32;&lt;&#32;num)
+<anchor xml:id="__hotbar_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.itemsPerPage&#32;=&#32;num;
+<anchor xml:id="__hotbar_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(page.items.Count&#32;&lt;&#32;<emphasis role="keyword">this</emphasis>.itemsPerPage)
+<anchor xml:id="__hotbar_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num2&#32;=&#32;this.itemsPerPage&#32;-&#32;page.items.Count;
+<anchor xml:id="__hotbar_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;num2;&#32;i++)
+<anchor xml:id="__hotbar_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;page.items.Add(this.DefaultItem);
+<anchor xml:id="__hotbar_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00112"/>00112 
+<anchor xml:id="__hotbar_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002AC1&#32;RID:&#32;10945&#32;RVA:&#32;0x000F1310&#32;File&#32;Offset:&#32;0x000EF510</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetPage(<emphasis role="keywordtype">int</emphasis>&#32;pageIndex)
+<anchor xml:id="__hotbar_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.currentPage&#32;=&#32;pageIndex;
+<anchor xml:id="__hotbar_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00118"/>00118 
+<anchor xml:id="__hotbar_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002AC2&#32;RID:&#32;10946&#32;RVA:&#32;0x000F131C&#32;File&#32;Offset:&#32;0x000EF51C</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Remove(<link linkend="_class_hot_item">HotItem</link>&#32;item)
+<anchor xml:id="__hotbar_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;this.pages.Count;&#32;i++)
+<anchor xml:id="__hotbar_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j&#32;=&#32;0;&#32;j&#32;&lt;&#32;this.pages[i].items.Count;&#32;j++)
+<anchor xml:id="__hotbar_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.pages[i].items[j]&#32;==&#32;item)
+<anchor xml:id="__hotbar_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetItem(<emphasis role="keyword">null</emphasis>,&#32;j,&#32;i,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__hotbar_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00133"/>00133 
+<anchor xml:id="__hotbar_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002AC3&#32;RID:&#32;10947&#32;RVA:&#32;0x000F1385&#32;File&#32;Offset:&#32;0x000EF585</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_hot_item">HotItem</link>&#32;GetItem(<emphasis role="keywordtype">int</emphasis>&#32;index,&#32;<emphasis role="keywordtype">int</emphasis>&#32;pageIndex&#32;=&#32;-1)
+<anchor xml:id="__hotbar_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.pages[(pageIndex&#32;==&#32;-1)&#32;?&#32;this.currentPage&#32;:&#32;pageIndex].GetItem(index);
+<anchor xml:id="__hotbar_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00139"/>00139 
+<anchor xml:id="__hotbar_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002AC4&#32;RID:&#32;10948&#32;RVA:&#32;0x000F13A8&#32;File&#32;Offset:&#32;0x000EF5A8</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_hot_item">HotItem</link>&#32;SetItem(<link linkend="_class_hot_item">HotItem</link>&#32;item,&#32;<emphasis role="keywordtype">int</emphasis>&#32;index&#32;=&#32;-1,&#32;<emphasis role="keywordtype">int</emphasis>&#32;pageIndex&#32;=&#32;-1,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;refreshActor&#32;=&#32;<emphasis role="keyword">false</emphasis>)
+<anchor xml:id="__hotbar_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(item&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__hotbar_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item&#32;=&#32;this.DefaultItem;
+<anchor xml:id="__hotbar_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pageIndex&#32;==&#32;-1)
+<anchor xml:id="__hotbar_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pageIndex&#32;=&#32;this.currentPage;
+<anchor xml:id="__hotbar_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pageIndex&#32;&gt;=&#32;this.pages.Count)
+<anchor xml:id="__hotbar_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.AddPage();
+<anchor xml:id="__hotbar_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pageIndex&#32;=&#32;this.pages.Count&#32;-&#32;1;
+<anchor xml:id="__hotbar_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_hotbar_1_1_page">Hotbar.Page</link>&#32;page&#32;=&#32;this.pages[pageIndex];
+<anchor xml:id="__hotbar_8cs_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.ValidatePage(page,&#32;index&#32;+&#32;1);
+<anchor xml:id="__hotbar_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;page.SetItem(<emphasis role="keyword">this</emphasis>,&#32;item,&#32;index);
+<anchor xml:id="__hotbar_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(item&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__hotbar_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.OnAddedToBar();
+<anchor xml:id="__hotbar_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(refreshActor&#32;&amp;&amp;&#32;this.actor)
+<anchor xml:id="__hotbar_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.actor.RebuildPage(-1);
+<anchor xml:id="__hotbar_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;item;
+<anchor xml:id="__hotbar_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00169"/>00169 
+<anchor xml:id="__hotbar_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002AC5&#32;RID:&#32;10949&#32;RVA:&#32;0x000F1436&#32;File&#32;Offset:&#32;0x000EF636</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Select(<link linkend="_class_hot_item">HotItem</link>&#32;item)
+<anchor xml:id="__hotbar_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.SelectHotitem();
+<anchor xml:id="__hotbar_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.player.SetCurrentHotItem(item);
+<anchor xml:id="__hotbar_8cs_source_1l00175"/>00175 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00176"/>00176 
+<anchor xml:id="__hotbar_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002AC6&#32;RID:&#32;10950&#32;RVA:&#32;0x000F1448&#32;File&#32;Offset:&#32;0x000EF648</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ToggleDisable(<link linkend="_class_hot_item">HotItem</link>&#32;item)
+<anchor xml:id="__hotbar_8cs_source_1l00179"/>00179 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.disabled&#32;=&#32;!item.disabled;
+<anchor xml:id="__hotbar_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(item.disabled)
+<anchor xml:id="__hotbar_8cs_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;item.OnUnselect();
+<anchor xml:id="__hotbar_8cs_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00185"/>00185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.SelectHotitem();
+<anchor xml:id="__hotbar_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.player.SetCurrentHotItem(item.disabled&#32;?&#32;<emphasis role="keyword">null</emphasis>&#32;:&#32;item);
+<anchor xml:id="__hotbar_8cs_source_1l00187"/>00187 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00188"/>00188 
+<anchor xml:id="__hotbar_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002AC7&#32;RID:&#32;10951&#32;RVA:&#32;0x000F1484&#32;File&#32;Offset:&#32;0x000EF684</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00190"/>00190 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Unselect(<emphasis role="keywordtype">int</emphasis>&#32;pageIndex&#32;=&#32;-1)
+<anchor xml:id="__hotbar_8cs_source_1l00191"/>00191 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pageIndex&#32;==&#32;-1)
+<anchor xml:id="__hotbar_8cs_source_1l00193"/>00193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pageIndex&#32;=&#32;this.currentPage;
+<anchor xml:id="__hotbar_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00196"/>00196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_hot_item">HotItem</link>&#32;selectedItem&#32;=&#32;this.pages[pageIndex].SelectedItem;
+<anchor xml:id="__hotbar_8cs_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.pages[pageIndex].selected&#32;=&#32;-1;
+<anchor xml:id="__hotbar_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(selectedItem&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__hotbar_8cs_source_1l00199"/>00199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00200"/>00200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;selectedItem.OnUnselect();
+<anchor xml:id="__hotbar_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00202"/>00202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.player.SetCurrentHotItem(<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__hotbar_8cs_source_1l00203"/>00203 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00204"/>00204 
+<anchor xml:id="__hotbar_8cs_source_1l00205"/>00205 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002AC8&#32;RID:&#32;10952&#32;RVA:&#32;0x000F14D8&#32;File&#32;Offset:&#32;0x000EF6D8</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00206"/>00206 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_hot_item">HotItem</link>&#32;GetSelectedItem()
+<anchor xml:id="__hotbar_8cs_source_1l00207"/>00207 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00208"/>00208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;selected&#32;=&#32;this.pages[this.currentPage].selected;
+<anchor xml:id="__hotbar_8cs_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(selected&#32;==&#32;-1)
+<anchor xml:id="__hotbar_8cs_source_1l00210"/>00210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00211"/>00211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__hotbar_8cs_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.pages[this.currentPage].items[selected];
+<anchor xml:id="__hotbar_8cs_source_1l00214"/>00214 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00215"/>00215 
+<anchor xml:id="__hotbar_8cs_source_1l00216"/>00216 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002AC9&#32;RID:&#32;10953&#32;RVA:&#32;0x000F1520&#32;File&#32;Offset:&#32;0x000EF720</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00217"/>00217 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;GetNextSelectableIndex(<emphasis role="keywordtype">int</emphasis>&#32;pageIndex&#32;=&#32;-1)
+<anchor xml:id="__hotbar_8cs_source_1l00218"/>00218 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pageIndex&#32;==&#32;-1)
+<anchor xml:id="__hotbar_8cs_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pageIndex&#32;=&#32;this.currentPage;
+<anchor xml:id="__hotbar_8cs_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_hotbar_1_1_page">Hotbar.Page</link>&#32;page&#32;=&#32;this.pages[pageIndex];
+<anchor xml:id="__hotbar_8cs_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;page.selected&#32;+&#32;1;
+<anchor xml:id="__hotbar_8cs_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;&gt;=&#32;this.itemsPerPage)
+<anchor xml:id="__hotbar_8cs_source_1l00226"/>00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num&#32;=&#32;-1;
+<anchor xml:id="__hotbar_8cs_source_1l00228"/>00228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.ValidatePage(page,&#32;-1);
+<anchor xml:id="__hotbar_8cs_source_1l00230"/>00230 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;num;
+<anchor xml:id="__hotbar_8cs_source_1l00231"/>00231 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00232"/>00232 
+<anchor xml:id="__hotbar_8cs_source_1l00233"/>00233 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002ACA&#32;RID:&#32;10954&#32;RVA:&#32;0x000F1564&#32;File&#32;Offset:&#32;0x000EF764</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00234"/>00234 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;GetPrevSelectableIndex(<emphasis role="keywordtype">int</emphasis>&#32;pageIndex&#32;=&#32;-1)
+<anchor xml:id="__hotbar_8cs_source_1l00235"/>00235 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pageIndex&#32;==&#32;-1)
+<anchor xml:id="__hotbar_8cs_source_1l00237"/>00237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pageIndex&#32;=&#32;this.currentPage;
+<anchor xml:id="__hotbar_8cs_source_1l00239"/>00239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00240"/>00240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_hotbar_1_1_page">Hotbar.Page</link>&#32;page&#32;=&#32;this.pages[pageIndex];
+<anchor xml:id="__hotbar_8cs_source_1l00241"/>00241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;page.selected&#32;-&#32;1;
+<anchor xml:id="__hotbar_8cs_source_1l00242"/>00242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;&lt;&#32;-1)
+<anchor xml:id="__hotbar_8cs_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num&#32;=&#32;this.itemsPerPage&#32;-&#32;1;
+<anchor xml:id="__hotbar_8cs_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.ValidatePage(page,&#32;-1);
+<anchor xml:id="__hotbar_8cs_source_1l00247"/>00247 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;num;
+<anchor xml:id="__hotbar_8cs_source_1l00248"/>00248 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00249"/>00249 
+<anchor xml:id="__hotbar_8cs_source_1l00250"/>00250 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001815&#32;RID:&#32;6165</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00251"/>00251 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;IDMainMenu&#32;=&#32;2;
+<anchor xml:id="__hotbar_8cs_source_1l00252"/>00252 
+<anchor xml:id="__hotbar_8cs_source_1l00253"/>00253 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001816&#32;RID:&#32;6166</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00254"/>00254 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;IDBuild&#32;=&#32;3;
+<anchor xml:id="__hotbar_8cs_source_1l00255"/>00255 
+<anchor xml:id="__hotbar_8cs_source_1l00256"/>00256 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001817&#32;RID:&#32;6167</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00257"/>00257 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;IDUser2&#32;=&#32;5;
+<anchor xml:id="__hotbar_8cs_source_1l00258"/>00258 
+<anchor xml:id="__hotbar_8cs_source_1l00259"/>00259 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001818&#32;RID:&#32;6168</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00260"/>00260 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;IDUser3&#32;=&#32;6;
+<anchor xml:id="__hotbar_8cs_source_1l00261"/>00261 
+<anchor xml:id="__hotbar_8cs_source_1l00262"/>00262 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001819&#32;RID:&#32;6169</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00263"/>00263 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;IDSpeed&#32;=&#32;7;
+<anchor xml:id="__hotbar_8cs_source_1l00264"/>00264 
+<anchor xml:id="__hotbar_8cs_source_1l00265"/>00265 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400181A&#32;RID:&#32;6170</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00266"/>00266 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__hotbar_8cs_source_1l00267"/>00267 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;currentPage;
+<anchor xml:id="__hotbar_8cs_source_1l00268"/>00268 
+<anchor xml:id="__hotbar_8cs_source_1l00269"/>00269 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400181B&#32;RID:&#32;6171</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00270"/>00270 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__hotbar_8cs_source_1l00271"/>00271 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;itemsPerPage&#32;=&#32;6;
+<anchor xml:id="__hotbar_8cs_source_1l00272"/>00272 
+<anchor xml:id="__hotbar_8cs_source_1l00273"/>00273 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400181C&#32;RID:&#32;6172</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00274"/>00274 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__hotbar_8cs_source_1l00275"/>00275 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;id;
+<anchor xml:id="__hotbar_8cs_source_1l00276"/>00276 
+<anchor xml:id="__hotbar_8cs_source_1l00277"/>00277 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400181D&#32;RID:&#32;6173</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00278"/>00278 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__hotbar_8cs_source_1l00279"/>00279 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;<link linkend="_class_hotbar">Hotbar</link>.<link linkend="_class_hotbar_1_1_page">Page</link>&gt;&#32;pages&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;<link linkend="_class_hotbar">Hotbar</link>.<link linkend="_class_hotbar_1_1_page">Page</link>&gt;();
+<anchor xml:id="__hotbar_8cs_source_1l00280"/>00280 
+<anchor xml:id="__hotbar_8cs_source_1l00281"/>00281 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400181E&#32;RID:&#32;6174</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00282"/>00282 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;dirty;
+<anchor xml:id="__hotbar_8cs_source_1l00283"/>00283 
+<anchor xml:id="__hotbar_8cs_source_1l00284"/>00284 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400181F&#32;RID:&#32;6175</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00285"/>00285 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_widget_hotbar">WidgetHotbar</link>&#32;actor;
+<anchor xml:id="__hotbar_8cs_source_1l00286"/>00286 
+<anchor xml:id="__hotbar_8cs_source_1l00287"/>00287 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x02000B74&#32;RID:&#32;2932</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00288"/>00288 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">enum</emphasis>&#32;Type
+<anchor xml:id="__hotbar_8cs_source_1l00289"/>00289 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00290"/>00290 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002DFB&#32;RID:&#32;11771</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00291"/>00291 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Default,
+<anchor xml:id="__hotbar_8cs_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002DFC&#32;RID:&#32;11772</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Main,
+<anchor xml:id="__hotbar_8cs_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002DFD&#32;RID:&#32;11773</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00295"/>00295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ZoomMenu
+<anchor xml:id="__hotbar_8cs_source_1l00296"/>00296 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00297"/>00297 
+<anchor xml:id="__hotbar_8cs_source_1l00298"/>00298 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x02000B75&#32;RID:&#32;2933</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00299"/><link linkend="_class_hotbar_1_1_page">00299</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_hotbar_1_1_page">Page</link>&#32;:&#32;<link linkend="_class_e_class">EClass</link>
+<anchor xml:id="__hotbar_8cs_source_1l00300"/>00300 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00301"/>00301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170011F1&#32;RID:&#32;4593</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06004425&#32;RID:&#32;17445&#32;RVA:&#32;0x0015B7BD&#32;File&#32;Offset:&#32;0x001599BD</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_hot_item">HotItem</link>&#32;SelectedItem
+<anchor xml:id="__hotbar_8cs_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00307"/>00307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.selected&#32;!=&#32;-1)
+<anchor xml:id="__hotbar_8cs_source_1l00308"/>00308 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00309"/>00309 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.items[this.selected];
+<anchor xml:id="__hotbar_8cs_source_1l00310"/>00310 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__hotbar_8cs_source_1l00312"/>00312 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00313"/>00313 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00314"/>00314 
+<anchor xml:id="__hotbar_8cs_source_1l00315"/>00315 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06004426&#32;RID:&#32;17446&#32;RVA:&#32;0x0015B7DC&#32;File&#32;Offset:&#32;0x001599DC</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00316"/>00316 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetItem(<link linkend="_class_hotbar">Hotbar</link>&#32;h,&#32;<link linkend="_class_hot_item">HotItem</link>&#32;item,&#32;<emphasis role="keywordtype">int</emphasis>&#32;index)
+<anchor xml:id="__hotbar_8cs_source_1l00317"/>00317 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00318"/>00318 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(index&#32;==&#32;-1)
+<anchor xml:id="__hotbar_8cs_source_1l00319"/>00319 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00320"/>00320 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;this.items.Count;&#32;i++)
+<anchor xml:id="__hotbar_8cs_source_1l00321"/>00321 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.items[i]&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__hotbar_8cs_source_1l00323"/>00323 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00324"/>00324 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;index&#32;=&#32;i;
+<anchor xml:id="__hotbar_8cs_source_1l00325"/>00325 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__hotbar_8cs_source_1l00326"/>00326 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00327"/>00327 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00328"/>00328 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(index&#32;==&#32;-1)
+<anchor xml:id="__hotbar_8cs_source_1l00329"/>00329 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00330"/>00330 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__hotbar_8cs_source_1l00331"/>00331 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00332"/>00332 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00333"/>00333 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.items[index]&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__hotbar_8cs_source_1l00334"/>00334 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00335"/>00335 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.items[index].button&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__hotbar_8cs_source_1l00336"/>00336 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00337"/>00337 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.items[index]&#32;=&#32;item;
+<anchor xml:id="__hotbar_8cs_source_1l00338"/>00338 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00339"/>00339 
+<anchor xml:id="__hotbar_8cs_source_1l00340"/>00340 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06004427&#32;RID:&#32;17447&#32;RVA:&#32;0x0015B848&#32;File&#32;Offset:&#32;0x00159A48</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00341"/>00341 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_hot_item">HotItem</link>&#32;GetItem(<emphasis role="keywordtype">int</emphasis>&#32;index)
+<anchor xml:id="__hotbar_8cs_source_1l00342"/>00342 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00343"/>00343 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(index&#32;&gt;=&#32;this.items.Count)
+<anchor xml:id="__hotbar_8cs_source_1l00344"/>00344 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hotbar_8cs_source_1l00345"/>00345 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__hotbar_8cs_source_1l00346"/>00346 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00347"/>00347 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.items[index];
+<anchor xml:id="__hotbar_8cs_source_1l00348"/>00348 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00349"/>00349 
+<anchor xml:id="__hotbar_8cs_source_1l00350"/>00350 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002DFE&#32;RID:&#32;11774</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00351"/>00351 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__hotbar_8cs_source_1l00352"/>00352 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;HotItem&gt;&#32;items&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;HotItem&gt;();
+<anchor xml:id="__hotbar_8cs_source_1l00353"/>00353 
+<anchor xml:id="__hotbar_8cs_source_1l00354"/>00354 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002DFF&#32;RID:&#32;11775</emphasis>
+<anchor xml:id="__hotbar_8cs_source_1l00355"/>00355 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__hotbar_8cs_source_1l00356"/>00356 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;selected&#32;=&#32;-1;
+<anchor xml:id="__hotbar_8cs_source_1l00357"/>00357 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hotbar_8cs_source_1l00358"/>00358 }
+</programlisting></section>

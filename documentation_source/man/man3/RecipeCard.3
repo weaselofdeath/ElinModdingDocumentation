@@ -1,0 +1,594 @@
+.TH "RecipeCard" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RecipeCard
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRecipe\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBIRenderer\fP \fBGetRenderer\fP ()"
+.br
+.ti -1c
+.RI "override string \fBGetDetail\fP ()"
+.br
+.ti -1c
+.RI "override string \fBGetIdThing\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnRenderMarker\fP (\fBPoint\fP point, bool active, HitResult result, bool main, int dir, int bridgeHeight)"
+.br
+.ti -1c
+.RI "override void \fBBuildIngredientList\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnChangeIngredient\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnSelected\fP ()"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBCreateMold\fP ()"
+.br
+.ti -1c
+.RI "override \fBThing\fP \fBCraft\fP (BlessedState blessed, bool sound=false, List< \fBThing\fP > ings=null, bool model=false)"
+.br
+.ti -1c
+.RI "void \fBMakeDish\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "void \fBMixIngredients\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "string \fBGetIdFailDish\fP ()"
+.br
+.ti -1c
+.RI "override void \fBBuild\fP (\fBTaskBuild\fP task)"
+.br
+.ti -1c
+.RI "override void \fBBuild\fP (\fBChara\fP chara, \fBCard\fP t, \fBPoint\fP pos, int mat, int dir, int altitude, int bridgeHeight)"
+.br
+.ti -1c
+.RI "override void \fBOnChangeAltitude\fP (int a)"
+.br
+.ti -1c
+.RI "override void \fBRotate\fP ()"
+.br
+.ti -1c
+.RI "override void \fBSetDir\fP (int d)"
+.br
+.ti -1c
+.RI "override void \fBWriteNote\fP (UINote n)"
+.br
+.ti -1c
+.RI "override \fBRecipe\fP \fBDuplicate\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBRecipe\fP
+.in +1c
+.ti -1c
+.RI "bool \fBIsStaticLV\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetQualityBonus\fP ()"
+.br
+.ti -1c
+.RI "virtual int \fBGetRefVal\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBShouldShowHighlight\fP (HitResult r)"
+.br
+.ti -1c
+.RI "BaseTileSelector\&.BoxType \fBGetBoxType\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetDefaultColor\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBSourceMaterial\&.Row\fP \fBGetMainMaterial\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBSourceMaterial\&.Row\fP \fBGetColorMaterial\fP ()"
+.br
+.ti -1c
+.RI "void \fBBuildIngredientList\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "bool \fBHasSameTile\fP (\fBPoint\fP point, int dir, int altitude, int bridgeHeight)"
+.br
+.ti -1c
+.RI "string \fBGetName\fP ()"
+.br
+.ti -1c
+.RI "void \fBWriteReqFactory\fP (UINote n, bool hasFactory=true)"
+.br
+.ti -1c
+.RI "void \fBWriteReqSkill\fP (UINote n)"
+.br
+.ti -1c
+.RI "virtual void \fBSetImage\fP (Image icon)"
+.br
+.ti -1c
+.RI "bool \fBIsCraftable\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetMaxCount\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetTextDifficulty\fP (UIText text)"
+.br
+.ti -1c
+.RI "int \fBGetSortVal\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBCardRow\fP \fB_sourceCard\fP"
+.br
+.ti -1c
+.RI "bool \fBfreePos\fP"
+.br
+.ti -1c
+.RI "float \fBfx\fP"
+.br
+.ti -1c
+.RI "float \fBfy\fP"
+.br
+.ti -1c
+.RI "\fBCard\fP \fB_mold\fP"
+.br
+.in -1c
+
+Public Attributes inherited from \fBRecipe\fP
+.in +1c
+.ti -1c
+.RI "string \fBid\fP"
+.br
+.ti -1c
+.RI "List< \fBRecipe\&.Ingredient\fP > \fBingredients\fP = new List<\fBRecipe\&.Ingredient\fP>()"
+.br
+.ti -1c
+.RI "bool \fBUseStock\fP"
+.br
+.ti -1c
+.RI "bool \fBIngAsProduct\fP"
+.br
+.ti -1c
+.RI "bool \fBVirtualBlock\fP"
+.br
+.ti -1c
+.RI "int \fB_dir\fP"
+.br
+.ti -1c
+.RI "int \fBsync\fP"
+.br
+.ti -1c
+.RI "int \fBidMat\fP = \-1"
+.br
+.ti -1c
+.RI "int \fBidSkin\fP"
+.br
+.ti -1c
+.RI "Recipe\&.State \fBstate\fP"
+.br
+.ti -1c
+.RI "\fBRecipeSource\fP \fB_source\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBCardRow\fP \fBsourceCard\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override \fBRenderRow\fP \fBrenderRow\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override \fBTileType\fP \fBtileType\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBidCard\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBCanRotate\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override \fBCard\fP \fBMold\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBisDish\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBRecipe\fP
+.in +1c
+.ti -1c
+.RI "\fBRecipeSource\fP \fBsource\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBSourceMaterial\&.Row\fP \fBDefaultMaterial\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBTileRow\fP \fBtileRow\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBRenderRow\fP \fBrenderRow\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBTileType\fP \fBtileType\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsFloorOrBridge\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBMaxAltitude\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBRecipeLv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFloor\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsObj\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsBlock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsWallOrFence\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsBridge\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsThing\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBCard\fP \fBMold\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBW\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBH\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBRequireIngredients\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBMultiSize\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBBaseTileSelector\fP \fBtileSelector\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBCostMoney\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanRotate\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Public Types inherited from \fBRecipe\fP
+.in +1c
+.ti -1c
+.RI "enum \fBState\fP { \fBValid\fP, \fBInvalid\fP }"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBRecipe\fP
+.in +1c
+.ti -1c
+.RI "static \fBRecipe\fP \fBGetOrCreate\fP (string id)"
+.br
+.ti -1c
+.RI "static \fBRecipe\fP \fBCreate\fP (\fBRecipeSource\fP _source, int idMat=\-1, \fBThing\fP ing=null)"
+.br
+.ti -1c
+.RI "static \fBRecipe\fP \fBCreate\fP (\fBThing\fP t)"
+.br
+.ti -1c
+.RI "static void \fBDropIngredients\fP (string id, string idMatMain, int num=1)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBRecipe\fP
+.in +1c
+.ti -1c
+.RI "static Dictionary< string, \fBRecipe\fP > \fBrecipeCache\fP = new Dictionary<string, \fBRecipe\fP>()"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB7\fP of file \fBRecipeCard\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void RecipeCard\&.Build (\fBChara\fP chara, \fBCard\fP t, \fBPoint\fP pos, int mat, int dir, int altitude, int bridgeHeight)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBRecipe\fP\&.
+.PP
+Definition at line \fB546\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override void RecipeCard\&.Build (\fBTaskBuild\fP task)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBRecipe\fP\&.
+.PP
+Definition at line \fB489\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override void RecipeCard\&.BuildIngredientList ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBRecipe\fP\&.
+.PP
+Definition at line \fB133\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override \fBThing\fP RecipeCard\&.Craft (BlessedState blessed, bool sound = \fRfalse\fP, List< \fBThing\fP > ings = \fRnull\fP, bool model = \fRfalse\fP)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBRecipe\fP\&.
+.PP
+Definition at line \fB223\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "\fBCard\fP RecipeCard\&.CreateMold ()"
+
+.PP
+Definition at line \fB190\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override \fBRecipe\fP RecipeCard\&.Duplicate ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBRecipe\fP\&.
+.PP
+Definition at line \fB626\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override string RecipeCard\&.GetDetail ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBRecipe\fP\&.
+.PP
+Definition at line \fB61\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "string RecipeCard\&.GetIdFailDish ()"
+
+.PP
+Definition at line \fB402\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override string RecipeCard\&.GetIdThing ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBRecipe\fP\&.
+.PP
+Definition at line \fB67\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override \fBIRenderer\fP RecipeCard\&.GetRenderer ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBRecipe\fP\&.
+.PP
+Definition at line \fB45\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "void RecipeCard\&.MakeDish (\fBThing\fP t)"
+
+.PP
+Definition at line \fB376\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "void RecipeCard\&.MixIngredients (\fBThing\fP t)"
+
+.PP
+Definition at line \fB389\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override void RecipeCard\&.OnChangeAltitude (int a)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBRecipe\fP\&.
+.PP
+Definition at line \fB591\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override void RecipeCard\&.OnChangeIngredient ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBRecipe\fP\&.
+.PP
+Definition at line \fB170\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override void RecipeCard\&.OnRenderMarker (\fBPoint\fP point, bool active, HitResult result, bool main, int dir, int bridgeHeight)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBRecipe\fP\&.
+.PP
+Definition at line \fB118\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override void RecipeCard\&.OnSelected ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBRecipe\fP\&.
+.PP
+Definition at line \fB184\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override void RecipeCard\&.Rotate ()\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBRecipe\fP\&.
+.PP
+Definition at line \fB597\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override void RecipeCard\&.SetDir (int d)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBRecipe\fP\&.
+.PP
+Definition at line \fB608\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override void RecipeCard\&.WriteNote (UINote n)\fR [virtual]\fP"
+
+.PP
+Reimplemented from \fBRecipe\fP\&.
+.PP
+Definition at line \fB615\fP of file \fBRecipeCard\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBCard\fP RecipeCard\&._mold"
+
+.PP
+Definition at line \fB649\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "\fBCardRow\fP RecipeCard\&._sourceCard"
+
+.PP
+Definition at line \fB634\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "bool RecipeCard\&.freePos"
+
+.PP
+Definition at line \fB638\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "float RecipeCard\&.fx"
+
+.PP
+Definition at line \fB642\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "float RecipeCard\&.fy"
+
+.PP
+Definition at line \fB646\fP of file \fBRecipeCard\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool RecipeCard\&.CanRotate\fR [get]\fP"
+
+.PP
+Definition at line \fB74\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "string RecipeCard\&.idCard\fR [get]\fP"
+
+.PP
+Definition at line \fB52\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "bool RecipeCard\&.isDish\fR [get]\fP"
+
+.PP
+Definition at line \fB109\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override bool RecipeCard\&.IsThing\fR [get]\fP"
+
+.PP
+Definition at line \fB84\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override \fBCard\fP RecipeCard\&.Mold\fR [get]\fP"
+
+.PP
+Definition at line \fB94\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override \fBRenderRow\fP RecipeCard\&.renderRow\fR [get]\fP"
+
+.PP
+Definition at line \fB26\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "\fBCardRow\fP RecipeCard\&.sourceCard\fR [get]\fP"
+
+.PP
+Definition at line \fB11\fP of file \fBRecipeCard\&.cs\fP\&.
+.SS "override \fBTileType\fP RecipeCard\&.tileType\fR [get]\fP"
+
+.PP
+Definition at line \fB36\fP of file \fBRecipeCard\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

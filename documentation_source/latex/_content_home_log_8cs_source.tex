@@ -1,0 +1,61 @@
+\doxysection{Content\+Home\+Log.\+cs}
+\hypertarget{_content_home_log_8cs_source}{}\label{_content_home_log_8cs_source}\index{Elin/ContentHomeLog.cs@{Elin/ContentHomeLog.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00003}00003\ \textcolor{comment}{//\ Token:\ 0x0200054E\ RID:\ 1358}}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00004}\mbox{\hyperlink{class_content_home_log}{00004}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_content_home_log}{ContentHomeLog}}\ :\ \mbox{\hyperlink{class_e_content}{EContent}}}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060024EC\ RID:\ 9452\ RVA:\ 0x000D0CED\ File\ Offset:\ 0x000CEEED}}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00007}00007\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnSwitchContent(\textcolor{keywordtype}{int}\ idTab)}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00008}00008\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00009}00009\ \ \ \ \ \ \ \ \ this.stat.Refresh(\mbox{\hyperlink{class_e_class}{EClass}}.Branch.statistics);}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ this.RefreshLog();}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00011}00011\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060024ED\ RID:\ 9453\ RVA:\ 0x000D0D0C\ File\ Offset:\ 0x000CEF0C}}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshLog()}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ UIList\ uilist\ =\ this.listLog;}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ BaseList\ baseList\ =\ uilist;}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ UIList.Callback<\mbox{\hyperlink{class_msg_log}{MsgLog}}.\mbox{\hyperlink{class_msg_log_1_1_data}{Data}},\ UIItem>\ callback\ =\ \textcolor{keyword}{new}\ UIList.Callback<\mbox{\hyperlink{class_msg_log}{MsgLog}}.\mbox{\hyperlink{class_msg_log_1_1_data}{Data}},\ UIItem>();}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ callback.onInstantiate\ =\ delegate(\mbox{\hyperlink{class_msg_log}{MsgLog}}.\mbox{\hyperlink{class_msg_log_1_1_data}{Data}}\ a,\ UIItem\ b)}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ b.text1.text\ =\ a.text.ToTitleCase(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!a.col.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.text1.SetColor(a.col.ToEnum(\textcolor{keyword}{true}));}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ b.text2.text\ =\ \textcolor{keywordtype}{string}.Concat(\textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a.date.month.ToString(),}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}/"{}},}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a.date.day.ToString(),}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ "{}},}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a.date.hour.ToString(),}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}:"{}},}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a.date.min.ToString()}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ baseList.callbacks\ =\ callback;}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ uilist.Clear();}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_msg_log}{MsgLog}}.\mbox{\hyperlink{class_msg_log_1_1_data}{Data}}\ o\ in\ \mbox{\hyperlink{class_e_class}{EClass}}.Branch.log.GetList(\textcolor{keyword}{true}))}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ uilist.Add(o);}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ uilist.Refresh(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ this.RebuildLayout(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001471\ RID:\ 5233}}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00048}00048\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ listLog;}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001472\ RID:\ 5234}}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00051}00051\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_item_statistics}{ItemStatistics}}\ stat;}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001473\ RID:\ 5235}}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00054}00054\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_item_statistics}{ItemStatistics}}\ statLast;}
+\DoxyCodeLine{\Hypertarget{_content_home_log_8cs_source_l00055}00055\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,143 @@
+\doxysection{Dialog\+Drama.\+cs}
+\hypertarget{_dialog_drama_8cs_source}{}\label{_dialog_drama_8cs_source}\index{Elin/DialogDrama.cs@{Elin/DialogDrama.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Applibot;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine.Events;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00007}00007\ \textcolor{comment}{//\ Token:\ 0x0200010A\ RID:\ 266}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00008}\mbox{\hyperlink{class_dialog_drama}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_dialog_drama}{DialogDrama}}\ :\ \mbox{\hyperlink{class_e_mono}{EMono}}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060006FD\ RID:\ 1789\ RVA:\ 0x0002A28D\ File\ Offset:\ 0x0002848D}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Awake()}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00012}00012\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ this.moldButton\ =\ this.transChoices.CreateMold(\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060006FE\ RID:\ 1790\ RVA:\ 0x0002A2A4\ File\ Offset:\ 0x000284A4}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ UIButton\ AddChoice(\mbox{\hyperlink{class_drama_choice}{DramaChoice}}\ choice,\ \textcolor{keywordtype}{string}\ text,\ Action\ func\ =\ \textcolor{keyword}{null},\ \textcolor{keywordtype}{bool}\ deactivateOnChoice\ =\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.transChoices.gameObject.activeSelf)}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ this.transChoices.gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ UIButton\ uibutton\ =\ Util.Instantiate<UIButton>(this.moldButton,\ this.transChoices);}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ uibutton.mainText.text\ =\ text;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (deactivateOnChoice)}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.onClick.AddListener(\textcolor{keyword}{new}\ UnityAction(this.Deactivate));}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (func\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.onClick.AddListener(delegate()}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ func();}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ uibutton.RebuildLayout(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ choice.button\ =\ uibutton;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ uibutton;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060006FF\ RID:\ 1791\ RVA:\ 0x0002A348\ File\ Offset:\ 0x00028548}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ ClearChoice()}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00043}00043\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ this.transChoices.DestroyChildren(\textcolor{keyword}{false},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ this.transChoices.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00048}00048\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000700\ RID:\ 1792\ RVA:\ 0x0002A368\ File\ Offset:\ 0x00028568}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00049}00049\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ SetText(\textcolor{keywordtype}{string}\ detail\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keywordtype}{bool}\ center\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00050}00050\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.fontRune)}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (detail.StartsWith(\textcolor{stringliteral}{"{}\#rune"{}}))}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ detail\ =\ detail.Replace(\textcolor{stringliteral}{"{}\#rune"{}},\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.textMain.ApplySkin();}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ this.textMain.SetText(detail);}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ this.textMain.RebuildLayoutTo<\mbox{\hyperlink{class_layer_drama}{LayerDrama}}>();}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000701\ RID:\ 1793\ RVA:\ 0x0002A3C5\ File\ Offset:\ 0x000285C5}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00067}00067\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Deactivate()}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00068}00068\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000731\ RID:\ 1841}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00072}00072\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Dialog"{}})]}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{public}\ Text\ textName;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000732\ RID:\ 1842}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00076}00076\ \ \ \ \ \textcolor{keyword}{public}\ Text\ textBio;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000733\ RID:\ 1843}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{public}\ Text\ textAffinity;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000734\ RID:\ 1844}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00082}00082\ \ \ \ \ \textcolor{keyword}{public}\ Text\ textNoInterest;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00084}00084\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000735\ RID:\ 1845}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00085}00085\ \ \ \ \ \textcolor{keyword}{public}\ Text\ textFav;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000736\ RID:\ 1846}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00088}00088\ \ \ \ \ \textcolor{keyword}{public}\ Text\ textRank;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00090}00090\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000737\ RID:\ 1847}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00091}00091\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ transInterest;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000738\ RID:\ 1848}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00094}00094\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ transAffinity;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000739\ RID:\ 1849}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00097}00097\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ transFav;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00099}00099\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400073A\ RID:\ 1850}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00100}00100\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ transRank;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00102}00102\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400073B\ RID:\ 1851}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00103}00103\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textMain;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00105}00105\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400073C\ RID:\ 1852}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00106}00106\ \ \ \ \ \textcolor{keyword}{public}\ HyphenationJpn\ hypen;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400073D\ RID:\ 1853}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00109}00109\ \ \ \ \ \textcolor{keyword}{public}\ Transform\ transChoices;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00111}00111\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400073E\ RID:\ 1854}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00112}00112\ \ \ \ \ \textcolor{keyword}{private}\ UIButton\ moldButton;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00114}00114\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400073F\ RID:\ 1855}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00115}00115\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ iconNext;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00117}00117\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000740\ RID:\ 1856}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00118}00118\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ goAffinity;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00120}00120\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000741\ RID:\ 1857}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00121}00121\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_portrait}{Portrait}}\ portrait;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00123}00123\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000742\ RID:\ 1858}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00124}00124\ \ \ \ \ \textcolor{keyword}{public}\ LayoutGroup\ layoutInterest;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00126}00126\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000743\ RID:\ 1859}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00127}00127\ \ \ \ \ \textcolor{keyword}{public}\ Transform\ moldInterest;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00129}00129\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000744\ RID:\ 1860}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00130}00130\ \ \ \ \ \textcolor{keyword}{public}\ Font\ fontRune;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00132}00132\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000745\ RID:\ 1861}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00133}00133\ \ \ \ \ \textcolor{keyword}{public}\ Glitch\ glitch;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00135}00135\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000746\ RID:\ 1862}}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00136}00136\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ warned;}
+\DoxyCodeLine{\Hypertarget{_dialog_drama_8cs_source_l00137}00137\ \}}
+
+\end{DoxyCode}

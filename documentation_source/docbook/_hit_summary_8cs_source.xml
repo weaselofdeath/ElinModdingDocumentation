@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__hit_summary_8cs_source" xml:lang="en-US">
+<title>HitSummary.cs</title>
+<indexterm><primary>Elin/HitSummary.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__hit_summary_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__hit_summary_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__hit_summary_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__hit_summary_8cs_source_1l00004"/>00004 
+<anchor xml:id="__hit_summary_8cs_source_1l00005"/>00005 <emphasis role="comment">//&#32;Token:&#32;0x020001AF&#32;RID:&#32;431</emphasis>
+<anchor xml:id="__hit_summary_8cs_source_1l00006"/><link linkend="_class_hit_summary">00006</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_hit_summary">HitSummary</link>&#32;:&#32;<link linkend="_class_e_class">EClass</link>
+<anchor xml:id="__hit_summary_8cs_source_1l00007"/>00007 {
+<anchor xml:id="__hit_summary_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C5C&#32;RID:&#32;3164&#32;RVA:&#32;0x0005C5C4&#32;File&#32;Offset:&#32;0x0005A7C4</emphasis>
+<anchor xml:id="__hit_summary_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Clear()
+<anchor xml:id="__hit_summary_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.hasFactory&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__hit_summary_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.money&#32;=&#32;(this.count&#32;=&#32;(this.countValid&#32;=&#32;0));
+<anchor xml:id="__hit_summary_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.targets.Clear();
+<anchor xml:id="__hit_summary_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.groups.Clear();
+<anchor xml:id="__hit_summary_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00016"/>00016 
+<anchor xml:id="__hit_summary_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C5D&#32;RID:&#32;3165&#32;RVA:&#32;0x0005C608&#32;File&#32;Offset:&#32;0x0005A808</emphasis>
+<anchor xml:id="__hit_summary_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetRecipe(<link linkend="_class_recipe">Recipe</link>&#32;r)
+<anchor xml:id="__hit_summary_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.recipe&#32;=&#32;r;
+<anchor xml:id="__hit_summary_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.hasFactory&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__hit_summary_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(r&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;!r.UseStock&#32;&amp;&amp;&#32;r.source.NeedFactory)
+<anchor xml:id="__hit_summary_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_prop_set">PropSet</link>&#32;propSet&#32;=&#32;<link linkend="_class_e_class">EClass</link>._map.Installed.cardMap.TryGetValue(r.source.idFactory,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__hit_summary_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(propSet&#32;==&#32;<emphasis role="keyword">null</emphasis>&#32;||&#32;propSet.Count&#32;==&#32;0)
+<anchor xml:id="__hit_summary_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.hasFactory&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__hit_summary_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00031"/>00031 
+<anchor xml:id="__hit_summary_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C5E&#32;RID:&#32;3166&#32;RVA:&#32;0x0005C670&#32;File&#32;Offset:&#32;0x0005A870</emphasis>
+<anchor xml:id="__hit_summary_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanExecute()
+<anchor xml:id="__hit_summary_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.debug.ignoreBuildRule)
+<anchor xml:id="__hit_summary_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__hit_summary_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.hasFactory&#32;||&#32;<link linkend="_class_e_class">EClass</link>.pc.GetCurrency(<emphasis role="stringliteral">&quot;money&quot;</emphasis>)&#32;&lt;&#32;<emphasis role="keyword">this</emphasis>.money)
+<anchor xml:id="__hit_summary_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__hit_summary_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.screen.tileSelector.processing)
+<anchor xml:id="__hit_summary_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__hit_summary_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.recipe&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__hit_summary_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_recipe">Recipe</link>.<link linkend="_class_recipe_1_1_ingredient">Ingredient</link>&#32;ingredient&#32;in&#32;<emphasis role="keyword">this</emphasis>.recipe.ingredients)
+<anchor xml:id="__hit_summary_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!ingredient.optional)
+<anchor xml:id="__hit_summary_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ingredient.thing&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__hit_summary_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__hit_summary_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ingredient.thing.Num&#32;&lt;&#32;ingredient.req&#32;*&#32;<emphasis role="keyword">this</emphasis>.countValid)
+<anchor xml:id="__hit_summary_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__hit_summary_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__hit_summary_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__hit_summary_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00067"/>00067 
+<anchor xml:id="__hit_summary_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C5F&#32;RID:&#32;3167&#32;RVA:&#32;0x0005C740&#32;File&#32;Offset:&#32;0x0005A940</emphasis>
+<anchor xml:id="__hit_summary_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Execute()
+<anchor xml:id="__hit_summary_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_class">EClass</link>.debug.ignoreBuildRule)
+<anchor xml:id="__hit_summary_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.ModCurrency(-this.money,&#32;<emphasis role="stringliteral">&quot;money&quot;</emphasis>);
+<anchor xml:id="__hit_summary_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.recipe&#32;==&#32;<emphasis role="keyword">null</emphasis>&#32;||&#32;(this.recipe.UseStock&#32;&amp;&amp;&#32;!<emphasis role="keyword">this</emphasis>.recipe.VirtualBlock))
+<anchor xml:id="__hit_summary_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__hit_summary_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.recipe.RequireIngredients)
+<anchor xml:id="__hit_summary_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_build_menu">BuildMenu</link>.Instance.info1.lastMats[this.recipe.id]&#32;=&#32;this.recipe.ingredients[0].mat;
+<anchor xml:id="__hit_summary_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.recipe.tileType.CanInstaComplete&#32;||&#32;<link linkend="_class_e_class">EClass</link>.player.instaComplete)
+<anchor xml:id="__hit_summary_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_recipe">Recipe</link>.<link linkend="_class_recipe_1_1_ingredient">Ingredient</link>&#32;ingredient&#32;in&#32;<emphasis role="keyword">this</emphasis>.recipe.ingredients)
+<anchor xml:id="__hit_summary_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_thing">Thing</link>&#32;thing&#32;=&#32;this.recipe.UseStock&#32;?&#32;this.recipe.ingredients[0].thing&#32;:&#32;ingredient.RefreshThing();
+<anchor xml:id="__hit_summary_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(thing&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__hit_summary_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_class">EClass</link>.debug.enable)
+<anchor xml:id="__hit_summary_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.LogError(<emphasis role="stringliteral">&quot;no&#32;ing&quot;</emphasis>);
+<anchor xml:id="__hit_summary_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__hit_summary_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;ingredient.req&#32;*&#32;this.countValid;
+<anchor xml:id="__hit_summary_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num2&#32;=&#32;(thing.Num&#32;&gt;=&#32;num)&#32;?&#32;num&#32;:&#32;thing.Num;
+<anchor xml:id="__hit_summary_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_class">EClass</link>.debug.godBuild&#32;||&#32;<emphasis role="keyword">this</emphasis>.recipe.UseStock)
+<anchor xml:id="__hit_summary_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__hit_summary_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.ModNum(-num2,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__hit_summary_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__hit_summary_8cs_source_1l00105"/>00105 
+<anchor xml:id="__hit_summary_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000C1E&#32;RID:&#32;3102</emphasis>
+<anchor xml:id="__hit_summary_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;money;
+<anchor xml:id="__hit_summary_8cs_source_1l00108"/>00108 
+<anchor xml:id="__hit_summary_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000C1F&#32;RID:&#32;3103</emphasis>
+<anchor xml:id="__hit_summary_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;count;
+<anchor xml:id="__hit_summary_8cs_source_1l00111"/>00111 
+<anchor xml:id="__hit_summary_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000C20&#32;RID:&#32;3104</emphasis>
+<anchor xml:id="__hit_summary_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;countValid;
+<anchor xml:id="__hit_summary_8cs_source_1l00114"/>00114 
+<anchor xml:id="__hit_summary_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000C21&#32;RID:&#32;3105</emphasis>
+<anchor xml:id="__hit_summary_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_recipe">Recipe</link>&#32;recipe;
+<anchor xml:id="__hit_summary_8cs_source_1l00117"/>00117 
+<anchor xml:id="__hit_summary_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000C22&#32;RID:&#32;3106</emphasis>
+<anchor xml:id="__hit_summary_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;IInspect&gt;&#32;targets&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;IInspect&gt;();
+<anchor xml:id="__hit_summary_8cs_source_1l00120"/>00120 
+<anchor xml:id="__hit_summary_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000C23&#32;RID:&#32;3107</emphasis>
+<anchor xml:id="__hit_summary_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;InspectGroup&gt;&#32;groups&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;InspectGroup&gt;();
+<anchor xml:id="__hit_summary_8cs_source_1l00123"/>00123 
+<anchor xml:id="__hit_summary_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000C24&#32;RID:&#32;3108</emphasis>
+<anchor xml:id="__hit_summary_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_thing">Thing</link>&#32;factory;
+<anchor xml:id="__hit_summary_8cs_source_1l00126"/>00126 
+<anchor xml:id="__hit_summary_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000C25&#32;RID:&#32;3109</emphasis>
+<anchor xml:id="__hit_summary_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;hasFactory;
+<anchor xml:id="__hit_summary_8cs_source_1l00129"/>00129 }
+</programlisting></section>

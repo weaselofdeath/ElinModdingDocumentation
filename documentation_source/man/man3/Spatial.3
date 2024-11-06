@@ -1,0 +1,810 @@
+.TH "Spatial" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Spatial
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBEClass\fP\&.
+.PP
+Inherited by \fBWorld\fP, and \fBZone\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBGetInt\fP (int id, int? defaultInt=null)"
+.br
+.ti -1c
+.RI "void \fBAddInt\fP (int id, int value)"
+.br
+.ti -1c
+.RI "void \fBSetInt\fP (int id, int value=0)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "void \fBCreate\fP (string _id, int _x, int _y, int _icon)"
+.br
+.ti -1c
+.RI "void \fBRegister\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnCreate\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnAfterCreate\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBSetMainFaction\fP (\fBFaction\fP f)"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBGetFirstZone\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnBeforeSave\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fB_OnBeforeSave\fP ()"
+.br
+.ti -1c
+.RI "void \fB_OnLoad\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnLoad\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBDestroy\fP ()"
+.br
+.ti -1c
+.RI "void \fBDeleteMapRecursive\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBAddChild\fP (\fBSpatial\fP child)"
+.br
+.ti -1c
+.RI "void \fBRemoveChild\fP (\fBSpatial\fP child)"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBFindDeepestZone\fP ()"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBFindZone\fP (int lv)"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBFindZone\fP (string _id)"
+.br
+.ti -1c
+.RI "virtual bool \fBCanKill\fP ()"
+.br
+.ti -1c
+.RI "int \fBDist\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "int \fBDist\fP (\fBSpatial\fP s)"
+.br
+.ti -1c
+.RI "void \fBMakeGameObject\fP (GameObject parentGo)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBSpatial\fP \fBparent\fP"
+.br
+.ti -1c
+.RI "string \fBid\fP"
+.br
+.ti -1c
+.RI "string \fBidUser\fP"
+.br
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.ti -1c
+.RI "string \fBidMainFaction\fP"
+.br
+.ti -1c
+.RI "string \fBidProfile\fP"
+.br
+.ti -1c
+.RI "string \fBidCurrentSubset\fP"
+.br
+.ti -1c
+.RI "string \fBidHat\fP"
+.br
+.ti -1c
+.RI "int[] \fB_ints\fP = new int[30]"
+.br
+.ti -1c
+.RI "List< \fBSpatial\fP > \fBchildren\fP = new List<\fBSpatial\fP>()"
+.br
+.ti -1c
+.RI "List< \fBSpatial\fP > \fBconnections\fP = new List<\fBSpatial\fP>()"
+.br
+.ti -1c
+.RI "Dictionary< int, int > \fBmapInt\fP = new Dictionary<int, int>()"
+.br
+.ti -1c
+.RI "bool \fBdestryoed\fP"
+.br
+.ti -1c
+.RI "bool \fBisImported\fP"
+.br
+.ti -1c
+.RI "BitArray32 \fBbits\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBZone\fP \fB_FindZone\fP (string _id)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBPoint\fP \fB_regionPos\fP = new \fBPoint\fP()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fB_bits\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBuid\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBicon\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBx\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBy\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBlastActive\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBidPrefix\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBlv\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBvisitCount\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdateExpire\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdateRevive\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fB_dangerLv\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdateRegenerate\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBinfluence\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBinvestment\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdevelopment\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBelectricity\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdateHat\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBuidBoss\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdateQuest\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBversion\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisGenerated\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisShore\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisRandomSite\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisKnown\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisMapSaved\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisExternalZone\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisConquered\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisBeach\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisPeace\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBFaction\fP \fBmainFaction\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBSourceZone\&.Row\fP \fBsource\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsPlayerFaction\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsClosed\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBmapX\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBmapY\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBDangerLv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBDangerLvFix\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual float \fBVolumeSea\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowDangerLv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanSpawnAdv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBpathSave\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBNameSuffix\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsRegion\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanFastTravel\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBEloMap\&.TileInfo\fP \fBTile\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsSnowZone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsSnowCovered\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBPoint\fP \fBRegionPos\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBisClaimable\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBSeed\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB8\fP of file \fBSpatial\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBZone\fP Spatial\&._FindZone (string _id)\fR [protected]\fP"
+
+.PP
+Definition at line \fB921\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual void Spatial\&._OnBeforeSave ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB827\fP of file \fBSpatial\&.cs\fP\&.
+.SS "void Spatial\&._OnLoad ()"
+
+.PP
+Definition at line \fB832\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual void Spatial\&.AddChild (\fBSpatial\fP child)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB862\fP of file \fBSpatial\&.cs\fP\&.
+.SS "void Spatial\&.AddInt (int id, int value)"
+
+.PP
+Definition at line \fB22\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual bool Spatial\&.CanKill ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB939\fP of file \fBSpatial\&.cs\fP\&.
+.SS "void Spatial\&.Create (string _id, int _x, int _y, int _icon)"
+
+.PP
+Definition at line \fB759\fP of file \fBSpatial\&.cs\fP\&.
+.SS "void Spatial\&.DeleteMapRecursive ()"
+
+.PP
+Definition at line \fB852\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual void Spatial\&.Destroy ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB847\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.Dist (\fBPoint\fP p)"
+
+.PP
+Definition at line \fB945\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.Dist (\fBSpatial\fP s)"
+
+.PP
+Definition at line \fB956\fP of file \fBSpatial\&.cs\fP\&.
+.SS "\fBZone\fP Spatial\&.FindDeepestZone ()"
+
+.PP
+Definition at line \fB876\fP of file \fBSpatial\&.cs\fP\&.
+.SS "\fBZone\fP Spatial\&.FindZone (int lv)"
+
+.PP
+Definition at line \fB890\fP of file \fBSpatial\&.cs\fP\&.
+.SS "\fBZone\fP Spatial\&.FindZone (string _id)"
+
+.PP
+Definition at line \fB907\fP of file \fBSpatial\&.cs\fP\&.
+.SS "\fBZone\fP Spatial\&.GetFirstZone ()"
+
+.PP
+Definition at line \fB803\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.GetInt (int id, int? defaultInt = \fRnull\fP)"
+
+.PP
+Definition at line \fB11\fP of file \fBSpatial\&.cs\fP\&.
+.SS "void Spatial\&.MakeGameObject (GameObject parentGo)"
+
+.PP
+Definition at line \fB962\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual void Spatial\&.OnAfterCreate ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB792\fP of file \fBSpatial\&.cs\fP\&.
+.SS "void Spatial\&.OnBeforeSave ()"
+
+.PP
+Definition at line \fB821\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual void Spatial\&.OnCreate ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB787\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual void Spatial\&.OnLoad ()\fR [virtual]\fP"
+
+.PP
+Definition at line \fB842\fP of file \fBSpatial\&.cs\fP\&.
+.SS "void Spatial\&.Register ()"
+
+.PP
+Definition at line \fB778\fP of file \fBSpatial\&.cs\fP\&.
+.SS "void Spatial\&.RemoveChild (\fBSpatial\fP child)"
+
+.PP
+Definition at line \fB869\fP of file \fBSpatial\&.cs\fP\&.
+.SS "void Spatial\&.SetInt (int id, int value = \fR0\fP)"
+
+.PP
+Definition at line \fB28\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual void Spatial\&.SetMainFaction (\fBFaction\fP f)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB797\fP of file \fBSpatial\&.cs\fP\&.
+.SS "override string Spatial\&.ToString ()"
+
+.PP
+Definition at line \fB654\fP of file \fBSpatial\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int [] Spatial\&._ints = new int[30]"
+
+.PP
+Definition at line \fB1008\fP of file \fBSpatial\&.cs\fP\&.
+.SS "\fBPoint\fP Spatial\&._regionPos = new \fBPoint\fP()\fR [protected]\fP"
+
+.PP
+Definition at line \fB1038\fP of file \fBSpatial\&.cs\fP\&.
+.SS "BitArray32 Spatial\&.bits"
+
+.PP
+Definition at line \fB1029\fP of file \fBSpatial\&.cs\fP\&.
+.SS "List<\fBSpatial\fP> Spatial\&.children = new List<\fBSpatial\fP>()"
+
+.PP
+Definition at line \fB1012\fP of file \fBSpatial\&.cs\fP\&.
+.SS "List<\fBSpatial\fP> Spatial\&.connections = new List<\fBSpatial\fP>()"
+
+.PP
+Definition at line \fB1016\fP of file \fBSpatial\&.cs\fP\&.
+.SS "bool Spatial\&.destryoed"
+
+.PP
+Definition at line \fB1023\fP of file \fBSpatial\&.cs\fP\&.
+.SS "string Spatial\&.id"
+
+.PP
+Definition at line \fB980\fP of file \fBSpatial\&.cs\fP\&.
+.SS "string Spatial\&.idCurrentSubset"
+
+.PP
+Definition at line \fB1000\fP of file \fBSpatial\&.cs\fP\&.
+.SS "string Spatial\&.idHat"
+
+.PP
+Definition at line \fB1004\fP of file \fBSpatial\&.cs\fP\&.
+.SS "string Spatial\&.idMainFaction"
+
+.PP
+Definition at line \fB992\fP of file \fBSpatial\&.cs\fP\&.
+.SS "string Spatial\&.idProfile"
+
+.PP
+Definition at line \fB996\fP of file \fBSpatial\&.cs\fP\&.
+.SS "string Spatial\&.idUser"
+
+.PP
+Definition at line \fB984\fP of file \fBSpatial\&.cs\fP\&.
+.SS "bool Spatial\&.isImported"
+
+.PP
+Definition at line \fB1026\fP of file \fBSpatial\&.cs\fP\&.
+.SS "Dictionary<int, int> Spatial\&.mapInt = new Dictionary<int, int>()"
+
+.PP
+Definition at line \fB1020\fP of file \fBSpatial\&.cs\fP\&.
+.SS "string Spatial\&.name"
+
+.PP
+Definition at line \fB988\fP of file \fBSpatial\&.cs\fP\&.
+.SS "\fBSpatial\fP Spatial\&.parent"
+
+.PP
+Definition at line \fB976\fP of file \fBSpatial\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "int Spatial\&._bits\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB44\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&._dangerLv\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB209\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual bool Spatial\&.CanFastTravel\fR [get]\fP"
+
+.PP
+Definition at line \fB671\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual bool Spatial\&.CanSpawnAdv\fR [get]\fP"
+
+.PP
+Definition at line \fB615\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual int Spatial\&.DangerLv\fR [get]\fP"
+
+.PP
+Definition at line \fB571\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual int Spatial\&.DangerLvFix\fR [get]\fP"
+
+.PP
+Definition at line \fB581\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.dateExpire\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB179\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.dateHat\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB299\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.dateQuest\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB329\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.dateRegenerate\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB224\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.dateRevive\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB194\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.development\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB269\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.electricity\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB284\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.icon\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB74\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.idPrefix\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB134\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.influence\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB239\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.investment\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB254\fP of file \fBSpatial\&.cs\fP\&.
+.SS "bool Spatial\&.isBeach\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB464\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual bool Spatial\&.isClaimable\fR [get]\fP"
+
+.PP
+Definition at line \fB726\fP of file \fBSpatial\&.cs\fP\&.
+.SS "bool Spatial\&.IsClosed\fR [get]\fP"
+
+.PP
+Definition at line \fB533\fP of file \fBSpatial\&.cs\fP\&.
+.SS "bool Spatial\&.isConquered\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB449\fP of file \fBSpatial\&.cs\fP\&.
+.SS "bool Spatial\&.isExternalZone\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB434\fP of file \fBSpatial\&.cs\fP\&.
+.SS "bool Spatial\&.isGenerated\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB359\fP of file \fBSpatial\&.cs\fP\&.
+.SS "bool Spatial\&.isKnown\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB404\fP of file \fBSpatial\&.cs\fP\&.
+.SS "bool Spatial\&.isMapSaved\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB419\fP of file \fBSpatial\&.cs\fP\&.
+.SS "bool Spatial\&.isPeace\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB479\fP of file \fBSpatial\&.cs\fP\&.
+.SS "bool Spatial\&.IsPlayerFaction\fR [get]\fP"
+
+.PP
+Definition at line \fB523\fP of file \fBSpatial\&.cs\fP\&.
+.SS "bool Spatial\&.isRandomSite\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB389\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual bool Spatial\&.IsRegion\fR [get]\fP"
+
+.PP
+Definition at line \fB661\fP of file \fBSpatial\&.cs\fP\&.
+.SS "bool Spatial\&.isShore\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB374\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual bool Spatial\&.IsSnowCovered\fR [get]\fP"
+
+.PP
+Definition at line \fB706\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual bool Spatial\&.IsSnowZone\fR [get]\fP"
+
+.PP
+Definition at line \fB696\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.lastActive\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB119\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.lv\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB149\fP of file \fBSpatial\&.cs\fP\&.
+.SS "\fBFaction\fP Spatial\&.mainFaction\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB494\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.mapX\fR [get]\fP"
+
+.PP
+Definition at line \fB543\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.mapY\fR [get]\fP"
+
+.PP
+Definition at line \fB557\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual string Spatial\&.Name\fR [get]\fP"
+
+.PP
+Definition at line \fB635\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual string Spatial\&.NameSuffix\fR [get]\fP"
+
+.PP
+Definition at line \fB645\fP of file \fBSpatial\&.cs\fP\&.
+.SS "string Spatial\&.pathSave\fR [get]\fP"
+
+.PP
+Definition at line \fB625\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual \fBPoint\fP Spatial\&.RegionPos\fR [get]\fP"
+
+.PP
+Definition at line \fB716\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.Seed\fR [get]\fP"
+
+.PP
+Definition at line \fB736\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual bool Spatial\&.ShowDangerLv\fR [get]\fP"
+
+.PP
+Definition at line \fB605\fP of file \fBSpatial\&.cs\fP\&.
+.SS "\fBSourceZone\&.Row\fP Spatial\&.source\fR [get]\fP"
+
+.PP
+Definition at line \fB508\fP of file \fBSpatial\&.cs\fP\&.
+.SS "\fBEloMap\&.TileInfo\fP Spatial\&.Tile\fR [get]\fP"
+
+.PP
+Definition at line \fB681\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.uid\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB59\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.uidBoss\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB314\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.version\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB344\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.visitCount\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB164\fP of file \fBSpatial\&.cs\fP\&.
+.SS "virtual float Spatial\&.VolumeSea\fR [get]\fP"
+
+.PP
+Definition at line \fB591\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.x\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB89\fP of file \fBSpatial\&.cs\fP\&.
+.SS "int Spatial\&.y\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB104\fP of file \fBSpatial\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

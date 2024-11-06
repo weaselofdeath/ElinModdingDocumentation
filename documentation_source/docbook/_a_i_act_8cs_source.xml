@@ -1,0 +1,851 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__a_i_act_8cs_source" xml:lang="en-US">
+<title>AIAct.cs</title>
+<indexterm><primary>Elin/AIAct.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__a_i_act_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__a_i_act_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__a_i_act_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__a_i_act_8cs_source_1l00004"/>00004 
+<anchor xml:id="__a_i_act_8cs_source_1l00005"/>00005 <emphasis role="comment">//&#32;Token:&#32;0x020001DD&#32;RID:&#32;477</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00006"/><link linkend="_class_a_i_act">00006</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_a_i_act">AIAct</link>&#32;:&#32;<link linkend="_class_act">Act</link>
+<anchor xml:id="__a_i_act_8cs_source_1l00007"/>00007 {
+<anchor xml:id="__a_i_act_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x1700036F&#32;RID:&#32;879</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D7C&#32;RID:&#32;3452&#32;RVA:&#32;0x000697D5&#32;File&#32;Offset:&#32;0x000679D5</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsRunning
+<anchor xml:id="__a_i_act_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.status&#32;==&#32;AIAct.Status.Running&#32;&amp;&amp;&#32;this.owner&#32;!=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00017"/>00017 
+<anchor xml:id="__a_i_act_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000370&#32;RID:&#32;880</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D7D&#32;RID:&#32;3453&#32;RVA:&#32;0x000697EA&#32;File&#32;Offset:&#32;0x000679EA</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsChildRunning
+<anchor xml:id="__a_i_act_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.child&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;this.child.status&#32;==&#32;AIAct.Status.Running&#32;&amp;&amp;&#32;this.child.owner&#32;!=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00027"/>00027 
+<anchor xml:id="__a_i_act_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000371&#32;RID:&#32;881</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D7E&#32;RID:&#32;3454&#32;RVA:&#32;0x00069811&#32;File&#32;Offset:&#32;0x00067A11</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsMoveAI
+<anchor xml:id="__a_i_act_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.IsChildRunning)
+<anchor xml:id="__a_i_act_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">this</emphasis>&#32;is&#32;<link linkend="_class_a_i___goto">AI_Goto</link>;
+<anchor xml:id="__a_i_act_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.child.IsMoveAI;
+<anchor xml:id="__a_i_act_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00041"/>00041 
+<anchor xml:id="__a_i_act_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000372&#32;RID:&#32;882</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D7F&#32;RID:&#32;3455&#32;RVA:&#32;0x00069830&#32;File&#32;Offset:&#32;0x00067A30</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;MaxRestart
+<anchor xml:id="__a_i_act_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;5;
+<anchor xml:id="__a_i_act_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00051"/>00051 
+<anchor xml:id="__a_i_act_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000373&#32;RID:&#32;883</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D80&#32;RID:&#32;3456&#32;RVA:&#32;0x00069833&#32;File&#32;Offset:&#32;0x00067A33</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;Name
+<anchor xml:id="__a_i_act_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;base.source.GetName();
+<anchor xml:id="__a_i_act_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00061"/>00061 
+<anchor xml:id="__a_i_act_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000D81&#32;RID:&#32;3457&#32;RVA:&#32;0x00069840&#32;File&#32;Offset:&#32;0x00067A40</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;ToString()
+<anchor xml:id="__a_i_act_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;base.GetType().Name;
+<anchor xml:id="__a_i_act_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00067"/>00067 
+<anchor xml:id="__a_i_act_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000374&#32;RID:&#32;884</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D82&#32;RID:&#32;3458&#32;RVA:&#32;0x0006984D&#32;File&#32;Offset:&#32;0x00067A4D</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_multi_sprite">MultiSprite</link>&#32;stateIcon
+<anchor xml:id="__a_i_act_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00077"/>00077 
+<anchor xml:id="__a_i_act_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000375&#32;RID:&#32;885</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D83&#32;RID:&#32;3459&#32;RVA:&#32;0x00069850&#32;File&#32;Offset:&#32;0x00067A50</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;Sprite&#32;actionIcon
+<anchor xml:id="__a_i_act_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.core.refs.orbitIcons.Default;
+<anchor xml:id="__a_i_act_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00087"/>00087 
+<anchor xml:id="__a_i_act_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000376&#32;RID:&#32;886</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D84&#32;RID:&#32;3460&#32;RVA:&#32;0x00069866&#32;File&#32;Offset:&#32;0x00067A66</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsNoGoal
+<anchor xml:id="__a_i_act_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00097"/>00097 
+<anchor xml:id="__a_i_act_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000377&#32;RID:&#32;887</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D85&#32;RID:&#32;3461&#32;RVA:&#32;0x00069869&#32;File&#32;Offset:&#32;0x00067A69</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsAutoTurn
+<anchor xml:id="__a_i_act_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00107"/>00107 
+<anchor xml:id="__a_i_act_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000378&#32;RID:&#32;888</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D86&#32;RID:&#32;3462&#32;RVA:&#32;0x0006986C&#32;File&#32;Offset:&#32;0x00067A6C</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsIdle
+<anchor xml:id="__a_i_act_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00117"/>00117 
+<anchor xml:id="__a_i_act_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000379&#32;RID:&#32;889</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D87&#32;RID:&#32;3463&#32;RVA:&#32;0x0006986F&#32;File&#32;Offset:&#32;0x00067A6F</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;PushChara
+<anchor xml:id="__a_i_act_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00127"/>00127 
+<anchor xml:id="__a_i_act_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x1700037A&#32;RID:&#32;890</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D88&#32;RID:&#32;3464&#32;RVA:&#32;0x00069872&#32;File&#32;Offset:&#32;0x00067A72</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;MaxProgress
+<anchor xml:id="__a_i_act_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;20;
+<anchor xml:id="__a_i_act_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00137"/>00137 
+<anchor xml:id="__a_i_act_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x1700037B&#32;RID:&#32;891</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D89&#32;RID:&#32;3465&#32;RVA:&#32;0x00069876&#32;File&#32;Offset:&#32;0x00067A76</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ShowProgress
+<anchor xml:id="__a_i_act_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00147"/>00147 
+<anchor xml:id="__a_i_act_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x1700037C&#32;RID:&#32;892</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D8A&#32;RID:&#32;3466&#32;RVA:&#32;0x00069879&#32;File&#32;Offset:&#32;0x00067A79</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;UseTurbo
+<anchor xml:id="__a_i_act_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00157"/>00157 
+<anchor xml:id="__a_i_act_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x1700037D&#32;RID:&#32;893</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D8B&#32;RID:&#32;3467&#32;RVA:&#32;0x0006987C&#32;File&#32;Offset:&#32;0x00067A7C</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;CurrentProgress
+<anchor xml:id="__a_i_act_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__a_i_act_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00167"/>00167 
+<anchor xml:id="__a_i_act_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x1700037E&#32;RID:&#32;894</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D8C&#32;RID:&#32;3468&#32;RVA:&#32;0x0006987F&#32;File&#32;Offset:&#32;0x00067A7F</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ShowCursor
+<anchor xml:id="__a_i_act_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00176"/>00176 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00177"/>00177 
+<anchor xml:id="__a_i_act_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x1700037F&#32;RID:&#32;895</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00179"/>00179 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D8D&#32;RID:&#32;3469&#32;RVA:&#32;0x00069882&#32;File&#32;Offset:&#32;0x00067A82</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CancelWhenDamaged
+<anchor xml:id="__a_i_act_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00185"/>00185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00187"/>00187 
+<anchor xml:id="__a_i_act_8cs_source_1l00188"/>00188 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000380&#32;RID:&#32;896</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D8E&#32;RID:&#32;3470&#32;RVA:&#32;0x00069885&#32;File&#32;Offset:&#32;0x00067A85</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00190"/>00190 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CancelWhenMoved
+<anchor xml:id="__a_i_act_8cs_source_1l00191"/>00191 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00193"/>00193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00196"/>00196 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00197"/>00197 
+<anchor xml:id="__a_i_act_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000381&#32;RID:&#32;897</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00199"/>00199 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D8F&#32;RID:&#32;3471&#32;RVA:&#32;0x00069888&#32;File&#32;Offset:&#32;0x00067A88</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00200"/>00200 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;InformCancel
+<anchor xml:id="__a_i_act_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00202"/>00202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00203"/>00203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00204"/>00204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00206"/>00206 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00207"/>00207 
+<anchor xml:id="__a_i_act_8cs_source_1l00208"/>00208 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000382&#32;RID:&#32;898</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00209"/>00209 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D90&#32;RID:&#32;3472&#32;RVA:&#32;0x0006988B&#32;File&#32;Offset:&#32;0x00067A8B</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00210"/>00210 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_thing">Thing</link>&#32;RenderThing
+<anchor xml:id="__a_i_act_8cs_source_1l00211"/>00211 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00216"/>00216 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00217"/>00217 
+<anchor xml:id="__a_i_act_8cs_source_1l00218"/>00218 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000383&#32;RID:&#32;899</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00219"/>00219 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D91&#32;RID:&#32;3473&#32;RVA:&#32;0x0006988E&#32;File&#32;Offset:&#32;0x00067A8E</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00220"/>00220 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>&#32;Current
+<anchor xml:id="__a_i_act_8cs_source_1l00221"/>00221 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.IsChildRunning)
+<anchor xml:id="__a_i_act_8cs_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00226"/>00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00228"/>00228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.child.Current;
+<anchor xml:id="__a_i_act_8cs_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00230"/>00230 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00231"/>00231 
+<anchor xml:id="__a_i_act_8cs_source_1l00232"/>00232 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000D92&#32;RID:&#32;3474&#32;RVA:&#32;0x000698A5&#32;File&#32;Offset:&#32;0x00067AA5</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00233"/>00233 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<link linkend="_class_multi_sprite">MultiSprite</link>&#32;GetStateIcon()
+<anchor xml:id="__a_i_act_8cs_source_1l00234"/>00234 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00235"/>00235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(this.child&#32;??&#32;<emphasis role="keyword">this</emphasis>).stateIcon;
+<anchor xml:id="__a_i_act_8cs_source_1l00236"/>00236 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00237"/>00237 
+<anchor xml:id="__a_i_act_8cs_source_1l00238"/>00238 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000384&#32;RID:&#32;900</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00239"/>00239 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D93&#32;RID:&#32;3475&#32;RVA:&#32;0x000698B7&#32;File&#32;Offset:&#32;0x00067AB7</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00240"/>00240 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsAct
+<anchor xml:id="__a_i_act_8cs_source_1l00241"/>00241 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00242"/>00242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00246"/>00246 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00247"/>00247 
+<anchor xml:id="__a_i_act_8cs_source_1l00248"/>00248 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000385&#32;RID:&#32;901</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00249"/>00249 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D94&#32;RID:&#32;3476&#32;RVA:&#32;0x000698BA&#32;File&#32;Offset:&#32;0x00067ABA</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00250"/>00250 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ShowPotential
+<anchor xml:id="__a_i_act_8cs_source_1l00251"/>00251 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00253"/>00253 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00256"/>00256 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00257"/>00257 
+<anchor xml:id="__a_i_act_8cs_source_1l00258"/>00258 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000386&#32;RID:&#32;902</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00259"/>00259 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D95&#32;RID:&#32;3477&#32;RVA:&#32;0x000698BD&#32;File&#32;Offset:&#32;0x00067ABD</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00260"/>00260 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;UsePotential
+<anchor xml:id="__a_i_act_8cs_source_1l00261"/>00261 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00266"/>00266 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00267"/>00267 
+<anchor xml:id="__a_i_act_8cs_source_1l00268"/>00268 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000387&#32;RID:&#32;903</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00269"/>00269 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000D96&#32;RID:&#32;3478&#32;RVA:&#32;0x000698C0&#32;File&#32;Offset:&#32;0x00067AC0</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00270"/>00270 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ShowRelativeAttribute
+<anchor xml:id="__a_i_act_8cs_source_1l00271"/>00271 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00276"/>00276 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00277"/>00277 
+<anchor xml:id="__a_i_act_8cs_source_1l00278"/>00278 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000D97&#32;RID:&#32;3479&#32;RVA:&#32;0x000698C3&#32;File&#32;Offset:&#32;0x00067AC3</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00279"/>00279 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_point">Point</link>&#32;GetDestination()
+<anchor xml:id="__a_i_act_8cs_source_1l00280"/>00280 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00281"/>00281 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.IsChildRunning)
+<anchor xml:id="__a_i_act_8cs_source_1l00282"/>00282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00283"/>00283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.owner.pos;
+<anchor xml:id="__a_i_act_8cs_source_1l00284"/>00284 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00285"/>00285 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.child.GetDestination();
+<anchor xml:id="__a_i_act_8cs_source_1l00286"/>00286 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00287"/>00287 
+<anchor xml:id="__a_i_act_8cs_source_1l00288"/>00288 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000D98&#32;RID:&#32;3480&#32;RVA:&#32;0x000698E4&#32;File&#32;Offset:&#32;0x00067AE4</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00289"/>00289 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_a_i_progress">AIProgress</link>&#32;GetProgress()
+<anchor xml:id="__a_i_act_8cs_source_1l00290"/>00290 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00291"/>00291 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.IsChildRunning)
+<anchor xml:id="__a_i_act_8cs_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.child.GetProgress();
+<anchor xml:id="__a_i_act_8cs_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00295"/>00295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">this</emphasis>&#32;as&#32;<link linkend="_class_a_i_progress">AIProgress</link>;
+<anchor xml:id="__a_i_act_8cs_source_1l00296"/>00296 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00297"/>00297 
+<anchor xml:id="__a_i_act_8cs_source_1l00298"/>00298 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000D99&#32;RID:&#32;3481&#32;RVA:&#32;0x00069900&#32;File&#32;Offset:&#32;0x00067B00</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00299"/>00299 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;GetCurrentActionText()
+<anchor xml:id="__a_i_act_8cs_source_1l00300"/>00300 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00301"/>00301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.IsChildRunning&#32;&amp;&amp;&#32;this.child.source.id&#32;!=&#32;0&#32;&amp;&amp;&#32;!<emphasis role="keyword">this</emphasis>.child.source.name_JP.IsEmpty())
+<anchor xml:id="__a_i_act_8cs_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.child.GetCurrentActionText();
+<anchor xml:id="__a_i_act_8cs_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;base.source.GetName().IsEmpty(<emphasis role="stringliteral">&quot;idle&quot;</emphasis>.lang());
+<anchor xml:id="__a_i_act_8cs_source_1l00306"/>00306 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00307"/>00307 
+<anchor xml:id="__a_i_act_8cs_source_1l00308"/>00308 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000D9A&#32;RID:&#32;3482&#32;RVA:&#32;0x00069964&#32;File&#32;Offset:&#32;0x00067B64</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00309"/>00309 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsToolValid()
+<anchor xml:id="__a_i_act_8cs_source_1l00310"/>00310 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.owner&#32;==&#32;EClass.pc&#32;&amp;&amp;&#32;Act.TOOL&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;Act.TOOL.parent&#32;==&#32;<link linkend="_class_e_class">EClass</link>.pc;
+<anchor xml:id="__a_i_act_8cs_source_1l00312"/>00312 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00313"/>00313 
+<anchor xml:id="__a_i_act_8cs_source_1l00314"/>00314 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000D9B&#32;RID:&#32;3483&#32;RVA:&#32;0x0006998D&#32;File&#32;Offset:&#32;0x00067B8D</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00315"/>00315 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnStart()
+<anchor xml:id="__a_i_act_8cs_source_1l00316"/>00316 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00317"/>00317 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00318"/>00318 
+<anchor xml:id="__a_i_act_8cs_source_1l00319"/>00319 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000D9C&#32;RID:&#32;3484&#32;RVA:&#32;0x0006998F&#32;File&#32;Offset:&#32;0x00067B8F</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00320"/>00320 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetOwner(<link linkend="_class_chara">Chara</link>&#32;c)
+<anchor xml:id="__a_i_act_8cs_source_1l00321"/>00321 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner&#32;=&#32;c;
+<anchor xml:id="__a_i_act_8cs_source_1l00323"/>00323 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.status&#32;=&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Running;
+<anchor xml:id="__a_i_act_8cs_source_1l00324"/>00324 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnSetOwner();
+<anchor xml:id="__a_i_act_8cs_source_1l00325"/>00325 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00326"/>00326 
+<anchor xml:id="__a_i_act_8cs_source_1l00327"/>00327 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000D9D&#32;RID:&#32;3485&#32;RVA:&#32;0x000699A5&#32;File&#32;Offset:&#32;0x00067BA5</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00328"/>00328 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnSetOwner()
+<anchor xml:id="__a_i_act_8cs_source_1l00329"/>00329 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00330"/>00330 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00331"/>00331 
+<anchor xml:id="__a_i_act_8cs_source_1l00332"/>00332 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000D9E&#32;RID:&#32;3486&#32;RVA:&#32;0x000699A8&#32;File&#32;Offset:&#32;0x00067BA8</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00333"/>00333 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetChild(<link linkend="_class_a_i_act">AIAct</link>&#32;seq,&#32;Func&lt;AIAct.Status&gt;&#32;_onChildFail&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00334"/>00334 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00335"/>00335 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.child&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00336"/>00336 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00337"/>00337 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.child.Reset();
+<anchor xml:id="__a_i_act_8cs_source_1l00338"/>00338 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00339"/>00339 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.child&#32;=&#32;seq;
+<anchor xml:id="__a_i_act_8cs_source_1l00340"/>00340 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.child.parent&#32;=&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00341"/>00341 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.child.SetOwner(this.owner);
+<anchor xml:id="__a_i_act_8cs_source_1l00342"/>00342 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.onChildFail&#32;=&#32;(_onChildFail&#32;??&#32;<emphasis role="keyword">new</emphasis>&#32;Func&lt;<link linkend="_class_a_i_act">AIAct</link>.Status&gt;(this.Cancel));
+<anchor xml:id="__a_i_act_8cs_source_1l00343"/>00343 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00344"/>00344 
+<anchor xml:id="__a_i_act_8cs_source_1l00345"/>00345 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000D9F&#32;RID:&#32;3487&#32;RVA:&#32;0x00069A04&#32;File&#32;Offset:&#32;0x00067C04</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00346"/>00346 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Start()
+<anchor xml:id="__a_i_act_8cs_source_1l00347"/>00347 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00348"/>00348 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Enumerator&#32;=&#32;this.Run().GetEnumerator();
+<anchor xml:id="__a_i_act_8cs_source_1l00349"/>00349 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnStart();
+<anchor xml:id="__a_i_act_8cs_source_1l00350"/>00350 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.owner&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00351"/>00351 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00352"/>00352 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00353"/>00353 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00354"/>00354 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.owner.held&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00355"/>00355 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00356"/>00356 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.DropHeldOnStart)
+<anchor xml:id="__a_i_act_8cs_source_1l00357"/>00357 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00358"/>00358 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.DropHeld(<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i_act_8cs_source_1l00359"/>00359 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00360"/>00360 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.PickHeldOnStart)
+<anchor xml:id="__a_i_act_8cs_source_1l00361"/>00361 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00362"/>00362 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.PickHeld(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__a_i_act_8cs_source_1l00363"/>00363 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00364"/>00364 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00365"/>00365 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.RightHand&#32;!=&#32;0)
+<anchor xml:id="__a_i_act_8cs_source_1l00366"/>00366 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00367"/>00367 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.SetTempHand(this.RightHand,&#32;this.LeftHand);
+<anchor xml:id="__a_i_act_8cs_source_1l00368"/>00368 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00369"/>00369 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.owner.IsPC&#32;&amp;&amp;&#32;<emphasis role="keyword">this</emphasis>.UseTurbo)
+<anchor xml:id="__a_i_act_8cs_source_1l00370"/>00370 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00371"/>00371 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_action_mode">ActionMode</link>.Adv.SetTurbo(-1);
+<anchor xml:id="__a_i_act_8cs_source_1l00372"/>00372 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00373"/>00373 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00374"/>00374 
+<anchor xml:id="__a_i_act_8cs_source_1l00375"/>00375 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DA0&#32;RID:&#32;3488&#32;RVA:&#32;0x00069AA8&#32;File&#32;Offset:&#32;0x00067CA8</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00376"/>00376 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Perform()
+<anchor xml:id="__a_i_act_8cs_source_1l00377"/>00377 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00378"/>00378 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_act">Act</link>.CC.SetAIImmediate(<emphasis role="keyword">this</emphasis>);
+<anchor xml:id="__a_i_act_8cs_source_1l00379"/>00379 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00380"/>00380 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00381"/>00381 
+<anchor xml:id="__a_i_act_8cs_source_1l00382"/>00382 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DA1&#32;RID:&#32;3489&#32;RVA:&#32;0x00069AB8&#32;File&#32;Offset:&#32;0x00067CB8</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00383"/>00383 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;Restart()
+<anchor xml:id="__a_i_act_8cs_source_1l00384"/>00384 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00385"/>00385 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.restartCount&#32;+=&#32;1;
+<anchor xml:id="__a_i_act_8cs_source_1l00386"/>00386 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((<emphasis role="keywordtype">int</emphasis>)this.restartCount&#32;&gt;=&#32;this.MaxRestart)
+<anchor xml:id="__a_i_act_8cs_source_1l00387"/>00387 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00388"/>00388 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.Success(<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i_act_8cs_source_1l00389"/>00389 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00390"/>00390 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">byte</emphasis>&#32;b&#32;=&#32;this.restartCount;
+<anchor xml:id="__a_i_act_8cs_source_1l00391"/>00391 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_chara">Chara</link>&#32;chara&#32;=&#32;this.owner;
+<anchor xml:id="__a_i_act_8cs_source_1l00392"/>00392 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Reset();
+<anchor xml:id="__a_i_act_8cs_source_1l00393"/>00393 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetOwner(chara);
+<anchor xml:id="__a_i_act_8cs_source_1l00394"/>00394 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.restartCount&#32;=&#32;b;
+<anchor xml:id="__a_i_act_8cs_source_1l00395"/>00395 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.status&#32;=&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Running;
+<anchor xml:id="__a_i_act_8cs_source_1l00396"/>00396 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00397"/>00397 
+<anchor xml:id="__a_i_act_8cs_source_1l00398"/>00398 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DA2&#32;RID:&#32;3490&#32;RVA:&#32;0x00069B16&#32;File&#32;Offset:&#32;0x00067D16</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00399"/>00399 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;Success(Action&#32;action&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00400"/>00400 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00401"/>00401 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.status&#32;=&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Success;
+<anchor xml:id="__a_i_act_8cs_source_1l00402"/>00402 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnSuccess();
+<anchor xml:id="__a_i_act_8cs_source_1l00403"/>00403 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(action&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00404"/>00404 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00405"/>00405 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;action();
+<anchor xml:id="__a_i_act_8cs_source_1l00406"/>00406 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00407"/>00407 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnCancelOrSuccess();
+<anchor xml:id="__a_i_act_8cs_source_1l00408"/>00408 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Reset();
+<anchor xml:id="__a_i_act_8cs_source_1l00409"/>00409 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.status;
+<anchor xml:id="__a_i_act_8cs_source_1l00410"/>00410 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00411"/>00411 
+<anchor xml:id="__a_i_act_8cs_source_1l00412"/>00412 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DA3&#32;RID:&#32;3491&#32;RVA:&#32;0x00069B40&#32;File&#32;Offset:&#32;0x00067D40</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00413"/>00413 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnSuccess()
+<anchor xml:id="__a_i_act_8cs_source_1l00414"/>00414 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00415"/>00415 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00416"/>00416 
+<anchor xml:id="__a_i_act_8cs_source_1l00417"/>00417 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DA4&#32;RID:&#32;3492&#32;RVA:&#32;0x00069B44&#32;File&#32;Offset:&#32;0x00067D44</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00418"/>00418 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;TryCancel(<link linkend="_class_card">Card</link>&#32;c)
+<anchor xml:id="__a_i_act_8cs_source_1l00419"/>00419 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00420"/>00420 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.IsRunning&#32;||&#32;this.Enumerator&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00421"/>00421 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00422"/>00422 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00423"/>00423 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00424"/>00424 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.InformCancel)
+<anchor xml:id="__a_i_act_8cs_source_1l00425"/>00425 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00426"/>00426 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.owner.IsPC)
+<anchor xml:id="__a_i_act_8cs_source_1l00427"/>00427 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00428"/>00428 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.Say(<emphasis role="stringliteral">&quot;cancel_act_pc&quot;</emphasis>,&#32;this.owner,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i_act_8cs_source_1l00429"/>00429 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00430"/>00430 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(c&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00431"/>00431 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00432"/>00432 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.Say(<emphasis role="stringliteral">&quot;cancel_act&quot;</emphasis>,&#32;this.owner,&#32;c,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i_act_8cs_source_1l00433"/>00433 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00434"/>00434 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00435"/>00435 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00436"/>00436 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.Say(<emphasis role="stringliteral">&quot;cancel_act2&quot;</emphasis>,&#32;this.owner,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i_act_8cs_source_1l00437"/>00437 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00438"/>00438 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00439"/>00439 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Cancel();
+<anchor xml:id="__a_i_act_8cs_source_1l00440"/>00440 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00441"/>00441 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00442"/>00442 
+<anchor xml:id="__a_i_act_8cs_source_1l00443"/>00443 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DA5&#32;RID:&#32;3493&#32;RVA:&#32;0x00069BD0&#32;File&#32;Offset:&#32;0x00067DD0</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00444"/>00444 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;AIAct.Status&#32;Cancel()
+<anchor xml:id="__a_i_act_8cs_source_1l00445"/>00445 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00446"/>00446 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.status&#32;=&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Fail;
+<anchor xml:id="__a_i_act_8cs_source_1l00447"/>00447 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.owner&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;this.owner.held&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;!<emphasis role="keyword">this</emphasis>.owner.IsPC)
+<anchor xml:id="__a_i_act_8cs_source_1l00448"/>00448 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00449"/>00449 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.PickHeld(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__a_i_act_8cs_source_1l00450"/>00450 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00451"/>00451 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnCancel();
+<anchor xml:id="__a_i_act_8cs_source_1l00452"/>00452 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnCancelOrSuccess();
+<anchor xml:id="__a_i_act_8cs_source_1l00453"/>00453 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Reset();
+<anchor xml:id="__a_i_act_8cs_source_1l00454"/>00454 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.status;
+<anchor xml:id="__a_i_act_8cs_source_1l00455"/>00455 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00456"/>00456 
+<anchor xml:id="__a_i_act_8cs_source_1l00457"/>00457 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DA6&#32;RID:&#32;3494&#32;RVA:&#32;0x00069C2A&#32;File&#32;Offset:&#32;0x00067E2A</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00458"/>00458 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnCancel()
+<anchor xml:id="__a_i_act_8cs_source_1l00459"/>00459 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00460"/>00460 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00461"/>00461 
+<anchor xml:id="__a_i_act_8cs_source_1l00462"/>00462 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DA7&#32;RID:&#32;3495&#32;RVA:&#32;0x00069C2C&#32;File&#32;Offset:&#32;0x00067E2C</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00463"/>00463 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnCancelOrSuccess()
+<anchor xml:id="__a_i_act_8cs_source_1l00464"/>00464 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00465"/>00465 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00466"/>00466 
+<anchor xml:id="__a_i_act_8cs_source_1l00467"/>00467 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DA8&#32;RID:&#32;3496&#32;RVA:&#32;0x00069C2E&#32;File&#32;Offset:&#32;0x00067E2E</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00468"/>00468 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanManualCancel()
+<anchor xml:id="__a_i_act_8cs_source_1l00469"/>00469 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00470"/>00470 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.IsChildRunning&#32;&amp;&amp;&#32;this.child&#32;is&#32;<link linkend="_class_a_i___goto">AI_Goto</link>;
+<anchor xml:id="__a_i_act_8cs_source_1l00471"/>00471 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00472"/>00472 
+<anchor xml:id="__a_i_act_8cs_source_1l00473"/>00473 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DA9&#32;RID:&#32;3497&#32;RVA:&#32;0x00069C48&#32;File&#32;Offset:&#32;0x00067E48</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00474"/>00474 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;KeepRunning()
+<anchor xml:id="__a_i_act_8cs_source_1l00475"/>00475 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00476"/>00476 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Running;
+<anchor xml:id="__a_i_act_8cs_source_1l00477"/>00477 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00478"/>00478 
+<anchor xml:id="__a_i_act_8cs_source_1l00479"/>00479 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DAA&#32;RID:&#32;3498&#32;RVA:&#32;0x00069C4C&#32;File&#32;Offset:&#32;0x00067E4C</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00480"/>00480 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Reset()
+<anchor xml:id="__a_i_act_8cs_source_1l00481"/>00481 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00482"/>00482 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.owner&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00483"/>00483 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00484"/>00484 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00485"/>00485 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00486"/>00486 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.child&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00487"/>00487 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00488"/>00488 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.child.Reset();
+<anchor xml:id="__a_i_act_8cs_source_1l00489"/>00489 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00490"/>00490 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnReset();
+<anchor xml:id="__a_i_act_8cs_source_1l00491"/>00491 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.Enumerator&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00492"/>00492 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00493"/>00493 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Enumerator.Dispose();
+<anchor xml:id="__a_i_act_8cs_source_1l00494"/>00494 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Enumerator&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00495"/>00495 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00496"/>00496 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00497"/>00497 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.child&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00498"/>00498 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.restartCount&#32;=&#32;0;
+<anchor xml:id="__a_i_act_8cs_source_1l00499"/>00499 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.onChildFail&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00500"/>00500 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.isFail&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00501"/>00501 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00502"/>00502 
+<anchor xml:id="__a_i_act_8cs_source_1l00503"/>00503 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DAB&#32;RID:&#32;3499&#32;RVA:&#32;0x00069CB8&#32;File&#32;Offset:&#32;0x00067EB8</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00504"/>00504 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnReset()
+<anchor xml:id="__a_i_act_8cs_source_1l00505"/>00505 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00506"/>00506 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00507"/>00507 
+<anchor xml:id="__a_i_act_8cs_source_1l00508"/>00508 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DAC&#32;RID:&#32;3500&#32;RVA:&#32;0x00069CBC&#32;File&#32;Offset:&#32;0x00067EBC</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00509"/>00509 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;Tick()
+<anchor xml:id="__a_i_act_8cs_source_1l00510"/>00510 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00511"/>00511 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.owner&#32;==&#32;<emphasis role="keyword">null</emphasis>&#32;||&#32;(this.isFail&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;this.isFail()))
+<anchor xml:id="__a_i_act_8cs_source_1l00512"/>00512 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00513"/>00513 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.Cancel();
+<anchor xml:id="__a_i_act_8cs_source_1l00514"/>00514 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00515"/>00515 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.IsChildRunning)
+<anchor xml:id="__a_i_act_8cs_source_1l00516"/>00516 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00517"/>00517 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(this.child.Tick())
+<anchor xml:id="__a_i_act_8cs_source_1l00518"/>00518 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00519"/>00519 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Running:
+<anchor xml:id="__a_i_act_8cs_source_1l00520"/>00520 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Running;
+<anchor xml:id="__a_i_act_8cs_source_1l00521"/>00521 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Fail:
+<anchor xml:id="__a_i_act_8cs_source_1l00522"/>00522 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.onChildFail&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00523"/>00523 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00524"/>00524 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.onChildFail();
+<anchor xml:id="__a_i_act_8cs_source_1l00525"/>00525 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00526"/>00526 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Fail;
+<anchor xml:id="__a_i_act_8cs_source_1l00527"/>00527 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Success:
+<anchor xml:id="__a_i_act_8cs_source_1l00528"/>00528 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.owner&#32;==&#32;<emphasis role="keyword">null</emphasis>&#32;||&#32;(this.isFail&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;this.isFail()))
+<anchor xml:id="__a_i_act_8cs_source_1l00529"/>00529 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00530"/>00530 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.Cancel();
+<anchor xml:id="__a_i_act_8cs_source_1l00531"/>00531 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00532"/>00532 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00533"/>00533 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00534"/>00534 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00535"/>00535 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.Enumerator&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00536"/>00536 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00537"/>00537 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Start();
+<anchor xml:id="__a_i_act_8cs_source_1l00538"/>00538 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.status&#32;!=&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Running)
+<anchor xml:id="__a_i_act_8cs_source_1l00539"/>00539 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00540"/>00540 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.status;
+<anchor xml:id="__a_i_act_8cs_source_1l00541"/>00541 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00542"/>00542 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00543"/>00543 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.Enumerator.MoveNext())
+<anchor xml:id="__a_i_act_8cs_source_1l00544"/>00544 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00545"/>00545 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.Success(<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i_act_8cs_source_1l00546"/>00546 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00547"/>00547 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.status;
+<anchor xml:id="__a_i_act_8cs_source_1l00548"/>00548 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00549"/>00549 
+<anchor xml:id="__a_i_act_8cs_source_1l00550"/>00550 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DAD&#32;RID:&#32;3501&#32;RVA:&#32;0x00069D89&#32;File&#32;Offset:&#32;0x00067F89</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00551"/>00551 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;IEnumerable&lt;<link linkend="_class_a_i_act">AIAct</link>.Status&gt;&#32;Run()
+<anchor xml:id="__a_i_act_8cs_source_1l00552"/>00552 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00553"/>00553 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;yield&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.Success(<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i_act_8cs_source_1l00554"/>00554 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;yield&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00555"/>00555 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00556"/>00556 
+<anchor xml:id="__a_i_act_8cs_source_1l00557"/>00557 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DAE&#32;RID:&#32;3502&#32;RVA:&#32;0x00069D9C&#32;File&#32;Offset:&#32;0x00067F9C</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00558"/>00558 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;TickChild()
+<anchor xml:id="__a_i_act_8cs_source_1l00559"/>00559 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00560"/>00560 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.child&#32;==&#32;<emphasis role="keyword">null</emphasis>&#32;||&#32;this.onChildFail&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00561"/>00561 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00562"/>00562 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_a_i_act">AIAct</link>&#32;aiact&#32;=&#32;this.child;
+<anchor xml:id="__a_i_act_8cs_source_1l00563"/>00563 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;str&#32;=&#32;(aiact&#32;!=&#32;<emphasis role="keyword">null</emphasis>)&#32;?&#32;aiact.ToString()&#32;:&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00564"/>00564 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;str2&#32;=&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00565"/>00565 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Func&lt;<link linkend="_class_a_i_act">AIAct</link>.Status&gt;&#32;func&#32;=&#32;this.onChildFail;
+<anchor xml:id="__a_i_act_8cs_source_1l00566"/>00566 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log(str&#32;+&#32;str2&#32;+&#32;((func&#32;!=&#32;<emphasis role="keyword">null</emphasis>)&#32;?&#32;func.ToString()&#32;:&#32;<emphasis role="keyword">null</emphasis>));
+<anchor xml:id="__a_i_act_8cs_source_1l00567"/>00567 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Fail;
+<anchor xml:id="__a_i_act_8cs_source_1l00568"/>00568 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00569"/>00569 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.child.Tick()&#32;!=&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Fail)
+<anchor xml:id="__a_i_act_8cs_source_1l00570"/>00570 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00571"/>00571 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Running;
+<anchor xml:id="__a_i_act_8cs_source_1l00572"/>00572 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00573"/>00573 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.onChildFail&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00574"/>00574 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00575"/>00575 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.onChildFail();
+<anchor xml:id="__a_i_act_8cs_source_1l00576"/>00576 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00577"/>00577 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Fail;
+<anchor xml:id="__a_i_act_8cs_source_1l00578"/>00578 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00579"/>00579 
+<anchor xml:id="__a_i_act_8cs_source_1l00580"/>00580 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DAF&#32;RID:&#32;3503&#32;RVA:&#32;0x00069E13&#32;File&#32;Offset:&#32;0x00068013</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00581"/>00581 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;Do(<link linkend="_class_a_i_act">AIAct</link>&#32;_seq,&#32;Func&lt;AIAct.Status&gt;&#32;_onChildFail&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00582"/>00582 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00583"/>00583 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetChild(_seq,&#32;_onChildFail);
+<anchor xml:id="__a_i_act_8cs_source_1l00584"/>00584 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.TickChild();
+<anchor xml:id="__a_i_act_8cs_source_1l00585"/>00585 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00586"/>00586 
+<anchor xml:id="__a_i_act_8cs_source_1l00587"/>00587 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DB0&#32;RID:&#32;3504&#32;RVA:&#32;0x00069E23&#32;File&#32;Offset:&#32;0x00068023</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00588"/>00588 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;DoGotoInteraction(<link linkend="_class_point">Point</link>&#32;pos,&#32;Func&lt;AIAct.Status&gt;&#32;_onChildFail&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00589"/>00589 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00590"/>00590 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pos&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;pos.IsValid)
+<anchor xml:id="__a_i_act_8cs_source_1l00591"/>00591 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00592"/>00592 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetChild(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_a_i___goto">AI_Goto</link>(pos,&#32;0,&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">true</emphasis>),&#32;_onChildFail);
+<anchor xml:id="__a_i_act_8cs_source_1l00593"/>00593 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.TickChild();
+<anchor xml:id="__a_i_act_8cs_source_1l00594"/>00594 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00595"/>00595 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(_onChildFail&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00596"/>00596 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00597"/>00597 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.Cancel();
+<anchor xml:id="__a_i_act_8cs_source_1l00598"/>00598 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00599"/>00599 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_onChildFail();
+<anchor xml:id="__a_i_act_8cs_source_1l00600"/>00600 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00601"/>00601 
+<anchor xml:id="__a_i_act_8cs_source_1l00602"/>00602 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DB1&#32;RID:&#32;3505&#32;RVA:&#32;0x00069E57&#32;File&#32;Offset:&#32;0x00068057</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00603"/>00603 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;DoGoto(<link linkend="_class_point">Point</link>&#32;pos,&#32;<emphasis role="keywordtype">int</emphasis>&#32;dist&#32;=&#32;0,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ignoreConnection&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;Func&lt;AIAct.Status&gt;&#32;_onChildFail&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00604"/>00604 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00605"/>00605 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pos&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;pos.IsValid)
+<anchor xml:id="__a_i_act_8cs_source_1l00606"/>00606 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00607"/>00607 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetChild(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_a_i___goto">AI_Goto</link>(pos,&#32;dist,&#32;ignoreConnection,&#32;<emphasis role="keyword">false</emphasis>),&#32;_onChildFail);
+<anchor xml:id="__a_i_act_8cs_source_1l00608"/>00608 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.TickChild();
+<anchor xml:id="__a_i_act_8cs_source_1l00609"/>00609 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00610"/>00610 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(_onChildFail&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00611"/>00611 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00612"/>00612 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.Cancel();
+<anchor xml:id="__a_i_act_8cs_source_1l00613"/>00613 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00614"/>00614 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_onChildFail();
+<anchor xml:id="__a_i_act_8cs_source_1l00615"/>00615 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00616"/>00616 
+<anchor xml:id="__a_i_act_8cs_source_1l00617"/>00617 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DB2&#32;RID:&#32;3506&#32;RVA:&#32;0x00069E8E&#32;File&#32;Offset:&#32;0x0006808E</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00618"/>00618 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;DoGoto(<link linkend="_class_card">Card</link>&#32;card,&#32;Func&lt;AIAct.Status&gt;&#32;_onChildFail&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00619"/>00619 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00620"/>00620 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.DoGoto(card,&#32;(card.isChara&#32;||&#32;card.pos.cell.blocked)&#32;?&#32;1&#32;:&#32;0,&#32;_onChildFail);
+<anchor xml:id="__a_i_act_8cs_source_1l00621"/>00621 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00622"/>00622 
+<anchor xml:id="__a_i_act_8cs_source_1l00623"/>00623 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DB3&#32;RID:&#32;3507&#32;RVA:&#32;0x00069EB8&#32;File&#32;Offset:&#32;0x000680B8</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00624"/>00624 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;DoGoto(<link linkend="_class_card">Card</link>&#32;card,&#32;<emphasis role="keywordtype">int</emphasis>&#32;dist,&#32;Func&lt;AIAct.Status&gt;&#32;_onChildFail&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00625"/>00625 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00626"/>00626 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(card&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;card&#32;==&#32;this.owner.held)
+<anchor xml:id="__a_i_act_8cs_source_1l00627"/>00627 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00628"/>00628 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Running;
+<anchor xml:id="__a_i_act_8cs_source_1l00629"/>00629 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00630"/>00630 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(card&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;card.ExistsOnMap)
+<anchor xml:id="__a_i_act_8cs_source_1l00631"/>00631 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00632"/>00632 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetChild(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_a_i___goto">AI_Goto</link>(card,&#32;dist,&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">false</emphasis>),&#32;_onChildFail);
+<anchor xml:id="__a_i_act_8cs_source_1l00633"/>00633 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.TickChild();
+<anchor xml:id="__a_i_act_8cs_source_1l00634"/>00634 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00635"/>00635 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(_onChildFail&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00636"/>00636 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00637"/>00637 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.Cancel();
+<anchor xml:id="__a_i_act_8cs_source_1l00638"/>00638 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00639"/>00639 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_onChildFail();
+<anchor xml:id="__a_i_act_8cs_source_1l00640"/>00640 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00641"/>00641 
+<anchor xml:id="__a_i_act_8cs_source_1l00642"/>00642 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DB4&#32;RID:&#32;3508&#32;RVA:&#32;0x00069F0C&#32;File&#32;Offset:&#32;0x0006810C</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00643"/>00643 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;DoGotoSpot(<link linkend="_class_card">Card</link>&#32;card,&#32;Func&lt;AIAct.Status&gt;&#32;_onChildFail&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00644"/>00644 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00645"/>00645 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(card&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;card&#32;==&#32;this.owner.held)
+<anchor xml:id="__a_i_act_8cs_source_1l00646"/>00646 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00647"/>00647 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Running;
+<anchor xml:id="__a_i_act_8cs_source_1l00648"/>00648 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00649"/>00649 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(card&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;card.ExistsOnMap)
+<anchor xml:id="__a_i_act_8cs_source_1l00650"/>00650 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00651"/>00651 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_point">Point</link>&#32;randomPoint&#32;=&#32;card.trait.GetRandomPoint(<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i_act_8cs_source_1l00652"/>00652 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;dist&#32;=&#32;randomPoint.cell.blocked&#32;?&#32;1&#32;:&#32;0;
+<anchor xml:id="__a_i_act_8cs_source_1l00653"/>00653 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetChild(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_a_i___goto">AI_Goto</link>(randomPoint,&#32;dist,&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">false</emphasis>),&#32;_onChildFail);
+<anchor xml:id="__a_i_act_8cs_source_1l00654"/>00654 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.TickChild();
+<anchor xml:id="__a_i_act_8cs_source_1l00655"/>00655 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00656"/>00656 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(_onChildFail&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00657"/>00657 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00658"/>00658 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.Cancel();
+<anchor xml:id="__a_i_act_8cs_source_1l00659"/>00659 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00660"/>00660 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_onChildFail();
+<anchor xml:id="__a_i_act_8cs_source_1l00661"/>00661 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00662"/>00662 
+<anchor xml:id="__a_i_act_8cs_source_1l00663"/>00663 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DB5&#32;RID:&#32;3509&#32;RVA:&#32;0x00069F7D&#32;File&#32;Offset:&#32;0x0006817D</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00664"/>00664 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;DoGoto&lt;T&gt;(Func&lt;AIAct.Status&gt;&#32;_onChildFail&#32;=&#32;<emphasis role="keyword">null</emphasis>)&#32;where&#32;T&#32;:&#32;<link linkend="_class_trait">Trait</link>
+<anchor xml:id="__a_i_act_8cs_source_1l00665"/>00665 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00666"/>00666 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_trait">Trait</link>&#32;random&#32;=&#32;<link linkend="_class_e_class">EClass</link>._map.Installed.traits.GetTraitSet&lt;T&gt;().GetRandom();
+<anchor xml:id="__a_i_act_8cs_source_1l00667"/>00667 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.DoGoto((random&#32;!=&#32;<emphasis role="keyword">null</emphasis>)&#32;?&#32;random.owner&#32;:&#32;<emphasis role="keyword">null</emphasis>,&#32;_onChildFail);
+<anchor xml:id="__a_i_act_8cs_source_1l00668"/>00668 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00669"/>00669 
+<anchor xml:id="__a_i_act_8cs_source_1l00670"/>00670 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DB6&#32;RID:&#32;3510&#32;RVA:&#32;0x00069FAC&#32;File&#32;Offset:&#32;0x000681AC</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00671"/>00671 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;DoGotoSpot&lt;T&gt;(Func&lt;AIAct.Status&gt;&#32;_onChildFail&#32;=&#32;<emphasis role="keyword">null</emphasis>)&#32;where&#32;T&#32;:&#32;<link linkend="_class_trait">Trait</link>
+<anchor xml:id="__a_i_act_8cs_source_1l00672"/>00672 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00673"/>00673 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_trait">Trait</link>&#32;random&#32;=&#32;<link linkend="_class_e_class">EClass</link>._map.Installed.traits.GetTraitSet&lt;T&gt;().GetRandom();
+<anchor xml:id="__a_i_act_8cs_source_1l00674"/>00674 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(random&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00675"/>00675 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00676"/>00676 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.DoGoto(random.GetRandomPoint(<emphasis role="keyword">null</emphasis>),&#32;0,&#32;<emphasis role="keyword">false</emphasis>,&#32;_onChildFail);
+<anchor xml:id="__a_i_act_8cs_source_1l00677"/>00677 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00678"/>00678 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(_onChildFail&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00679"/>00679 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00680"/>00680 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Fail;
+<anchor xml:id="__a_i_act_8cs_source_1l00681"/>00681 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00682"/>00682 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_onChildFail();
+<anchor xml:id="__a_i_act_8cs_source_1l00683"/>00683 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00684"/>00684 
+<anchor xml:id="__a_i_act_8cs_source_1l00685"/>00685 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DB7&#32;RID:&#32;3511&#32;RVA:&#32;0x00069FF4&#32;File&#32;Offset:&#32;0x000681F4</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00686"/>00686 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;DoGrab(<link linkend="_class_card">Card</link>&#32;card,&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;-1,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;pickHeld&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;Func&lt;AIAct.Status&gt;&#32;_onChildFail&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00687"/>00687 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00688"/>00688 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(card&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;card&#32;==&#32;this.owner.held)
+<anchor xml:id="__a_i_act_8cs_source_1l00689"/>00689 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00690"/>00690 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>.Status.Running;
+<anchor xml:id="__a_i_act_8cs_source_1l00691"/>00691 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00692"/>00692 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(card&#32;==&#32;<emphasis role="keyword">null</emphasis>&#32;||&#32;!card.GetRootCard().ExistsOnMap)
+<anchor xml:id="__a_i_act_8cs_source_1l00693"/>00693 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00694"/>00694 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.Cancel();
+<anchor xml:id="__a_i_act_8cs_source_1l00695"/>00695 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00696"/>00696 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetChild(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_a_i___grab">AI_Grab</link>
+<anchor xml:id="__a_i_act_8cs_source_1l00697"/>00697 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00698"/>00698 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;target&#32;=&#32;card,
+<anchor xml:id="__a_i_act_8cs_source_1l00699"/>00699 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num&#32;=&#32;num,
+<anchor xml:id="__a_i_act_8cs_source_1l00700"/>00700 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pickHeld&#32;=&#32;pickHeld
+<anchor xml:id="__a_i_act_8cs_source_1l00701"/>00701 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;_onChildFail);
+<anchor xml:id="__a_i_act_8cs_source_1l00702"/>00702 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.TickChild();
+<anchor xml:id="__a_i_act_8cs_source_1l00703"/>00703 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00704"/>00704 
+<anchor xml:id="__a_i_act_8cs_source_1l00705"/>00705 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DB8&#32;RID:&#32;3512&#32;RVA:&#32;0x0006A053&#32;File&#32;Offset:&#32;0x00068253</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00706"/>00706 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;DoGrab&lt;T&gt;()&#32;where&#32;T&#32;:&#32;<link linkend="_class_trait">Trait</link>
+<anchor xml:id="__a_i_act_8cs_source_1l00707"/>00707 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00708"/>00708 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetChild(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_a_i___grab">AI_Grab&lt;T&gt;</link>(),&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i_act_8cs_source_1l00709"/>00709 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.TickChild();
+<anchor xml:id="__a_i_act_8cs_source_1l00710"/>00710 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00711"/>00711 
+<anchor xml:id="__a_i_act_8cs_source_1l00712"/>00712 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DB9&#32;RID:&#32;3513&#32;RVA:&#32;0x0006A067&#32;File&#32;Offset:&#32;0x00068267</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00713"/>00713 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;DoProgress()
+<anchor xml:id="__a_i_act_8cs_source_1l00714"/>00714 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00715"/>00715 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetChild(this.CreateProgress(),&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__a_i_act_8cs_source_1l00716"/>00716 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.TickChild();
+<anchor xml:id="__a_i_act_8cs_source_1l00717"/>00717 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00718"/>00718 
+<anchor xml:id="__a_i_act_8cs_source_1l00719"/>00719 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DBA&#32;RID:&#32;3514&#32;RVA:&#32;0x0006A07C&#32;File&#32;Offset:&#32;0x0006827C</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00720"/>00720 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;DoIdle(<emphasis role="keywordtype">int</emphasis>&#32;repeat&#32;=&#32;3)
+<anchor xml:id="__a_i_act_8cs_source_1l00721"/>00721 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00722"/>00722 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetChild(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_a_i___idle">AI_Idle</link>
+<anchor xml:id="__a_i_act_8cs_source_1l00723"/>00723 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00724"/>00724 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;maxRepeat&#32;=&#32;repeat
+<anchor xml:id="__a_i_act_8cs_source_1l00725"/>00725 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">new</emphasis>&#32;Func&lt;<link linkend="_class_a_i_act">AIAct</link>.Status&gt;(this.KeepRunning));
+<anchor xml:id="__a_i_act_8cs_source_1l00726"/>00726 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.TickChild();
+<anchor xml:id="__a_i_act_8cs_source_1l00727"/>00727 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00728"/>00728 
+<anchor xml:id="__a_i_act_8cs_source_1l00729"/>00729 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DBB&#32;RID:&#32;3515&#32;RVA:&#32;0x0006A0A2&#32;File&#32;Offset:&#32;0x000682A2</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00730"/>00730 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;DoWait(<emphasis role="keywordtype">int</emphasis>&#32;count&#32;=&#32;1)
+<anchor xml:id="__a_i_act_8cs_source_1l00731"/>00731 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00732"/>00732 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetChild(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_a_i___wait">AI_Wait</link>
+<anchor xml:id="__a_i_act_8cs_source_1l00733"/>00733 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00734"/>00734 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;count&#32;=&#32;count
+<anchor xml:id="__a_i_act_8cs_source_1l00735"/>00735 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">new</emphasis>&#32;Func&lt;<link linkend="_class_a_i_act">AIAct</link>.Status&gt;(this.KeepRunning));
+<anchor xml:id="__a_i_act_8cs_source_1l00736"/>00736 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.TickChild();
+<anchor xml:id="__a_i_act_8cs_source_1l00737"/>00737 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00738"/>00738 
+<anchor xml:id="__a_i_act_8cs_source_1l00739"/>00739 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000388&#32;RID:&#32;904</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00740"/>00740 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000DBC&#32;RID:&#32;3516&#32;RVA:&#32;0x0006A0C8&#32;File&#32;Offset:&#32;0x000682C8</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00741"/>00741 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;HasProgress
+<anchor xml:id="__a_i_act_8cs_source_1l00742"/>00742 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00743"/>00743 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00744"/>00744 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00745"/>00745 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00746"/>00746 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00747"/>00747 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00748"/>00748 
+<anchor xml:id="__a_i_act_8cs_source_1l00749"/>00749 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DBD&#32;RID:&#32;3517&#32;RVA:&#32;0x0006A0CC&#32;File&#32;Offset:&#32;0x000682CC</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00750"/>00750 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_a_i_progress">AIProgress</link>&#32;CreateProgress()
+<anchor xml:id="__a_i_act_8cs_source_1l00751"/>00751 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00752"/>00752 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_progress___custom">Progress_Custom</link>&#32;progress_Custom&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_progress___custom">Progress_Custom</link>
+<anchor xml:id="__a_i_act_8cs_source_1l00753"/>00753 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00754"/>00754 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;onProgress&#32;=&#32;delegate(<link linkend="_class_progress___custom">Progress_Custom</link>&#32;p)
+<anchor xml:id="__a_i_act_8cs_source_1l00755"/>00755 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00756"/>00756 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnProgress();
+<anchor xml:id="__a_i_act_8cs_source_1l00757"/>00757 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},
+<anchor xml:id="__a_i_act_8cs_source_1l00758"/>00758 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;onProgressComplete&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Action(this.OnProgressComplete),
+<anchor xml:id="__a_i_act_8cs_source_1l00759"/>00759 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canProgress&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Func&lt;bool&gt;(this.CanProgress),
+<anchor xml:id="__a_i_act_8cs_source_1l00760"/>00760 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;onBeforeProgress&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Action(this.OnBeforeProgress)
+<anchor xml:id="__a_i_act_8cs_source_1l00761"/>00761 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__a_i_act_8cs_source_1l00762"/>00762 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnCreateProgress(progress_Custom);
+<anchor xml:id="__a_i_act_8cs_source_1l00763"/>00763 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;progress_Custom;
+<anchor xml:id="__a_i_act_8cs_source_1l00764"/>00764 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00765"/>00765 
+<anchor xml:id="__a_i_act_8cs_source_1l00766"/>00766 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DBE&#32;RID:&#32;3518&#32;RVA:&#32;0x0006A132&#32;File&#32;Offset:&#32;0x00068332</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00767"/>00767 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnCreateProgress(<link linkend="_class_progress___custom">Progress_Custom</link>&#32;p)
+<anchor xml:id="__a_i_act_8cs_source_1l00768"/>00768 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00769"/>00769 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00770"/>00770 
+<anchor xml:id="__a_i_act_8cs_source_1l00771"/>00771 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DBF&#32;RID:&#32;3519&#32;RVA:&#32;0x0006A134&#32;File&#32;Offset:&#32;0x00068334</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00772"/>00772 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanProgress()
+<anchor xml:id="__a_i_act_8cs_source_1l00773"/>00773 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00774"/>00774 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00775"/>00775 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00776"/>00776 
+<anchor xml:id="__a_i_act_8cs_source_1l00777"/>00777 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DC0&#32;RID:&#32;3520&#32;RVA:&#32;0x0006A137&#32;File&#32;Offset:&#32;0x00068337</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00778"/>00778 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnBeforeProgress()
+<anchor xml:id="__a_i_act_8cs_source_1l00779"/>00779 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00780"/>00780 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00781"/>00781 
+<anchor xml:id="__a_i_act_8cs_source_1l00782"/>00782 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DC1&#32;RID:&#32;3521&#32;RVA:&#32;0x0006A139&#32;File&#32;Offset:&#32;0x00068339</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00783"/>00783 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnProgress()
+<anchor xml:id="__a_i_act_8cs_source_1l00784"/>00784 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00785"/>00785 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00786"/>00786 
+<anchor xml:id="__a_i_act_8cs_source_1l00787"/>00787 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DC2&#32;RID:&#32;3522&#32;RVA:&#32;0x0006A13B&#32;File&#32;Offset:&#32;0x0006833B</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00788"/>00788 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnProgressComplete()
+<anchor xml:id="__a_i_act_8cs_source_1l00789"/>00789 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00790"/>00790 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00791"/>00791 
+<anchor xml:id="__a_i_act_8cs_source_1l00792"/>00792 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DC3&#32;RID:&#32;3523&#32;RVA:&#32;0x0006A13D&#32;File&#32;Offset:&#32;0x0006833D</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00793"/>00793 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SimulateZone(<emphasis role="keywordtype">int</emphasis>&#32;days)
+<anchor xml:id="__a_i_act_8cs_source_1l00794"/>00794 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00795"/>00795 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.owner.conSuspend&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__a_i_act_8cs_source_1l00796"/>00796 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00797"/>00797 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__a_i_act_8cs_source_1l00798"/>00798 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00799"/>00799 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnSimulateZone(days);
+<anchor xml:id="__a_i_act_8cs_source_1l00800"/>00800 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00801"/>00801 
+<anchor xml:id="__a_i_act_8cs_source_1l00802"/>00802 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DC4&#32;RID:&#32;3524&#32;RVA:&#32;0x0006A154&#32;File&#32;Offset:&#32;0x00068354</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00803"/>00803 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnSimulateZone(<emphasis role="keywordtype">int</emphasis>&#32;days)
+<anchor xml:id="__a_i_act_8cs_source_1l00804"/>00804 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00805"/>00805 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00806"/>00806 
+<anchor xml:id="__a_i_act_8cs_source_1l00807"/>00807 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000DC5&#32;RID:&#32;3525&#32;RVA:&#32;0x0006A156&#32;File&#32;Offset:&#32;0x00068356</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00808"/>00808 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnSimulatePosition()
+<anchor xml:id="__a_i_act_8cs_source_1l00809"/>00809 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00810"/>00810 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00811"/>00811 
+<anchor xml:id="__a_i_act_8cs_source_1l00812"/>00812 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000D17&#32;RID:&#32;3351</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00813"/>00813 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_chara">Chara</link>&#32;owner;
+<anchor xml:id="__a_i_act_8cs_source_1l00814"/>00814 
+<anchor xml:id="__a_i_act_8cs_source_1l00815"/>00815 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000D18&#32;RID:&#32;3352</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00816"/>00816 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AIAct.Status&#32;status;
+<anchor xml:id="__a_i_act_8cs_source_1l00817"/>00817 
+<anchor xml:id="__a_i_act_8cs_source_1l00818"/>00818 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000D19&#32;RID:&#32;3353</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00819"/>00819 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;IEnumerator&lt;<link linkend="_class_a_i_act">AIAct</link>.Status&gt;&#32;Enumerator;
+<anchor xml:id="__a_i_act_8cs_source_1l00820"/>00820 
+<anchor xml:id="__a_i_act_8cs_source_1l00821"/>00821 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000D1A&#32;RID:&#32;3354</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00822"/>00822 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>&#32;child;
+<anchor xml:id="__a_i_act_8cs_source_1l00823"/>00823 
+<anchor xml:id="__a_i_act_8cs_source_1l00824"/>00824 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000D1B&#32;RID:&#32;3355</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00825"/>00825 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_a_i_act">AIAct</link>&#32;parent;
+<anchor xml:id="__a_i_act_8cs_source_1l00826"/>00826 
+<anchor xml:id="__a_i_act_8cs_source_1l00827"/>00827 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000D1C&#32;RID:&#32;3356</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00828"/>00828 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">byte</emphasis>&#32;restartCount;
+<anchor xml:id="__a_i_act_8cs_source_1l00829"/>00829 
+<anchor xml:id="__a_i_act_8cs_source_1l00830"/>00830 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000D1D&#32;RID:&#32;3357</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00831"/>00831 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Func&lt;<link linkend="_class_a_i_act">AIAct</link>.Status&gt;&#32;onChildFail;
+<anchor xml:id="__a_i_act_8cs_source_1l00832"/>00832 
+<anchor xml:id="__a_i_act_8cs_source_1l00833"/>00833 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000D1E&#32;RID:&#32;3358</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00834"/>00834 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Func&lt;bool&gt;&#32;isFail;
+<anchor xml:id="__a_i_act_8cs_source_1l00835"/>00835 
+<anchor xml:id="__a_i_act_8cs_source_1l00836"/>00836 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x020008CB&#32;RID:&#32;2251</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00837"/>00837 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">enum</emphasis>&#32;Status
+<anchor xml:id="__a_i_act_8cs_source_1l00838"/>00838 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_i_act_8cs_source_1l00839"/>00839 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002551&#32;RID:&#32;9553</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00840"/>00840 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Running,
+<anchor xml:id="__a_i_act_8cs_source_1l00841"/>00841 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002552&#32;RID:&#32;9554</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00842"/>00842 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Fail,
+<anchor xml:id="__a_i_act_8cs_source_1l00843"/>00843 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002553&#32;RID:&#32;9555</emphasis>
+<anchor xml:id="__a_i_act_8cs_source_1l00844"/>00844 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Success
+<anchor xml:id="__a_i_act_8cs_source_1l00845"/>00845 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_i_act_8cs_source_1l00846"/>00846 }
+</programlisting></section>

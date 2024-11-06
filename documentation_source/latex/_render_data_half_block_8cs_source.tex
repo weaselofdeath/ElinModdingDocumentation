@@ -1,0 +1,51 @@
+\doxysection{Render\+Data\+Half\+Block.\+cs}
+\hypertarget{_render_data_half_block_8cs_source}{}\label{_render_data_half_block_8cs_source}\index{Elin/RenderDataHalfBlock.cs@{Elin/RenderDataHalfBlock.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x0200019C\ RID:\ 412}}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00005}\mbox{\hyperlink{class_render_data_half_block}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_render_data_half_block}{RenderDataHalfBlock}}\ :\ \mbox{\hyperlink{class_render_data_tile}{RenderDataTile}}}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000BE3\ RID:\ 3043\ RVA:\ 0x000491EC\ File\ Offset:\ 0x000473EC}}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ Draw(\mbox{\hyperlink{class_render_param}{RenderParam}}\ p)}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_batch}{MeshBatch}}\ meshBatch\ =\ this.pass.batches[this.pass.batchIdx];}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ meshBatch.matrices[this.pass.idx].m03\ =\ p.x\ +\ this.offset.x;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ meshBatch.matrices[this.pass.idx].m13\ =\ p.y\ +\ this.offset.y;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ meshBatch.matrices[this.pass.idx].m23\ =\ p.z\ +\ this.offset.z;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ meshBatch.tiles[this.pass.idx]\ =\ p.tile\ +\ 2000000f;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ meshBatch.colors[this.pass.idx]\ =\ p.color\ -\/\ 1048576f;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ meshBatch.matColors[this.pass.idx]\ =\ p.matColor;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ this.pass.idx++;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.pass.idx\ ==\ \textcolor{keyword}{this}.pass.batchSize)}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ this.pass.NextBatch();}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_pass}{MeshPass}}\ passFloor\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.core.screen.tileMap.passFloor;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_batch}{MeshBatch}}\ meshBatch2\ =\ passFloor.batches[passFloor.batchIdx];}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ meshBatch2.matrices[passFloor.idx].m03\ =\ p.x\ +\ this.floorFix.x;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ meshBatch2.matrices[passFloor.idx].m13\ =\ p.y\ +\ this.floorFix.y;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ meshBatch2.matrices[passFloor.idx].m23\ =\ p.z\ +\ this.floorFix.z;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ meshBatch2.tiles[passFloor.idx]\ =\ (float)p.tile2;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ meshBatch2.colors[passFloor.idx]\ =\ p.color\ -\/\ 1048576f;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ meshBatch2.matColors[passFloor.idx]\ =\ (float)p.halfBlockColor;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ passFloor.idx++;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (passFloor.idx\ ==\ passFloor.batchSize)}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ passFloor.NextBatch();}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000BE4\ RID:\ 3044\ RVA:\ 0x00049424\ File\ Offset:\ 0x00047624}}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnValidate()}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ this.\_offset\ =\ this.offset;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000ADB\ RID:\ 2779}}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ floorFix;}
+\DoxyCodeLine{\Hypertarget{_render_data_half_block_8cs_source_l00045}00045\ \}}
+
+\end{DoxyCode}

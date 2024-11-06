@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__spawn_list_8cs_source" xml:lang="en-US">
+<title>SpawnList.cs</title>
+<indexterm><primary>Elin/SpawnList.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__spawn_list_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__spawn_list_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__spawn_list_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>System.Runtime.CompilerServices;
+<anchor xml:id="__spawn_list_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__spawn_list_8cs_source_1l00005"/>00005 
+<anchor xml:id="__spawn_list_8cs_source_1l00006"/>00006 <emphasis role="comment">//&#32;Token:&#32;0x020004F1&#32;RID:&#32;1265</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00007"/><link linkend="_class_spawn_list">00007</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_spawn_list">SpawnList</link>&#32;:&#32;<link linkend="_class_e_class">EClass</link>
+<anchor xml:id="__spawn_list_8cs_source_1l00008"/>00008 {
+<anchor xml:id="__spawn_list_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060021B9&#32;RID:&#32;8633&#32;RVA:&#32;0x000BA700&#32;File&#32;Offset:&#32;0x000B8900</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_spawn_list">SpawnList</link>&#32;Get(<emphasis role="keywordtype">string</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>,&#32;<emphasis role="keywordtype">string</emphasis>&#32;parent&#32;=&#32;<emphasis role="keyword">null</emphasis>,&#32;<link linkend="_class_card_filter">CardFilter</link>&#32;filter&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__spawn_list_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_spawn_list">SpawnList</link>&#32;spawnList&#32;=&#32;<link linkend="_class_spawn_list">SpawnList</link>.allList.TryGetValue(<emphasis role="keywordtype">id</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__spawn_list_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(spawnList&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__spawn_list_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(spawnList.filter&#32;!=&#32;filter&#32;&amp;&amp;&#32;filter&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__spawn_list_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;spawnList.CreateMaster(filter,&#32;parent);
+<anchor xml:id="__spawn_list_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;spawnList;
+<anchor xml:id="__spawn_list_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;spawnList&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_spawn_list">SpawnList</link>(<emphasis role="keywordtype">id</emphasis>);
+<anchor xml:id="__spawn_list_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(filter&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__spawn_list_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;spawnList.CreateMaster(filter,&#32;parent);
+<anchor xml:id="__spawn_list_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_spawn_list">SpawnList</link>.allList.Add(<emphasis role="keywordtype">id</emphasis>,&#32;spawnList);
+<anchor xml:id="__spawn_list_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;spawnList;
+<anchor xml:id="__spawn_list_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00029"/>00029 
+<anchor xml:id="__spawn_list_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060021BA&#32;RID:&#32;8634&#32;RVA:&#32;0x000BA754&#32;File&#32;Offset:&#32;0x000B8954</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_spawn_list">SpawnList</link>(<emphasis role="keywordtype">string</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__spawn_list_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<emphasis role="keywordtype">id</emphasis>.IsEmpty())
+<anchor xml:id="__spawn_list_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_source_spawn_list_1_1_row">SourceSpawnList.Row</link>&#32;row&#32;=&#32;<link linkend="_class_e_class">EClass</link>.sources.spawnLists.map.TryGetValue(<emphasis role="keywordtype">id</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__spawn_list_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(row&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__spawn_list_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;flag&#32;=&#32;row.type&#32;==&#32;<emphasis role="stringliteral">&quot;chara&quot;</emphasis>;
+<anchor xml:id="__spawn_list_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_card_filter">CardFilter</link>&#32;cardFilter&#32;=&#32;flag&#32;?&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_chara_filter">CharaFilter</link>()&#32;:&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_thing_filter">ThingFilter</link>();
+<anchor xml:id="__spawn_list_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cardFilter.isChara&#32;=&#32;flag;
+<anchor xml:id="__spawn_list_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cardFilter.strTag&#32;=&#32;row.tag;
+<anchor xml:id="__spawn_list_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cardFilter.strFilter&#32;=&#32;row.filter;
+<anchor xml:id="__spawn_list_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cardFilter.filterCategory&#32;=&#32;row.category;
+<anchor xml:id="__spawn_list_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cardFilter.idCard&#32;=&#32;row.idCard;
+<anchor xml:id="__spawn_list_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.CreateMaster(cardFilter,&#32;row.parent);
+<anchor xml:id="__spawn_list_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.id&#32;=&#32;id;
+<anchor xml:id="__spawn_list_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00050"/>00050 
+<anchor xml:id="__spawn_list_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060021BB&#32;RID:&#32;8635&#32;RVA:&#32;0x000BA803&#32;File&#32;Offset:&#32;0x000B8A03</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Add(<link linkend="_class_card_row">CardRow</link>&#32;row)
+<anchor xml:id="__spawn_list_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.rows.Add(row);
+<anchor xml:id="__spawn_list_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.totalChance&#32;+=&#32;row.chance;
+<anchor xml:id="__spawn_list_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00057"/>00057 
+<anchor xml:id="__spawn_list_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060021BC&#32;RID:&#32;8636&#32;RVA:&#32;0x000BA824&#32;File&#32;Offset:&#32;0x000B8A24</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;CreateMaster(<link linkend="_class_card_filter">CardFilter</link>&#32;_filter,&#32;<emphasis role="keywordtype">string</emphasis>&#32;parent&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__spawn_list_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.rows.Clear();
+<anchor xml:id="__spawn_list_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.totalChance&#32;=&#32;0;
+<anchor xml:id="__spawn_list_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.filter&#32;=&#32;_filter;
+<anchor xml:id="__spawn_list_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;List&lt;CardRow&gt;&#32;list&#32;=&#32;parent.IsEmpty()&#32;?&#32;EClass.sources.cards.rows&#32;:&#32;<link linkend="_class_spawn_list">SpawnList</link>.Get(parent,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>).rows;
+<anchor xml:id="__spawn_list_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;list.Count;&#32;i++)
+<anchor xml:id="__spawn_list_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_card_row">CardRow</link>&#32;cardRow&#32;=&#32;list[i];
+<anchor xml:id="__spawn_list_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(cardRow.chance&#32;&gt;&#32;0&#32;&amp;&amp;&#32;<emphasis role="keyword">this</emphasis>.filter.Pass(cardRow))
+<anchor xml:id="__spawn_list_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Add(cardRow);
+<anchor xml:id="__spawn_list_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.filter.idCard.IsEmpty())
+<anchor xml:id="__spawn_list_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<emphasis role="keywordtype">string</emphasis>&#32;key&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.filter.idCard)
+<anchor xml:id="__spawn_list_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_card_row">CardRow</link>&#32;row&#32;=&#32;<link linkend="_class_e_class">EClass</link>.sources.cards.map[key];
+<anchor xml:id="__spawn_list_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Add(row);
+<anchor xml:id="__spawn_list_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00082"/>00082 
+<anchor xml:id="__spawn_list_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060021BD&#32;RID:&#32;8637&#32;RVA:&#32;0x000BA900&#32;File&#32;Offset:&#32;0x000B8B00</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_spawn_list">SpawnList</link>&#32;Filter(<emphasis role="keywordtype">int</emphasis>&#32;lv,&#32;<emphasis role="keywordtype">int</emphasis>&#32;levelRange&#32;=&#32;-1)
+<anchor xml:id="__spawn_list_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_spawn_list">SpawnList</link>.tempList.rows.Clear();
+<anchor xml:id="__spawn_list_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SpawnList.tempList.totalChance&#32;=&#32;0;
+<anchor xml:id="__spawn_list_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SpawnList.tempList.filter&#32;=&#32;this.filter;
+<anchor xml:id="__spawn_list_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;
+<anchor xml:id="__spawn_list_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(i&#32;&lt;&#32;this.rows.Count)
+<anchor xml:id="__spawn_list_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_card_row">CardRow</link>&#32;cardRow&#32;=&#32;this.rows[i];
+<anchor xml:id="__spawn_list_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(levelRange&#32;!=&#32;-1)
+<anchor xml:id="__spawn_list_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(Mathf.Abs(cardRow.LV&#32;-&#32;lv)&#32;&lt;&#32;levelRange)
+<anchor xml:id="__spawn_list_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">goto</emphasis>&#32;IL_5A;
+<anchor xml:id="__spawn_list_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(cardRow.LV&#32;&lt;=&#32;lv)
+<anchor xml:id="__spawn_list_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">goto</emphasis>&#32;IL_5A;
+<anchor xml:id="__spawn_list_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;IL_81:
+<anchor xml:id="__spawn_list_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;i++;
+<anchor xml:id="__spawn_list_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">continue</emphasis>;
+<anchor xml:id="__spawn_list_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;IL_5A:
+<anchor xml:id="__spawn_list_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_spawn_list">SpawnList</link>.tempList.rows.Add(cardRow);
+<anchor xml:id="__spawn_list_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SpawnList.tempList.totalChance&#32;+=&#32;cardRow.chance;
+<anchor xml:id="__spawn_list_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">goto</emphasis>&#32;IL_81;
+<anchor xml:id="__spawn_list_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_spawn_list">SpawnList</link>.tempList.rows.Count&#32;==&#32;0)
+<anchor xml:id="__spawn_list_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log(<emphasis role="stringliteral">&quot;list&#32;contains&#32;no&#32;item:&#32;&quot;</emphasis>&#32;+&#32;this.<emphasis role="keywordtype">id</emphasis>&#32;+&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>&#32;+&#32;lv.ToString());
+<anchor xml:id="__spawn_list_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="__spawn_list_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_spawn_list">SpawnList</link>.tempList;
+<anchor xml:id="__spawn_list_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00119"/>00119 
+<anchor xml:id="__spawn_list_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060021BE&#32;RID:&#32;8638&#32;RVA:&#32;0x000BA9DC&#32;File&#32;Offset:&#32;0x000B8BDC</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_card_row">CardRow</link>&#32;Select(<emphasis role="keywordtype">int</emphasis>&#32;lv&#32;=&#32;-1,&#32;<emphasis role="keywordtype">int</emphasis>&#32;levelRange&#32;=&#32;-1)
+<anchor xml:id="__spawn_list_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(lv&#32;!=&#32;-1)
+<anchor xml:id="__spawn_list_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(levelRange&#32;!=&#32;-1)
+<anchor xml:id="__spawn_list_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;50;&#32;i++)
+<anchor xml:id="__spawn_list_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_spawn_list">SpawnList</link>&#32;spawnList&#32;=&#32;this.Filter(lv&#32;+&#32;i&#32;-&#32;i&#32;*&#32;i,&#32;levelRange&#32;+&#32;i&#32;*&#32;i);
+<anchor xml:id="__spawn_list_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(spawnList.rows.Count&#32;&gt;&#32;5)
+<anchor xml:id="__spawn_list_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;spawnList.Select(-1,&#32;-1);
+<anchor xml:id="__spawn_list_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lv&#32;=&#32;lv&#32;+&#32;2&#32;+&#32;<link linkend="_class_e_class">EClass</link>.rnd(<link linkend="_class_e_class">EClass</link>.rnd(<link linkend="_class_e_class">EClass</link>.rnd(<link linkend="_class_e_class">EClass</link>.rnd(Mathf.Min(lv&#32;*&#32;2,&#32;20))&#32;+&#32;1)&#32;+&#32;1)&#32;+&#32;1);
+<anchor xml:id="__spawn_list_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.Filter(lv,&#32;-1).Select(-1,&#32;-1);
+<anchor xml:id="__spawn_list_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.filter&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;this.filter.categoriesInclude.Count&#32;&gt;&#32;0)
+<anchor xml:id="__spawn_list_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_source_category_1_1_row">SourceCategory.Row</link>&#32;r&#32;=&#32;this.filter.categoriesInclude.RandomItem&lt;<link linkend="_class_source_category">SourceCategory</link>.<link linkend="_class_source_category_1_1_row">Row</link>&gt;();
+<anchor xml:id="__spawn_list_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j&#32;=&#32;0;&#32;j&#32;&lt;&#32;100;&#32;j++)
+<anchor xml:id="__spawn_list_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_card_row">CardRow</link>&#32;cardRow&#32;=&#32;this.&lt;Select&gt;g___Select|11_0();
+<anchor xml:id="__spawn_list_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(cardRow&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;cardRow.Category.IsChildOf(r))
+<anchor xml:id="__spawn_list_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;cardRow;
+<anchor xml:id="__spawn_list_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.&lt;Select&gt;g___Select|11_0();
+<anchor xml:id="__spawn_list_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00153"/>00153 
+<anchor xml:id="__spawn_list_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060021BF&#32;RID:&#32;8639&#32;RVA:&#32;0x000BAABF&#32;File&#32;Offset:&#32;0x000B8CBF</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_card_row">CardRow</link>&#32;GetRandom()
+<anchor xml:id="__spawn_list_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.rows[<link linkend="_class_e_class">EClass</link>.rnd(this.rows.Count)];
+<anchor xml:id="__spawn_list_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00159"/>00159 
+<anchor xml:id="__spawn_list_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060021C0&#32;RID:&#32;8640&#32;RVA:&#32;0x000BAADC&#32;File&#32;Offset:&#32;0x000B8CDC</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_card_row">CardRow</link>&#32;GetFirst()
+<anchor xml:id="__spawn_list_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.rows[0];
+<anchor xml:id="__spawn_list_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00165"/>00165 
+<anchor xml:id="__spawn_list_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060021C2&#32;RID:&#32;8642&#32;RVA:&#32;0x000BAB04&#32;File&#32;Offset:&#32;0x000B8D04</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00167"/>00167 &#32;&#32;&#32;&#32;[CompilerGenerated]
+<anchor xml:id="__spawn_list_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;CardRow&#32;&lt;Select&gt;g___Select|11_0()
+<anchor xml:id="__spawn_list_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;<link linkend="_class_e_class">EClass</link>.rnd(this.totalChance);
+<anchor xml:id="__spawn_list_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num2&#32;=&#32;0;
+<anchor xml:id="__spawn_list_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_card_row">CardRow</link>&#32;cardRow&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.rows)
+<anchor xml:id="__spawn_list_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num2&#32;+=&#32;cardRow.chance;
+<anchor xml:id="__spawn_list_8cs_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;&lt;&#32;num2)
+<anchor xml:id="__spawn_list_8cs_source_1l00176"/>00176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;cardRow;
+<anchor xml:id="__spawn_list_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.rows.Count&#32;==&#32;0)
+<anchor xml:id="__spawn_list_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log(<emphasis role="stringliteral">&quot;no&#32;item:&quot;</emphasis>&#32;+&#32;this.<emphasis role="keywordtype">id</emphasis>);
+<anchor xml:id="__spawn_list_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_card_filter">CardFilter</link>.<link linkend="_class_card_filter_1_1_filter_item">FilterItem</link>&#32;filterItem&#32;in&#32;<emphasis role="keyword">this</emphasis>.filter.tags)
+<anchor xml:id="__spawn_list_8cs_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__spawn_list_8cs_source_1l00185"/>00185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log(filterItem.name&#32;+&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>&#32;+&#32;filterItem.exclude.ToString());
+<anchor xml:id="__spawn_list_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00187"/>00187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__spawn_list_8cs_source_1l00188"/>00188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.rows[<link linkend="_class_e_class">EClass</link>.rnd(this.rows.Count)];
+<anchor xml:id="__spawn_list_8cs_source_1l00190"/>00190 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__spawn_list_8cs_source_1l00191"/>00191 
+<anchor xml:id="__spawn_list_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001138&#32;RID:&#32;4408</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00193"/>00193 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;Dictionary&lt;string,&#32;SpawnList&gt;&#32;allList&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Dictionary&lt;string,&#32;SpawnList&gt;();
+<anchor xml:id="__spawn_list_8cs_source_1l00194"/>00194 
+<anchor xml:id="__spawn_list_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001139&#32;RID:&#32;4409</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00196"/>00196 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_spawn_list">SpawnList</link>&#32;tempList&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_spawn_list">SpawnList</link>(<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__spawn_list_8cs_source_1l00197"/>00197 
+<anchor xml:id="__spawn_list_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400113A&#32;RID:&#32;4410</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00199"/>00199 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;id;
+<anchor xml:id="__spawn_list_8cs_source_1l00200"/>00200 
+<anchor xml:id="__spawn_list_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400113B&#32;RID:&#32;4411</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00202"/>00202 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;CardRow&gt;&#32;rows&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;CardRow&gt;();
+<anchor xml:id="__spawn_list_8cs_source_1l00203"/>00203 
+<anchor xml:id="__spawn_list_8cs_source_1l00204"/>00204 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400113C&#32;RID:&#32;4412</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00205"/>00205 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_card_filter">CardFilter</link>&#32;filter;
+<anchor xml:id="__spawn_list_8cs_source_1l00206"/>00206 
+<anchor xml:id="__spawn_list_8cs_source_1l00207"/>00207 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400113D&#32;RID:&#32;4413</emphasis>
+<anchor xml:id="__spawn_list_8cs_source_1l00208"/>00208 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalChance;
+<anchor xml:id="__spawn_list_8cs_source_1l00209"/>00209 }
+</programlisting></section>

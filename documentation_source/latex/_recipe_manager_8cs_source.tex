@@ -1,0 +1,342 @@
+\doxysection{Recipe\+Manager.\+cs}
+\hypertarget{_recipe_manager_8cs_source}{}\label{_recipe_manager_8cs_source}\index{Elin/RecipeManager.cs@{Elin/RecipeManager.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00006}00006\ \textcolor{comment}{//\ Token:\ 0x0200005E\ RID:\ 94}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00007}\mbox{\hyperlink{class_recipe_manager}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_recipe_manager}{RecipeManager}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000268\ RID:\ 616\ RVA:\ 0x00012C68\ File\ Offset:\ 0x00010E68}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ BuildList()}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.rebuild\ \&\&\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.list.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Rebuilding\ recipe\ list"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.list.Clear();}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.dict.Clear();}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_card_row}{CardRow}}\ cardRow\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.cards.rows)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!cardRow.isOrigin\ \&\&\ (cardRow.factory.IsEmpty()\ ||\ !(cardRow.factory[0]\ ==\ \textcolor{stringliteral}{"{}x"{}})))}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.Create(cardRow,\ \textcolor{stringliteral}{"{}"{}},\ cardRow.isChara\ ?\ \textcolor{stringliteral}{"{}-\/c"{}}\ :\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_source_block}{SourceBlock}}.\mbox{\hyperlink{class_source_block_1_1_row}{Row}}\ row\ in\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.blocks.rows)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.Create(row,\ \textcolor{stringliteral}{"{}Block"{}},\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.tileType\ ==\ \mbox{\hyperlink{class_tile_type}{TileType}}.Pillar)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.Create(row,\ \textcolor{stringliteral}{"{}BridgePillar"{}},\ \textcolor{stringliteral}{"{}-\/p"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_source_floor}{SourceFloor}}.\mbox{\hyperlink{class_source_floor_1_1_row}{Row}}\ row2\ in\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.floors.rows)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!row2.tag.Contains(\textcolor{stringliteral}{"{}noFloor"{}}))}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.Create(row2,\ \textcolor{stringliteral}{"{}Floor"{}},\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_source_floor}{SourceFloor}}.\mbox{\hyperlink{class_source_floor_1_1_row}{Row}}\ row3\ in\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.floors.rows)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!row3.tag.Contains(\textcolor{stringliteral}{"{}noBridge"{}})\ \&\&\ !row3.factory.IsEmpty()\ \&\&\ row3.factory[0]\ !=\ \textcolor{stringliteral}{"{}x"{}})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.Create(row3,\ \textcolor{stringliteral}{"{}Bridge"{}},\ \textcolor{stringliteral}{"{}-\/b"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_source_obj}{SourceObj}}.\mbox{\hyperlink{class_source_obj_1_1_row}{Row}}\ row4\ in\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.objs.rows)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.Create(row4,\ \textcolor{stringliteral}{"{}Obj"{}},\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_source_cell_effect}{SourceCellEffect}}.\mbox{\hyperlink{class_source_cell_effect_1_1_row}{Row}}\ row5\ in\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.cellEffects.rows)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.Create(row5,\ \textcolor{stringliteral}{"{}Liquid"{}},\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ RecipeManager.rebuild\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00059}00059\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000269\ RID:\ 617\ RVA:\ 0x00012F4C\ File\ Offset:\ 0x0001114C}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00060}00060\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Create(\mbox{\hyperlink{class_render_row}{RenderRow}}\ row,\ \textcolor{keywordtype}{string}\ type,\ \textcolor{keywordtype}{string}\ suffix\ =\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00061}00061\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ recipeSource\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}();}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ recipeSource.id\ =\ row.RecipeID\ +\ suffix;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ recipeSource.isBridge\ =\ (type\ ==\ \textcolor{stringliteral}{"{}Bridge"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ recipeSource.isBridgePillar\ =\ (type\ ==\ \textcolor{stringliteral}{"{}BridgePillar"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ recipeSource.type\ =\ type;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ recipeSource.row\ =\ row;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ recipeSource.isChara\ =\ (row\ is\ \mbox{\hyperlink{class_source_chara}{SourceChara}}.\mbox{\hyperlink{class_source_chara_1_1_row}{Row}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.list.Add(recipeSource);}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.dict[recipeSource.id]\ =\ recipeSource;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}[]\ components\ =\ row.components;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe}{Recipe}}.Create(recipeSource,\ -\/1,\ \textcolor{keyword}{null}).BuildIngredientList();}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600026A\ RID:\ 618\ RVA:\ 0x00012FE0\ File\ Offset:\ 0x000111E0}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00076}00076\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ Get(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.dict.TryGetValue(\textcolor{keywordtype}{id},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600026B\ RID:\ 619\ RVA:\ 0x00012FEE\ File\ Offset:\ 0x000111EE}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00082}00082\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ GetSource(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00083}00083\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.dict.TryGetValue(\textcolor{keywordtype}{id},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600026C\ RID:\ 620\ RVA:\ 0x00012FFC\ File\ Offset:\ 0x000111FC}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00088}00088\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Add(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{bool}\ showEffect\ =\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00089}00089\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{id}.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ recipeSource\ =\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.Get(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recipeSource\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.knownRecipes.ContainsKey(\textcolor{keywordtype}{id}))}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ this.newRecipes.Add(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ this.knownRecipes[id]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ Dictionary<string,\ int>\ dictionary\ =\ this.knownRecipes;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ dictionary[id];}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ dictionary[id]\ =\ num\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ this.knownRecipes[id];}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (showEffect)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.pc.PlaySound(\textcolor{stringliteral}{"{}idea"{}},\ 1f,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.pc.ShowEmo(Emo.idea,\ 0.5f,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.pc.Say(\textcolor{stringliteral}{"{}learnRecipe"{}}\ +\ ((num2\ ==\ 1)\ ?\ \textcolor{stringliteral}{"{}New"{}}\ :\ \textcolor{stringliteral}{"{}"{}}),\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.dict[\textcolor{keywordtype}{id}].Name.ToTitleCase(\textcolor{keyword}{false}),\ num2.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recipeSource.row.category\ ==\ \textcolor{stringliteral}{"{}floor"{}})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ recipeSource\ =\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.Get(\textcolor{keywordtype}{id}\ +\ \textcolor{stringliteral}{"{}-\/b"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recipeSource\ !=\ \textcolor{keyword}{null}\ \&\&\ !this.knownRecipes.ContainsKey(recipeSource.id))}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Add(recipeSource.id,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ recipeSource\ =\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.Get(\textcolor{keywordtype}{id}.Replace(\textcolor{stringliteral}{"{}-\/b"{}},\ \textcolor{stringliteral}{"{}"{}}));}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recipeSource\ !=\ \textcolor{keyword}{null}\ \&\&\ !this.knownRecipes.ContainsKey(recipeSource.id))}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Add(recipeSource.id,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00127}00127\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00129}00129\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600026D\ RID:\ 621\ RVA:\ 0x00013164\ File\ Offset:\ 0x00011364}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00130}00130\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsKnown(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00131}00131\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ EClass.debug.allRecipe\ ||\ \mbox{\hyperlink{class_e_class}{EClass}}.player.recipes.knownRecipes.ContainsKey(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00133}00133\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00135}00135\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600026E\ RID:\ 622\ RVA:\ 0x0001318C\ File\ Offset:\ 0x0001138C}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00136}00136\ \ \ \ \ \textcolor{keyword}{public}\ List<RecipeSource>\ ListSources(\mbox{\hyperlink{class_thing}{Thing}}\ factory,\ List<RecipeSource>\ newRecipes\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00137}00137\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.BuildList();}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ List<RecipeSource>\ list\ =\ \textcolor{keyword}{new}\ List<RecipeSource>();}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ recipeSource\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.list)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!recipeSource.isBridgePillar\ \&\&\ (factory\ !=\ \textcolor{keyword}{null}\ ||\ !(recipeSource.idFactory\ !=\ \textcolor{stringliteral}{"{}self"{}}))\ \&\&\ (factory\ ==\ \textcolor{keyword}{null}\ ||\ factory.trait.Contains(recipeSource))\ \&\&\ !recipeSource.isChara\ \&\&\ !recipeSource.noListing)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.debug.godCraft\ \&\&\ !\mbox{\hyperlink{class_e_class}{EClass}}.player.recipes.knownRecipes.ContainsKey(recipeSource.id))}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recipeSource.row.recipeKey\ !=\ \textcolor{keyword}{null}\ \&\&\ recipeSource.row.recipeKey.Length\ !=\ 0\ \&\&\ recipeSource.row.recipeKey[0][0]\ ==\ \textcolor{charliteral}{'*'})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flag\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id}\ =\ recipeSource.id;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(\textcolor{keywordtype}{id}\ ==\ \textcolor{stringliteral}{"{}waystone"{}}))}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{id}\ ==\ \textcolor{stringliteral}{"{}container\_shipping"{}})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.game.quests.GetPhase<\mbox{\hyperlink{class_quest_shipping_chest}{QuestShippingChest}}>()\ >=\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flag\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.game.quests.GetPhase<\mbox{\hyperlink{class_quest_exploration}{QuestExploration}}>()\ >=\ 6)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flag\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!flag)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (newRecipes\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.player.recipes.Add(recipeSource.id,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.player.recipes.newRecipes.Contains(recipeSource.id))}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ newRecipes.Add(recipeSource);}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.player.recipes.newRecipes.Remove(recipeSource.id);}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list.Add(recipeSource);}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00184}00184\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00186}00186\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600026F\ RID:\ 623\ RVA:\ 0x00013358\ File\ Offset:\ 0x00011558}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00187}00187\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnSleep(\textcolor{keywordtype}{bool}\ ehe\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00188}00188\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ slept\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.player.stats.slept;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ Rand.SetSeed(\mbox{\hyperlink{class_e_class}{EClass}}.game.seed\ +\ slept);}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (slept\ >\ 3\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(3)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(\mbox{\hyperlink{class_e_class}{EClass}}.pc.Evalue(1642)\ +\ 1)\ <=\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (slept\ >\ 15\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(3)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (slept\ >\ 30\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(3)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (slept\ >\ 60\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(3)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_msg}{Msg}}.Say(\textcolor{stringliteral}{"{}learnRecipeSleep"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ Rand.SetSeed(-\/1);}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ this.Add(\mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.GetRandomRecipe((ehe\ ?\ 5\ :\ 0)\ +\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(\mbox{\hyperlink{class_e_class}{EClass}}.rnd(\mbox{\hyperlink{class_e_class}{EClass}}.rnd(10))),\ \textcolor{keyword}{null},\ \textcolor{keyword}{false}),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00213}00213\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00215}00215\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000270\ RID:\ 624\ RVA:\ 0x00013410\ File\ Offset:\ 0x00011610}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00216}00216\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ ComeUpWithRandomRecipe(\textcolor{keywordtype}{string}\ idCat\ =\ \textcolor{keyword}{null},\ \textcolor{keywordtype}{int}\ lvBonus\ =\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00217}00217\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ randomRecipe\ =\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.GetRandomRecipe(lvBonus,\ idCat,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (randomRecipe\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_msg}{Msg}}.Say(\textcolor{stringliteral}{"{}learnRecipeIdea"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ this.Add(randomRecipe,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00225}00225\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00227}00227\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000271\ RID:\ 625\ RVA:\ 0x00013440\ File\ Offset:\ 0x00011640}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00228}00228\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ ComeUpWithRecipe(\textcolor{keywordtype}{string}\ idRecipe,\ \textcolor{keywordtype}{int}\ chanceForRandomRecipe\ =\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00229}00229\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (idRecipe.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ recipeSource\ =\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.Get(idRecipe);}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(10)\ !=\ 0\ \&\&\ !\mbox{\hyperlink{class_e_class}{EClass}}.debug.enable)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recipeSource\ ==\ \textcolor{keyword}{null}\ ||\ \mbox{\hyperlink{class_e_class}{EClass}}.player.recipes.knownRecipes.ContainsKey(idRecipe)\ ||\ (!recipeSource.NeedFactory\ \&\&\ !recipeSource.IsQuickCraft))}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recipeSource\ !=\ \textcolor{keyword}{null}\ \&\&\ chanceForRandomRecipe\ >\ 0\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.rnd(\mbox{\hyperlink{class_e_class}{EClass}}.debug.enable\ ?\ 1\ :\ chanceForRandomRecipe)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.ComeUpWithRandomRecipe(recipeSource.row.Category.id,\ 0);}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id}\ =\ recipeSource.GetReqSkill().id;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.pc.Evalue(\textcolor{keywordtype}{id})\ +\ 5\ <\ recipeSource.row.LV)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_msg}{Msg}}.Say(\textcolor{stringliteral}{"{}recipeReqLv"{}},\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.elements.map[\textcolor{keywordtype}{id}].GetName(),\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_msg}{Msg}}.Say(\textcolor{stringliteral}{"{}learnRecipeIdea"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ this.Add(idRecipe,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00255}00255\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00257}00257\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000272\ RID:\ 626\ RVA:\ 0x00013538\ File\ Offset:\ 0x00011738}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00258}00258\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ GetUnlearnedRecipe(\textcolor{keywordtype}{int}\ lvBonus,\ \textcolor{keywordtype}{string}\ cat,\ \textcolor{keywordtype}{bool}\ onlyUnlearned)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00259}00259\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.BuildList();}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ List<RecipeSource>\ list\ =\ \textcolor{keyword}{new}\ List<RecipeSource>();}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ recipeSource\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.list)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((recipeSource.NeedFactory\ ||\ recipeSource.IsQuickCraft)\ \&\&\ (cat\ ==\ \textcolor{keyword}{null}\ ||\ recipeSource.row.Category.IsChildOf(cat))\ \&\&\ (!onlyUnlearned\ ||\ !\mbox{\hyperlink{class_e_class}{EClass}}.player.recipes.knownRecipes.ContainsKey(recipeSource.id))\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.Evalue(recipeSource.GetReqSkill().id)\ +\ 5\ +\ lvBonus\ >=\ recipeSource.row.LV)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list.Add(recipeSource);}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00268}00268\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00269}00269\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list.RandomItemWeighted((\mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ r)\ =>\ (\textcolor{keywordtype}{float})((r.row.chance\ ==\ 0)\ ?\ 100\ :\ r.row.chance));}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00270}00270\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00272}00272\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000273\ RID:\ 627\ RVA:\ 0x00013628\ File\ Offset:\ 0x00011828}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00273}00273\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ GetLearnedRecipe(\textcolor{keywordtype}{string}\ cat\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00274}00274\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ List<RecipeSource>\ list\ =\ \textcolor{keyword}{new}\ List<RecipeSource>();}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id}\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_e_class}{EClass}}.player.recipes.knownRecipes.Keys)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ recipeSource\ =\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.Get(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recipeSource\ !=\ \textcolor{keyword}{null}\ \&\&\ recipeSource.row\ is\ \mbox{\hyperlink{class_source_thing}{SourceThing}}.\mbox{\hyperlink{class_source_thing_1_1_row}{Row}}\ \&\&\ (recipeSource.NeedFactory\ ||\ recipeSource.IsQuickCraft)\ \&\&\ (cat\ ==\ \textcolor{keyword}{null}\ ||\ recipeSource.row.Category.IsChildOf(cat)))}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list.Add(recipeSource);}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00284}00284\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list.RandomItemWeighted((\mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ r)\ =>\ (\textcolor{keywordtype}{float})((r.row.chance\ ==\ 0)\ ?\ 100\ :\ r.row.chance));}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00285}00285\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00286}00286\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00287}00287\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000274\ RID:\ 628\ RVA:\ 0x000136F0\ File\ Offset:\ 0x000118F0}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00288}00288\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ GetRandomRecipe(\textcolor{keywordtype}{int}\ lvBonus,\ \textcolor{keywordtype}{string}\ cat\ =\ \textcolor{keyword}{null},\ \textcolor{keywordtype}{bool}\ onlyUnlearned\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00289}00289\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ recipeSource\ =\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.GetUnlearnedRecipe(lvBonus,\ cat,\ onlyUnlearned);}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recipeSource\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00292}00292\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ recipeSource\ =\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.GetLearnedRecipe(cat);}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00295}00295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recipeSource\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00296}00296\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ recipeSource.id;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00300}00300\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00301}00301\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00302}00302\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000275\ RID:\ 629\ RVA:\ 0x0001371D\ File\ Offset:\ 0x0001191D}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00303}00303\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnVersionUpdate()}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00304}00304\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00305}00305\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.pc.things.Foreach(delegate(\mbox{\hyperlink{class_thing}{Thing}}\ t)}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00306}00306\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ this.knownIngredients.Add(t.id);}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00308}00308\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ this.knownIngredients.Add(\textcolor{stringliteral}{"{}flower"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00310}00310\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00312}00312\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000508\ RID:\ 1288}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00313}00313\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ rebuild;}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00315}00315\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000509\ RID:\ 1289}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00316}00316\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ List<RecipeSource>\ list\ =\ \textcolor{keyword}{new}\ List<RecipeSource>();}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00318}00318\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400050A\ RID:\ 1290}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00319}00319\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ Dictionary<string,\ RecipeSource>\ dict\ =\ \textcolor{keyword}{new}\ Dictionary<string,\ RecipeSource>();}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00321}00321\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400050B\ RID:\ 1291}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00322}00322\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00323}00323\ \ \ \ \ \textcolor{keyword}{public}\ HashSet<string>\ knownIngredients\ =\ \textcolor{keyword}{new}\ HashSet<string>();}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00325}00325\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400050C\ RID:\ 1292}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00326}00326\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00327}00327\ \ \ \ \ \textcolor{keyword}{public}\ Dictionary<string,\ int>\ knownRecipes\ =\ \textcolor{keyword}{new}\ Dictionary<string,\ int>();}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00329}00329\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400050D\ RID:\ 1293}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00330}00330\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00331}00331\ \ \ \ \ \textcolor{keyword}{public}\ HashSet<string>\ hoveredRecipes\ =\ \textcolor{keyword}{new}\ HashSet<string>();}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00333}00333\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400050E\ RID:\ 1294}}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00334}00334\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00335}00335\ \ \ \ \ \textcolor{keyword}{public}\ HashSet<string>\ newRecipes\ =\ \textcolor{keyword}{new}\ HashSet<string>();}
+\DoxyCodeLine{\Hypertarget{_recipe_manager_8cs_source_l00336}00336\ \}}
+
+\end{DoxyCode}

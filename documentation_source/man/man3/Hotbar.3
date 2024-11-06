@@ -1,0 +1,383 @@
+.TH "Hotbar" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Hotbar
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBEClass\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBPage\fP"
+.br
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBType\fP { \fBDefault\fP, \fBMain\fP, \fBZoomMenu\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSetSlotNum\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBAddPage\fP ()"
+.br
+.ti -1c
+.RI "void \fBValidatePage\fP (\fBHotbar\&.Page\fP page, int num=\-1)"
+.br
+.ti -1c
+.RI "void \fBSetPage\fP (int pageIndex)"
+.br
+.ti -1c
+.RI "void \fBRemove\fP (\fBHotItem\fP item)"
+.br
+.ti -1c
+.RI "\fBHotItem\fP \fBGetItem\fP (int index, int pageIndex=\-1)"
+.br
+.ti -1c
+.RI "\fBHotItem\fP \fBSetItem\fP (\fBHotItem\fP item, int index=\-1, int pageIndex=\-1, bool refreshActor=false)"
+.br
+.ti -1c
+.RI "void \fBSelect\fP (\fBHotItem\fP item)"
+.br
+.ti -1c
+.RI "void \fBToggleDisable\fP (\fBHotItem\fP item)"
+.br
+.ti -1c
+.RI "void \fBUnselect\fP (int pageIndex=\-1)"
+.br
+.ti -1c
+.RI "\fBHotItem\fP \fBGetSelectedItem\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetNextSelectableIndex\fP (int pageIndex=\-1)"
+.br
+.ti -1c
+.RI "int \fBGetPrevSelectableIndex\fP (int pageIndex=\-1)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBcurrentPage\fP"
+.br
+.ti -1c
+.RI "int \fBitemsPerPage\fP = 6"
+.br
+.ti -1c
+.RI "int \fBid\fP"
+.br
+.ti -1c
+.RI "List< \fBHotbar\&.Page\fP > \fBpages\fP = new List<\fBHotbar\&.Page\fP>()"
+.br
+.ti -1c
+.RI "bool \fBdirty\fP"
+.br
+.ti -1c
+.RI "\fBWidgetHotbar\fP \fBactor\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBIDMainMenu\fP = 2"
+.br
+.ti -1c
+.RI "const int \fBIDBuild\fP = 3"
+.br
+.ti -1c
+.RI "const int \fBIDUser2\fP = 5"
+.br
+.ti -1c
+.RI "const int \fBIDUser3\fP = 6"
+.br
+.ti -1c
+.RI "const int \fBIDSpeed\fP = 7"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBHotbarManager\fP \fBmanager\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBHotItem\fP \fBSelectedItem\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBHotItem\fP \fBDefaultItem\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsLocked\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsUserHotbar\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBShowFunctionKey\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBHotbar\&.Page\fP \fBCurrentPage\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB6\fP of file \fBHotbar\&.cs\fP\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum Hotbar\&.Type"
+
+.PP
+Definition at line \fB288\fP of file \fBHotbar\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Hotbar\&.AddPage ()"
+
+.PP
+Definition at line \fB89\fP of file \fBHotbar\&.cs\fP\&.
+.SS "\fBHotItem\fP Hotbar\&.GetItem (int index, int pageIndex = \fR\-1\fP)"
+
+.PP
+Definition at line \fB135\fP of file \fBHotbar\&.cs\fP\&.
+.SS "int Hotbar\&.GetNextSelectableIndex (int pageIndex = \fR\-1\fP)"
+
+.PP
+Definition at line \fB217\fP of file \fBHotbar\&.cs\fP\&.
+.SS "int Hotbar\&.GetPrevSelectableIndex (int pageIndex = \fR\-1\fP)"
+
+.PP
+Definition at line \fB234\fP of file \fBHotbar\&.cs\fP\&.
+.SS "\fBHotItem\fP Hotbar\&.GetSelectedItem ()"
+
+.PP
+Definition at line \fB206\fP of file \fBHotbar\&.cs\fP\&.
+.SS "void Hotbar\&.Remove (\fBHotItem\fP item)"
+
+.PP
+Definition at line \fB120\fP of file \fBHotbar\&.cs\fP\&.
+.SS "void Hotbar\&.Select (\fBHotItem\fP item)"
+
+.PP
+Definition at line \fB171\fP of file \fBHotbar\&.cs\fP\&.
+.SS "\fBHotItem\fP Hotbar\&.SetItem (\fBHotItem\fP item, int index = \fR\-1\fP, int pageIndex = \fR\-1\fP, bool refreshActor = \fRfalse\fP)"
+
+.PP
+Definition at line \fB141\fP of file \fBHotbar\&.cs\fP\&.
+.SS "void Hotbar\&.SetPage (int pageIndex)"
+
+.PP
+Definition at line \fB114\fP of file \fBHotbar\&.cs\fP\&.
+.SS "void Hotbar\&.SetSlotNum (int a)"
+
+.PP
+Definition at line \fB79\fP of file \fBHotbar\&.cs\fP\&.
+.SS "void Hotbar\&.ToggleDisable (\fBHotItem\fP item)"
+
+.PP
+Definition at line \fB178\fP of file \fBHotbar\&.cs\fP\&.
+.SS "void Hotbar\&.Unselect (int pageIndex = \fR\-1\fP)"
+
+.PP
+Definition at line \fB190\fP of file \fBHotbar\&.cs\fP\&.
+.SS "void Hotbar\&.ValidatePage (\fBHotbar\&.Page\fP page, int num = \fR\-1\fP)"
+
+.PP
+Definition at line \fB97\fP of file \fBHotbar\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBWidgetHotbar\fP Hotbar\&.actor"
+
+.PP
+Definition at line \fB285\fP of file \fBHotbar\&.cs\fP\&.
+.SS "int Hotbar\&.currentPage"
+
+.PP
+Definition at line \fB267\fP of file \fBHotbar\&.cs\fP\&.
+.SS "bool Hotbar\&.dirty"
+
+.PP
+Definition at line \fB282\fP of file \fBHotbar\&.cs\fP\&.
+.SS "int Hotbar\&.id"
+
+.PP
+Definition at line \fB275\fP of file \fBHotbar\&.cs\fP\&.
+.SS "const int Hotbar\&.IDBuild = 3\fR [static]\fP"
+
+.PP
+Definition at line \fB254\fP of file \fBHotbar\&.cs\fP\&.
+.SS "const int Hotbar\&.IDMainMenu = 2\fR [static]\fP"
+
+.PP
+Definition at line \fB251\fP of file \fBHotbar\&.cs\fP\&.
+.SS "const int Hotbar\&.IDSpeed = 7\fR [static]\fP"
+
+.PP
+Definition at line \fB263\fP of file \fBHotbar\&.cs\fP\&.
+.SS "const int Hotbar\&.IDUser2 = 5\fR [static]\fP"
+
+.PP
+Definition at line \fB257\fP of file \fBHotbar\&.cs\fP\&.
+.SS "const int Hotbar\&.IDUser3 = 6\fR [static]\fP"
+
+.PP
+Definition at line \fB260\fP of file \fBHotbar\&.cs\fP\&.
+.SS "int Hotbar\&.itemsPerPage = 6"
+
+.PP
+Definition at line \fB271\fP of file \fBHotbar\&.cs\fP\&.
+.SS "List<\fBHotbar\&.Page\fP> Hotbar\&.pages = new List<\fBHotbar\&.Page\fP>()"
+
+.PP
+Definition at line \fB279\fP of file \fBHotbar\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBHotbar\&.Page\fP Hotbar\&.CurrentPage\fR [get]\fP"
+
+.PP
+Definition at line \fB70\fP of file \fBHotbar\&.cs\fP\&.
+.SS "\fBHotItem\fP Hotbar\&.DefaultItem\fR [get]\fP"
+
+.PP
+Definition at line \fB30\fP of file \fBHotbar\&.cs\fP\&.
+.SS "bool Hotbar\&.IsLocked\fR [get]\fP"
+
+.PP
+Definition at line \fB40\fP of file \fBHotbar\&.cs\fP\&.
+.SS "bool Hotbar\&.IsUserHotbar\fR [get]\fP"
+
+.PP
+Definition at line \fB50\fP of file \fBHotbar\&.cs\fP\&.
+.SS "\fBHotbarManager\fP Hotbar\&.manager\fR [get]\fP"
+
+.PP
+Definition at line \fB10\fP of file \fBHotbar\&.cs\fP\&.
+.SS "\fBHotItem\fP Hotbar\&.SelectedItem\fR [get]\fP"
+
+.PP
+Definition at line \fB20\fP of file \fBHotbar\&.cs\fP\&.
+.SS "bool Hotbar\&.ShowFunctionKey\fR [get]\fP"
+
+.PP
+Definition at line \fB60\fP of file \fBHotbar\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

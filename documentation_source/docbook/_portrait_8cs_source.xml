@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__portrait_8cs_source" xml:lang="en-US">
+<title>Portrait.cs</title>
+<indexterm><primary>Elin/Portrait.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__portrait_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__portrait_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__portrait_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>System.Linq;
+<anchor xml:id="__portrait_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>System.Runtime.CompilerServices;
+<anchor xml:id="__portrait_8cs_source_1l00005"/>00005 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__portrait_8cs_source_1l00006"/>00006 <emphasis role="keyword">using&#32;</emphasis>UnityEngine.UI;
+<anchor xml:id="__portrait_8cs_source_1l00007"/>00007 
+<anchor xml:id="__portrait_8cs_source_1l00008"/>00008 <emphasis role="comment">//&#32;Token:&#32;0x02000512&#32;RID:&#32;1298</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00009"/><link linkend="_class_portrait">00009</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_portrait">Portrait</link>&#32;:&#32;UIButton
+<anchor xml:id="__portrait_8cs_source_1l00010"/>00010 {
+<anchor xml:id="__portrait_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060022C8&#32;RID:&#32;8904&#32;RVA:&#32;0x000C1DFC&#32;File&#32;Offset:&#32;0x000BFFFC</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;List&lt;ModItem&lt;Sprite&gt;&gt;&#32;ListPlayerPortraits(<emphasis role="keywordtype">int</emphasis>&#32;gender,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;nullPortrait&#32;=&#32;<emphasis role="keyword">false</emphasis>)
+<anchor xml:id="__portrait_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;List&lt;ModItem&lt;Sprite&gt;&gt;&#32;list&#32;=&#32;<link linkend="_class_portrait">Portrait</link>.ListPortraits(gender,&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>).Concat(<link linkend="_class_portrait">Portrait</link>.ListPortraits(gender,&#32;<emphasis role="stringliteral">&quot;guard&quot;</emphasis>)).Concat(<link linkend="_class_portrait">Portrait</link>.ListPortraits(gender,&#32;<emphasis role="stringliteral">&quot;special&quot;</emphasis>)).Concat(<link linkend="_class_portrait">Portrait</link>.ListPortraits(gender,&#32;<emphasis role="stringliteral">&quot;foxfolk&quot;</emphasis>)).ToList&lt;ModItem&lt;Sprite&gt;&gt;();
+<anchor xml:id="__portrait_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(nullPortrait)
+<anchor xml:id="__portrait_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.Insert(0,&#32;<emphasis role="keyword">new</emphasis>&#32;ModItem&lt;Sprite&gt;(<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>));
+<anchor xml:id="__portrait_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;list;
+<anchor xml:id="__portrait_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00021"/>00021 
+<anchor xml:id="__portrait_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060022C9&#32;RID:&#32;8905&#32;RVA:&#32;0x000C1E60&#32;File&#32;Offset:&#32;0x000C0060</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;List&lt;ModItem&lt;Sprite&gt;&gt;&#32;ListPortraits(<emphasis role="keywordtype">string</emphasis>&#32;idDict)
+<anchor xml:id="__portrait_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;List&lt;ModItem&lt;Sprite&gt;&gt;&#32;list&#32;=&#32;<link linkend="_class_portrait">Portrait</link>.dictList.TryGetValue(idDict,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__portrait_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(list&#32;==&#32;<emphasis role="keyword">null</emphasis>&#32;||&#32;list.Count&#32;==&#32;0)
+<anchor xml:id="__portrait_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;ModItem&lt;Sprite&gt;&gt;();
+<anchor xml:id="__portrait_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(ModItem&lt;Sprite&gt;&#32;modItem&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_portrait">Portrait</link>.modPortraits.list)
+<anchor xml:id="__portrait_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(modItem.id.Contains(idDict))
+<anchor xml:id="__portrait_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.Add(modItem);
+<anchor xml:id="__portrait_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_portrait">Portrait</link>.dictList.Add(idDict,&#32;list);
+<anchor xml:id="__portrait_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;list;
+<anchor xml:id="__portrait_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00040"/>00040 
+<anchor xml:id="__portrait_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060022CA&#32;RID:&#32;8906&#32;RVA:&#32;0x000C1EF0&#32;File&#32;Offset:&#32;0x000C00F0</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;List&lt;ModItem&lt;Sprite&gt;&gt;&#32;ListPortraits(<emphasis role="keywordtype">int</emphasis>&#32;gender,&#32;<emphasis role="keywordtype">string</emphasis>&#32;cat)
+<anchor xml:id="__portrait_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(cat.IsEmpty())
+<anchor xml:id="__portrait_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cat&#32;=&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;key&#32;=&#32;cat&#32;+&#32;gender.ToString();
+<anchor xml:id="__portrait_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;List&lt;ModItem&lt;Sprite&gt;&gt;&#32;list&#32;=&#32;<link linkend="_class_portrait">Portrait</link>.dictList.TryGetValue(key,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__portrait_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(list&#32;==&#32;<emphasis role="keyword">null</emphasis>&#32;||&#32;list.Count&#32;==&#32;0)
+<anchor xml:id="__portrait_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;ModItem&lt;Sprite&gt;&gt;();
+<anchor xml:id="__portrait_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(ModItem&lt;Sprite&gt;&#32;modItem&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_portrait">Portrait</link>.modPortraits.list)
+<anchor xml:id="__portrait_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>[]&#32;array&#32;=&#32;modItem.id.Split(<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;StringSplitOptions.None)[0].Split(<emphasis role="charliteral">&apos;_&apos;</emphasis>,&#32;StringSplitOptions.None);
+<anchor xml:id="__portrait_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!(array[0]&#32;!=&#32;cat))
+<anchor xml:id="__portrait_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;(array.Length&#32;&gt;&#32;1)&#32;?&#32;((array[1]&#32;==&#32;<emphasis role="stringliteral">&quot;m&quot;</emphasis>)&#32;?&#32;2&#32;:&#32;((array[1]&#32;==&#32;<emphasis role="stringliteral">&quot;f&quot;</emphasis>)&#32;?&#32;1&#32;:&#32;0))&#32;:&#32;0;
+<anchor xml:id="__portrait_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;==&#32;0&#32;||&#32;gender&#32;==&#32;0&#32;||&#32;gender&#32;==&#32;num)
+<anchor xml:id="__portrait_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.Add(modItem);
+<anchor xml:id="__portrait_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_portrait">Portrait</link>.dictList.Add(key,&#32;list);
+<anchor xml:id="__portrait_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;list;
+<anchor xml:id="__portrait_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00069"/>00069 
+<anchor xml:id="__portrait_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060022CB&#32;RID:&#32;8907&#32;RVA:&#32;0x000C1FF8&#32;File&#32;Offset:&#32;0x000C01F8</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;GetRandomPortrait(<emphasis role="keywordtype">string</emphasis>&#32;idDict)
+<anchor xml:id="__portrait_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_portrait">Portrait</link>.ListPortraits(idDict).RandomItem&lt;ModItem&lt;Sprite&gt;&gt;().<emphasis role="keywordtype">id</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00075"/>00075 
+<anchor xml:id="__portrait_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060022CC&#32;RID:&#32;8908&#32;RVA:&#32;0x000C200A&#32;File&#32;Offset:&#32;0x000C020A</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;GetRandomPortrait(<emphasis role="keywordtype">int</emphasis>&#32;gender,&#32;<emphasis role="keywordtype">string</emphasis>&#32;cat)
+<anchor xml:id="__portrait_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_portrait">Portrait</link>.ListPortraits(gender,&#32;cat).RandomItem&lt;ModItem&lt;Sprite&gt;&gt;().<emphasis role="keywordtype">id</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00081"/>00081 
+<anchor xml:id="__portrait_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060022CD&#32;RID:&#32;8909&#32;RVA:&#32;0x000C201D&#32;File&#32;Offset:&#32;0x000C021D</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Exists(<emphasis role="keywordtype">string</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>)
+<anchor xml:id="__portrait_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_portrait">Portrait</link>.modPortraits.dict.ContainsKey(<emphasis role="keywordtype">id</emphasis>);
+<anchor xml:id="__portrait_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00087"/>00087 
+<anchor xml:id="__portrait_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060022CE&#32;RID:&#32;8910&#32;RVA:&#32;0x000C2030&#32;File&#32;Offset:&#32;0x000C0230</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetPerson(<link linkend="_class_person">Person</link>&#32;p)
+<anchor xml:id="__portrait_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(p.hasChara)
+<anchor xml:id="__portrait_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetChara(p.chara,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__portrait_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!p.idPortrait.IsEmpty())
+<anchor xml:id="__portrait_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Rand.SetSeed(p.uidChara);
+<anchor xml:id="__portrait_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetPortrait(p.idPortrait,&#32;PCCManager.current.GetBodySet(<emphasis role="stringliteral">&quot;female&quot;</emphasis>).map[<emphasis role="stringliteral">&quot;hair&quot;</emphasis>].GetRandomColor());
+<anchor xml:id="__portrait_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Rand.SetSeed(-1);
+<anchor xml:id="__portrait_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetPortrait(p.source.portrait,&#32;<emphasis role="keywordflow">default</emphasis>(Color));
+<anchor xml:id="__portrait_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00105"/>00105 
+<anchor xml:id="__portrait_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060022CF&#32;RID:&#32;8911&#32;RVA:&#32;0x000C20BC&#32;File&#32;Offset:&#32;0x000C02BC</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetChara(<link linkend="_class_chara">Chara</link>&#32;c,&#32;PCCData&#32;pccData&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__portrait_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.enabled&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.overlay.enabled&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.imageChara)
+<anchor xml:id="__portrait_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.imageChara.sprite&#32;=&#32;c.GetSprite(0);
+<anchor xml:id="__portrait_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.imageChara.SetNativeSize();
+<anchor xml:id="__portrait_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.fixSpritePos)
+<anchor xml:id="__portrait_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.imageChara.transform.localScale&#32;=&#32;(c.IsPCC&#32;?&#32;<emphasis role="keyword">new</emphasis>&#32;Vector3(1.3f,&#32;1.4f,&#32;1f)&#32;:&#32;<emphasis role="keyword">new</emphasis>&#32;Vector3(1f,&#32;1f,&#32;1f))&#32;*&#32;this.charaScale;
+<anchor xml:id="__portrait_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.imageChara.rectTransform.pivot&#32;=&#32;(c.IsPCC&#32;?&#32;<emphasis role="keyword">new</emphasis>&#32;Vector2(0.5f,&#32;0.4f)&#32;:&#32;<emphasis role="keyword">new</emphasis>&#32;Vector2(0.5f,&#32;0.2f));
+<anchor xml:id="__portrait_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.imageChara.rectTransform.anchoredPosition&#32;=&#32;(c.IsPCC&#32;?&#32;<emphasis role="keyword">new</emphasis>&#32;Vector2(-25f,&#32;20f)&#32;:&#32;<emphasis role="keyword">new</emphasis>&#32;Vector2(-25f,&#32;20f));
+<anchor xml:id="__portrait_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.imageFaith)
+<anchor xml:id="__portrait_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.imageFaith.sprite&#32;=&#32;c.faith.GetSprite();
+<anchor xml:id="__portrait_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!c.GetIdPortrait().IsEmpty()&#32;&amp;&amp;&#32;<link linkend="_class_portrait">Portrait</link>.modPortraits.GetItem(c.GetIdPortrait(),&#32;<emphasis role="keyword">true</emphasis>)&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__portrait_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pccData&#32;==&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;c.isChara)
+<anchor xml:id="__portrait_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pccData&#32;=&#32;c.Chara.pccData;
+<anchor xml:id="__portrait_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Color&#32;colorOverlay&#32;=&#32;(pccData&#32;!=&#32;<emphasis role="keyword">null</emphasis>)&#32;?&#32;pccData.GetHairColor(<emphasis role="keyword">true</emphasis>)&#32;:&#32;Color.white;
+<anchor xml:id="__portrait_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.overlay.enabled&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pccData&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__portrait_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(c.GetInt(105,&#32;<emphasis role="keyword">null</emphasis>)&#32;!=&#32;0)
+<anchor xml:id="__portrait_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;colorOverlay&#32;=&#32;IntColor.FromInt(c.GetInt(105,&#32;<emphasis role="keyword">null</emphasis>));
+<anchor xml:id="__portrait_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Rand.SetSeed(c.uid);
+<anchor xml:id="__portrait_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;colorOverlay&#32;=&#32;PCCManager.current.GetBodySet(<emphasis role="stringliteral">&quot;female&quot;</emphasis>).map[<emphasis role="stringliteral">&quot;hair&quot;</emphasis>].GetRandomColor();
+<anchor xml:id="__portrait_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Rand.SetSeed(-1);
+<anchor xml:id="__portrait_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(c.id&#32;==&#32;<emphasis role="stringliteral">&quot;shojo&quot;</emphasis>)
+<anchor xml:id="__portrait_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.overlay.enabled&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetPortrait(c.GetIdPortrait(),&#32;colorOverlay);
+<anchor xml:id="__portrait_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.hideIfNoPortrait)
+<anchor xml:id="__portrait_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.enabled&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.overlay.enabled&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.spriteNoPortrait)
+<anchor xml:id="__portrait_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetPortrait(<emphasis role="keyword">false</emphasis>,&#32;this.spriteNoPortrait,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keywordflow">default</emphasis>(Color),&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__portrait_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetPortrait(<emphasis role="keyword">false</emphasis>,&#32;c.GetSprite(0),&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keywordflow">default</emphasis>(Color),&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__portrait_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;c.SetImage(this.portrait);
+<anchor xml:id="__portrait_8cs_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.transform.localScale&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Vector3(1f,&#32;1f,&#32;1f);
+<anchor xml:id="__portrait_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.preserveAspect&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.SetNativeSize();
+<anchor xml:id="__portrait_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.Rect().SetAnchor(0.5f,&#32;0f,&#32;0.5f,&#32;0f);
+<anchor xml:id="__portrait_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.Rect().SetPivot(0.5f,&#32;0f);
+<anchor xml:id="__portrait_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.Rect().anchoredPosition&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Vector2(0f,&#32;0f);
+<anchor xml:id="__portrait_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.material&#32;=&#32;<link linkend="_class_e_class">EClass</link>.core.refs.matUIPortraitChara;
+<anchor xml:id="__portrait_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00175"/>00175 
+<anchor xml:id="__portrait_8cs_source_1l00176"/>00176 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060022D0&#32;RID:&#32;8912&#32;RVA:&#32;0x000C2408&#32;File&#32;Offset:&#32;0x000C0608</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetPortrait(<emphasis role="keywordtype">string</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>,&#32;Color&#32;colorOverlay&#32;=&#32;<emphasis role="keywordflow">default</emphasis>(Color))
+<anchor xml:id="__portrait_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Sprite&#32;@<emphasis role="keywordtype">object</emphasis>&#32;=&#32;<link linkend="_class_portrait">Portrait</link>.modPortraits.GetItem(<emphasis role="keywordtype">id</emphasis>,&#32;<emphasis role="keyword">false</emphasis>).GetObject(<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__portrait_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Sprite&#32;object2&#32;=&#32;<link linkend="_class_portrait">Portrait</link>.modOverlays.GetObject(<emphasis role="keywordtype">id</emphasis>&#32;+&#32;<emphasis role="stringliteral">&quot;-overlay&quot;</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__portrait_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Sprite&#32;spriteFull&#32;=&#32;(this.enableFull&#32;&amp;&amp;&#32;this.imageFull)&#32;?&#32;<link linkend="_class_portrait">Portrait</link>.modFull.GetObject(<emphasis role="keywordtype">id</emphasis>&#32;+&#32;<emphasis role="stringliteral">&quot;-full&quot;</emphasis>,&#32;<emphasis role="keyword">null</emphasis>)&#32;:&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetPortrait(<emphasis role="keyword">true</emphasis>,&#32;@<emphasis role="keywordtype">object</emphasis>,&#32;object2,&#32;colorOverlay,&#32;spriteFull);
+<anchor xml:id="__portrait_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00184"/>00184 
+<anchor xml:id="__portrait_8cs_source_1l00185"/>00185 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060022D1&#32;RID:&#32;8913&#32;RVA:&#32;0x000C247C&#32;File&#32;Offset:&#32;0x000C067C</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetPortrait(<emphasis role="keywordtype">bool</emphasis>&#32;isPortrait,&#32;Sprite&#32;spritePortrait,&#32;Sprite&#32;spriteOverlay&#32;=&#32;<emphasis role="keyword">null</emphasis>,&#32;Color&#32;colorOverlay&#32;=&#32;<emphasis role="keywordflow">default</emphasis>(Color),&#32;Sprite&#32;spriteFull&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__portrait_8cs_source_1l00187"/>00187 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00188"/>00188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_portrait">Portrait</link>.&lt;&gt;c__DisplayClass29_0&#32;CS$&lt;&gt;8__locals1;
+<anchor xml:id="__portrait_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CS$&lt;&gt;8__locals1.isPortrait&#32;=&#32;isPortrait;
+<anchor xml:id="__portrait_8cs_source_1l00190"/>00190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CS$&lt;&gt;8__locals1.&lt;&gt;4__this&#32;=&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00191"/>00191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.filter&#32;=&#32;((CS$&lt;&gt;8__locals1.isPortrait&#32;&amp;&amp;&#32;Core.Instance.config.test.aaPortrait)&#32;?&#32;FilterMode.Bilinear&#32;:&#32;FilterMode.Point);
+<anchor xml:id="__portrait_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.rectTransform.anchorMin&#32;=&#32;this.overlay.rectTransform.anchorMin;
+<anchor xml:id="__portrait_8cs_source_1l00193"/>00193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.rectTransform.anchorMax&#32;=&#32;this.overlay.rectTransform.anchorMax;
+<anchor xml:id="__portrait_8cs_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.rectTransform.sizeDelta&#32;=&#32;this.overlay.rectTransform.sizeDelta;
+<anchor xml:id="__portrait_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(spritePortrait)
+<anchor xml:id="__portrait_8cs_source_1l00196"/>00196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.sprite&#32;=&#32;spritePortrait;
+<anchor xml:id="__portrait_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.&lt;SetPortrait&gt;g__FixTexture|29_0(spritePortrait,&#32;ref&#32;CS$&lt;&gt;8__locals1);
+<anchor xml:id="__portrait_8cs_source_1l00199"/>00199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00200"/>00200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.overlay)
+<anchor xml:id="__portrait_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00202"/>00202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.&lt;SetPortrait&gt;g__FixTexture|29_0(spriteOverlay,&#32;ref&#32;CS$&lt;&gt;8__locals1);
+<anchor xml:id="__portrait_8cs_source_1l00203"/>00203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.overlay.sprite&#32;=&#32;spriteOverlay;
+<anchor xml:id="__portrait_8cs_source_1l00204"/>00204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.overlay.color&#32;=&#32;colorOverlay.SetAlpha(Core.Instance.gameSetting.render.alphaHair);
+<anchor xml:id="__portrait_8cs_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.overlay.SetActive(spriteOverlay);
+<anchor xml:id="__portrait_8cs_source_1l00206"/>00206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00207"/>00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.enableFull&#32;&amp;&amp;&#32;this.imageFull)
+<anchor xml:id="__portrait_8cs_source_1l00208"/>00208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.&lt;SetPortrait&gt;g__FixTexture|29_0(spriteFull,&#32;ref&#32;CS$&lt;&gt;8__locals1);
+<anchor xml:id="__portrait_8cs_source_1l00210"/>00210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.imageFull.sprite&#32;=&#32;spriteFull;
+<anchor xml:id="__portrait_8cs_source_1l00211"/>00211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.gameObject.SetActive(!spriteFull);
+<anchor xml:id="__portrait_8cs_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.imageFull.SetActive(spriteFull);
+<anchor xml:id="__portrait_8cs_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.showPortrait)
+<anchor xml:id="__portrait_8cs_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00216"/>00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.SetActive(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__portrait_8cs_source_1l00217"/>00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.overlay.SetActive(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__portrait_8cs_source_1l00218"/>00218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00219"/>00219 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00220"/>00220 
+<anchor xml:id="__portrait_8cs_source_1l00221"/>00221 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060022D4&#32;RID:&#32;8916&#32;RVA:&#32;0x000C268C&#32;File&#32;Offset:&#32;0x000C088C</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00222"/>00222 &#32;&#32;&#32;&#32;[CompilerGenerated]
+<anchor xml:id="__portrait_8cs_source_1l00223"/>00223 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;void&#32;&lt;SetPortrait&gt;g__FixTexture|29_0(Sprite&#32;s,&#32;ref&#32;<link linkend="_class_portrait">Portrait</link>.&lt;&gt;c__DisplayClass29_0&#32;A_2)
+<anchor xml:id="__portrait_8cs_source_1l00224"/>00224 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!s&#32;||&#32;!A_2.isPortrait)
+<anchor xml:id="__portrait_8cs_source_1l00226"/>00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00228"/>00228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;s.texture.wrapMode&#32;=&#32;TextureWrapMode.Clamp;
+<anchor xml:id="__portrait_8cs_source_1l00230"/>00230 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(s.texture.filterMode&#32;!=&#32;<emphasis role="keyword">this</emphasis>.filter)
+<anchor xml:id="__portrait_8cs_source_1l00231"/>00231 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__portrait_8cs_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;s.texture.filterMode&#32;=&#32;this.filter;
+<anchor xml:id="__portrait_8cs_source_1l00233"/>00233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00234"/>00234 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__portrait_8cs_source_1l00235"/>00235 
+<anchor xml:id="__portrait_8cs_source_1l00236"/>00236 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001218&#32;RID:&#32;4632</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00237"/>00237 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;ModItemList&lt;Sprite&gt;&#32;modPortraitBGFs&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;ModItemList&lt;Sprite&gt;(3);
+<anchor xml:id="__portrait_8cs_source_1l00238"/>00238 
+<anchor xml:id="__portrait_8cs_source_1l00239"/>00239 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001219&#32;RID:&#32;4633</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00240"/>00240 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;ModItemList&lt;Sprite&gt;&#32;modPortraitBGs&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;ModItemList&lt;Sprite&gt;(3);
+<anchor xml:id="__portrait_8cs_source_1l00241"/>00241 
+<anchor xml:id="__portrait_8cs_source_1l00242"/>00242 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400121A&#32;RID:&#32;4634</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00243"/>00243 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;ModItemList&lt;Sprite&gt;&#32;modPortraits&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;ModItemList&lt;Sprite&gt;(3);
+<anchor xml:id="__portrait_8cs_source_1l00244"/>00244 
+<anchor xml:id="__portrait_8cs_source_1l00245"/>00245 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400121B&#32;RID:&#32;4635</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00246"/>00246 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;ModItemList&lt;Sprite&gt;&#32;modOverlays&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;ModItemList&lt;Sprite&gt;(3);
+<anchor xml:id="__portrait_8cs_source_1l00247"/>00247 
+<anchor xml:id="__portrait_8cs_source_1l00248"/>00248 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400121C&#32;RID:&#32;4636</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00249"/>00249 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;ModItemList&lt;Sprite&gt;&#32;modFull&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;ModItemList&lt;Sprite&gt;(3);
+<anchor xml:id="__portrait_8cs_source_1l00250"/>00250 
+<anchor xml:id="__portrait_8cs_source_1l00251"/>00251 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400121D&#32;RID:&#32;4637</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00252"/>00252 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;Dictionary&lt;string,&#32;List&lt;ModItem&lt;Sprite&gt;&gt;&gt;&#32;dictList&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Dictionary&lt;string,&#32;List&lt;ModItem&lt;Sprite&gt;&gt;&gt;();
+<anchor xml:id="__portrait_8cs_source_1l00253"/>00253 
+<anchor xml:id="__portrait_8cs_source_1l00254"/>00254 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400121E&#32;RID:&#32;4638</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00255"/>00255 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;HashSet&lt;string&gt;&#32;allIds&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;HashSet&lt;string&gt;();
+<anchor xml:id="__portrait_8cs_source_1l00256"/>00256 
+<anchor xml:id="__portrait_8cs_source_1l00257"/>00257 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400121F&#32;RID:&#32;4639</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00258"/>00258 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Image&#32;portrait;
+<anchor xml:id="__portrait_8cs_source_1l00259"/>00259 
+<anchor xml:id="__portrait_8cs_source_1l00260"/>00260 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001220&#32;RID:&#32;4640</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00261"/>00261 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Image&#32;overlay;
+<anchor xml:id="__portrait_8cs_source_1l00262"/>00262 
+<anchor xml:id="__portrait_8cs_source_1l00263"/>00263 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001221&#32;RID:&#32;4641</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00264"/>00264 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Image&#32;imageChara;
+<anchor xml:id="__portrait_8cs_source_1l00265"/>00265 
+<anchor xml:id="__portrait_8cs_source_1l00266"/>00266 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001222&#32;RID:&#32;4642</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00267"/>00267 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Image&#32;imageFaith;
+<anchor xml:id="__portrait_8cs_source_1l00268"/>00268 
+<anchor xml:id="__portrait_8cs_source_1l00269"/>00269 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001223&#32;RID:&#32;4643</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00270"/>00270 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Image&#32;imageFull;
+<anchor xml:id="__portrait_8cs_source_1l00271"/>00271 
+<anchor xml:id="__portrait_8cs_source_1l00272"/>00272 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001224&#32;RID:&#32;4644</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00273"/>00273 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Image&#32;imageFrame;
+<anchor xml:id="__portrait_8cs_source_1l00274"/>00274 
+<anchor xml:id="__portrait_8cs_source_1l00275"/>00275 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001225&#32;RID:&#32;4645</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00276"/>00276 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Sprite&#32;spriteNoPortrait;
+<anchor xml:id="__portrait_8cs_source_1l00277"/>00277 
+<anchor xml:id="__portrait_8cs_source_1l00278"/>00278 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001226&#32;RID:&#32;4646</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00279"/>00279 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;enableFull&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00280"/>00280 
+<anchor xml:id="__portrait_8cs_source_1l00281"/>00281 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001227&#32;RID:&#32;4647</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00282"/>00282 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;hideIfNoPortrait;
+<anchor xml:id="__portrait_8cs_source_1l00283"/>00283 
+<anchor xml:id="__portrait_8cs_source_1l00284"/>00284 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001228&#32;RID:&#32;4648</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00285"/>00285 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;fixSpritePos&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00286"/>00286 
+<anchor xml:id="__portrait_8cs_source_1l00287"/>00287 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001229&#32;RID:&#32;4649</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00288"/>00288 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;showPortrait&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__portrait_8cs_source_1l00289"/>00289 
+<anchor xml:id="__portrait_8cs_source_1l00290"/>00290 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400122A&#32;RID:&#32;4650</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00291"/>00291 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;charaScale&#32;=&#32;1f;
+<anchor xml:id="__portrait_8cs_source_1l00292"/>00292 
+<anchor xml:id="__portrait_8cs_source_1l00293"/>00293 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400122B&#32;RID:&#32;4651</emphasis>
+<anchor xml:id="__portrait_8cs_source_1l00294"/>00294 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;FilterMode&#32;filter;
+<anchor xml:id="__portrait_8cs_source_1l00295"/>00295 }
+</programlisting></section>

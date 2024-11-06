@@ -1,0 +1,57 @@
+\doxysection{AI\+\_\+\+Deconstruct.\+cs}
+\hypertarget{_a_i___deconstruct_8cs_source}{}\label{_a_i___deconstruct_8cs_source}\index{Elin/AI\_Deconstruct.cs@{Elin/AI\_Deconstruct.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x020001F7\ RID:\ 503}}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00006}\mbox{\hyperlink{class_a_i___deconstruct}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_a_i___deconstruct}{AI\_Deconstruct}}\ :\ \mbox{\hyperlink{class_a_i_act}{AIAct}}}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000E6D\ RID:\ 3693\ RVA:\ 0x0006D1DA\ File\ Offset:\ 0x0006B3DA}}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsValidTarget()}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.target\ !=\ \textcolor{keyword}{null}\ \&\&\ this.target.ExistsOnMap\ \&\&\ this.target.isDeconstructing;}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000E6E\ RID:\ 3694\ RVA:\ 0x0006D1FE\ File\ Offset:\ 0x0006B3FE}}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ IEnumerable<\mbox{\hyperlink{class_a_i_act}{AIAct}}.Status>\ Run()}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.target\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ this.target.SetDeconstruct(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ this.target\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.props.deconstructing.RandomItem<\mbox{\hyperlink{class_card}{Card}}>();}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.IsValidTarget())}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ this.Cancel();}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ base.DoGoto(this.target,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_progress___custom}{Progress\_Custom}}\ progress\_Custom\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_progress___custom}{Progress\_Custom}}();}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ progress\_Custom.canProgress\ =\ (()\ =>\ this.IsValidTarget());}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ progress\_Custom.onProgressBegin\ =\ delegate()}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ progress\_Custom.onProgress\ =\ delegate(\mbox{\hyperlink{class_progress___custom}{Progress\_Custom}}\ p)}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ this.owner.PlaySound(this.target.material.GetSoundImpact(\textcolor{keyword}{null}),\ 1f,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ this.target.renderer.PlayAnime(AnimeID.Shiver,\ \textcolor{keywordflow}{default}(Vector3),\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ progress\_Custom.onProgressComplete\ =\ delegate()}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ this.target.Deconstruct();}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_progress___custom}{Progress\_Custom}}\ seq\ =\ progress\_Custom.SetDuration(30,\ 2);}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ base.Do(seq,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000D4C\ RID:\ 3404}}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00050}00050\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_card}{Card}}\ target;}
+\DoxyCodeLine{\Hypertarget{_a_i___deconstruct_8cs_source_l00051}00051\ \}}
+
+\end{DoxyCode}

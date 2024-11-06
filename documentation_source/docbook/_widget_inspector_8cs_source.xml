@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__widget_inspector_8cs_source" xml:lang="en-US">
+<title>WidgetInspector.cs</title>
+<indexterm><primary>Elin/WidgetInspector.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__widget_inspector_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__widget_inspector_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__widget_inspector_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>Newtonsoft.Json;
+<anchor xml:id="__widget_inspector_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__widget_inspector_8cs_source_1l00005"/>00005 <emphasis role="keyword">using&#32;</emphasis>UnityEngine.UI;
+<anchor xml:id="__widget_inspector_8cs_source_1l00006"/>00006 
+<anchor xml:id="__widget_inspector_8cs_source_1l00007"/>00007 <emphasis role="comment">//&#32;Token:&#32;0x0200061D&#32;RID:&#32;1565</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00008"/><link linkend="_class_widget_inspector">00008</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_widget_inspector">WidgetInspector</link>&#32;:&#32;<link linkend="_class_widget">Widget</link>
+<anchor xml:id="__widget_inspector_8cs_source_1l00009"/>00009 {
+<anchor xml:id="__widget_inspector_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000C89&#32;RID:&#32;3209</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06002B96&#32;RID:&#32;11158&#32;RVA:&#32;0x000F5163&#32;File&#32;Offset:&#32;0x000F3363</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_point_target">PointTarget</link>&#32;mouseTarget
+<anchor xml:id="__widget_inspector_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_e_mono">EMono</link>.scene.mouseTarget;
+<anchor xml:id="__widget_inspector_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00019"/>00019 
+<anchor xml:id="__widget_inspector_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002B97&#32;RID:&#32;11159&#32;RVA:&#32;0x000F516F&#32;File&#32;Offset:&#32;0x000F336F</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">object</emphasis>&#32;CreateExtra()
+<anchor xml:id="__widget_inspector_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_widget_inspector">WidgetInspector</link>.<link linkend="_class_widget_inspector_1_1_extra">Extra</link>();
+<anchor xml:id="__widget_inspector_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00025"/>00025 
+<anchor xml:id="__widget_inspector_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000C8A&#32;RID:&#32;3210</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06002B98&#32;RID:&#32;11160&#32;RVA:&#32;0x000F5176&#32;File&#32;Offset:&#32;0x000F3376</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_widget_inspector_1_1_extra">WidgetInspector.Extra</link>&#32;extra
+<anchor xml:id="__widget_inspector_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;base.config.extra&#32;as&#32;<link linkend="_class_widget_inspector">WidgetInspector</link>.<link linkend="_class_widget_inspector_1_1_extra">Extra</link>;
+<anchor xml:id="__widget_inspector_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00035"/>00035 
+<anchor xml:id="__widget_inspector_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002B99&#32;RID:&#32;11161&#32;RVA:&#32;0x000F5188&#32;File&#32;Offset:&#32;0x000F3388</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickPoint()
+<anchor xml:id="__widget_inspector_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00040"/>00040 
+<anchor xml:id="__widget_inspector_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002B9A&#32;RID:&#32;11162&#32;RVA:&#32;0x000F518A&#32;File&#32;Offset:&#32;0x000F338A</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Show()
+<anchor xml:id="__widget_inspector_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00045"/>00045 
+<anchor xml:id="__widget_inspector_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002B9B&#32;RID:&#32;11163&#32;RVA:&#32;0x000F518C&#32;File&#32;Offset:&#32;0x000F338C</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Hide()
+<anchor xml:id="__widget_inspector_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_widget_inspector">WidgetInspector</link>.Instance)
+<anchor xml:id="__widget_inspector_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_widget_inspector">WidgetInspector</link>.Instance.Close();
+<anchor xml:id="__widget_inspector_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00054"/>00054 
+<anchor xml:id="__widget_inspector_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002B9C&#32;RID:&#32;11164&#32;RVA:&#32;0x000F51A4&#32;File&#32;Offset:&#32;0x000F33A4</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnActivate()
+<anchor xml:id="__widget_inspector_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;WidgetInspector.Instance&#32;=&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="__widget_inspector_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.moldButton&#32;=&#32;this.layoutButton.CreateMold(<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__widget_inspector_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.moldText&#32;=&#32;this.layoutLog.CreateMold(<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__widget_inspector_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00062"/>00062 
+<anchor xml:id="__widget_inspector_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002B9D&#32;RID:&#32;11165&#32;RVA:&#32;0x000F51D0&#32;File&#32;Offset:&#32;0x000F33D0</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnDeactivate()
+<anchor xml:id="__widget_inspector_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;WidgetInspector.target&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__widget_inspector_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00068"/>00068 
+<anchor xml:id="__widget_inspector_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002B9E&#32;RID:&#32;11166&#32;RVA:&#32;0x000F51D8&#32;File&#32;Offset:&#32;0x000F33D8</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnUpdateInput()
+<anchor xml:id="__widget_inspector_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.selected)
+<anchor xml:id="__widget_inspector_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__widget_inspector_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_widget_inspector">WidgetInspector</link>.mouseTarget.hasValidTarget)
+<anchor xml:id="__widget_inspector_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this._Show();
+<anchor xml:id="__widget_inspector_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__widget_inspector_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_widget_inspector">WidgetInspector</link>.target&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__widget_inspector_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;WidgetInspector.target&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__widget_inspector_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.gameObject.SetActive(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__widget_inspector_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00087"/>00087 
+<anchor xml:id="__widget_inspector_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002B9F&#32;RID:&#32;11167&#32;RVA:&#32;0x000F5210&#32;File&#32;Offset:&#32;0x000F3410</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;_Show()
+<anchor xml:id="__widget_inspector_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.gameObject.SetActive(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__widget_inspector_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.extra.moveToMouse)
+<anchor xml:id="__widget_inspector_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.transform.position&#32;=&#32;Input.mousePosition&#32;+&#32;this.posFix;
+<anchor xml:id="__widget_inspector_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.ClampToScreen();
+<anchor xml:id="__widget_inspector_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.Sound.Play(<emphasis role="stringliteral">&quot;pop_inspector&quot;</emphasis>);
+<anchor xml:id="__widget_inspector_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SwitchPage(0);
+<anchor xml:id="__widget_inspector_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00100"/>00100 
+<anchor xml:id="__widget_inspector_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002BA0&#32;RID:&#32;11168&#32;RVA:&#32;0x000F5270&#32;File&#32;Offset:&#32;0x000F3470</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SwitchPage(<emphasis role="keywordtype">int</emphasis>&#32;_index)
+<anchor xml:id="__widget_inspector_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.index&#32;=&#32;_index;
+<anchor xml:id="__widget_inspector_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;WidgetInspector.target&#32;=&#32;this.list[this.index];
+<anchor xml:id="__widget_inspector_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.layoutButton.DestroyChildren(<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__widget_inspector_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.layoutLog.DestroyChildren(<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__widget_inspector_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.texts.Clear();
+<anchor xml:id="__widget_inspector_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;name;
+<anchor xml:id="__widget_inspector_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_widget_inspector">WidgetInspector</link>.target&#32;is&#32;<link linkend="_class_chara">Chara</link>)
+<anchor xml:id="__widget_inspector_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_chara">Chara</link>&#32;c&#32;=&#32;WidgetInspector.target&#32;as&#32;<link linkend="_class_chara">Chara</link>;
+<anchor xml:id="__widget_inspector_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;name&#32;=&#32;c.Name;
+<anchor xml:id="__widget_inspector_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;c.SetImage(this.iconCard);
+<anchor xml:id="__widget_inspector_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(c.IsHomeMember())
+<anchor xml:id="__widget_inspector_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.AddButton(<emphasis role="stringliteral">&quot;detail&quot;</emphasis>,&#32;delegate
+<anchor xml:id="__widget_inspector_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.AddLayer&lt;<link linkend="_class_layer_chara">LayerChara</link>&gt;().SetChara(c);
+<anchor xml:id="__widget_inspector_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__widget_inspector_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_widget_inspector">WidgetInspector</link>.target&#32;is&#32;<link linkend="_class_thing">Thing</link>)
+<anchor xml:id="__widget_inspector_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_thing">Thing</link>&#32;t&#32;=&#32;WidgetInspector.target&#32;as&#32;<link linkend="_class_thing">Thing</link>;
+<anchor xml:id="__widget_inspector_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;name&#32;=&#32;t.Name;
+<anchor xml:id="__widget_inspector_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;t.SetImage(this.iconCard);
+<anchor xml:id="__widget_inspector_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.AddButton(<emphasis role="stringliteral">&quot;detail&quot;</emphasis>,&#32;delegate
+<anchor xml:id="__widget_inspector_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.AddLayer&lt;<link linkend="_class_layer_info">LayerInfo</link>&gt;().Set(t,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__widget_inspector_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__widget_inspector_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;name&#32;=&#32;(WidgetInspector.target&#32;as&#32;<link linkend="_class_area">Area</link>).Name;
+<anchor xml:id="__widget_inspector_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.iconCard.rectTransform.pivot&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Vector2(1f,&#32;0f);
+<anchor xml:id="__widget_inspector_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.iconCard.SetActive(<link linkend="_class_widget_inspector">WidgetInspector</link>.target&#32;is&#32;<link linkend="_class_card">Card</link>);
+<anchor xml:id="__widget_inspector_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.iconArea.SetActive(<link linkend="_class_widget_inspector">WidgetInspector</link>.target&#32;is&#32;<link linkend="_class_area">Area</link>);
+<anchor xml:id="__widget_inspector_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.AddLog(<link linkend="_class_widget_inspector">WidgetInspector</link>.target.ToString(),&#32;<emphasis role="keywordflow">default</emphasis>(Color));
+<anchor xml:id="__widget_inspector_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textTitle.SetText(name);
+<anchor xml:id="__widget_inspector_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Refresh();
+<anchor xml:id="__widget_inspector_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RebuildLayout(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__widget_inspector_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00145"/>00145 
+<anchor xml:id="__widget_inspector_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002BA1&#32;RID:&#32;11169&#32;RVA:&#32;0x000F5416&#32;File&#32;Offset:&#32;0x000F3616</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Refresh()
+<anchor xml:id="__widget_inspector_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_widget_inspector">WidgetInspector</link>.target&#32;is&#32;<link linkend="_class_chara">Chara</link>)
+<anchor xml:id="__widget_inspector_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">object</emphasis>&#32;obj&#32;=&#32;<link linkend="_class_widget_inspector">WidgetInspector</link>.target;
+<anchor xml:id="__widget_inspector_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00154"/>00154 
+<anchor xml:id="__widget_inspector_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002BA2&#32;RID:&#32;11170&#32;RVA:&#32;0x000F542C&#32;File&#32;Offset:&#32;0x000F362C</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddLog(<emphasis role="keywordtype">string</emphasis>&#32;text,&#32;Color&#32;c&#32;=&#32;<emphasis role="keywordflow">default</emphasis>(Color))
+<anchor xml:id="__widget_inspector_8cs_source_1l00157"/>00157 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIText&#32;uitext&#32;=&#32;Util.Instantiate&lt;UIText&gt;(this.moldText,&#32;this.layoutLog);
+<anchor xml:id="__widget_inspector_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.texts.Add(uitext);
+<anchor xml:id="__widget_inspector_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uitext.SetText(text);
+<anchor xml:id="__widget_inspector_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.texts.Count&#32;&gt;&#32;<emphasis role="keyword">this</emphasis>.maxLog)
+<anchor xml:id="__widget_inspector_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UnityEngine.Object.DestroyImmediate(this.texts[0].gameObject);
+<anchor xml:id="__widget_inspector_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.texts.Remove(this.texts[0]);
+<anchor xml:id="__widget_inspector_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00167"/>00167 
+<anchor xml:id="__widget_inspector_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002BA3&#32;RID:&#32;11171&#32;RVA:&#32;0x000F54A0&#32;File&#32;Offset:&#32;0x000F36A0</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddButton(<emphasis role="keywordtype">string</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>&#32;=&#32;<emphasis role="stringliteral">&quot;test&quot;</emphasis>,&#32;Action&#32;action&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__widget_inspector_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIButton&#32;uibutton&#32;=&#32;Util.Instantiate&lt;UIButton&gt;(this.moldButton,&#32;this.layoutButton);
+<anchor xml:id="__widget_inspector_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uibutton.icon.sprite&#32;=&#32;(SpriteSheet.Get(<emphasis role="stringliteral">&quot;icon_&quot;</emphasis>&#32;+&#32;<emphasis role="keywordtype">id</emphasis>)&#32;??&#32;uibutton.icon.sprite);
+<anchor xml:id="__widget_inspector_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uibutton.mainText.SetText(<emphasis role="keywordtype">id</emphasis>.lang());
+<anchor xml:id="__widget_inspector_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(action&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__widget_inspector_8cs_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00176"/>00176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uibutton.onClick.AddListener(delegate()
+<anchor xml:id="__widget_inspector_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;action();
+<anchor xml:id="__widget_inspector_8cs_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__widget_inspector_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00182"/>00182 
+<anchor xml:id="__widget_inspector_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002BA4&#32;RID:&#32;11172&#32;RVA:&#32;0x000F5528&#32;File&#32;Offset:&#32;0x000F3728</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00184"/>00184 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnSetContextMenu(UIContextMenu&#32;m)
+<anchor xml:id="__widget_inspector_8cs_source_1l00185"/>00185 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;m.AddChild(<emphasis role="stringliteral">&quot;setting&quot;</emphasis>).AddToggle(<emphasis role="stringliteral">&quot;moveToMouse&quot;</emphasis>,&#32;this.extra.moveToMouse,&#32;delegate(<emphasis role="keywordtype">bool</emphasis>&#32;a)
+<anchor xml:id="__widget_inspector_8cs_source_1l00187"/>00187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00188"/>00188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.extra.moveToMouse&#32;=&#32;a;
+<anchor xml:id="__widget_inspector_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__widget_inspector_8cs_source_1l00190"/>00190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;m.AddChild(<emphasis role="stringliteral">&quot;style&quot;</emphasis>).AddSlider(<emphasis role="stringliteral">&quot;toggleButtonBG&quot;</emphasis>,&#32;(<emphasis role="keywordtype">float</emphasis>&#32;a)&#32;=&gt;&#32;a.ToString()&#32;??&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>,&#32;(<emphasis role="keywordtype">float</emphasis>)base.config.skin.button,&#32;delegate(<emphasis role="keywordtype">float</emphasis>&#32;a)
+<anchor xml:id="__widget_inspector_8cs_source_1l00191"/>00191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.config.skin.button&#32;=&#32;(int)a;
+<anchor xml:id="__widget_inspector_8cs_source_1l00193"/>00193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.ApplySkin();
+<anchor xml:id="__widget_inspector_8cs_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;0f,&#32;(float)(base.config.skin.Skin.buttons.Count&#32;-&#32;1),&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__widget_inspector_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.SetBaseContextMenu(m);
+<anchor xml:id="__widget_inspector_8cs_source_1l00196"/>00196 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00197"/>00197 
+<anchor xml:id="__widget_inspector_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001849&#32;RID:&#32;6217</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00199"/>00199 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_widget_inspector">WidgetInspector</link>&#32;Instance;
+<anchor xml:id="__widget_inspector_8cs_source_1l00200"/>00200 
+<anchor xml:id="__widget_inspector_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400184A&#32;RID:&#32;6218</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00202"/>00202 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">object</emphasis>&#32;target;
+<anchor xml:id="__widget_inspector_8cs_source_1l00203"/>00203 
+<anchor xml:id="__widget_inspector_8cs_source_1l00204"/>00204 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400184B&#32;RID:&#32;6219</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00205"/>00205 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;LayoutGroup&#32;layoutButton;
+<anchor xml:id="__widget_inspector_8cs_source_1l00206"/>00206 
+<anchor xml:id="__widget_inspector_8cs_source_1l00207"/>00207 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400184C&#32;RID:&#32;6220</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00208"/>00208 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;LayoutGroup&#32;layoutLog;
+<anchor xml:id="__widget_inspector_8cs_source_1l00209"/>00209 
+<anchor xml:id="__widget_inspector_8cs_source_1l00210"/>00210 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400184D&#32;RID:&#32;6221</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00211"/>00211 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textTitle;
+<anchor xml:id="__widget_inspector_8cs_source_1l00212"/>00212 
+<anchor xml:id="__widget_inspector_8cs_source_1l00213"/>00213 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400184E&#32;RID:&#32;6222</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00214"/>00214 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Image&#32;iconCard;
+<anchor xml:id="__widget_inspector_8cs_source_1l00215"/>00215 
+<anchor xml:id="__widget_inspector_8cs_source_1l00216"/>00216 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400184F&#32;RID:&#32;6223</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00217"/>00217 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Image&#32;iconArea;
+<anchor xml:id="__widget_inspector_8cs_source_1l00218"/>00218 
+<anchor xml:id="__widget_inspector_8cs_source_1l00219"/>00219 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001850&#32;RID:&#32;6224</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00220"/>00220 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;maxLog;
+<anchor xml:id="__widget_inspector_8cs_source_1l00221"/>00221 
+<anchor xml:id="__widget_inspector_8cs_source_1l00222"/>00222 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001851&#32;RID:&#32;6225</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00223"/>00223 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;index;
+<anchor xml:id="__widget_inspector_8cs_source_1l00224"/>00224 
+<anchor xml:id="__widget_inspector_8cs_source_1l00225"/>00225 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001852&#32;RID:&#32;6226</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00226"/>00226 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Vector3&#32;posFix;
+<anchor xml:id="__widget_inspector_8cs_source_1l00227"/>00227 
+<anchor xml:id="__widget_inspector_8cs_source_1l00228"/>00228 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001853&#32;RID:&#32;6227</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00229"/>00229 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;object&gt;&#32;list;
+<anchor xml:id="__widget_inspector_8cs_source_1l00230"/>00230 
+<anchor xml:id="__widget_inspector_8cs_source_1l00231"/>00231 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001854&#32;RID:&#32;6228</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00232"/>00232 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Sprite&#32;spriteArea;
+<anchor xml:id="__widget_inspector_8cs_source_1l00233"/>00233 
+<anchor xml:id="__widget_inspector_8cs_source_1l00234"/>00234 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001855&#32;RID:&#32;6229</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00235"/>00235 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;selected;
+<anchor xml:id="__widget_inspector_8cs_source_1l00236"/>00236 
+<anchor xml:id="__widget_inspector_8cs_source_1l00237"/>00237 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001856&#32;RID:&#32;6230</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00238"/>00238 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;List&lt;UIText&gt;&#32;texts&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;UIText&gt;();
+<anchor xml:id="__widget_inspector_8cs_source_1l00239"/>00239 
+<anchor xml:id="__widget_inspector_8cs_source_1l00240"/>00240 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001857&#32;RID:&#32;6231</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00241"/>00241 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;UIButton&#32;moldButton;
+<anchor xml:id="__widget_inspector_8cs_source_1l00242"/>00242 
+<anchor xml:id="__widget_inspector_8cs_source_1l00243"/>00243 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001858&#32;RID:&#32;6232</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00244"/>00244 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;UIText&#32;moldText;
+<anchor xml:id="__widget_inspector_8cs_source_1l00245"/>00245 
+<anchor xml:id="__widget_inspector_8cs_source_1l00246"/>00246 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x02000B87&#32;RID:&#32;2951</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00247"/><link linkend="_class_widget_inspector_1_1_extra">00247</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_widget_inspector_1_1_extra">Extra</link>
+<anchor xml:id="__widget_inspector_8cs_source_1l00248"/>00248 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_inspector_8cs_source_1l00249"/>00249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002E59&#32;RID:&#32;11865</emphasis>
+<anchor xml:id="__widget_inspector_8cs_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__widget_inspector_8cs_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;moveToMouse;
+<anchor xml:id="__widget_inspector_8cs_source_1l00252"/>00252 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_inspector_8cs_source_1l00253"/>00253 }
+</programlisting></section>

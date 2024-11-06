@@ -1,0 +1,259 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__drama_sequence_8cs_source" xml:lang="en-US">
+<title>DramaSequence.cs</title>
+<indexterm><primary>Elin/DramaSequence.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__drama_sequence_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__drama_sequence_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__drama_sequence_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__drama_sequence_8cs_source_1l00004"/>00004 
+<anchor xml:id="__drama_sequence_8cs_source_1l00005"/>00005 <emphasis role="comment">//&#32;Token:&#32;0x0200011A&#32;RID:&#32;282</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00006"/><link linkend="_class_drama_sequence">00006</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_drama_sequence">DramaSequence</link>&#32;:&#32;<link linkend="_class_e_class">EClass</link>
+<anchor xml:id="__drama_sequence_8cs_source_1l00007"/>00007 {
+<anchor xml:id="__drama_sequence_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170001C3&#32;RID:&#32;451</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000799&#32;RID:&#32;1945&#32;RVA:&#32;0x0003162C&#32;File&#32;Offset:&#32;0x0002F82C</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_dialog_drama">DialogDrama</link>&#32;dialog
+<anchor xml:id="__drama_sequence_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.manager.dialog;
+<anchor xml:id="__drama_sequence_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00017"/>00017 
+<anchor xml:id="__drama_sequence_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600079A&#32;RID:&#32;1946&#32;RVA:&#32;0x00031639&#32;File&#32;Offset:&#32;0x0002F839</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Clear()
+<anchor xml:id="__drama_sequence_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.steps.Clear();
+<anchor xml:id="__drama_sequence_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.actors.Clear();
+<anchor xml:id="__drama_sequence_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.events.Clear();
+<anchor xml:id="__drama_sequence_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.tempEvents.Clear();
+<anchor xml:id="__drama_sequence_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00026"/>00026 
+<anchor xml:id="__drama_sequence_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600079B&#32;RID:&#32;1947&#32;RVA:&#32;0x00031668&#32;File&#32;Offset:&#32;0x0002F868</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_drama_actor">DramaActor</link>&#32;GetActor(<emphasis role="keywordtype">string</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>)
+<anchor xml:id="__drama_sequence_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.actors.ContainsKey(<emphasis role="keywordtype">id</emphasis>))
+<anchor xml:id="__drama_sequence_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.actors[id];
+<anchor xml:id="__drama_sequence_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.sources.persons.map.ContainsKey(<emphasis role="keywordtype">id</emphasis>))
+<anchor xml:id="__drama_sequence_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.AddActor(<emphasis role="keywordtype">id</emphasis>,&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_person">Person</link>(<emphasis role="keywordtype">id</emphasis>,&#32;<emphasis role="keyword">null</emphasis>));
+<anchor xml:id="__drama_sequence_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.actors.Count&#32;&lt;=&#32;0)
+<anchor xml:id="__drama_sequence_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.GetActor(<emphasis role="stringliteral">&quot;narrator&quot;</emphasis>);
+<anchor xml:id="__drama_sequence_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.actors.FirstItem&lt;string,&#32;<link linkend="_class_drama_actor">DramaActor</link>&gt;();
+<anchor xml:id="__drama_sequence_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00044"/>00044 
+<anchor xml:id="__drama_sequence_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600079C&#32;RID:&#32;1948&#32;RVA:&#32;0x000316DC&#32;File&#32;Offset:&#32;0x0002F8DC</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;T&#32;GetEvent&lt;T&gt;(<emphasis role="keywordtype">string</emphasis>&#32;idStep)&#32;where&#32;T&#32;:&#32;<link linkend="_class_drama_event">DramaEvent</link>
+<anchor xml:id="__drama_sequence_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_drama_event">DramaEvent</link>&#32;dramaEvent&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.events)
+<anchor xml:id="__drama_sequence_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(dramaEvent.step&#32;==&#32;idStep)
+<anchor xml:id="__drama_sequence_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;dramaEvent&#32;as&#32;T;
+<anchor xml:id="__drama_sequence_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keywordflow">default</emphasis>(T);
+<anchor xml:id="__drama_sequence_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00057"/>00057 
+<anchor xml:id="__drama_sequence_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600079D&#32;RID:&#32;1949&#32;RVA:&#32;0x00031750&#32;File&#32;Offset:&#32;0x0002F950</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_drama_actor">DramaActor</link>&#32;AddActor(<emphasis role="keywordtype">string</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>,&#32;<link linkend="_class_person">Person</link>&#32;person)
+<anchor xml:id="__drama_sequence_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.actors.ContainsKey(<emphasis role="keywordtype">id</emphasis>))
+<anchor xml:id="__drama_sequence_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.actors[id];
+<anchor xml:id="__drama_sequence_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_drama_actor">DramaActor</link>&#32;dramaActor&#32;=&#32;Util.Instantiate&lt;<link linkend="_class_drama_actor">DramaActor</link>&gt;(this.manager.moldActor,&#32;this.manager.actorPos);
+<anchor xml:id="__drama_sequence_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dramaActor.Init(<emphasis role="keyword">this</emphasis>,&#32;<emphasis role="keywordtype">id</emphasis>,&#32;person);
+<anchor xml:id="__drama_sequence_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.actors.Add(<emphasis role="keywordtype">id</emphasis>,&#32;dramaActor);
+<anchor xml:id="__drama_sequence_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;dramaActor;
+<anchor xml:id="__drama_sequence_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00070"/>00070 
+<anchor xml:id="__drama_sequence_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600079E&#32;RID:&#32;1950&#32;RVA:&#32;0x000317AB&#32;File&#32;Offset:&#32;0x0002F9AB</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddStep(<emphasis role="keywordtype">string</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>)
+<anchor xml:id="__drama_sequence_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.steps.Add(<emphasis role="keywordtype">id</emphasis>,&#32;this.events.Count);
+<anchor xml:id="__drama_sequence_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.events.Add(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_drama_event">DramaEvent</link>
+<anchor xml:id="__drama_sequence_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sequence&#32;=&#32;<emphasis role="keyword">this</emphasis>,
+<anchor xml:id="__drama_sequence_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;step&#32;=&#32;<emphasis role="keywordtype">id</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__drama_sequence_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00081"/>00081 
+<anchor xml:id="__drama_sequence_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600079F&#32;RID:&#32;1951&#32;RVA:&#32;0x000317E2&#32;File&#32;Offset:&#32;0x0002F9E2</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_drama_event">DramaEvent</link>&#32;AddEvent(<link linkend="_class_drama_event">DramaEvent</link>&#32;e)
+<anchor xml:id="__drama_sequence_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!e.step.IsEmpty())
+<anchor xml:id="__drama_sequence_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.steps.Add(e.step,&#32;<emphasis role="keyword">this</emphasis>.events.Count);
+<anchor xml:id="__drama_sequence_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;e.sequence&#32;=&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="__drama_sequence_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.events.Add(e);
+<anchor xml:id="__drama_sequence_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;e;
+<anchor xml:id="__drama_sequence_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00093"/>00093 
+<anchor xml:id="__drama_sequence_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060007A0&#32;RID:&#32;1952&#32;RVA:&#32;0x00031821&#32;File&#32;Offset:&#32;0x0002FA21</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;PlayNext()
+<anchor xml:id="__drama_sequence_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Play(this.currentEventID&#32;+&#32;1);
+<anchor xml:id="__drama_sequence_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00099"/>00099 
+<anchor xml:id="__drama_sequence_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060007A1&#32;RID:&#32;1953&#32;RVA:&#32;0x00031834&#32;File&#32;Offset:&#32;0x0002FA34</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Play(<emphasis role="keywordtype">string</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>)
+<anchor xml:id="__drama_sequence_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<emphasis role="keywordtype">id</emphasis>&#32;==&#32;<emphasis role="stringliteral">&quot;last&quot;</emphasis>)
+<anchor xml:id="__drama_sequence_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">id</emphasis>&#32;=&#32;this.lastlastStep;
+<anchor xml:id="__drama_sequence_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<emphasis role="keywordtype">id</emphasis>.IsEmpty()&#32;&amp;&amp;&#32;!this.steps.ContainsKey(<emphasis role="keywordtype">id</emphasis>))
+<anchor xml:id="__drama_sequence_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log(<emphasis role="keywordtype">id</emphasis>);
+<anchor xml:id="__drama_sequence_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Play(<emphasis role="keywordtype">string</emphasis>.IsNullOrEmpty(<emphasis role="keywordtype">id</emphasis>)&#32;?&#32;0&#32;:&#32;this.steps[<emphasis role="keywordtype">id</emphasis>]);
+<anchor xml:id="__drama_sequence_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00113"/>00113 
+<anchor xml:id="__drama_sequence_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060007A2&#32;RID:&#32;1954&#32;RVA:&#32;0x00031890&#32;File&#32;Offset:&#32;0x0002FA90</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Play(<emphasis role="keywordtype">int</emphasis>&#32;eventID&#32;=&#32;0)
+<anchor xml:id="__drama_sequence_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.isExited)
+<anchor xml:id="__drama_sequence_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__drama_sequence_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(eventID&#32;&gt;=&#32;this.events.Count)
+<anchor xml:id="__drama_sequence_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.isLoop)
+<anchor xml:id="__drama_sequence_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Exit();
+<anchor xml:id="__drama_sequence_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__drama_sequence_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;eventID&#32;=&#32;0;
+<anchor xml:id="__drama_sequence_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.currentEventID&#32;=&#32;eventID;
+<anchor xml:id="__drama_sequence_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.currentEvent&#32;=&#32;this.events[eventID];
+<anchor xml:id="__drama_sequence_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.currentEvent.Reset();
+<anchor xml:id="__drama_sequence_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;str&#32;=&#32;eventID.ToString()&#32;+&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>;
+<anchor xml:id="__drama_sequence_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(KeyValuePair&lt;string,&#32;int&gt;&#32;keyValuePair&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.steps)
+<anchor xml:id="__drama_sequence_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(keyValuePair.Value&#32;==&#32;eventID)
+<anchor xml:id="__drama_sequence_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;str&#32;+=&#32;keyValuePair.Key;
+<anchor xml:id="__drama_sequence_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(keyValuePair.Value&#32;==&#32;eventID&#32;&amp;&amp;&#32;!keyValuePair.Key.StartsWith(<emphasis role="stringliteral">&quot;flag&quot;</emphasis>))
+<anchor xml:id="__drama_sequence_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.lastlastStep&#32;=&#32;this.lastStep;
+<anchor xml:id="__drama_sequence_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.lastStep&#32;=&#32;keyValuePair.Key;
+<anchor xml:id="__drama_sequence_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__drama_sequence_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnUpdate();
+<anchor xml:id="__drama_sequence_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00149"/>00149 
+<anchor xml:id="__drama_sequence_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060007A3&#32;RID:&#32;1955&#32;RVA:&#32;0x00031994&#32;File&#32;Offset:&#32;0x0002FB94</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Exit()
+<anchor xml:id="__drama_sequence_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.isExited&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__drama_sequence_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.currentEvent&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__drama_sequence_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.manager.SetActive(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__drama_sequence_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00157"/>00157 
+<anchor xml:id="__drama_sequence_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060007A4&#32;RID:&#32;1956&#32;RVA:&#32;0x000319B0&#32;File&#32;Offset:&#32;0x0002FBB0</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnUpdate()
+<anchor xml:id="__drama_sequence_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.tempEvents.Count&#32;&gt;&#32;0)
+<anchor xml:id="__drama_sequence_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.tempEvents[0].Play()&#32;&amp;&amp;&#32;this.tempEvents.Count&#32;&gt;&#32;0)
+<anchor xml:id="__drama_sequence_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.tempEvents.RemoveAt(0);
+<anchor xml:id="__drama_sequence_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__drama_sequence_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.currentEvent&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__drama_sequence_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__drama_sequence_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.currentEvent&#32;is&#32;<link linkend="_class_drama_event_goto">DramaEventGoto</link>)
+<anchor xml:id="__drama_sequence_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;a&#32;=&#32;this.currentEvent.idJump;
+<anchor xml:id="__drama_sequence_8cs_source_1l00176"/>00176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(a&#32;==&#32;<emphasis role="stringliteral">&quot;*&quot;</emphasis>)
+<anchor xml:id="__drama_sequence_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.setup.step.IsEmpty())
+<anchor xml:id="__drama_sequence_8cs_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.PlayNext();
+<anchor xml:id="__drama_sequence_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__drama_sequence_8cs_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;a&#32;=&#32;this.setup.step;
+<anchor xml:id="__drama_sequence_8cs_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00185"/>00185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Play(a);
+<anchor xml:id="__drama_sequence_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__drama_sequence_8cs_source_1l00187"/>00187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00188"/>00188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.currentEvent.Play())
+<anchor xml:id="__drama_sequence_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00190"/>00190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.PlayNext();
+<anchor xml:id="__drama_sequence_8cs_source_1l00191"/>00191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00193"/>00193 
+<anchor xml:id="__drama_sequence_8cs_source_1l00194"/>00194 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400079D&#32;RID:&#32;1949</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;id;
+<anchor xml:id="__drama_sequence_8cs_source_1l00196"/>00196 
+<anchor xml:id="__drama_sequence_8cs_source_1l00197"/>00197 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400079E&#32;RID:&#32;1950</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_drama_manager">DramaManager</link>&#32;manager;
+<anchor xml:id="__drama_sequence_8cs_source_1l00199"/>00199 
+<anchor xml:id="__drama_sequence_8cs_source_1l00200"/>00200 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400079F&#32;RID:&#32;1951</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Dictionary&lt;string,&#32;int&gt;&#32;steps&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Dictionary&lt;string,&#32;int&gt;();
+<anchor xml:id="__drama_sequence_8cs_source_1l00202"/>00202 
+<anchor xml:id="__drama_sequence_8cs_source_1l00203"/>00203 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007A0&#32;RID:&#32;1952</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00204"/>00204 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Dictionary&lt;string,&#32;DramaActor&gt;&#32;actors&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Dictionary&lt;string,&#32;DramaActor&gt;();
+<anchor xml:id="__drama_sequence_8cs_source_1l00205"/>00205 
+<anchor xml:id="__drama_sequence_8cs_source_1l00206"/>00206 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007A1&#32;RID:&#32;1953</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00207"/>00207 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;DramaEvent&gt;&#32;events&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;DramaEvent&gt;();
+<anchor xml:id="__drama_sequence_8cs_source_1l00208"/>00208 
+<anchor xml:id="__drama_sequence_8cs_source_1l00209"/>00209 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007A2&#32;RID:&#32;1954</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00210"/>00210 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isLoop;
+<anchor xml:id="__drama_sequence_8cs_source_1l00211"/>00211 
+<anchor xml:id="__drama_sequence_8cs_source_1l00212"/>00212 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007A3&#32;RID:&#32;1955</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00213"/>00213 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;canCancel&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__drama_sequence_8cs_source_1l00214"/>00214 
+<anchor xml:id="__drama_sequence_8cs_source_1l00215"/>00215 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007A4&#32;RID:&#32;1956</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00216"/>00216 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isExited;
+<anchor xml:id="__drama_sequence_8cs_source_1l00217"/>00217 
+<anchor xml:id="__drama_sequence_8cs_source_1l00218"/>00218 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007A5&#32;RID:&#32;1957</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00219"/>00219 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;fullPortrait;
+<anchor xml:id="__drama_sequence_8cs_source_1l00220"/>00220 
+<anchor xml:id="__drama_sequence_8cs_source_1l00221"/>00221 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007A6&#32;RID:&#32;1958</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00222"/>00222 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_drama_event_talk">DramaEventTalk</link>&#32;firstTalk;
+<anchor xml:id="__drama_sequence_8cs_source_1l00223"/>00223 
+<anchor xml:id="__drama_sequence_8cs_source_1l00224"/>00224 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007A7&#32;RID:&#32;1959</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00225"/>00225 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;DramaEvent&gt;&#32;tempEvents&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;DramaEvent&gt;();
+<anchor xml:id="__drama_sequence_8cs_source_1l00226"/>00226 
+<anchor xml:id="__drama_sequence_8cs_source_1l00227"/>00227 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007A8&#32;RID:&#32;1960</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00228"/>00228 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<link linkend="_class_drama_event">DramaEvent</link>&#32;currentEvent;
+<anchor xml:id="__drama_sequence_8cs_source_1l00229"/>00229 
+<anchor xml:id="__drama_sequence_8cs_source_1l00230"/>00230 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007A9&#32;RID:&#32;1961</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00231"/>00231 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;message&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>;
+<anchor xml:id="__drama_sequence_8cs_source_1l00232"/>00232 
+<anchor xml:id="__drama_sequence_8cs_source_1l00233"/>00233 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007AA&#32;RID:&#32;1962</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00234"/>00234 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;skipJump;
+<anchor xml:id="__drama_sequence_8cs_source_1l00235"/>00235 
+<anchor xml:id="__drama_sequence_8cs_source_1l00236"/>00236 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007AB&#32;RID:&#32;1963</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00237"/>00237 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;lastStep;
+<anchor xml:id="__drama_sequence_8cs_source_1l00238"/>00238 
+<anchor xml:id="__drama_sequence_8cs_source_1l00239"/>00239 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007AC&#32;RID:&#32;1964</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00240"/>00240 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;lastlastStep;
+<anchor xml:id="__drama_sequence_8cs_source_1l00241"/>00241 
+<anchor xml:id="__drama_sequence_8cs_source_1l00242"/>00242 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007AD&#32;RID:&#32;1965</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00243"/>00243 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_drama_setup">DramaSetup</link>&#32;setup;
+<anchor xml:id="__drama_sequence_8cs_source_1l00244"/>00244 
+<anchor xml:id="__drama_sequence_8cs_source_1l00245"/>00245 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040007AE&#32;RID:&#32;1966</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00246"/>00246 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;currentEventID;
+<anchor xml:id="__drama_sequence_8cs_source_1l00247"/>00247 
+<anchor xml:id="__drama_sequence_8cs_source_1l00248"/>00248 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0200084B&#32;RID:&#32;2123</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00249"/>00249 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">enum</emphasis>&#32;Template
+<anchor xml:id="__drama_sequence_8cs_source_1l00250"/>00250 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__drama_sequence_8cs_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400238B&#32;RID:&#32;9099</emphasis>
+<anchor xml:id="__drama_sequence_8cs_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Default
+<anchor xml:id="__drama_sequence_8cs_source_1l00253"/>00253 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__drama_sequence_8cs_source_1l00254"/>00254 }
+</programlisting></section>

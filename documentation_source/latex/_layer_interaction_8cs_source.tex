@@ -1,0 +1,360 @@
+\doxysection{Layer\+Interaction.\+cs}
+\hypertarget{_layer_interaction_8cs_source}{}\label{_layer_interaction_8cs_source}\index{Elin/LayerInteraction.cs@{Elin/LayerInteraction.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x0200055D\ RID:\ 1373}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00006}\mbox{\hyperlink{class_layer_interaction}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}\ :\ \mbox{\hyperlink{class_e_layer}{ELayer}}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600254E\ RID:\ 9550\ RVA:\ 0x000D41E2\ File\ Offset:\ 0x000D23E2}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnInit()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ LayerInteraction.Instance\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ this.first\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00013}00013\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00015}00015\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600254F\ RID:\ 9551\ RVA:\ 0x000D41F1\ File\ Offset:\ 0x000D23F1}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnKill()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00017}00017\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ LayerInteraction.Target\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002550\ RID:\ 9552\ RVA:\ 0x000D41FC\ File\ Offset:\ 0x000D23FC}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{private}\ unsafe\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.mode\ !=\ \mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.Mode.Map)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_tile_selector}{BaseTileSelector}}\ tileSelector\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.screen.tileSelector;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_pass}{MeshPass}}\ meshPass\ =\ (this.point.HasBlock\ ||\ this.point.cell.liquidLv\ >\ 0)\ ?\ \mbox{\hyperlink{class_e_layer}{ELayer}}.screen.guide.passGuideBlock\ :\ \mbox{\hyperlink{class_e_layer}{ELayer}}.screen.guide.passGuideFloor;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ Vector3\ vector\ =\ *this.point.Position();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ meshPass.Add(vector.x,\ vector.y,\ vector.z,\ (\textcolor{keywordtype}{float})num,\ 0.3f);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002551\ RID:\ 9553\ RVA:\ 0x000D428E\ File\ Offset:\ 0x000D248E}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnUpdateInput()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00037}00037\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002552\ RID:\ 9554\ RVA:\ 0x000D4290\ File\ Offset:\ 0x000D2490}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Show(\mbox{\hyperlink{interface_i_inspect}{IInspect}}\ newTarget)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00042}00042\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.Target\ ==\ newTarget)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ LayerInteraction.Target\ =\ newTarget;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_interaction_1_1_page}{LayerInteraction.Page}}\ page\ =\ \mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.GetPage(\mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.Target);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ ((LayerInteraction.Instance\ !=\ \textcolor{keyword}{null})\ ?\ LayerInteraction.Instance\ :\ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer<\mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}>()).ShowPage(page);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002553\ RID:\ 9555\ RVA:\ 0x000D42DB\ File\ Offset:\ 0x000D24DB}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ TryShow(\textcolor{keywordtype}{bool}\ quick)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00054}00054\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_scene}{Scene}}.HitPoint.IsValid)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.Show(\mbox{\hyperlink{class_e_layer}{ELayer}}.scene.mouseTarget.pos.ListInspectorTargets().NextItem(\mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.Target));}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002554\ RID:\ 9556\ RVA:\ 0x000D4310\ File\ Offset:\ 0x000D2510}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_layer_interaction_1_1_page}{LayerInteraction.Page}}\ GetPage(\mbox{\hyperlink{interface_i_inspect}{IInspect}}\ o)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_interaction_1_1_page}{LayerInteraction.Page}}\ page\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.\mbox{\hyperlink{class_layer_interaction_1_1_page}{Page}}();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ List<\mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.\mbox{\hyperlink{class_layer_interaction_1_1_item}{Item}}>\ items\ =\ page.items;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (o\ is\ \mbox{\hyperlink{class_area}{Area}})}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_area}{Area}}\ area\ =\ o\ as\ \mbox{\hyperlink{class_area}{Area}};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ page.area\ =\ area;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (o\ is\ \mbox{\hyperlink{class_chara}{Chara}})}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chara}{Chara}}\ t\ =\ o\ as\ \mbox{\hyperlink{class_chara}{Chara}};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ \textcolor{stringliteral}{"{}charaInfo"{}}.lang();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!t.IsHomeMember())}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text\ =\ text\ +\ \textcolor{stringliteral}{"{}("{}}\ +\ \textcolor{stringliteral}{"{}unidentified"{}}.lang()\ +\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t.IsHomeMember())}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ page.Add(t,\ \textcolor{stringliteral}{"{}tTalk"{}}.lang(),\ \textcolor{stringliteral}{"{}"{}},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t.ShowDialog();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ 0,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ page.Add(t,\ text,\ \textcolor{stringliteral}{"{}"{}},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!t.IsHomeMember())}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SE.Beep();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ 0,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (o\ is\ \mbox{\hyperlink{class_thing}{Thing}})}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ t\ =\ o\ as\ \mbox{\hyperlink{class_thing}{Thing}};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ page.Add(t,\ \textcolor{stringliteral}{"{}objInfo"{}},\ \textcolor{stringliteral}{"{}"{}},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer<\mbox{\hyperlink{class_layer_info}{LayerInfo}}>().Set(t,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \},\ 0,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t.trait\ is\ \mbox{\hyperlink{class_trait_quest_board}{TraitQuestBoard}})}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ page.Add(t,\ \textcolor{stringliteral}{"{}quest"{}},\ \textcolor{stringliteral}{"{}"{}},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer<\mbox{\hyperlink{class_layer_quest_board}{LayerQuestBoard}}>();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ 20,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ page.Add(t,\ \textcolor{stringliteral}{"{}hire"{}},\ \textcolor{stringliteral}{"{}"{}},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer<\mbox{\hyperlink{class_layer_hire}{LayerHire}}>();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ 20,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t.trait\ is\ \mbox{\hyperlink{class_trait_gacha}{TraitGacha}})}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ page.Add(t,\ \textcolor{stringliteral}{"{}gacha"{}},\ \textcolor{stringliteral}{"{}"{}},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer<\mbox{\hyperlink{class_layer_gacha}{LayerGacha}}>();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ 10,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t.trait.IsFactory)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ page.Add(t,\ \textcolor{stringliteral}{"{}craft"{}},\ \textcolor{stringliteral}{"{}icon\_Inspect"{}},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer<\mbox{\hyperlink{class_layer_craft}{LayerCraft}}>().SetFactory(t);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ 100,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t.IsInstalled)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ page.Add(t,\ \textcolor{stringliteral}{"{}move"{}},\ \textcolor{stringliteral}{"{}"{}},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_action_mode}{ActionMode}}.Inspect.Activate(t);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ 0,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ page;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00141}00141\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00143}00143\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002555\ RID:\ 9557\ RVA:\ 0x000D4584\ File\ Offset:\ 0x000D2784}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00144}00144\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Show(List<LayerInteraction.Page>\ \_pages,\ \mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.Mode\ \_mode)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00145}00145\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ this.pages\ =\ \_pages;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ this.mode\ =\ \_mode;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ LayerInteraction.Mode\ mode\ =\ this.mode;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ !=\ \mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.Mode.Map)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ \mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.Mode.EloMap)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_interaction_1_1_page}{LayerInteraction.Page}}\ page\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.\mbox{\hyperlink{class_layer_interaction_1_1_page}{Page}}();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.pages\ =\ \textcolor{keyword}{new}\ List<\mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.\mbox{\hyperlink{class_layer_interaction_1_1_page}{Page}}>();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.pages.Add(page);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ page.Add(\textcolor{keyword}{null},\ \textcolor{stringliteral}{"{}test1"{}},\ \textcolor{stringliteral}{"{}"{}},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ 0,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ page.Add(\textcolor{keyword}{null},\ \textcolor{stringliteral}{"{}test2"{}},\ \textcolor{stringliteral}{"{}"{}},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ 0,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ this.point.Set(\mbox{\hyperlink{class_scene}{Scene}}.HitPoint);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.\mbox{\hyperlink{class_layer_interaction_1_1_page}{Page}}\ page2\ in\ \textcolor{keyword}{this}.pages)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}\ buttonGrid\ =\ this.menu.Add()\ as\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ page2.button\ =\ buttonGrid;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ buttonGrid.SetObject(page2.items[0].target);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_interaction_1_1_page}{LayerInteraction.Page}}\ \_page\ =\ page2;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ buttonGrid.onClick.AddListener(delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.ShowPage(\_page);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SE.Click();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ buttonGrid.RebuildLayout(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ this.menu.Show();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ this.ShowPage(0);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00183}00183\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00185}00185\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002556\ RID:\ 9558\ RVA:\ 0x000D4708\ File\ Offset:\ 0x000D2908}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00186}00186\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ ShowPage(\textcolor{keywordtype}{int}\ index)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00187}00187\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ this.ShowPage(this.pages[index]);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00189}00189\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00191}00191\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002557\ RID:\ 9559\ RVA:\ 0x000D471C\ File\ Offset:\ 0x000D291C}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00192}00192\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ ShowPage(\mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.\mbox{\hyperlink{class_layer_interaction_1_1_page}{Page}}\ page)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00193}00193\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ this.menu.Clear();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (List<\mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.\mbox{\hyperlink{class_layer_interaction_1_1_item}{Item}}>.Enumerator\ enumerator\ =\ page.items.GetEnumerator())}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (enumerator.MoveNext())}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_interaction_1_1_item}{LayerInteraction.Item}}\ item\ =\ enumerator.Current;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UIButton\ uibutton\ =\ this.menu.Add();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.icon.sprite\ =\ (SpriteSheet.Get(item.idSprite.IsEmpty(\textcolor{stringliteral}{"{}icon\_"{}}\ +\ item.text))\ ??\ uibutton.icon.sprite);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.mainText.SetText((item.textFunc\ !=\ \textcolor{keyword}{null})\ ?\ item.textFunc()\ :\ item.text.lang());}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.onClick.AddListener(delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.action();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (item.reload)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Reload();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.ShowPage(page);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.RebuildLayout(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chara}{Chara}}\ chara\ =\ LayerInteraction.Target\ as\ \mbox{\hyperlink{class_chara}{Chara}};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ chara\ !=\ \textcolor{keyword}{null}\ \&\&\ chara.IsHomeMember();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ this.windowChara.SetActive(flag);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flag)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ this.windowChara.SetChara(chara);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ this.menu.Show();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00223}00223\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00225}00225\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002558\ RID:\ 9560\ RVA:\ 0x000D489C\ File\ Offset:\ 0x000D2A9C}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00226}00226\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Reload()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00227}00227\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00228}00228\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00230}00230\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014DA\ RID:\ 5338}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00231}00231\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}\ Instance;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00233}00233\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014DB\ RID:\ 5339}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00234}00234\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{interface_i_inspect}{IInspect}}\ Target;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00236}00236\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014DC\ RID:\ 5340}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00237}00237\ \ \ \ \ \textcolor{keyword}{public}\ LayerInteraction.Mode\ mode;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00239}00239\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014DD\ RID:\ 5341}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00240}00240\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_point}{Point}}\ point;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00242}00242\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014DE\ RID:\ 5342}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00243}00243\ \ \ \ \ \textcolor{keyword}{public}\ List<\mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.\mbox{\hyperlink{class_layer_interaction_1_1_page}{Page}}>\ pages\ =\ \textcolor{keyword}{new}\ List<\mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.\mbox{\hyperlink{class_layer_interaction_1_1_page}{Page}}>();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00245}00245\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014DF\ RID:\ 5343}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00246}00246\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ first\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00248}00248\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014E0\ RID:\ 5344}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00249}00249\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_interaction_menu}{InteractionMenu}}\ menu;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00251}00251\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040014E1\ RID:\ 5345}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00252}00252\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_window_chara}{WindowChara}}\ windowChara;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00254}00254\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000A8A\ RID:\ 2698}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00255}00255\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ Mode}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00256}00256\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B10\ RID:\ 11024}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_map}{Map}},}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B11\ RID:\ 11025}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ Inventory,}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B12\ RID:\ 11026}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_elo_map}{EloMap}},}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B13\ RID:\ 11027}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_area}{Area}},}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B14\ RID:\ 11028}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ Custom}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00267}00267\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00269}00269\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000A8B\ RID:\ 2699}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00270}\mbox{\hyperlink{class_layer_interaction_1_1_page}{00270}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_layer_interaction_1_1_page}{Page}}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00271}00271\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06004147\ RID:\ 16711\ RVA:\ 0x00150EB8\ File\ Offset:\ 0x0014F0B8}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_layer_interaction_1_1_item}{LayerInteraction.Item}}\ Add(\textcolor{keywordtype}{object}\ target,\ \textcolor{keywordtype}{string}\ text,\ \textcolor{keywordtype}{string}\ idSprite,\ Action\ action,\ \textcolor{keywordtype}{int}\ priority\ =\ 0,\ \textcolor{keywordtype}{bool}\ \textcolor{keyword}{auto}\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_interaction_1_1_item}{LayerInteraction.Item}}\ item\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_layer_interaction_1_1_item}{LayerInteraction.Item}}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ target\ =\ target,}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text\ =\ text,}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ idSprite\ =\ idSprite,}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ action\ =\ action,}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ priority\ =\ priority,}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ =\ \textcolor{keyword}{auto}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ this.items.Add(item);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ item;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00286}00286\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06004148\ RID:\ 16712\ RVA:\ 0x00150F08\ File\ Offset:\ 0x0014F108}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_layer_interaction_1_1_item}{LayerInteraction.Item}}\ Add(\textcolor{keywordtype}{object}\ target,\ \textcolor{keywordtype}{string}\ text,\ Func<bool>\ valueFunc,\ Action<bool>\ action)}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ Action\ action2\ =\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SE.Click();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ action(!valueFunc());}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_interaction_1_1_item}{LayerInteraction.Item}}\ item\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_layer_interaction_1_1_item}{LayerInteraction.Item}}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ target\ =\ target,}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ textFunc\ =\ (()\ =>\ text.lang()\ +\ \textcolor{stringliteral}{"{}\ ("{}}\ +\ (valueFunc()\ ?\ \textcolor{stringliteral}{"{}on"{}}\ :\ \textcolor{stringliteral}{"{}off"{}})\ +\ \textcolor{stringliteral}{"{})"{}}),}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ action\ =\ action2,}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reload\ =\ \textcolor{keyword}{true}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ this.items.Add(item);}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ item;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00305}00305\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00307}00307\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B15\ RID:\ 11029}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00308}00308\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ button;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00310}00310\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B16\ RID:\ 11030}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00311}00311\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_area}{Area}}\ area;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00313}00313\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B17\ RID:\ 11031}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00314}00314\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ List<\mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.\mbox{\hyperlink{class_layer_interaction_1_1_item}{Item}}>\ items\ =\ \textcolor{keyword}{new}\ List<\mbox{\hyperlink{class_layer_interaction}{LayerInteraction}}.\mbox{\hyperlink{class_layer_interaction_1_1_item}{Item}}>();}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00315}00315\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00316}00316\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00317}00317\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000A8C\ RID:\ 2700}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00318}\mbox{\hyperlink{class_layer_interaction_1_1_item}{00318}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_layer_interaction_1_1_item}{Item}}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00319}00319\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00320}00320\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170011E0\ RID:\ 4576}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00321}00321\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600414A\ RID:\ 16714\ RVA:\ 0x00150F8B\ File\ Offset:\ 0x0014F18B}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsArea}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00323}00323\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.target\ is\ \mbox{\hyperlink{class_area}{Area}};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00328}00328\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00330}00330\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B18\ RID:\ 11032}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00331}00331\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{object}\ target;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00333}00333\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B19\ RID:\ 11033}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00334}00334\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ text;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00335}00335\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00336}00336\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B1A\ RID:\ 11034}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00337}00337\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ idSprite;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00339}00339\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B1B\ RID:\ 11035}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00340}00340\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Action\ action;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00341}00341\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00342}00342\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B1C\ RID:\ 11036}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00343}00343\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ priority;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00345}00345\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B1D\ RID:\ 11037}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00346}00346\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \textcolor{keyword}{auto};}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00348}00348\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B1E\ RID:\ 11038}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00349}00349\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ reload;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00350}00350\ }
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00351}00351\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002B1F\ RID:\ 11039}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00352}00352\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Func<string>\ textFunc;}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00353}00353\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_interaction_8cs_source_l00354}00354\ \}}
+
+\end{DoxyCode}

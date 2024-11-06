@@ -1,0 +1,47 @@
+\doxysection{Chara\+Actor.\+cs}
+\hypertarget{_chara_actor_8cs_source}{}\label{_chara_actor_8cs_source}\index{Elin/CharaActor.cs@{Elin/CharaActor.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000175\ RID:\ 373}}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00005}\mbox{\hyperlink{class_chara_actor}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_chara_actor}{CharaActor}}\ :\ \mbox{\hyperlink{class_card_actor}{CardActor}}}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000AD9\ RID:\ 2777\ RVA:\ 0x00043556\ File\ Offset:\ 0x00041756}}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetOwnerAsChara()}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ this.owner\ =\ (this.owner\ as\ \mbox{\hyperlink{class_chara}{Chara}});}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00011}00011\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000ADA\ RID:\ 2778\ RVA:\ 0x0004356C\ File\ Offset:\ 0x0004176C}}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnSetOwner()}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ this.SetOwnerAsChara();}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ this.sr.sprite\ =\ this.owner.GetSprite(0);}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ this.mpb.SetTexture(\textcolor{stringliteral}{"{}\_MainTex"{}},\ this.sr.sprite.texture);}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ this.IdleFrame();}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000ADB\ RID:\ 2779\ RVA:\ 0x000435BC\ File\ Offset:\ 0x000417BC}}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ NextFrame()}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ this.RefreshSprite();}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000ADC\ RID:\ 2780\ RVA:\ 0x000435C4\ File\ Offset:\ 0x000417C4}}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ RefreshSprite()}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00030}00030\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ Sprite\ sprite\ =\ this.sr.sprite;}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ Texture2D\ texture\ =\ sprite.texture;}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ Rect\ textureRect\ =\ sprite.textureRect;}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ Vector4\ value\ =\ \textcolor{keyword}{new}\ Vector4(textureRect.x\ /\ (\textcolor{keywordtype}{float})texture.width,\ textureRect.min.y\ /\ (\textcolor{keywordtype}{float})texture.height,\ textureRect.max.x\ /\ (\textcolor{keywordtype}{float})texture.width,\ textureRect.max.y\ /\ (\textcolor{keywordtype}{float})texture.height);}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ this.mpb.SetVector(\textcolor{stringliteral}{"{}\_Rect"{}},\ value);}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ this.mpb.SetFloat(\textcolor{stringliteral}{"{}\_PixelHeight"{}},\ sprite.rect.height);}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040009F5\ RID:\ 2549}}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_chara}{Chara}}\ owner;}
+\DoxyCodeLine{\Hypertarget{_chara_actor_8cs_source_l00041}00041\ \}}
+
+\end{DoxyCode}

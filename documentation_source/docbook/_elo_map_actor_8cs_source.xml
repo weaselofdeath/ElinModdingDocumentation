@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__elo_map_actor_8cs_source" xml:lang="en-US">
+<title>EloMapActor.cs</title>
+<indexterm><primary>Elin/EloMapActor.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__elo_map_actor_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>CreativeSpore.SuperTilemapEditor;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00005"/>00005 
+<anchor xml:id="__elo_map_actor_8cs_source_1l00006"/>00006 <emphasis role="comment">//&#32;Token:&#32;0x02000656&#32;RID:&#32;1622</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00007"/><link linkend="_class_elo_map_actor">00007</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_elo_map_actor">EloMapActor</link>&#32;:&#32;<link linkend="_class_e_mono">EMono</link>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00008"/>00008 {
+<anchor xml:id="__elo_map_actor_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000CEE&#32;RID:&#32;3310</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06002D9E&#32;RID:&#32;11678&#32;RVA:&#32;0x000FF87F&#32;File&#32;Offset:&#32;0x000FDA7F</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsActive
+<anchor xml:id="__elo_map_actor_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;base.gameObject.activeSelf;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00018"/>00018 
+<anchor xml:id="__elo_map_actor_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002D9F&#32;RID:&#32;11679&#32;RVA:&#32;0x000FF88C&#32;File&#32;Offset:&#32;0x000FDA8C</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Awake()
+<anchor xml:id="__elo_map_actor_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetActive(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00024"/>00024 
+<anchor xml:id="__elo_map_actor_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002DA0&#32;RID:&#32;11680&#32;RVA:&#32;0x000FF898&#32;File&#32;Offset:&#32;0x000FDA98</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Initialize(<link linkend="_class_elo_map">EloMap</link>&#32;_elomap)
+<anchor xml:id="__elo_map_actor_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.elomap&#32;=&#32;_elomap;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.transMap)
+<anchor xml:id="__elo_map_actor_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.transMap&#32;=&#32;Util.Instantiate&lt;Transform&gt;(this.elomap.idMap,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.transLight&#32;=&#32;UnityEngine.Object.Instantiate&lt;Transform&gt;(this.moldLight);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.lights.Clear();
+<anchor xml:id="__elo_map_actor_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.transMap.SetActive(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.transLight.SetActive(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.scene.screenElona.SetUnitSize();
+<anchor xml:id="__elo_map_actor_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.elomap.initialized)
+<anchor xml:id="__elo_map_actor_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.elomap.Init(<emphasis role="keyword">this</emphasis>);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;STETilemap&#32;fogmap&#32;=&#32;this.elomap.fogmap;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.transMap.position&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Vector3((<emphasis role="keywordtype">float</emphasis>)(-(<emphasis role="keywordtype">float</emphasis>)fogmap.MinGridX)&#32;*&#32;<link linkend="_class_e_mono">EMono</link>.scene.screenElona.tileAlign.x&#32;+&#32;<link linkend="_class_e_mono">EMono</link>.scene.screenElona.actorPos.x,&#32;(<emphasis role="keywordtype">float</emphasis>)(-(<emphasis role="keywordtype">float</emphasis>)fogmap.MinGridY)&#32;*&#32;<link linkend="_class_e_mono">EMono</link>.scene.screenElona.tileAlign.y&#32;+&#32;<link linkend="_class_e_mono">EMono</link>.scene.screenElona.actorPos.y,&#32;<link linkend="_class_e_mono">EMono</link>.scene.screenElona.actorPos.z);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00045"/>00045 
+<anchor xml:id="__elo_map_actor_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002DA1&#32;RID:&#32;11681&#32;RVA:&#32;0x000FF9C0&#32;File&#32;Offset:&#32;0x000FDBC0</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnActivate()
+<anchor xml:id="__elo_map_actor_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.transLight.SetActive(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_elo_map_light">EloMapLight</link>&#32;eloMapLight&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.lights)
+<anchor xml:id="__elo_map_actor_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;eloMapLight.sr.transform.position&#32;=&#32;TilemapUtils.GetGridWorldPos(this.elomap.fogmap,&#32;eloMapLight.gx,&#32;eloMapLight.gy);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnChangeHour();
+<anchor xml:id="__elo_map_actor_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.elomap.objmap.UpdateMesh();
+<anchor xml:id="__elo_map_actor_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00057"/>00057 
+<anchor xml:id="__elo_map_actor_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002DA2&#32;RID:&#32;11682&#32;RVA:&#32;0x000FFA5C&#32;File&#32;Offset:&#32;0x000FDC5C</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnDeactivate()
+<anchor xml:id="__elo_map_actor_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.transMap)
+<anchor xml:id="__elo_map_actor_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.transMap.SetActive(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.transLight)
+<anchor xml:id="__elo_map_actor_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.transLight.SetActive(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00070"/>00070 
+<anchor xml:id="__elo_map_actor_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002DA3&#32;RID:&#32;11683&#32;RVA:&#32;0x000FFA90&#32;File&#32;Offset:&#32;0x000FDC90</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnChangeHour()
+<anchor xml:id="__elo_map_actor_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Color&#32;white&#32;=&#32;Color.white;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;white.a&#32;=&#32;<link linkend="_class_e_mono">EMono</link>.scene.profile.light.orbitAlphaCurve.Evaluate(<link linkend="_class_e_mono">EMono</link>.scene.timeRatio);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;white.a&#32;*=&#32;white.a;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_elo_map_light">EloMapLight</link>&#32;eloMapLight&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.lights)
+<anchor xml:id="__elo_map_actor_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;eloMapLight.sr.color&#32;=&#32;white;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00082"/>00082 
+<anchor xml:id="__elo_map_actor_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002DA4&#32;RID:&#32;11684&#32;RVA:&#32;0x000FFB2C&#32;File&#32;Offset:&#32;0x000FDD2C</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_elo_map">EloMap</link>&#32;GetEloMap()
+<anchor xml:id="__elo_map_actor_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Initialize(<link linkend="_class_e_mono">EMono</link>.world.region.elomap);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.elomap;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00089"/>00089 
+<anchor xml:id="__elo_map_actor_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002DA5&#32;RID:&#32;11685&#32;RVA:&#32;0x000FFB4C&#32;File&#32;Offset:&#32;0x000FDD4C</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnKillGame()
+<anchor xml:id="__elo_map_actor_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SetActive(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.transMap)
+<anchor xml:id="__elo_map_actor_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.transLight.SetActive(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.transMap.SetActive(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.transMap)
+<anchor xml:id="__elo_map_actor_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__elo_map_actor_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UnityEngine.Object.DestroyImmediate(this.transMap.gameObject);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UnityEngine.Object.DestroyImmediate(this.transLight.gameObject);
+<anchor xml:id="__elo_map_actor_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.lights.Clear();
+<anchor xml:id="__elo_map_actor_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__elo_map_actor_8cs_source_1l00106"/>00106 
+<anchor xml:id="__elo_map_actor_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040019A8&#32;RID:&#32;6568</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_elo_map">EloMap</link>&#32;elomap;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00109"/>00109 
+<anchor xml:id="__elo_map_actor_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040019A9&#32;RID:&#32;6569</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Transform&#32;transMap;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00112"/>00112 
+<anchor xml:id="__elo_map_actor_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040019AA&#32;RID:&#32;6570</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Transform&#32;transLight;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00115"/>00115 
+<anchor xml:id="__elo_map_actor_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040019AB&#32;RID:&#32;6571</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Transform&#32;moldLight;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00118"/>00118 
+<anchor xml:id="__elo_map_actor_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040019AC&#32;RID:&#32;6572</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Tileset&#32;tileset;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00121"/>00121 
+<anchor xml:id="__elo_map_actor_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040019AD&#32;RID:&#32;6573</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_elo_map_tile_selector">EloMapTileSelector</link>&#32;selector;
+<anchor xml:id="__elo_map_actor_8cs_source_1l00124"/>00124 
+<anchor xml:id="__elo_map_actor_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040019AE&#32;RID:&#32;6574</emphasis>
+<anchor xml:id="__elo_map_actor_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;EloMapLight&gt;&#32;lights&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;EloMapLight&gt;();
+<anchor xml:id="__elo_map_actor_8cs_source_1l00127"/>00127 }
+</programlisting></section>

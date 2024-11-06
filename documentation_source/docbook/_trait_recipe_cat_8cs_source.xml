@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__trait_recipe_cat_8cs_source" xml:lang="en-US">
+<title>TraitRecipeCat.cs</title>
+<indexterm><primary>Elin/TraitRecipeCat.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__trait_recipe_cat_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00002"/>00002 
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00003"/>00003 <emphasis role="comment">//&#32;Token:&#32;0x02000367&#32;RID:&#32;871</emphasis>
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00004"/><link linkend="_class_trait_recipe_cat">00004</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_trait_recipe_cat">TraitRecipeCat</link>&#32;:&#32;<link linkend="_class_trait_scroll">TraitScroll</link>
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00005"/>00005 {
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00006"/>00006 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170007ED&#32;RID:&#32;2029</emphasis>
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00007"/>00007 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06001AF6&#32;RID:&#32;6902&#32;RVA:&#32;0x000A6D34&#32;File&#32;Offset:&#32;0x000A4F34</emphasis>
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;Cat
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;base.GetParam(1,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00015"/>00015 
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06001AF7&#32;RID:&#32;6903&#32;RVA:&#32;0x000A6D3E&#32;File&#32;Offset:&#32;0x000A4F3E</emphasis>
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;GetValue()
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;base.GetValue()&#32;*&#32;(100&#32;+&#32;(this.owner.LV&#32;-&#32;5)&#32;*&#32;10)&#32;/&#32;100;
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00021"/>00021 
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06001AF8&#32;RID:&#32;6904&#32;RVA:&#32;0x000A6D60&#32;File&#32;Offset:&#32;0x000A4F60</emphasis>
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnRead(<link linkend="_class_chara">Chara</link>&#32;c)
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;randomRecipe&#32;=&#32;<link linkend="_class_recipe_manager">RecipeManager</link>.GetRandomRecipe(this.owner.LV,&#32;<emphasis role="keyword">this</emphasis>.Cat,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(randomRecipe.IsEmpty())
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_msg">Msg</link>.SayNothingHappen();
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.player.recipes.Add(randomRecipe,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.owner.ModNum(-1,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00034"/>00034 
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06001AF9&#32;RID:&#32;6905&#32;RVA:&#32;0x000A6DB4&#32;File&#32;Offset:&#32;0x000A4FB4</emphasis>
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetName(ref&#32;<emphasis role="keywordtype">string</emphasis>&#32;s)
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;s&#32;=&#32;s&#32;+&#32;<emphasis role="stringliteral">&quot;&#32;Lv.&quot;</emphasis>&#32;+&#32;this.owner.LV.ToString();
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00040"/>00040 
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06001AFA&#32;RID:&#32;6906&#32;RVA:&#32;0x000A6DE2&#32;File&#32;Offset:&#32;0x000A4FE2</emphasis>
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanStackTo(<link linkend="_class_thing">Thing</link>&#32;to)
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;base.CanStackTo(to)&#32;&amp;&amp;&#32;this.owner.LV&#32;==&#32;to.LV;
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__trait_recipe_cat_8cs_source_1l00046"/>00046 }
+</programlisting></section>

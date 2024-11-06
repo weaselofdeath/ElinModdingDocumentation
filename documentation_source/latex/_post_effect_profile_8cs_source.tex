@@ -1,0 +1,92 @@
+\doxysection{Post\+Effect\+Profile.\+cs}
+\hypertarget{_post_effect_profile_8cs_source}{}\label{_post_effect_profile_8cs_source}\index{Elin/PostEffectProfile.cs@{Elin/PostEffectProfile.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityStandardAssets.ImageEffects;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x0200016E\ RID:\ 366}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00006}\mbox{\hyperlink{class_post_effect_profile}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_post_effect_profile}{PostEffectProfile}}\ :\ \mbox{\hyperlink{class_e_scriptable}{EScriptable}}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000ABA\ RID:\ 2746\ RVA:\ 0x000424AC\ File\ Offset:\ 0x000406AC}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnValidate()}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Application.isPlaying)}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ this.Apply(\mbox{\hyperlink{class_e_class}{EClass}}.scene.cam);}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000ABB\ RID:\ 2747\ RVA:\ 0x000424C5\ File\ Offset:\ 0x000406C5}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnChangeProfile()}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_core_config_1_1_graphic_setting}{CoreConfig.GraphicSetting}}\ graphic\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.core.config.graphic;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ graphic.sharpen\ =\ this.sharpen;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ graphic.sharpen2\ =\ this.sharpen2;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ graphic.blur\ =\ this.blur;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ graphic.kuwahara\ =\ this.kuwahara;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000ABC\ RID:\ 2748\ RVA:\ 0x00042508\ File\ Offset:\ 0x00040708}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00028}00028\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Apply(Camera\ cam)}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ Antialiasing\ component\ =\ cam.transform.GetComponent<Antialiasing>();}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (component)}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ component.enabled\ =\ this.enableAA;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ component.mode\ =\ this.aaMode;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ component.offsetScale\ =\ this.offsetScale;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ component.blurRadius\ =\ this.blurRadius;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.enableCharaAA)}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.scene.screenElin.tileMap.passChara.mat.EnableKeyword(\textcolor{stringliteral}{"{}AA\_ON"{}});}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.scene.screenElin.tileMap.passCharaL.mat.EnableKeyword(\textcolor{stringliteral}{"{}AA\_ON"{}});}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.scene.screenElin.tileMap.passChara.mat.DisableKeyword(\textcolor{stringliteral}{"{}AA\_ON"{}});}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.scene.screenElin.tileMap.passCharaL.mat.DisableKeyword(\textcolor{stringliteral}{"{}AA\_ON"{}});}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00048}00048\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040009C6\ RID:\ 2502}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00049}00049\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ Brightness;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040009C7\ RID:\ 2503}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00052}00052\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ Saturation;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040009C8\ RID:\ 2504}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00055}00055\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ Contrast;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040009C9\ RID:\ 2505}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00058}00058\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ sharpen\ =\ 20;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040009CA\ RID:\ 2506}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ sharpen2\ =\ 80;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040009CB\ RID:\ 2507}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ blur;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040009CC\ RID:\ 2508}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00067}00067\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ enableAA;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040009CD\ RID:\ 2509}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00070}00070\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ enableCharaAA;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040009CE\ RID:\ 2510}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ disable;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040009CF\ RID:\ 2511}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00076}00076\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ kuwahara;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040009D0\ RID:\ 2512}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{public}\ AAMode\ aaMode;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040009D1\ RID:\ 2513}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00082}00082\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ offsetScale;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00084}00084\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040009D2\ RID:\ 2514}}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00085}00085\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ blurRadius;}
+\DoxyCodeLine{\Hypertarget{_post_effect_profile_8cs_source_l00086}00086\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,108 @@
+\doxysection{Path\+Progress.\+cs}
+\hypertarget{_path_progress_8cs_source}{}\label{_path_progress_8cs_source}\index{Elin/PathProgress.cs@{Elin/PathProgress.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_algorithms}{Algorithms}};}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x020000BD\ RID:\ 189}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00006}\mbox{\hyperlink{class_path_progress}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_path_progress}{PathProgress}}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700010B\ RID:\ 267}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060004E6\ RID:\ 1254\ RVA:\ 0x00022311\ File\ Offset:\ 0x00020511}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ HasPath}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.state\ ==\ PathProgress.State.PathReady\ \&\&\ this.nodes.Count\ >=\ 1;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00016}00016\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004E7\ RID:\ 1255\ RVA:\ 0x0002232F\ File\ Offset:\ 0x0002052F}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsDestinationReached(\mbox{\hyperlink{class_point}{Point}}\ pos)}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Util.Distance(pos.x,\ pos.z,\ \textcolor{keyword}{this}.destPoint.x,\ \textcolor{keyword}{this}.destPoint.z)\ <=\ this.destDist;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004E8\ RID:\ 1256\ RVA:\ 0x00022364\ File\ Offset:\ 0x00020564}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RequestPath(\mbox{\hyperlink{class_point}{Point}}\ \_startPoint,\ \mbox{\hyperlink{class_point}{Point}}\ \_destPoint,\ \textcolor{keywordtype}{int}\ \_destDist,\ \textcolor{keywordtype}{bool}\ \_ignoreConnection,\ \textcolor{keywordtype}{int}\ \_searchLimit\ =\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_startPoint.cell.isSurrounded4d\ ||\ \_destPoint.cell.isSurrounded4d)}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ this.state\ =\ \mbox{\hyperlink{class_path_progress}{PathProgress}}.State.Fail;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ this.nodeIndex\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ this.nodes.Clear();}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ this.startPoint.Set(\_startPoint);}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ this.destPoint.Set(\_destPoint);}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ this.destDist\ =\ \_destDist;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ this.ignoreConnection\ =\ \_ignoreConnection;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ this.searchLimit\ =\ ((\_searchLimit\ ==\ -\/1)\ ?\ PathManager.Instance.searchLimit\ :\ \_searchLimit);}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_path_manager}{PathManager}}.Instance.RequestPath(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004E9\ RID:\ 1257\ RVA:\ 0x000223F4\ File\ Offset:\ 0x000205F4}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00043}00043\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RequestPathImmediate(\mbox{\hyperlink{class_point}{Point}}\ \_startPoint,\ \mbox{\hyperlink{class_point}{Point}}\ \_destPoint,\ \textcolor{keywordtype}{int}\ \_destDist,\ \textcolor{keywordtype}{bool}\ \_ignoreConnection,\ \textcolor{keywordtype}{int}\ \_searchLimit\ =\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00044}00044\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_startPoint.cell.isSurrounded4d\ ||\ \_destPoint.cell.isSurrounded4d)}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ this.state\ =\ \mbox{\hyperlink{class_path_progress}{PathProgress}}.State.Fail;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ this.nodeIndex\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ this.nodes.Clear();}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ this.startPoint.Set(\_startPoint);}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ this.destPoint.Set(\_destPoint);}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ this.destDist\ =\ \_destDist;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ this.ignoreConnection\ =\ \_ignoreConnection;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ this.searchLimit\ =\ ((\_searchLimit\ ==\ -\/1)\ ?\ PathManager.Instance.searchLimit\ :\ \_searchLimit);}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_path_manager}{PathManager}}.Instance.RequestPathImmediate(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000657\ RID:\ 1623}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{interface_i_pathfind_walker}{IPathfindWalker}}\ walker;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000658\ RID:\ 1624}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{public}\ List<PathFinderNode>\ nodes\ =\ \textcolor{keyword}{new}\ List<PathFinderNode>();}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000659\ RID:\ 1625}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00067}00067\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_point}{Point}}\ startPoint\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_point}{Point}}();}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400065A\ RID:\ 1626}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00070}00070\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_point}{Point}}\ destPoint\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_point}{Point}}();}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400065B\ RID:\ 1627}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ nodeIndex;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400065C\ RID:\ 1628}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00076}00076\ \ \ \ \ \textcolor{keyword}{public}\ PathProgress.State\ state;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400065D\ RID:\ 1629}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ destDist;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400065E\ RID:\ 1630}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00082}00082\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ searchLimit;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00084}00084\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400065F\ RID:\ 1631}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00085}00085\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ ignoreConnection;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000660\ RID:\ 1632}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00088}00088\ \ \ \ \ \textcolor{keyword}{public}\ PathManager.MoveType\ moveType;}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00090}00090\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000808\ RID:\ 2056}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00091}00091\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ State}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00092}00092\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002294\ RID:\ 8852}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ Idle,}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002295\ RID:\ 8853}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ Searching,}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002296\ RID:\ 8854}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ PathReady,}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002297\ RID:\ 8855}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ Fail}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_progress_8cs_source_l00102}00102\ \}}
+
+\end{DoxyCode}

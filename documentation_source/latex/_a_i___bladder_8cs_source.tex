@@ -1,0 +1,63 @@
+\doxysection{AI\+\_\+\+Bladder.\+cs}
+\hypertarget{_a_i___bladder_8cs_source}{}\label{_a_i___bladder_8cs_source}\index{Elin/AI\_Bladder.cs@{Elin/AI\_Bladder.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x020001F9\ RID:\ 505}}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00006}\mbox{\hyperlink{class_a_i___bladder}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_a_i___bladder}{AI\_Bladder}}\ :\ \mbox{\hyperlink{class_a_i_act}{AIAct}}}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000E76\ RID:\ 3702\ RVA:\ 0x0006D293\ File\ Offset:\ 0x0006B493}}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ IEnumerable<\mbox{\hyperlink{class_a_i_act}{AIAct}}.Status>\ Run()}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.toilet\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ this.toilet\ =\ (\mbox{\hyperlink{class_e_class}{EClass}}.\_map.Installed.traits.GetTraitSet<\mbox{\hyperlink{class_trait_bath}{TraitBath}}>().GetRandom()\ as\ \mbox{\hyperlink{class_trait_bath}{TraitBath}});}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.toilet\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ this.Cancel();}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ base.DoGoto(this.toilet.owner,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_progress___custom}{Progress\_Custom}}\ seq\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_progress___custom}{Progress\_Custom}}}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ onProgressBegin\ =\ delegate()}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.owner.SetTempHand(-\/1,\ -\/1);}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.owner.SetPCCState(PCCState.Naked);}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.owner.SetCensored(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.owner.PlaySound(\textcolor{stringliteral}{"{}water"{}},\ 1f,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.owner.Kick(this.owner.pos,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.owner.pos.TalkWitnesses(this.owner,\ \textcolor{stringliteral}{"{}disgust"{}},\ 4,\ WitnessType.everyone,\ \textcolor{keyword}{null},\ 3);}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ onProgress\ =\ delegate(\mbox{\hyperlink{class_progress___custom}{Progress\_Custom}}\ p)}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.owner.renderer.PlayAnime(AnimeID.Shiver,\ \textcolor{keywordflow}{default}(Vector3),\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ onProgressComplete\ =\ delegate()}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.toilet\ ==\ \textcolor{keyword}{null}\ ||\ !this.toilet.ExistsOnMap\ ||\ !\textcolor{keyword}{this}.toilet.owner.pos.Equals(\textcolor{keyword}{this}.owner.pos))}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.SetLiquid(this.owner.pos.x,\ \textcolor{keyword}{this}.owner.pos.z,\ 1,\ 3);}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.owner.ShowEmo(Emo.happy,\ 0f,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \}.SetDuration(15,\ 5);}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ base.Do(seq,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00048}00048\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000E77\ RID:\ 3703\ RVA:\ 0x0006D2A3\ File\ Offset:\ 0x0006B4A3}}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00049}00049\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnReset()}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00050}00050\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ this.owner.SetPCCState(PCCState.Normal);}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ this.owner.SetCensored(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000D50\ RID:\ 3408}}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_trait_bath}{TraitBath}}\ toilet;}
+\DoxyCodeLine{\Hypertarget{_a_i___bladder_8cs_source_l00057}00057\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__button_roster_8cs_source" xml:lang="en-US">
+<title>ButtonRoster.cs</title>
+<indexterm><primary>Elin/ButtonRoster.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__button_roster_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__button_roster_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__button_roster_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>UnityEngine.UI;
+<anchor xml:id="__button_roster_8cs_source_1l00004"/>00004 
+<anchor xml:id="__button_roster_8cs_source_1l00005"/>00005 <emphasis role="comment">//&#32;Token:&#32;0x02000501&#32;RID:&#32;1281</emphasis>
+<anchor xml:id="__button_roster_8cs_source_1l00006"/><link linkend="_class_button_roster">00006</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_button_roster">ButtonRoster</link>&#32;:&#32;UIButton
+<anchor xml:id="__button_roster_8cs_source_1l00007"/>00007 {
+<anchor xml:id="__button_roster_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000B09&#32;RID:&#32;2825</emphasis>
+<anchor xml:id="__button_roster_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06002247&#32;RID:&#32;8775&#32;RVA:&#32;0x000BEA84&#32;File&#32;Offset:&#32;0x000BCC84</emphasis>
+<anchor xml:id="__button_roster_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_widget_roster">WidgetRoster</link>&#32;roster
+<anchor xml:id="__button_roster_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__button_roster_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__button_roster_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__button_roster_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_widget_roster">WidgetRoster</link>.Instance;
+<anchor xml:id="__button_roster_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__button_roster_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__button_roster_8cs_source_1l00017"/>00017 
+<anchor xml:id="__button_roster_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002248&#32;RID:&#32;8776&#32;RVA:&#32;0x000BEA8C&#32;File&#32;Offset:&#32;0x000BCC8C</emphasis>
+<anchor xml:id="__button_roster_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetChara(<link linkend="_class_chara">Chara</link>&#32;c)
+<anchor xml:id="__button_roster_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__button_roster_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.chara&#32;=&#32;c;
+<anchor xml:id="__button_roster_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.chara.SetImage(this.icon);
+<anchor xml:id="__button_roster_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;flag&#32;=&#32;this.roster.extra.portrait&#32;&amp;&amp;&#32;!this.chara.GetIdPortrait().IsEmpty();
+<anchor xml:id="__button_roster_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.SetChara(c,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__button_roster_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.SetActive(flag&#32;&amp;&amp;&#32;!this.roster.extra.onlyName);
+<anchor xml:id="__button_roster_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.icon.enabled&#32;=&#32;(!flag&#32;&amp;&amp;&#32;!this.roster.extra.onlyName);
+<anchor xml:id="__button_roster_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.icon.rectTransform.anchoredPosition&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Vector2(0f,&#32;(<emphasis role="keywordtype">float</emphasis>)(this.roster.extra.width&#32;/&#32;2));
+<anchor xml:id="__button_roster_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Refresh();
+<anchor xml:id="__button_roster_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__button_roster_8cs_source_1l00030"/>00030 
+<anchor xml:id="__button_roster_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002249&#32;RID:&#32;8777&#32;RVA:&#32;0x000BEB64&#32;File&#32;Offset:&#32;0x000BCD64</emphasis>
+<anchor xml:id="__button_roster_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Refresh()
+<anchor xml:id="__button_roster_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__button_roster_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_button_roster">ButtonRoster</link>.gradient&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__button_roster_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__button_roster_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ButtonRoster.gradient&#32;=&#32;<link linkend="_class_e_class">EClass</link>.Colors.Dark.gradients[<emphasis role="stringliteral">&quot;mood&quot;</emphasis>];
+<anchor xml:id="__button_roster_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__button_roster_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;num&#32;=&#32;Mathf.Clamp((<emphasis role="keywordtype">float</emphasis>)this.chara.hp&#32;/&#32;(<emphasis role="keywordtype">float</emphasis>)<emphasis role="keyword">this</emphasis>.chara.MaxHP,&#32;0f,&#32;1f);
+<anchor xml:id="__button_roster_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.barMood.Rect().localScale&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Vector3(num,&#32;1f,&#32;1f);
+<anchor xml:id="__button_roster_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.barMood.color&#32;=&#32;<link linkend="_class_button_roster">ButtonRoster</link>.gradient.Evaluate(num);
+<anchor xml:id="__button_roster_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Color&#32;c&#32;=&#32;<link linkend="_class_e_class">EClass</link>.Colors.Dark.gradientHP.Evaluate((<emphasis role="keywordtype">float</emphasis>)this.chara.hp&#32;/&#32;(<emphasis role="keywordtype">float</emphasis>)<emphasis role="keyword">this</emphasis>.chara.MaxHP);
+<anchor xml:id="__button_roster_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.mainText.text&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>.TagColor(c,&#32;this.chara.hp.ToString()&#32;??&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+<anchor xml:id="__button_roster_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.mainText.SetActive(this.roster.extra.showHP);
+<anchor xml:id="__button_roster_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.roster.extra.showHP)
+<anchor xml:id="__button_roster_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__button_roster_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textName.SetText(this.chara.NameSimple);
+<anchor xml:id="__button_roster_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__button_roster_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__button_roster_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__button_roster_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textName.text&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>.TagColor(c,&#32;this.chara.NameSimple);
+<anchor xml:id="__button_roster_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__button_roster_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textName.SetActive(this.roster.extra.onlyName);
+<anchor xml:id="__button_roster_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__button_roster_8cs_source_1l00054"/>00054 
+<anchor xml:id="__button_roster_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040011CC&#32;RID:&#32;4556</emphasis>
+<anchor xml:id="__button_roster_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_chara">Chara</link>&#32;chara;
+<anchor xml:id="__button_roster_8cs_source_1l00057"/>00057 
+<anchor xml:id="__button_roster_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040011CD&#32;RID:&#32;4557</emphasis>
+<anchor xml:id="__button_roster_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;iconPivot;
+<anchor xml:id="__button_roster_8cs_source_1l00060"/>00060 
+<anchor xml:id="__button_roster_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040011CE&#32;RID:&#32;4558</emphasis>
+<anchor xml:id="__button_roster_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;dragged;
+<anchor xml:id="__button_roster_8cs_source_1l00063"/>00063 
+<anchor xml:id="__button_roster_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040011CF&#32;RID:&#32;4559</emphasis>
+<anchor xml:id="__button_roster_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Image&#32;barMood;
+<anchor xml:id="__button_roster_8cs_source_1l00066"/>00066 
+<anchor xml:id="__button_roster_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040011D0&#32;RID:&#32;4560</emphasis>
+<anchor xml:id="__button_roster_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textName;
+<anchor xml:id="__button_roster_8cs_source_1l00069"/>00069 
+<anchor xml:id="__button_roster_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040011D1&#32;RID:&#32;4561</emphasis>
+<anchor xml:id="__button_roster_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;RectTransform&#32;rect;
+<anchor xml:id="__button_roster_8cs_source_1l00072"/>00072 
+<anchor xml:id="__button_roster_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040011D2&#32;RID:&#32;4562</emphasis>
+<anchor xml:id="__button_roster_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_portrait">Portrait</link>&#32;portrait;
+<anchor xml:id="__button_roster_8cs_source_1l00075"/>00075 
+<anchor xml:id="__button_roster_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040011D3&#32;RID:&#32;4563</emphasis>
+<anchor xml:id="__button_roster_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;Gradient&#32;gradient;
+<anchor xml:id="__button_roster_8cs_source_1l00078"/>00078 }
+</programlisting></section>

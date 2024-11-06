@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__content_policy_8cs_source" xml:lang="en-US">
+<title>ContentPolicy.cs</title>
+<indexterm><primary>Elin/ContentPolicy.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__content_policy_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__content_policy_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__content_policy_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>System.Linq;
+<anchor xml:id="__content_policy_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>System.Runtime.CompilerServices;
+<anchor xml:id="__content_policy_8cs_source_1l00005"/>00005 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__content_policy_8cs_source_1l00006"/>00006 
+<anchor xml:id="__content_policy_8cs_source_1l00007"/>00007 <emphasis role="comment">//&#32;Token:&#32;0x02000551&#32;RID:&#32;1361</emphasis>
+<anchor xml:id="__content_policy_8cs_source_1l00008"/><link linkend="_class_content_policy">00008</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_content_policy">ContentPolicy</link>&#32;:&#32;<link linkend="_class_e_content">EContent</link>
+<anchor xml:id="__content_policy_8cs_source_1l00009"/>00009 {
+<anchor xml:id="__content_policy_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024FC&#32;RID:&#32;9468&#32;RVA:&#32;0x000D14B0&#32;File&#32;Offset:&#32;0x000CF6B0</emphasis>
+<anchor xml:id="__content_policy_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnSwitchContent(<emphasis role="keywordtype">int</emphasis>&#32;idTab)
+<anchor xml:id="__content_policy_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.Branch.policies.Validate();
+<anchor xml:id="__content_policy_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshPolicy();
+<anchor xml:id="__content_policy_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_policy_8cs_source_1l00016"/>00016 
+<anchor xml:id="__content_policy_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024FD&#32;RID:&#32;9469&#32;RVA:&#32;0x000D14C8&#32;File&#32;Offset:&#32;0x000CF6C8</emphasis>
+<anchor xml:id="__content_policy_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshPolicy()
+<anchor xml:id="__content_policy_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshPolicyList(this.listPolicyLaw,&#32;<emphasis role="stringliteral">&quot;law&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;department_law&quot;</emphasis>);
+<anchor xml:id="__content_policy_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshPolicyList(this.listPolicyEconomy,&#32;<emphasis role="stringliteral">&quot;economy&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;department_economy&quot;</emphasis>);
+<anchor xml:id="__content_policy_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshPolicyList(this.listPolicyLife,&#32;<emphasis role="stringliteral">&quot;life&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;department_life&quot;</emphasis>);
+<anchor xml:id="__content_policy_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshPolicyList(this.listUtility,&#32;<emphasis role="stringliteral">&quot;utility&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;department_utility&quot;</emphasis>);
+<anchor xml:id="__content_policy_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.listUtility.SetActive(<link linkend="_class_e_class">EClass</link>.Branch.lv&#32;&gt;=&#32;2);
+<anchor xml:id="__content_policy_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshPolicyIcons();
+<anchor xml:id="__content_policy_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.GetComponentInParent&lt;Layer&gt;().RebuildLayout(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__content_policy_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RebuildLayout(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__content_policy_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_policy_8cs_source_1l00029"/>00029 
+<anchor xml:id="__content_policy_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024FE&#32;RID:&#32;9470&#32;RVA:&#32;0x000D1564&#32;File&#32;Offset:&#32;0x000CF764</emphasis>
+<anchor xml:id="__content_policy_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshPolicyList(UIList&#32;list,&#32;<emphasis role="keywordtype">string</emphasis>&#32;cat,&#32;<emphasis role="keywordtype">string</emphasis>&#32;plan)
+<anchor xml:id="__content_policy_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BaseList&#32;list2&#32;=&#32;list;
+<anchor xml:id="__content_policy_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIList.Callback&lt;<link linkend="_class_policy">Policy</link>,&#32;UIButton&gt;&#32;callback&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;UIList.Callback&lt;<link linkend="_class_policy">Policy</link>,&#32;UIButton&gt;();
+<anchor xml:id="__content_policy_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onClick&#32;=&#32;delegate(<link linkend="_class_policy">Policy</link>&#32;a,&#32;UIButton&#32;b)
+<anchor xml:id="__content_policy_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__content_policy_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onInstantiate&#32;=&#32;delegate(<link linkend="_class_policy">Policy</link>&#32;a,&#32;UIButton&#32;b)
+<anchor xml:id="__content_policy_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.mainText.SetText(a.Name);
+<anchor xml:id="__content_policy_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.onClick.AddListener(delegate()
+<anchor xml:id="__content_policy_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!a.active)
+<anchor xml:id="__content_policy_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((a.Cost&#32;&gt;&#32;0&#32;&amp;&amp;&#32;<link linkend="_class_e_class">EClass</link>.Branch.policies.CurrentAP()&#32;+&#32;a.Cost&#32;&gt;&#32;<link linkend="_class_e_class">EClass</link>.Branch.MaxAP)&#32;||&#32;!<link linkend="_class_content_policy">ContentPolicy</link>.&lt;RefreshPolicyList&gt;g__CanActivate|7_0(a))
+<anchor xml:id="__content_policy_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.Beep();
+<anchor xml:id="__content_policy_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__content_policy_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_policy_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(a.id&#32;==&#32;2514&#32;&amp;&amp;&#32;<link linkend="_class_e_class">EClass</link>.pc.faction.CountTaxFreeLand()&#32;&gt;=&#32;3)
+<anchor xml:id="__content_policy_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.Beep();
+<anchor xml:id="__content_policy_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__content_policy_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_policy_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_policy_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.ClickOk();
+<anchor xml:id="__content_policy_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;a.active&#32;=&#32;!a.active;
+<anchor xml:id="__content_policy_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(a.id&#32;==&#32;2705)
+<anchor xml:id="__content_policy_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.faction.SetGlobalPolicyActive(2705,&#32;a.active);
+<anchor xml:id="__content_policy_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_policy_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(a.id&#32;==&#32;2708)
+<anchor xml:id="__content_policy_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.faction.SetGlobalPolicyActive(2708,&#32;a.active);
+<anchor xml:id="__content_policy_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_policy_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(a.id&#32;==&#32;2710)
+<anchor xml:id="__content_policy_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.faction.SetGlobalPolicyActive(2710,&#32;a.active);
+<anchor xml:id="__content_policy_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_policy_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.Branch.policies.RefreshEffects();
+<anchor xml:id="__content_policy_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshPolicyIcons();
+<anchor xml:id="__content_policy_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__content_policy_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.refObj&#32;=&#32;a;
+<anchor xml:id="__content_policy_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.tooltip.onShowTooltip&#32;=&#32;delegate(UITooltip&#32;tp)
+<anchor xml:id="__content_policy_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;a.WriteNote(tp.note);
+<anchor xml:id="__content_policy_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__content_policy_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__content_policy_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Func&lt;Policy,&#32;bool&gt;&#32;&lt;&gt;9__7;
+<anchor xml:id="__content_policy_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onList&#32;=&#32;delegate(UIList.SortMode&#32;m)
+<anchor xml:id="__content_policy_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;IEnumerable&lt;Policy&gt;&#32;list3&#32;=&#32;<link linkend="_class_e_class">EClass</link>.Branch.policies.list;
+<anchor xml:id="__content_policy_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Func&lt;Policy,&#32;bool&gt;&#32;predicate;
+<anchor xml:id="__content_policy_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((predicate&#32;=&#32;&lt;&gt;9__7)&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__content_policy_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;predicate&#32;=&#32;(&lt;&gt;9__7&#32;=&#32;((<link linkend="_class_policy">Policy</link>&#32;p)&#32;=&gt;&#32;p.source.categorySub&#32;==&#32;cat));
+<anchor xml:id="__content_policy_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_policy_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_policy">Policy</link>&#32;o&#32;<emphasis role="keywordflow">in</emphasis>&#32;list3.Where(predicate))
+<anchor xml:id="__content_policy_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.Add(o);
+<anchor xml:id="__content_policy_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_policy_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__content_policy_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onSort&#32;=&#32;((<link linkend="_class_policy">Policy</link>&#32;a,&#32;UIList.SortMode&#32;m)&#32;=&gt;&#32;a.GetSortVal(m));
+<anchor xml:id="__content_policy_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onRefresh&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__content_policy_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list2.callbacks&#32;=&#32;callback;
+<anchor xml:id="__content_policy_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.List(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__content_policy_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.GetComponentInChildren&lt;CanvasGroup&gt;().alpha&#32;=&#32;((list.items.Count&#32;&gt;&#32;0)&#32;?&#32;0.9f&#32;:&#32;0.4f);
+<anchor xml:id="__content_policy_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_policy_8cs_source_1l00099"/>00099 
+<anchor xml:id="__content_policy_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060024FF&#32;RID:&#32;9471&#32;RVA:&#32;0x000D164C&#32;File&#32;Offset:&#32;0x000CF84C</emphasis>
+<anchor xml:id="__content_policy_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshPolicyIcons()
+<anchor xml:id="__content_policy_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;<link linkend="_class_e_class">EClass</link>.Branch.policies.CurrentAP();
+<anchor xml:id="__content_policy_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIList[]&#32;array&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;UIList[]
+<anchor xml:id="__content_policy_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.listPolicyLaw,
+<anchor xml:id="__content_policy_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.listPolicyLife,
+<anchor xml:id="__content_policy_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.listPolicyEconomy,
+<anchor xml:id="__content_policy_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.listUtility
+<anchor xml:id="__content_policy_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__content_policy_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;array.Length;&#32;i++)
+<anchor xml:id="__content_policy_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(UIButton&#32;uibutton&#32;<emphasis role="keywordflow">in</emphasis>&#32;array[i].GetComponentsInChildren&lt;UIButton&gt;())
+<anchor xml:id="__content_policy_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_policy">Policy</link>&#32;policy&#32;=&#32;uibutton.refObj&#32;as&#32;<link linkend="_class_policy">Policy</link>;
+<anchor xml:id="__content_policy_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uibutton.icon.material&#32;=&#32;(policy.active&#32;?&#32;null&#32;:&#32;this.matGrayscale);
+<anchor xml:id="__content_policy_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uibutton.imageCheck.SetActive(policy.active);
+<anchor xml:id="__content_policy_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uibutton.subText.SetText(policy.Cost.ToString()&#32;??&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>,&#32;(num&#32;+&#32;policy.Cost&#32;&lt;=&#32;<link linkend="_class_e_class">EClass</link>.Branch.MaxAP&#32;||&#32;policy.active)&#32;?&#32;FontColor.Good&#32;:&#32;FontColor.Bad);
+<anchor xml:id="__content_policy_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_policy_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_policy_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_policy_8cs_source_1l00122"/>00122 
+<anchor xml:id="__content_policy_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002501&#32;RID:&#32;9473&#32;RVA:&#32;0x000D1758&#32;File&#32;Offset:&#32;0x000CF958</emphasis>
+<anchor xml:id="__content_policy_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;[CompilerGenerated]
+<anchor xml:id="__content_policy_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;<emphasis role="keyword">internal</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;bool&#32;&lt;RefreshPolicyList&gt;g__CanActivate|7_0(<link linkend="_class_policy">Policy</link>&#32;p)
+<anchor xml:id="__content_policy_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_policy_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(p.id&#32;!=&#32;2515&#32;||&#32;!<link linkend="_class_e_class">EClass</link>.Branch.policies.IsActive(2516,&#32;-1))&#32;&amp;&amp;&#32;(p.id&#32;!=&#32;2516&#32;||&#32;!<link linkend="_class_e_class">EClass</link>.Branch.policies.IsActive(2515,&#32;-1))&#32;&amp;&amp;&#32;(p.id&#32;!=&#32;2814&#32;||&#32;!<link linkend="_class_e_class">EClass</link>.Branch.policies.IsActive(2823,&#32;-1))&#32;&amp;&amp;&#32;(p.id&#32;!=&#32;2823&#32;||&#32;!<link linkend="_class_e_class">EClass</link>.Branch.policies.IsActive(2814,&#32;-1));
+<anchor xml:id="__content_policy_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_policy_8cs_source_1l00129"/>00129 
+<anchor xml:id="__content_policy_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001487&#32;RID:&#32;5255</emphasis>
+<anchor xml:id="__content_policy_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIList&#32;listPolicyLaw;
+<anchor xml:id="__content_policy_8cs_source_1l00132"/>00132 
+<anchor xml:id="__content_policy_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001488&#32;RID:&#32;5256</emphasis>
+<anchor xml:id="__content_policy_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIList&#32;listPolicyEconomy;
+<anchor xml:id="__content_policy_8cs_source_1l00135"/>00135 
+<anchor xml:id="__content_policy_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001489&#32;RID:&#32;5257</emphasis>
+<anchor xml:id="__content_policy_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIList&#32;listPolicyLife;
+<anchor xml:id="__content_policy_8cs_source_1l00138"/>00138 
+<anchor xml:id="__content_policy_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400148A&#32;RID:&#32;5258</emphasis>
+<anchor xml:id="__content_policy_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIList&#32;listUtility;
+<anchor xml:id="__content_policy_8cs_source_1l00141"/>00141 
+<anchor xml:id="__content_policy_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400148B&#32;RID:&#32;5259</emphasis>
+<anchor xml:id="__content_policy_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Material&#32;matGrayscale;
+<anchor xml:id="__content_policy_8cs_source_1l00144"/>00144 }
+</programlisting></section>

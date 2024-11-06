@@ -1,0 +1,234 @@
+\doxysection{Game\+Lang.\+cs}
+\hypertarget{_game_lang_8cs_source}{}\label{_game_lang_8cs_source}\index{Elin/GameLang.cs@{Elin/GameLang.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Text;}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x020000AD\ RID:\ 173}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00005}\mbox{\hyperlink{class_game_lang}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_lang}{GameLang}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004AA\ RID:\ 1194\ RVA:\ 0x0001FC24\ File\ Offset:\ 0x0001DE24}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ ConvertDrama(\textcolor{keywordtype}{string}\ text,\ \mbox{\hyperlink{class_chara}{Chara}}\ c\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.core.IsGameStarted)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ text;}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ StringBuilder\ stringBuilder\ =\ \textcolor{keyword}{new}\ StringBuilder();}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ newValue\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ newValue2\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ name\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.game.religions.GetRandomReligion(\textcolor{keyword}{false},\ \textcolor{keyword}{false}).Name;}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ @ref\ =\ \textcolor{stringliteral}{"{}-\/"{}};}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ newValue\ =\ c.NameBraced;}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ newValue2\ =\ (c.IsMale\ ?\ \textcolor{stringliteral}{"{}his"{}}\ :\ \textcolor{stringliteral}{"{}her"{}}).lang();}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ name\ =\ c.faith.Name;}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ @ref\ =\ (\mbox{\hyperlink{class_calc_gold}{CalcGold}}.Hire(c).ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text2\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ text.Length;\ i++)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flag)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (text[i]\ ==\ \textcolor{charliteral}{']'})}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flag\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (text2\ ==\ \textcolor{stringliteral}{"{}qFriend"{}}\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.\_zone.IsPCFaction)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text2\ =\ \textcolor{stringliteral}{"{}qFriendHome"{}};}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}[]\ list\ =\ Lang.GetList(text2);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Append(list.RandomItem<\textcolor{keywordtype}{string}>());}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Append(text2);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text2\ +=\ text[i].ToString();}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (text[i]\ ==\ \textcolor{charliteral}{'['})}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text2\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flag\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Append(text[i]);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_drama_manager}{DramaManager}}.TG\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#tg"{}},\ \mbox{\hyperlink{class_drama_manager}{DramaManager}}.TG.Name);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_drama_choice}{DramaChoice}}.lastChoice\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#last\_choice"{}},\ \mbox{\hyperlink{class_drama_choice}{DramaChoice}}.lastChoice.text);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#newline"{}},\ Environment.NewLine);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#costHire"{}},\ \textcolor{stringliteral}{"{}costHire"{}}.lang(@ref,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#self"{}},\ newValue);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#his"{}},\ newValue2);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#me"{}},\ newValue);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#1"{}},\ \mbox{\hyperlink{class_game_lang}{GameLang}}.refDrama1);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#2"{}},\ \mbox{\hyperlink{class_game_lang}{GameLang}}.refDrama2);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#3"{}},\ \mbox{\hyperlink{class_game_lang}{GameLang}}.refDrama3);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#4"{}},\ \mbox{\hyperlink{class_game_lang}{GameLang}}.refDrama4);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#god"{}},\ name);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#player"{}},\ \mbox{\hyperlink{class_e_class}{EClass}}.player.title);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#title"{}},\ \mbox{\hyperlink{class_e_class}{EClass}}.player.title);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#zone"{}},\ \mbox{\hyperlink{class_e_class}{EClass}}.\_zone.Name);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#guild\_title"{}},\ \mbox{\hyperlink{class_guild}{Guild}}.Current.relation.TextTitle);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#guild"{}},\ \mbox{\hyperlink{class_guild}{Guild}}.Current.Name);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#pc"{}},\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.NameSimple);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#aka"{}},\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.Aka);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#bigdaddy"{}},\ \textcolor{stringliteral}{"{}bigdaddy"{}}.lang());}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#festival"{}},\ \mbox{\hyperlink{class_e_class}{EClass}}.\_zone.IsFestival\ ?\ (\mbox{\hyperlink{class_e_class}{EClass}}.\_zone.id\ +\ \textcolor{stringliteral}{"{}\_festival"{}}).lang()\ :\ \textcolor{stringliteral}{"{}\_festival"{}}.lang());}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#brother2"{}},\ (\mbox{\hyperlink{class_e_class}{EClass}}.pc.IsMale\ ?\ \textcolor{stringliteral}{"{}brother"{}}\ :\ \textcolor{stringliteral}{"{}sister"{}}).lang());}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#brother"{}},\ Lang.GetList(\mbox{\hyperlink{class_e_class}{EClass}}.pc.IsMale\ ?\ \textcolor{stringliteral}{"{}bro"{}}\ :\ \textcolor{stringliteral}{"{}sis"{}}).RandomItem<\textcolor{keywordtype}{string}>());}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#onii"{}},\ Lang.GetList(\mbox{\hyperlink{class_e_class}{EClass}}.pc.IsMale\ ?\ \textcolor{stringliteral}{"{}onii"{}}\ :\ \textcolor{stringliteral}{"{}onee"{}}).RandomItem<\textcolor{keywordtype}{string}>());}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#gender"{}},\ Lang.GetList(\textcolor{stringliteral}{"{}gendersDrama"{}})[\mbox{\hyperlink{class_e_class}{EClass}}.pc.bio.gender]);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#he"{}},\ ((\mbox{\hyperlink{class_e_class}{EClass}}.pc.bio.gender\ ==\ 2)\ ?\ \textcolor{stringliteral}{"{}he"{}}\ :\ \textcolor{stringliteral}{"{}she"{}}).lang());}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#He"{}},\ ((\mbox{\hyperlink{class_e_class}{EClass}}.pc.bio.gender\ ==\ 2)\ ?\ \textcolor{stringliteral}{"{}he"{}}\ :\ \textcolor{stringliteral}{"{}she"{}}).lang().ToTitleCase(\textcolor{keyword}{false}));}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_game_lang}{GameLang}}.Convert(stringBuilder);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00098}00098\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00100}00100\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004AB\ RID:\ 1195\ RVA:\ 0x00020063\ File\ Offset:\ 0x0001E263}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00101}00101\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ Convert(\textcolor{keywordtype}{string}\ text)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00102}00102\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ StringBuilder\ stringBuilder\ =\ \textcolor{keyword}{new}\ StringBuilder();}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ stringBuilder.Append(text);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_game_lang}{GameLang}}.Convert(stringBuilder);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004AC\ RID:\ 1196\ RVA:\ 0x00020078\ File\ Offset:\ 0x0001E278}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00109}00109\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ Convert(StringBuilder\ sb)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00110}00110\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ sb.Replace(\textcolor{stringliteral}{"{}\#player"{}},\ \mbox{\hyperlink{class_e_class}{EClass}}.player.title);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ sb.Replace(\textcolor{stringliteral}{"{}\#pc\_him"{}},\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.IsMale\ ?\ \textcolor{stringliteral}{"{}him"{}}.lang()\ :\ \textcolor{stringliteral}{"{}her"{}}.lang());}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ sb.Replace(\textcolor{stringliteral}{"{}\#pc\_his"{}},\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.IsMale\ ?\ \textcolor{stringliteral}{"{}his"{}}.lang()\ :\ \textcolor{stringliteral}{"{}her"{}}.lang());}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ sb.Replace(\textcolor{stringliteral}{"{}\#pc\_race"{}},\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.race.GetName());}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ sb.Replace(\textcolor{stringliteral}{"{}\#pc"{}},\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.NameSimple);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sb.ToString();}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00117}00117\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00119}00119\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004AD\ RID:\ 1197\ RVA:\ 0x00020130\ File\ Offset:\ 0x0001E330}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00120}00120\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ Parse(\textcolor{keywordtype}{string}\ text,\ \textcolor{keywordtype}{bool}\ thirdPerson,\ \textcolor{keywordtype}{string}\ val1,\ \textcolor{keywordtype}{string}\ val2\ =\ \textcolor{keyword}{null},\ \textcolor{keywordtype}{string}\ val3\ =\ \textcolor{keyword}{null},\ \textcolor{keywordtype}{string}\ val4\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00121}00121\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ StringBuilder\ stringBuilder\ =\ \textcolor{keyword}{new}\ StringBuilder(text);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (val1\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Lang.articlesToRemove.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text2\ =\ val1;}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\textcolor{keywordtype}{char}[]\ trimChars\ \textcolor{keywordflow}{in}\ Lang.articlesToRemove)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text2\ =\ text2.TrimStart(trimChars);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}-\/\#1"{}},\ text2);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#1"{}},\ val1\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (val2\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Lang.articlesToRemove.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text3\ =\ val2;}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\textcolor{keywordtype}{char}[]\ trimChars2\ \textcolor{keywordflow}{in}\ Lang.articlesToRemove)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text3\ =\ text3.TrimStart(trimChars2);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}-\/\#2"{}},\ text3);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#2"{}},\ val2);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (val3\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#3"{}},\ val3);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (val4\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#4"{}},\ val4);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num;}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{int}.TryParse(val1,\ out\ num))}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#(s)"{}},\ (num\ <=\ 1)\ ?\ \textcolor{stringliteral}{"{}"{}}\ :\ \textcolor{stringliteral}{"{}\_s"{}}.lang());}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_msg}{Msg}}.thirdPerson2.active)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#your2"{}},\ \mbox{\hyperlink{class_msg}{Msg}}.thirdPerson2.your);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#himself2"{}},\ \mbox{\hyperlink{class_msg}{Msg}}.thirdPerson2.himself);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#him2"{}},\ \mbox{\hyperlink{class_msg}{Msg}}.thirdPerson2.him);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#his2"{}},\ \mbox{\hyperlink{class_msg}{Msg}}.thirdPerson2.his);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#he2"{}},\ \mbox{\hyperlink{class_msg}{Msg}}.thirdPerson2.he);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}(s2)"{}},\ \mbox{\hyperlink{class_msg}{Msg}}.thirdPerson2.thirdperson\ ?\ \textcolor{stringliteral}{"{}s"{}}\ :\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_msg}{Msg}}.thirdPerson1.active)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#your"{}},\ \mbox{\hyperlink{class_msg}{Msg}}.thirdPerson1.your);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#himself"{}},\ \mbox{\hyperlink{class_msg}{Msg}}.thirdPerson1.himself);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#him"{}},\ \mbox{\hyperlink{class_msg}{Msg}}.thirdPerson1.him);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#his"{}},\ \mbox{\hyperlink{class_msg}{Msg}}.thirdPerson1.his);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}\#he"{}},\ \mbox{\hyperlink{class_msg}{Msg}}.thirdPerson1.he);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Lang.setting.thirdperson)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_game_lang}{GameLang}}.ConvertThirdPerson(stringBuilder.ToString(),\ thirdPerson);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_game_lang}{GameLang}}.Convert(stringBuilder);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00184}00184\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00186}00186\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004AE\ RID:\ 1198\ RVA:\ 0x000203C0\ File\ Offset:\ 0x0001E5C0}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00187}00187\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ ConvertThirdPerson(\textcolor{keywordtype}{string}\ text,\ \textcolor{keywordtype}{bool}\ thirdPerson)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00188}00188\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}[]\ array\ =\ text.Split(\textcolor{charliteral}{'\ '},\ StringSplitOptions.None);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ StringBuilder\ stringBuilder\ =\ \textcolor{keyword}{new}\ StringBuilder();}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\textcolor{keywordtype}{string}\ text2\ \textcolor{keywordflow}{in}\ array)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flag)}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flag\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Append(\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (text2.Contains(\textcolor{charliteral}{'/'})\ \&\&\ !text2.Contains(\textcolor{charliteral}{'<'}))}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}[]\ array3\ =\ text2.Split(\textcolor{charliteral}{'/'},\ StringSplitOptions.None);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Append(thirdPerson\ ?\ array3[1]\ :\ array3[0]);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stringBuilder.Append(text2);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}(s)"{}},\ thirdPerson\ ?\ \textcolor{stringliteral}{"{}s"{}}\ :\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ stringBuilder.Replace(\textcolor{stringliteral}{"{}(es)"{}},\ thirdPerson\ ?\ \textcolor{stringliteral}{"{}es"{}}\ :\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_game_lang}{GameLang}}.Convert(stringBuilder);}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00215}00215\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00217}00217\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000637\ RID:\ 1591}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00218}00218\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ refDrama1;}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00220}00220\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000638\ RID:\ 1592}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00221}00221\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ refDrama2;}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00223}00223\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000639\ RID:\ 1593}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00224}00224\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ refDrama3;}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00226}00226\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400063A\ RID:\ 1594}}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00227}00227\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ refDrama4;}
+\DoxyCodeLine{\Hypertarget{_game_lang_8cs_source_l00228}00228\ \}}
+
+\end{DoxyCode}

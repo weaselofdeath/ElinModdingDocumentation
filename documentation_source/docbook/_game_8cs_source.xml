@@ -1,0 +1,1083 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__game_8cs_source" xml:lang="en-US">
+<title>Game.cs</title>
+<indexterm><primary>Elin/Game.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__game_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__game_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__game_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>System.Runtime.CompilerServices;
+<anchor xml:id="__game_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>System.Runtime.Serialization;
+<anchor xml:id="__game_8cs_source_1l00005"/>00005 <emphasis role="keyword">using&#32;</emphasis>Newtonsoft.Json;
+<anchor xml:id="__game_8cs_source_1l00006"/>00006 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__game_8cs_source_1l00007"/>00007 
+<anchor xml:id="__game_8cs_source_1l00008"/>00008 <emphasis role="comment">//&#32;Token:&#32;0x020000A7&#32;RID:&#32;167</emphasis>
+<anchor xml:id="__game_8cs_source_1l00009"/><link linkend="_class_game">00009</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_game">Game</link>&#32;:&#32;<link linkend="_class_e_class">EClass</link>
+<anchor xml:id="__game_8cs_source_1l00010"/>00010 {
+<anchor xml:id="__game_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170000F3&#32;RID:&#32;243</emphasis>
+<anchor xml:id="__game_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000465&#32;RID:&#32;1125&#32;RVA:&#32;0x0001D76C&#32;File&#32;Offset:&#32;0x0001B96C</emphasis>
+<anchor xml:id="__game_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsWaiting
+<anchor xml:id="__game_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__game_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;Game.waitTimer&#32;&gt;&#32;0f;
+<anchor xml:id="__game_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00020"/>00020 
+<anchor xml:id="__game_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000466&#32;RID:&#32;1126&#32;RVA:&#32;0x0001D77A&#32;File&#32;Offset:&#32;0x0001B97A</emphasis>
+<anchor xml:id="__game_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_wait">Wait</link>(<emphasis role="keywordtype">float</emphasis>&#32;a,&#32;<link linkend="_class_point">Point</link>&#32;p)
+<anchor xml:id="__game_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(p&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isSync&#32;=&#32;p.IsSync;
+<anchor xml:id="__game_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00029"/>00029 
+<anchor xml:id="__game_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000467&#32;RID:&#32;1127&#32;RVA:&#32;0x0001D786&#32;File&#32;Offset:&#32;0x0001B986</emphasis>
+<anchor xml:id="__game_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_wait">Wait</link>(<emphasis role="keywordtype">float</emphasis>&#32;a,&#32;<link linkend="_class_card">Card</link>&#32;c)
+<anchor xml:id="__game_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(c&#32;==&#32;<emphasis role="keyword">null</emphasis>&#32;||&#32;!c.isSynced&#32;||&#32;c.IsPC)
+<anchor xml:id="__game_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game">Game</link>.Wait(a);
+<anchor xml:id="__game_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00039"/>00039 
+<anchor xml:id="__game_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000468&#32;RID:&#32;1128&#32;RVA:&#32;0x0001D7A2&#32;File&#32;Offset:&#32;0x0001B9A2</emphasis>
+<anchor xml:id="__game_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_wait">Wait</link>(<emphasis role="keywordtype">float</emphasis>&#32;a)
+<anchor xml:id="__game_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Game.waitTimer&#32;=&#32;a&#32;*&#32;(float)(<link linkend="_class_e_class">EClass</link>.core.config.game.waiter&#32;*&#32;25)&#32;/&#32;100f;
+<anchor xml:id="__game_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00045"/>00045 
+<anchor xml:id="__game_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170000F4&#32;RID:&#32;244</emphasis>
+<anchor xml:id="__game_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000469&#32;RID:&#32;1129&#32;RVA:&#32;0x0001D7C9&#32;File&#32;Offset:&#32;0x0001B9C9</emphasis>
+<anchor xml:id="__game_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_prologue">Prologue</link>&#32;<link linkend="_class_prologue">Prologue</link>
+<anchor xml:id="__game_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__game_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.setting.start.prologues[this.idPrologue];
+<anchor xml:id="__game_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00055"/>00055 
+<anchor xml:id="__game_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170000F5&#32;RID:&#32;245</emphasis>
+<anchor xml:id="__game_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x0600046A&#32;RID:&#32;1130&#32;RVA:&#32;0x0001D7E5&#32;File&#32;Offset:&#32;0x0001B9E5</emphasis>
+<anchor xml:id="__game_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_game_difficulty">GameDifficulty</link>&#32;Difficulty
+<anchor xml:id="__game_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__game_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.setting.start.difficulties[this.idDifficulty];
+<anchor xml:id="__game_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00065"/>00065 
+<anchor xml:id="__game_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170000F6&#32;RID:&#32;246</emphasis>
+<anchor xml:id="__game_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x0600046B&#32;RID:&#32;1131&#32;RVA:&#32;0x0001D801&#32;File&#32;Offset:&#32;0x0001BA01</emphasis>
+<anchor xml:id="__game_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;UseGrid
+<anchor xml:id="__game_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__game_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.core.config.game.useGrid;
+<anchor xml:id="__game_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00075"/>00075 
+<anchor xml:id="__game_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170000F7&#32;RID:&#32;247</emphasis>
+<anchor xml:id="__game_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x0600046C&#32;RID:&#32;1132&#32;RVA:&#32;0x0001D817&#32;File&#32;Offset:&#32;0x0001BA17</emphasis>
+<anchor xml:id="__game_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;altUI
+<anchor xml:id="__game_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__game_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.core.config.game.altUI;
+<anchor xml:id="__game_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00085"/>00085 
+<anchor xml:id="__game_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170000F8&#32;RID:&#32;248</emphasis>
+<anchor xml:id="__game_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x0600046D&#32;RID:&#32;1133&#32;RVA:&#32;0x0001D82D&#32;File&#32;Offset:&#32;0x0001BA2D</emphasis>
+<anchor xml:id="__game_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;altInv
+<anchor xml:id="__game_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__game_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.core.config.game.altInv;
+<anchor xml:id="__game_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00095"/>00095 
+<anchor xml:id="__game_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170000F9&#32;RID:&#32;249</emphasis>
+<anchor xml:id="__game_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x0600046E&#32;RID:&#32;1134&#32;RVA:&#32;0x0001D843&#32;File&#32;Offset:&#32;0x0001BA43</emphasis>
+<anchor xml:id="__game_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;altCraft
+<anchor xml:id="__game_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__game_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.core.config.game.altCraft;
+<anchor xml:id="__game_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00105"/>00105 
+<anchor xml:id="__game_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170000FA&#32;RID:&#32;250</emphasis>
+<anchor xml:id="__game_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x0600046F&#32;RID:&#32;1135&#32;RVA:&#32;0x0001D859&#32;File&#32;Offset:&#32;0x0001BA59</emphasis>
+<anchor xml:id="__game_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;altAbility
+<anchor xml:id="__game_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__game_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.core.config.game.altAbility;
+<anchor xml:id="__game_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00115"/>00115 
+<anchor xml:id="__game_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170000FB&#32;RID:&#32;251</emphasis>
+<anchor xml:id="__game_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000470&#32;RID:&#32;1136&#32;RVA:&#32;0x0001D86F&#32;File&#32;Offset:&#32;0x0001BA6F</emphasis>
+<anchor xml:id="__game_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_zone">Zone</link>&#32;StartZone
+<anchor xml:id="__game_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__game_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.spatials.Find(<link linkend="_class_e_class">EClass</link>.game.Prologue.idStartZone);
+<anchor xml:id="__game_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00125"/>00125 
+<anchor xml:id="__game_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000471&#32;RID:&#32;1137&#32;RVA:&#32;0x0001D88C&#32;File&#32;Offset:&#32;0x0001BA8C</emphasis>
+<anchor xml:id="__game_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnUpdate()
+<anchor xml:id="__game_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Game.waitTimer&#32;-=&#32;Time.deltaTime;
+<anchor xml:id="__game_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.timeSinceStart&#32;+=&#32;Time.deltaTime;
+<anchor xml:id="__game_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.stats.timeElapsed&#32;+=&#32;(double)Time.deltaTime;
+<anchor xml:id="__game_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.flags.IsWelcomeMessageShown&#32;&amp;&amp;&#32;<emphasis role="keyword">this</emphasis>.player.stats.timeElapsed&#32;&gt;&#32;2.0)
+<anchor xml:id="__game_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.flags.IsWelcomeMessageShown&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.updater.FixedUpdate();
+<anchor xml:id="__game_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00138"/>00138 
+<anchor xml:id="__game_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000472&#32;RID:&#32;1138&#32;RVA:&#32;0x0001D918&#32;File&#32;Offset:&#32;0x0001BB18</emphasis>
+<anchor xml:id="__game_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Load(<emphasis role="keywordtype">string</emphasis>&#32;slot)
+<anchor xml:id="__game_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.game&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.game.Kill();
+<anchor xml:id="__game_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game">Game</link>.OnBeforeInstantiate();
+<anchor xml:id="__game_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.core.game&#32;=&#32;<link linkend="_class_game_i_o">GameIO</link>.LoadGame(slot);
+<anchor xml:id="__game_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.game.isLoading&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.game.OnGameInstantiated();
+<anchor xml:id="__game_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.game.OnLoad();
+<anchor xml:id="__game_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.scene.Init(<link linkend="_class_scene">Scene</link>.Mode.StartGame);
+<anchor xml:id="__game_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.game.altInv)
+<anchor xml:id="__game_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SoundManager.ignoreSounds&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.game.player.pref.layerInventory)
+<anchor xml:id="__game_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.ui.OpenFloatInv(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SoundManager.ignoreSounds&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.game.player.pref.layerAbility)
+<anchor xml:id="__game_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.ui.ToggleAbility(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SoundManager.ignoreSounds&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.game.isLoading&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00167"/>00167 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00168"/>00168 
+<anchor xml:id="__game_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000473&#32;RID:&#32;1139&#32;RVA:&#32;0x0001D9E0&#32;File&#32;Offset:&#32;0x0001BBE0</emphasis>
+<anchor xml:id="__game_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnLoad()
+<anchor xml:id="__game_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.domains.OnLoad();
+<anchor xml:id="__game_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.religions.OnLoad();
+<anchor xml:id="__game_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.factions.OnLoad();
+<anchor xml:id="__game_8cs_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.world._OnLoad();
+<anchor xml:id="__game_8cs_source_1l00176"/>00176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.OnLoad();
+<anchor xml:id="__game_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.pc.currentZone&#32;==&#32;<emphasis role="keyword">null</emphasis>&#32;||&#32;<link linkend="_class_e_class">EClass</link>.pc.currentZone.destryoed)
+<anchor xml:id="__game_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.party.members.ForEach(delegate(<link linkend="_class_chara">Chara</link>&#32;c)
+<anchor xml:id="__game_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;c.currentZone&#32;=&#32;<link linkend="_class_e_class">EClass</link>.pc.homeZone;
+<anchor xml:id="__game_8cs_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;c.global.transition&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_zone_transition">ZoneTransition</link>
+<anchor xml:id="__game_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;state&#32;=&#32;ZoneTransition.EnterState.Return
+<anchor xml:id="__game_8cs_source_1l00185"/>00185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__game_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__game_8cs_source_1l00187"/>00187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00188"/>00188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.zone&#32;=&#32;<link linkend="_class_e_class">EClass</link>.pc.currentZone;
+<anchor xml:id="__game_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.pc.currentZone.lastActive&#32;=&#32;this.world.date.GetRaw(0);
+<anchor xml:id="__game_8cs_source_1l00190"/>00190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.spatials.Find(<emphasis role="stringliteral">&quot;somewhere&quot;</emphasis>)&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00191"/>00191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_spatial_gen">SpatialGen</link>.Create(<emphasis role="stringliteral">&quot;somewhere&quot;</emphasis>,&#32;this.world.region,&#32;<emphasis role="keyword">true</emphasis>,&#32;-99999,&#32;-99999,&#32;0);
+<anchor xml:id="__game_8cs_source_1l00193"/>00193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.pc.homeZone.isKnown&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.debug.OnLoad();
+<anchor xml:id="__game_8cs_source_1l00196"/>00196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.things.RefreshGridRecursive();
+<anchor xml:id="__game_8cs_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_thing">Thing</link>&#32;thing&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.pc.things.List((<link linkend="_class_thing">Thing</link>&#32;t)&#32;=&gt;&#32;t.Num&#32;&lt;=&#32;0&#32;||&#32;t.isDestroyed,&#32;<emphasis role="keyword">false</emphasis>))
+<anchor xml:id="__game_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00199"/>00199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.parent.RemoveCard(thing);
+<anchor xml:id="__game_8cs_source_1l00200"/>00200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_thing">Thing</link>&#32;thing2&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.pc.things.List((<link linkend="_class_thing">Thing</link>&#32;t)&#32;=&gt;&#32;t.trait&#32;is&#32;<link linkend="_class_trait_chest_merchant">TraitChestMerchant</link>,&#32;<emphasis role="keyword">false</emphasis>))
+<anchor xml:id="__game_8cs_source_1l00202"/>00202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00203"/>00203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing2.Destroy();
+<anchor xml:id="__game_8cs_source_1l00204"/>00204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_thing">Thing</link>&#32;thing3&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.pc.things.List((<link linkend="_class_thing">Thing</link>&#32;t)&#32;=&gt;&#32;t.invY&#32;==&#32;1&#32;&amp;&amp;&#32;t.invX&#32;==&#32;-1,&#32;<emphasis role="keyword">false</emphasis>))
+<anchor xml:id="__game_8cs_source_1l00206"/>00206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00207"/>00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing3.invY&#32;=&#32;0;
+<anchor xml:id="__game_8cs_source_1l00208"/>00208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_faction_branch">FactionBranch</link>&#32;factionBranch&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.pc.faction.GetChildren())
+<anchor xml:id="__game_8cs_source_1l00210"/>00210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00211"/>00211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_chara">Chara</link>&#32;chara&#32;<emphasis role="keywordflow">in</emphasis>&#32;factionBranch.members)
+<anchor xml:id="__game_8cs_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;chara.RefreshWorkElements(factionBranch.owner.elements);
+<anchor xml:id="__game_8cs_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;chara.Refresh(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00216"/>00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00217"/>00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.pc.angle&#32;=&#32;this.player.angle;
+<anchor xml:id="__game_8cs_source_1l00218"/>00218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.elements.CheckSkillActions();
+<anchor xml:id="__game_8cs_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.cards.listAdv.Count&#32;==&#32;0)
+<anchor xml:id="__game_8cs_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.AddAdventurers();
+<anchor xml:id="__game_8cs_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.quests.list.ForeachReverse(delegate(<link linkend="_class_quest">Quest</link>&#32;q)
+<anchor xml:id="__game_8cs_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!(q&#32;is&#32;<link linkend="_class_quest_random">QuestRandom</link>))
+<anchor xml:id="__game_8cs_source_1l00226"/>00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_quest">Quest</link>&#32;quest3&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.quests.list)
+<anchor xml:id="__game_8cs_source_1l00228"/>00228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(q&#32;!=&#32;quest3&#32;&amp;&amp;&#32;quest3.id&#32;==&#32;q.id)
+<anchor xml:id="__game_8cs_source_1l00230"/>00230 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00231"/>00231 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.quests.list.Remove(quest3);
+<anchor xml:id="__game_8cs_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00233"/>00233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00234"/>00234 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00235"/>00235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__game_8cs_source_1l00237"/>00237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.quests.globalList.ForeachReverse(delegate(<link linkend="_class_quest">Quest</link>&#32;q)
+<anchor xml:id="__game_8cs_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00239"/>00239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!(q&#32;is&#32;<link linkend="_class_quest_random">QuestRandom</link>))
+<anchor xml:id="__game_8cs_source_1l00240"/>00240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00241"/>00241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_quest">Quest</link>&#32;quest3&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.quests.globalList)
+<anchor xml:id="__game_8cs_source_1l00242"/>00242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(q&#32;!=&#32;quest3&#32;&amp;&amp;&#32;quest3.id&#32;==&#32;q.id)
+<anchor xml:id="__game_8cs_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.quests.globalList.Remove(quest3);
+<anchor xml:id="__game_8cs_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00247"/>00247 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00249"/>00249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__game_8cs_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.version.IsBelow(0,&#32;22,&#32;91))
+<anchor xml:id="__game_8cs_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00253"/>00253 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.&lt;OnLoad&gt;g__TryAddQuestIfActive|65_5(<emphasis role="stringliteral">&quot;demitas_spellwriter&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;into_darkness&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.version.IsBelow(0,&#32;22,&#32;91))
+<anchor xml:id="__game_8cs_source_1l00256"/>00256 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.&lt;OnLoad&gt;g__TryAddQuest|65_4(<emphasis role="stringliteral">&quot;into_darkness&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;exile_kettle&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00259"/>00259 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.version.IsBelow(0,&#32;22,&#32;86))
+<anchor xml:id="__game_8cs_source_1l00260"/>00260 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_chara">Chara</link>&#32;chara2&#32;=&#32;this.cards.globalCharas.Find(<emphasis role="stringliteral">&quot;demitas&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(chara2&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;chara2._works&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;chara2._works.Count&#32;&gt;&#32;0)
+<anchor xml:id="__game_8cs_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;chara2._works[0]&#32;=&#32;51;
+<anchor xml:id="__game_8cs_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00267"/>00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.version.IsBelow(0,&#32;22,&#32;86))
+<anchor xml:id="__game_8cs_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.&lt;OnLoad&gt;g__TryAddQuest|65_4(<emphasis role="stringliteral">&quot;farris_tulip&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;greatDebt&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00271"/>00271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.version.IsBelow(0,&#32;22,&#32;86))
+<anchor xml:id="__game_8cs_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.&lt;OnLoad&gt;g__TryAddQuest|65_4(<emphasis role="stringliteral">&quot;exile_whisper&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;exile_kettle&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.version.IsBelow(0,&#32;22,&#32;85))
+<anchor xml:id="__game_8cs_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00277"/>00277 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.&lt;OnLoad&gt;g__TryAddQuest|65_4(<emphasis role="stringliteral">&quot;exile_meet&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;pre_debt&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00278"/>00278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00279"/>00279 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.version.IsBelow(0,&#32;22,&#32;60)&#32;&amp;&amp;&#32;<link linkend="_class_e_class">EClass</link>.game.quests.Get&lt;<link linkend="_class_quest_debt">QuestDebt</link>&gt;()&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00280"/>00280 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00281"/>00281 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_chara">Chara</link>&#32;chara3&#32;=&#32;this.cards.globalCharas.Find(<emphasis role="stringliteral">&quot;loytel&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00282"/>00282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;str&#32;=&#32;<emphasis role="stringliteral">&quot;Loytelfix:&#32;&quot;</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00283"/>00283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_zone">Zone</link>&#32;homeZone&#32;=&#32;chara3.homeZone;
+<anchor xml:id="__game_8cs_source_1l00284"/>00284 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log(str&#32;+&#32;((homeZone&#32;!=&#32;<emphasis role="keyword">null</emphasis>)&#32;?&#32;homeZone.ToString()&#32;:&#32;<emphasis role="keyword">null</emphasis>));
+<anchor xml:id="__game_8cs_source_1l00285"/>00285 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(chara3.homeZone&#32;==&#32;<emphasis role="keyword">null</emphasis>&#32;||&#32;!chara3.homeZone.IsPCFaction)
+<anchor xml:id="__game_8cs_source_1l00286"/>00286 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00287"/>00287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.homeBranch.AddMemeber(chara3);
+<anchor xml:id="__game_8cs_source_1l00288"/>00288 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;chara3.homeZone&#32;=&#32;<link linkend="_class_e_class">EClass</link>.pc.homeBranch.owner;
+<anchor xml:id="__game_8cs_source_1l00289"/>00289 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;chara3.RemoveEditorTag(EditorTag.Invulnerable);
+<anchor xml:id="__game_8cs_source_1l00290"/>00290 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00291"/>00291 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.version.IsBelow(0,&#32;22,&#32;52)&#32;&amp;&amp;&#32;<emphasis role="keyword">this</emphasis>.quests.completedIDs.Contains(<emphasis role="stringliteral">&quot;vernis_gold&quot;</emphasis>))
+<anchor xml:id="__game_8cs_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.quests.Add(<emphasis role="stringliteral">&quot;pre_debt&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;farris&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00295"/>00295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00296"/>00296 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.quests.completedIDs.Contains(<emphasis role="stringliteral">&quot;farris_tulip&quot;</emphasis>))
+<anchor xml:id="__game_8cs_source_1l00297"/>00297 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00298"/>00298 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.quests.globalList.ForeachReverse(delegate(<link linkend="_class_quest">Quest</link>&#32;q)
+<anchor xml:id="__game_8cs_source_1l00299"/>00299 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00300"/>00300 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(q.id&#32;==&#32;<emphasis role="stringliteral">&quot;farris_tulip&quot;</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00301"/>00301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.quests.globalList.Remove(q);
+<anchor xml:id="__game_8cs_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__game_8cs_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.quests.list.ForeachReverse(delegate(<link linkend="_class_quest">Quest</link>&#32;q)
+<anchor xml:id="__game_8cs_source_1l00307"/>00307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00308"/>00308 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(q&#32;is&#32;<link linkend="_class_quest_dialog">QuestDialog</link>&#32;&amp;&amp;&#32;this.quests.completedIDs.Contains(q.id))
+<anchor xml:id="__game_8cs_source_1l00309"/>00309 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00310"/>00310 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.quests.list.Remove(q);
+<anchor xml:id="__game_8cs_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00312"/>00312 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__game_8cs_source_1l00313"/>00313 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.version.IsBelow(0,&#32;22,&#32;20))
+<anchor xml:id="__game_8cs_source_1l00314"/>00314 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00315"/>00315 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_chara">Chara</link>&#32;chara4&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.cards.globalCharas.Values)
+<anchor xml:id="__game_8cs_source_1l00316"/>00316 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00317"/>00317 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;chara4.SetBool(18,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00318"/>00318 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00319"/>00319 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00320"/>00320 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.version.IsBelow(0,&#32;22,&#32;22))
+<anchor xml:id="__game_8cs_source_1l00321"/>00321 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.pc.faithElements&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00323"/>00323 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00324"/>00324 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.faithElements.SetParent(<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00325"/>00325 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00326"/>00326 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_element">Element</link>&#32;element&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.pc.elements.ListElements((<link linkend="_class_element">Element</link>&#32;e)&#32;=&gt;&#32;e.source.categorySub&#32;==&#32;<emphasis role="stringliteral">&quot;god&quot;</emphasis>,&#32;<emphasis role="keyword">null</emphasis>))
+<anchor xml:id="__game_8cs_source_1l00327"/>00327 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00328"/>00328 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.SetFeat(element.id,&#32;0,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00329"/>00329 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00330"/>00330 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.RefreshFaithElement();
+<anchor xml:id="__game_8cs_source_1l00331"/>00331 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00332"/>00332 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.version.IsBelow(0,&#32;22,&#32;45))
+<anchor xml:id="__game_8cs_source_1l00333"/>00333 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00334"/>00334 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.debt&#32;=&#32;20000000;
+<anchor xml:id="__game_8cs_source_1l00335"/>00335 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00336"/>00336 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!this.version.Equals(<link linkend="_class_e_class">EClass</link>.core.version))
+<anchor xml:id="__game_8cs_source_1l00337"/>00337 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00338"/>00338 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.recipes.OnVersionUpdate();
+<anchor xml:id="__game_8cs_source_1l00339"/>00339 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00340"/>00340 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.cards.container_deposit&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00341"/>00341 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00342"/>00342 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.cards.container_deposit&#32;=&#32;<link linkend="_class_thing_gen">ThingGen</link>.Create(<emphasis role="stringliteral">&quot;container_deposit&quot;</emphasis>,&#32;-1,&#32;-1);
+<anchor xml:id="__game_8cs_source_1l00343"/>00343 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.player.bankMoney&#32;&gt;&#32;0)
+<anchor xml:id="__game_8cs_source_1l00344"/>00344 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00345"/>00345 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.cards.container_deposit.Add(<emphasis role="stringliteral">&quot;money&quot;</emphasis>,&#32;this.player.bankMoney,&#32;1);
+<anchor xml:id="__game_8cs_source_1l00346"/>00346 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00347"/>00347 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00348"/>00348 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_quest">Quest</link>&#32;quest&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.quests.list)
+<anchor xml:id="__game_8cs_source_1l00349"/>00349 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00350"/>00350 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(quest&#32;is&#32;<link linkend="_class_quest_sequence">QuestSequence</link>&#32;&amp;&amp;&#32;!<link linkend="_class_e_class">EClass</link>.sources.quests.map.ContainsKey(quest.idSource))
+<anchor xml:id="__game_8cs_source_1l00351"/>00351 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00352"/>00352 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;quest.phase&#32;=&#32;0;
+<anchor xml:id="__game_8cs_source_1l00353"/>00353 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00354"/>00354 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00355"/>00355 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_quest">Quest</link>&#32;quest2&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.quests.globalList)
+<anchor xml:id="__game_8cs_source_1l00356"/>00356 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00357"/>00357 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(quest2&#32;is&#32;<link linkend="_class_quest_sequence">QuestSequence</link>&#32;&amp;&amp;&#32;!<link linkend="_class_e_class">EClass</link>.sources.quests.map.ContainsKey(quest2.idSource))
+<anchor xml:id="__game_8cs_source_1l00358"/>00358 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00359"/>00359 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;quest2.phase&#32;=&#32;0;
+<anchor xml:id="__game_8cs_source_1l00360"/>00360 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00361"/>00361 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00362"/>00362 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00363"/>00363 
+<anchor xml:id="__game_8cs_source_1l00364"/>00364 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000474&#32;RID:&#32;1140&#32;RVA:&#32;0x0001E228&#32;File&#32;Offset:&#32;0x0001C428</emphasis>
+<anchor xml:id="__game_8cs_source_1l00365"/>00365 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Create(<emphasis role="keywordtype">string</emphasis>&#32;_id&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00366"/>00366 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00367"/>00367 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Game.id&#32;=&#32;(_id&#32;??&#32;<link linkend="_class_game_i_o">GameIO</link>.GetNewId());
+<anchor xml:id="__game_8cs_source_1l00368"/>00368 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_i_o">GameIO</link>.ResetTemp();
+<anchor xml:id="__game_8cs_source_1l00369"/>00369 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game">Game</link>.OnBeforeInstantiate();
+<anchor xml:id="__game_8cs_source_1l00370"/>00370 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.core.game&#32;=&#32;(Game.Instance&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_game">Game</link>());
+<anchor xml:id="__game_8cs_source_1l00371"/>00371 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.core.game.OnGameInstantiated();
+<anchor xml:id="__game_8cs_source_1l00372"/>00372 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.core.game._Create();
+<anchor xml:id="__game_8cs_source_1l00373"/>00373 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00374"/>00374 
+<anchor xml:id="__game_8cs_source_1l00375"/>00375 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000475&#32;RID:&#32;1141&#32;RVA:&#32;0x0001E281&#32;File&#32;Offset:&#32;0x0001C481</emphasis>
+<anchor xml:id="__game_8cs_source_1l00376"/>00376 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnBeforeInstantiate()
+<anchor xml:id="__game_8cs_source_1l00377"/>00377 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00378"/>00378 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Player.seedHallucination&#32;=&#32;0;
+<anchor xml:id="__game_8cs_source_1l00379"/>00379 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00380"/>00380 
+<anchor xml:id="__game_8cs_source_1l00381"/>00381 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000476&#32;RID:&#32;1142&#32;RVA:&#32;0x0001E28C&#32;File&#32;Offset:&#32;0x0001C48C</emphasis>
+<anchor xml:id="__game_8cs_source_1l00382"/>00382 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnGameInstantiated()
+<anchor xml:id="__game_8cs_source_1l00383"/>00383 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00384"/>00384 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HotItemHeld.taskBuild&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00385"/>00385 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;InvOwner.Trader&#32;=&#32;(InvOwner.Main&#32;=&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00386"/>00386 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LayerDrama.currentQuest&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00387"/>00387 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BookList.Init();
+<anchor xml:id="__game_8cs_source_1l00388"/>00388 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ContentGallery.lastPage&#32;=&#32;0;
+<anchor xml:id="__game_8cs_source_1l00389"/>00389 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ContentGallery.listMode&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00390"/>00390 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!Application.isEditor&#32;||&#32;!<link linkend="_class_e_class">EClass</link>.debug.enable)
+<anchor xml:id="__game_8cs_source_1l00391"/>00391 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00392"/>00392 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_recipe_manager">RecipeManager</link>.BuildList();
+<anchor xml:id="__game_8cs_source_1l00393"/>00393 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00394"/>00394 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_chara">Chara</link>&#32;chara&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.cards.globalCharas.Values)
+<anchor xml:id="__game_8cs_source_1l00395"/>00395 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00396"/>00396 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(chara.uid&#32;==&#32;<emphasis role="keyword">this</emphasis>.player.uidChara)
+<anchor xml:id="__game_8cs_source_1l00397"/>00397 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00398"/>00398 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.chara&#32;=&#32;chara;
+<anchor xml:id="__game_8cs_source_1l00399"/>00399 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00400"/>00400 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00401"/>00401 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00402"/>00402 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_action_mode">ActionMode</link>.OnGameInstantiated();
+<anchor xml:id="__game_8cs_source_1l00403"/>00403 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.ui.widgets.OnGameInstantiated();
+<anchor xml:id="__game_8cs_source_1l00404"/>00404 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.Sound.ResetPlaylist();
+<anchor xml:id="__game_8cs_source_1l00405"/>00405 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.core.config.ApplyFPS(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00406"/>00406 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00407"/>00407 
+<anchor xml:id="__game_8cs_source_1l00408"/>00408 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000477&#32;RID:&#32;1143&#32;RVA:&#32;0x0001E374&#32;File&#32;Offset:&#32;0x0001C574</emphasis>
+<anchor xml:id="__game_8cs_source_1l00409"/>00409 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;_Create()
+<anchor xml:id="__game_8cs_source_1l00410"/>00410 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00411"/>00411 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.config.areaHighlight&#32;=&#32;(this.config.snapFreePos&#32;=&#32;(this.config.slope&#32;=&#32;(this.config.highlightAct&#32;=&#32;(this.config.autoWall&#32;=&#32;<emphasis role="keyword">true</emphasis>))));
+<anchor xml:id="__game_8cs_source_1l00412"/>00412 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.config.autoCombat.abortOnAllyDead&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00413"/>00413 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.config.autoCombat.abortOnHalfHP&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00414"/>00414 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.config.autoCombat.bUseHotBar&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00415"/>00415 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.config.autoCombat.bUseInventory&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00416"/>00416 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.config.autoCombat.bDontChangeTarget&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00417"/>00417 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.config.autoCombat.abortOnKill&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00418"/>00418 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.idDifficulty&#32;=&#32;1;
+<anchor xml:id="__game_8cs_source_1l00419"/>00419 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.seed&#32;=&#32;<link linkend="_class_e_class">EClass</link>.rnd(10000);
+<anchor xml:id="__game_8cs_source_1l00420"/>00420 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log(<emphasis role="stringliteral">&quot;creating&#32;game:&#32;&quot;</emphasis>&#32;+&#32;<link linkend="_class_game">Game</link>.id&#32;+&#32;<emphasis role="stringliteral">&quot;&#32;seed:&quot;</emphasis>&#32;+&#32;<emphasis role="keyword">this</emphasis>.seed.ToString());
+<anchor xml:id="__game_8cs_source_1l00421"/>00421 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.uniforms.Import(<emphasis role="stringliteral">&quot;uniforms&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00422"/>00422 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.religions.OnCreateGame();
+<anchor xml:id="__game_8cs_source_1l00423"/>00423 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.factions.OnCreateGame();
+<anchor xml:id="__game_8cs_source_1l00424"/>00424 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.world&#32;=&#32;(<link linkend="_class_spatial_gen">SpatialGen</link>.CreateRecursive(<emphasis role="stringliteral">&quot;world&quot;</emphasis>,&#32;<emphasis role="keyword">null</emphasis>)&#32;as&#32;<link linkend="_class_world">World</link>);
+<anchor xml:id="__game_8cs_source_1l00425"/>00425 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.domains.OnCreateGame();
+<anchor xml:id="__game_8cs_source_1l00426"/>00426 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_spatial">Spatial</link>&#32;spatial&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.spatials.map.Values)
+<anchor xml:id="__game_8cs_source_1l00427"/>00427 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00428"/>00428 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;spatial.SetMainFaction(this.factions.Find(spatial.source.faction.IsEmpty(<emphasis role="stringliteral">&quot;wilds&quot;</emphasis>)));
+<anchor xml:id="__game_8cs_source_1l00429"/>00429 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00430"/>00430 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.OnCreateGame();
+<anchor xml:id="__game_8cs_source_1l00431"/>00431 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.cards.container_shipping&#32;=&#32;<link linkend="_class_thing_gen">ThingGen</link>.Create(<emphasis role="stringliteral">&quot;container_shipping&quot;</emphasis>,&#32;-1,&#32;-1);
+<anchor xml:id="__game_8cs_source_1l00432"/>00432 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.cards.container_deliver&#32;=&#32;<link linkend="_class_thing_gen">ThingGen</link>.Create(<emphasis role="stringliteral">&quot;container_delivery&quot;</emphasis>,&#32;-1,&#32;-1);
+<anchor xml:id="__game_8cs_source_1l00433"/>00433 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.cards.container_deposit&#32;=&#32;<link linkend="_class_thing_gen">ThingGen</link>.Create(<emphasis role="stringliteral">&quot;container_deposit&quot;</emphasis>,&#32;-1,&#32;-1);
+<anchor xml:id="__game_8cs_source_1l00434"/>00434 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.bp&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_game_blueprint">GameBlueprint</link>();
+<anchor xml:id="__game_8cs_source_1l00435"/>00435 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.bp.Create();
+<anchor xml:id="__game_8cs_source_1l00436"/>00436 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00437"/>00437 
+<anchor xml:id="__game_8cs_source_1l00438"/>00438 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000478&#32;RID:&#32;1144&#32;RVA:&#32;0x0001E588&#32;File&#32;Offset:&#32;0x0001C788</emphasis>
+<anchor xml:id="__game_8cs_source_1l00439"/>00439 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;StartNewGame()
+<anchor xml:id="__game_8cs_source_1l00440"/>00440 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00441"/>00441 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.pc.homeZone&#32;=&#32;this.StartZone;
+<anchor xml:id="__game_8cs_source_1l00442"/>00442 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.SetGlobal();
+<anchor xml:id="__game_8cs_source_1l00443"/>00443 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.parties.Create(<link linkend="_class_e_class">EClass</link>.pc);
+<anchor xml:id="__game_8cs_source_1l00444"/>00444 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_prologue">Prologue</link>&#32;prologue&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.Prologue;
+<anchor xml:id="__game_8cs_source_1l00445"/>00445 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_chara_gen">CharaGen</link>.Create(<emphasis role="stringliteral">&quot;fiama&quot;</emphasis>,&#32;-1).SetGlobal(<link linkend="_class_e_class">EClass</link>.game.StartZone,&#32;prologue.posFiama.x,&#32;prologue.posFiama.y);
+<anchor xml:id="__game_8cs_source_1l00446"/>00446 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_chara_gen">CharaGen</link>.Create(<emphasis role="stringliteral">&quot;ashland&quot;</emphasis>,&#32;-1).SetGlobal(<link linkend="_class_e_class">EClass</link>.game.StartZone,&#32;prologue.posAsh.x,&#32;prologue.posAsh.y);
+<anchor xml:id="__game_8cs_source_1l00447"/>00447 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_layer_title">LayerTitle</link>.actor)
+<anchor xml:id="__game_8cs_source_1l00448"/>00448 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00449"/>00449 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.world.date.hour&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.Prologue.hour;
+<anchor xml:id="__game_8cs_source_1l00450"/>00450 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.core.actionsNextFrame.Add(<emphasis role="keyword">new</emphasis>&#32;Action(<link linkend="_class_layer_title">LayerTitle</link>.KillActor));
+<anchor xml:id="__game_8cs_source_1l00451"/>00451 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.zone&#32;=&#32;(EClass.pc.currentZone&#32;=&#32;(EClass.pc.homeZone&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.spatials.Find(<link linkend="_class_e_class">EClass</link>.game.Prologue.idStartZone)));
+<anchor xml:id="__game_8cs_source_1l00452"/>00452 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.pc.global.transition&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_zone_transition">ZoneTransition</link>
+<anchor xml:id="__game_8cs_source_1l00453"/>00453 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00454"/>00454 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;state&#32;=&#32;<link linkend="_class_zone_transition">ZoneTransition</link>.EnterState.Exact,
+<anchor xml:id="__game_8cs_source_1l00455"/>00455 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;x&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.Prologue.startX,
+<anchor xml:id="__game_8cs_source_1l00456"/>00456 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;z&#32;=&#32;EClass.game.Prologue.startZ
+<anchor xml:id="__game_8cs_source_1l00457"/>00457 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__game_8cs_source_1l00458"/>00458 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.pc.hp&#32;=&#32;<link linkend="_class_e_class">EClass</link>.pc.MaxHP;
+<anchor xml:id="__game_8cs_source_1l00459"/>00459 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.mana.Set(<link linkend="_class_e_class">EClass</link>.pc.mana.max&#32;/&#32;2);
+<anchor xml:id="__game_8cs_source_1l00460"/>00460 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.stamina.Set(<link linkend="_class_e_class">EClass</link>.pc.stamina.max&#32;/&#32;2);
+<anchor xml:id="__game_8cs_source_1l00461"/>00461 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.pc.AddCondition&lt;<link linkend="_class_con_faint">ConFaint</link>&gt;(200,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00462"/>00462 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00463"/>00463 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__game_8cs_source_1l00464"/>00464 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00465"/>00465 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.pc.homeZone&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.spatials.Find(<link linkend="_class_e_class">EClass</link>.game.Prologue.idStartZone);
+<anchor xml:id="__game_8cs_source_1l00466"/>00466 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_zone">Zone</link>&#32;zone&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00467"/>00467 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_zone_transition">ZoneTransition</link>&#32;transition&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_zone_transition">ZoneTransition</link>
+<anchor xml:id="__game_8cs_source_1l00468"/>00468 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00469"/>00469 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;state&#32;=&#32;ZoneTransition.EnterState.Auto
+<anchor xml:id="__game_8cs_source_1l00470"/>00470 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__game_8cs_source_1l00471"/>00471 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_chara">Chara</link>&#32;c&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.cards.globalCharas.Find(<emphasis role="stringliteral">&quot;ashland&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00472"/>00472 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.debug.startScene)
+<anchor xml:id="__game_8cs_source_1l00473"/>00473 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00474"/>00474 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_core_debug">CoreDebug</link>.StartScene.Zone:
+<anchor xml:id="__game_8cs_source_1l00475"/>00475 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zone&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.spatials.Find(<link linkend="_class_e_class">EClass</link>.debug.startZone);
+<anchor xml:id="__game_8cs_source_1l00476"/>00476 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;transition&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_zone_transition">ZoneTransition</link>
+<anchor xml:id="__game_8cs_source_1l00477"/>00477 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00478"/>00478 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;state&#32;=&#32;<link linkend="_class_zone_transition">ZoneTransition</link>.EnterState.Exact,
+<anchor xml:id="__game_8cs_source_1l00479"/>00479 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;x&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.Prologue.startX,
+<anchor xml:id="__game_8cs_source_1l00480"/>00480 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;z&#32;=&#32;EClass.game.Prologue.startZ
+<anchor xml:id="__game_8cs_source_1l00481"/>00481 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__game_8cs_source_1l00482"/>00482 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00483"/>00483 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_core_debug">CoreDebug</link>.StartScene.Home:
+<anchor xml:id="__game_8cs_source_1l00484"/>00484 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_core_debug">CoreDebug</link>.StartScene.Story_Test:
+<anchor xml:id="__game_8cs_source_1l00485"/>00485 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zone&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.spatials.Find(<link linkend="_class_e_class">EClass</link>.game.Prologue.idStartZone);
+<anchor xml:id="__game_8cs_source_1l00486"/>00486 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;transition&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_zone_transition">ZoneTransition</link>
+<anchor xml:id="__game_8cs_source_1l00487"/>00487 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00488"/>00488 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;state&#32;=&#32;<link linkend="_class_zone_transition">ZoneTransition</link>.EnterState.Exact,
+<anchor xml:id="__game_8cs_source_1l00489"/>00489 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;x&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.Prologue.startX,
+<anchor xml:id="__game_8cs_source_1l00490"/>00490 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;z&#32;=&#32;EClass.game.Prologue.startZ
+<anchor xml:id="__game_8cs_source_1l00491"/>00491 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__game_8cs_source_1l00492"/>00492 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00493"/>00493 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_core_debug">CoreDebug</link>.StartScene.Home_Cave:
+<anchor xml:id="__game_8cs_source_1l00494"/>00494 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.game.idPrologue&#32;=&#32;2;
+<anchor xml:id="__game_8cs_source_1l00495"/>00495 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zone&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.spatials.Find(<link linkend="_class_e_class">EClass</link>.game.Prologue.idStartZone);
+<anchor xml:id="__game_8cs_source_1l00496"/>00496 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;transition&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_zone_transition">ZoneTransition</link>
+<anchor xml:id="__game_8cs_source_1l00497"/>00497 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00498"/>00498 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;state&#32;=&#32;<link linkend="_class_zone_transition">ZoneTransition</link>.EnterState.Exact,
+<anchor xml:id="__game_8cs_source_1l00499"/>00499 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;x&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.Prologue.startX,
+<anchor xml:id="__game_8cs_source_1l00500"/>00500 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;z&#32;=&#32;EClass.game.Prologue.startZ
+<anchor xml:id="__game_8cs_source_1l00501"/>00501 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__game_8cs_source_1l00502"/>00502 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00503"/>00503 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_core_debug">CoreDebug</link>.StartScene.MeetFarris:
+<anchor xml:id="__game_8cs_source_1l00504"/>00504 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00505"/>00505 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_zone">Zone</link>&#32;parent&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.spatials.Find(<emphasis role="stringliteral">&quot;nymelle&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00506"/>00506 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zone&#32;=&#32;(<link linkend="_class_spatial_gen">SpatialGen</link>.Create(<emphasis role="stringliteral">&quot;nymelle&quot;</emphasis>,&#32;parent,&#32;<emphasis role="keyword">true</emphasis>,&#32;-99999,&#32;-99999,&#32;0)&#32;as&#32;<link linkend="_class_zone">Zone</link>);
+<anchor xml:id="__game_8cs_source_1l00507"/>00507 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zone.lv&#32;=&#32;-2;
+<anchor xml:id="__game_8cs_source_1l00508"/>00508 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.game.quests.Start(<emphasis role="stringliteral">&quot;exploration&quot;</emphasis>,&#32;c,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00509"/>00509 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00510"/>00510 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00511"/>00511 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_core_debug">CoreDebug</link>.StartScene.NymelleBoss:
+<anchor xml:id="__game_8cs_source_1l00512"/>00512 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00513"/>00513 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_zone">Zone</link>&#32;parent2&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.spatials.Find(<emphasis role="stringliteral">&quot;nymelle&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00514"/>00514 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zone&#32;=&#32;(<link linkend="_class_spatial_gen">SpatialGen</link>.Create(<emphasis role="stringliteral">&quot;nymelle_boss&quot;</emphasis>,&#32;parent2,&#32;<emphasis role="keyword">true</emphasis>,&#32;-99999,&#32;-99999,&#32;0)&#32;as&#32;<link linkend="_class_zone">Zone</link>);
+<anchor xml:id="__game_8cs_source_1l00515"/>00515 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zone.lv&#32;=&#32;-5;
+<anchor xml:id="__game_8cs_source_1l00516"/>00516 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.game.quests.Start(<emphasis role="stringliteral">&quot;exploration&quot;</emphasis>,&#32;c,&#32;<emphasis role="keyword">false</emphasis>).ChangePhase(2);
+<anchor xml:id="__game_8cs_source_1l00517"/>00517 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00518"/>00518 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00519"/>00519 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_core_debug">CoreDebug</link>.StartScene.AfterNymelle:
+<anchor xml:id="__game_8cs_source_1l00520"/>00520 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zone&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.spatials.Find(<link linkend="_class_e_class">EClass</link>.game.Prologue.idStartZone);
+<anchor xml:id="__game_8cs_source_1l00521"/>00521 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;transition&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_zone_transition">ZoneTransition</link>
+<anchor xml:id="__game_8cs_source_1l00522"/>00522 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00523"/>00523 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;state&#32;=&#32;<link linkend="_class_zone_transition">ZoneTransition</link>.EnterState.Exact,
+<anchor xml:id="__game_8cs_source_1l00524"/>00524 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;x&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.Prologue.startX,
+<anchor xml:id="__game_8cs_source_1l00525"/>00525 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;z&#32;=&#32;EClass.game.Prologue.startZ
+<anchor xml:id="__game_8cs_source_1l00526"/>00526 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__game_8cs_source_1l00527"/>00527 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.game.quests.Start(<emphasis role="stringliteral">&quot;exploration&quot;</emphasis>,&#32;c,&#32;<emphasis role="keyword">false</emphasis>).ChangePhase(5);
+<anchor xml:id="__game_8cs_source_1l00528"/>00528 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.game.quests.globalList.Add(<link linkend="_class_quest">Quest</link>.Create(<emphasis role="stringliteral">&quot;sharedContainer&quot;</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>).SetClient(c,&#32;<emphasis role="keyword">false</emphasis>));
+<anchor xml:id="__game_8cs_source_1l00529"/>00529 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.game.quests.globalList.Add(<link linkend="_class_quest">Quest</link>.Create(<emphasis role="stringliteral">&quot;crafter&quot;</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>).SetClient(c,&#32;<emphasis role="keyword">false</emphasis>));
+<anchor xml:id="__game_8cs_source_1l00530"/>00530 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.game.quests.globalList.Add(<link linkend="_class_quest">Quest</link>.Create(<emphasis role="stringliteral">&quot;defense&quot;</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>).SetClient(c,&#32;<emphasis role="keyword">false</emphasis>));
+<anchor xml:id="__game_8cs_source_1l00531"/>00531 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00532"/>00532 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_core_debug">CoreDebug</link>.StartScene.Melilith:
+<anchor xml:id="__game_8cs_source_1l00533"/>00533 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00534"/>00534 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_zone">Zone</link>&#32;parent3&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.spatials.Find(<emphasis role="stringliteral">&quot;cursed_manor&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00535"/>00535 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zone&#32;=&#32;(<link linkend="_class_spatial_gen">SpatialGen</link>.Create(<emphasis role="stringliteral">&quot;cursed_manor_dungeon&quot;</emphasis>,&#32;parent3,&#32;<emphasis role="keyword">true</emphasis>,&#32;-99999,&#32;-99999,&#32;0)&#32;as&#32;<link linkend="_class_zone">Zone</link>);
+<anchor xml:id="__game_8cs_source_1l00536"/>00536 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zone.lv&#32;=&#32;-5;
+<anchor xml:id="__game_8cs_source_1l00537"/>00537 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00538"/>00538 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00539"/>00539 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_core_debug">CoreDebug</link>.StartScene.Tefra:
+<anchor xml:id="__game_8cs_source_1l00540"/>00540 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00541"/>00541 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_zone">Zone</link>&#32;parent4&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.spatials.Find(<emphasis role="stringliteral">&quot;vernis&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00542"/>00542 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zone&#32;=&#32;(<link linkend="_class_spatial_gen">SpatialGen</link>.Create(<emphasis role="stringliteral">&quot;vernis_mine&quot;</emphasis>,&#32;parent4,&#32;<emphasis role="keyword">true</emphasis>,&#32;-99999,&#32;-99999,&#32;0)&#32;as&#32;<link linkend="_class_zone">Zone</link>);
+<anchor xml:id="__game_8cs_source_1l00543"/>00543 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zone.lv&#32;=&#32;-7;
+<anchor xml:id="__game_8cs_source_1l00544"/>00544 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00545"/>00545 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00546"/>00546 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00547"/>00547 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(zone&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00548"/>00548 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00549"/>00549 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.zone&#32;=&#32;(EClass.pc.currentZone&#32;=&#32;(EClass.pc.homeZone&#32;=&#32;zone));
+<anchor xml:id="__game_8cs_source_1l00550"/>00550 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.pc.global.transition&#32;=&#32;transition;
+<anchor xml:id="__game_8cs_source_1l00551"/>00551 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00552"/>00552 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__game_8cs_source_1l00553"/>00553 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00554"/>00554 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.zone&#32;=&#32;(EClass.pc.currentZone&#32;=&#32;<link linkend="_class_e_class">EClass</link>.game.spatials.Find(<link linkend="_class_e_class">EClass</link>.debug.startZone));
+<anchor xml:id="__game_8cs_source_1l00555"/>00555 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.pc.global.transition&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_zone_transition">ZoneTransition</link>
+<anchor xml:id="__game_8cs_source_1l00556"/>00556 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00557"/>00557 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;state&#32;=&#32;ZoneTransition.EnterState.Return
+<anchor xml:id="__game_8cs_source_1l00558"/>00558 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__game_8cs_source_1l00559"/>00559 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00560"/>00560 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00561"/>00561 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.pc.homeZone.isKnown&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00562"/>00562 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.AddAdventurers();
+<anchor xml:id="__game_8cs_source_1l00563"/>00563 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.OnStartNewGame();
+<anchor xml:id="__game_8cs_source_1l00564"/>00564 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.scene.Init(<link linkend="_class_scene">Scene</link>.Mode.StartGame);
+<anchor xml:id="__game_8cs_source_1l00565"/>00565 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00566"/>00566 
+<anchor xml:id="__game_8cs_source_1l00567"/>00567 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000479&#32;RID:&#32;1145&#32;RVA:&#32;0x0001EBF0&#32;File&#32;Offset:&#32;0x0001CDF0</emphasis>
+<anchor xml:id="__game_8cs_source_1l00568"/>00568 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddAdventurers()
+<anchor xml:id="__game_8cs_source_1l00569"/>00569 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00570"/>00570 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;List&lt;Zone&gt;&#32;source&#32;=&#32;this.world.region.ListTowns();
+<anchor xml:id="__game_8cs_source_1l00571"/>00571 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>[]&#32;array&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>[]
+<anchor xml:id="__game_8cs_source_1l00572"/>00572 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00573"/>00573 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;adv_kiria&quot;</emphasis>,
+<anchor xml:id="__game_8cs_source_1l00574"/>00574 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;adv_gaki&quot;</emphasis>,
+<anchor xml:id="__game_8cs_source_1l00575"/>00575 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;adv_wini&quot;</emphasis>,
+<anchor xml:id="__game_8cs_source_1l00576"/>00576 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;adv_verna&quot;</emphasis>,
+<anchor xml:id="__game_8cs_source_1l00577"/>00577 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;adv_ivory&quot;</emphasis>,
+<anchor xml:id="__game_8cs_source_1l00578"/>00578 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;adv_mesherada&quot;</emphasis>
+<anchor xml:id="__game_8cs_source_1l00579"/>00579 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__game_8cs_source_1l00580"/>00580 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_class_e_class">EClass</link>.setting.balance.numAdv;&#32;i++)
+<anchor xml:id="__game_8cs_source_1l00581"/>00581 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00582"/>00582 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_zone">Zone</link>&#32;zone&#32;=&#32;source.RandomItem&lt;<link linkend="_class_zone">Zone</link>&gt;();
+<anchor xml:id="__game_8cs_source_1l00583"/>00583 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(zone&#32;is&#32;<link linkend="_class_zone___sub_town">Zone_SubTown</link>&#32;&amp;&amp;&#32;<link linkend="_class_e_class">EClass</link>.rnd(5)&#32;!=&#32;0)
+<anchor xml:id="__game_8cs_source_1l00584"/>00584 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00585"/>00585 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;i--;
+<anchor xml:id="__game_8cs_source_1l00586"/>00586 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00587"/>00587 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__game_8cs_source_1l00588"/>00588 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00589"/>00589 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(i&#32;&gt;=&#32;array.Length&#32;&amp;&amp;&#32;i&#32;&lt;&#32;array.Length&#32;+&#32;2)
+<anchor xml:id="__game_8cs_source_1l00590"/>00590 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00591"/>00591 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_card_blueprint">CardBlueprint</link>.Set(<link linkend="_class_card_blueprint">CardBlueprint</link>.Chara(i&#32;*&#32;15,&#32;Rarity.Normal));
+<anchor xml:id="__game_8cs_source_1l00592"/>00592 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00593"/>00593 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_chara">Chara</link>&#32;chara&#32;=&#32;<link linkend="_class_chara_gen">CharaGen</link>.Create((i&#32;&lt;&#32;array.Length)&#32;?&#32;array[i]&#32;:&#32;((<link linkend="_class_e_class">EClass</link>.rnd(10)&#32;==&#32;0)&#32;?&#32;<emphasis role="stringliteral">&quot;adv_fairy&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;adv&quot;</emphasis>),&#32;-1);
+<anchor xml:id="__game_8cs_source_1l00594"/>00594 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;chara.SetHomeZone(zone);
+<anchor xml:id="__game_8cs_source_1l00595"/>00595 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;chara.global.transition&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_zone_transition">ZoneTransition</link>
+<anchor xml:id="__game_8cs_source_1l00596"/>00596 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00597"/>00597 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;state&#32;=&#32;ZoneTransition.EnterState.RandomVisit
+<anchor xml:id="__game_8cs_source_1l00598"/>00598 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__game_8cs_source_1l00599"/>00599 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zone.AddCard(chara);
+<anchor xml:id="__game_8cs_source_1l00600"/>00600 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.cards.listAdv.Add(chara);
+<anchor xml:id="__game_8cs_source_1l00601"/>00601 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00602"/>00602 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00603"/>00603 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00604"/>00604 
+<anchor xml:id="__game_8cs_source_1l00605"/>00605 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600047A&#32;RID:&#32;1146&#32;RVA:&#32;0x0001ED08&#32;File&#32;Offset:&#32;0x0001CF08</emphasis>
+<anchor xml:id="__game_8cs_source_1l00606"/>00606 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;GotoTitle(<emphasis role="keywordtype">bool</emphasis>&#32;showDialog&#32;=&#32;<emphasis role="keyword">true</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00607"/>00607 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00608"/>00608 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(showDialog)
+<anchor xml:id="__game_8cs_source_1l00609"/>00609 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00610"/>00610 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_dialog">Dialog</link>.YesNo(<emphasis role="stringliteral">&quot;dialog_gotoTitle&quot;</emphasis>,&#32;delegate
+<anchor xml:id="__game_8cs_source_1l00611"/>00611 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00612"/>00612 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.game.Save(<emphasis role="keyword">true</emphasis>,&#32;delegate
+<anchor xml:id="__game_8cs_source_1l00613"/>00613 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00614"/>00614 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.scene.Init(<link linkend="_class_scene">Scene</link>.Mode.Title);
+<anchor xml:id="__game_8cs_source_1l00615"/>00615 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00616"/>00616 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="stringliteral">&quot;yes&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;no&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00617"/>00617 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00618"/>00618 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00619"/>00619 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.scene.Init(<link linkend="_class_scene">Scene</link>.Mode.Title);
+<anchor xml:id="__game_8cs_source_1l00620"/>00620 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00621"/>00621 
+<anchor xml:id="__game_8cs_source_1l00622"/>00622 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600047B&#32;RID:&#32;1147&#32;RVA:&#32;0x0001ED59&#32;File&#32;Offset:&#32;0x0001CF59</emphasis>
+<anchor xml:id="__game_8cs_source_1l00623"/>00623 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Quit()
+<anchor xml:id="__game_8cs_source_1l00624"/>00624 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00625"/>00625 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_dialog">Dialog</link>.YesNo(<emphasis role="stringliteral">&quot;dialog_quit&quot;</emphasis>,&#32;delegate
+<anchor xml:id="__game_8cs_source_1l00626"/>00626 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00627"/>00627 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.game.Save(<emphasis role="keyword">true</emphasis>,&#32;delegate
+<anchor xml:id="__game_8cs_source_1l00628"/>00628 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00629"/>00629 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.core.Quit();
+<anchor xml:id="__game_8cs_source_1l00630"/>00630 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00631"/>00631 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="stringliteral">&quot;yes&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;no&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00632"/>00632 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00633"/>00633 
+<anchor xml:id="__game_8cs_source_1l00634"/>00634 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600047C&#32;RID:&#32;1148&#32;RVA:&#32;0x0001ED90&#32;File&#32;Offset:&#32;0x0001CF90</emphasis>
+<anchor xml:id="__game_8cs_source_1l00635"/>00635 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Save(<emphasis role="keywordtype">bool</emphasis>&#32;isAutoSave&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;Action&#32;onComplete&#32;=&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;silent&#32;=&#32;<emphasis role="keyword">false</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00636"/>00636 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00637"/>00637 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.ui.IsDragging)
+<anchor xml:id="__game_8cs_source_1l00638"/>00638 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00639"/>00639 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.ui.EndDrag(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00640"/>00640 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00641"/>00641 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!isAutoSave&#32;&amp;&amp;&#32;!silent)
+<anchor xml:id="__game_8cs_source_1l00642"/>00642 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00643"/>00643 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.WriteJournal();
+<anchor xml:id="__game_8cs_source_1l00644"/>00644 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00645"/>00645 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(isAutoSave&#32;&amp;&amp;&#32;<link linkend="_class_e_class">EClass</link>.debug.ignoreAutoSave)
+<anchor xml:id="__game_8cs_source_1l00646"/>00646 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00647"/>00647 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(onComplete&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00648"/>00648 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00649"/>00649 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;onComplete();
+<anchor xml:id="__game_8cs_source_1l00650"/>00650 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00651"/>00651 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00652"/>00652 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00653"/>00653 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.core.config.game.backupOnFirstSave&#32;&amp;&amp;&#32;<emphasis role="keyword">this</emphasis>.saveCount&#32;==&#32;0)
+<anchor xml:id="__game_8cs_source_1l00654"/>00654 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00655"/>00655 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_i_o">GameIO</link>.MakeBackup(<link linkend="_class_game">Game</link>.id,&#32;<emphasis role="stringliteral">&quot;_auto&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00656"/>00656 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.ui.Say(<emphasis role="stringliteral">&quot;backupDone&quot;</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00657"/>00657 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00658"/>00658 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.countLoadedMaps&#32;=&#32;0;
+<anchor xml:id="__game_8cs_source_1l00659"/>00659 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.pref.layerInventory&#32;=&#32;<link linkend="_class_e_class">EClass</link>.ui.layerFloat.GetLayer&lt;<link linkend="_class_layer_inventory">LayerInventory</link>&gt;(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00660"/>00660 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.player.pref.layerInventory)
+<anchor xml:id="__game_8cs_source_1l00661"/>00661 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00662"/>00662 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.pref.layerAbility&#32;=&#32;<link linkend="_class_e_class">EClass</link>.ui.layerFloat.GetLayer&lt;<link linkend="_class_layer_ability">LayerAbility</link>&gt;(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00663"/>00663 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00664"/>00664 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.pref.layerCraft&#32;=&#32;<link linkend="_class_e_class">EClass</link>.ui.layerFloat.GetLayer&lt;<link linkend="_class_layer_craft_float">LayerCraftFloat</link>&gt;(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00665"/>00665 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.angle&#32;=&#32;<link linkend="_class_e_class">EClass</link>.pc.angle;
+<anchor xml:id="__game_8cs_source_1l00666"/>00666 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.version&#32;=&#32;<link linkend="_class_e_class">EClass</link>.core.version;
+<anchor xml:id="__game_8cs_source_1l00667"/>00667 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.ui.widgets.UpdateConfigs();
+<anchor xml:id="__game_8cs_source_1l00668"/>00668 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnBeforeSave();
+<anchor xml:id="__game_8cs_source_1l00669"/>00669 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_i_o">GameIO</link>.SaveGame();
+<anchor xml:id="__game_8cs_source_1l00670"/>00670 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!silent)
+<anchor xml:id="__game_8cs_source_1l00671"/>00671 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00672"/>00672 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_msg">Msg</link>.Say(<emphasis role="stringliteral">&quot;saved&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00673"/>00673 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00674"/>00674 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.saveCount++;
+<anchor xml:id="__game_8cs_source_1l00675"/>00675 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(onComplete&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00676"/>00676 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00677"/>00677 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;onComplete();
+<anchor xml:id="__game_8cs_source_1l00678"/>00678 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00679"/>00679 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00680"/>00680 
+<anchor xml:id="__game_8cs_source_1l00681"/>00681 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600047D&#32;RID:&#32;1149&#32;RVA:&#32;0x0001EF04&#32;File&#32;Offset:&#32;0x0001D104</emphasis>
+<anchor xml:id="__game_8cs_source_1l00682"/>00682 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnBeforeSave()
+<anchor xml:id="__game_8cs_source_1l00683"/>00683 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00684"/>00684 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_zone">Zone</link>&#32;zone&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.spatials.Zones)
+<anchor xml:id="__game_8cs_source_1l00685"/>00685 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00686"/>00686 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zone.OnBeforeSave();
+<anchor xml:id="__game_8cs_source_1l00687"/>00687 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00688"/>00688 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.player.OnBeforeSave();
+<anchor xml:id="__game_8cs_source_1l00689"/>00689 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_spatial">Spatial</link>&#32;spatial&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.spatials.listDestryoed)
+<anchor xml:id="__game_8cs_source_1l00690"/>00690 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00691"/>00691 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;spatial.DeleteMapRecursive();
+<anchor xml:id="__game_8cs_source_1l00692"/>00692 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00693"/>00693 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.spatials.listDestryoed.Clear();
+<anchor xml:id="__game_8cs_source_1l00694"/>00694 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00695"/>00695 
+<anchor xml:id="__game_8cs_source_1l00696"/>00696 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600047E&#32;RID:&#32;1150&#32;RVA:&#32;0x0001EFB8&#32;File&#32;Offset:&#32;0x0001D1B8</emphasis>
+<anchor xml:id="__game_8cs_source_1l00697"/>00697 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Kill()
+<anchor xml:id="__game_8cs_source_1l00698"/>00698 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00699"/>00699 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.isKilling&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00700"/>00700 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log(<emphasis role="stringliteral">&quot;Killing&#32;Game:&#32;IsStarted?&#32;&quot;</emphasis>&#32;+&#32;<link linkend="_class_e_class">EClass</link>.core.IsGameStarted.ToString());
+<anchor xml:id="__game_8cs_source_1l00701"/>00701 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.core.IsGameStarted)
+<anchor xml:id="__game_8cs_source_1l00702"/>00702 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00703"/>00703 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.ui.OnKillGame();
+<anchor xml:id="__game_8cs_source_1l00704"/>00704 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.scene.OnKillGame();
+<anchor xml:id="__game_8cs_source_1l00705"/>00705 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.activeZone.OnKillGame();
+<anchor xml:id="__game_8cs_source_1l00706"/>00706 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00707"/>00707 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.core.game&#32;=&#32;(Game.Instance&#32;=&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00708"/>00708 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.Sound.currentPlaylist&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00709"/>00709 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Window.dictTab.Clear();
+<anchor xml:id="__game_8cs_source_1l00710"/>00710 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(Texture2D&#32;texture2D&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.loadedTextures)
+<anchor xml:id="__game_8cs_source_1l00711"/>00711 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00712"/>00712 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(texture2D&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00713"/>00713 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00714"/>00714 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UnityEngine.Object.Destroy(texture2D);
+<anchor xml:id="__game_8cs_source_1l00715"/>00715 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00716"/>00716 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00717"/>00717 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00718"/>00718 
+<anchor xml:id="__game_8cs_source_1l00719"/>00719 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600047F&#32;RID:&#32;1151&#32;RVA:&#32;0x0001F08C&#32;File&#32;Offset:&#32;0x0001D28C</emphasis>
+<anchor xml:id="__game_8cs_source_1l00720"/>00720 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Pause(Action&#32;onUnpause&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00721"/>00721 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00722"/>00722 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Game.isPaused&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00723"/>00723 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_layer_pause">LayerPause</link>&#32;layerPause&#32;=&#32;<link linkend="_class_e_class">EClass</link>.ui.AddLayer&lt;<link linkend="_class_layer_pause">LayerPause</link>&gt;();
+<anchor xml:id="__game_8cs_source_1l00724"/>00724 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(onUnpause&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00725"/>00725 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00726"/>00726 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;layerPause.SetOnKill(onUnpause);
+<anchor xml:id="__game_8cs_source_1l00727"/>00727 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00728"/>00728 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00729"/>00729 
+<anchor xml:id="__game_8cs_source_1l00730"/>00730 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000480&#32;RID:&#32;1152&#32;RVA:&#32;0x0001F0B5&#32;File&#32;Offset:&#32;0x0001D2B5</emphasis>
+<anchor xml:id="__game_8cs_source_1l00731"/>00731 &#32;&#32;&#32;&#32;[OnSerializing]
+<anchor xml:id="__game_8cs_source_1l00732"/>00732 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnSerializing(StreamingContext&#32;context)
+<anchor xml:id="__game_8cs_source_1l00733"/>00733 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00734"/>00734 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log(<emphasis role="stringliteral">&quot;#io&#32;game&#32;OnSerializing&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00735"/>00735 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00736"/>00736 
+<anchor xml:id="__game_8cs_source_1l00737"/>00737 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000481&#32;RID:&#32;1153&#32;RVA:&#32;0x0001F0C1&#32;File&#32;Offset:&#32;0x0001D2C1</emphasis>
+<anchor xml:id="__game_8cs_source_1l00738"/>00738 &#32;&#32;&#32;&#32;[OnDeserializing]
+<anchor xml:id="__game_8cs_source_1l00739"/>00739 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnDeserializing(StreamingContext&#32;context)
+<anchor xml:id="__game_8cs_source_1l00740"/>00740 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00741"/>00741 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log(<emphasis role="stringliteral">&quot;#io&#32;game&#32;OnDeserializing&quot;</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00742"/>00742 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Game.Instance&#32;=&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="__game_8cs_source_1l00743"/>00743 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00744"/>00744 
+<anchor xml:id="__game_8cs_source_1l00745"/>00745 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000483&#32;RID:&#32;1155&#32;RVA:&#32;0x0001F1C8&#32;File&#32;Offset:&#32;0x0001D3C8</emphasis>
+<anchor xml:id="__game_8cs_source_1l00746"/>00746 &#32;&#32;&#32;&#32;[CompilerGenerated]
+<anchor xml:id="__game_8cs_source_1l00747"/>00747 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;void&#32;&lt;OnLoad&gt;g__TryAddQuest|65_4(<emphasis role="keywordtype">string</emphasis>&#32;idQuest,&#32;<emphasis role="keywordtype">string</emphasis>&#32;idReqQuest)
+<anchor xml:id="__game_8cs_source_1l00748"/>00748 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00749"/>00749 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.quests.completedIDs.Contains(idReqQuest)&#32;&amp;&amp;&#32;!<emphasis role="keyword">this</emphasis>.quests.completedIDs.Contains(idQuest)&#32;&amp;&amp;&#32;<emphasis role="keyword">this</emphasis>.quests.GetGlobal(idQuest)&#32;==&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;<emphasis role="keyword">this</emphasis>.quests.Get(idQuest)&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00750"/>00750 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00751"/>00751 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.quests.Add(idQuest,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00752"/>00752 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00753"/>00753 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00754"/>00754 
+<anchor xml:id="__game_8cs_source_1l00755"/>00755 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000484&#32;RID:&#32;1156&#32;RVA:&#32;0x0001F228&#32;File&#32;Offset:&#32;0x0001D428</emphasis>
+<anchor xml:id="__game_8cs_source_1l00756"/>00756 &#32;&#32;&#32;&#32;[CompilerGenerated]
+<anchor xml:id="__game_8cs_source_1l00757"/>00757 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;void&#32;&lt;OnLoad&gt;g__TryAddQuestIfActive|65_5(<emphasis role="keywordtype">string</emphasis>&#32;idQuest,&#32;<emphasis role="keywordtype">string</emphasis>&#32;idReqQuest)
+<anchor xml:id="__game_8cs_source_1l00758"/>00758 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00759"/>00759 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.quests.Get(idReqQuest)&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;!<emphasis role="keyword">this</emphasis>.quests.completedIDs.Contains(idQuest)&#32;&amp;&amp;&#32;<emphasis role="keyword">this</emphasis>.quests.GetGlobal(idQuest)&#32;==&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;<emphasis role="keyword">this</emphasis>.quests.Get(idQuest)&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__game_8cs_source_1l00760"/>00760 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00761"/>00761 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.quests.Add(idQuest,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__game_8cs_source_1l00762"/>00762 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00763"/>00763 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00764"/>00764 
+<anchor xml:id="__game_8cs_source_1l00765"/>00765 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005EA&#32;RID:&#32;1514</emphasis>
+<anchor xml:id="__game_8cs_source_1l00766"/>00766 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_game">Game</link>&#32;Instance;
+<anchor xml:id="__game_8cs_source_1l00767"/>00767 
+<anchor xml:id="__game_8cs_source_1l00768"/>00768 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005EB&#32;RID:&#32;1515</emphasis>
+<anchor xml:id="__game_8cs_source_1l00769"/>00769 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;waitTimer;
+<anchor xml:id="__game_8cs_source_1l00770"/>00770 
+<anchor xml:id="__game_8cs_source_1l00771"/>00771 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005EC&#32;RID:&#32;1516</emphasis>
+<anchor xml:id="__game_8cs_source_1l00772"/>00772 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;id;
+<anchor xml:id="__game_8cs_source_1l00773"/>00773 
+<anchor xml:id="__game_8cs_source_1l00774"/>00774 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005ED&#32;RID:&#32;1517</emphasis>
+<anchor xml:id="__game_8cs_source_1l00775"/>00775 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isPaused;
+<anchor xml:id="__game_8cs_source_1l00776"/>00776 
+<anchor xml:id="__game_8cs_source_1l00777"/>00777 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005EE&#32;RID:&#32;1518</emphasis>
+<anchor xml:id="__game_8cs_source_1l00778"/>00778 &#32;&#32;&#32;&#32;[JsonProperty(Order&#32;=&#32;-90)]
+<anchor xml:id="__game_8cs_source_1l00779"/>00779 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_spatial_manager">SpatialManager</link>&#32;spatials&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_spatial_manager">SpatialManager</link>();
+<anchor xml:id="__game_8cs_source_1l00780"/>00780 
+<anchor xml:id="__game_8cs_source_1l00781"/>00781 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005EF&#32;RID:&#32;1519</emphasis>
+<anchor xml:id="__game_8cs_source_1l00782"/>00782 &#32;&#32;&#32;&#32;[JsonProperty(Order&#32;=&#32;-80)]
+<anchor xml:id="__game_8cs_source_1l00783"/>00783 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_card_manager">CardManager</link>&#32;cards&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_card_manager">CardManager</link>();
+<anchor xml:id="__game_8cs_source_1l00784"/>00784 
+<anchor xml:id="__game_8cs_source_1l00785"/>00785 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005F0&#32;RID:&#32;1520</emphasis>
+<anchor xml:id="__game_8cs_source_1l00786"/>00786 &#32;&#32;&#32;&#32;[JsonProperty(Order&#32;=&#32;-100)]
+<anchor xml:id="__game_8cs_source_1l00787"/>00787 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_religion_manager">ReligionManager</link>&#32;religions&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_religion_manager">ReligionManager</link>();
+<anchor xml:id="__game_8cs_source_1l00788"/>00788 
+<anchor xml:id="__game_8cs_source_1l00789"/>00789 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005F1&#32;RID:&#32;1521</emphasis>
+<anchor xml:id="__game_8cs_source_1l00790"/>00790 &#32;&#32;&#32;&#32;[JsonProperty(Order&#32;=&#32;-60)]
+<anchor xml:id="__game_8cs_source_1l00791"/>00791 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_faction_manager">FactionManager</link>&#32;factions&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_faction_manager">FactionManager</link>();
+<anchor xml:id="__game_8cs_source_1l00792"/>00792 
+<anchor xml:id="__game_8cs_source_1l00793"/>00793 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005F2&#32;RID:&#32;1522</emphasis>
+<anchor xml:id="__game_8cs_source_1l00794"/>00794 &#32;&#32;&#32;&#32;[JsonProperty(Order&#32;=&#32;-50)]
+<anchor xml:id="__game_8cs_source_1l00795"/>00795 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_domain_manager">DomainManager</link>&#32;domains&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_domain_manager">DomainManager</link>();
+<anchor xml:id="__game_8cs_source_1l00796"/>00796 
+<anchor xml:id="__game_8cs_source_1l00797"/>00797 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005F3&#32;RID:&#32;1523</emphasis>
+<anchor xml:id="__game_8cs_source_1l00798"/>00798 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00799"/>00799 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;global::Version&#32;version;
+<anchor xml:id="__game_8cs_source_1l00800"/>00800 
+<anchor xml:id="__game_8cs_source_1l00801"/>00801 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005F4&#32;RID:&#32;1524</emphasis>
+<anchor xml:id="__game_8cs_source_1l00802"/>00802 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00803"/>00803 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_party_manager">PartyManager</link>&#32;parties&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_party_manager">PartyManager</link>();
+<anchor xml:id="__game_8cs_source_1l00804"/>00804 
+<anchor xml:id="__game_8cs_source_1l00805"/>00805 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005F5&#32;RID:&#32;1525</emphasis>
+<anchor xml:id="__game_8cs_source_1l00806"/>00806 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00807"/>00807 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_world">World</link>&#32;world;
+<anchor xml:id="__game_8cs_source_1l00808"/>00808 
+<anchor xml:id="__game_8cs_source_1l00809"/>00809 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005F6&#32;RID:&#32;1526</emphasis>
+<anchor xml:id="__game_8cs_source_1l00810"/>00810 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00811"/>00811 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_player">Player</link>&#32;player&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_player">Player</link>();
+<anchor xml:id="__game_8cs_source_1l00812"/>00812 
+<anchor xml:id="__game_8cs_source_1l00813"/>00813 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005F7&#32;RID:&#32;1527</emphasis>
+<anchor xml:id="__game_8cs_source_1l00814"/>00814 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00815"/>00815 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_quest_manager">QuestManager</link>&#32;quests&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_quest_manager">QuestManager</link>();
+<anchor xml:id="__game_8cs_source_1l00816"/>00816 
+<anchor xml:id="__game_8cs_source_1l00817"/>00817 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005F8&#32;RID:&#32;1528</emphasis>
+<anchor xml:id="__game_8cs_source_1l00818"/>00818 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00819"/>00819 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_relation_manager">RelationManager</link>&#32;relations&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_relation_manager">RelationManager</link>();
+<anchor xml:id="__game_8cs_source_1l00820"/>00820 
+<anchor xml:id="__game_8cs_source_1l00821"/>00821 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005F9&#32;RID:&#32;1529</emphasis>
+<anchor xml:id="__game_8cs_source_1l00822"/>00822 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00823"/>00823 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_msg_log">MsgLog</link>&#32;log&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_msg_log">MsgLog</link>
+<anchor xml:id="__game_8cs_source_1l00824"/>00824 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00825"/>00825 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">id</emphasis>&#32;=&#32;<emphasis role="stringliteral">&quot;log&quot;</emphasis>
+<anchor xml:id="__game_8cs_source_1l00826"/>00826 &#32;&#32;&#32;&#32;};
+<anchor xml:id="__game_8cs_source_1l00827"/>00827 
+<anchor xml:id="__game_8cs_source_1l00828"/>00828 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005FA&#32;RID:&#32;1530</emphasis>
+<anchor xml:id="__game_8cs_source_1l00829"/>00829 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00830"/>00830 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;PCCUniformManager&#32;uniforms&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;PCCUniformManager();
+<anchor xml:id="__game_8cs_source_1l00831"/>00831 
+<anchor xml:id="__game_8cs_source_1l00832"/>00832 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005FB&#32;RID:&#32;1531</emphasis>
+<anchor xml:id="__game_8cs_source_1l00833"/>00833 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00834"/>00834 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_teleport_manager">TeleportManager</link>&#32;teleports&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_teleport_manager">TeleportManager</link>();
+<anchor xml:id="__game_8cs_source_1l00835"/>00835 
+<anchor xml:id="__game_8cs_source_1l00836"/>00836 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005FC&#32;RID:&#32;1532</emphasis>
+<anchor xml:id="__game_8cs_source_1l00837"/>00837 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00838"/>00838 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;seed;
+<anchor xml:id="__game_8cs_source_1l00839"/>00839 
+<anchor xml:id="__game_8cs_source_1l00840"/>00840 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005FD&#32;RID:&#32;1533</emphasis>
+<anchor xml:id="__game_8cs_source_1l00841"/>00841 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00842"/>00842 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;idPrologue;
+<anchor xml:id="__game_8cs_source_1l00843"/>00843 
+<anchor xml:id="__game_8cs_source_1l00844"/>00844 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005FE&#32;RID:&#32;1534</emphasis>
+<anchor xml:id="__game_8cs_source_1l00845"/>00845 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00846"/>00846 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;idDifficulty;
+<anchor xml:id="__game_8cs_source_1l00847"/>00847 
+<anchor xml:id="__game_8cs_source_1l00848"/>00848 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040005FF&#32;RID:&#32;1535</emphasis>
+<anchor xml:id="__game_8cs_source_1l00849"/>00849 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00850"/>00850 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;dateScratch;
+<anchor xml:id="__game_8cs_source_1l00851"/>00851 
+<anchor xml:id="__game_8cs_source_1l00852"/>00852 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000600&#32;RID:&#32;1536</emphasis>
+<anchor xml:id="__game_8cs_source_1l00853"/>00853 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00854"/>00854 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_game_1_1_flags">Game.Flags</link>&#32;flags&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_game">Game</link>.<link linkend="_class_game_1_1_flags">Flags</link>();
+<anchor xml:id="__game_8cs_source_1l00855"/>00855 
+<anchor xml:id="__game_8cs_source_1l00856"/>00856 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000601&#32;RID:&#32;1537</emphasis>
+<anchor xml:id="__game_8cs_source_1l00857"/>00857 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00858"/>00858 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_game_1_1_config">Game.Config</link>&#32;config&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_game">Game</link>.<link linkend="_class_game_1_1_config">Config</link>();
+<anchor xml:id="__game_8cs_source_1l00859"/>00859 
+<anchor xml:id="__game_8cs_source_1l00860"/>00860 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000602&#32;RID:&#32;1538</emphasis>
+<anchor xml:id="__game_8cs_source_1l00861"/>00861 &#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00862"/>00862 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;Thing&gt;&#32;lostThings&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;Thing&gt;();
+<anchor xml:id="__game_8cs_source_1l00863"/>00863 
+<anchor xml:id="__game_8cs_source_1l00864"/>00864 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000603&#32;RID:&#32;1539</emphasis>
+<anchor xml:id="__game_8cs_source_1l00865"/>00865 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;gameSpeedIndex&#32;=&#32;1;
+<anchor xml:id="__game_8cs_source_1l00866"/>00866 
+<anchor xml:id="__game_8cs_source_1l00867"/>00867 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000604&#32;RID:&#32;1540</emphasis>
+<anchor xml:id="__game_8cs_source_1l00868"/>00868 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;lastGameSpeedIndex&#32;=&#32;1;
+<anchor xml:id="__game_8cs_source_1l00869"/>00869 
+<anchor xml:id="__game_8cs_source_1l00870"/>00870 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000605&#32;RID:&#32;1541</emphasis>
+<anchor xml:id="__game_8cs_source_1l00871"/>00871 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;sessionMin;
+<anchor xml:id="__game_8cs_source_1l00872"/>00872 
+<anchor xml:id="__game_8cs_source_1l00873"/>00873 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000606&#32;RID:&#32;1542</emphasis>
+<anchor xml:id="__game_8cs_source_1l00874"/>00874 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;countLoadedMaps;
+<anchor xml:id="__game_8cs_source_1l00875"/>00875 
+<anchor xml:id="__game_8cs_source_1l00876"/>00876 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000607&#32;RID:&#32;1543</emphasis>
+<anchor xml:id="__game_8cs_source_1l00877"/>00877 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;saveCount;
+<anchor xml:id="__game_8cs_source_1l00878"/>00878 
+<anchor xml:id="__game_8cs_source_1l00879"/>00879 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000608&#32;RID:&#32;1544</emphasis>
+<anchor xml:id="__game_8cs_source_1l00880"/>00880 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;timeSinceStart;
+<anchor xml:id="__game_8cs_source_1l00881"/>00881 
+<anchor xml:id="__game_8cs_source_1l00882"/>00882 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000609&#32;RID:&#32;1545</emphasis>
+<anchor xml:id="__game_8cs_source_1l00883"/>00883 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isLoading;
+<anchor xml:id="__game_8cs_source_1l00884"/>00884 
+<anchor xml:id="__game_8cs_source_1l00885"/>00885 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400060A&#32;RID:&#32;1546</emphasis>
+<anchor xml:id="__game_8cs_source_1l00886"/>00886 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isKilling;
+<anchor xml:id="__game_8cs_source_1l00887"/>00887 
+<anchor xml:id="__game_8cs_source_1l00888"/>00888 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400060B&#32;RID:&#32;1547</emphasis>
+<anchor xml:id="__game_8cs_source_1l00889"/>00889 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_game_blueprint">GameBlueprint</link>&#32;bp;
+<anchor xml:id="__game_8cs_source_1l00890"/>00890 
+<anchor xml:id="__game_8cs_source_1l00891"/>00891 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400060C&#32;RID:&#32;1548</emphasis>
+<anchor xml:id="__game_8cs_source_1l00892"/>00892 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_game_updater">GameUpdater</link>&#32;updater&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_game_updater">GameUpdater</link>();
+<anchor xml:id="__game_8cs_source_1l00893"/>00893 
+<anchor xml:id="__game_8cs_source_1l00894"/>00894 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400060D&#32;RID:&#32;1549</emphasis>
+<anchor xml:id="__game_8cs_source_1l00895"/>00895 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_zone">Zone</link>&#32;activeZone;
+<anchor xml:id="__game_8cs_source_1l00896"/>00896 
+<anchor xml:id="__game_8cs_source_1l00897"/>00897 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400060E&#32;RID:&#32;1550</emphasis>
+<anchor xml:id="__game_8cs_source_1l00898"/>00898 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_zone">Zone</link>&#32;lastActiveZone;
+<anchor xml:id="__game_8cs_source_1l00899"/>00899 
+<anchor xml:id="__game_8cs_source_1l00900"/>00900 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400060F&#32;RID:&#32;1551</emphasis>
+<anchor xml:id="__game_8cs_source_1l00901"/>00901 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Dictionary&lt;string,&#32;IGlobalValue&gt;&#32;referenceMap&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Dictionary&lt;string,&#32;IGlobalValue&gt;();
+<anchor xml:id="__game_8cs_source_1l00902"/>00902 
+<anchor xml:id="__game_8cs_source_1l00903"/>00903 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000610&#32;RID:&#32;1552</emphasis>
+<anchor xml:id="__game_8cs_source_1l00904"/>00904 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;HashSet&lt;Texture2D&gt;&#32;loadedTextures&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;HashSet&lt;Texture2D&gt;();
+<anchor xml:id="__game_8cs_source_1l00905"/>00905 
+<anchor xml:id="__game_8cs_source_1l00906"/>00906 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000611&#32;RID:&#32;1553</emphasis>
+<anchor xml:id="__game_8cs_source_1l00907"/>00907 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;welcomeTimer;
+<anchor xml:id="__game_8cs_source_1l00908"/>00908 
+<anchor xml:id="__game_8cs_source_1l00909"/>00909 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x020007F2&#32;RID:&#32;2034</emphasis>
+<anchor xml:id="__game_8cs_source_1l00910"/><link linkend="_class_game_1_1_config">00910</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_game_1_1_config">Config</link>&#32;:&#32;<link linkend="_class_e_class">EClass</link>
+<anchor xml:id="__game_8cs_source_1l00911"/>00911 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00912"/>00912 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x1700111F&#32;RID:&#32;4383</emphasis>
+<anchor xml:id="__game_8cs_source_1l00913"/>00913 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06003821&#32;RID:&#32;14369&#32;RVA:&#32;0x0012CEDF&#32;File&#32;Offset:&#32;0x0012B0DF</emphasis>
+<anchor xml:id="__game_8cs_source_1l00914"/>00914 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;FreePos
+<anchor xml:id="__game_8cs_source_1l00915"/>00915 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00916"/>00916 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__game_8cs_source_1l00917"/>00917 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l00918"/>00918 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;Input.GetKey(KeyCode.LeftShift)&#32;||&#32;Input.GetKey(KeyCode.RightShift);
+<anchor xml:id="__game_8cs_source_1l00919"/>00919 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00920"/>00920 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l00921"/>00921 
+<anchor xml:id="__game_8cs_source_1l00922"/>00922 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400224A&#32;RID:&#32;8778</emphasis>
+<anchor xml:id="__game_8cs_source_1l00923"/>00923 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00924"/>00924 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;areaHighlight;
+<anchor xml:id="__game_8cs_source_1l00925"/>00925 
+<anchor xml:id="__game_8cs_source_1l00926"/>00926 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400224B&#32;RID:&#32;8779</emphasis>
+<anchor xml:id="__game_8cs_source_1l00927"/>00927 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00928"/>00928 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;showRoof;
+<anchor xml:id="__game_8cs_source_1l00929"/>00929 
+<anchor xml:id="__game_8cs_source_1l00930"/>00930 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400224C&#32;RID:&#32;8780</emphasis>
+<anchor xml:id="__game_8cs_source_1l00931"/>00931 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00932"/>00932 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;showWall;
+<anchor xml:id="__game_8cs_source_1l00933"/>00933 
+<anchor xml:id="__game_8cs_source_1l00934"/>00934 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400224D&#32;RID:&#32;8781</emphasis>
+<anchor xml:id="__game_8cs_source_1l00935"/>00935 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00936"/>00936 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;tilt;
+<anchor xml:id="__game_8cs_source_1l00937"/>00937 
+<anchor xml:id="__game_8cs_source_1l00938"/>00938 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400224E&#32;RID:&#32;8782</emphasis>
+<anchor xml:id="__game_8cs_source_1l00939"/>00939 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00940"/>00940 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;tiltRegion;
+<anchor xml:id="__game_8cs_source_1l00941"/>00941 
+<anchor xml:id="__game_8cs_source_1l00942"/>00942 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400224F&#32;RID:&#32;8783</emphasis>
+<anchor xml:id="__game_8cs_source_1l00943"/>00943 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00944"/>00944 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;slope;
+<anchor xml:id="__game_8cs_source_1l00945"/>00945 
+<anchor xml:id="__game_8cs_source_1l00946"/>00946 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002250&#32;RID:&#32;8784</emphasis>
+<anchor xml:id="__game_8cs_source_1l00947"/>00947 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00948"/>00948 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;noRoof;
+<anchor xml:id="__game_8cs_source_1l00949"/>00949 
+<anchor xml:id="__game_8cs_source_1l00950"/>00950 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002251&#32;RID:&#32;8785</emphasis>
+<anchor xml:id="__game_8cs_source_1l00951"/>00951 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00952"/>00952 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;freePos;
+<anchor xml:id="__game_8cs_source_1l00953"/>00953 
+<anchor xml:id="__game_8cs_source_1l00954"/>00954 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002252&#32;RID:&#32;8786</emphasis>
+<anchor xml:id="__game_8cs_source_1l00955"/>00955 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00956"/>00956 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;snapFreePos;
+<anchor xml:id="__game_8cs_source_1l00957"/>00957 
+<anchor xml:id="__game_8cs_source_1l00958"/>00958 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002253&#32;RID:&#32;8787</emphasis>
+<anchor xml:id="__game_8cs_source_1l00959"/>00959 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00960"/>00960 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;buildLight;
+<anchor xml:id="__game_8cs_source_1l00961"/>00961 
+<anchor xml:id="__game_8cs_source_1l00962"/>00962 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002254&#32;RID:&#32;8788</emphasis>
+<anchor xml:id="__game_8cs_source_1l00963"/>00963 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00964"/>00964 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;highlightAct;
+<anchor xml:id="__game_8cs_source_1l00965"/>00965 
+<anchor xml:id="__game_8cs_source_1l00966"/>00966 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002255&#32;RID:&#32;8789</emphasis>
+<anchor xml:id="__game_8cs_source_1l00967"/>00967 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00968"/>00968 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;autoWall;
+<anchor xml:id="__game_8cs_source_1l00969"/>00969 
+<anchor xml:id="__game_8cs_source_1l00970"/>00970 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002256&#32;RID:&#32;8790</emphasis>
+<anchor xml:id="__game_8cs_source_1l00971"/>00971 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00972"/>00972 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;showGuideGrid;
+<anchor xml:id="__game_8cs_source_1l00973"/>00973 
+<anchor xml:id="__game_8cs_source_1l00974"/>00974 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002257&#32;RID:&#32;8791</emphasis>
+<anchor xml:id="__game_8cs_source_1l00975"/>00975 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00976"/>00976 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;reverseSnow;
+<anchor xml:id="__game_8cs_source_1l00977"/>00977 
+<anchor xml:id="__game_8cs_source_1l00978"/>00978 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002258&#32;RID:&#32;8792</emphasis>
+<anchor xml:id="__game_8cs_source_1l00979"/>00979 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00980"/>00980 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;autoCollectCard;
+<anchor xml:id="__game_8cs_source_1l00981"/>00981 
+<anchor xml:id="__game_8cs_source_1l00982"/>00982 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002259&#32;RID:&#32;8793</emphasis>
+<anchor xml:id="__game_8cs_source_1l00983"/>00983 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00984"/>00984 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;cheat;
+<anchor xml:id="__game_8cs_source_1l00985"/>00985 
+<anchor xml:id="__game_8cs_source_1l00986"/>00986 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400225A&#32;RID:&#32;8794</emphasis>
+<anchor xml:id="__game_8cs_source_1l00987"/>00987 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00988"/>00988 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;slopeMod&#32;=&#32;50;
+<anchor xml:id="__game_8cs_source_1l00989"/>00989 
+<anchor xml:id="__game_8cs_source_1l00990"/>00990 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400225B&#32;RID:&#32;8795</emphasis>
+<anchor xml:id="__game_8cs_source_1l00991"/>00991 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00992"/>00992 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;defaultZoom&#32;=&#32;100;
+<anchor xml:id="__game_8cs_source_1l00993"/>00993 
+<anchor xml:id="__game_8cs_source_1l00994"/>00994 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400225C&#32;RID:&#32;8796</emphasis>
+<anchor xml:id="__game_8cs_source_1l00995"/>00995 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l00996"/>00996 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;zoomedZoom&#32;=&#32;125;
+<anchor xml:id="__game_8cs_source_1l00997"/>00997 
+<anchor xml:id="__game_8cs_source_1l00998"/>00998 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400225D&#32;RID:&#32;8797</emphasis>
+<anchor xml:id="__game_8cs_source_1l00999"/>00999 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l01000"/>01000 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;regionZoom&#32;=&#32;100;
+<anchor xml:id="__game_8cs_source_1l01001"/>01001 
+<anchor xml:id="__game_8cs_source_1l01002"/>01002 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400225E&#32;RID:&#32;8798</emphasis>
+<anchor xml:id="__game_8cs_source_1l01003"/>01003 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l01004"/>01004 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;tiltPower&#32;=&#32;80;
+<anchor xml:id="__game_8cs_source_1l01005"/>01005 
+<anchor xml:id="__game_8cs_source_1l01006"/>01006 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400225F&#32;RID:&#32;8799</emphasis>
+<anchor xml:id="__game_8cs_source_1l01007"/>01007 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l01008"/>01008 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;tiltPowerRegion&#32;=&#32;50;
+<anchor xml:id="__game_8cs_source_1l01009"/>01009 
+<anchor xml:id="__game_8cs_source_1l01010"/>01010 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002260&#32;RID:&#32;8800</emphasis>
+<anchor xml:id="__game_8cs_source_1l01011"/>01011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l01012"/>01012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;gridIconSize&#32;=&#32;100;
+<anchor xml:id="__game_8cs_source_1l01013"/>01013 
+<anchor xml:id="__game_8cs_source_1l01014"/>01014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002261&#32;RID:&#32;8801</emphasis>
+<anchor xml:id="__game_8cs_source_1l01015"/>01015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l01016"/>01016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;backDrawAlpha&#32;=&#32;10;
+<anchor xml:id="__game_8cs_source_1l01017"/>01017 
+<anchor xml:id="__game_8cs_source_1l01018"/>01018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002262&#32;RID:&#32;8802</emphasis>
+<anchor xml:id="__game_8cs_source_1l01019"/>01019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l01020"/>01020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;animeSpeed&#32;=&#32;100;
+<anchor xml:id="__game_8cs_source_1l01021"/>01021 
+<anchor xml:id="__game_8cs_source_1l01022"/>01022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002263&#32;RID:&#32;8803</emphasis>
+<anchor xml:id="__game_8cs_source_1l01023"/>01023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l01024"/>01024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;lowWallObjAltitude&#32;=&#32;2;
+<anchor xml:id="__game_8cs_source_1l01025"/>01025 
+<anchor xml:id="__game_8cs_source_1l01026"/>01026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002264&#32;RID:&#32;8804</emphasis>
+<anchor xml:id="__game_8cs_source_1l01027"/>01027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l01028"/>01028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_config_tactics">ConfigTactics</link>&#32;tactics&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_config_tactics">ConfigTactics</link>();
+<anchor xml:id="__game_8cs_source_1l01029"/>01029 
+<anchor xml:id="__game_8cs_source_1l01030"/>01030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002265&#32;RID:&#32;8805</emphasis>
+<anchor xml:id="__game_8cs_source_1l01031"/>01031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l01032"/>01032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_config_auto_combat">ConfigAutoCombat</link>&#32;autoCombat&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_config_auto_combat">ConfigAutoCombat</link>();
+<anchor xml:id="__game_8cs_source_1l01033"/>01033 
+<anchor xml:id="__game_8cs_source_1l01034"/>01034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002266&#32;RID:&#32;8806</emphasis>
+<anchor xml:id="__game_8cs_source_1l01035"/>01035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l01036"/>01036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_config_preference">ConfigPreference</link>&#32;preference&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_config_preference">ConfigPreference</link>();
+<anchor xml:id="__game_8cs_source_1l01037"/>01037 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l01038"/>01038 
+<anchor xml:id="__game_8cs_source_1l01039"/>01039 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x020007F3&#32;RID:&#32;2035</emphasis>
+<anchor xml:id="__game_8cs_source_1l01040"/><link linkend="_class_game_1_1_flags">01040</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_game_1_1_flags">Flags</link>&#32;:&#32;<link linkend="_class_e_class">EClass</link>
+<anchor xml:id="__game_8cs_source_1l01041"/>01041 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l01042"/>01042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17001120&#32;RID:&#32;4384</emphasis>
+<anchor xml:id="__game_8cs_source_1l01043"/>01043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06003823&#32;RID:&#32;14371&#32;RVA:&#32;0x0012CF7F&#32;File&#32;Offset:&#32;0x0012B17F</emphasis>
+<anchor xml:id="__game_8cs_source_1l01044"/>01044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(set)&#32;Token:&#32;0x06003824&#32;RID:&#32;14372&#32;RVA:&#32;0x0012CF8D&#32;File&#32;Offset:&#32;0x0012B18D</emphasis>
+<anchor xml:id="__game_8cs_source_1l01045"/>01045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsWelcomeMessageShown
+<anchor xml:id="__game_8cs_source_1l01046"/>01046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l01047"/>01047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__game_8cs_source_1l01048"/>01048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l01049"/>01049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.b1[0];
+<anchor xml:id="__game_8cs_source_1l01050"/>01050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l01051"/>01051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">set</emphasis>
+<anchor xml:id="__game_8cs_source_1l01052"/>01052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l01053"/>01053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.b1[0]&#32;=&#32;value;
+<anchor xml:id="__game_8cs_source_1l01054"/>01054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l01055"/>01055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l01056"/>01056 
+<anchor xml:id="__game_8cs_source_1l01057"/>01057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06003825&#32;RID:&#32;14373&#32;RVA:&#32;0x0012CF9C&#32;File&#32;Offset:&#32;0x0012B19C</emphasis>
+<anchor xml:id="__game_8cs_source_1l01058"/>01058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[OnSerializing]
+<anchor xml:id="__game_8cs_source_1l01059"/>01059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnSerializing(StreamingContext&#32;context)
+<anchor xml:id="__game_8cs_source_1l01060"/>01060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l01061"/>01061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this._b1&#32;=&#32;(int)this.b1.Bits;
+<anchor xml:id="__game_8cs_source_1l01062"/>01062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l01063"/>01063 
+<anchor xml:id="__game_8cs_source_1l01064"/>01064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06003826&#32;RID:&#32;14374&#32;RVA:&#32;0x0012CFAF&#32;File&#32;Offset:&#32;0x0012B1AF</emphasis>
+<anchor xml:id="__game_8cs_source_1l01065"/>01065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[OnDeserialized]
+<anchor xml:id="__game_8cs_source_1l01066"/>01066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;_OnDeserialized(StreamingContext&#32;context)
+<anchor xml:id="__game_8cs_source_1l01067"/>01067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_8cs_source_1l01068"/>01068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.b1.Bits&#32;=&#32;(uint)this._b1;
+<anchor xml:id="__game_8cs_source_1l01069"/>01069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l01070"/>01070 
+<anchor xml:id="__game_8cs_source_1l01071"/>01071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002267&#32;RID:&#32;8807</emphasis>
+<anchor xml:id="__game_8cs_source_1l01072"/>01072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[JsonProperty]
+<anchor xml:id="__game_8cs_source_1l01073"/>01073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;_b1;
+<anchor xml:id="__game_8cs_source_1l01074"/>01074 
+<anchor xml:id="__game_8cs_source_1l01075"/>01075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002268&#32;RID:&#32;8808</emphasis>
+<anchor xml:id="__game_8cs_source_1l01076"/>01076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;BitArray32&#32;b1;
+<anchor xml:id="__game_8cs_source_1l01077"/>01077 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_8cs_source_1l01078"/>01078 }
+</programlisting></section>

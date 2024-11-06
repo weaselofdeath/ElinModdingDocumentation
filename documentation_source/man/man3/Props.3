@@ -1,0 +1,398 @@
+.TH "Props" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Props
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBEClass\fP\&.
+.PP
+Inherited by \fBPropsInstalled\fP, \fBPropsRoaming\fP, and \fBPropsStocked\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBInit\fP ()"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (\fBCard\fP t)"
+.br
+.ti -1c
+.RI "void \fBRemove\fP (\fBCard\fP t)"
+.br
+.ti -1c
+.RI "void \fBOnNumChange\fP (\fBCard\fP c, int a)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBGetAvailableThing\fP (string id, int idMat)"
+.br
+.ti -1c
+.RI "\fBThingStack\fP \fBListThingStack\fP (\fBRecipe\&.Ingredient\fP ing, StockSearchMode searchMode)"
+.br
+.ti -1c
+.RI "List< \fBThing\fP > \fBListThingsInCategory\fP (\fBSourceCategory\&.Row\fP cat)"
+.br
+.ti -1c
+.RI "Dictionary< string, \fBThingStack\fP > \fBListThingStacksInCategory\fP (\fBSourceCategory\&.Row\fP cat)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFind< T >\fP ()"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFindEmptyContainer< T >\fP ()"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFindEmptyContainer< T >\fP (\fBThing\fP target)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFind\fP (int uid)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFindShared\fP (string id)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFind\fP (string id, string idMat)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFind\fP (string id, int idMat=\-1, int refVal=\-1, bool shared=false)"
+.br
+.ti -1c
+.RI "int \fBGetNum\fP (string id, bool onlyShared=false)"
+.br
+.ti -1c
+.RI "void \fBValidate\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static int \fBGetNumStockedAndRoaming\fP (string id)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBPropSet\fP \fBall\fP = new \fBPropSet\fP()"
+.br
+.ti -1c
+.RI "Dictionary< string, \fBPropSet\fP > \fBcardMap\fP = new Dictionary<string, \fBPropSet\fP>()"
+.br
+.ti -1c
+.RI "Dictionary< string, \fBPropSetCategory\fP > \fBcategoryMap\fP = new Dictionary<string, \fBPropSetCategory\fP>()"
+.br
+.ti -1c
+.RI "Dictionary< string, \fBPropSet\fP > \fBraceMap\fP = new Dictionary<string, \fBPropSet\fP>()"
+.br
+.ti -1c
+.RI "Dictionary< string, \fBPropSet\fP > \fBworkMap\fP = new Dictionary<string, \fBPropSet\fP>()"
+.br
+.ti -1c
+.RI "\fBTraitManager\fP \fBtraits\fP = new \fBTraitManager\fP()"
+.br
+.ti -1c
+.RI "List< \fBThing\fP > \fBthings\fP = new List<\fBThing\fP>()"
+.br
+.ti -1c
+.RI "List< \fBThing\fP > \fBcontainers\fP = new List<\fBThing\fP>()"
+.br
+.ti -1c
+.RI "int \fBmaxWeight\fP = 100"
+.br
+.ti -1c
+.RI "int \fBweight\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBIsStocked\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsRoaming\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsInstalled\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual PlaceState \fBstate\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual List< \fBThing\fP > \fBThings\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBCount\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB7\fP of file \fBProps\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Props\&.Add (\fBCard\fP t)"
+
+.PP
+Definition at line \fB93\fP of file \fBProps\&.cs\fP\&.
+.SS "\fBThing\fP Props\&.Find (int uid)"
+
+.PP
+Definition at line \fB333\fP of file \fBProps\&.cs\fP\&.
+.SS "\fBThing\fP Props\&.Find (string id, int idMat = \fR\-1\fP, int refVal = \fR\-1\fP, bool shared = \fRfalse\fP)"
+
+.PP
+Definition at line \fB358\fP of file \fBProps\&.cs\fP\&.
+.SS "\fBThing\fP Props\&.Find (string id, string idMat)"
+
+.PP
+Definition at line \fB352\fP of file \fBProps\&.cs\fP\&.
+.SS "\fBThing\fP Props\&.Find< T > ()"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fI\fBTrait\fP\fP
+.PP
+Definition at line \fB294\fP of file \fBProps\&.cs\fP\&.
+.SS "\fBThing\fP Props\&.FindEmptyContainer< T > ()"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fI\fBTrait\fP\fP
+.PP
+Definition at line \fB307\fP of file \fBProps\&.cs\fP\&.
+.SS "\fBThing\fP Props\&.FindEmptyContainer< T > (\fBThing\fP target)"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fI\fBTrait\fP\fP
+.PP
+Definition at line \fB320\fP of file \fBProps\&.cs\fP\&.
+.SS "\fBThing\fP Props\&.FindShared (string id)"
+
+.PP
+Definition at line \fB346\fP of file \fBProps\&.cs\fP\&.
+.SS "\fBThing\fP Props\&.GetAvailableThing (string id, int idMat)"
+
+.PP
+Definition at line \fB205\fP of file \fBProps\&.cs\fP\&.
+.SS "int Props\&.GetNum (string id, bool onlyShared = \fRfalse\fP)"
+
+.PP
+Definition at line \fB384\fP of file \fBProps\&.cs\fP\&.
+.SS "static int Props\&.GetNumStockedAndRoaming (string id)\fR [static]\fP"
+
+.PP
+Definition at line \fB398\fP of file \fBProps\&.cs\fP\&.
+.SS "void Props\&.Init ()"
+
+.PP
+Definition at line \fB70\fP of file \fBProps\&.cs\fP\&.
+.SS "List< \fBThing\fP > Props\&.ListThingsInCategory (\fBSourceCategory\&.Row\fP cat)"
+
+.PP
+Definition at line \fB253\fP of file \fBProps\&.cs\fP\&.
+.SS "\fBThingStack\fP Props\&.ListThingStack (\fBRecipe\&.Ingredient\fP ing, StockSearchMode searchMode)"
+
+.PP
+Definition at line \fB223\fP of file \fBProps\&.cs\fP\&.
+.SS "Dictionary< string, \fBThingStack\fP > Props\&.ListThingStacksInCategory (\fBSourceCategory\&.Row\fP cat)"
+
+.PP
+Definition at line \fB267\fP of file \fBProps\&.cs\fP\&.
+.SS "void Props\&.OnNumChange (\fBCard\fP c, int a)"
+
+.PP
+Definition at line \fB189\fP of file \fBProps\&.cs\fP\&.
+.SS "void Props\&.Remove (\fBCard\fP t)"
+
+.PP
+Definition at line \fB143\fP of file \fBProps\&.cs\fP\&.
+.SS "void Props\&.Validate ()"
+
+.PP
+Definition at line \fB404\fP of file \fBProps\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBPropSet\fP Props\&.all = new \fBPropSet\fP()"
+
+.PP
+Definition at line \fB429\fP of file \fBProps\&.cs\fP\&.
+.SS "Dictionary<string, \fBPropSet\fP> Props\&.cardMap = new Dictionary<string, \fBPropSet\fP>()"
+
+.PP
+Definition at line \fB432\fP of file \fBProps\&.cs\fP\&.
+.SS "Dictionary<string, \fBPropSetCategory\fP> Props\&.categoryMap = new Dictionary<string, \fBPropSetCategory\fP>()"
+
+.PP
+Definition at line \fB435\fP of file \fBProps\&.cs\fP\&.
+.SS "List<\fBThing\fP> Props\&.containers = new List<\fBThing\fP>()"
+
+.PP
+Definition at line \fB450\fP of file \fBProps\&.cs\fP\&.
+.SS "int Props\&.maxWeight = 100"
+
+.PP
+Definition at line \fB454\fP of file \fBProps\&.cs\fP\&.
+.SS "Dictionary<string, \fBPropSet\fP> Props\&.raceMap = new Dictionary<string, \fBPropSet\fP>()"
+
+.PP
+Definition at line \fB438\fP of file \fBProps\&.cs\fP\&.
+.SS "List<\fBThing\fP> Props\&.things = new List<\fBThing\fP>()"
+
+.PP
+Definition at line \fB447\fP of file \fBProps\&.cs\fP\&.
+.SS "\fBTraitManager\fP Props\&.traits = new \fBTraitManager\fP()"
+
+.PP
+Definition at line \fB444\fP of file \fBProps\&.cs\fP\&.
+.SS "int Props\&.weight"
+
+.PP
+Definition at line \fB457\fP of file \fBProps\&.cs\fP\&.
+.SS "Dictionary<string, \fBPropSet\fP> Props\&.workMap = new Dictionary<string, \fBPropSet\fP>()"
+
+.PP
+Definition at line \fB441\fP of file \fBProps\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "int Props\&.Count\fR [get]\fP"
+
+.PP
+Definition at line \fB61\fP of file \fBProps\&.cs\fP\&.
+.SS "virtual bool Props\&.IsInstalled\fR [get]\fP"
+
+.PP
+Definition at line \fB31\fP of file \fBProps\&.cs\fP\&.
+.SS "virtual bool Props\&.IsRoaming\fR [get]\fP"
+
+.PP
+Definition at line \fB21\fP of file \fBProps\&.cs\fP\&.
+.SS "virtual bool Props\&.IsStocked\fR [get]\fP"
+
+.PP
+Definition at line \fB11\fP of file \fBProps\&.cs\fP\&.
+.SS "virtual PlaceState Props\&.state\fR [get]\fP"
+
+.PP
+Definition at line \fB41\fP of file \fBProps\&.cs\fP\&.
+.SS "virtual List<\fBThing\fP> Props\&.Things\fR [get]\fP"
+
+.PP
+Definition at line \fB51\fP of file \fBProps\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

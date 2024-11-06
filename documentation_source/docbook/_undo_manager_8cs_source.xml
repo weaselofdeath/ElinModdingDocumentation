@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__undo_manager_8cs_source" xml:lang="en-US">
+<title>UndoManager.cs</title>
+<indexterm><primary>Elin/UndoManager.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__undo_manager_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__undo_manager_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__undo_manager_8cs_source_1l00003"/>00003 
+<anchor xml:id="__undo_manager_8cs_source_1l00004"/>00004 <emphasis role="comment">//&#32;Token:&#32;0x0200024E&#32;RID:&#32;590</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00005"/><link linkend="_class_undo_manager">00005</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_undo_manager">UndoManager</link>
+<anchor xml:id="__undo_manager_8cs_source_1l00006"/>00006 {
+<anchor xml:id="__undo_manager_8cs_source_1l00007"/>00007 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000452&#32;RID:&#32;1106</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06001047&#32;RID:&#32;4167&#32;RVA:&#32;0x00072E1E&#32;File&#32;Offset:&#32;0x0007101E</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_undo_manager_1_1_item">UndoManager.Item</link>&#32;lastItem
+<anchor xml:id="__undo_manager_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.items.LastItem&lt;<link linkend="_class_undo_manager">UndoManager</link>.<link linkend="_class_undo_manager_1_1_item">Item</link>&gt;();
+<anchor xml:id="__undo_manager_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00016"/>00016 
+<anchor xml:id="__undo_manager_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06001048&#32;RID:&#32;4168&#32;RVA:&#32;0x00072E2C&#32;File&#32;Offset:&#32;0x0007102C</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Validate()
+<anchor xml:id="__undo_manager_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;this.items.Count&#32;-&#32;1;&#32;i&#32;&gt;=&#32;0;&#32;i--)
+<anchor xml:id="__undo_manager_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.items[i].Count()&#32;==&#32;0)
+<anchor xml:id="__undo_manager_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.items.RemoveAt(i);
+<anchor xml:id="__undo_manager_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00028"/>00028 
+<anchor xml:id="__undo_manager_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06001049&#32;RID:&#32;4169&#32;RVA:&#32;0x00072E70&#32;File&#32;Offset:&#32;0x00071070</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;NewItem()
+<anchor xml:id="__undo_manager_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.items.Add(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_undo_manager">UndoManager</link>.<link linkend="_class_undo_manager_1_1_item">Item</link>());
+<anchor xml:id="__undo_manager_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.items.Count&#32;&gt;&#32;10)
+<anchor xml:id="__undo_manager_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.items.RemoveAt(0);
+<anchor xml:id="__undo_manager_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00038"/>00038 
+<anchor xml:id="__undo_manager_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600104A&#32;RID:&#32;4170&#32;RVA:&#32;0x00072E9D&#32;File&#32;Offset:&#32;0x0007109D</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Add(<link linkend="_class_task">Task</link>&#32;t)
+<anchor xml:id="__undo_manager_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.lastItem.list.Add(t);
+<anchor xml:id="__undo_manager_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00044"/>00044 
+<anchor xml:id="__undo_manager_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600104B&#32;RID:&#32;4171&#32;RVA:&#32;0x00072EB0&#32;File&#32;Offset:&#32;0x000710B0</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;GetText()
+<anchor xml:id="__undo_manager_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;text&#32;=&#32;<emphasis role="stringliteral">&quot;tUndo&quot;</emphasis>.lang()&#32;+&#32;Environment.NewLine;
+<anchor xml:id="__undo_manager_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.items.Count&#32;==&#32;0)
+<anchor xml:id="__undo_manager_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text&#32;+=&#32;<emphasis role="stringliteral">&quot;tUndoNone&quot;</emphasis>.lang();
+<anchor xml:id="__undo_manager_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text&#32;+=&#32;<emphasis role="stringliteral">&quot;tUndoNote&quot;</emphasis>.lang(this.lastItem.Count().ToString()&#32;??&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>,&#32;<emphasis role="keyword">this</emphasis>.lastItem.name&#32;??&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__undo_manager_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;text;
+<anchor xml:id="__undo_manager_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00059"/>00059 
+<anchor xml:id="__undo_manager_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600104C&#32;RID:&#32;4172&#32;RVA:&#32;0x00072F40&#32;File&#32;Offset:&#32;0x00071140</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;WriteNote(UINote&#32;n)
+<anchor xml:id="__undo_manager_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Validate();
+<anchor xml:id="__undo_manager_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;n.Clear();
+<anchor xml:id="__undo_manager_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;n.Space(10,&#32;1);
+<anchor xml:id="__undo_manager_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;n.AddText(<emphasis role="stringliteral">&quot;NoteText_topic&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;tUndo&quot;</emphasis>.lang(),&#32;FontColor.DontChange);
+<anchor xml:id="__undo_manager_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.items.Count&#32;==&#32;0)
+<anchor xml:id="__undo_manager_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;n.AddText(<emphasis role="stringliteral">&quot;tUndoNone&quot;</emphasis>.lang(),&#32;FontColor.DontChange);
+<anchor xml:id="__undo_manager_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;n.AddText(<emphasis role="stringliteral">&quot;tUndoNote&quot;</emphasis>.lang(this.lastItem.Count().ToString()&#32;??&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>,&#32;<emphasis role="keyword">this</emphasis>.lastItem.name&#32;??&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>),&#32;FontColor.DontChange);
+<anchor xml:id="__undo_manager_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;n.Build();
+<anchor xml:id="__undo_manager_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00077"/>00077 
+<anchor xml:id="__undo_manager_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600104D&#32;RID:&#32;4173&#32;RVA:&#32;0x00072FE8&#32;File&#32;Offset:&#32;0x000711E8</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Perform()
+<anchor xml:id="__undo_manager_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Validate();
+<anchor xml:id="__undo_manager_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.items.Count&#32;==&#32;0)
+<anchor xml:id="__undo_manager_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.Beep();
+<anchor xml:id="__undo_manager_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__undo_manager_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_task">Task</link>&#32;task&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.lastItem.list)
+<anchor xml:id="__undo_manager_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;task.Destroy();
+<anchor xml:id="__undo_manager_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.items.Remove(this.lastItem);
+<anchor xml:id="__undo_manager_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.Play(<emphasis role="stringliteral">&quot;trash&quot;</emphasis>);
+<anchor xml:id="__undo_manager_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00094"/>00094 
+<anchor xml:id="__undo_manager_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000DB1&#32;RID:&#32;3505</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;<link linkend="_class_undo_manager">UndoManager</link>.<link linkend="_class_undo_manager_1_1_item">Item</link>&gt;&#32;items&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;<link linkend="_class_undo_manager">UndoManager</link>.<link linkend="_class_undo_manager_1_1_item">Item</link>&gt;();
+<anchor xml:id="__undo_manager_8cs_source_1l00097"/>00097 
+<anchor xml:id="__undo_manager_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0200092A&#32;RID:&#32;2346</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00099"/><link linkend="_class_undo_manager_1_1_item">00099</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_undo_manager_1_1_item">Item</link>
+<anchor xml:id="__undo_manager_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170011C6&#32;RID:&#32;4550</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06003D38&#32;RID:&#32;15672&#32;RVA:&#32;0x001452EC&#32;File&#32;Offset:&#32;0x001434EC</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;name
+<anchor xml:id="__undo_manager_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.list.Count&#32;&lt;=&#32;0)
+<anchor xml:id="__undo_manager_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;none&quot;</emphasis>.lang();
+<anchor xml:id="__undo_manager_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.list[0].Name;
+<anchor xml:id="__undo_manager_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00114"/>00114 
+<anchor xml:id="__undo_manager_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06003D39&#32;RID:&#32;15673&#32;RVA:&#32;0x00145318&#32;File&#32;Offset:&#32;0x00143518</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;Count()
+<anchor xml:id="__undo_manager_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;0;
+<anchor xml:id="__undo_manager_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">using</emphasis>&#32;(List&lt;Task&gt;.Enumerator&#32;enumerator&#32;=&#32;this.list.GetEnumerator())
+<anchor xml:id="__undo_manager_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(enumerator.MoveNext())
+<anchor xml:id="__undo_manager_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!enumerator.Current.isDestroyed)
+<anchor xml:id="__undo_manager_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__undo_manager_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num++;
+<anchor xml:id="__undo_manager_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;num;
+<anchor xml:id="__undo_manager_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00131"/>00131 
+<anchor xml:id="__undo_manager_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040026C3&#32;RID:&#32;9923</emphasis>
+<anchor xml:id="__undo_manager_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;Task&gt;&#32;list&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;Task&gt;();
+<anchor xml:id="__undo_manager_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__undo_manager_8cs_source_1l00135"/>00135 }
+</programlisting></section>

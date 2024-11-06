@@ -1,0 +1,188 @@
+\doxysection{Layer\+Load\+Game.\+cs}
+\hypertarget{_layer_load_game_8cs_source}{}\label{_layer_load_game_8cs_source}\index{Elin/LayerLoadGame.cs@{Elin/LayerLoadGame.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x0200059A\ RID:\ 1434}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00006}\mbox{\hyperlink{class_layer_load_game}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_layer_load_game}{LayerLoadGame}}\ :\ \mbox{\hyperlink{class_e_layer}{ELayer}}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600275C\ RID:\ 10076\ RVA:\ 0x000DEF07\ File\ Offset:\ 0x000DD107}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnAfterInit()}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ this.RefreshList();}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600275D\ RID:\ 10077\ RVA:\ 0x000DEF10\ File\ Offset:\ 0x000DD110}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshList()}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.worlds\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ this.worlds\ =\ \mbox{\hyperlink{class_game_i_o}{GameIO}}.GetGameList();}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ this.goInfo.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ this.goNoInfo.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ this.list.Clear();}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ BaseList\ baseList\ =\ this.list;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ UIList.Callback<\mbox{\hyperlink{class_game_index}{GameIndex}},\ UIButton>\ callback\ =\ \textcolor{keyword}{new}\ UIList.Callback<\mbox{\hyperlink{class_game_index}{GameIndex}},\ UIButton>();}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ callback.onInstantiate\ =\ delegate(\mbox{\hyperlink{class_game_index}{GameIndex}}\ a,\ UIButton\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ FontColor\ c\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.core.version.IsSaveCompatible(a.version)\ ?\ FontColor.Good\ :\ FontColor.Bad;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ s\ =\ a.Title\ +\ ((ELayer.core.IsGameStarted\ \&\&\ a.id\ ==\ \mbox{\hyperlink{class_game}{Game}}.id)\ ?\ \textcolor{stringliteral}{"{}currentSave"{}}.lang()\ :\ \textcolor{stringliteral}{"{}"{}})\ +\ Environment.NewLine;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ b.mainText.SetText(s,\ c);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ b.subText.SetText(a.RealDate\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ b.subText2.SetText(\textcolor{keywordtype}{string}.Concat(\textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (a.difficulty\ ==\ 2)\ ?\ \textcolor{stringliteral}{"{}★"{}}\ :\ ((a.difficulty\ ==\ 1)\ ?\ \textcolor{stringliteral}{"{}☆"{}}\ :\ \textcolor{stringliteral}{"{}"{}}),}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a.pcName,}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ ("{}},}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a.zoneName,}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{})"{}}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \}),\ c);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ b.GetComponent<UIItem>().text1.SetText(a.version.GetText()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ callback.onClick\ =\ delegate(\mbox{\hyperlink{class_game_index}{GameIndex}}\ a,\ UIButton\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ this.RefreshInfo(a);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ baseList.callbacks\ =\ callback;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_game_index}{GameIndex}}\ o\ \textcolor{keywordflow}{in}\ this.worlds)}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ this.list.Add(o);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ this.list.Refresh(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.list.items.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ this.buttonLoad.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ this.buttonDelete.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ this.goNoInfo.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600275E\ RID:\ 10078\ RVA:\ 0x000DF028\ File\ Offset:\ 0x000DD228}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshInfo(\mbox{\hyperlink{class_game_index}{GameIndex}}\ i)}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00062}00062\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ this.goInfo.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ this.goNoInfo.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ this.note.Clear();}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ this.note.AddTopic(\textcolor{stringliteral}{"{}version"{}}.lang(),\ i.version.GetText());}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ this.note.AddTopic(\textcolor{stringliteral}{"{}date\_real"{}}.lang(),\ i.RealDate);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ this.note.AddTopic(\textcolor{stringliteral}{"{}date\_game"{}}.lang(),\ i.GameData);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ this.note.AddTopic(\textcolor{stringliteral}{"{}ID"{}},\ i.id);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.core.version.IsSaveCompatible(i.version);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!flag)}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ this.note.Space(0,\ 1);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ this.note.AddText(\textcolor{stringliteral}{"{}incompatible"{}}.lang(),\ FontColor.Bad);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ this.note.AddTopic(\textcolor{stringliteral}{"{}currentZone"{}}.lang(),\ i.zoneName);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ this.textAka.SetText(i.aka);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ this.textName.SetText(i.pcName);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ this.textDays.SetText(\textcolor{stringliteral}{"{}infoHire"{}}.lang(i.days.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ this.textDeepest.SetText(\textcolor{stringliteral}{"{}deepestLv2"{}}.lang(i.deepest.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ UIText\ uitext\ =\ this.textRace;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_source_race_1_1_row}{SourceRace.Row}}\ row\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.sources.races.map.TryGetValue(i.idRace,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ uitext.SetText(((row\ !=\ \textcolor{keyword}{null})\ ?\ row.GetName().ToTitleCase(\textcolor{keyword}{false})\ :\ \textcolor{keyword}{null})\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ UIText\ uitext2\ =\ this.textJob;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_source_job_1_1_row}{SourceJob.Row}}\ row2\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.sources.jobs.map.TryGetValue(i.idJob,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ uitext2.SetText(((row2\ !=\ \textcolor{keyword}{null})\ ?\ row2.GetName().ToTitleCase(\textcolor{keyword}{false})\ :\ \textcolor{keyword}{null})\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!i.idPortrait.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ this.portrait.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ Color\ white\ =\ Color.white;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ ColorUtility.TryParseHtmlString(\textcolor{stringliteral}{"{}\#"{}}\ +\ i.color,\ out\ white);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ this.portrait.SetPortrait(i.idPortrait,\ white);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ this.portrait.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ this.note.Build();}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ this.buttonLoad.onClick.RemoveAllListeners();}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ this.buttonDelete.onClick.RemoveAllListeners();}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ this.buttonLoad.SetOnClick(delegate}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_title}{LayerTitle}}.KillActor();}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game}{Game}}.Load(i.id);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ Action\ <>9\_\_3;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ this.buttonDelete.SetOnClick(delegate}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ langDetail\ =\ \textcolor{stringliteral}{"{}dialogDeleteGame"{}};}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ Action\ actionYes;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((actionYes\ =\ <>9\_\_3)\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ actionYes\ =\ (<>9\_\_3\ =\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_i_o}{GameIO}}.DeleteGame(i.id);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.worlds\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.RefreshList();}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SE.Trash();}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}.YesNo(langDetail,\ actionYes,\ \textcolor{keyword}{null},\ \textcolor{stringliteral}{"{}yes"{}},\ \textcolor{stringliteral}{"{}no"{}});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ this.buttonBackup.SetOnClick(delegate}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_i_o}{GameIO}}.MakeBackup(i.id,\ \textcolor{stringliteral}{"{}\_manual"{}});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.Say(\textcolor{stringliteral}{"{}backupDone"{}},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ SE.WriteJournal();}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ this.buttonLoad.SetActive(flag);}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00133}00133\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00135}00135\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015CF\ RID:\ 5583}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00136}00136\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ list;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00138}00138\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015D0\ RID:\ 5584}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00139}00139\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ goInfo;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00141}00141\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015D1\ RID:\ 5585}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00142}00142\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ goNoInfo;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00144}00144\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015D2\ RID:\ 5586}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00145}00145\ \ \ \ \ \textcolor{keyword}{public}\ UINote\ note;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00147}00147\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015D3\ RID:\ 5587}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00148}00148\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonLoad;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00150}00150\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015D4\ RID:\ 5588}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00151}00151\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonDelete;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00153}00153\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015D5\ RID:\ 5589}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00154}00154\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonBackup;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00156}00156\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015D6\ RID:\ 5590}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00157}00157\ \ \ \ \ \textcolor{keyword}{public}\ List<GameIndex>\ worlds;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00159}00159\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015D7\ RID:\ 5591}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00160}00160\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_portrait}{Portrait}}\ portrait;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00162}00162\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015D8\ RID:\ 5592}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00163}00163\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textAka;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00165}00165\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015D9\ RID:\ 5593}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00166}00166\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textName;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00168}00168\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015DA\ RID:\ 5594}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00169}00169\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textInfo;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00171}00171\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015DB\ RID:\ 5595}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00172}00172\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textRace;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00174}00174\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015DC\ RID:\ 5596}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00175}00175\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textJob;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00177}00177\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015DD\ RID:\ 5597}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00178}00178\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textDeepest;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00180}00180\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015DE\ RID:\ 5598}}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00181}00181\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textDays;}
+\DoxyCodeLine{\Hypertarget{_layer_load_game_8cs_source_l00182}00182\ \}}
+
+\end{DoxyCode}

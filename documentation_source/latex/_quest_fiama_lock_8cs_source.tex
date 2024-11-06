@@ -1,0 +1,36 @@
+\doxysection{Quest\+Fiama\+Lock.\+cs}
+\hypertarget{_quest_fiama_lock_8cs_source}{}\label{_quest_fiama_lock_8cs_source}\index{Elin/QuestFiamaLock.cs@{Elin/QuestFiamaLock.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00003}00003\ \textcolor{comment}{//\ Token:\ 0x020000DD\ RID:\ 221}}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00004}\mbox{\hyperlink{class_quest_fiama_lock}{00004}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_quest_fiama_lock}{QuestFiamaLock}}\ :\ \mbox{\hyperlink{class_quest_progression}{QuestProgression}}}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000618\ RID:\ 1560\ RVA:\ 0x00028420\ File\ Offset:\ 0x00026620}}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00007}00007\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ CanUpdateOnTalk(\mbox{\hyperlink{class_chara}{Chara}}\ c)}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00008}00008\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.phase\ ==\ 0;}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00010}00010\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000619\ RID:\ 1561\ RVA:\ 0x0002842C\ File\ Offset:\ 0x0002662C}}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnStart()}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.player.DropReward(\mbox{\hyperlink{class_thing_gen}{ThingGen}}.Create(\textcolor{stringliteral}{"{}lockpick"{}},\ -\/1,\ -\/1),\ \textcolor{keyword}{false}).c\_charges\ =\ 12;}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ thing\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.player.DropReward(\mbox{\hyperlink{class_thing_gen}{ThingGen}}.Create(\textcolor{stringliteral}{"{}1171"{}},\ -\/1,\ -\/1),\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ thing.ChangeMaterial(\textcolor{stringliteral}{"{}willow"{}});}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ thing.c\_lockLv\ =\ 50;}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ thing.c\_lockedHard\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ thing.things.DestroyAll(\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ thing.AddCard(\mbox{\hyperlink{class_thing_gen}{ThingGen}}.Create(\textcolor{stringliteral}{"{}1172"{}},\ -\/1,\ -\/1));}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ thing.AddCard(\mbox{\hyperlink{class_thing_gen}{ThingGen}}.Create(\textcolor{stringliteral}{"{}amulet\_begger"{}},\ -\/1,\ -\/1));}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ thing.AddCard(\mbox{\hyperlink{class_thing_gen}{ThingGen}}.Create(\textcolor{stringliteral}{"{}\_meat"{}},\ -\/1,\ -\/1).MakeFoodFrom(\textcolor{stringliteral}{"{}begger"{}})).MaxDecay++;}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ thing.Install();}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_zone.events.Add(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_zone_event_begger_chest}{ZoneEventBeggerChest}}}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ uidChest\ =\ thing.uid}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quest_fiama_lock_8cs_source_l00030}00030\ \}}
+
+\end{DoxyCode}

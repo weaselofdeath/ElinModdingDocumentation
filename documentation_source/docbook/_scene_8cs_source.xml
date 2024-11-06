@@ -1,0 +1,1180 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__scene_8cs_source" xml:lang="en-US">
+<title>Scene.cs</title>
+<indexterm><primary>Elin/Scene.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__scene_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__scene_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__scene_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>System.Runtime.CompilerServices;
+<anchor xml:id="__scene_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>CreativeSpore.SuperTilemapEditor;
+<anchor xml:id="__scene_8cs_source_1l00005"/>00005 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__scene_8cs_source_1l00006"/>00006 <emphasis role="keyword">using&#32;</emphasis>UnityEngine.UI;
+<anchor xml:id="__scene_8cs_source_1l00007"/>00007 
+<anchor xml:id="__scene_8cs_source_1l00008"/>00008 <emphasis role="comment">//&#32;Token:&#32;0x020001A5&#32;RID:&#32;421</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00009"/><link linkend="_class_scene">00009</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_scene">Scene</link>&#32;:&#32;<link linkend="_class_e_mono">EMono</link>
+<anchor xml:id="__scene_8cs_source_1l00010"/>00010 {
+<anchor xml:id="__scene_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170002F2&#32;RID:&#32;754</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000BFF&#32;RID:&#32;3071&#32;RVA:&#32;0x0004AA15&#32;File&#32;Offset:&#32;0x00048C15</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_elo_map">EloMap</link>&#32;elomap
+<anchor xml:id="__scene_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.elomapActor.GetEloMap();
+<anchor xml:id="__scene_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00020"/>00020 
+<anchor xml:id="__scene_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C00&#32;RID:&#32;3072&#32;RVA:&#32;0x0004AA22&#32;File&#32;Offset:&#32;0x00048C22</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Awake()
+<anchor xml:id="__scene_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.InvokeRepeating(<emphasis role="stringliteral">&quot;RefreshActorEx&quot;</emphasis>,&#32;0.5f,&#32;0.5f);
+<anchor xml:id="__scene_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00026"/>00026 
+<anchor xml:id="__scene_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C01&#32;RID:&#32;3073&#32;RVA:&#32;0x0004AA3C&#32;File&#32;Offset:&#32;0x00048C3C</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Init(<link linkend="_class_scene">Scene</link>.Mode&#32;newMode)
+<anchor xml:id="__scene_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log(<emphasis role="stringliteral">&quot;Scene.Init:&quot;</emphasis>&#32;+&#32;newMode.ToString());
+<anchor xml:id="__scene_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.RemoveLayers(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_build_menu">BuildMenu</link>.Deactivate();
+<anchor xml:id="__scene_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_screen_flash">ScreenFlash</link>.Reset();
+<anchor xml:id="__scene_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.mode&#32;=&#32;newMode;
+<anchor xml:id="__scene_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(newMode)
+<anchor xml:id="__scene_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_scene">Scene</link>.Mode.None:
+<anchor xml:id="__scene_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.game&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__scene_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.game.Kill();
+<anchor xml:id="__scene_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.RemoveLayers(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.screenNoMap.Activate();
+<anchor xml:id="__scene_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_scene">Scene</link>.Mode.Title:
+<anchor xml:id="__scene_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SoundManager.bgmVolumeMod&#32;=&#32;(SoundManager.bgmDumpMod&#32;=&#32;0f);
+<anchor xml:id="__scene_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.game&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__scene_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.game.Kill();
+<anchor xml:id="__scene_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.AddLayer&lt;<link linkend="_class_layer_title">LayerTitle</link>&gt;();
+<anchor xml:id="__scene_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_scene">Scene</link>.isAnnounced)
+<anchor xml:id="__scene_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Scene.isAnnounced&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.AddLayer(<emphasis role="stringliteral">&quot;LayerAnnounce&quot;</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_action_mode">ActionMode</link>.Title.Activate(<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.screenNoMap.Activate();
+<anchor xml:id="__scene_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_scene">Scene</link>.Mode.StartGame:
+<anchor xml:id="__scene_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.RemoveLayer&lt;<link linkend="_class_layer_title">LayerTitle</link>&gt;();
+<anchor xml:id="__scene_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.ShowCover(0f,&#32;1f,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keywordflow">default</emphasis>(Color));
+<anchor xml:id="__scene_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Init(<link linkend="_class_scene">Scene</link>.Mode.Zone);
+<anchor xml:id="__scene_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_scene">Scene</link>.Mode.Zone:
+<anchor xml:id="__scene_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIBook.str_pc&#32;=&#32;<link linkend="_class_e_mono">EMono</link>.pc.NameSimple;
+<anchor xml:id="__scene_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.player.zone&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__scene_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.player.zone&#32;=&#32;(EMono.pc.currentZone&#32;=&#32;<link linkend="_class_e_mono">EMono</link>.pc.homeZone);
+<anchor xml:id="__scene_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.core.config.game.ignoreWarnCrime&#32;=&#32;(EMono.core.config.game.ignoreWarnMana&#32;=&#32;(EMono.core.config.game.ignoreWarnDisassemble&#32;=&#32;<emphasis role="keyword">false</emphasis>));
+<anchor xml:id="__scene_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.game.updater.Reset();
+<anchor xml:id="__scene_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CellDetail.count&#32;=&#32;0;
+<anchor xml:id="__scene_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Scene.skipAnime&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.player.baseActTime&#32;=&#32;<link linkend="_class_e_mono">EMono</link>.setting.defaultActPace;
+<anchor xml:id="__scene_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.player.Agent.renderer.isSynced&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.player.Agent.currentZone&#32;=&#32;<link linkend="_class_e_mono">EMono</link>.player.zone;
+<anchor xml:id="__scene_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Point._screen&#32;=&#32;(EMono.player.zone.IsRegion&#32;?&#32;this.screenElona&#32;:&#32;this.screenElin);
+<anchor xml:id="__scene_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.player.zone.Activate();
+<anchor xml:id="__scene_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.player.RefreshEmptyAlly();
+<anchor xml:id="__scene_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.UpdateTimeRatio();
+<anchor xml:id="__scene_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.world.weather.RefreshWeather();
+<anchor xml:id="__scene_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.screen.Deactivate();
+<anchor xml:id="__scene_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Popper.scale&#32;=&#32;(EMono._zone.IsRegion&#32;?&#32;<emphasis role="keyword">new</emphasis>&#32;Vector3(1.7f,&#32;1.7f,&#32;1f)&#32;:&#32;Vector3.one);
+<anchor xml:id="__scene_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_mono">EMono</link>.pc.IsInActiveZone)
+<anchor xml:id="__scene_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_action_mode">ActionMode</link>.View.Activate(<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.player.zone&#32;is&#32;<link linkend="_class_region">Region</link>)
+<anchor xml:id="__scene_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_action_mode">ActionMode</link>.Region.Activate(<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_action_mode">ActionMode</link>.Adv.Activate(<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.game.altCraft)
+<anchor xml:id="__scene_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>._zone.IsRegion)
+<anchor xml:id="__scene_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.ui.layerFloat.GetLayer&lt;<link linkend="_class_layer_craft_float">LayerCraftFloat</link>&gt;(<emphasis role="keyword">false</emphasis>))
+<anchor xml:id="__scene_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.layerFloat.RemoveLayer&lt;<link linkend="_class_layer_craft_float">LayerCraftFloat</link>&gt;();
+<anchor xml:id="__scene_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_mono">EMono</link>.ui.layerFloat.GetLayer&lt;<link linkend="_class_layer_craft_float">LayerCraftFloat</link>&gt;(<emphasis role="keyword">false</emphasis>))
+<anchor xml:id="__scene_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.layerFloat.AddLayer&lt;<link linkend="_class_layer_craft_float">LayerCraftFloat</link>&gt;();
+<anchor xml:id="__scene_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.screen.tileMap.activeCount&#32;=&#32;0;
+<anchor xml:id="__scene_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.screen.SetZoom(<link linkend="_class_e_mono">EMono</link>.screen.TargetZoom);
+<anchor xml:id="__scene_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.player.RefreshCurrentHotItem();
+<anchor xml:id="__scene_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.screen.FocusPC();
+<anchor xml:id="__scene_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.game.updater.recipe.Build(<link linkend="_class_e_mono">EMono</link>.pc.pos,&#32;<link linkend="_class_recipe_updater">RecipeUpdater</link>.Mode.Passive);
+<anchor xml:id="__scene_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_widget_date">WidgetDate</link>.Refresh();
+<anchor xml:id="__scene_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_widget_menu_panel">WidgetMenuPanel</link>.OnChangeMode();
+<anchor xml:id="__scene_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.player.hotbars.ResetHotbar(2);
+<anchor xml:id="__scene_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.ui.hud.imageCover.gameObject.activeSelf&#32;&amp;&amp;&#32;!<link linkend="_class_e_mono">EMono</link>.player.simulatingZone)
+<anchor xml:id="__scene_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.HideCover(4f,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_mono">EMono</link>.core.debug.ignoreAutoSave&#32;&amp;&amp;&#32;<link linkend="_class_e_mono">EMono</link>.core.config.game.autoSave&#32;&amp;&amp;&#32;<link linkend="_class_e_mono">EMono</link>.game.countLoadedMaps&#32;&gt;&#32;3&#32;&amp;&amp;&#32;!<link linkend="_class_e_mono">EMono</link>.player.simulatingZone)
+<anchor xml:id="__scene_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.game.Save(<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_thing">Thing</link>&#32;thing&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_e_mono">EMono</link>._map.things)
+<anchor xml:id="__scene_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(thing.IsInstalled)
+<anchor xml:id="__scene_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.trait.TryToggle();
+<anchor xml:id="__scene_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.core.config.ApplyGrading();
+<anchor xml:id="__scene_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.player.onStartZone&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__scene_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.player.onStartZone();
+<anchor xml:id="__scene_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.player.onStartZone&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_action_mode">ActionMode</link>.Adv.IsActive&#32;&amp;&amp;&#32;(EInput.leftMouse.pressing&#32;||&#32;EInput.axis&#32;!=&#32;Vector2.zero))
+<anchor xml:id="__scene_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_action_mode">ActionMode</link>.Adv.SetPressedAction(EInput.leftMouse);
+<anchor xml:id="__scene_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_action_mode">ActionMode</link>.Adv.RefreshArrow();
+<anchor xml:id="__scene_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_action_mode">ActionMode</link>.Adv.SetManualMove();
+<anchor xml:id="__scene_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.pc.IsAliveInCurrentZone)
+<anchor xml:id="__scene_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.pc.RecalculateFOV();
+<anchor xml:id="__scene_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.player.flags.OnEnterZone();
+<anchor xml:id="__scene_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.flock.SetSpawnType(<link linkend="_class_e_mono">EMono</link>._zone.FlockType);
+<anchor xml:id="__scene_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_mono">EMono</link>.player.simulatingZone)
+<anchor xml:id="__scene_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>._zone&#32;==&#32;<link linkend="_class_e_mono">EMono</link>.pc.homeZone)
+<anchor xml:id="__scene_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.pc.faith.Revelation(<emphasis role="stringliteral">&quot;welcome&quot;</emphasis>,&#32;100);
+<anchor xml:id="__scene_8cs_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>._zone.Boss&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;<link linkend="_class_e_mono">EMono</link>._zone.Boss.ExistsOnMap)
+<anchor xml:id="__scene_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_msg">Msg</link>.Say(<emphasis role="stringliteral">&quot;beware&quot;</emphasis>,&#32;<link linkend="_class_e_mono">EMono</link>._zone.Name,&#32;<link linkend="_class_e_mono">EMono</link>._zone.Boss.NameBraced,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.game.quests.OnEnterZone();
+<anchor xml:id="__scene_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EInput.keyWait.Consume();
+<anchor xml:id="__scene_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.player.questTracker&#32;&amp;&amp;&#32;!<link linkend="_class_e_mono">EMono</link>.ui.widgets.GetWidget(<emphasis role="stringliteral">&quot;QuestTracker&quot;</emphasis>))
+<anchor xml:id="__scene_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.widgets.Activate(<emphasis role="stringliteral">&quot;QuestTracker&quot;</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.etherBlossom.SetActive(this.mode&#32;==&#32;<link linkend="_class_scene">Scene</link>.Mode.Zone&#32;&amp;&amp;&#32;<link linkend="_class_e_mono">EMono</link>._zone&#32;is&#32;<link linkend="_class_zone___wind_rest">Zone_WindRest</link>);
+<anchor xml:id="__scene_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00173"/>00173 
+<anchor xml:id="__scene_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C02&#32;RID:&#32;3074&#32;RVA:&#32;0x0004B06C&#32;File&#32;Offset:&#32;0x0004926C</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00175"/>00175 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnKillGame()
+<anchor xml:id="__scene_8cs_source_1l00176"/>00176 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.actionMode.Deactivate();
+<anchor xml:id="__scene_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.mouseTarget.Clear();
+<anchor xml:id="__scene_8cs_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.hideBalloon&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.actionMode&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;PCC.PurgeCache();
+<anchor xml:id="__scene_8cs_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Clear();
+<anchor xml:id="__scene_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.flock.Reset();
+<anchor xml:id="__scene_8cs_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.elomapActor.OnKillGame();
+<anchor xml:id="__scene_8cs_source_1l00185"/>00185 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00186"/>00186 
+<anchor xml:id="__scene_8cs_source_1l00187"/>00187 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C03&#32;RID:&#32;3075&#32;RVA:&#32;0x0004B0C0&#32;File&#32;Offset:&#32;0x000492C0</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00188"/>00188 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Clear()
+<anchor xml:id="__scene_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00190"/>00190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_interface_i_sync_screen">ISyncScreen</link>&#32;syncScreen&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.syncList)
+<anchor xml:id="__scene_8cs_source_1l00191"/>00191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;syncScreen.OnLeaveScreen();
+<anchor xml:id="__scene_8cs_source_1l00193"/>00193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.syncList.Clear();
+<anchor xml:id="__scene_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_effect_manager">EffectManager</link>.Instance.KillAll();
+<anchor xml:id="__scene_8cs_source_1l00196"/>00196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.ClearActorEx();
+<anchor xml:id="__scene_8cs_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.DestroyPrefabs();
+<anchor xml:id="__scene_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00199"/>00199 
+<anchor xml:id="__scene_8cs_source_1l00200"/>00200 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C04&#32;RID:&#32;3076&#32;RVA:&#32;0x0004B134&#32;File&#32;Offset:&#32;0x00049334</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;unsafe&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnUpdate()
+<anchor xml:id="__scene_8cs_source_1l00202"/>00202 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00203"/>00203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SoundManager.speed&#32;=&#32;(EMono.core.IsGameStarted&#32;?&#32;Mathf.Clamp(this.actionMode.gameSpeed&#32;*&#32;0.75f,&#32;1f,&#32;2f)&#32;:&#32;1f);
+<anchor xml:id="__scene_8cs_source_1l00204"/>00204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIButton.UpdateButtons();
+<anchor xml:id="__scene_8cs_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.RefreshActiveState();
+<anchor xml:id="__scene_8cs_source_1l00206"/>00206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isShiftDown&#32;=&#32;EInput.isShiftDown;
+<anchor xml:id="__scene_8cs_source_1l00207"/>00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(UIDropdown.activeInstance)
+<anchor xml:id="__scene_8cs_source_1l00208"/>00208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EInput.UpdateOnlyAxis();
+<anchor xml:id="__scene_8cs_source_1l00210"/>00210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00211"/>00211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EInput.Update();
+<anchor xml:id="__scene_8cs_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_core_config_1_1_input_setting">CoreConfig.InputSetting</link>&#32;input&#32;=&#32;<link linkend="_class_e_mono">EMono</link>.core.config.input;
+<anchor xml:id="__scene_8cs_source_1l00216"/>00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(EInput.middleMouse.pressing)
+<anchor xml:id="__scene_8cs_source_1l00217"/>00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00218"/>00218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(input.middleClick&#32;==&#32;<link linkend="_class_core_config">CoreConfig</link>.GameFunc.EmuShift&#32;||&#32;input.middlePressLong&#32;==&#32;<link linkend="_class_core_config">CoreConfig</link>.GameFunc.EmuShift)
+<anchor xml:id="__scene_8cs_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EInput.isShiftDown&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(input.middleClick&#32;==&#32;<link linkend="_class_core_config">CoreConfig</link>.GameFunc.EmuAlt&#32;||&#32;input.middlePressLong&#32;==&#32;<link linkend="_class_core_config">CoreConfig</link>.GameFunc.EmuAlt)
+<anchor xml:id="__scene_8cs_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EInput.isAltDown&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00226"/>00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(EInput.mouse3.pressing)
+<anchor xml:id="__scene_8cs_source_1l00228"/>00228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(input.mouse3Click&#32;==&#32;<link linkend="_class_core_config">CoreConfig</link>.GameFunc.EmuShift&#32;||&#32;input.mouse3PressLong&#32;==&#32;<link linkend="_class_core_config">CoreConfig</link>.GameFunc.EmuShift)
+<anchor xml:id="__scene_8cs_source_1l00230"/>00230 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00231"/>00231 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EInput.isShiftDown&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00233"/>00233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(input.mouse3Click&#32;==&#32;<link linkend="_class_core_config">CoreConfig</link>.GameFunc.EmuAlt&#32;||&#32;input.mouse3PressLong&#32;==&#32;<link linkend="_class_core_config">CoreConfig</link>.GameFunc.EmuAlt)
+<anchor xml:id="__scene_8cs_source_1l00234"/>00234 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00235"/>00235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EInput.isAltDown&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00237"/>00237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(EInput.mouse4.pressing)
+<anchor xml:id="__scene_8cs_source_1l00239"/>00239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00240"/>00240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(input.mouse4Click&#32;==&#32;<link linkend="_class_core_config">CoreConfig</link>.GameFunc.EmuShift&#32;||&#32;input.mouse4PressLong&#32;==&#32;<link linkend="_class_core_config">CoreConfig</link>.GameFunc.EmuShift)
+<anchor xml:id="__scene_8cs_source_1l00241"/>00241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00242"/>00242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EInput.isShiftDown&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(input.mouse4Click&#32;==&#32;<link linkend="_class_core_config">CoreConfig</link>.GameFunc.EmuAlt&#32;||&#32;input.mouse4PressLong&#32;==&#32;<link linkend="_class_core_config">CoreConfig</link>.GameFunc.EmuAlt)
+<anchor xml:id="__scene_8cs_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EInput.isAltDown&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00247"/>00247 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00249"/>00249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EInput.hasShiftChanged&#32;=&#32;(EInput.isShiftDown&#32;!=&#32;isShiftDown);
+<anchor xml:id="__scene_8cs_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Layer.cancelKeyDown&#32;=&#32;EInput.isCancel;
+<anchor xml:id="__scene_8cs_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Layer.rightClicked&#32;=&#32;EInput.rightMouse.down;
+<anchor xml:id="__scene_8cs_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;EInput.wheel;
+<anchor xml:id="__scene_8cs_source_1l00253"/>00253 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;!=&#32;0)
+<anchor xml:id="__scene_8cs_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.ui.isPointerOverUI)
+<anchor xml:id="__scene_8cs_source_1l00256"/>00256 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIDropdown&#32;uidropdown&#32;=&#32;InputModuleEX.GetComponentOf&lt;UIDropdown&gt;();
+<anchor xml:id="__scene_8cs_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.ui.GetLayer&lt;<link linkend="_class_layer_config">LayerConfig</link>&gt;(<emphasis role="keyword">false</emphasis>)&#32;&amp;&amp;&#32;!<link linkend="_class_e_mono">EMono</link>.debug.enable)
+<anchor xml:id="__scene_8cs_source_1l00259"/>00259 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00260"/>00260 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uidropdown&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(uidropdown&#32;&amp;&amp;&#32;!UIDropdown.activeInstance)
+<anchor xml:id="__scene_8cs_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;&lt;&#32;0)
+<anchor xml:id="__scene_8cs_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uidropdown.Next();
+<anchor xml:id="__scene_8cs_source_1l00267"/>00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;&gt;&#32;0)
+<anchor xml:id="__scene_8cs_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uidropdown.Prev();
+<anchor xml:id="__scene_8cs_source_1l00271"/>00271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num&#32;=&#32;(EInput.wheel&#32;=&#32;0);
+<anchor xml:id="__scene_8cs_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_dropdown_grid">DropdownGrid</link>.IsActive)
+<anchor xml:id="__scene_8cs_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_dropdown_grid">DropdownGrid</link>&#32;componentOf&#32;=&#32;InputModuleEX.GetComponentOf&lt;<link linkend="_class_dropdown_grid">DropdownGrid</link>&gt;();
+<anchor xml:id="__scene_8cs_source_1l00277"/>00277 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(componentOf)
+<anchor xml:id="__scene_8cs_source_1l00278"/>00278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00279"/>00279 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;&lt;&#32;0)
+<anchor xml:id="__scene_8cs_source_1l00280"/>00280 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00281"/>00281 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;componentOf.Next();
+<anchor xml:id="__scene_8cs_source_1l00282"/>00282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00283"/>00283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;&gt;&#32;0)
+<anchor xml:id="__scene_8cs_source_1l00284"/>00284 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00285"/>00285 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;componentOf.Prev();
+<anchor xml:id="__scene_8cs_source_1l00286"/>00286 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00287"/>00287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num&#32;=&#32;(EInput.wheel&#32;=&#32;0);
+<anchor xml:id="__scene_8cs_source_1l00288"/>00288 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00289"/>00289 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00290"/>00290 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.ui.contextMenu.isActive)
+<anchor xml:id="__scene_8cs_source_1l00291"/>00291 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Slider&#32;componentOf2&#32;=&#32;InputModuleEX.GetComponentOf&lt;Slider&gt;();
+<anchor xml:id="__scene_8cs_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(componentOf2)
+<anchor xml:id="__scene_8cs_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00295"/>00295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;componentOf2.value&#32;+=&#32;(componentOf2.wholeNumbers&#32;?&#32;((float)num)&#32;:&#32;(0.1f&#32;*&#32;(float)num));
+<anchor xml:id="__scene_8cs_source_1l00296"/>00296 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num&#32;=&#32;(EInput.wheel&#32;=&#32;0);
+<anchor xml:id="__scene_8cs_source_1l00297"/>00297 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.Tab();
+<anchor xml:id="__scene_8cs_source_1l00298"/>00298 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00299"/>00299 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00300"/>00300 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIScrollView&#32;componentOf3&#32;=&#32;InputModuleEX.GetComponentOf&lt;UIScrollView&gt;();
+<anchor xml:id="__scene_8cs_source_1l00301"/>00301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(componentOf3)
+<anchor xml:id="__scene_8cs_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num&#32;=&#32;(EInput.wheel&#32;=&#32;0);
+<anchor xml:id="__scene_8cs_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(componentOf3.verticalScrollbar.isActiveAndEnabled)
+<anchor xml:id="__scene_8cs_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.HideMouseHint(0.2f);
+<anchor xml:id="__scene_8cs_source_1l00307"/>00307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00308"/>00308 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00309"/>00309 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIButton&#32;componentOf4&#32;=&#32;InputModuleEX.GetComponentOf&lt;UIButton&gt;();
+<anchor xml:id="__scene_8cs_source_1l00310"/>00310 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(componentOf4&#32;&amp;&amp;&#32;componentOf4.onInputWheel&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__scene_8cs_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00312"/>00312 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;componentOf4.onInputWheel(num);
+<anchor xml:id="__scene_8cs_source_1l00313"/>00313 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num&#32;=&#32;(EInput.wheel&#32;=&#32;0);
+<anchor xml:id="__scene_8cs_source_1l00314"/>00314 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00315"/>00315 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00316"/>00316 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;!=&#32;0)
+<anchor xml:id="__scene_8cs_source_1l00317"/>00317 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00318"/>00318 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Layer&#32;layer&#32;=&#32;EMono.ui.IsActive&#32;?&#32;<link linkend="_class_e_mono">EMono</link>.ui.GetTopLayer()&#32;:&#32;<link linkend="_class_layer_ability">LayerAbility</link>.Instance;
+<anchor xml:id="__scene_8cs_source_1l00319"/>00319 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(layer&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;layer.windows.Count&#32;&gt;&#32;0)
+<anchor xml:id="__scene_8cs_source_1l00320"/>00320 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00321"/>00321 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Window&#32;window&#32;=&#32;layer.windows[0];
+<anchor xml:id="__scene_8cs_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(InputModuleEX.IsPointerChildOf(window.rectTab)&#32;&amp;&amp;&#32;!<link linkend="_class_dropdown_grid">DropdownGrid</link>.IsActive&#32;&amp;&amp;&#32;window.NextTab(num))
+<anchor xml:id="__scene_8cs_source_1l00323"/>00323 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00324"/>00324 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EInput.wheel&#32;=&#32;0;
+<anchor xml:id="__scene_8cs_source_1l00325"/>00325 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00326"/>00326 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00327"/>00327 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00328"/>00328 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00329"/>00329 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((EInput.leftMouse.down&#32;||&#32;EInput.rightMouse.down)&#32;&amp;&amp;&#32;<link linkend="_class_widget_main_text">WidgetMainText</link>.Instance&#32;&amp;&amp;&#32;<link linkend="_class_widget_main_text">WidgetMainText</link>.Instance.box.isShowingLog&#32;&amp;&amp;&#32;!InputModuleEX.IsPointerChildOf(<link linkend="_class_widget_main_text">WidgetMainText</link>.Instance))
+<anchor xml:id="__scene_8cs_source_1l00330"/>00330 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00331"/>00331 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_widget_main_text">WidgetMainText</link>.Instance._ToggleLog();
+<anchor xml:id="__scene_8cs_source_1l00332"/>00332 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EInput.Consume(<emphasis role="keyword">false</emphasis>,&#32;1);
+<anchor xml:id="__scene_8cs_source_1l00333"/>00333 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00334"/>00334 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Scene.Mode&#32;mode&#32;=&#32;this.mode;
+<anchor xml:id="__scene_8cs_source_1l00335"/>00335 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(mode&#32;!=&#32;<link linkend="_class_scene">Scene</link>.Mode.Title)
+<anchor xml:id="__scene_8cs_source_1l00336"/>00336 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00337"/>00337 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(mode&#32;!=&#32;<link linkend="_class_scene">Scene</link>.Mode.Zone)
+<anchor xml:id="__scene_8cs_source_1l00338"/>00338 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00339"/>00339 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.UpdateCursor();
+<anchor xml:id="__scene_8cs_source_1l00340"/>00340 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.UpdateInput();
+<anchor xml:id="__scene_8cs_source_1l00341"/>00341 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00342"/>00342 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00343"/>00343 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00344"/>00344 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>._zone.dirtyElectricity)
+<anchor xml:id="__scene_8cs_source_1l00345"/>00345 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00346"/>00346 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>._zone.RefreshElectricity();
+<anchor xml:id="__scene_8cs_source_1l00347"/>00347 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00348"/>00348 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.player.target&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;<link linkend="_class_e_mono">EMono</link>.player.target.isSynced)
+<anchor xml:id="__scene_8cs_source_1l00349"/>00349 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00350"/>00350 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.srTarget.enabled&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00351"/>00351 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Vector3&#32;position&#32;=&#32;*<link linkend="_class_e_mono">EMono</link>.player.target.pos.PositionCenter();
+<anchor xml:id="__scene_8cs_source_1l00352"/>00352 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;position.y&#32;+=&#32;<link linkend="_class_e_mono">EMono</link>.player.target.renderer.data.size.y;
+<anchor xml:id="__scene_8cs_source_1l00353"/>00353 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;position.z&#32;-=&#32;10f;
+<anchor xml:id="__scene_8cs_source_1l00354"/>00354 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.srTarget.transform.parent.position&#32;=&#32;position;
+<anchor xml:id="__scene_8cs_source_1l00355"/>00355 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00356"/>00356 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00357"/>00357 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00358"/>00358 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.srTarget.enabled&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00359"/>00359 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00360"/>00360 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.player.pickupDelay&#32;-=&#32;Core.delta;
+<anchor xml:id="__scene_8cs_source_1l00361"/>00361 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.player.pickupDelay&#32;&lt;&#32;0f)
+<anchor xml:id="__scene_8cs_source_1l00362"/>00362 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00363"/>00363 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.player.pickupDelay&#32;=&#32;0f;
+<anchor xml:id="__scene_8cs_source_1l00364"/>00364 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00365"/>00365 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.actionMode.OnBeforeUpdate();
+<anchor xml:id="__scene_8cs_source_1l00366"/>00366 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.paused&#32;=&#32;(EMono.ui.IsPauseGame&#32;||&#32;this.actionMode.ShouldPauseGame&#32;||&#32;<link linkend="_class_game">Game</link>.IsWaiting);
+<anchor xml:id="__scene_8cs_source_1l00367"/>00367 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.player.RefreshEmptyAlly();
+<anchor xml:id="__scene_8cs_source_1l00368"/>00368 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_mono">EMono</link>.pc.isDead)
+<anchor xml:id="__scene_8cs_source_1l00369"/>00369 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00370"/>00370 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_a_i___play_music">AI_PlayMusic</link>.keepPlaying&#32;&amp;&amp;&#32;EInput.skipFrame&#32;&lt;=&#32;0&#32;&amp;&amp;&#32;Input.anyKeyDown)
+<anchor xml:id="__scene_8cs_source_1l00371"/>00371 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00372"/>00372 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_a_i___play_music">AI_PlayMusic</link>.CancelKeepPlaying();
+<anchor xml:id="__scene_8cs_source_1l00373"/>00373 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00374"/>00374 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.actionMode.UpdateInput();
+<anchor xml:id="__scene_8cs_source_1l00375"/>00375 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00376"/>00376 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00377"/>00377 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00378"/>00378 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.UpdateInput();
+<anchor xml:id="__scene_8cs_source_1l00379"/>00379 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00380"/>00380 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.pc.currentZone&#32;!=&#32;<link linkend="_class_e_mono">EMono</link>.game.activeZone&#32;&amp;&amp;&#32;<link linkend="_class_e_mono">EMono</link>.pc.global.transition&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__scene_8cs_source_1l00381"/>00381 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00382"/>00382 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.player.flags.OnLeaveZone();
+<anchor xml:id="__scene_8cs_source_1l00383"/>00383 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_layer_drama">LayerDrama</link>.IsActive())
+<anchor xml:id="__scene_8cs_source_1l00384"/>00384 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00385"/>00385 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.player.MoveZone(<link linkend="_class_e_mono">EMono</link>.pc.currentZone);
+<anchor xml:id="__scene_8cs_source_1l00386"/>00386 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00387"/>00387 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00388"/>00388 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.pc.isDead&#32;&amp;&amp;&#32;!<link linkend="_class_e_mono">EMono</link>.player.deathDialog)
+<anchor xml:id="__scene_8cs_source_1l00389"/>00389 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00390"/>00390 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.player.deathDialog&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00391"/>00391 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.player.returnInfo&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00392"/>00392 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_msg">Msg</link>.Say(<emphasis role="stringliteral">&quot;diebye&quot;</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00393"/>00393 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.Sound.Play(<emphasis role="stringliteral">&quot;dead_pc2&quot;</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00394"/>00394 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.Sound.Play(<emphasis role="stringliteral">&quot;dead_pc&quot;</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00395"/>00395 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>[]&#32;list&#32;=&#32;Lang.GetList(<emphasis role="stringliteral">&quot;lastWords&quot;</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00396"/>00396 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;lastWord&#32;=&#32;list.RandomItem&lt;<emphasis role="keywordtype">string</emphasis>&gt;();
+<anchor xml:id="__scene_8cs_source_1l00397"/>00397 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.CloseLayers();
+<anchor xml:id="__scene_8cs_source_1l00398"/>00398 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_dialog">Dialog</link>.InputName(<emphasis role="stringliteral">&quot;dialogLastword&quot;</emphasis>,&#32;lastWord,&#32;delegate(<emphasis role="keywordtype">bool</emphasis>&#32;cancel,&#32;<emphasis role="keywordtype">string</emphasis>&#32;text)
+<anchor xml:id="__scene_8cs_source_1l00399"/>00399 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00400"/>00400 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!cancel)
+<anchor xml:id="__scene_8cs_source_1l00401"/>00401 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00402"/>00402 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lastWord&#32;=&#32;text;
+<anchor xml:id="__scene_8cs_source_1l00403"/>00403 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00404"/>00404 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_player">Player</link>&#32;player&#32;=&#32;<link linkend="_class_e_mono">EMono</link>.player;
+<anchor xml:id="__scene_8cs_source_1l00405"/>00405 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;player.deathMsg&#32;=&#32;player.deathMsg&#32;+&#32;Lang.space&#32;+&#32;lastWord.Bracket(1);
+<anchor xml:id="__scene_8cs_source_1l00406"/>00406 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.core.config.net.enable&#32;&amp;&amp;&#32;<link linkend="_class_e_mono">EMono</link>.core.config.net.sendEvent)
+<anchor xml:id="__scene_8cs_source_1l00407"/>00407 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00408"/>00408 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_net">Net</link>.SendChat(<link linkend="_class_e_mono">EMono</link>.pc.NameTitled,&#32;<link linkend="_class_e_mono">EMono</link>.player.deathMsg,&#32;ChatCategory.Dead,&#32;Lang.langCode);
+<anchor xml:id="__scene_8cs_source_1l00409"/>00409 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00410"/>00410 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log(lastWord);
+<anchor xml:id="__scene_8cs_source_1l00411"/>00411 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_msg">Msg</link>.SetColor(<link linkend="_class_msg">Msg</link>.colors.Talk);
+<anchor xml:id="__scene_8cs_source_1l00412"/>00412 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_msg">Msg</link>.Say(lastWord.Bracket(1));
+<anchor xml:id="__scene_8cs_source_1l00413"/>00413 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;List&lt;string&gt;&#32;list2&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;string&gt;();
+<anchor xml:id="__scene_8cs_source_1l00414"/>00414 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_zone">Zone</link>&#32;lastTown&#32;=&#32;<link linkend="_class_e_mono">EMono</link>.game.spatials.Find(<link linkend="_class_e_mono">EMono</link>.player.uidLastTown);
+<anchor xml:id="__scene_8cs_source_1l00415"/>00415 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;addTownRevive&#32;=&#32;lastTown&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;!<link linkend="_class_e_mono">EMono</link>._zone.IsInstance;
+<anchor xml:id="__scene_8cs_source_1l00416"/>00416 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.game.Difficulty.allowRevive)
+<anchor xml:id="__scene_8cs_source_1l00417"/>00417 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00418"/>00418 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(addTownRevive)
+<anchor xml:id="__scene_8cs_source_1l00419"/>00419 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00420"/>00420 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list2.Add(<emphasis role="stringliteral">&quot;pc_revive_town&quot;</emphasis>.lang(lastTown.Name,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>));
+<anchor xml:id="__scene_8cs_source_1l00421"/>00421 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00422"/>00422 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list2.Add(<emphasis role="stringliteral">&quot;pc_revive&quot;</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00423"/>00423 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list2.Add(<emphasis role="stringliteral">&quot;pc_gameover&quot;</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00424"/>00424 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00425"/>00425 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00426"/>00426 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00427"/>00427 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list2.Add(<emphasis role="stringliteral">&quot;pc_gameover&quot;</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00428"/>00428 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00429"/>00429 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug.Log(list2.Count);
+<anchor xml:id="__scene_8cs_source_1l00430"/>00430 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Func&lt;int,&#32;string,&#32;bool&gt;&#32;&lt;&gt;9__3;
+<anchor xml:id="__scene_8cs_source_1l00431"/>00431 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.AddLayer&lt;<link linkend="_class_layer_cover">LayerCover</link>&gt;().SetDuration(1f,&#32;delegate
+<anchor xml:id="__scene_8cs_source_1l00432"/>00432 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00433"/>00433 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.CloseLayers();
+<anchor xml:id="__scene_8cs_source_1l00434"/>00434 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;langDetail&#32;=&#32;<emphasis role="stringliteral">&quot;pc_deathChoice&quot;</emphasis>.lang();
+<anchor xml:id="__scene_8cs_source_1l00435"/>00435 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ICollection&lt;string&gt;&#32;list2&#32;=&#32;list2;
+<anchor xml:id="__scene_8cs_source_1l00436"/>00436 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Func&lt;string,&#32;string&gt;&#32;getString&#32;=&#32;(<emphasis role="keywordtype">string</emphasis>&#32;j)&#32;=&gt;&#32;j;
+<anchor xml:id="__scene_8cs_source_1l00437"/>00437 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Func&lt;int,&#32;string,&#32;bool&gt;&#32;onSelect;
+<anchor xml:id="__scene_8cs_source_1l00438"/>00438 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((onSelect&#32;=&#32;&lt;&gt;9__3)&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__scene_8cs_source_1l00439"/>00439 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00440"/>00440 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;onSelect&#32;=&#32;(&lt;&gt;9__3&#32;=&#32;delegate(<emphasis role="keywordtype">int</emphasis>&#32;c,&#32;<emphasis role="keywordtype">string</emphasis>&#32;d)
+<anchor xml:id="__scene_8cs_source_1l00441"/>00441 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00442"/>00442 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.player.deathDialog&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00443"/>00443 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.game.Difficulty.allowRevive&#32;&amp;&amp;&#32;(c&#32;==&#32;0&#32;||&#32;(addTownRevive&#32;&amp;&amp;&#32;c&#32;==&#32;1)))
+<anchor xml:id="__scene_8cs_source_1l00444"/>00444 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00445"/>00445 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.pc.MakeGrave(lastWord);
+<anchor xml:id="__scene_8cs_source_1l00446"/>00446 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.pc.Revive(<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00447"/>00447 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.pc.RecalculateFOV();
+<anchor xml:id="__scene_8cs_source_1l00448"/>00448 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_zone">Zone</link>&#32;zone&#32;=&#32;EMono.player.spawnZone&#32;??&#32;<link linkend="_class_e_mono">EMono</link>.pc.homeZone;
+<anchor xml:id="__scene_8cs_source_1l00449"/>00449 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(addTownRevive&#32;&amp;&amp;&#32;c&#32;==&#32;0)
+<anchor xml:id="__scene_8cs_source_1l00450"/>00450 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00451"/>00451 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zone&#32;=&#32;lastTown;
+<anchor xml:id="__scene_8cs_source_1l00452"/>00452 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00453"/>00453 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.game.activeZone&#32;==&#32;zone)
+<anchor xml:id="__scene_8cs_source_1l00454"/>00454 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00455"/>00455 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.pc.Teleport(<link linkend="_class_e_mono">EMono</link>._zone.GetSpawnPos(<link linkend="_class_e_mono">EMono</link>.pc,&#32;<link linkend="_class_zone_transition">ZoneTransition</link>.EnterState.Return),&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00456"/>00456 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00457"/>00457 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00458"/>00458 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00459"/>00459 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.player.deathZoneMove&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00460"/>00460 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.pc.MoveZone(zone,&#32;<link linkend="_class_zone_transition">ZoneTransition</link>.EnterState.Return);
+<anchor xml:id="__scene_8cs_source_1l00461"/>00461 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00462"/>00462 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.screen.FocusPC();
+<anchor xml:id="__scene_8cs_source_1l00463"/>00463 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_msg">Msg</link>.Say(<emphasis role="stringliteral">&quot;crawlup&quot;</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00464"/>00464 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.player.stats.death&#32;==&#32;0)
+<anchor xml:id="__scene_8cs_source_1l00465"/>00465 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00466"/>00466 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_tutorial">Tutorial</link>.Reserve(<emphasis role="stringliteral">&quot;death&quot;</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00467"/>00467 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00468"/>00468 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.player.stats.death++;
+<anchor xml:id="__scene_8cs_source_1l00469"/>00469 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00470"/>00470 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00471"/>00471 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00472"/>00472 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>&#32;=&#32;<link linkend="_class_game">Game</link>.id;
+<anchor xml:id="__scene_8cs_source_1l00473"/>00473 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;deleteGameOnDeath&#32;=&#32;<link linkend="_class_e_mono">EMono</link>.game.Difficulty.deleteGameOnDeath;
+<anchor xml:id="__scene_8cs_source_1l00474"/>00474 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.game.GotoTitle(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00475"/>00475 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(deleteGameOnDeath)
+<anchor xml:id="__scene_8cs_source_1l00476"/>00476 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00477"/>00477 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_game_i_o">GameIO</link>.DeleteGame(<emphasis role="keywordtype">id</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00478"/>00478 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00479"/>00479 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00480"/>00480 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00481"/>00481 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__scene_8cs_source_1l00482"/>00482 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00483"/>00483 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_dialog">Dialog</link>.List&lt;<emphasis role="keywordtype">string</emphasis>&gt;(langDetail,&#32;list2,&#32;getString,&#32;onSelect,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00484"/>00484 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__scene_8cs_source_1l00485"/>00485 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<link linkend="_class_dialog">Dialog</link>.InputType.Default);
+<anchor xml:id="__scene_8cs_source_1l00486"/>00486 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00487"/>00487 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.UpdateCursor();
+<anchor xml:id="__scene_8cs_source_1l00488"/>00488 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.UpdateTimeRatio();
+<anchor xml:id="__scene_8cs_source_1l00489"/>00489 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.Sound.UpdateBGM();
+<anchor xml:id="__scene_8cs_source_1l00490"/>00490 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.game.updater.Update();
+<anchor xml:id="__scene_8cs_source_1l00491"/>00491 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_widget_hotbar">WidgetHotbar</link>.dirtyCurrentItem)
+<anchor xml:id="__scene_8cs_source_1l00492"/>00492 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00493"/>00493 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.player.RefreshCurrentHotItem();
+<anchor xml:id="__scene_8cs_source_1l00494"/>00494 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00495"/>00495 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_widget_equip">WidgetEquip</link>.dirty)
+<anchor xml:id="__scene_8cs_source_1l00496"/>00496 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00497"/>00497 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_widget_equip">WidgetEquip</link>.Redraw();
+<anchor xml:id="__scene_8cs_source_1l00498"/>00498 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00499"/>00499 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.player.wasDirtyWeight)
+<anchor xml:id="__scene_8cs_source_1l00500"/>00500 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00501"/>00501 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_chara">Chara</link>&#32;chara&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_e_mono">EMono</link>.pc.party.members)
+<anchor xml:id="__scene_8cs_source_1l00502"/>00502 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00503"/>00503 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;chara.CalcBurden();
+<anchor xml:id="__scene_8cs_source_1l00504"/>00504 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00505"/>00505 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.player.wasDirtyWeight&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00506"/>00506 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00507"/>00507 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_mono">EMono</link>.ui.IsActive)
+<anchor xml:id="__scene_8cs_source_1l00508"/>00508 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00509"/>00509 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.core.screen.tileSelector.OnUpdate();
+<anchor xml:id="__scene_8cs_source_1l00510"/>00510 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00511"/>00511 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.ui.mouseInfo.gameObject.activeSelf)
+<anchor xml:id="__scene_8cs_source_1l00512"/>00512 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00513"/>00513 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.mouseInfo.SetText(<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00514"/>00514 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00515"/>00515 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.screen.Draw();
+<anchor xml:id="__scene_8cs_source_1l00516"/>00516 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.actionMode.OnAfterUpdate();
+<anchor xml:id="__scene_8cs_source_1l00517"/>00517 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.player.lastTransition&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;!<link linkend="_class_e_mono">EMono</link>.player.simulatingZone)
+<anchor xml:id="__scene_8cs_source_1l00518"/>00518 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00519"/>00519 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_mono">EMono</link>.ui.GetLayer&lt;<link linkend="_class_layer_drama">LayerDrama</link>&gt;(<emphasis role="keyword">false</emphasis>))
+<anchor xml:id="__scene_8cs_source_1l00520"/>00520 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00521"/>00521 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ZoneTransition.EnterState&#32;state&#32;=&#32;<link linkend="_class_e_mono">EMono</link>.player.lastTransition.state;
+<anchor xml:id="__scene_8cs_source_1l00522"/>00522 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(state&#32;!=&#32;<link linkend="_class_zone_transition">ZoneTransition</link>.EnterState.Encounter)
+<anchor xml:id="__scene_8cs_source_1l00523"/>00523 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00524"/>00524 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(state)
+<anchor xml:id="__scene_8cs_source_1l00525"/>00525 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00526"/>00526 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_zone_transition">ZoneTransition</link>.EnterState.PortalReturn:
+<anchor xml:id="__scene_8cs_source_1l00527"/>00527 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_zone_transition">ZoneTransition</link>.EnterState.Return:
+<anchor xml:id="__scene_8cs_source_1l00528"/>00528 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_zone_transition">ZoneTransition</link>.EnterState.Teleport:
+<anchor xml:id="__scene_8cs_source_1l00529"/>00529 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_zone_transition">ZoneTransition</link>.EnterState.Moongate:
+<anchor xml:id="__scene_8cs_source_1l00530"/>00530 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.pc.PlayEffect(<emphasis role="stringliteral">&quot;teleport&quot;</emphasis>,&#32;<emphasis role="keyword">true</emphasis>,&#32;0f,&#32;<emphasis role="keywordflow">default</emphasis>(Vector3));
+<anchor xml:id="__scene_8cs_source_1l00531"/>00531 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.pc.PlaySound(<emphasis role="stringliteral">&quot;return&quot;</emphasis>,&#32;1f,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00532"/>00532 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">goto</emphasis>&#32;IL_87E;
+<anchor xml:id="__scene_8cs_source_1l00533"/>00533 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_zone_transition">ZoneTransition</link>.EnterState.Elevator:
+<anchor xml:id="__scene_8cs_source_1l00534"/>00534 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.pc.PlaySound(<emphasis role="stringliteral">&quot;elevator&quot;</emphasis>,&#32;1f,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00535"/>00535 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">goto</emphasis>&#32;IL_87E;
+<anchor xml:id="__scene_8cs_source_1l00536"/>00536 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_zone_transition">ZoneTransition</link>.EnterState.Fall:
+<anchor xml:id="__scene_8cs_source_1l00537"/>00537 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.pc.PlaySound(<emphasis role="stringliteral">&quot;fall&quot;</emphasis>,&#32;1f,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00538"/>00538 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.pc.PlayAnime(AnimeID.FallSky,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00539"/>00539 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.pc.DamageHP((20&#32;+&#32;<link linkend="_class_e_mono">EMono</link>.rnd(30)&#32;+&#32;((<link linkend="_class_e_mono">EMono</link>.player.lastTransition.lastZone&#32;is&#32;<link linkend="_class_zone___casino">Zone_Casino</link>)&#32;?&#32;1000&#32;:&#32;0))&#32;/&#32;(<link linkend="_class_e_mono">EMono</link>.pc.isLevitating&#32;?&#32;10&#32;:&#32;1),&#32;AttackSource.Fall,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00540"/>00540 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">goto</emphasis>&#32;IL_87E;
+<anchor xml:id="__scene_8cs_source_1l00541"/>00541 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00542"/>00542 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.MoveZone();
+<anchor xml:id="__scene_8cs_source_1l00543"/>00543 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00544"/>00544 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00545"/>00545 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;IL_87E:
+<anchor xml:id="__scene_8cs_source_1l00546"/>00546 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((<link linkend="_class_e_mono">EMono</link>.rnd(5)&#32;==&#32;0&#32;&amp;&amp;&#32;<link linkend="_class_e_mono">EMono</link>.pc.burden.GetPhase()&#32;&gt;=&#32;3)&#32;||&#32;<link linkend="_class_e_mono">EMono</link>.pc.burden.GetPhase()&#32;&gt;=&#32;4)
+<anchor xml:id="__scene_8cs_source_1l00547"/>00547 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00548"/>00548 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.pc.Stumble(100);
+<anchor xml:id="__scene_8cs_source_1l00549"/>00549 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00550"/>00550 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.player.lastTransition&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00551"/>00551 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00552"/>00552 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00553"/>00553 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00554"/>00554 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00555"/>00555 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00556"/>00556 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.scene.elomapActor.IsActive)
+<anchor xml:id="__scene_8cs_source_1l00557"/>00557 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00558"/>00558 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.timeRatio&#32;=&#32;0f;
+<anchor xml:id="__scene_8cs_source_1l00559"/>00559 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.screen.UpdateShaders(0f);
+<anchor xml:id="__scene_8cs_source_1l00560"/>00560 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00561"/>00561 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.godray.SetActive(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00562"/>00562 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.UpdateCursor();
+<anchor xml:id="__scene_8cs_source_1l00563"/>00563 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.UpdateInput();
+<anchor xml:id="__scene_8cs_source_1l00564"/>00564 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00565"/>00565 
+<anchor xml:id="__scene_8cs_source_1l00566"/>00566 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C05&#32;RID:&#32;3077&#32;RVA:&#32;0x0004BA2C&#32;File&#32;Offset:&#32;0x00049C2C</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00567"/>00567 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnLateUpdate()
+<anchor xml:id="__scene_8cs_source_1l00568"/>00568 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00569"/>00569 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.DrawPass();
+<anchor xml:id="__scene_8cs_source_1l00570"/>00570 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CursorSystem.Instance.Draw();
+<anchor xml:id="__scene_8cs_source_1l00571"/>00571 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00572"/>00572 
+<anchor xml:id="__scene_8cs_source_1l00573"/>00573 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C06&#32;RID:&#32;3078&#32;RVA:&#32;0x0004BA40&#32;File&#32;Offset:&#32;0x00049C40</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00574"/>00574 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;UpdateCursor()
+<anchor xml:id="__scene_8cs_source_1l00575"/>00575 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00576"/>00576 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CursorSystem.position&#32;=&#32;EInput.mposWorld;
+<anchor xml:id="__scene_8cs_source_1l00577"/>00577 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CursorSystem.position.z&#32;=&#32;-100f;
+<anchor xml:id="__scene_8cs_source_1l00578"/>00578 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.core.IsGameStarted)
+<anchor xml:id="__scene_8cs_source_1l00579"/>00579 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00580"/>00580 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CursorSystem.posOrigin&#32;=&#32;<link linkend="_class_e_mono">EMono</link>.screen.position.SetZ(-100f);
+<anchor xml:id="__scene_8cs_source_1l00581"/>00581 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.actionMode.OnUpdateCursor();
+<anchor xml:id="__scene_8cs_source_1l00582"/>00582 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00583"/>00583 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00584"/>00584 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CursorSystem.SetCursor(<emphasis role="keyword">null</emphasis>,&#32;0);
+<anchor xml:id="__scene_8cs_source_1l00585"/>00585 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00586"/>00586 
+<anchor xml:id="__scene_8cs_source_1l00587"/>00587 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C07&#32;RID:&#32;3079&#32;RVA:&#32;0x0004BAA0&#32;File&#32;Offset:&#32;0x00049CA0</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00588"/>00588 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;UpdateTimeRatio()
+<anchor xml:id="__scene_8cs_source_1l00589"/>00589 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00590"/>00590 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;num&#32;=&#32;(EMono._map.config.hour&#32;!=&#32;-1)&#32;?&#32;((<emphasis role="keywordtype">float</emphasis>)<link linkend="_class_e_mono">EMono</link>._map.config.hour)&#32;:&#32;((float)EMono.world.date.hour&#32;+&#32;(float)EMono.world.date.min&#32;/&#32;60f);
+<anchor xml:id="__scene_8cs_source_1l00591"/>00591 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;&gt;&#32;12f)
+<anchor xml:id="__scene_8cs_source_1l00592"/>00592 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00593"/>00593 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num&#32;=&#32;24f&#32;-&#32;num;
+<anchor xml:id="__scene_8cs_source_1l00594"/>00594 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00595"/>00595 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.timeRatio&#32;=&#32;Mathf.Clamp(num&#32;*&#32;100f&#32;/&#32;24f&#32;*&#32;0.01f&#32;+&#32;<link linkend="_class_e_mono">EMono</link>.setting.dayRatioMod,&#32;0f,&#32;1f);
+<anchor xml:id="__scene_8cs_source_1l00596"/>00596 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00597"/>00597 
+<anchor xml:id="__scene_8cs_source_1l00598"/>00598 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C08&#32;RID:&#32;3080&#32;RVA:&#32;0x0004BB3C&#32;File&#32;Offset:&#32;0x00049D3C</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00599"/>00599 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnChangeHour()
+<anchor xml:id="__scene_8cs_source_1l00600"/>00600 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00601"/>00601 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.UpdateTimeRatio();
+<anchor xml:id="__scene_8cs_source_1l00602"/>00602 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.firefly.OnChangeHour();
+<anchor xml:id="__scene_8cs_source_1l00603"/>00603 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.fireflyNight.OnChangeHour();
+<anchor xml:id="__scene_8cs_source_1l00604"/>00604 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.star.OnChangeHour();
+<anchor xml:id="__scene_8cs_source_1l00605"/>00605 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.screen.pcOrbit)
+<anchor xml:id="__scene_8cs_source_1l00606"/>00606 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00607"/>00607 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.screen.pcOrbit.OnChangeMin();
+<anchor xml:id="__scene_8cs_source_1l00608"/>00608 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00609"/>00609 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.screen.RefreshSky();
+<anchor xml:id="__scene_8cs_source_1l00610"/>00610 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.screen.OnChangeHour();
+<anchor xml:id="__scene_8cs_source_1l00611"/>00611 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(Transform&#32;transform&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_e_mono">EMono</link>.ui.rectDynamic.GetComponentsInDirectChildren(<emphasis role="keyword">true</emphasis>))
+<anchor xml:id="__scene_8cs_source_1l00612"/>00612 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00613"/>00613 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(transform.gameObject.tag&#32;!=&#32;<emphasis role="stringliteral">&quot;IgnoreDestroy&quot;</emphasis>&#32;&amp;&amp;&#32;!transform.GetComponent&lt;<link linkend="_class_t_c">TC</link>&gt;())
+<anchor xml:id="__scene_8cs_source_1l00614"/>00614 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00615"/>00615 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UnityEngine.Object.Destroy(transform.gameObject);
+<anchor xml:id="__scene_8cs_source_1l00616"/>00616 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00617"/>00617 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00618"/>00618 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00619"/>00619 
+<anchor xml:id="__scene_8cs_source_1l00620"/>00620 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C09&#32;RID:&#32;3081&#32;RVA:&#32;0x0004BC1C&#32;File&#32;Offset:&#32;0x00049E1C</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00621"/>00621 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshBG()
+<anchor xml:id="__scene_8cs_source_1l00622"/>00622 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00623"/>00623 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.bg&#32;=&#32;<link linkend="_class_e_mono">EMono</link>.setting.render.bgs[<link linkend="_class_e_mono">EMono</link>._map.config.bg];
+<anchor xml:id="__scene_8cs_source_1l00624"/>00624 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>._map.config.bg&#32;==&#32;MapBG.Sky&#32;&amp;&amp;&#32;<link linkend="_class_e_mono">EMono</link>._zone.IsSnowZone)
+<anchor xml:id="__scene_8cs_source_1l00625"/>00625 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00626"/>00626 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.bg&#32;=&#32;<link linkend="_class_e_mono">EMono</link>.setting.render.bgs[MapBG.Snow];
+<anchor xml:id="__scene_8cs_source_1l00627"/>00627 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00628"/>00628 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.skyBG.SetActive(this.bg.skyBox);
+<anchor xml:id="__scene_8cs_source_1l00629"/>00629 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.skyBG.sharedMaterial&#32;=&#32;this.bg.mat;
+<anchor xml:id="__scene_8cs_source_1l00630"/>00630 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.skyPlane.SetActive(this.bg.plane);
+<anchor xml:id="__scene_8cs_source_1l00631"/>00631 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.skyPlane.sharedMaterial&#32;=&#32;this.bg.mat;
+<anchor xml:id="__scene_8cs_source_1l00632"/>00632 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.cam.clearFlags&#32;=&#32;((!EMono.core.config.graphic.alwaysClearCamera&#32;&amp;&amp;&#32;this.bg.skyBox)&#32;?&#32;CameraClearFlags.Depth&#32;:&#32;CameraClearFlags.Color);
+<anchor xml:id="__scene_8cs_source_1l00633"/>00633 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00634"/>00634 
+<anchor xml:id="__scene_8cs_source_1l00635"/>00635 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C0A&#32;RID:&#32;3082&#32;RVA:&#32;0x0004BD14&#32;File&#32;Offset:&#32;0x00049F14</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00636"/>00636 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;FocusAndPause(<link linkend="_class_point">Point</link>&#32;pos,&#32;<emphasis role="keywordtype">int</emphasis>&#32;a)
+<anchor xml:id="__scene_8cs_source_1l00637"/>00637 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00638"/>00638 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(a&#32;&gt;=&#32;1)
+<anchor xml:id="__scene_8cs_source_1l00639"/>00639 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00640"/>00640 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.core.screen.Focus(pos);
+<anchor xml:id="__scene_8cs_source_1l00641"/>00641 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00642"/>00642 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(a&#32;&gt;=&#32;2)
+<anchor xml:id="__scene_8cs_source_1l00643"/>00643 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00644"/>00644 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_action_mode">ActionMode</link>.Sim.Pause(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00645"/>00645 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00646"/>00646 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00647"/>00647 
+<anchor xml:id="__scene_8cs_source_1l00648"/>00648 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C0B&#32;RID:&#32;3083&#32;RVA:&#32;0x0004BD3C&#32;File&#32;Offset:&#32;0x00049F3C</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00649"/>00649 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ApplyZoneConfig()
+<anchor xml:id="__scene_8cs_source_1l00650"/>00650 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00651"/>00651 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_mono">EMono</link>.core.IsGameStarted)
+<anchor xml:id="__scene_8cs_source_1l00652"/>00652 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00653"/>00653 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00654"/>00654 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00655"/>00655 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_scene">Scene</link>.&lt;&gt;c__DisplayClass70_0&#32;CS$&lt;&gt;8__locals1;
+<anchor xml:id="__scene_8cs_source_1l00656"/>00656 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CS$&lt;&gt;8__locals1.conf&#32;=&#32;<link linkend="_class_e_mono">EMono</link>._map.config;
+<anchor xml:id="__scene_8cs_source_1l00657"/>00657 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_liquid_profile">LiquidProfile</link>.Apply(CS$&lt;&gt;8__locals1.conf.idLiquid);
+<anchor xml:id="__scene_8cs_source_1l00658"/>00658 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_refraction_profile">RefractionProfile</link>.Apply(CS$&lt;&gt;8__locals1.conf.idRefraction);
+<anchor xml:id="__scene_8cs_source_1l00659"/>00659 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_base_tile_map">BaseTileMap</link>&#32;tileMap&#32;=&#32;this.screenElin.tileMap;
+<anchor xml:id="__scene_8cs_source_1l00660"/>00660 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_scene">Scene</link>.&lt;ApplyZoneConfig&gt;g__SetOcean|70_0(tileMap.passLiquid.mat,&#32;ref&#32;CS$&lt;&gt;8__locals1);
+<anchor xml:id="__scene_8cs_source_1l00661"/>00661 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_scene">Scene</link>.&lt;ApplyZoneConfig&gt;g__SetOcean|70_0(tileMap.passFloorWater.mat,&#32;ref&#32;CS$&lt;&gt;8__locals1);
+<anchor xml:id="__scene_8cs_source_1l00662"/>00662 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_scene">Scene</link>.&lt;ApplyZoneConfig&gt;g__SetOcean|70_0(tileMap.passAutoTileWater.mat,&#32;ref&#32;CS$&lt;&gt;8__locals1);
+<anchor xml:id="__scene_8cs_source_1l00663"/>00663 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ScreenGrading&#32;grading&#32;=&#32;this.camSupport.grading;
+<anchor xml:id="__scene_8cs_source_1l00664"/>00664 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ScreenGradingProfile.Lut&#32;lut&#32;=&#32;grading.lut;
+<anchor xml:id="__scene_8cs_source_1l00665"/>00665 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;grading.profile.funcOverlay&#32;=&#32;(()&#32;=&gt;&#32;<link linkend="_class_e_mono">EMono</link>.scene.profile.overlay);
+<anchor xml:id="__scene_8cs_source_1l00666"/>00666 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(CS$&lt;&gt;8__locals1.conf.idLut&#32;==&#32;<emphasis role="stringliteral">&quot;None&quot;</emphasis>)
+<anchor xml:id="__scene_8cs_source_1l00667"/>00667 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00668"/>00668 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lut.tex&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00669"/>00669 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00670"/>00670 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00671"/>00671 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00672"/>00672 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lut.tex&#32;=&#32;Resources.Load&lt;Texture2D&gt;(<emphasis role="stringliteral">&quot;Scene/Profile/Lut/&quot;</emphasis>&#32;+&#32;CS$&lt;&gt;8__locals1.conf.idLut);
+<anchor xml:id="__scene_8cs_source_1l00673"/>00673 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lut.Brightness&#32;=&#32;CS$&lt;&gt;8__locals1.conf.lutBrightness;
+<anchor xml:id="__scene_8cs_source_1l00674"/>00674 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lut.Saturation&#32;=&#32;CS$&lt;&gt;8__locals1.conf.lutSaturation;
+<anchor xml:id="__scene_8cs_source_1l00675"/>00675 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lut.Contrast&#32;=&#32;CS$&lt;&gt;8__locals1.conf.lutContrast;
+<anchor xml:id="__scene_8cs_source_1l00676"/>00676 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lut.blend&#32;=&#32;CS$&lt;&gt;8__locals1.conf.lutBlend;
+<anchor xml:id="__scene_8cs_source_1l00677"/>00677 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00678"/>00678 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;grading.SetGrading();
+<anchor xml:id="__scene_8cs_source_1l00679"/>00679 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00680"/>00680 
+<anchor xml:id="__scene_8cs_source_1l00681"/>00681 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C0C&#32;RID:&#32;3084&#32;RVA:&#32;0x0004BE8C&#32;File&#32;Offset:&#32;0x0004A08C</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00682"/>00682 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnToggle()
+<anchor xml:id="__scene_8cs_source_1l00683"/>00683 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00684"/>00684 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.ClickGeneral();
+<anchor xml:id="__scene_8cs_source_1l00685"/>00685 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_widget_system_indicator">WidgetSystemIndicator</link>.Refresh();
+<anchor xml:id="__scene_8cs_source_1l00686"/>00686 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_widget_hotbar">WidgetHotbar</link>.RefreshHighlights();
+<anchor xml:id="__scene_8cs_source_1l00687"/>00687 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00688"/>00688 
+<anchor xml:id="__scene_8cs_source_1l00689"/>00689 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C0D&#32;RID:&#32;3085&#32;RVA:&#32;0x0004BE9D&#32;File&#32;Offset:&#32;0x0004A09D</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00690"/>00690 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ToggleShowRoof()
+<anchor xml:id="__scene_8cs_source_1l00691"/>00691 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00692"/>00692 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.game.config.showRoof&#32;=&#32;!<link linkend="_class_e_mono">EMono</link>.game.config.showRoof;
+<anchor xml:id="__scene_8cs_source_1l00693"/>00693 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnToggle();
+<anchor xml:id="__scene_8cs_source_1l00694"/>00694 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00695"/>00695 
+<anchor xml:id="__scene_8cs_source_1l00696"/>00696 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C0E&#32;RID:&#32;3086&#32;RVA:&#32;0x0004BEC6&#32;File&#32;Offset:&#32;0x0004A0C6</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00697"/>00697 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ToggleLight()
+<anchor xml:id="__scene_8cs_source_1l00698"/>00698 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00699"/>00699 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.game.config.buildLight&#32;=&#32;!<link linkend="_class_e_mono">EMono</link>.game.config.buildLight;
+<anchor xml:id="__scene_8cs_source_1l00700"/>00700 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnToggle();
+<anchor xml:id="__scene_8cs_source_1l00701"/>00701 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00702"/>00702 
+<anchor xml:id="__scene_8cs_source_1l00703"/>00703 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C0F&#32;RID:&#32;3087&#32;RVA:&#32;0x0004BEF0&#32;File&#32;Offset:&#32;0x0004A0F0</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00704"/>00704 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ToggleSnapFreePos()
+<anchor xml:id="__scene_8cs_source_1l00705"/>00705 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00706"/>00706 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_mono">EMono</link>.core.config.game.freePos)
+<anchor xml:id="__scene_8cs_source_1l00707"/>00707 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00708"/>00708 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.Beep();
+<anchor xml:id="__scene_8cs_source_1l00709"/>00709 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00710"/>00710 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00711"/>00711 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.game.config.snapFreePos&#32;=&#32;!<link linkend="_class_e_mono">EMono</link>.game.config.snapFreePos;
+<anchor xml:id="__scene_8cs_source_1l00712"/>00712 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnToggle();
+<anchor xml:id="__scene_8cs_source_1l00713"/>00713 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00714"/>00714 
+<anchor xml:id="__scene_8cs_source_1l00715"/>00715 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C10&#32;RID:&#32;3088&#32;RVA:&#32;0x0004BF40&#32;File&#32;Offset:&#32;0x0004A140</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00716"/>00716 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ToggleFreePos()
+<anchor xml:id="__scene_8cs_source_1l00717"/>00717 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00718"/>00718 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_mono">EMono</link>.core.config.game.freePos)
+<anchor xml:id="__scene_8cs_source_1l00719"/>00719 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00720"/>00720 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.Beep();
+<anchor xml:id="__scene_8cs_source_1l00721"/>00721 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00722"/>00722 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00723"/>00723 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.game.config.freePos&#32;=&#32;!<link linkend="_class_e_mono">EMono</link>.game.config.freePos;
+<anchor xml:id="__scene_8cs_source_1l00724"/>00724 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnToggle();
+<anchor xml:id="__scene_8cs_source_1l00725"/>00725 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00726"/>00726 
+<anchor xml:id="__scene_8cs_source_1l00727"/>00727 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C11&#32;RID:&#32;3089&#32;RVA:&#32;0x0004BF90&#32;File&#32;Offset:&#32;0x0004A190</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00728"/>00728 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ToggleShowWall()
+<anchor xml:id="__scene_8cs_source_1l00729"/>00729 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00730"/>00730 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.game.config.showWall&#32;=&#32;!<link linkend="_class_e_mono">EMono</link>.game.config.showWall;
+<anchor xml:id="__scene_8cs_source_1l00731"/>00731 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnToggle();
+<anchor xml:id="__scene_8cs_source_1l00732"/>00732 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00733"/>00733 
+<anchor xml:id="__scene_8cs_source_1l00734"/>00734 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C12&#32;RID:&#32;3090&#32;RVA:&#32;0x0004BFB9&#32;File&#32;Offset:&#32;0x0004A1B9</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00735"/>00735 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ToggleRoof()
+<anchor xml:id="__scene_8cs_source_1l00736"/>00736 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00737"/>00737 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.game.config.noRoof&#32;=&#32;!<link linkend="_class_e_mono">EMono</link>.game.config.noRoof;
+<anchor xml:id="__scene_8cs_source_1l00738"/>00738 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnToggle();
+<anchor xml:id="__scene_8cs_source_1l00739"/>00739 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00740"/>00740 
+<anchor xml:id="__scene_8cs_source_1l00741"/>00741 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C13&#32;RID:&#32;3091&#32;RVA:&#32;0x0004BFE2&#32;File&#32;Offset:&#32;0x0004A1E2</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00742"/>00742 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ToggleSlope()
+<anchor xml:id="__scene_8cs_source_1l00743"/>00743 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00744"/>00744 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.game.config.slope&#32;=&#32;!<link linkend="_class_e_mono">EMono</link>.game.config.slope;
+<anchor xml:id="__scene_8cs_source_1l00745"/>00745 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnToggle();
+<anchor xml:id="__scene_8cs_source_1l00746"/>00746 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Scene.skipAnime&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00747"/>00747 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00748"/>00748 
+<anchor xml:id="__scene_8cs_source_1l00749"/>00749 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C14&#32;RID:&#32;3092&#32;RVA:&#32;0x0004C014&#32;File&#32;Offset:&#32;0x0004A214</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00750"/>00750 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ToggleTilt()
+<anchor xml:id="__scene_8cs_source_1l00751"/>00751 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00752"/>00752 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>._zone.IsRegion)
+<anchor xml:id="__scene_8cs_source_1l00753"/>00753 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00754"/>00754 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.game.config.tiltRegion&#32;=&#32;!<link linkend="_class_e_mono">EMono</link>.game.config.tiltRegion;
+<anchor xml:id="__scene_8cs_source_1l00755"/>00755 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00756"/>00756 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00757"/>00757 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00758"/>00758 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.game.config.tilt&#32;=&#32;!<link linkend="_class_e_mono">EMono</link>.game.config.tilt;
+<anchor xml:id="__scene_8cs_source_1l00759"/>00759 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00760"/>00760 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.screen.RefreshTilt();
+<anchor xml:id="__scene_8cs_source_1l00761"/>00761 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnToggle();
+<anchor xml:id="__scene_8cs_source_1l00762"/>00762 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00763"/>00763 
+<anchor xml:id="__scene_8cs_source_1l00764"/>00764 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C15&#32;RID:&#32;3093&#32;RVA:&#32;0x0004C081&#32;File&#32;Offset:&#32;0x0004A281</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00765"/>00765 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ToggleHighlightAct()
+<anchor xml:id="__scene_8cs_source_1l00766"/>00766 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00767"/>00767 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.game.config.highlightAct&#32;=&#32;!<link linkend="_class_e_mono">EMono</link>.game.config.highlightAct;
+<anchor xml:id="__scene_8cs_source_1l00768"/>00768 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnToggle();
+<anchor xml:id="__scene_8cs_source_1l00769"/>00769 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00770"/>00770 
+<anchor xml:id="__scene_8cs_source_1l00771"/>00771 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C16&#32;RID:&#32;3094&#32;RVA:&#32;0x0004C0AA&#32;File&#32;Offset:&#32;0x0004A2AA</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00772"/>00772 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ToggleAreaHighlight()
+<anchor xml:id="__scene_8cs_source_1l00773"/>00773 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00774"/>00774 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono.game.config.areaHighlight&#32;=&#32;!<link linkend="_class_e_mono">EMono</link>.game.config.areaHighlight;
+<anchor xml:id="__scene_8cs_source_1l00775"/>00775 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnToggle();
+<anchor xml:id="__scene_8cs_source_1l00776"/>00776 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00777"/>00777 
+<anchor xml:id="__scene_8cs_source_1l00778"/>00778 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C17&#32;RID:&#32;3095&#32;RVA:&#32;0x0004C0D3&#32;File&#32;Offset:&#32;0x0004A2D3</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00779"/>00779 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ToggleBirdView(<emphasis role="keywordtype">bool</emphasis>&#32;sound&#32;=&#32;<emphasis role="keyword">true</emphasis>)
+<anchor xml:id="__scene_8cs_source_1l00780"/>00780 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00781"/>00781 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.ClickGeneral();
+<anchor xml:id="__scene_8cs_source_1l00782"/>00782 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.scene.actionMode&#32;==&#32;<link linkend="_class_action_mode">ActionMode</link>.Bird)
+<anchor xml:id="__scene_8cs_source_1l00783"/>00783 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00784"/>00784 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.scene.actionMode.Deactivate();
+<anchor xml:id="__scene_8cs_source_1l00785"/>00785 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00786"/>00786 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00787"/>00787 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_action_mode">ActionMode</link>.Bird.Activate(<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00788"/>00788 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00789"/>00789 
+<anchor xml:id="__scene_8cs_source_1l00790"/>00790 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C18&#32;RID:&#32;3096&#32;RVA:&#32;0x0004C107&#32;File&#32;Offset:&#32;0x0004A307</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00791"/>00791 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ToggleBalloon()
+<anchor xml:id="__scene_8cs_source_1l00792"/>00792 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00793"/>00793 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.hideBalloon&#32;=&#32;!this.hideBalloon;
+<anchor xml:id="__scene_8cs_source_1l00794"/>00794 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.ui.ShowBalloon(!this.hideBalloon);
+<anchor xml:id="__scene_8cs_source_1l00795"/>00795 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.ClickGeneral();
+<anchor xml:id="__scene_8cs_source_1l00796"/>00796 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_widget_system_indicator">WidgetSystemIndicator</link>.Refresh();
+<anchor xml:id="__scene_8cs_source_1l00797"/>00797 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00798"/>00798 
+<anchor xml:id="__scene_8cs_source_1l00799"/>00799 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C19&#32;RID:&#32;3097&#32;RVA:&#32;0x0004C138&#32;File&#32;Offset:&#32;0x0004A338</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00800"/>00800 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ToggleMuteBGM()
+<anchor xml:id="__scene_8cs_source_1l00801"/>00801 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00802"/>00802 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.Sound.ToggleMute(<link linkend="_class_e_mono">EMono</link>.core.config.sound.volumeBGM);
+<anchor xml:id="__scene_8cs_source_1l00803"/>00803 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.ClickGeneral();
+<anchor xml:id="__scene_8cs_source_1l00804"/>00804 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_widget_system_indicator">WidgetSystemIndicator</link>.Refresh();
+<anchor xml:id="__scene_8cs_source_1l00805"/>00805 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_e_mono">EMono</link>.Sound.muteBGM)
+<anchor xml:id="__scene_8cs_source_1l00806"/>00806 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00807"/>00807 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.core.config.ApplyVolume();
+<anchor xml:id="__scene_8cs_source_1l00808"/>00808 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00809"/>00809 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00810"/>00810 
+<anchor xml:id="__scene_8cs_source_1l00811"/>00811 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C1A&#32;RID:&#32;3098&#32;RVA:&#32;0x0004C188&#32;File&#32;Offset:&#32;0x0004A388</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00812"/>00812 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RebuildActorEx()
+<anchor xml:id="__scene_8cs_source_1l00813"/>00813 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00814"/>00814 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_thing">Thing</link>&#32;thing&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_e_mono">EMono</link>._map.things)
+<anchor xml:id="__scene_8cs_source_1l00815"/>00815 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00816"/>00816 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!thing.trait.IDActorEx.IsEmpty())
+<anchor xml:id="__scene_8cs_source_1l00817"/>00817 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00818"/>00818 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.AddActorEx(thing,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00819"/>00819 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00820"/>00820 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00821"/>00821 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00822"/>00822 
+<anchor xml:id="__scene_8cs_source_1l00823"/>00823 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C1B&#32;RID:&#32;3099&#32;RVA:&#32;0x0004C1F4&#32;File&#32;Offset:&#32;0x0004A3F4</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00824"/>00824 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshActorEx()
+<anchor xml:id="__scene_8cs_source_1l00825"/>00825 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00826"/>00826 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SoundManager.bgmDumpMod&#32;=&#32;0f;
+<anchor xml:id="__scene_8cs_source_1l00827"/>00827 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_actor_ex">ActorEx</link>&#32;actorEx&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.dictActorEx.Values)
+<anchor xml:id="__scene_8cs_source_1l00828"/>00828 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00829"/>00829 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;actorEx.Refresh();
+<anchor xml:id="__scene_8cs_source_1l00830"/>00830 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00831"/>00831 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00832"/>00832 
+<anchor xml:id="__scene_8cs_source_1l00833"/>00833 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C1C&#32;RID:&#32;3100&#32;RVA:&#32;0x0004C254&#32;File&#32;Offset:&#32;0x0004A454</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00834"/>00834 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ClearActorEx()
+<anchor xml:id="__scene_8cs_source_1l00835"/>00835 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00836"/>00836 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_actor_ex">ActorEx</link>&#32;actorEx&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.dictActorEx.Values)
+<anchor xml:id="__scene_8cs_source_1l00837"/>00837 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00838"/>00838 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;actorEx.Kill();
+<anchor xml:id="__scene_8cs_source_1l00839"/>00839 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00840"/>00840 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.dictActorEx.Clear();
+<anchor xml:id="__scene_8cs_source_1l00841"/>00841 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00842"/>00842 
+<anchor xml:id="__scene_8cs_source_1l00843"/>00843 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C1D&#32;RID:&#32;3101&#32;RVA:&#32;0x0004C2B4&#32;File&#32;Offset:&#32;0x0004A4B4</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00844"/>00844 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddActorEx(<link linkend="_class_card">Card</link>&#32;c,&#32;Action&lt;ActorEx&gt;&#32;onBeforeSetOwner&#32;=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__scene_8cs_source_1l00845"/>00845 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00846"/>00846 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_actor_ex">ActorEx</link>&#32;actorEx&#32;=&#32;this.dictActorEx.TryGetValue(c,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00847"/>00847 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(actorEx&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__scene_8cs_source_1l00848"/>00848 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00849"/>00849 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00850"/>00850 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00851"/>00851 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;actorEx&#32;=&#32;Util.Instantiate&lt;<link linkend="_class_actor_ex">ActorEx</link>&gt;(<emphasis role="stringliteral">&quot;Scene/Render/Actor/Ex/&quot;</emphasis>&#32;+&#32;c.trait.IDActorEx,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00852"/>00852 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(onBeforeSetOwner&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__scene_8cs_source_1l00853"/>00853 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00854"/>00854 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;onBeforeSetOwner(actorEx);
+<anchor xml:id="__scene_8cs_source_1l00855"/>00855 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00856"/>00856 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;actorEx.SetOwner(c);
+<anchor xml:id="__scene_8cs_source_1l00857"/>00857 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.dictActorEx.Add(c,&#32;actorEx);
+<anchor xml:id="__scene_8cs_source_1l00858"/>00858 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00859"/>00859 
+<anchor xml:id="__scene_8cs_source_1l00860"/>00860 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C1E&#32;RID:&#32;3102&#32;RVA:&#32;0x0004C314&#32;File&#32;Offset:&#32;0x0004A514</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00861"/>00861 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RemoveActorEx(<link linkend="_class_card">Card</link>&#32;c)
+<anchor xml:id="__scene_8cs_source_1l00862"/>00862 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00863"/>00863 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_actor_ex">ActorEx</link>&#32;actorEx&#32;=&#32;this.dictActorEx.TryGetValue(c,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00864"/>00864 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(actorEx&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__scene_8cs_source_1l00865"/>00865 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00866"/>00866 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00867"/>00867 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00868"/>00868 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;actorEx.Kill();
+<anchor xml:id="__scene_8cs_source_1l00869"/>00869 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.dictActorEx.Remove(c);
+<anchor xml:id="__scene_8cs_source_1l00870"/>00870 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00871"/>00871 
+<anchor xml:id="__scene_8cs_source_1l00872"/>00872 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C1F&#32;RID:&#32;3103&#32;RVA:&#32;0x0004C34C&#32;File&#32;Offset:&#32;0x0004A54C</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00873"/>00873 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;InitPass()
+<anchor xml:id="__scene_8cs_source_1l00874"/>00874 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00875"/>00875 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mesh_pass">MeshPass</link>[]&#32;array&#32;=&#32;this.passes;
+<anchor xml:id="__scene_8cs_source_1l00876"/>00876 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;array.Length;&#32;i++)
+<anchor xml:id="__scene_8cs_source_1l00877"/>00877 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00878"/>00878 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array[i].Init();
+<anchor xml:id="__scene_8cs_source_1l00879"/>00879 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00880"/>00880 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(ModItem&lt;Sprite&gt;&#32;modItem&#32;<emphasis role="keywordflow">in</emphasis>&#32;MOD.sprites.list)
+<anchor xml:id="__scene_8cs_source_1l00881"/>00881 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00882"/>00882 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Sprite&#32;sprite&#32;=&#32;SpriteSheet.Get(modItem.id);
+<anchor xml:id="__scene_8cs_source_1l00883"/>00883 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(sprite)
+<anchor xml:id="__scene_8cs_source_1l00884"/>00884 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00885"/>00885 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Sprite&#32;@<emphasis role="keywordtype">object</emphasis>&#32;=&#32;modItem.GetObject(<emphasis role="keyword">new</emphasis>&#32;SpriteLoadOption
+<anchor xml:id="__scene_8cs_source_1l00886"/>00886 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00887"/>00887 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pivot&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Vector2(sprite.pivot.x&#32;/&#32;(sprite.bounds.size.x&#32;*&#32;100f),&#32;sprite.pivot.y&#32;/&#32;(sprite.bounds.size.y&#32;*&#32;100f))
+<anchor xml:id="__scene_8cs_source_1l00888"/>00888 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__scene_8cs_source_1l00889"/>00889 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SpriteSheet.dict[modItem.id]&#32;=&#32;@object;
+<anchor xml:id="__scene_8cs_source_1l00890"/>00890 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00891"/>00891 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00892"/>00892 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00893"/>00893 
+<anchor xml:id="__scene_8cs_source_1l00894"/>00894 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C20&#32;RID:&#32;3104&#32;RVA:&#32;0x0004C450&#32;File&#32;Offset:&#32;0x0004A650</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00895"/>00895 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawPass()
+<anchor xml:id="__scene_8cs_source_1l00896"/>00896 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00897"/>00897 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.cam.enabled)
+<anchor xml:id="__scene_8cs_source_1l00898"/>00898 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00899"/>00899 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mesh_pass">MeshPass</link>[]&#32;array&#32;=&#32;this.passes;
+<anchor xml:id="__scene_8cs_source_1l00900"/>00900 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;array.Length;&#32;i++)
+<anchor xml:id="__scene_8cs_source_1l00901"/>00901 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00902"/>00902 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array[i].Draw();
+<anchor xml:id="__scene_8cs_source_1l00903"/>00903 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00904"/>00904 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00905"/>00905 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00906"/>00906 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00907"/>00907 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mesh_pass">MeshPass</link>[]&#32;array&#32;=&#32;this.passes;
+<anchor xml:id="__scene_8cs_source_1l00908"/>00908 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;array.Length;&#32;i++)
+<anchor xml:id="__scene_8cs_source_1l00909"/>00909 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00910"/>00910 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array[i].DrawEmpty();
+<anchor xml:id="__scene_8cs_source_1l00911"/>00911 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00912"/>00912 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00913"/>00913 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshSync();
+<anchor xml:id="__scene_8cs_source_1l00914"/>00914 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>.screen.guide)
+<anchor xml:id="__scene_8cs_source_1l00915"/>00915 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00916"/>00916 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.screen.guide.OnDrawPass();
+<anchor xml:id="__scene_8cs_source_1l00917"/>00917 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00918"/>00918 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00919"/>00919 
+<anchor xml:id="__scene_8cs_source_1l00920"/>00920 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C21&#32;RID:&#32;3105&#32;RVA:&#32;0x0004C4CC&#32;File&#32;Offset:&#32;0x0004A6CC</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00921"/>00921 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshSync()
+<anchor xml:id="__scene_8cs_source_1l00922"/>00922 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00923"/>00923 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;this.syncList.Count&#32;-&#32;1;&#32;i&#32;&gt;=&#32;0;&#32;i--)
+<anchor xml:id="__scene_8cs_source_1l00924"/>00924 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00925"/>00925 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_interface_i_sync_screen">ISyncScreen</link>&#32;syncScreen&#32;=&#32;this.syncList[i];
+<anchor xml:id="__scene_8cs_source_1l00926"/>00926 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(syncScreen.Sync&#32;!=&#32;<emphasis role="keyword">this</emphasis>.syncFrame)
+<anchor xml:id="__scene_8cs_source_1l00927"/>00927 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00928"/>00928 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;syncScreen.OnLeaveScreen();
+<anchor xml:id="__scene_8cs_source_1l00929"/>00929 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.syncList.RemoveAt(i);
+<anchor xml:id="__scene_8cs_source_1l00930"/>00930 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00931"/>00931 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00932"/>00932 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.syncFrame&#32;+=&#32;1L;
+<anchor xml:id="__scene_8cs_source_1l00933"/>00933 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;RenderObject.syncFrame&#32;=&#32;this.syncFrame;
+<anchor xml:id="__scene_8cs_source_1l00934"/>00934 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00935"/>00935 
+<anchor xml:id="__scene_8cs_source_1l00936"/>00936 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C22&#32;RID:&#32;3106&#32;RVA:&#32;0x0004C538&#32;File&#32;Offset:&#32;0x0004A738</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00937"/>00937 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Transform&#32;LoadPrefab(<emphasis role="keywordtype">string</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>)
+<anchor xml:id="__scene_8cs_source_1l00938"/>00938 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00939"/>00939 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Transform&#32;transform&#32;=&#32;Util.Instantiate&lt;Transform&gt;(<emphasis role="stringliteral">&quot;Scene/Prefab/&quot;</emphasis>&#32;+&#32;id,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00940"/>00940 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;transform.name&#32;=&#32;id;
+<anchor xml:id="__scene_8cs_source_1l00941"/>00941 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.loadedPrefabs.Add(transform.gameObject);
+<anchor xml:id="__scene_8cs_source_1l00942"/>00942 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;transform;
+<anchor xml:id="__scene_8cs_source_1l00943"/>00943 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00944"/>00944 
+<anchor xml:id="__scene_8cs_source_1l00945"/>00945 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C23&#32;RID:&#32;3107&#32;RVA:&#32;0x0004C570&#32;File&#32;Offset:&#32;0x0004A770</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00946"/>00946 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DestroyPrefabs()
+<anchor xml:id="__scene_8cs_source_1l00947"/>00947 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00948"/>00948 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(GameObject&#32;obj&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.loadedPrefabs)
+<anchor xml:id="__scene_8cs_source_1l00949"/>00949 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00950"/>00950 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UnityEngine.Object.Destroy(obj);
+<anchor xml:id="__scene_8cs_source_1l00951"/>00951 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00952"/>00952 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.loadedPrefabs.Clear();
+<anchor xml:id="__scene_8cs_source_1l00953"/>00953 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00954"/>00954 
+<anchor xml:id="__scene_8cs_source_1l00955"/>00955 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C24&#32;RID:&#32;3108&#32;RVA:&#32;0x0004C5CC&#32;File&#32;Offset:&#32;0x0004A7CC</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00956"/>00956 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DestroyPrefab(<emphasis role="keywordtype">string</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>)
+<anchor xml:id="__scene_8cs_source_1l00957"/>00957 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00958"/>00958 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GameObject&#32;gameObject&#32;=&#32;GameObject.Find(<emphasis role="keywordtype">id</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00959"/>00959 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(gameObject)
+<anchor xml:id="__scene_8cs_source_1l00960"/>00960 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00961"/>00961 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UnityEngine.Object.DestroyImmediate(gameObject);
+<anchor xml:id="__scene_8cs_source_1l00962"/>00962 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00963"/>00963 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00964"/>00964 
+<anchor xml:id="__scene_8cs_source_1l00965"/>00965 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000C27&#32;RID:&#32;3111&#32;RVA:&#32;0x0004C638&#32;File&#32;Offset:&#32;0x0004A838</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00966"/>00966 &#32;&#32;&#32;&#32;[CompilerGenerated]
+<anchor xml:id="__scene_8cs_source_1l00967"/>00967 &#32;&#32;&#32;&#32;<emphasis role="keyword">internal</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;void&#32;&lt;ApplyZoneConfig&gt;g__SetOcean|70_0(Material&#32;m,&#32;ref&#32;<link linkend="_class_scene">Scene</link>.&lt;&gt;c__DisplayClass70_0&#32;A_1)
+<anchor xml:id="__scene_8cs_source_1l00968"/>00968 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00969"/>00969 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;m.SetFloat(<emphasis role="stringliteral">&quot;_GradientWater&quot;</emphasis>,&#32;<link linkend="_class_e_mono">EMono</link>.core.config.graphic.gradientWater&#32;?&#32;<link linkend="_class_e_mono">EMono</link>.core.config.graphic.gradientWaterLevel&#32;:&#32;0f);
+<anchor xml:id="__scene_8cs_source_1l00970"/>00970 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(A_1.conf.seaDir&#32;!=&#32;0)
+<anchor xml:id="__scene_8cs_source_1l00971"/>00971 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00972"/>00972 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;m.EnableKeyword(<emphasis role="stringliteral">&quot;WAVE_ON&quot;</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00973"/>00973 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Vector4[]&#32;array&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Vector4[]
+<anchor xml:id="__scene_8cs_source_1l00974"/>00974 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l00975"/>00975 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">new</emphasis>&#32;Vector4(-2f,&#32;-1f,&#32;-1f,&#32;1f),
+<anchor xml:id="__scene_8cs_source_1l00976"/>00976 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">new</emphasis>&#32;Vector4(1f,&#32;0f,&#32;1f,&#32;1f),
+<anchor xml:id="__scene_8cs_source_1l00977"/>00977 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">new</emphasis>&#32;Vector4(2f,&#32;1f,&#32;-1f,&#32;1f),
+<anchor xml:id="__scene_8cs_source_1l00978"/>00978 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">new</emphasis>&#32;Vector4(-1f,&#32;0f,&#32;1f,&#32;1f)
+<anchor xml:id="__scene_8cs_source_1l00979"/>00979 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__scene_8cs_source_1l00980"/>00980 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;m.SetVector(<emphasis role="stringliteral">&quot;_WaveDir&quot;</emphasis>,&#32;array[A_1.conf.seaDir&#32;-&#32;1]);
+<anchor xml:id="__scene_8cs_source_1l00981"/>00981 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__scene_8cs_source_1l00982"/>00982 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00983"/>00983 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;m.DisableKeyword(<emphasis role="stringliteral">&quot;WAVE_ON&quot;</emphasis>);
+<anchor xml:id="__scene_8cs_source_1l00984"/>00984 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l00985"/>00985 
+<anchor xml:id="__scene_8cs_source_1l00986"/>00986 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AE7&#32;RID:&#32;2791</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00987"/>00987 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Vector2[]&#32;test;
+<anchor xml:id="__scene_8cs_source_1l00988"/>00988 
+<anchor xml:id="__scene_8cs_source_1l00989"/>00989 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AE8&#32;RID:&#32;2792</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00990"/>00990 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isAnnounced;
+<anchor xml:id="__scene_8cs_source_1l00991"/>00991 
+<anchor xml:id="__scene_8cs_source_1l00992"/>00992 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AE9&#32;RID:&#32;2793</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00993"/>00993 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_point">Point</link>&#32;HitPoint&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_point">Point</link>();
+<anchor xml:id="__scene_8cs_source_1l00994"/>00994 
+<anchor xml:id="__scene_8cs_source_1l00995"/>00995 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AEA&#32;RID:&#32;2794</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00996"/>00996 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_point">Point</link>&#32;ClickPoint&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_point">Point</link>();
+<anchor xml:id="__scene_8cs_source_1l00997"/>00997 
+<anchor xml:id="__scene_8cs_source_1l00998"/>00998 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AEB&#32;RID:&#32;2795</emphasis>
+<anchor xml:id="__scene_8cs_source_1l00999"/>00999 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;skipAnime;
+<anchor xml:id="__scene_8cs_source_1l01000"/>01000 
+<anchor xml:id="__scene_8cs_source_1l01001"/>01001 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AEC&#32;RID:&#32;2796</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01002"/>01002 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Transform&#32;transFocus;
+<anchor xml:id="__scene_8cs_source_1l01003"/>01003 
+<anchor xml:id="__scene_8cs_source_1l01004"/>01004 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AED&#32;RID:&#32;2797</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01005"/>01005 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Transform&#32;transBlizzard;
+<anchor xml:id="__scene_8cs_source_1l01006"/>01006 
+<anchor xml:id="__scene_8cs_source_1l01007"/>01007 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AEE&#32;RID:&#32;2798</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01008"/>01008 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Transform&#32;transAudio;
+<anchor xml:id="__scene_8cs_source_1l01009"/>01009 
+<anchor xml:id="__scene_8cs_source_1l01010"/>01010 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AEF&#32;RID:&#32;2799</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01011"/>01011 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;AudioListener&#32;audioListener;
+<anchor xml:id="__scene_8cs_source_1l01012"/>01012 
+<anchor xml:id="__scene_8cs_source_1l01013"/>01013 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AF0&#32;RID:&#32;2800</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01014"/>01014 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Camera&#32;cam;
+<anchor xml:id="__scene_8cs_source_1l01015"/>01015 
+<anchor xml:id="__scene_8cs_source_1l01016"/>01016 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AF1&#32;RID:&#32;2801</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01017"/>01017 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Camera&#32;camTreasure;
+<anchor xml:id="__scene_8cs_source_1l01018"/>01018 
+<anchor xml:id="__scene_8cs_source_1l01019"/>01019 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AF2&#32;RID:&#32;2802</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01020"/>01020 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_camera_support">CameraSupport</link>&#32;camSupport;
+<anchor xml:id="__scene_8cs_source_1l01021"/>01021 
+<anchor xml:id="__scene_8cs_source_1l01022"/>01022 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AF3&#32;RID:&#32;2803</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01023"/>01023 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_v_f_x">VFX</link>&#32;firefly;
+<anchor xml:id="__scene_8cs_source_1l01024"/>01024 
+<anchor xml:id="__scene_8cs_source_1l01025"/>01025 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AF4&#32;RID:&#32;2804</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01026"/>01026 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_v_f_x">VFX</link>&#32;fireflyNight;
+<anchor xml:id="__scene_8cs_source_1l01027"/>01027 
+<anchor xml:id="__scene_8cs_source_1l01028"/>01028 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AF5&#32;RID:&#32;2805</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01029"/>01029 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_v_f_x">VFX</link>&#32;star;
+<anchor xml:id="__scene_8cs_source_1l01030"/>01030 
+<anchor xml:id="__scene_8cs_source_1l01031"/>01031 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AF6&#32;RID:&#32;2806</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01032"/>01032 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;ParticleSystem&#32;rain;
+<anchor xml:id="__scene_8cs_source_1l01033"/>01033 
+<anchor xml:id="__scene_8cs_source_1l01034"/>01034 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AF7&#32;RID:&#32;2807</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01035"/>01035 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;ParticleSystem&#32;snow;
+<anchor xml:id="__scene_8cs_source_1l01036"/>01036 
+<anchor xml:id="__scene_8cs_source_1l01037"/>01037 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AF8&#32;RID:&#32;2808</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01038"/>01038 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;ParticleSystem&#32;ether;
+<anchor xml:id="__scene_8cs_source_1l01039"/>01039 
+<anchor xml:id="__scene_8cs_source_1l01040"/>01040 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AF9&#32;RID:&#32;2809</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01041"/>01041 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;ParticleSystem&#32;godray;
+<anchor xml:id="__scene_8cs_source_1l01042"/>01042 
+<anchor xml:id="__scene_8cs_source_1l01043"/>01043 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AFA&#32;RID:&#32;2810</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01044"/>01044 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;ParticleSystem&#32;godrayDust;
+<anchor xml:id="__scene_8cs_source_1l01045"/>01045 
+<anchor xml:id="__scene_8cs_source_1l01046"/>01046 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AFB&#32;RID:&#32;2811</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01047"/>01047 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;ParticleSystem&#32;blossom;
+<anchor xml:id="__scene_8cs_source_1l01048"/>01048 
+<anchor xml:id="__scene_8cs_source_1l01049"/>01049 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AFC&#32;RID:&#32;2812</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01050"/>01050 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;ParticleSystem&#32;etherBlossom;
+<anchor xml:id="__scene_8cs_source_1l01051"/>01051 
+<anchor xml:id="__scene_8cs_source_1l01052"/>01052 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AFD&#32;RID:&#32;2813</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01053"/>01053 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;ParticleSystem[]&#32;blossoms;
+<anchor xml:id="__scene_8cs_source_1l01054"/>01054 
+<anchor xml:id="__scene_8cs_source_1l01055"/>01055 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AFE&#32;RID:&#32;2814</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01056"/>01056 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;ParticleSystem[]&#32;blizzards;
+<anchor xml:id="__scene_8cs_source_1l01057"/>01057 
+<anchor xml:id="__scene_8cs_source_1l01058"/>01058 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000AFF&#32;RID:&#32;2815</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01059"/>01059 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;FlockController&#32;flock;
+<anchor xml:id="__scene_8cs_source_1l01060"/>01060 
+<anchor xml:id="__scene_8cs_source_1l01061"/>01061 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B00&#32;RID:&#32;2816</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01062"/>01062 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;MeshRenderer&#32;skyBG;
+<anchor xml:id="__scene_8cs_source_1l01063"/>01063 
+<anchor xml:id="__scene_8cs_source_1l01064"/>01064 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B01&#32;RID:&#32;2817</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01065"/>01065 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;MeshRenderer&#32;skyPlane;
+<anchor xml:id="__scene_8cs_source_1l01066"/>01066 
+<anchor xml:id="__scene_8cs_source_1l01067"/>01067 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B02&#32;RID:&#32;2818</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01068"/>01068 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_scene_profile">SceneProfile</link>&#32;profile;
+<anchor xml:id="__scene_8cs_source_1l01069"/>01069 
+<anchor xml:id="__scene_8cs_source_1l01070"/>01070 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B03&#32;RID:&#32;2819</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01071"/>01071 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;CameraFilterPack_Atmosphere_Rain&#32;filterRain;
+<anchor xml:id="__scene_8cs_source_1l01072"/>01072 
+<anchor xml:id="__scene_8cs_source_1l01073"/>01073 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B04&#32;RID:&#32;2820</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01074"/>01074 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_action_mode">ActionMode</link>&#32;actionMode;
+<anchor xml:id="__scene_8cs_source_1l01075"/>01075 
+<anchor xml:id="__scene_8cs_source_1l01076"/>01076 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B05&#32;RID:&#32;2821</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01077"/>01077 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;SoundSource&#32;sfxRain;
+<anchor xml:id="__scene_8cs_source_1l01078"/>01078 
+<anchor xml:id="__scene_8cs_source_1l01079"/>01079 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B06&#32;RID:&#32;2822</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01080"/>01080 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;SoundSource&#32;sfxWind;
+<anchor xml:id="__scene_8cs_source_1l01081"/>01081 
+<anchor xml:id="__scene_8cs_source_1l01082"/>01082 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B07&#32;RID:&#32;2823</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01083"/>01083 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;SoundSource&#32;sfxSea;
+<anchor xml:id="__scene_8cs_source_1l01084"/>01084 
+<anchor xml:id="__scene_8cs_source_1l01085"/>01085 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B08&#32;RID:&#32;2824</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01086"/>01086 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;SoundSource&#32;sfxFire;
+<anchor xml:id="__scene_8cs_source_1l01087"/>01087 
+<anchor xml:id="__scene_8cs_source_1l01088"/>01088 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B09&#32;RID:&#32;2825</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01089"/>01089 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;SoundSource&#32;sfxEther;
+<anchor xml:id="__scene_8cs_source_1l01090"/>01090 
+<anchor xml:id="__scene_8cs_source_1l01091"/>01091 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B0A&#32;RID:&#32;2826</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01092"/>01092 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_game_screen">GameScreen</link>&#32;screenElin;
+<anchor xml:id="__scene_8cs_source_1l01093"/>01093 
+<anchor xml:id="__scene_8cs_source_1l01094"/>01094 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B0B&#32;RID:&#32;2827</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01095"/>01095 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_game_screen_elona">GameScreenElona</link>&#32;screenElona;
+<anchor xml:id="__scene_8cs_source_1l01096"/>01096 
+<anchor xml:id="__scene_8cs_source_1l01097"/>01097 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B0C&#32;RID:&#32;2828</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01098"/>01098 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_game_screen_no_map">GameScreenNoMap</link>&#32;screenNoMap;
+<anchor xml:id="__scene_8cs_source_1l01099"/>01099 
+<anchor xml:id="__scene_8cs_source_1l01100"/>01100 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B0D&#32;RID:&#32;2829</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01101"/>01101 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;PopperManager&#32;popper;
+<anchor xml:id="__scene_8cs_source_1l01102"/>01102 
+<anchor xml:id="__scene_8cs_source_1l01103"/>01103 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B0E&#32;RID:&#32;2830</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01104"/>01104 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_elo_map_actor">EloMapActor</link>&#32;elomapActor;
+<anchor xml:id="__scene_8cs_source_1l01105"/>01105 
+<anchor xml:id="__scene_8cs_source_1l01106"/>01106 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B0F&#32;RID:&#32;2831</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01107"/>01107 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;SpriteRenderer&#32;srTarget;
+<anchor xml:id="__scene_8cs_source_1l01108"/>01108 
+<anchor xml:id="__scene_8cs_source_1l01109"/>01109 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B10&#32;RID:&#32;2832</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01110"/>01110 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Tileset&#32;tileset;
+<anchor xml:id="__scene_8cs_source_1l01111"/>01111 
+<anchor xml:id="__scene_8cs_source_1l01112"/>01112 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B11&#32;RID:&#32;2833</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01113"/>01113 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;ParticleSystem&#32;psFoot;
+<anchor xml:id="__scene_8cs_source_1l01114"/>01114 
+<anchor xml:id="__scene_8cs_source_1l01115"/>01115 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B12&#32;RID:&#32;2834</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01116"/>01116 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;ParticleSystem&#32;psSmoke;
+<anchor xml:id="__scene_8cs_source_1l01117"/>01117 
+<anchor xml:id="__scene_8cs_source_1l01118"/>01118 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B13&#32;RID:&#32;2835</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01119"/>01119 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;ParticleSystem&#32;psRainSplash;
+<anchor xml:id="__scene_8cs_source_1l01120"/>01120 
+<anchor xml:id="__scene_8cs_source_1l01121"/>01121 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B14&#32;RID:&#32;2836</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01122"/>01122 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;ParticleSystem&#32;psRainSplashWater;
+<anchor xml:id="__scene_8cs_source_1l01123"/>01123 
+<anchor xml:id="__scene_8cs_source_1l01124"/>01124 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B15&#32;RID:&#32;2837</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01125"/>01125 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_mesh_pass">MeshPass</link>[]&#32;passes;
+<anchor xml:id="__scene_8cs_source_1l01126"/>01126 
+<anchor xml:id="__scene_8cs_source_1l01127"/>01127 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B16&#32;RID:&#32;2838</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01128"/>01128 &#32;&#32;&#32;&#32;[NonSerialized]
+<anchor xml:id="__scene_8cs_source_1l01129"/>01129 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_game_setting_1_1_render_setting_1_1_map_b_g_setting">GameSetting.RenderSetting.MapBGSetting</link>&#32;bg;
+<anchor xml:id="__scene_8cs_source_1l01130"/>01130 
+<anchor xml:id="__scene_8cs_source_1l01131"/>01131 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B17&#32;RID:&#32;2839</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01132"/>01132 &#32;&#32;&#32;&#32;[NonSerialized]
+<anchor xml:id="__scene_8cs_source_1l01133"/>01133 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Scene.Mode&#32;mode;
+<anchor xml:id="__scene_8cs_source_1l01134"/>01134 
+<anchor xml:id="__scene_8cs_source_1l01135"/>01135 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B18&#32;RID:&#32;2840</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01136"/>01136 &#32;&#32;&#32;&#32;[NonSerialized]
+<anchor xml:id="__scene_8cs_source_1l01137"/>01137 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;timeRatio;
+<anchor xml:id="__scene_8cs_source_1l01138"/>01138 
+<anchor xml:id="__scene_8cs_source_1l01139"/>01139 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B19&#32;RID:&#32;2841</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01140"/>01140 &#32;&#32;&#32;&#32;[NonSerialized]
+<anchor xml:id="__scene_8cs_source_1l01141"/>01141 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;GameObject&gt;&#32;loadedPrefabs&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;GameObject&gt;();
+<anchor xml:id="__scene_8cs_source_1l01142"/>01142 
+<anchor xml:id="__scene_8cs_source_1l01143"/>01143 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B1A&#32;RID:&#32;2842</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01144"/>01144 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_point_target">PointTarget</link>&#32;mouseTarget&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_point_target">PointTarget</link>();
+<anchor xml:id="__scene_8cs_source_1l01145"/>01145 
+<anchor xml:id="__scene_8cs_source_1l01146"/>01146 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B1B&#32;RID:&#32;2843</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01147"/>01147 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;ISyncScreen&gt;&#32;syncList&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;ISyncScreen&gt;();
+<anchor xml:id="__scene_8cs_source_1l01148"/>01148 
+<anchor xml:id="__scene_8cs_source_1l01149"/>01149 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B1C&#32;RID:&#32;2844</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01150"/>01150 &#32;&#32;&#32;&#32;[NonSerialized]
+<anchor xml:id="__scene_8cs_source_1l01151"/>01151 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;paused;
+<anchor xml:id="__scene_8cs_source_1l01152"/>01152 
+<anchor xml:id="__scene_8cs_source_1l01153"/>01153 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B1D&#32;RID:&#32;2845</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01154"/>01154 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;syncFrame;
+<anchor xml:id="__scene_8cs_source_1l01155"/>01155 
+<anchor xml:id="__scene_8cs_source_1l01156"/>01156 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B1E&#32;RID:&#32;2846</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01157"/>01157 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Dictionary&lt;Card,&#32;ActorEx&gt;&#32;dictActorEx&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Dictionary&lt;Card,&#32;ActorEx&gt;();
+<anchor xml:id="__scene_8cs_source_1l01158"/>01158 
+<anchor xml:id="__scene_8cs_source_1l01159"/>01159 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000B1F&#32;RID:&#32;2847</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01160"/>01160 &#32;&#32;&#32;&#32;[NonSerialized]
+<anchor xml:id="__scene_8cs_source_1l01161"/>01161 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;hideBalloon;
+<anchor xml:id="__scene_8cs_source_1l01162"/>01162 
+<anchor xml:id="__scene_8cs_source_1l01163"/>01163 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0200088B&#32;RID:&#32;2187</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01164"/>01164 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">enum</emphasis>&#32;Mode
+<anchor xml:id="__scene_8cs_source_1l01165"/>01165 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__scene_8cs_source_1l01166"/>01166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002482&#32;RID:&#32;9346</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01167"/>01167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;None,
+<anchor xml:id="__scene_8cs_source_1l01168"/>01168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002483&#32;RID:&#32;9347</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01169"/>01169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Title,
+<anchor xml:id="__scene_8cs_source_1l01170"/>01170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002484&#32;RID:&#32;9348</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01171"/>01171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;StartGame,
+<anchor xml:id="__scene_8cs_source_1l01172"/>01172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002485&#32;RID:&#32;9349</emphasis>
+<anchor xml:id="__scene_8cs_source_1l01173"/>01173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_zone">Zone</link>
+<anchor xml:id="__scene_8cs_source_1l01174"/>01174 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__scene_8cs_source_1l01175"/>01175 }
+</programlisting></section>

@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__content_quest_8cs_source" xml:lang="en-US">
+<title>ContentQuest.cs</title>
+<indexterm><primary>Elin/ContentQuest.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__content_quest_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__content_quest_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__content_quest_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>UnityEngine.UI;
+<anchor xml:id="__content_quest_8cs_source_1l00004"/>00004 
+<anchor xml:id="__content_quest_8cs_source_1l00005"/>00005 <emphasis role="comment">//&#32;Token:&#32;0x02000589&#32;RID:&#32;1417</emphasis>
+<anchor xml:id="__content_quest_8cs_source_1l00006"/><link linkend="_class_content_quest">00006</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_content_quest">ContentQuest</link>&#32;:&#32;<link linkend="_class_e_content">EContent</link>
+<anchor xml:id="__content_quest_8cs_source_1l00007"/>00007 {
+<anchor xml:id="__content_quest_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600270F&#32;RID:&#32;9999&#32;RVA:&#32;0x000DD850&#32;File&#32;Offset:&#32;0x000DBA50</emphasis>
+<anchor xml:id="__content_quest_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnSwitchContent(<emphasis role="keywordtype">int</emphasis>&#32;idTab)
+<anchor xml:id="__content_quest_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list.sortMode&#32;=&#32;UIList.SortMode.ByValue;
+<anchor xml:id="__content_quest_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BaseList&#32;baseList&#32;=&#32;this.list;
+<anchor xml:id="__content_quest_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIList.Callback&lt;<link linkend="_class_quest">Quest</link>,&#32;<link linkend="_class_item_general">ItemGeneral</link>&gt;&#32;callback&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;UIList.Callback&lt;<link linkend="_class_quest">Quest</link>,&#32;<link linkend="_class_item_general">ItemGeneral</link>&gt;();
+<anchor xml:id="__content_quest_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onInstantiate&#32;=&#32;delegate(<link linkend="_class_quest">Quest</link>&#32;a,&#32;<link linkend="_class_item_general">ItemGeneral</link>&#32;b)
+<anchor xml:id="__content_quest_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.SetSound(<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__content_quest_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;text&#32;=&#32;a.GetTitle();
+<anchor xml:id="__content_quest_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.debug.showExtra)
+<anchor xml:id="__content_quest_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text&#32;=&#32;text&#32;+&#32;<emphasis role="stringliteral">&quot;(&quot;</emphasis>&#32;+&#32;a.phase.ToString()&#32;+&#32;<emphasis role="stringliteral">&quot;)&quot;</emphasis>;
+<anchor xml:id="__content_quest_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_quest_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.button1.mainText.SetText(a.TitlePrefix&#32;+&#32;text);
+<anchor xml:id="__content_quest_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.SetSubText(a.TextDeadline,&#32;260,&#32;FontColor.Default,&#32;TextAnchor.MiddleRight);
+<anchor xml:id="__content_quest_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.button2.SetActive(<link linkend="_class_e_class">EClass</link>.debug.enable&#32;&amp;&amp;&#32;a.CanAutoAdvance);
+<anchor xml:id="__content_quest_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.debug.enable&#32;&amp;&amp;&#32;a.CanAutoAdvance)
+<anchor xml:id="__content_quest_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.button2.SetOnClick(delegate
+<anchor xml:id="__content_quest_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(a.task&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__content_quest_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;a.CompleteTask();
+<anchor xml:id="__content_quest_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_quest_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(a&#32;is&#32;<link linkend="_class_quest_sequence">QuestSequence</link>)
+<anchor xml:id="__content_quest_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;a.NextPhase();
+<anchor xml:id="__content_quest_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_quest_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__content_quest_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;a.Complete();
+<anchor xml:id="__content_quest_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_quest_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list.List(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__content_quest_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__content_quest_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_quest_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.button3.SetOnClick(delegate
+<anchor xml:id="__content_quest_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;a.track&#32;=&#32;!a.track;
+<anchor xml:id="__content_quest_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_widget_quest_tracker">WidgetQuestTracker</link>.Instance)
+<anchor xml:id="__content_quest_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EClass.player.questTracker&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__content_quest_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.ui.widgets.ActivateWidget(<emphasis role="stringliteral">&quot;QuestTracker&quot;</emphasis>);
+<anchor xml:id="__content_quest_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_widget_hotbar">WidgetHotbar</link>.RefreshButtons();
+<anchor xml:id="__content_quest_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_quest_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_widget_quest_tracker">WidgetQuestTracker</link>.Instance.Refresh();
+<anchor xml:id="__content_quest_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list.Select(a,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__content_quest_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SelectQuest(a);
+<anchor xml:id="__content_quest_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshTrackButtons();
+<anchor xml:id="__content_quest_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__content_quest_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__content_quest_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onClick&#32;=&#32;delegate(<link linkend="_class_quest">Quest</link>&#32;a,&#32;<link linkend="_class_item_general">ItemGeneral</link>&#32;b)
+<anchor xml:id="__content_quest_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SelectQuest(a);
+<anchor xml:id="__content_quest_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__content_quest_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onList&#32;=&#32;delegate(UIList.SortMode&#32;m)
+<anchor xml:id="__content_quest_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_quest">Quest</link>&#32;o&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_e_class">EClass</link>.game.quests.list)
+<anchor xml:id="__content_quest_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list.Add(o);
+<anchor xml:id="__content_quest_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_quest_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__content_quest_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onSort&#32;=&#32;((<link linkend="_class_quest">Quest</link>&#32;a,&#32;UIList.SortMode&#32;m)&#32;=&gt;&#32;-<link linkend="_class_e_class">EClass</link>.sources.quests.rows.IndexOf(a.source));
+<anchor xml:id="__content_quest_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;baseList.callbacks&#32;=&#32;callback;
+<anchor xml:id="__content_quest_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list.List(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__content_quest_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.SelectQuest(this.list.items[0]&#32;as&#32;<link linkend="_class_quest">Quest</link>);
+<anchor xml:id="__content_quest_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshTrackButtons();
+<anchor xml:id="__content_quest_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_quest_8cs_source_1l00076"/>00076 
+<anchor xml:id="__content_quest_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002710&#32;RID:&#32;10000&#32;RVA:&#32;0x000DD904&#32;File&#32;Offset:&#32;0x000DBB04</emphasis>
+<anchor xml:id="__content_quest_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshTrackButtons()
+<anchor xml:id="__content_quest_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(UIList.ButtonPair&#32;buttonPair&#32;in&#32;<emphasis role="keyword">this</emphasis>.list.buttons)
+<anchor xml:id="__content_quest_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_quest">Quest</link>&#32;quest&#32;=&#32;buttonPair.obj&#32;as&#32;<link linkend="_class_quest">Quest</link>;
+<anchor xml:id="__content_quest_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(buttonPair.component&#32;as&#32;<link linkend="_class_item_general">ItemGeneral</link>).button3.icon.SetActive(quest.track);
+<anchor xml:id="__content_quest_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_quest_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_quest_8cs_source_1l00086"/>00086 
+<anchor xml:id="__content_quest_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002711&#32;RID:&#32;10001&#32;RVA:&#32;0x000DD980&#32;File&#32;Offset:&#32;0x000DBB80</emphasis>
+<anchor xml:id="__content_quest_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SelectQuest(<link linkend="_class_quest">Quest</link>&#32;q)
+<anchor xml:id="__content_quest_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.buttonAbandon.SetActive(q.CanAbandon);
+<anchor xml:id="__content_quest_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Action&#32;&lt;&gt;9__1;
+<anchor xml:id="__content_quest_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.buttonAbandon.SetOnClick(delegate
+<anchor xml:id="__content_quest_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;langDetail&#32;=&#32;<emphasis role="stringliteral">&quot;dialog_abandonQuest&quot;</emphasis>;
+<anchor xml:id="__content_quest_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Action&#32;actionYes;
+<anchor xml:id="__content_quest_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((actionYes&#32;=&#32;&lt;&gt;9__1)&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__content_quest_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;actionYes&#32;=&#32;(&lt;&gt;9__1&#32;=&#32;delegate()
+<anchor xml:id="__content_quest_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_msg">Msg</link>.Say(<emphasis role="stringliteral">&quot;questAbandon&quot;</emphasis>,&#32;q.GetTitle(),&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__content_quest_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;q.Fail();
+<anchor xml:id="__content_quest_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnSwitchContent(0);
+<anchor xml:id="__content_quest_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__content_quest_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_quest_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_dialog">Dialog</link>.YesNo(langDetail,&#32;actionYes,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="stringliteral">&quot;yes&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;no&quot;</emphasis>);
+<anchor xml:id="__content_quest_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__content_quest_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textClient.text&#32;=&#32;q.person.NameBraced;
+<anchor xml:id="__content_quest_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textReward.SetText(q.GetRewardText());
+<anchor xml:id="__content_quest_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;text&#32;=&#32;q.GetDetail(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__content_quest_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>.debug.showExtra&#32;&amp;&amp;&#32;q.person&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__content_quest_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text&#32;+=&#32;Environment.NewLine;
+<anchor xml:id="__content_quest_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>[]&#32;array&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>[7];
+<anchor xml:id="__content_quest_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array[0]&#32;=&#32;text;
+<anchor xml:id="__content_quest_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array[1]&#32;=&#32;q.person.id;
+<anchor xml:id="__content_quest_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array[2]&#32;=&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>;
+<anchor xml:id="__content_quest_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array[3]&#32;=&#32;q.person.name;
+<anchor xml:id="__content_quest_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array[4]&#32;=&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>;
+<anchor xml:id="__content_quest_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;5;
+<anchor xml:id="__content_quest_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_chara">Chara</link>&#32;chara&#32;=&#32;q.person.chara;
+<anchor xml:id="__content_quest_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array[num]&#32;=&#32;((chara&#32;!=&#32;<emphasis role="keyword">null</emphasis>)&#32;?&#32;chara.ToString()&#32;:&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__content_quest_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array[6]&#32;=&#32;Environment.NewLine;
+<anchor xml:id="__content_quest_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text&#32;=&#32;<emphasis role="keywordtype">string</emphasis>.Concat(array);
+<anchor xml:id="__content_quest_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_quest_deliver">QuestDeliver</link>&#32;questDeliver&#32;=&#32;q&#32;as&#32;<link linkend="_class_quest_deliver">QuestDeliver</link>;
+<anchor xml:id="__content_quest_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(questDeliver&#32;!=&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__content_quest_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__content_quest_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;str&#32;=&#32;text;
+<anchor xml:id="__content_quest_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;str2&#32;=&#32;questDeliver.uidDest.ToString();
+<anchor xml:id="__content_quest_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;str3&#32;=&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>;
+<anchor xml:id="__content_quest_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_chara">Chara</link>&#32;destChara&#32;=&#32;questDeliver.DestChara;
+<anchor xml:id="__content_quest_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text&#32;=&#32;str&#32;+&#32;str2&#32;+&#32;str3&#32;+&#32;((destChara&#32;!=&#32;<emphasis role="keyword">null</emphasis>)&#32;?&#32;destChara.ToString()&#32;:&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__content_quest_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_quest_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_quest_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textDetail.SetText(text);
+<anchor xml:id="__content_quest_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textHours.text&#32;=&#32;q.TextDeadline;
+<anchor xml:id="__content_quest_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Text&#32;text2&#32;=&#32;this.textZone;
+<anchor xml:id="__content_quest_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_zone">Zone</link>&#32;clientZone&#32;=&#32;q.ClientZone;
+<anchor xml:id="__content_quest_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;text2.text&#32;=&#32;(((clientZone&#32;!=&#32;<emphasis role="keyword">null</emphasis>)&#32;?&#32;clientZone.Name&#32;:&#32;<emphasis role="keyword">null</emphasis>)&#32;??&#32;<emphasis role="stringliteral">&quot;-&quot;</emphasis>);
+<anchor xml:id="__content_quest_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.portrait.SetPerson(q.person);
+<anchor xml:id="__content_quest_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RebuildLayout(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__content_quest_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__content_quest_8cs_source_1l00142"/>00142 
+<anchor xml:id="__content_quest_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001598&#32;RID:&#32;5528</emphasis>
+<anchor xml:id="__content_quest_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIList&#32;list;
+<anchor xml:id="__content_quest_8cs_source_1l00145"/>00145 
+<anchor xml:id="__content_quest_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001599&#32;RID:&#32;5529</emphasis>
+<anchor xml:id="__content_quest_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textClient;
+<anchor xml:id="__content_quest_8cs_source_1l00148"/>00148 
+<anchor xml:id="__content_quest_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400159A&#32;RID:&#32;5530</emphasis>
+<anchor xml:id="__content_quest_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textTitle;
+<anchor xml:id="__content_quest_8cs_source_1l00151"/>00151 
+<anchor xml:id="__content_quest_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400159B&#32;RID:&#32;5531</emphasis>
+<anchor xml:id="__content_quest_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textDetail;
+<anchor xml:id="__content_quest_8cs_source_1l00154"/>00154 
+<anchor xml:id="__content_quest_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400159C&#32;RID:&#32;5532</emphasis>
+<anchor xml:id="__content_quest_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textHours;
+<anchor xml:id="__content_quest_8cs_source_1l00157"/>00157 
+<anchor xml:id="__content_quest_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400159D&#32;RID:&#32;5533</emphasis>
+<anchor xml:id="__content_quest_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textNote;
+<anchor xml:id="__content_quest_8cs_source_1l00160"/>00160 
+<anchor xml:id="__content_quest_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400159E&#32;RID:&#32;5534</emphasis>
+<anchor xml:id="__content_quest_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textReward;
+<anchor xml:id="__content_quest_8cs_source_1l00163"/>00163 
+<anchor xml:id="__content_quest_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400159F&#32;RID:&#32;5535</emphasis>
+<anchor xml:id="__content_quest_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textZone;
+<anchor xml:id="__content_quest_8cs_source_1l00166"/>00166 
+<anchor xml:id="__content_quest_8cs_source_1l00167"/>00167 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040015A0&#32;RID:&#32;5536</emphasis>
+<anchor xml:id="__content_quest_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_portrait">Portrait</link>&#32;portrait;
+<anchor xml:id="__content_quest_8cs_source_1l00169"/>00169 
+<anchor xml:id="__content_quest_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040015A1&#32;RID:&#32;5537</emphasis>
+<anchor xml:id="__content_quest_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIButton&#32;buttonAbandon;
+<anchor xml:id="__content_quest_8cs_source_1l00172"/>00172 }
+</programlisting></section>

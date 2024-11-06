@@ -1,0 +1,69 @@
+\doxysection{Dropdown\+Recipe.\+cs}
+\hypertarget{_dropdown_recipe_8cs_source}{}\label{_dropdown_recipe_8cs_source}\index{Elin/DropdownRecipe.cs@{Elin/DropdownRecipe.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x020004F8\ RID:\ 1272}}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00005}\mbox{\hyperlink{class_dropdown_recipe}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_dropdown_recipe}{DropdownRecipe}}\ :\ UIDropdown}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060021F0\ RID:\ 8688\ RVA:\ 0x000BC284\ File\ Offset:\ 0x000BA484}}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshLabel()}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ this.textLabel.SetText(this.GetLabel(this.ingredient.thing,\ \textcolor{keyword}{this}.recipe.source.colorIng\ ==\ \textcolor{keyword}{this}.recipe.ingredients.IndexOf(\textcolor{keyword}{this}.ingredient)));}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00011}00011\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060021F1\ RID:\ 8689\ RVA:\ 0x000BC2D8\ File\ Offset:\ 0x000BA4D8}}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ GetLabel(\mbox{\hyperlink{class_thing}{Thing}}\ t,\ \textcolor{keywordtype}{bool}\ showColor)}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{string}.Concat(\textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ <color="{}},}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dropdown_recipe}{DropdownRecipe}}.colorCost.ToHex(),}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}>"{}},}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}noMaterial"{}}.lang(),}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}</color>"{}}}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_hit_summary}{HitSummary}}\ summary\ =\ Core.Instance.screen.tileSelector.summary;}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ t.Num;}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{string}.Concat(\textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ showColor\ ?\ (\textcolor{stringliteral}{"{}<color="{}}\ +\ t.material.matColor.ToHex()\ +\ \textcolor{stringliteral}{"{}>■</color>\ "{}})\ :\ \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ t.NameSimple,}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ ("{}},}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ num.ToString(),}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{})"{}}}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \})\ +\ ((summary.countValid\ ==\ 0)\ ?\ \textcolor{stringliteral}{"{}"{}}\ :\ \textcolor{keywordtype}{string}.Concat(\textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ <color="{}},}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ DropdownRecipe.colorCost.ToHex(),}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}>\ -\/"{}},}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ (this.ingredient.req\ *\ summary.countValid).ToString(),}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}</color>"{}}}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \}));}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400117F\ RID:\ 4479}}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ Color\ colorCost;}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001180\ RID:\ 4480}}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00050}00050\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ Color\ colorPredict;}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001181\ RID:\ 4481}}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_recipe}{Recipe}}\ recipe;}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001182\ RID:\ 4482}}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textLabel;}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001183\ RID:\ 4483}}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ orgLabel;}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001184\ RID:\ 4484}}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_recipe_1_1_ingredient}{Recipe.Ingredient}}\ ingredient;}
+\DoxyCodeLine{\Hypertarget{_dropdown_recipe_8cs_source_l00063}00063\ \}}
+
+\end{DoxyCode}

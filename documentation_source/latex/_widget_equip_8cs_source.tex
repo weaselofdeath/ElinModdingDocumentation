@@ -1,0 +1,151 @@
+\doxysection{Widget\+Equip.\+cs}
+\hypertarget{_widget_equip_8cs_source}{}\label{_widget_equip_8cs_source}\index{Elin/WidgetEquip.cs@{Elin/WidgetEquip.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x020005FB\ RID:\ 1531}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00006}\mbox{\hyperlink{class_widget_equip}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_widget_equip}{WidgetEquip}}\ :\ \mbox{\hyperlink{class_widget}{Widget}}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002A69\ RID:\ 10857\ RVA:\ 0x000EF14D\ File\ Offset:\ 0x000ED34D}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetDirty()}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ WidgetEquip.dirty\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002A6A\ RID:\ 10858\ RVA:\ 0x000EF158\ File\ Offset:\ 0x000ED358}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnActivate()}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ this.chara\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.pc;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ WidgetEquip.Instance\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_thing}{Thing}}\ thing\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_e_mono}{EMono}}.pc.things)}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (thing.trait\ is\ \mbox{\hyperlink{class_trait_tool_belt}{TraitToolBelt}})}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ base.AddLayer(\mbox{\hyperlink{class_layer_inventory}{LayerInventory}}.CreateContainer(thing),\ \textcolor{keyword}{this}.transLayer);}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ this.Rebuild();}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002A6B\ RID:\ 10859\ RVA:\ 0x000EF1E0\ File\ Offset:\ 0x000ED3E0}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Rebuild()}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ this.RefreshEquipment(this.listMain,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ this.RefreshEquipment(this.listEtc,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ WidgetEquip.dirty\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ this.RebuildLayout(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002A6C\ RID:\ 10860\ RVA:\ 0x000EF209\ File\ Offset:\ 0x000ED409}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ CheckDirty()}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00040}00040\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_widget_equip}{WidgetEquip}}.dirty)}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_Redraw();}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002A6D\ RID:\ 10861\ RVA:\ 0x000EF218\ File\ Offset:\ 0x000ED418}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00048}00048\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Redraw()}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00049}00049\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_widget_equip}{WidgetEquip}}.Instance)}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_widget_equip}{WidgetEquip}}.Instance.\_Redraw();}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002A6E\ RID:\ 10862\ RVA:\ 0x000EF230\ File\ Offset:\ 0x000ED430}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \_Redraw()}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00058}00058\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ WidgetEquip.dirty\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ this.listMain.Redraw();}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ this.listEtc.Redraw();}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002A6F\ RID:\ 10863\ RVA:\ 0x000EF250\ File\ Offset:\ 0x000ED450}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshEquipment(UIList\ list,\ \textcolor{keywordtype}{bool}\ etc\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00066}00066\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ list.Clear();}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ BaseList\ list2\ =\ list;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ UIList.Callback<\mbox{\hyperlink{class_body_slot}{BodySlot}},\ \mbox{\hyperlink{class_button_grid_drag}{ButtonGridDrag}}>\ callback\ =\ \textcolor{keyword}{new}\ UIList.Callback<\mbox{\hyperlink{class_body_slot}{BodySlot}},\ \mbox{\hyperlink{class_button_grid_drag}{ButtonGridDrag}}>();}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ callback.onInstantiate\ =\ delegate(\mbox{\hyperlink{class_body_slot}{BodySlot}}\ a,\ \mbox{\hyperlink{class_button_grid_drag}{ButtonGridDrag}}\ b)}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ b.SetBodySlot(a,\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_inv_owner_equip}{InvOwnerEquip}}(this.chara,\ a,\ \textcolor{keyword}{null},\ CurrencyType.None));}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ callback.onRedraw\ =\ delegate(\mbox{\hyperlink{class_body_slot}{BodySlot}}\ a,\ \mbox{\hyperlink{class_button_grid_drag}{ButtonGridDrag}}\ b,\ \textcolor{keywordtype}{int}\ i)}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ b.SetBodySlot(a,\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_inv_owner_equip}{InvOwnerEquip}}(this.chara,\ a,\ \textcolor{keyword}{null},\ CurrencyType.None));}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ callback.onSort\ =\ ((\mbox{\hyperlink{class_body_slot}{BodySlot}}\ a,\ UIList.SortMode\ b)\ =>\ -\/a.element.sort);}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ callback.onList\ =\ delegate(UIList.SortMode\ m)}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_body_slot}{BodySlot}}\ bodySlot\ \textcolor{keywordflow}{in}\ this.chara.body.slots)}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bodySlot.elementId\ !=\ 44)}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bodySlot.elementId\ ==\ 36\ ||\ bodySlot.elementId\ ==\ 31\ ||\ bodySlot.elementId\ ==\ 45)}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!etc)}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (etc)}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list.Add(bodySlot);}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num++;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list\ ==\ this.listMain)}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.grid.constraintCount\ =\ num\ /\ 12\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ list2.callbacks\ =\ callback;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ list.onAfterRedraw\ =\ delegate()}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_inventory}{LayerInventory}}.TryShowGuide(list);}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ list.sortMode\ =\ UIList.SortMode.ByNumber;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ list.List(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00113}00113\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00115}00115\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002A70\ RID:\ 10864\ RVA:\ 0x000EF320\ File\ Offset:\ 0x000ED520}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00116}00116\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ CanShowContextMenu()}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00117}00117\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}\ componentOf\ =\ InputModuleEX.GetComponentOf<\mbox{\hyperlink{class_button_grid}{ButtonGrid}}>();}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (!componentOf\ ||\ componentOf.card\ ==\ \textcolor{keyword}{null})\ \&\&\ base.CanShowContextMenu();}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00120}00120\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00122}00122\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040017EC\ RID:\ 6124}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00123}00123\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_widget_equip}{WidgetEquip}}\ Instance;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00125}00125\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040017ED\ RID:\ 6125}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00126}00126\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ dirty;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00128}00128\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040017EE\ RID:\ 6126}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00129}00129\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_thing}{Thing}}\ dragEquip;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00131}00131\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040017EF\ RID:\ 6127}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00132}00132\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ listMain;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00134}00134\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040017F0\ RID:\ 6128}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00135}00135\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ listEtc;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00137}00137\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040017F1\ RID:\ 6129}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00138}00138\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_chara}{Chara}}\ chara;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00140}00140\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040017F2\ RID:\ 6130}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00141}00141\ \ \ \ \ \textcolor{keyword}{public}\ RectTransform\ transLayer;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00143}00143\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040017F3\ RID:\ 6131}}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00144}00144\ \ \ \ \ \textcolor{keyword}{public}\ GridLayoutGroup\ grid;}
+\DoxyCodeLine{\Hypertarget{_widget_equip_8cs_source_l00145}00145\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,1457 @@
+.TH "Player" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Player
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBEClass\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBFlags\fP"
+.br
+.ti -1c
+.RI "class \fBPref\fP"
+.br
+.ti -1c
+.RI "class \fBReturnInfo\fP"
+.br
+.ti -1c
+.RI "class \fBStats\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBOnCreateGame\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnStartNewGame\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnLoad\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnBeforeSave\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnAdvanceRealHour\fP ()"
+.br
+.ti -1c
+.RI "void \fBRefreshDomain\fP ()"
+.br
+.ti -1c
+.RI "\fBElementContainer\fP \fBGetDomains\fP ()"
+.br
+.ti -1c
+.RI "Layer \fBSelectDomain\fP (Action onKill=null)"
+.br
+.ti -1c
+.RI "void \fBRefreshEmptyAlly\fP ()"
+.br
+.ti -1c
+.RI "void \fBGenerateBackgroundText\fP ()"
+.br
+.ti -1c
+.RI "string \fBGetBackgroundText\fP ()"
+.br
+.ti -1c
+.RI "void \fBEditBackgroundText\fP ()"
+.br
+.ti -1c
+.RI "void \fBCreateEquip\fP ()"
+.br
+.ti -1c
+.RI "void \fBDreamSpell\fP ()"
+.br
+.ti -1c
+.RI "void \fBSimulateFaction\fP ()"
+.br
+.ti -1c
+.RI "void \fBExitBorder\fP (\fBActPlan\fP p=null)"
+.br
+.ti -1c
+.RI "bool \fBCanExitBorder\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "void \fBOnExitBorder\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "void \fBEnterLocalZone\fP (bool encounter=false)"
+.br
+.ti -1c
+.RI "void \fBEnterLocalZone\fP (\fBPoint\fP p, \fBZoneTransition\fP trans=null, bool encounter=false)"
+.br
+.ti -1c
+.RI "void \fBMoveZone\fP (\fBZone\fP z)"
+.br
+.ti -1c
+.RI "void \fBAddInventory\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "void \fBEndTurn\fP (bool consume=true)"
+.br
+.ti -1c
+.RI "void \fBModFame\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBModKeyItem\fP (string alias, int num=1, bool msg=true)"
+.br
+.ti -1c
+.RI "void \fBModKeyItem\fP (int id, int num=1, bool msg=true)"
+.br
+.ti -1c
+.RI "int \fBCountKeyItem\fP (string alias)"
+.br
+.ti -1c
+.RI "int \fBCountKeyItem\fP (int id)"
+.br
+.ti -1c
+.RI "void \fBEquipTool\fP (\fBThing\fP a, bool setHotItem=true)"
+.br
+.ti -1c
+.RI "void \fBRefreshCurrentHotItem\fP ()"
+.br
+.ti -1c
+.RI "void \fBResetCurrentHotItem\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetCurrentHotItem\fP (\fBHotItem\fP item)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBFindAmmo\fP (\fBThing\fP weapon)"
+.br
+.ti -1c
+.RI "void \fBTryEquipBait\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHasValidRangedTarget\fP ()"
+.br
+.ti -1c
+.RI "bool \fBTargetRanged\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnAdvanceHour\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnAdvanceDay\fP ()"
+.br
+.ti -1c
+.RI "bool \fBTryAbortAutoCombat\fP ()"
+.br
+.ti -1c
+.RI "void \fBClearMapHighlights\fP ()"
+.br
+.ti -1c
+.RI "void \fBMarkMapHighlights\fP ()"
+.br
+.ti -1c
+.RI "bool \fBCanAcceptInput\fP ()"
+.br
+.ti -1c
+.RI "bool \fBCanSee\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "void \fBAddExpKnowledge\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBAddExpInfluence\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBModKarma\fP (int a)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBDropReward\fP (\fBThing\fP t, bool silent=false)"
+.br
+.ti -1c
+.RI "bool \fBTooHeavyToMove\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBPlayer\&.ReturnInfo\fP \fBreturnInfo\fP"
+.br
+.ti -1c
+.RI "int \fBuidChara\fP"
+.br
+.ti -1c
+.RI "int \fBuidSpawnZone\fP"
+.br
+.ti -1c
+.RI "int \fBtutorialStep\fP"
+.br
+.ti -1c
+.RI "int \fBkarma\fP"
+.br
+.ti -1c
+.RI "int \fBfame\fP"
+.br
+.ti -1c
+.RI "int \fBexpKnowledge\fP"
+.br
+.ti -1c
+.RI "int \fBexpInfluence\fP"
+.br
+.ti -1c
+.RI "int \fBdateTravel\fP"
+.br
+.ti -1c
+.RI "int \fBdistanceTravel\fP"
+.br
+.ti -1c
+.RI "int \fBuidLastTravelZone\fP"
+.br
+.ti -1c
+.RI "int \fBuidLastZone\fP"
+.br
+.ti -1c
+.RI "int \fBuidLastShippedZone\fP"
+.br
+.ti -1c
+.RI "int \fBtotalFeat\fP"
+.br
+.ti -1c
+.RI "int \fBtaxBills\fP"
+.br
+.ti -1c
+.RI "int \fBunpaidBill\fP"
+.br
+.ti -1c
+.RI "int \fBbankMoney\fP"
+.br
+.ti -1c
+.RI "int \fBholyWell\fP"
+.br
+.ti -1c
+.RI "int \fBsafeTravel\fP"
+.br
+.ti -1c
+.RI "int \fBhotbarPage\fP"
+.br
+.ti -1c
+.RI "int \fBlittle_dead\fP"
+.br
+.ti -1c
+.RI "int \fBlittle_saved\fP"
+.br
+.ti -1c
+.RI "int \fBextraTax\fP"
+.br
+.ti -1c
+.RI "int \fBlastFelmeraReward\fP"
+.br
+.ti -1c
+.RI "int \fBuidLastTown\fP"
+.br
+.ti -1c
+.RI "int \fBseedShrine\fP"
+.br
+.ti -1c
+.RI "int \fBseedChest\fP"
+.br
+.ti -1c
+.RI "int \fBdebt\fP"
+.br
+.ti -1c
+.RI "float \fBangle\fP"
+.br
+.ti -1c
+.RI "bool \fBhasNewQuest\fP"
+.br
+.ti -1c
+.RI "bool \fBdailyGacha\fP"
+.br
+.ti -1c
+.RI "bool \fBuseSubWidgetTheme\fP"
+.br
+.ti -1c
+.RI "bool \fBwellWished\fP"
+.br
+.ti -1c
+.RI "bool \fBprayed\fP"
+.br
+.ti -1c
+.RI "bool \fBquestTracker\fP"
+.br
+.ti -1c
+.RI "bool \fBshowShippingResult\fP"
+.br
+.ti -1c
+.RI "bool \fBisEditor\fP"
+.br
+.ti -1c
+.RI "string \fBtitle\fP"
+.br
+.ti -1c
+.RI "string \fBmemo\fP = ''"
+.br
+.ti -1c
+.RI "\fBPlayer\&.Pref\fP \fBpref\fP = new \fBPlayer\&.Pref\fP()"
+.br
+.ti -1c
+.RI "\fBPlayer\&.Stats\fP \fBstats\fP = new \fBPlayer\&.Stats\fP()"
+.br
+.ti -1c
+.RI "\fBNumLogManager\fP \fBnums\fP = new \fBNumLogManager\fP()"
+.br
+.ti -1c
+.RI "\fBKnowledgeManager\fP \fBknowledges\fP = new \fBKnowledgeManager\fP()"
+.br
+.ti -1c
+.RI "\fBPopupManager\fP \fBpopups\fP = new \fBPopupManager\fP()"
+.br
+.ti -1c
+.RI "\fBWidgetManager\&.SaveData\fP \fBmainWidgets\fP"
+.br
+.ti -1c
+.RI "\fBWidgetManager\&.SaveData\fP \fBsubWidgets\fP"
+.br
+.ti -1c
+.RI "\fBLayerAbility\&.Config\fP \fBlayerAbilityConfig\fP = new \fBLayerAbility\&.Config\fP()"
+.br
+.ti -1c
+.RI "Dictionary< string, int > \fBdialogFlags\fP = new Dictionary<string, int>()"
+.br
+.ti -1c
+.RI "Dictionary< string, string > \fBhangIcons\fP = new Dictionary<string, string>()"
+.br
+.ti -1c
+.RI "Dictionary< string, \fBKnownSong\fP > \fBknownSongs\fP = new Dictionary<string, \fBKnownSong\fP>()"
+.br
+.ti -1c
+.RI "HashSet< string > \fBtrackedCategories\fP = new HashSet<string>()"
+.br
+.ti -1c
+.RI "HashSet< string > \fBtrackedCards\fP = new HashSet<string>()"
+.br
+.ti -1c
+.RI "HashSet< int > \fBtrackedElements\fP = new HashSet<int>()"
+.br
+.ti -1c
+.RI "HashSet< int > \fBknownBGMs\fP = new HashSet<int>()"
+.br
+.ti -1c
+.RI "HashSet< int > \fBfavAbility\fP = new HashSet<int>()"
+.br
+.ti -1c
+.RI "HashSet< int > \fBsketches\fP = new HashSet<int>()"
+.br
+.ti -1c
+.RI "HashSet< int > \fBdoneBackers\fP = new HashSet<int>()"
+.br
+.ti -1c
+.RI "HashSet< int > \fBknownCraft\fP = new HashSet<int>()"
+.br
+.ti -1c
+.RI "List< int > \fBdomains\fP = new List<int>()"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBzone\fP"
+.br
+.ti -1c
+.RI "\fBHotbarManager\fP \fBhotbars\fP = new \fBHotbarManager\fP()"
+.br
+.ti -1c
+.RI "\fBChara\fP \fB_agent\fP"
+.br
+.ti -1c
+.RI "\fBHoard\fP \fBhoard\fP = new \fBHoard\fP()"
+.br
+.ti -1c
+.RI "\fBPlayer\&.Flags\fP \fBflags\fP = new \fBPlayer\&.Flags\fP()"
+.br
+.ti -1c
+.RI "\fBRecipeManager\fP \fBrecipes\fP = new \fBRecipeManager\fP()"
+.br
+.ti -1c
+.RI "\fBHotItem\fP \fBcurrentHotItem\fP = new \fBHotItemNoItem\fP()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBlastZonePos\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBeqBait\fP"
+.br
+.ti -1c
+.RI "Dictionary< string, Window\&.SaveData > \fBdataWindow\fP"
+.br
+.ti -1c
+.RI "\fBCinemaConfig\fP \fBcinemaConfig\fP = new \fBCinemaConfig\fP()"
+.br
+.ti -1c
+.RI "\fBCodexManager\fP \fBcodex\fP = new \fBCodexManager\fP()"
+.br
+.ti -1c
+.RI "Dictionary< int, int > \fBkeyItems\fP = new Dictionary<int, int>()"
+.br
+.ti -1c
+.RI "List< int > \fBuidPickOnLoad\fP = new List<int>()"
+.br
+.ti -1c
+.RI "List< \fBShippingResult\fP > \fBshippingResults\fP = new List<\fBShippingResult\fP>()"
+.br
+.ti -1c
+.RI "Dictionary< string, HashSet< string > > \fBnoRestocks\fP = new Dictionary<string, HashSet<string>>()"
+.br
+.ti -1c
+.RI "Window\&.SaveData \fBwindowAllyInv\fP"
+.br
+.ti -1c
+.RI "\fBZoneTransition\fP \fBlastTransition\fP"
+.br
+.ti -1c
+.RI "List< \fBPoint\fP > \fBlastMarkedHighlights\fP = new List<\fBPoint\fP>()"
+.br
+.ti -1c
+.RI "\fBHotItem\fP \fBlastHotItem\fP"
+.br
+.ti -1c
+.RI "\fBHotItem\fP \fBhotItemToRestore\fP"
+.br
+.ti -1c
+.RI "bool \fBforceTalk\fP"
+.br
+.ti -1c
+.RI "bool \fBaltHeldPos\fP"
+.br
+.ti -1c
+.RI "bool \fBinstaComplete\fP = true"
+.br
+.ti -1c
+.RI "bool \fBregionMoveWarned\fP"
+.br
+.ti -1c
+.RI "bool \fBwaitingInput\fP"
+.br
+.ti -1c
+.RI "bool \fBwillEndTurn\fP"
+.br
+.ti -1c
+.RI "bool \fBwasDirtyWeight\fP"
+.br
+.ti -1c
+.RI "bool \fBdeathDialog\fP"
+.br
+.ti -1c
+.RI "bool \fBpreventDeathPenalty\fP"
+.br
+.ti -1c
+.RI "bool \fBdeathZoneMove\fP"
+.br
+.ti -1c
+.RI "bool \fBhaltMove\fP"
+.br
+.ti -1c
+.RI "bool \fBinvlunerable\fP"
+.br
+.ti -1c
+.RI "bool \fBwillAutoSave\fP"
+.br
+.ti -1c
+.RI "bool \fBsimulatingZone\fP"
+.br
+.ti -1c
+.RI "bool \fBisAutoFarming\fP"
+.br
+.ti -1c
+.RI "bool \fBenemySpotted\fP"
+.br
+.ti -1c
+.RI "string \fBdeathMsg\fP"
+.br
+.ti -1c
+.RI "int \fBcountNewline\fP"
+.br
+.ti -1c
+.RI "int \fBlightRadius\fP"
+.br
+.ti -1c
+.RI "int \fBlastTurn\fP"
+.br
+.ti -1c
+.RI "int \fBlastEmptyAlly\fP"
+.br
+.ti -1c
+.RI "float \fBlightPower\fP"
+.br
+.ti -1c
+.RI "float \fBbaseActTime\fP"
+.br
+.ti -1c
+.RI "float \fBpickupDelay\fP = 2f"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBchara\fP"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBfocusedchara\fP"
+.br
+.ti -1c
+.RI "\fBNoticeManager\fP \fBnotices\fP = new \fBNoticeManager\fP()"
+.br
+.ti -1c
+.RI "\fBQueueManager\fP \fBqueues\fP = new \fBQueueManager\fP()"
+.br
+.ti -1c
+.RI "\fBAct\fP \fBlastAct\fP"
+.br
+.ti -1c
+.RI "Vector2 \fBnextMove\fP"
+.br
+.ti -1c
+.RI "Vector3 \fBposition\fP"
+.br
+.ti -1c
+.RI "Action \fBonStartZone\fP"
+.br
+.ti -1c
+.RI "\fBPlayingSong\fP \fBplayingSong\fP"
+.br
+.ti -1c
+.RI "List< \fBChara\fP > \fBlistSummon\fP = new List<\fBChara\fP>()"
+.br
+.ti -1c
+.RI "int \fBtempFame\fP"
+.br
+.ti -1c
+.RI "int \fBautoCombatStartHP\fP"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBnextZone\fP"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBrenderThing\fP"
+.br
+.ti -1c
+.RI "\fBHotItemNoItem\fP \fBhotItemNoItem\fP = new \fBHotItemNoItem\fP()"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBtarget\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static int \fBseedHallucination\fP"
+.br
+.ti -1c
+.RI "static int \fBrealHour\fP"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBWidgetManager\&.SaveData\fP \fBwidgets\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBspawnZone\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBEnableDreamStory\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBLastTravelZone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBLastZone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBAgent\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBContainerSearchDistance\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBMaxAlly\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBMaxExpKnowledge\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBMaxExpInfluence\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMageGuildMember\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFighterGuildMember\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsThiefGuildMember\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMerchantGuildMember\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCriminal\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB12\fP of file \fBPlayer\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Player\&.AddExpInfluence (int a)"
+
+.PP
+Definition at line \fB1282\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.AddExpKnowledge (int a)"
+
+.PP
+Definition at line \fB1268\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.AddInventory (\fBCard\fP c)"
+
+.PP
+Definition at line \fB851\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.CanAcceptInput ()"
+
+.PP
+Definition at line \fB1231\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.CanExitBorder (\fBPoint\fP p)"
+
+.PP
+Definition at line \fB672\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.CanSee (\fBChara\fP c)"
+
+.PP
+Definition at line \fB1237\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.ClearMapHighlights ()"
+
+.PP
+Definition at line \fB1211\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.CountKeyItem (int id)"
+
+.PP
+Definition at line \fB942\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.CountKeyItem (string alias)"
+
+.PP
+Definition at line \fB936\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.CreateEquip ()"
+
+.PP
+Definition at line \fB470\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.DreamSpell ()"
+
+.PP
+Definition at line \fB552\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBThing\fP Player\&.DropReward (\fBThing\fP t, bool silent = \fRfalse\fP)"
+
+.PP
+Definition at line \fB1329\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.EditBackgroundText ()"
+
+.PP
+Definition at line \fB464\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.EndTurn (bool consume = \fRtrue\fP)"
+
+.PP
+Definition at line \fB857\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.EnterLocalZone (bool encounter = \fRfalse\fP)"
+
+.PP
+Definition at line \fB716\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.EnterLocalZone (\fBPoint\fP p, \fBZoneTransition\fP trans = \fRnull\fP, bool encounter = \fRfalse\fP)"
+
+.PP
+Definition at line \fB722\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.EquipTool (\fBThing\fP a, bool setHotItem = \fRtrue\fP)"
+
+.PP
+Definition at line \fB952\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.ExitBorder (\fBActPlan\fP p = \fRnull\fP)"
+
+.PP
+Definition at line \fB626\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBThing\fP Player\&.FindAmmo (\fBThing\fP weapon)"
+
+.PP
+Definition at line \fB1050\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.GenerateBackgroundText ()"
+
+.PP
+Definition at line \fB423\fP of file \fBPlayer\&.cs\fP\&.
+.SS "string Player\&.GetBackgroundText ()"
+
+.PP
+Definition at line \fB430\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBElementContainer\fP Player\&.GetDomains ()"
+
+.PP
+Definition at line \fB333\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.HasValidRangedTarget ()"
+
+.PP
+Definition at line \fB1083\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.MarkMapHighlights ()"
+
+.PP
+Definition at line \fB1221\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.ModFame (int a)"
+
+.PP
+Definition at line \fB872\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.ModKarma (int a)"
+
+.PP
+Definition at line \fB1296\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.ModKeyItem (int id, int num = \fR1\fP, bool msg = \fRtrue\fP)"
+
+.PP
+Definition at line \fB914\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.ModKeyItem (string alias, int num = \fR1\fP, bool msg = \fRtrue\fP)"
+
+.PP
+Definition at line \fB908\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.MoveZone (\fBZone\fP z)"
+
+.PP
+Definition at line \fB803\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.OnAdvanceDay ()"
+
+.PP
+Definition at line \fB1180\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.OnAdvanceHour ()"
+
+.PP
+Definition at line \fB1160\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.OnAdvanceRealHour ()"
+
+.PP
+Definition at line \fB311\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.OnBeforeSave ()"
+
+.PP
+Definition at line \fB298\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.OnCreateGame ()"
+
+.PP
+Definition at line \fB188\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.OnExitBorder (\fBPoint\fP p)"
+
+.PP
+Definition at line \fB678\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.OnLoad ()"
+
+.PP
+Definition at line \fB276\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.OnStartNewGame ()"
+
+.PP
+Definition at line \fB220\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.RefreshCurrentHotItem ()"
+
+.PP
+Definition at line \fB970\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.RefreshDomain ()"
+
+.PP
+Definition at line \fB323\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.RefreshEmptyAlly ()"
+
+.PP
+Definition at line \fB409\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.ResetCurrentHotItem ()"
+
+.PP
+Definition at line \fB1026\fP of file \fBPlayer\&.cs\fP\&.
+.SS "Layer Player\&.SelectDomain (Action onKill = \fRnull\fP)"
+
+.PP
+Definition at line \fB344\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.SetCurrentHotItem (\fBHotItem\fP item)"
+
+.PP
+Definition at line \fB1034\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.SimulateFaction ()"
+
+.PP
+Definition at line \fB600\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.TargetRanged ()"
+
+.PP
+Definition at line \fB1089\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.TooHeavyToMove ()"
+
+.PP
+Definition at line \fB1341\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.TryAbortAutoCombat ()"
+
+.PP
+Definition at line \fB1199\fP of file \fBPlayer\&.cs\fP\&.
+.SS "void Player\&.TryEquipBait ()"
+
+.PP
+Definition at line \fB1066\fP of file \fBPlayer\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBChara\fP Player\&._agent"
+
+.PP
+Definition at line \fB1623\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.altHeldPos"
+
+.PP
+Definition at line \fB1703\fP of file \fBPlayer\&.cs\fP\&.
+.SS "float Player\&.angle"
+
+.PP
+Definition at line \fB1491\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.autoCombatStartHP"
+
+.PP
+Definition at line \fB1805\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.bankMoney"
+
+.PP
+Definition at line \fB1443\fP of file \fBPlayer\&.cs\fP\&.
+.SS "float Player\&.baseActTime"
+
+.PP
+Definition at line \fB1766\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBChara\fP Player\&.chara"
+
+.PP
+Definition at line \fB1772\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBCinemaConfig\fP Player\&.cinemaConfig = new \fBCinemaConfig\fP()"
+
+.PP
+Definition at line \fB1655\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBCodexManager\fP Player\&.codex = new \fBCodexManager\fP()"
+
+.PP
+Definition at line \fB1659\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.countNewline"
+
+.PP
+Definition at line \fB1751\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBHotItem\fP Player\&.currentHotItem = new \fBHotItemNoItem\fP()"
+
+.PP
+Definition at line \fB1639\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.dailyGacha"
+
+.PP
+Definition at line \fB1499\fP of file \fBPlayer\&.cs\fP\&.
+.SS "Dictionary<string, Window\&.SaveData> Player\&.dataWindow"
+
+.PP
+Definition at line \fB1651\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.dateTravel"
+
+.PP
+Definition at line \fB1411\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.deathDialog"
+
+.PP
+Definition at line \fB1721\fP of file \fBPlayer\&.cs\fP\&.
+.SS "string Player\&.deathMsg"
+
+.PP
+Definition at line \fB1748\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.deathZoneMove"
+
+.PP
+Definition at line \fB1727\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.debt"
+
+.PP
+Definition at line \fB1487\fP of file \fBPlayer\&.cs\fP\&.
+.SS "Dictionary<string, int> Player\&.dialogFlags = new Dictionary<string, int>()"
+
+.PP
+Definition at line \fB1567\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.distanceTravel"
+
+.PP
+Definition at line \fB1415\fP of file \fBPlayer\&.cs\fP\&.
+.SS "List<int> Player\&.domains = new List<int>()"
+
+.PP
+Definition at line \fB1611\fP of file \fBPlayer\&.cs\fP\&.
+.SS "HashSet<int> Player\&.doneBackers = new HashSet<int>()"
+
+.PP
+Definition at line \fB1603\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.enemySpotted"
+
+.PP
+Definition at line \fB1745\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBThing\fP Player\&.eqBait"
+
+.PP
+Definition at line \fB1647\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.expInfluence"
+
+.PP
+Definition at line \fB1407\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.expKnowledge"
+
+.PP
+Definition at line \fB1403\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.extraTax"
+
+.PP
+Definition at line \fB1467\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.fame"
+
+.PP
+Definition at line \fB1399\fP of file \fBPlayer\&.cs\fP\&.
+.SS "HashSet<int> Player\&.favAbility = new HashSet<int>()"
+
+.PP
+Definition at line \fB1595\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBPlayer\&.Flags\fP Player\&.flags = new \fBPlayer\&.Flags\fP()"
+
+.PP
+Definition at line \fB1631\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBChara\fP Player\&.focusedchara"
+
+.PP
+Definition at line \fB1775\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.forceTalk"
+
+.PP
+Definition at line \fB1700\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.haltMove"
+
+.PP
+Definition at line \fB1730\fP of file \fBPlayer\&.cs\fP\&.
+.SS "Dictionary<string, string> Player\&.hangIcons = new Dictionary<string, string>()"
+
+.PP
+Definition at line \fB1571\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.hasNewQuest"
+
+.PP
+Definition at line \fB1495\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBHoard\fP Player\&.hoard = new \fBHoard\fP()"
+
+.PP
+Definition at line \fB1627\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.holyWell"
+
+.PP
+Definition at line \fB1447\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.hotbarPage"
+
+.PP
+Definition at line \fB1455\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBHotbarManager\fP Player\&.hotbars = new \fBHotbarManager\fP()"
+
+.PP
+Definition at line \fB1619\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBHotItemNoItem\fP Player\&.hotItemNoItem = new \fBHotItemNoItem\fP()"
+
+.PP
+Definition at line \fB1814\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBHotItem\fP Player\&.hotItemToRestore"
+
+.PP
+Definition at line \fB1697\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.instaComplete = true"
+
+.PP
+Definition at line \fB1706\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.invlunerable"
+
+.PP
+Definition at line \fB1733\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.isAutoFarming"
+
+.PP
+Definition at line \fB1742\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.isEditor"
+
+.PP
+Definition at line \fB1523\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.karma"
+
+.PP
+Definition at line \fB1395\fP of file \fBPlayer\&.cs\fP\&.
+.SS "Dictionary<int, int> Player\&.keyItems = new Dictionary<int, int>()"
+
+.PP
+Definition at line \fB1663\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBKnowledgeManager\fP Player\&.knowledges = new \fBKnowledgeManager\fP()"
+
+.PP
+Definition at line \fB1547\fP of file \fBPlayer\&.cs\fP\&.
+.SS "HashSet<int> Player\&.knownBGMs = new HashSet<int>()"
+
+.PP
+Definition at line \fB1591\fP of file \fBPlayer\&.cs\fP\&.
+.SS "HashSet<int> Player\&.knownCraft = new HashSet<int>()"
+
+.PP
+Definition at line \fB1607\fP of file \fBPlayer\&.cs\fP\&.
+.SS "Dictionary<string, \fBKnownSong\fP> Player\&.knownSongs = new Dictionary<string, \fBKnownSong\fP>()"
+
+.PP
+Definition at line \fB1575\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBAct\fP Player\&.lastAct"
+
+.PP
+Definition at line \fB1784\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.lastEmptyAlly"
+
+.PP
+Definition at line \fB1760\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.lastFelmeraReward"
+
+.PP
+Definition at line \fB1471\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBHotItem\fP Player\&.lastHotItem"
+
+.PP
+Definition at line \fB1694\fP of file \fBPlayer\&.cs\fP\&.
+.SS "List<\fBPoint\fP> Player\&.lastMarkedHighlights = new List<\fBPoint\fP>()"
+
+.PP
+Definition at line \fB1691\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBZoneTransition\fP Player\&.lastTransition"
+
+.PP
+Definition at line \fB1688\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.lastTurn"
+
+.PP
+Definition at line \fB1757\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBPoint\fP Player\&.lastZonePos"
+
+.PP
+Definition at line \fB1643\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBLayerAbility\&.Config\fP Player\&.layerAbilityConfig = new \fBLayerAbility\&.Config\fP()"
+
+.PP
+Definition at line \fB1563\fP of file \fBPlayer\&.cs\fP\&.
+.SS "float Player\&.lightPower"
+
+.PP
+Definition at line \fB1763\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.lightRadius"
+
+.PP
+Definition at line \fB1754\fP of file \fBPlayer\&.cs\fP\&.
+.SS "List<\fBChara\fP> Player\&.listSummon = new List<\fBChara\fP>()"
+
+.PP
+Definition at line \fB1799\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.little_dead"
+
+.PP
+Definition at line \fB1459\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.little_saved"
+
+.PP
+Definition at line \fB1463\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBWidgetManager\&.SaveData\fP Player\&.mainWidgets"
+
+.PP
+Definition at line \fB1555\fP of file \fBPlayer\&.cs\fP\&.
+.SS "string Player\&.memo = ''"
+
+.PP
+Definition at line \fB1531\fP of file \fBPlayer\&.cs\fP\&.
+.SS "Vector2 Player\&.nextMove"
+
+.PP
+Definition at line \fB1787\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBZone\fP Player\&.nextZone"
+
+.PP
+Definition at line \fB1808\fP of file \fBPlayer\&.cs\fP\&.
+.SS "Dictionary<string, HashSet<string> > Player\&.noRestocks = new Dictionary<string, HashSet<string>>()"
+
+.PP
+Definition at line \fB1675\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBNoticeManager\fP Player\&.notices = new \fBNoticeManager\fP()"
+
+.PP
+Definition at line \fB1778\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBNumLogManager\fP Player\&.nums = new \fBNumLogManager\fP()"
+
+.PP
+Definition at line \fB1543\fP of file \fBPlayer\&.cs\fP\&.
+.SS "Action Player\&.onStartZone"
+
+.PP
+Definition at line \fB1793\fP of file \fBPlayer\&.cs\fP\&.
+.SS "float Player\&.pickupDelay = 2f"
+
+.PP
+Definition at line \fB1769\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBPlayingSong\fP Player\&.playingSong"
+
+.PP
+Definition at line \fB1796\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBPopupManager\fP Player\&.popups = new \fBPopupManager\fP()"
+
+.PP
+Definition at line \fB1551\fP of file \fBPlayer\&.cs\fP\&.
+.SS "Vector3 Player\&.position"
+
+.PP
+Definition at line \fB1790\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.prayed"
+
+.PP
+Definition at line \fB1511\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBPlayer\&.Pref\fP Player\&.pref = new \fBPlayer\&.Pref\fP()"
+
+.PP
+Definition at line \fB1535\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.preventDeathPenalty"
+
+.PP
+Definition at line \fB1724\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.questTracker"
+
+.PP
+Definition at line \fB1515\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBQueueManager\fP Player\&.queues = new \fBQueueManager\fP()"
+
+.PP
+Definition at line \fB1781\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.realHour\fR [static]\fP"
+
+.PP
+Definition at line \fB1685\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBRecipeManager\fP Player\&.recipes = new \fBRecipeManager\fP()"
+
+.PP
+Definition at line \fB1635\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.regionMoveWarned"
+
+.PP
+Definition at line \fB1709\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBThing\fP Player\&.renderThing"
+
+.PP
+Definition at line \fB1811\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBPlayer\&.ReturnInfo\fP Player\&.returnInfo"
+
+.PP
+Definition at line \fB1379\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.safeTravel"
+
+.PP
+Definition at line \fB1451\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.seedChest"
+
+.PP
+Definition at line \fB1483\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.seedHallucination\fR [static]\fP"
+
+.PP
+Definition at line \fB1682\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.seedShrine"
+
+.PP
+Definition at line \fB1479\fP of file \fBPlayer\&.cs\fP\&.
+.SS "List<\fBShippingResult\fP> Player\&.shippingResults = new List<\fBShippingResult\fP>()"
+
+.PP
+Definition at line \fB1671\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.showShippingResult"
+
+.PP
+Definition at line \fB1519\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.simulatingZone"
+
+.PP
+Definition at line \fB1739\fP of file \fBPlayer\&.cs\fP\&.
+.SS "HashSet<int> Player\&.sketches = new HashSet<int>()"
+
+.PP
+Definition at line \fB1599\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBPlayer\&.Stats\fP Player\&.stats = new \fBPlayer\&.Stats\fP()"
+
+.PP
+Definition at line \fB1539\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBWidgetManager\&.SaveData\fP Player\&.subWidgets"
+
+.PP
+Definition at line \fB1559\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBChara\fP Player\&.target"
+
+.PP
+Definition at line \fB1817\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.taxBills"
+
+.PP
+Definition at line \fB1435\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.tempFame"
+
+.PP
+Definition at line \fB1802\fP of file \fBPlayer\&.cs\fP\&.
+.SS "string Player\&.title"
+
+.PP
+Definition at line \fB1527\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.totalFeat"
+
+.PP
+Definition at line \fB1431\fP of file \fBPlayer\&.cs\fP\&.
+.SS "HashSet<string> Player\&.trackedCards = new HashSet<string>()"
+
+.PP
+Definition at line \fB1583\fP of file \fBPlayer\&.cs\fP\&.
+.SS "HashSet<string> Player\&.trackedCategories = new HashSet<string>()"
+
+.PP
+Definition at line \fB1579\fP of file \fBPlayer\&.cs\fP\&.
+.SS "HashSet<int> Player\&.trackedElements = new HashSet<int>()"
+
+.PP
+Definition at line \fB1587\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.tutorialStep"
+
+.PP
+Definition at line \fB1391\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.uidChara"
+
+.PP
+Definition at line \fB1383\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.uidLastShippedZone"
+
+.PP
+Definition at line \fB1427\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.uidLastTown"
+
+.PP
+Definition at line \fB1475\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.uidLastTravelZone"
+
+.PP
+Definition at line \fB1419\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.uidLastZone"
+
+.PP
+Definition at line \fB1423\fP of file \fBPlayer\&.cs\fP\&.
+.SS "List<int> Player\&.uidPickOnLoad = new List<int>()"
+
+.PP
+Definition at line \fB1667\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.uidSpawnZone"
+
+.PP
+Definition at line \fB1387\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.unpaidBill"
+
+.PP
+Definition at line \fB1439\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.useSubWidgetTheme"
+
+.PP
+Definition at line \fB1503\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.waitingInput"
+
+.PP
+Definition at line \fB1712\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.wasDirtyWeight"
+
+.PP
+Definition at line \fB1718\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.wellWished"
+
+.PP
+Definition at line \fB1507\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.willAutoSave"
+
+.PP
+Definition at line \fB1736\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.willEndTurn"
+
+.PP
+Definition at line \fB1715\fP of file \fBPlayer\&.cs\fP\&.
+.SS "Window\&.SaveData Player\&.windowAllyInv"
+
+.PP
+Definition at line \fB1679\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBZone\fP Player\&.zone"
+
+.PP
+Definition at line \fB1615\fP of file \fBPlayer\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBChara\fP Player\&.Agent\fR [get]\fP"
+
+.PP
+Definition at line \fB85\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.ContainerSearchDistance\fR [get]\fP"
+
+.PP
+Definition at line \fB95\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.EnableDreamStory\fR [get]\fP"
+
+.PP
+Definition at line \fB55\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.IsCriminal\fR [get]\fP"
+
+.PP
+Definition at line \fB179\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.IsFighterGuildMember\fR [get]\fP"
+
+.PP
+Definition at line \fB146\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.IsMageGuildMember\fR [get]\fP"
+
+.PP
+Definition at line \fB135\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.IsMerchantGuildMember\fR [get]\fP"
+
+.PP
+Definition at line \fB168\fP of file \fBPlayer\&.cs\fP\&.
+.SS "bool Player\&.IsThiefGuildMember\fR [get]\fP"
+
+.PP
+Definition at line \fB157\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBZone\fP Player\&.LastTravelZone\fR [get]\fP"
+
+.PP
+Definition at line \fB65\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBZone\fP Player\&.LastZone\fR [get]\fP"
+
+.PP
+Definition at line \fB75\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.MaxAlly\fR [get]\fP"
+
+.PP
+Definition at line \fB105\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.MaxExpInfluence\fR [get]\fP"
+
+.PP
+Definition at line \fB125\fP of file \fBPlayer\&.cs\fP\&.
+.SS "int Player\&.MaxExpKnowledge\fR [get]\fP"
+
+.PP
+Definition at line \fB115\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBZone\fP Player\&.spawnZone\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB41\fP of file \fBPlayer\&.cs\fP\&.
+.SS "\fBWidgetManager\&.SaveData\fP Player\&.widgets\fR [get]\fP, \fR [set]\fP"
+
+.PP
+Definition at line \fB17\fP of file \fBPlayer\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

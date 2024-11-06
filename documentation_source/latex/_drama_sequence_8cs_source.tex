@@ -1,0 +1,260 @@
+\doxysection{Drama\+Sequence.\+cs}
+\hypertarget{_drama_sequence_8cs_source}{}\label{_drama_sequence_8cs_source}\index{Elin/DramaSequence.cs@{Elin/DramaSequence.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x0200011A\ RID:\ 282}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00006}\mbox{\hyperlink{class_drama_sequence}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_drama_sequence}{DramaSequence}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170001C3\ RID:\ 451}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000799\ RID:\ 1945\ RVA:\ 0x0003162C\ File\ Offset:\ 0x0002F82C}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_dialog_drama}{DialogDrama}}\ dialog}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.manager.dialog;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00016}00016\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600079A\ RID:\ 1946\ RVA:\ 0x00031639\ File\ Offset:\ 0x0002F839}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Clear()}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ this.steps.Clear();}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ this.actors.Clear();}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ this.events.Clear();}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ this.tempEvents.Clear();}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600079B\ RID:\ 1947\ RVA:\ 0x00031668\ File\ Offset:\ 0x0002F868}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00028}00028\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_drama_actor}{DramaActor}}\ GetActor(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.actors.ContainsKey(\textcolor{keywordtype}{id}))}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.actors[id];}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.sources.persons.map.ContainsKey(\textcolor{keywordtype}{id}))}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.AddActor(\textcolor{keywordtype}{id},\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_person}{Person}}(\textcolor{keywordtype}{id},\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.actors.Count\ <=\ 0)}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.GetActor(\textcolor{stringliteral}{"{}narrator"{}});}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.actors.FirstItem<string,\ \mbox{\hyperlink{class_drama_actor}{DramaActor}}>();}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00045}00045\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600079C\ RID:\ 1948\ RVA:\ 0x000316DC\ File\ Offset:\ 0x0002F8DC}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00046}00046\ \ \ \ \ \textcolor{keyword}{public}\ T\ GetEvent<T>(\textcolor{keywordtype}{string}\ idStep)\ where\ T\ :\ \mbox{\hyperlink{class_drama_event}{DramaEvent}}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00047}00047\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_drama_event}{DramaEvent}}\ dramaEvent\ \textcolor{keywordflow}{in}\ this.events)}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dramaEvent.step\ ==\ idStep)}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dramaEvent\ as\ T;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordflow}{default}(T);}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600079D\ RID:\ 1949\ RVA:\ 0x00031750\ File\ Offset:\ 0x0002F950}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_drama_actor}{DramaActor}}\ AddActor(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_person}{Person}}\ person)}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00060}00060\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.actors.ContainsKey(\textcolor{keywordtype}{id}))}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.actors[id];}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_drama_actor}{DramaActor}}\ dramaActor\ =\ Util.Instantiate<\mbox{\hyperlink{class_drama_actor}{DramaActor}}>(this.manager.moldActor,\ this.manager.actorPos);}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ dramaActor.Init(\textcolor{keyword}{this},\ \textcolor{keywordtype}{id},\ person);}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ this.actors.Add(\textcolor{keywordtype}{id},\ dramaActor);}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dramaActor;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600079E\ RID:\ 1950\ RVA:\ 0x000317AB\ File\ Offset:\ 0x0002F9AB}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ AddStep(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00073}00073\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ this.steps.Add(\textcolor{keywordtype}{id},\ this.events.Count);}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ this.events.Add(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_drama_event}{DramaEvent}}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ sequence\ =\ \textcolor{keyword}{this},}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ step\ =\ \textcolor{keywordtype}{id}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00082}00082\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600079F\ RID:\ 1951\ RVA:\ 0x000317E2\ File\ Offset:\ 0x0002F9E2}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00083}00083\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_drama_event}{DramaEvent}}\ AddEvent(\mbox{\hyperlink{class_drama_event}{DramaEvent}}\ e)}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00084}00084\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!e.step.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ this.steps.Add(e.step,\ \textcolor{keyword}{this}.events.Count);}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ e.sequence\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ this.events.Add(e);}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ e;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00094}00094\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007A0\ RID:\ 1952\ RVA:\ 0x00031821\ File\ Offset:\ 0x0002FA21}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00095}00095\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ PlayNext()}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00096}00096\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ this.Play(this.currentEventID\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00098}00098\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00100}00100\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007A1\ RID:\ 1953\ RVA:\ 0x00031834\ File\ Offset:\ 0x0002FA34}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00101}00101\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Play(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00102}00102\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{id}\ ==\ \textcolor{stringliteral}{"{}last"{}})}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ this.lastlastStep;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{id}.IsEmpty()\ \&\&\ !this.steps.ContainsKey(\textcolor{keywordtype}{id}))}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ this.Play(\textcolor{keywordtype}{string}.IsNullOrEmpty(\textcolor{keywordtype}{id})\ ?\ 0\ :\ this.steps[\textcolor{keywordtype}{id}]);}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00112}00112\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00114}00114\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007A2\ RID:\ 1954\ RVA:\ 0x00031890\ File\ Offset:\ 0x0002FA90}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00115}00115\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Play(\textcolor{keywordtype}{int}\ eventID\ =\ 0)}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00116}00116\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.isExited)}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (eventID\ >=\ this.events.Count)}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.isLoop)}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Exit();}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ eventID\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ this.currentEventID\ =\ eventID;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ this.currentEvent\ =\ this.events[eventID];}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ this.currentEvent.Reset();}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str\ =\ eventID.ToString()\ +\ \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (KeyValuePair<string,\ int>\ keyValuePair\ \textcolor{keywordflow}{in}\ this.steps)}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (keyValuePair.Value\ ==\ eventID)}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ str\ +=\ keyValuePair.Key;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (keyValuePair.Value\ ==\ eventID\ \&\&\ !keyValuePair.Key.StartsWith(\textcolor{stringliteral}{"{}flag"{}}))}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.lastlastStep\ =\ this.lastStep;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.lastStep\ =\ keyValuePair.Key;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ this.OnUpdate();}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00148}00148\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00150}00150\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007A3\ RID:\ 1955\ RVA:\ 0x00031994\ File\ Offset:\ 0x0002FB94}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00151}00151\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Exit()}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00152}00152\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ this.isExited\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ this.currentEvent\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ this.manager.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00156}00156\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00158}00158\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060007A4\ RID:\ 1956\ RVA:\ 0x000319B0\ File\ Offset:\ 0x0002FBB0}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00159}00159\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnUpdate()}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00160}00160\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.tempEvents.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.tempEvents[0].Play()\ \&\&\ this.tempEvents.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.tempEvents.RemoveAt(0);}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.currentEvent\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.currentEvent\ is\ \mbox{\hyperlink{class_drama_event_goto}{DramaEventGoto}})}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ a\ =\ this.currentEvent.idJump;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a\ ==\ \textcolor{stringliteral}{"{}*"{}})}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.setup.step.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.PlayNext();}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a\ =\ this.setup.step;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ this.Play(a);}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.currentEvent.Play())}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ this.PlayNext();}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00192}00192\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00194}00194\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400079D\ RID:\ 1949}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00195}00195\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ id;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00197}00197\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400079E\ RID:\ 1950}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00198}00198\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_drama_manager}{DramaManager}}\ manager;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00200}00200\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400079F\ RID:\ 1951}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00201}00201\ \ \ \ \ \textcolor{keyword}{public}\ Dictionary<string,\ int>\ steps\ =\ \textcolor{keyword}{new}\ Dictionary<string,\ int>();}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00203}00203\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007A0\ RID:\ 1952}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00204}00204\ \ \ \ \ \textcolor{keyword}{public}\ Dictionary<string,\ DramaActor>\ actors\ =\ \textcolor{keyword}{new}\ Dictionary<string,\ DramaActor>();}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00206}00206\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007A1\ RID:\ 1953}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00207}00207\ \ \ \ \ \textcolor{keyword}{public}\ List<DramaEvent>\ events\ =\ \textcolor{keyword}{new}\ List<DramaEvent>();}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00209}00209\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007A2\ RID:\ 1954}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00210}00210\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ isLoop;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00212}00212\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007A3\ RID:\ 1955}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00213}00213\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ canCancel\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00215}00215\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007A4\ RID:\ 1956}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00216}00216\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ isExited;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00218}00218\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007A5\ RID:\ 1957}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00219}00219\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ fullPortrait;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00221}00221\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007A6\ RID:\ 1958}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00222}00222\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_drama_event_talk}{DramaEventTalk}}\ firstTalk;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00224}00224\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007A7\ RID:\ 1959}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00225}00225\ \ \ \ \ \textcolor{keyword}{public}\ List<DramaEvent>\ tempEvents\ =\ \textcolor{keyword}{new}\ List<DramaEvent>();}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00227}00227\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007A8\ RID:\ 1960}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00228}00228\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_drama_event}{DramaEvent}}\ currentEvent;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00230}00230\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007A9\ RID:\ 1961}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00231}00231\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ message\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00233}00233\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007AA\ RID:\ 1962}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00234}00234\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ skipJump;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00236}00236\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007AB\ RID:\ 1963}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00237}00237\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ lastStep;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00239}00239\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007AC\ RID:\ 1964}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00240}00240\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ lastlastStep;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00242}00242\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007AD\ RID:\ 1965}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00243}00243\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_drama_setup}{DramaSetup}}\ setup;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00245}00245\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040007AE\ RID:\ 1966}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00246}00246\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ currentEventID;}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00248}00248\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0200084B\ RID:\ 2123}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00249}00249\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ Template}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00250}00250\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400238B\ RID:\ 9099}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ Default}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00253}00253\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drama_sequence_8cs_source_l00254}00254\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,49 @@
+\doxysection{Zone\+Instance\+Random\+Quest.\+cs}
+\hypertarget{_zone_instance_random_quest_8cs_source}{}\label{_zone_instance_random_quest_8cs_source}\index{Elin/ZoneInstanceRandomQuest.cs@{Elin/ZoneInstanceRandomQuest.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x0200073C\ RID:\ 1852}}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00005}\mbox{\hyperlink{class_zone_instance_random_quest}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_zone_instance_random_quest}{ZoneInstanceRandomQuest}}\ :\ \mbox{\hyperlink{class_zone_instance}{ZoneInstance}}}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700102E\ RID:\ 4142}}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060034F8\ RID:\ 13560\ RVA:\ 0x0011D5AD\ File\ Offset:\ 0x0011B7AD}}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ WarnExit}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.status\ !=\ \mbox{\hyperlink{class_zone_instance}{ZoneInstance}}.Status.Success;}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060034F9\ RID:\ 13561\ RVA:\ 0x0011D5BC\ File\ Offset:\ 0x0011B7BC}}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnLeaveZone()}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_chara}{Chara}}\ chara\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.charas)}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara.IsMinion\ \&\&\ chara.homeZone\ ==\ \mbox{\hyperlink{class_e_class}{EClass}}.\_zone)}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chara.c\_uidMaster\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chara.master\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ base.ReturnZone.events.AddPreEnter(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_zone_pre_enter_on_complete_quest_instance}{ZonePreEnterOnCompleteQuestInstance}}}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ uidClient\ =\ this.uidClient,}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ uidQuest\ =\ this.uidQuest,}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ fail\ =\ (this.status\ !=\ \mbox{\hyperlink{class_zone_instance}{ZoneInstance}}.Status.Success)}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001C60\ RID:\ 7264}}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00037}00037\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ uidClient;}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001C61\ RID:\ 7265}}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00041}00041\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ uidQuest;}
+\DoxyCodeLine{\Hypertarget{_zone_instance_random_quest_8cs_source_l00043}00043\ \}}
+
+\end{DoxyCode}

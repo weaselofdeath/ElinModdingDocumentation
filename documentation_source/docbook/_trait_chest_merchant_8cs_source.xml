@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__trait_chest_merchant_8cs_source" xml:lang="en-US">
+<title>TraitChestMerchant.cs</title>
+<indexterm><primary>Elin/TraitChestMerchant.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__trait_chest_merchant_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00002"/>00002 
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00003"/>00003 <emphasis role="comment">//&#32;Token:&#32;0x02000399&#32;RID:&#32;921</emphasis>
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00004"/><link linkend="_class_trait_chest_merchant">00004</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_trait_chest_merchant">TraitChestMerchant</link>&#32;:&#32;<link linkend="_class_trait_container">TraitContainer</link>
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00005"/>00005 {
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00006"/>00006 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x1700083E&#32;RID:&#32;2110</emphasis>
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00007"/>00007 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06001BB4&#32;RID:&#32;7092&#32;RVA:&#32;0x000A855C&#32;File&#32;Offset:&#32;0x000A675C</emphasis>
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;IDInvStyle
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>._zone&#32;is&#32;<link linkend="_class_zone___casino">Zone_Casino</link>)
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;casino&quot;</emphasis>;
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_class">EClass</link>._zone.source.tag.Contains(<emphasis role="stringliteral">&quot;tech&quot;</emphasis>))
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;modern&quot;</emphasis>;
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.owner.GetRootCard().trait&#32;is&#32;<link linkend="_class_trait_vending_machine">TraitVendingMachine</link>)
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.owner.GetRootCard().trait.IDInvStyle;
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;base.idContainer;
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00027"/>00027 
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06001BB5&#32;RID:&#32;7093&#32;RVA:&#32;0x000A85CF&#32;File&#32;Offset:&#32;0x000A67CF</emphasis>
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Prespawn(<emphasis role="keywordtype">int</emphasis>&#32;lv)
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__trait_chest_merchant_8cs_source_1l00032"/>00032 }
+</programlisting></section>

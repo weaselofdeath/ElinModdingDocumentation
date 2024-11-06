@@ -1,0 +1,557 @@
+\doxysection{Dialog.\+cs}
+\hypertarget{_dialog_8cs_source}{}\label{_dialog_8cs_source}\index{Elin/Dialog.cs@{Elin/Dialog.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00006}00006\ \textcolor{comment}{//\ Token:\ 0x02000514\ RID:\ 1300}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00007}\mbox{\hyperlink{class_dialog}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_dialog}{Dialog}}\ :\ \mbox{\hyperlink{class_e_layer}{ELayer}}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022D8\ RID:\ 8920\ RVA:\ 0x000C2A7C\ File\ Offset:\ 0x000C0C7C}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnAfterInit()}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.hud.textMouseHintRight.transform.parent.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ this.textDetail.SetActive(!this.textDetail.text.IsEmpty());}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ this.listGrid.SetActive(this.gridItems.Count\ >\ 0);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.gridItems.Count\ >=\ 8)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ GridLayoutGroup\ gridLayoutGroup\ =\ this.listGrid.layoutItems\ as\ GridLayoutGroup;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ gridLayoutGroup.constraint\ =\ GridLayoutGroup.Constraint.FixedColumnCount;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ gridLayoutGroup.constraintCount\ =\ 8;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.gridItems.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ this.listGrid.Clear();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ BaseList\ baseList\ =\ this.listGrid;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ UIList.Callback<\mbox{\hyperlink{class_grid_item}{GridItem}},\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}>\ callback\ =\ \textcolor{keyword}{new}\ UIList.Callback<\mbox{\hyperlink{class_grid_item}{GridItem}},\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}>();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ callback.onInstantiate\ =\ delegate(\mbox{\hyperlink{class_grid_item}{GridItem}}\ a,\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}\ b)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.SetItem(a);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ callback.onClick\ =\ delegate(\mbox{\hyperlink{class_grid_item}{GridItem}}\ a,\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}\ b)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a.OnClick(b);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ baseList.callbacks\ =\ callback;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_grid_item}{GridItem}}\ o\ \textcolor{keywordflow}{in}\ this.gridItems)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.listGrid.Add(o);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ this.listGrid.Refresh(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ this.list.Refresh(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ this.RebuildLayout(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ GraphicRaycaster\ g\ =\ this.windows[0].GetComponent<GraphicRaycaster>();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ g.enabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ TweenUtil.Delay(0.3f,\ delegate}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (g)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ g.enabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.input)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ this.input.Focus();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ EInput.WaitReleaseKey();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00059}00059\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022D9\ RID:\ 8921\ RVA:\ 0x000C2C48\ File\ Offset:\ 0x000C0E48}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00060}00060\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ AddButton(\textcolor{keywordtype}{string}\ text,\ Action\ onClick\ =\ \textcolor{keyword}{null},\ \textcolor{keywordtype}{bool}\ close\ =\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00061}00061\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ this.list.AddButton(\textcolor{keyword}{null},\ text,\ delegate}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (onClick\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ onClick();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (close)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022DA\ RID:\ 8922\ RVA:\ 0x000C2C8A\ File\ Offset:\ 0x000C0E8A}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00076}00076\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.input\ \&\&\ this.option.canClose\ \&\&\ Input.GetKeyDown(KeyCode.Escape))}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ this.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00084}00084\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022DB\ RID:\ 8923\ RVA:\ 0x000C2CB8\ File\ Offset:\ 0x000C0EB8}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00085}00085\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnUpdateInput()}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00086}00086\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.input\ \&\&\ this.option.canClose\ \&\&\ Input.GetKeyDown(KeyCode.Return))}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ this.isInputEnter\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ this.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.input.gameObject.activeInHierarchy\ \&\&\ \textcolor{keyword}{this}.list\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (UIList.ButtonPair\ buttonPair\ in\ \textcolor{keyword}{this}.list.buttons)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UIButton\ uibutton\ =\ buttonPair.component\ as\ UIButton;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (uibutton\ \&\&\ uibutton.interactable\ \&\&\ !EInput.waitReleaseAnyKey\ \&\&\ uibutton.keyText\ \&\&\ !uibutton.keyText.text.IsEmpty()\ \&\&\ uibutton.keyText.text\ ==\ Input.inputString)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uibutton.onClick.Invoke();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.keymap\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ List<KeyCode>\ list\ =\ \textcolor{keyword}{new}\ List<KeyCode>}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KeyCode.Mouse0,}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KeyCode.Mouse1,}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KeyCode.Mouse2,}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KeyCode.Mouse3,}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KeyCode.Mouse4,}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KeyCode.Escape,}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KeyCode.Return,}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KeyCode.LeftShift,}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KeyCode.Delete,}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KeyCode.Backspace}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Input.GetKeyDown(KeyCode.Delete))}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.keymap.required)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SE.Beep();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SE.Tab();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.keymap.key\ =\ KeyCode.None;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\textcolor{keywordtype}{object}\ obj\ \textcolor{keywordflow}{in}\ Enum.GetValues(typeof(KeyCode)))}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KeyCode\ keyCode\ =\ (KeyCode)obj;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!list.Contains(keyCode)\ \&\&\ Input.GetKey(keyCode))}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (EInput.KeyMap\ keyMap\ in\ \mbox{\hyperlink{class_e_layer}{ELayer}}.core.config.input.keys.List())}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (keyMap.key\ ==\ keyCode\ \&\&\ keyMap.GetGroup()\ ==\ \textcolor{keyword}{this}.keymap.GetGroup())}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ keyMap.key\ =\ this.keymap.key;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.keymap.key\ =\ keyCode;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SE.Tab();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ base.OnUpdateInput();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00155}00155\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00157}00157\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022DC\ RID:\ 8924\ RVA:\ 0x000C2F7C\ File\ Offset:\ 0x000C117C}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00158}00158\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnEnterInput()}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00159}00159\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ this.isInputEnter\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ this.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00162}00162\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00164}00164\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022DD\ RID:\ 8925\ RVA:\ 0x000C2F8C\ File\ Offset:\ 0x000C118C}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00165}00165\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnKill()}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00166}00166\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.hud.textMouseHintRight.transform.parent.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.input\ \&\&\ this.onEnterInput\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ this.onEnterInput(!this.isInputEnter,\ this.input.Text);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ EInput.WaitReleaseKey();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00173}00173\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00175}00175\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022DE\ RID:\ 8926\ RVA:\ 0x000C2FF4\ File\ Offset:\ 0x000C11F4}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00176}00176\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_dialog}{Dialog}}\ CreateNarration(\textcolor{keywordtype}{string}\ idImage,\ \textcolor{keywordtype}{string}\ idText)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00177}00177\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}\ dialog\ =\ Layer.Create<\mbox{\hyperlink{class_dialog}{Dialog}}>(\textcolor{stringliteral}{"{}DialogNarration"{}});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ dialog.image.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ dialog.image.sprite\ =\ Resources.Load<Sprite>(\textcolor{stringliteral}{"{}Media/Graphics/Image/Dialog/"{}}\ +\ idImage);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ dialog.image.SetNativeSize();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ dialog.textDetail.SetText(IO.LoadText(CorePath.CorePackage.TextNarration\ +\ idText\ +\ \textcolor{stringliteral}{"{}.txt"{}}));}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dialog;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00184}00184\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00186}00186\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022DF\ RID:\ 8927\ RVA:\ 0x000C3060\ File\ Offset:\ 0x000C1260}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00187}00187\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_dialog}{Dialog}}\ Ok(\textcolor{keywordtype}{string}\ langDetail)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00188}00188\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}\ dialog\ =\ Layer.Create<\mbox{\hyperlink{class_dialog}{Dialog}}>();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ dialog.textDetail.SetText(langDetail.lang()\ +\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ dialog.list.AddButton(\textcolor{keyword}{null},\ Lang.Get(\textcolor{stringliteral}{"{}ok"{}}),\ \textcolor{keyword}{new}\ Action(dialog.Close),\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer(dialog);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dialog;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00194}00194\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00196}00196\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022E0\ RID:\ 8928\ RVA:\ 0x000C30C0\ File\ Offset:\ 0x000C12C0}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00197}00197\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_dialog}{Dialog}}\ Choice(\textcolor{keywordtype}{string}\ langDetail,\ Action<Dialog>\ action)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00198}00198\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}\ dialog\ =\ Layer.Create<\mbox{\hyperlink{class_dialog}{Dialog}}>();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ dialog.textDetail.SetText(langDetail.lang()\ +\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ action(dialog);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer(dialog);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dialog;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00204}00204\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00206}00206\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022E1\ RID:\ 8929\ RVA:\ 0x000C3104\ File\ Offset:\ 0x000C1304}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00207}00207\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_dialog}{Dialog}}\ YesNo(\textcolor{keywordtype}{string}\ langDetail,\ Action\ actionYes,\ Action\ actionNo\ =\ \textcolor{keyword}{null},\ \textcolor{keywordtype}{string}\ langYes\ =\ \textcolor{stringliteral}{"{}yes"{}},\ \textcolor{keywordtype}{string}\ langNo\ =\ \textcolor{stringliteral}{"{}no"{}})}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00208}00208\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}\ d\ =\ Layer.Create<\mbox{\hyperlink{class_dialog}{Dialog}}>();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ d.textDetail.SetText(langDetail.lang()\ +\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ d.list.AddButton(\textcolor{keyword}{null},\ Lang.Get(langYes),\ delegate}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ if\ (actionYes\ !=\ null)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ actionYes();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ d.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ d.list.AddButton(\textcolor{keyword}{null},\ Lang.Get(langNo),\ delegate}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ if\ (actionNo\ !=\ null)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ actionNo();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ d.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer(d);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ d;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00229}00229\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00231}00231\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022E2\ RID:\ 8930\ RVA:\ 0x000C31B0\ File\ Offset:\ 0x000C13B0}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00232}00232\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_dialog}{Dialog}}\ List<TValue>(\textcolor{keywordtype}{string}\ langDetail,\ ICollection<TValue>\ items,\ Func<TValue,\ string>\ getString,\ Func<int,\ string,\ bool>\ onSelect,\ \textcolor{keywordtype}{bool}\ canCancel\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00233}00233\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}\ d\ =\ Layer.Create<\mbox{\hyperlink{class_dialog}{Dialog}}>();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ d.textDetail.SetText(langDetail.lang()\ +\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (IEnumerator<TValue>\ enumerator\ =\ items.GetEnumerator())}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (enumerator.MoveNext())}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TValue\ item\ =\ enumerator.Current;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_i\ =\ num;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d.list.AddButton(\textcolor{keyword}{null},\ getString(item).lang(),\ delegate}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (onSelect(\_i,\ getString(item)))}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num++;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ d.option.canClose\ =\ canCancel;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer(d);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ d;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00256}00256\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00258}00258\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022E3\ RID:\ 8931\ RVA:\ 0x000C32B8\ File\ Offset:\ 0x000C14B8}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00259}00259\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ TryWarn(\textcolor{keywordtype}{string}\ lang,\ Action\ action)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00260}00260\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}\ d\ =\ Layer.Create<\mbox{\hyperlink{class_dialog}{Dialog}}>();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ d.textDetail.SetText(lang.lang()\ +\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ d.SetOnKill(delegate}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.core.actionsNextFrame.Add(delegate}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ActPlan.warning\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00269}00269\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ d.list.AddButton(\textcolor{keyword}{null},\ Lang.Get(\textcolor{stringliteral}{"{}yes"{}}),\ delegate}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00271}00271\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ d.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ base.<TryWarn>g\_\_Commit|0();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ d.list.AddButton(\textcolor{keyword}{null},\ Lang.Get(\textcolor{stringliteral}{"{}yes\_dontask"{}}),\ delegate}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ string\ lang2\ =\ lang;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ if\ (!(lang2\ ==\ \textcolor{stringliteral}{"{}warn\_crime"{}}))}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (!(lang2\ ==\ \textcolor{stringliteral}{"{}warn\_mana"{}}))}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (lang2\ ==\ \textcolor{stringliteral}{"{}warn\_disassemble"{}})}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ELayer.core.config.game.ignoreWarnDisassemble\ =\ true;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ else}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ELayer.core.config.game.ignoreWarnMana\ =\ true;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ELayer.core.config.game.ignoreWarnCrime\ =\ true;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ d.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ base.<TryWarn>g\_\_Commit|0();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ d.list.AddButton(\textcolor{keyword}{null},\ Lang.Get(\textcolor{stringliteral}{"{}no"{}}),\ delegate}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00300}00300\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ d.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00302}00302\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00303}00303\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer(d);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00304}00304\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00306}00306\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022E4\ RID:\ 8932\ RVA:\ 0x000C33C0\ File\ Offset:\ 0x000C15C0}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00307}00307\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ TryWarnCrime(Action\ action)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00308}00308\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_layer}{ELayer}}.core.config.game.warnCrime\ ||\ \mbox{\hyperlink{class_e_layer}{ELayer}}.core.config.game.ignoreWarnCrime)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00310}00310\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ Dialog.warned\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ action();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ Dialog.warned\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ ActPlan.warning\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00316}00316\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00317}00317\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}.TryWarn(\textcolor{stringliteral}{"{}warn\_crime"{}},\ action);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00318}00318\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00320}00320\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022E5\ RID:\ 8933\ RVA:\ 0x000C3420\ File\ Offset:\ 0x000C1620}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00321}00321\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ TryWarnMana(Action\ action)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00322}00322\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00323}00323\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_layer}{ELayer}}.core.config.game.warnMana\ ||\ \mbox{\hyperlink{class_e_layer}{ELayer}}.core.config.game.ignoreWarnMana)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00324}00324\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ Dialog.warned\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ action();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ Dialog.warned\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ ActPlan.warning\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00330}00330\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00331}00331\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}.TryWarn(\textcolor{stringliteral}{"{}warn\_mana"{}},\ action);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00332}00332\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00334}00334\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022E6\ RID:\ 8934\ RVA:\ 0x000C3480\ File\ Offset:\ 0x000C1680}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00335}00335\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ TryWarnDisassemble(Action\ action)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00336}00336\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00337}00337\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_layer}{ELayer}}.core.config.game.warnDisassemble\ ||\ \mbox{\hyperlink{class_e_layer}{ELayer}}.core.config.game.ignoreWarnDisassemble)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00338}00338\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ Dialog.warned\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ action();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ Dialog.warned\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00343}00343\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00344}00344\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}.TryWarn(\textcolor{stringliteral}{"{}warn\_disassemble"{}},\ action);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00345}00345\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00346}00346\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00347}00347\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022E7\ RID:\ 8935\ RVA:\ 0x000C34D7\ File\ Offset:\ 0x000C16D7}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00348}00348\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_dialog}{Dialog}}\ Gift(\textcolor{keywordtype}{string}\ langHeader,\ \textcolor{keywordtype}{bool}\ autoAdd,\ params\ \mbox{\hyperlink{class_card}{Card}}[]\ cards)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00349}00349\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00350}00350\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_dialog}{Dialog}}.Gift(langHeader,\ autoAdd,\ \textcolor{keyword}{new}\ List<Card>(cards));}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00351}00351\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00352}00352\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00353}00353\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022E8\ RID:\ 8936\ RVA:\ 0x000C34E8\ File\ Offset:\ 0x000C16E8}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00354}00354\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_dialog}{Dialog}}\ Gift(\textcolor{keywordtype}{string}\ langHeader,\ \textcolor{keywordtype}{bool}\ autoAdd,\ List<Card>\ list)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00355}00355\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00356}00356\ \ \ \ \ \ \ \ \ List<GridItem>\ list2\ =\ \textcolor{keyword}{new}\ List<GridItem>();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00357}00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_card}{Card}}\ c\ \textcolor{keywordflow}{in}\ list)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00358}00358\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ list2.Add(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_grid_item_card}{GridItemCard}}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c\ =\ c}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00363}00363\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00364}00364\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_dialog}{Dialog}}.Gift(langHeader,\ autoAdd,\ list2);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00365}00365\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00366}00366\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00367}00367\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022E9\ RID:\ 8937\ RVA:\ 0x000C3550\ File\ Offset:\ 0x000C1750}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00368}00368\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_dialog}{Dialog}}\ Gift(\textcolor{keywordtype}{string}\ langHeader,\ \textcolor{keywordtype}{bool}\ autoAdd,\ List<GridItem>\ list)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00369}00369\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00370}00370\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}\ d\ =\ Layer.Create<\mbox{\hyperlink{class_dialog}{Dialog}}>();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00371}00371\ \ \ \ \ \ \ \ \ d.spacer.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00372}00372\ \ \ \ \ \ \ \ \ d.note.AddHeader(langHeader.IsEmpty(\textcolor{stringliteral}{"{}headerGift"{}}).lang(),\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00373}00373\ \ \ \ \ \ \ \ \ d.list.AddButton(\textcolor{keyword}{null},\ Lang.Get(\textcolor{stringliteral}{"{}ok"{}}),\ delegate}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00374}00374\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ if\ (autoAdd)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ foreach\ (GridItem\ gridItem\ in\ list)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gridItem.AutoAdd();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ d.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00383}00383\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00384}00384\ \ \ \ \ \ \ \ \ d.option.soundActivate\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00385}00385\ \ \ \ \ \ \ \ \ d.option.canClose\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00386}00386\ \ \ \ \ \ \ \ \ d.gridItems\ =\ list;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00387}00387\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.Sound.Play(\textcolor{stringliteral}{"{}good"{}});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00388}00388\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer(d);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00389}00389\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ d;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00390}00390\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00391}00391\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00392}00392\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022EA\ RID:\ 8938\ RVA:\ 0x000C3634\ File\ Offset:\ 0x000C1834}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00393}00393\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_dialog}{Dialog}}\ \mbox{\hyperlink{class_recipe}{Recipe}}(List<RecipeSource>\ list)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00394}00394\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00395}00395\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}\ d\ =\ Layer.Create<\mbox{\hyperlink{class_dialog}{Dialog}}>();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00396}00396\ \ \ \ \ \ \ \ \ d.spacer.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00397}00397\ \ \ \ \ \ \ \ \ d.note.AddHeader(\textcolor{stringliteral}{"{}giftRecipe"{}}.lang(),\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00398}00398\ \ \ \ \ \ \ \ \ d.list.AddButton(\textcolor{keyword}{null},\ Lang.Get(\textcolor{stringliteral}{"{}ok"{}}),\ delegate}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00399}00399\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ d.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00401}00401\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00402}00402\ \ \ \ \ \ \ \ \ d.option.soundActivate\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00403}00403\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ list.Count;\ i++)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00404}00404\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00405}00405\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_source}{RecipeSource}}\ recipeSource\ =\ list[i];}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00406}00406\ \ \ \ \ \ \ \ \ \ \ \ \ List<\mbox{\hyperlink{class_recipe}{Recipe}}.\mbox{\hyperlink{class_recipe_1_1_ingredient}{Ingredient}}>\ ingredients\ =\ recipeSource.GetIngredients();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ingredients.Count\ >\ 0\ \&\&\ \mbox{\hyperlink{class_e_layer}{ELayer}}.sources.cards.map.ContainsKey(ingredients[0].id))}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00408}00408\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00409}00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.sources.cards.map[ingredients[0].id].GetName();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ d.note.AddText(\textcolor{stringliteral}{"{}・"{}}\ +\ recipeSource.Name.ToTitleCase(\textcolor{keyword}{false}),\ FontColor.DontChange);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00412}00412\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ >=\ 9\ \&\&\ list.Count\ >\ 10)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00413}00413\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00414}00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d.note.Space(6,\ 1);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00415}00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d.note.AddText(\textcolor{stringliteral}{"{}moreRecipes"{}}.lang((list.Count\ -\/\ 10).ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}),\ FontColor.DontChange);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00417}00417\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00418}00418\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00419}00419\ \ \ \ \ \ \ \ \ d.SetOnKill(\textcolor{keyword}{new}\ Action(SE.Click));}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00420}00420\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.Sound.Play(\textcolor{stringliteral}{"{}idea"{}});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00421}00421\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer(d);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00422}00422\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ d;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00423}00423\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00424}00424\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00425}00425\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022EB\ RID:\ 8939\ RVA:\ 0x000C37F4\ File\ Offset:\ 0x000C19F4}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00426}00426\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_dialog}{Dialog}}\ Confetti(\textcolor{keywordtype}{string}\ langTitle,\ \textcolor{keywordtype}{string}\ langDetail,\ \textcolor{keywordtype}{string}\ langConfetti\ =\ \textcolor{stringliteral}{"{}Grats!"{}})}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00427}00427\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00428}00428\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.Sound.Play(\textcolor{stringliteral}{"{}confetti"{}});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00429}00429\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_dialog}{Dialog}}.\_Confetti(\textcolor{stringliteral}{"{}DialogConfetti"{}},\ langTitle,\ langDetail,\ langConfetti);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00430}00430\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00431}00431\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00432}00432\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022EC\ RID:\ 8940\ RVA:\ 0x000C3813\ File\ Offset:\ 0x000C1A13}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00433}00433\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_dialog}{Dialog}}\ ConfettiSimple(\textcolor{keywordtype}{string}\ langTitle,\ \textcolor{keywordtype}{string}\ langDetail,\ \textcolor{keywordtype}{string}\ langConfetti\ =\ \textcolor{stringliteral}{"{}Grats!"{}})}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00434}00434\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00435}00435\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.Sound.Play(\textcolor{stringliteral}{"{}confettiSimple"{}});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00436}00436\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_dialog}{Dialog}}.\_Confetti(\textcolor{stringliteral}{"{}DialogConfettiSimple"{}},\ langTitle,\ langDetail,\ langConfetti);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00437}00437\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00438}00438\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00439}00439\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022ED\ RID:\ 8941\ RVA:\ 0x000C3834\ File\ Offset:\ 0x000C1A34}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00440}00440\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_dialog}{Dialog}}\ \_Confetti(\textcolor{keywordtype}{string}\ idPrefab,\ \textcolor{keywordtype}{string}\ langTitle,\ \textcolor{keywordtype}{string}\ langDetail,\ \textcolor{keywordtype}{string}\ langConfetti\ =\ \textcolor{stringliteral}{"{}Grats!"{}})}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00441}00441\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00442}00442\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}\ d\ =\ Layer.Create(idPrefab)\ as\ \mbox{\hyperlink{class_dialog}{Dialog}};}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00443}00443\ \ \ \ \ \ \ \ \ d.textConfetti.text\ =\ langConfetti.lang();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00444}00444\ \ \ \ \ \ \ \ \ d.textDetail.SetText(langDetail.lang());}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00445}00445\ \ \ \ \ \ \ \ \ d.list.AddButton(\textcolor{keyword}{null},\ Lang.Get(\textcolor{stringliteral}{"{}ok"{}}),\ delegate}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00446}00446\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00447}00447\ \ \ \ \ \ \ \ \ \ \ \ \ d.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00448}00448\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00449}00449\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer(d);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00450}00450\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ d;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00451}00451\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00452}00452\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00453}00453\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022EE\ RID:\ 8942\ RVA:\ 0x000C38C4\ File\ Offset:\ 0x000C1AC4}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00454}00454\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_dialog}{Dialog}}\ Keymap(EInput.KeyMap\ keymap)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00455}00455\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00456}00456\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}\ dialog\ =\ Layer.Create<\mbox{\hyperlink{class_dialog}{Dialog}}>(\textcolor{stringliteral}{"{}DialogKeymap"{}});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00457}00457\ \ \ \ \ \ \ \ \ dialog.textDetail.SetText(\textcolor{stringliteral}{"{}dialog\_keymap"{}}.lang((\textcolor{stringliteral}{"{}key\_"{}}\ +\ keymap.action.ToString()).lang(),\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00458}00458\ \ \ \ \ \ \ \ \ dialog.keymap\ =\ keymap;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00459}00459\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer(dialog);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00460}00460\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dialog;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00461}00461\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00462}00462\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00463}00463\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060022EF\ RID:\ 8943\ RVA:\ 0x000C392C\ File\ Offset:\ 0x000C1B2C}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00464}00464\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_dialog}{Dialog}}\ InputName(\textcolor{keywordtype}{string}\ langDetail,\ \textcolor{keywordtype}{string}\ text,\ Action<bool,\ string>\ onClose,\ \mbox{\hyperlink{class_dialog}{Dialog}}.InputType\ inputType\ =\ \mbox{\hyperlink{class_dialog}{Dialog}}.InputType.Default)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00465}00465\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00466}00466\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dialog}{Dialog}}\ d\ =\ Layer.Create<\mbox{\hyperlink{class_dialog}{Dialog}}>(\textcolor{stringliteral}{"{}DialogInput"{}});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00467}00467\ \ \ \ \ \ \ \ \ d.inputType\ =\ inputType;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00468}00468\ \ \ \ \ \ \ \ \ d.langHint\ =\ langDetail;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00469}00469\ \ \ \ \ \ \ \ \ d.input.Text\ =\ text;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00470}00470\ \ \ \ \ \ \ \ \ d.note.AddText(langDetail.lang(),\ FontColor.DontChange).text1.alignment\ =\ TextAnchor.MiddleCenter;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00471}00471\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputType\ ==\ \mbox{\hyperlink{class_dialog}{Dialog}}.InputType.Password)}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00472}00472\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ d.input.field.characterLimit\ =\ 8;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ d.input.field.contentType\ =\ InputField.ContentType.Alphanumeric;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00475}00475\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00476}00476\ \ \ \ \ \ \ \ \ d.onEnterInput\ =\ onClose;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00477}00477\ \ \ \ \ \ \ \ \ d.list.AddButton(\textcolor{keyword}{null},\ Lang.Get(\textcolor{stringliteral}{"{}ok"{}}),\ delegate}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00478}00478\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ \ \ onClose(false,\ d.input.Text);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ \ \ d.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00481}00481\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00482}00482\ \ \ \ \ \ \ \ \ d.list.AddButton(\textcolor{keyword}{null},\ Lang.Get(\textcolor{stringliteral}{"{}cancel"{}}),\ delegate}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00483}00483\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ onClose(true,\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ d.Close();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00486}00486\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00487}00487\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer(d);}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00488}00488\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ d;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00489}00489\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00490}00490\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00491}00491\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001240\ RID:\ 4672}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00492}00492\ \ \ \ \ \textcolor{keyword}{public}\ Text\ textConfetti;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00493}00493\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00494}00494\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001241\ RID:\ 4673}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00495}00495\ \ \ \ \ \textcolor{keyword}{public}\ Image\ image;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00496}00496\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00497}00497\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001242\ RID:\ 4674}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00498}00498\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textDetail;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00499}00499\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00500}00500\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001243\ RID:\ 4675}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00501}00501\ \ \ \ \ \textcolor{keyword}{public}\ UINote\ note;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00502}00502\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00503}00503\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001244\ RID:\ 4676}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00504}00504\ \ \ \ \ \textcolor{keyword}{public}\ UIButtonList\ list;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00505}00505\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00506}00506\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001245\ RID:\ 4677}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00507}00507\ \ \ \ \ \textcolor{keyword}{public}\ LayoutGroup\ layout;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00508}00508\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00509}00509\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001246\ RID:\ 4678}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00510}00510\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_screen_effect}{ScreenEffect}}\ effect;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00511}00511\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00512}00512\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001247\ RID:\ 4679}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00513}00513\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ listGrid;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00514}00514\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00515}00515\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001248\ RID:\ 4680}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00516}00516\ \ \ \ \ \textcolor{keyword}{public}\ Transform\ spacer;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00517}00517\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00518}00518\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001249\ RID:\ 4681}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00519}00519\ \ \ \ \ \textcolor{keyword}{public}\ List<GridItem>\ gridItems\ =\ \textcolor{keyword}{new}\ List<GridItem>();}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00520}00520\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00521}00521\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400124A\ RID:\ 4682}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00522}00522\ \ \ \ \ \textcolor{keyword}{public}\ UIInputText\ input;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00523}00523\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00524}00524\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400124B\ RID:\ 4683}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00525}00525\ \ \ \ \ \textcolor{keyword}{public}\ Dialog.InputType\ inputType;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00526}00526\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00527}00527\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400124C\ RID:\ 4684}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00528}00528\ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00529}00529\ \ \ \ \ \textcolor{keyword}{public}\ EInput.KeyMap\ keymap;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00530}00530\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00531}00531\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400124D\ RID:\ 4685}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00532}00532\ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00533}00533\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ isInputEnter;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00534}00534\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00535}00535\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400124E\ RID:\ 4686}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00536}00536\ \ \ \ \ \textcolor{keyword}{public}\ Action<bool,\ string>\ onEnterInput;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00537}00537\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00538}00538\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400124F\ RID:\ 4687}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00539}00539\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ warned;}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00540}00540\ }
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00541}00541\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000A19\ RID:\ 2585}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00542}00542\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ InputType}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00543}00543\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00544}00544\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040029A2\ RID:\ 10658}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00545}00545\ \ \ \ \ \ \ \ \ None,}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00546}00546\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040029A3\ RID:\ 10659}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00547}00547\ \ \ \ \ \ \ \ \ Default,}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00548}00548\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040029A4\ RID:\ 10660}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00549}00549\ \ \ \ \ \ \ \ \ Password}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00550}00550\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dialog_8cs_source_l00551}00551\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,73 @@
+\doxysection{Content\+Home\+Ranking.\+cs}
+\hypertarget{_content_home_ranking_8cs_source}{}\label{_content_home_ranking_8cs_source}\index{Elin/ContentHomeRanking.cs@{Elin/ContentHomeRanking.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x0200054F\ RID:\ 1359}}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00006}\mbox{\hyperlink{class_content_home_ranking}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_content_home_ranking}{ContentHomeRanking}}\ :\ \mbox{\hyperlink{class_e_content}{EContent}}}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060024EF\ RID:\ 9455\ RVA:\ 0x000D0DBC\ File\ Offset:\ 0x000CEFBC}}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnSwitchContent(\textcolor{keywordtype}{int}\ idTab)}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ this.Refresh();}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060024F0\ RID:\ 9456\ RVA:\ 0x000D0DC4\ File\ Offset:\ 0x000CEFC4}}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Refresh()}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ List<RankedZone>\ ranks\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.game.spatials.ranks.GetList();}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ UIDynamicList\ list\ =\ this.listRanking;}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ list.Clear();}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ BaseList\ list2\ =\ list;}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ UIList.Callback<\mbox{\hyperlink{class_ranked_zone}{RankedZone}},\ UIItem>\ callback\ =\ \textcolor{keyword}{new}\ UIList.Callback<\mbox{\hyperlink{class_ranked_zone}{RankedZone}},\ UIItem>();}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ callback.onClick\ =\ delegate(\mbox{\hyperlink{class_ranked_zone}{RankedZone}}\ a,\ UIItem\ b)}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ callback.onRedraw\ =\ delegate(\mbox{\hyperlink{class_ranked_zone}{RankedZone}}\ a,\ UIItem\ b,\ \textcolor{keywordtype}{int}\ i)}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ b.text1.text\ =\ ((a.z.visitCount\ >\ 0)\ ?\ a.Name\ :\ \textcolor{stringliteral}{"{}?????"{}});}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ b.text2.text\ =\ \textcolor{keywordtype}{string}.Format(\textcolor{stringliteral}{"{}\{0:\#,0\}"{}},\ a.Value);}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ b.text3.text\ =\ (a.rank.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ b.text4.text\ =\ a.GetFactionName();}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ b.image1.sprite\ =\ (a.GetSprite()\ ??\ b.image1.sprite);}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ b.image1.SetNativeSize();}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ b.text3.color\ =\ this.colors[(a.rank\ <=\ 3)\ ?\ 0\ :\ ((a.rank\ <=\ 10)\ ?\ 1\ :\ ((a.rank\ <=\ 100)\ ?\ 2\ :\ 3))];}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ b.image2.SetActive(a.z.IsPCFaction);}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ callback.onList\ =\ delegate(UIList.SortMode\ m)}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_ranked_zone}{RankedZone}}\ o\ \textcolor{keywordflow}{in}\ ranks)}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list.Add(o);}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ callback.onRefresh\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ list2.callbacks\ =\ callback;}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ list.List();}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_ranked_zone}{RankedZone}}\ rankedZone\ \textcolor{keywordflow}{in}\ ranks)}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rankedZone.z\ ==\ \mbox{\hyperlink{class_e_class}{EClass}}.\_zone)}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ list.objects.IndexOf(rankedZone);}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ !=\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ list.dsv.scrollByItemIndex(num);}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ list.Refresh();}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ this.RebuildLayout(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001474\ RID:\ 5236}}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{public}\ UIDynamicList\ listRanking;}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00065}00065\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001475\ RID:\ 5237}}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00066}00066\ \ \ \ \ \textcolor{keyword}{public}\ Color[]\ colors;}
+\DoxyCodeLine{\Hypertarget{_content_home_ranking_8cs_source_l00067}00067\ \}}
+
+\end{DoxyCode}

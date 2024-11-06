@@ -1,0 +1,80 @@
+\doxysection{UIPlace\+Helper.\+cs}
+\hypertarget{_u_i_place_helper_8cs_source}{}\label{_u_i_place_helper_8cs_source}\index{Elin/UIPlaceHelper.cs@{Elin/UIPlaceHelper.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x020005F0\ RID:\ 1520}}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00005}\mbox{\hyperlink{class_u_i_place_helper}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_u_i_place_helper}{UIPlaceHelper}}\ :\ \mbox{\hyperlink{class_e_mono}{EMono}}}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060029CC\ RID:\ 10700\ RVA:\ 0x000EBC9C\ File\ Offset:\ 0x000E9E9C}}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Refresh()}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe}{Recipe}}\ recipe\ =\ \mbox{\hyperlink{class_hot_item_held}{HotItemHeld}}.recipe;}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ recipe\ !=\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_mono}{EMono}}.player.currentHotItem.Thing\ ==\ \textcolor{keyword}{null}\ ||\ (\mbox{\hyperlink{class_e_mono}{EMono}}.player.currentHotItem.Thing.trait.IsTool\ \&\&\ !\mbox{\hyperlink{class_hot_item_held}{HotItemHeld}}.disableTool))}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ flag\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ base.gameObject.SetActive(flag);}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!flag)}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ this.buttonAutoWall.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ this.buttonAutoWall.mainText.text\ =\ (EMono.game.config.autoWall\ ?\ \textcolor{stringliteral}{"{}On"{}}\ :\ \textcolor{stringliteral}{"{}Off"{}});}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ this.buttonAutoWall.icon.SetAlpha(\mbox{\hyperlink{class_e_mono}{EMono}}.game.config.autoWall\ ?\ 1f\ :\ 0.4f);}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ this.buttonAutoWall.SetOnClick(delegate}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ SE.Tab();}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ EMono.game.config.autoWall\ =\ !\mbox{\hyperlink{class_e_mono}{EMono}}.game.config.autoWall;}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ this.Refresh();}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ this.buttonFreePlace.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ this.buttonFreePlace.mainText.text\ =\ (EMono.game.config.freePos\ ?\ \textcolor{stringliteral}{"{}On"{}}\ :\ \textcolor{stringliteral}{"{}Off"{}});}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ this.buttonFreePlace.icon.SetAlpha(\mbox{\hyperlink{class_e_mono}{EMono}}.game.config.freePos\ ?\ 1f\ :\ 0.4f);}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ this.buttonFreePlace.SetOnClick(delegate}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ SE.Tab();}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ EMono.game.config.freePos\ =\ !\mbox{\hyperlink{class_e_mono}{EMono}}.game.config.freePos;}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ this.Refresh();}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ this.buttonHeight.SetActive(recipe.MaxAltitude\ !=\ 0);}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ this.buttonHeight.mainText.text\ =\ ((ActionMode.Build.altitude\ >=\ 0)\ ?\ \textcolor{stringliteral}{"{}+"{}}\ :\ \textcolor{stringliteral}{"{}"{}})\ +\ \mbox{\hyperlink{class_action_mode}{ActionMode}}.Build.altitude.ToString();}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ this.buttonHeight.SetOnClick(delegate}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ SE.Tab();}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_action_mode}{ActionMode}}.Build.ModAltitude(1);}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ this.Refresh();}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ this.buttonHeight.onRightClick\ =\ delegate()}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ SE.Tab();}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_action_mode}{ActionMode}}.Build.ModAltitude(-\/1);}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ this.Refresh();}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ this.buttonHeight.onInputWheel\ =\ delegate(\textcolor{keywordtype}{int}\ a)}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ SE.Tab();}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_action_mode}{ActionMode}}.Build.ModAltitude(a);}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ this.Refresh();}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ this.bgGrid.uvRect\ =\ \textcolor{keyword}{new}\ Rect(1f,\ 1f,\ (\textcolor{keywordtype}{float})this.GetComponentsInDirectChildren(\textcolor{keyword}{false}).Count,\ 1f);}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ this.RebuildLayout(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040017A7\ RID:\ 6055}}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{public}\ UIRawImage\ bgGrid;}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040017A8\ RID:\ 6056}}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00067}00067\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}\ buttonHeight;}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040017A9\ RID:\ 6057}}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00070}00070\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}\ buttonFreePlace;}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040017AA\ RID:\ 6058}}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}\ buttonAutoWall;}
+\DoxyCodeLine{\Hypertarget{_u_i_place_helper_8cs_source_l00074}00074\ \}}
+
+\end{DoxyCode}

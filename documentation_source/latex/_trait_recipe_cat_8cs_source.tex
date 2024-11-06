@@ -1,0 +1,52 @@
+\doxysection{Trait\+Recipe\+Cat.\+cs}
+\hypertarget{_trait_recipe_cat_8cs_source}{}\label{_trait_recipe_cat_8cs_source}\index{Elin/TraitRecipeCat.cs@{Elin/TraitRecipeCat.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00003}00003\ \textcolor{comment}{//\ Token:\ 0x02000367\ RID:\ 871}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00004}\mbox{\hyperlink{class_trait_recipe_cat}{00004}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_trait_recipe_cat}{TraitRecipeCat}}\ :\ \mbox{\hyperlink{class_trait_scroll}{TraitScroll}}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170007ED\ RID:\ 2029}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06001AF6\ RID:\ 6902\ RVA:\ 0x000A6D34\ File\ Offset:\ 0x000A4F34}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ Cat}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ base.GetParam(1,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001AF7\ RID:\ 6903\ RVA:\ 0x000A6D3E\ File\ Offset:\ 0x000A4F3E}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{int}\ GetValue()}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ base.GetValue()\ *\ (100\ +\ (this.owner.LV\ -\/\ 5)\ *\ 10)\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001AF8\ RID:\ 6904\ RVA:\ 0x000A6D60\ File\ Offset:\ 0x000A4F60}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnRead(\mbox{\hyperlink{class_chara}{Chara}}\ c)}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ randomRecipe\ =\ \mbox{\hyperlink{class_recipe_manager}{RecipeManager}}.GetRandomRecipe(this.owner.LV,\ \textcolor{keyword}{this}.Cat,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (randomRecipe.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_msg}{Msg}}.SayNothingHappen();}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.player.recipes.Add(randomRecipe,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ this.owner.ModNum(-\/1,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001AF9\ RID:\ 6905\ RVA:\ 0x000A6DB4\ File\ Offset:\ 0x000A4FB4}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ SetName(ref\ \textcolor{keywordtype}{string}\ s)}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00037}00037\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ s\ =\ s\ +\ \textcolor{stringliteral}{"{}\ Lv."{}}\ +\ this.owner.LV.ToString();}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001AFA\ RID:\ 6906\ RVA:\ 0x000A6DE2\ File\ Offset:\ 0x000A4FE2}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ CanStackTo(\mbox{\hyperlink{class_thing}{Thing}}\ to)}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00043}00043\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ base.CanStackTo(to)\ \&\&\ this.owner.LV\ ==\ to.LV;}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_recipe_cat_8cs_source_l00046}00046\ \}}
+
+\end{DoxyCode}

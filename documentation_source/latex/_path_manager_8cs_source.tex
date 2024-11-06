@@ -1,0 +1,144 @@
+\doxysection{Path\+Manager.\+cs}
+\hypertarget{_path_manager_8cs_source}{}\label{_path_manager_8cs_source}\index{Elin/PathManager.cs@{Elin/PathManager.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Threading;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_algorithms}{Algorithms}};}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00007}00007\ \textcolor{comment}{//\ Token:\ 0x020000B9\ RID:\ 185}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00008}\mbox{\hyperlink{class_path_manager}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_path_manager}{PathManager}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700010A\ RID:\ 266}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060004D9\ RID:\ 1241\ RVA:\ 0x00022099\ File\ Offset:\ 0x00020299}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{interface_i_pathfinder}{IPathfinder}}\ pathfinder}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00013}00013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.\_pathfinder;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004DA\ RID:\ 1242\ RVA:\ 0x000220A1\ File\ Offset:\ 0x000202A1}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Awake()}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ PathManager.Instance\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004DB\ RID:\ 1243\ RVA:\ 0x000220A9\ File\ Offset:\ 0x000202A9}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00027}00027\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RequestPath(\mbox{\hyperlink{class_path_progress}{PathProgress}}\ progress)}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00028}00028\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_path_manager}{PathManager}}.requestCount++;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ progress.state\ =\ \mbox{\hyperlink{class_path_progress}{PathProgress}}.State.Searching;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ ThreadPool.QueueUserWorkItem(delegate(\textcolor{keywordtype}{object}\ a)}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_path_thread}{PathThread}}().Start(progress);}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004DC\ RID:\ 1244\ RVA:\ 0x000220E0\ File\ Offset:\ 0x000202E0}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RequestPathImmediate(\mbox{\hyperlink{class_path_progress}{PathProgress}}\ progress)}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_path_manager}{PathManager}}.requestCount++;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ this.pathfinder.FindPath(progress);}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00044}00044\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004DD\ RID:\ 1245\ RVA:\ 0x000220FC\ File\ Offset:\ 0x000202FC}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsPathClear(\mbox{\hyperlink{class_point}{Point}}\ origin,\ \mbox{\hyperlink{class_point}{Point}}\ dest,\ \mbox{\hyperlink{interface_i_pathfind_walker}{IPathfindWalker}}\ walker,\ \textcolor{keywordtype}{int}\ radius)}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00046}00046\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ PathManager.tempProgress.walker\ =\ walker;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ PathManager.tempProgress.moveType\ =\ \mbox{\hyperlink{class_path_manager}{PathManager}}.MoveType.Default;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_path_manager}{PathManager}}.tempProgress.RequestPathImmediate(origin,\ dest,\ 0,\ \textcolor{keyword}{false},\ -\/1);}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ PathManager.tempProgress.nodes.Count\ >\ 0\ \&\&\ PathManager.tempProgress.nodes.Count\ <\ radius;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004DE\ RID:\ 1246\ RVA:\ 0x00022155\ File\ Offset:\ 0x00020355}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00054}00054\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_path_progress}{PathProgress}}\ RequestPathImmediate(\mbox{\hyperlink{class_point}{Point}}\ origin,\ \mbox{\hyperlink{class_point}{Point}}\ dest,\ \mbox{\hyperlink{interface_i_pathfind_walker}{IPathfindWalker}}\ walker,\ \mbox{\hyperlink{class_path_manager}{PathManager}}.MoveType\ moveType\ =\ \mbox{\hyperlink{class_path_manager}{PathManager}}.MoveType.Default,\ \textcolor{keywordtype}{int}\ searchLimit\ =\ -\/1,\ \textcolor{keywordtype}{int}\ destDist\ =\ 0)}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00055}00055\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ PathManager.tempProgress.walker\ =\ walker;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ PathManager.tempProgress.moveType\ =\ moveType;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_path_manager}{PathManager}}.tempProgress.RequestPathImmediate(origin,\ dest,\ destDist,\ \textcolor{keyword}{false},\ searchLimit);}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_path_manager}{PathManager}}.tempProgress;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004DF\ RID:\ 1247\ RVA:\ 0x00022184\ File\ Offset:\ 0x00020384}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_point}{Point}}\ GetFirstStep(\mbox{\hyperlink{class_point}{Point}}\ origin,\ \mbox{\hyperlink{class_point}{Point}}\ \_dest,\ \mbox{\hyperlink{interface_i_pathfind_walker}{IPathfindWalker}}\ walker,\ \textcolor{keywordtype}{int}\ maxDist\ =\ 20,\ \mbox{\hyperlink{class_path_manager}{PathManager}}.MoveType\ moveType\ =\ \mbox{\hyperlink{class_path_manager}{PathManager}}.MoveType.Default)}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00064}00064\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ dest\ =\ \_dest.Copy();}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ point\ =\ this.\_GetFirstStep(origin,\ dest,\ walker,\ maxDist,\ moveType);}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (point.IsValid)}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ point;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_point}{Point}}.Invalid;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00072}00072\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004E0\ RID:\ 1248\ RVA:\ 0x000221B8\ File\ Offset:\ 0x000203B8}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00075}00075\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_point}{Point}}\ \_GetFirstStep(\mbox{\hyperlink{class_point}{Point}}\ origin,\ \mbox{\hyperlink{class_point}{Point}}\ dest,\ \mbox{\hyperlink{interface_i_pathfind_walker}{IPathfindWalker}}\ walker,\ \textcolor{keywordtype}{int}\ maxDist\ =\ 20,\ \mbox{\hyperlink{class_path_manager}{PathManager}}.MoveType\ moveType\ =\ \mbox{\hyperlink{class_path_manager}{PathManager}}.MoveType.Default)}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00076}00076\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!dest.IsValid\ ||\ (dest.cell.blocked\ \&\&\ origin.Distance(dest)\ <=\ 1))}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_point}{Point}}.Invalid;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ PathManager.tempProgress.walker\ =\ walker;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ PathManager.tempProgress.moveType\ =\ moveType;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_path_manager}{PathManager}}.tempProgress.RequestPathImmediate(origin,\ dest,\ (moveType\ ==\ \mbox{\hyperlink{class_path_manager}{PathManager}}.MoveType.Combat)\ ?\ 1\ :\ 0,\ \textcolor{keyword}{false},\ maxDist);}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_path_manager}{PathManager}}.tempProgress.HasPath)}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_point}{Point}}.Invalid;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ List<PathFinderNode>\ nodes\ =\ \mbox{\hyperlink{class_path_manager}{PathManager}}.tempProgress.nodes;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nodes.Count\ <=\ 0)}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_point}{Point}}.Invalid;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_algorithms_1_1_path_finder_node}{PathFinderNode}}\ pathFinderNode\ =\ nodes[nodes.Count\ -\/\ 1];}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pathFinderNode.X\ ==\ origin.x\ \&\&\ pathFinderNode.Z\ ==\ origin.z\ \&\&\ nodes.Count\ >\ 1)}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ pathFinderNode\ =\ nodes[nodes.Count\ -\/\ 2];}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Mathf.Abs(pathFinderNode.X\ -\/\ origin.x)\ >\ 1\ ||\ Mathf.Abs(pathFinderNode.Z\ -\/\ origin.z)\ >\ 1)}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_point}{Point}}.Invalid;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ point\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_point}{Point}}(pathFinderNode.X,\ pathFinderNode.Z);}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (point.x\ ==\ origin.x\ \&\&\ point.z\ ==\ origin.z)}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_point}{Point}}.Invalid;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ point;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00108}00108\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00110}00110\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060004E1\ RID:\ 1249\ RVA:\ 0x000222F0\ File\ Offset:\ 0x000204F0}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00111}00111\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnGridModified()}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00112}00112\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00113}00113\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00115}00115\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000652\ RID:\ 1618}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00116}00116\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ requestCount;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00118}00118\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000653\ RID:\ 1619}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00119}00119\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_path_manager}{PathManager}}\ Instance;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00121}00121\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000654\ RID:\ 1620}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00122}00122\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_path_progress}{PathProgress}}\ tempProgress\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_path_progress}{PathProgress}}();}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00124}00124\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000655\ RID:\ 1621}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00125}00125\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_algorithms_1_1_path_finder}{PathFinder}}\ \_pathfinder;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00127}00127\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000656\ RID:\ 1622}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00128}00128\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ searchLimit\ =\ 1000000;}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00130}00130\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000806\ RID:\ 2054}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00131}00131\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ MoveType}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00132}00132\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002290\ RID:\ 8848}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ Default,}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002291\ RID:\ 8849}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ Combat}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_manager_8cs_source_l00138}00138\ \}}
+
+\end{DoxyCode}

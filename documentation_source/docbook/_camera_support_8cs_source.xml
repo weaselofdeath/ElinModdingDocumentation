@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__camera_support_8cs_source" xml:lang="en-US">
+<title>CameraSupport.cs</title>
+<indexterm><primary>Elin/CameraSupport.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__camera_support_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__camera_support_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>BeautifyEffect;
+<anchor xml:id="__camera_support_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>Colorful;
+<anchor xml:id="__camera_support_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__camera_support_8cs_source_1l00005"/>00005 <emphasis role="keyword">using&#32;</emphasis>UnityStandardAssets.ImageEffects;
+<anchor xml:id="__camera_support_8cs_source_1l00006"/>00006 
+<anchor xml:id="__camera_support_8cs_source_1l00007"/>00007 <emphasis role="comment">//&#32;Token:&#32;0x02000162&#32;RID:&#32;354</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00008"/><link linkend="_class_camera_support">00008</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_camera_support">CameraSupport</link>&#32;:&#32;MonoBehaviour
+<anchor xml:id="__camera_support_8cs_source_1l00009"/>00009 {
+<anchor xml:id="__camera_support_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000A6D&#32;RID:&#32;2669&#32;RVA:&#32;0x0003F1AB&#32;File&#32;Offset:&#32;0x0003D3AB</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ResizeCameraToPixelPerfect()
+<anchor xml:id="__camera_support_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__camera_support_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.cam.orthographicSize&#32;=&#32;this.GetOrthoSize()&#32;/&#32;this.Zoom;
+<anchor xml:id="__camera_support_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__camera_support_8cs_source_1l00015"/>00015 
+<anchor xml:id="__camera_support_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000A6E&#32;RID:&#32;2670&#32;RVA:&#32;0x0003F1C5&#32;File&#32;Offset:&#32;0x0003D3C5</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnChangeResolution()
+<anchor xml:id="__camera_support_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__camera_support_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__camera_support_8cs_source_1l00020"/>00020 
+<anchor xml:id="__camera_support_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000A6F&#32;RID:&#32;2671&#32;RVA:&#32;0x0003F1C8&#32;File&#32;Offset:&#32;0x0003D3C8</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;GetOrthoSize()
+<anchor xml:id="__camera_support_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__camera_support_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;result&#32;=&#32;0f;
+<anchor xml:id="__camera_support_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(this.divier)
+<anchor xml:id="__camera_support_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__camera_support_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_camera_support">CameraSupport</link>.Divider.None:
+<anchor xml:id="__camera_support_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;=&#32;(float)Screen.height&#32;*&#32;0.5f&#32;*&#32;0.01f;
+<anchor xml:id="__camera_support_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__camera_support_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_camera_support">CameraSupport</link>.Divider.Floor:
+<anchor xml:id="__camera_support_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;=&#32;(float)Mathf.FloorToInt((<emphasis role="keywordtype">float</emphasis>)Screen.height&#32;*&#32;0.5f)&#32;*&#32;0.01f;
+<anchor xml:id="__camera_support_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__camera_support_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_camera_support">CameraSupport</link>.Divider.Round:
+<anchor xml:id="__camera_support_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;=&#32;(float)Mathf.RoundToInt((<emphasis role="keywordtype">float</emphasis>)Screen.height&#32;*&#32;0.5f)&#32;*&#32;0.01f;
+<anchor xml:id="__camera_support_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__camera_support_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_camera_support">CameraSupport</link>.Divider.Ceil:
+<anchor xml:id="__camera_support_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;=&#32;(float)Mathf.CeilToInt((<emphasis role="keywordtype">float</emphasis>)Screen.height&#32;*&#32;0.5f)&#32;*&#32;0.01f;
+<anchor xml:id="__camera_support_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__camera_support_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_camera_support">CameraSupport</link>.Divider.Odd:
+<anchor xml:id="__camera_support_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;=&#32;(float)Screen.height&#32;*&#32;0.5f&#32;*&#32;0.01f&#32;+&#32;0.005f;
+<anchor xml:id="__camera_support_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__camera_support_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__camera_support_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;result;
+<anchor xml:id="__camera_support_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__camera_support_8cs_source_1l00045"/>00045 
+<anchor xml:id="__camera_support_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000923&#32;RID:&#32;2339</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Camera&#32;cam;
+<anchor xml:id="__camera_support_8cs_source_1l00048"/>00048 
+<anchor xml:id="__camera_support_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000924&#32;RID:&#32;2340</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Vector3&#32;renderPos;
+<anchor xml:id="__camera_support_8cs_source_1l00051"/>00051 
+<anchor xml:id="__camera_support_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000925&#32;RID:&#32;2341</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_game_screen">GameScreen</link>&#32;screen;
+<anchor xml:id="__camera_support_8cs_source_1l00054"/>00054 
+<anchor xml:id="__camera_support_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000926&#32;RID:&#32;2342</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;ScreenGrading&#32;grading;
+<anchor xml:id="__camera_support_8cs_source_1l00057"/>00057 
+<anchor xml:id="__camera_support_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000927&#32;RID:&#32;2343</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Upscaler&#32;upscaler;
+<anchor xml:id="__camera_support_8cs_source_1l00060"/>00060 
+<anchor xml:id="__camera_support_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000928&#32;RID:&#32;2344</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;CameraSupport.Divider&#32;divier;
+<anchor xml:id="__camera_support_8cs_source_1l00063"/>00063 
+<anchor xml:id="__camera_support_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000929&#32;RID:&#32;2345</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;snap;
+<anchor xml:id="__camera_support_8cs_source_1l00066"/>00066 
+<anchor xml:id="__camera_support_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400092A&#32;RID:&#32;2346</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;PixelsPerUnit&#32;=&#32;100f;
+<anchor xml:id="__camera_support_8cs_source_1l00069"/>00069 
+<anchor xml:id="__camera_support_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400092B&#32;RID:&#32;2347</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;TiltShift&#32;tiltShift;
+<anchor xml:id="__camera_support_8cs_source_1l00072"/>00072 
+<anchor xml:id="__camera_support_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400092C&#32;RID:&#32;2348</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;BloomOptimized&#32;bloom;
+<anchor xml:id="__camera_support_8cs_source_1l00075"/>00075 
+<anchor xml:id="__camera_support_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400092D&#32;RID:&#32;2349</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Beautify&#32;beautify;
+<anchor xml:id="__camera_support_8cs_source_1l00078"/>00078 
+<anchor xml:id="__camera_support_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400092E&#32;RID:&#32;2350</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Kuwahara&#32;kuwahara;
+<anchor xml:id="__camera_support_8cs_source_1l00081"/>00081 
+<anchor xml:id="__camera_support_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400092F&#32;RID:&#32;2351</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;GaussianBlur&#32;blur;
+<anchor xml:id="__camera_support_8cs_source_1l00084"/>00084 
+<anchor xml:id="__camera_support_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000930&#32;RID:&#32;2352</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;[Range(0.1f,&#32;2f)]
+<anchor xml:id="__camera_support_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;Zoom&#32;=&#32;1f;
+<anchor xml:id="__camera_support_8cs_source_1l00088"/>00088 
+<anchor xml:id="__camera_support_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x02000879&#32;RID:&#32;2169</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">enum</emphasis>&#32;Divider
+<anchor xml:id="__camera_support_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__camera_support_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002435&#32;RID:&#32;9269</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;None,
+<anchor xml:id="__camera_support_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002436&#32;RID:&#32;9270</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Floor,
+<anchor xml:id="__camera_support_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002437&#32;RID:&#32;9271</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Round,
+<anchor xml:id="__camera_support_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002438&#32;RID:&#32;9272</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Ceil,
+<anchor xml:id="__camera_support_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002439&#32;RID:&#32;9273</emphasis>
+<anchor xml:id="__camera_support_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Odd
+<anchor xml:id="__camera_support_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__camera_support_8cs_source_1l00103"/>00103 }
+</programlisting></section>

@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__layer_title_8cs_source" xml:lang="en-US">
+<title>LayerTitle.cs</title>
+<indexterm><primary>Elin/LayerTitle.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__layer_title_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__layer_title_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__layer_title_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>UnityEngine.UI;
+<anchor xml:id="__layer_title_8cs_source_1l00004"/>00004 
+<anchor xml:id="__layer_title_8cs_source_1l00005"/>00005 <emphasis role="comment">//&#32;Token:&#32;0x020005C4&#32;RID:&#32;1476</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00006"/><link linkend="_class_layer_title">00006</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_layer_title">LayerTitle</link>&#32;:&#32;<link linkend="_class_e_layer">ELayer</link>,&#32;IChangeLanguage,&#32;IChangeResolution
+<anchor xml:id="__layer_title_8cs_source_1l00007"/>00007 {
+<anchor xml:id="__layer_title_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000BC9&#32;RID:&#32;3017</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x0600286C&#32;RID:&#32;10348&#32;RVA:&#32;0x000E4D4D&#32;File&#32;Offset:&#32;0x000E2F4D</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_layer_title_1_1_title_type">LayerTitle.TitleType</link>&#32;CurrentTitle
+<anchor xml:id="__layer_title_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.types[this.altTitle&#32;?&#32;1&#32;:&#32;0];
+<anchor xml:id="__layer_title_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00017"/>00017 
+<anchor xml:id="__layer_title_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600286D&#32;RID:&#32;10349&#32;RVA:&#32;0x000E4D64&#32;File&#32;Offset:&#32;0x000E2F64</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnInit()
+<anchor xml:id="__layer_title_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LayerTitle.Instance&#32;=&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="__layer_title_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textVersion.text&#32;=&#32;(<link linkend="_class_e_layer">ELayer</link>.core.version.GetText()&#32;??&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+<anchor xml:id="__layer_title_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textIntro.text&#32;=&#32;IO.LoadText(CorePath.CorePackage.TextData&#32;+&#32;<emphasis role="stringliteral">&quot;intro.txt&quot;</emphasis>);
+<anchor xml:id="__layer_title_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.ui.SetLight(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__layer_title_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.titleActor&#32;=&#32;Util.Instantiate&lt;Transform&gt;(this.titleActor,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__layer_title_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Refresh();
+<anchor xml:id="__layer_title_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SoundManager.current.PlayBGM(this.CurrentTitle.bgmTitle,&#32;0f,&#32;0f);
+<anchor xml:id="__layer_title_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00029"/>00029 
+<anchor xml:id="__layer_title_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600286E&#32;RID:&#32;10350&#32;RVA:&#32;0x000E4DFC&#32;File&#32;Offset:&#32;0x000E2FFC</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Refresh()
+<anchor xml:id="__layer_title_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.titleActor.GetComponentInChildren&lt;SpriteRenderer&gt;().sprite&#32;=&#32;this.CurrentTitle.bg;
+<anchor xml:id="__layer_title_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.uiLight.color&#32;=&#32;this.CurrentTitle.light;
+<anchor xml:id="__layer_title_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.imageFog.color&#32;=&#32;this.CurrentTitle.fog;
+<anchor xml:id="__layer_title_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnChangeResolution();
+<anchor xml:id="__layer_title_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00038"/>00038 
+<anchor xml:id="__layer_title_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600286F&#32;RID:&#32;10351&#32;RVA:&#32;0x000E4E56&#32;File&#32;Offset:&#32;0x000E3056</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickStart()
+<anchor xml:id="__layer_title_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.embark&#32;=&#32;<link linkend="_class_e_layer">ELayer</link>.ui.AddLayer&lt;<link linkend="_class_layer_edit_bio">LayerEditBio</link>&gt;();
+<anchor xml:id="__layer_title_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SoundManager.current.PlayBGM(this.CurrentTitle.bgm,&#32;0f,&#32;0f);
+<anchor xml:id="__layer_title_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00045"/>00045 
+<anchor xml:id="__layer_title_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002870&#32;RID:&#32;10352&#32;RVA:&#32;0x000E4E88&#32;File&#32;Offset:&#32;0x000E3088</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnChangeResolution()
+<anchor xml:id="__layer_title_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.imageBG.transform.localScale&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Vector3(Mathf.Max(1f,&#32;1.7777778f&#32;/&#32;((<emphasis role="keywordtype">float</emphasis>)Screen.width&#32;/&#32;(<emphasis role="keywordtype">float</emphasis>)Screen.height)),&#32;1f,&#32;1f);
+<anchor xml:id="__layer_title_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00051"/>00051 
+<anchor xml:id="__layer_title_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002871&#32;RID:&#32;10353&#32;RVA:&#32;0x000E4EC6&#32;File&#32;Offset:&#32;0x000E30C6</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickContinue()
+<anchor xml:id="__layer_title_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.ui.AddLayer&lt;<link linkend="_class_layer_load_game">LayerLoadGame</link>&gt;();
+<anchor xml:id="__layer_title_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00057"/>00057 
+<anchor xml:id="__layer_title_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002872&#32;RID:&#32;10354&#32;RVA:&#32;0x000E4ED3&#32;File&#32;Offset:&#32;0x000E30D3</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickConfig()
+<anchor xml:id="__layer_title_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.ui.AddLayer&lt;<link linkend="_class_layer_config">LayerConfig</link>&gt;();
+<anchor xml:id="__layer_title_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00063"/>00063 
+<anchor xml:id="__layer_title_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002873&#32;RID:&#32;10355&#32;RVA:&#32;0x000E4EE0&#32;File&#32;Offset:&#32;0x000E30E0</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickMod()
+<anchor xml:id="__layer_title_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.ui.AddLayer&lt;<link linkend="_class_layer_mod">LayerMod</link>&gt;();
+<anchor xml:id="__layer_title_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00069"/>00069 
+<anchor xml:id="__layer_title_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002874&#32;RID:&#32;10356&#32;RVA:&#32;0x000E4EED&#32;File&#32;Offset:&#32;0x000E30ED</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickCredit()
+<anchor xml:id="__layer_title_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.ui.AddLayer&lt;<link linkend="_class_layer_credit">LayerCredit</link>&gt;();
+<anchor xml:id="__layer_title_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00075"/>00075 
+<anchor xml:id="__layer_title_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002875&#32;RID:&#32;10357&#32;RVA:&#32;0x000E4EFA&#32;File&#32;Offset:&#32;0x000E30FA</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickAnnounce()
+<anchor xml:id="__layer_title_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.ui.AddLayer(<emphasis role="stringliteral">&quot;LayerAnnounce&quot;</emphasis>);
+<anchor xml:id="__layer_title_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00081"/>00081 
+<anchor xml:id="__layer_title_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002876&#32;RID:&#32;10358&#32;RVA:&#32;0x000E4F0C&#32;File&#32;Offset:&#32;0x000E310C</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickAbout()
+<anchor xml:id="__layer_title_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.ui.AddLayer(<emphasis role="stringliteral">&quot;LayerAbout&quot;</emphasis>);
+<anchor xml:id="__layer_title_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00087"/>00087 
+<anchor xml:id="__layer_title_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002877&#32;RID:&#32;10359&#32;RVA:&#32;0x000E4F1E&#32;File&#32;Offset:&#32;0x000E311E</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickFeedback()
+<anchor xml:id="__layer_title_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.ui.ToggleFeedback();
+<anchor xml:id="__layer_title_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00093"/>00093 
+<anchor xml:id="__layer_title_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002878&#32;RID:&#32;10360&#32;RVA:&#32;0x000E4F2C&#32;File&#32;Offset:&#32;0x000E312C</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickExit()
+<anchor xml:id="__layer_title_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(Application.isEditor)
+<anchor xml:id="__layer_title_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.ui.RemoveLayer(<emphasis role="keyword">this</emphasis>);
+<anchor xml:id="__layer_title_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_layer_title">LayerTitle</link>.actor)
+<anchor xml:id="__layer_title_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UnityEngine.Object.DestroyImmediate(<link linkend="_class_layer_title">LayerTitle</link>.actor.gameObject);
+<anchor xml:id="__layer_title_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.ui.AddLayer&lt;<link linkend="_class_layer_title">LayerTitle</link>&gt;();
+<anchor xml:id="__layer_title_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__layer_title_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.core.Quit();
+<anchor xml:id="__layer_title_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00109"/>00109 
+<anchor xml:id="__layer_title_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002879&#32;RID:&#32;10361&#32;RVA:&#32;0x000E4F7C&#32;File&#32;Offset:&#32;0x000E317C</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnKill()
+<anchor xml:id="__layer_title_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UnityEngine.Object.DestroyImmediate(this.titleActor.gameObject);
+<anchor xml:id="__layer_title_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.embark)
+<anchor xml:id="__layer_title_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.ui.RemoveLayer(this.embark);
+<anchor xml:id="__layer_title_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UnityEngine.Object.DestroyImmediate(this.embark);
+<anchor xml:id="__layer_title_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.ui.SetLight(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__layer_title_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00121"/>00121 
+<anchor xml:id="__layer_title_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600287A&#32;RID:&#32;10362&#32;RVA:&#32;0x000E4FCC&#32;File&#32;Offset:&#32;0x000E31CC</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Update()
+<anchor xml:id="__layer_title_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_layer_edit_bio">LayerEditBio</link>&#32;layer&#32;=&#32;<link linkend="_class_e_layer">ELayer</link>.ui.GetLayer&lt;<link linkend="_class_layer_edit_bio">LayerEditBio</link>&gt;(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__layer_title_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!layer&#32;&amp;&amp;&#32;SoundManager.current.currentBGM.id&#32;!=&#32;<emphasis role="keyword">this</emphasis>.CurrentTitle.bgmTitle.name)
+<anchor xml:id="__layer_title_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.toggle)
+<anchor xml:id="__layer_title_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.altTitle&#32;=&#32;!this.altTitle;
+<anchor xml:id="__layer_title_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SoundManager.current.PlayBGM(this.CurrentTitle.bgmTitle,&#32;0f,&#32;0f);
+<anchor xml:id="__layer_title_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Refresh();
+<anchor xml:id="__layer_title_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;num&#32;=&#32;Mathf.Clamp(this.cgBook.alpha&#32;+&#32;Time.smoothDeltaTime&#32;*&#32;<emphasis role="keyword">this</emphasis>.speed&#32;*&#32;(<emphasis role="keywordtype">float</emphasis>)(layer&#32;?&#32;-1&#32;:&#32;1),&#32;0f,&#32;1f);
+<anchor xml:id="__layer_title_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.cgBook.alpha&#32;!=&#32;num)
+<anchor xml:id="__layer_title_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.cgBook.alpha&#32;=&#32;num;
+<anchor xml:id="__layer_title_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.cgBG.alpha&#32;!=&#32;num)
+<anchor xml:id="__layer_title_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.cgBG.alpha&#32;=&#32;num;
+<anchor xml:id="__layer_title_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.ray.enabled&#32;=&#32;(num&#32;==&#32;1f);
+<anchor xml:id="__layer_title_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00146"/>00146 
+<anchor xml:id="__layer_title_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600287B&#32;RID:&#32;10363&#32;RVA:&#32;0x000E50CD&#32;File&#32;Offset:&#32;0x000E32CD</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnChangeLanguage()
+<anchor xml:id="__layer_title_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textIntro.text&#32;=&#32;IO.LoadText(CorePath.CorePackage.TextData&#32;+&#32;<emphasis role="stringliteral">&quot;intro.txt&quot;</emphasis>);
+<anchor xml:id="__layer_title_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00152"/>00152 
+<anchor xml:id="__layer_title_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600287C&#32;RID:&#32;10364&#32;RVA:&#32;0x000E50EE&#32;File&#32;Offset:&#32;0x000E32EE</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;KillActor()
+<anchor xml:id="__layer_title_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_layer_title">LayerTitle</link>.actor)
+<anchor xml:id="__layer_title_8cs_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UnityEngine.Object.DestroyImmediate(<link linkend="_class_layer_title">LayerTitle</link>.actor.gameObject);
+<anchor xml:id="__layer_title_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00161"/>00161 
+<anchor xml:id="__layer_title_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016A2&#32;RID:&#32;5794</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_layer_title">LayerTitle</link>.<link linkend="_class_layer_title_1_1_title_type">TitleType</link>[]&#32;types;
+<anchor xml:id="__layer_title_8cs_source_1l00164"/>00164 
+<anchor xml:id="__layer_title_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016A3&#32;RID:&#32;5795</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_layer_title">LayerTitle</link>&#32;Instance;
+<anchor xml:id="__layer_title_8cs_source_1l00167"/>00167 
+<anchor xml:id="__layer_title_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016A4&#32;RID:&#32;5796</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_embark_actor">EmbarkActor</link>&#32;actor;
+<anchor xml:id="__layer_title_8cs_source_1l00170"/>00170 
+<anchor xml:id="__layer_title_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016A5&#32;RID:&#32;5797</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_layer_edit_bio">LayerEditBio</link>&#32;embark;
+<anchor xml:id="__layer_title_8cs_source_1l00173"/>00173 
+<anchor xml:id="__layer_title_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016A6&#32;RID:&#32;5798</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00175"/>00175 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textVersion;
+<anchor xml:id="__layer_title_8cs_source_1l00176"/>00176 
+<anchor xml:id="__layer_title_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016A7&#32;RID:&#32;5799</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textIntro;
+<anchor xml:id="__layer_title_8cs_source_1l00179"/>00179 
+<anchor xml:id="__layer_title_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016A8&#32;RID:&#32;5800</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Transform&#32;transBook;
+<anchor xml:id="__layer_title_8cs_source_1l00182"/>00182 
+<anchor xml:id="__layer_title_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016A9&#32;RID:&#32;5801</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00184"/>00184 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;CanvasGroup&#32;cgBook;
+<anchor xml:id="__layer_title_8cs_source_1l00185"/>00185 
+<anchor xml:id="__layer_title_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016AA&#32;RID:&#32;5802</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00187"/>00187 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;CanvasGroup&#32;cgBG;
+<anchor xml:id="__layer_title_8cs_source_1l00188"/>00188 
+<anchor xml:id="__layer_title_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016AB&#32;RID:&#32;5803</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00190"/>00190 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;speed;
+<anchor xml:id="__layer_title_8cs_source_1l00191"/>00191 
+<anchor xml:id="__layer_title_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016AC&#32;RID:&#32;5804</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00193"/>00193 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;GraphicRaycaster&#32;ray;
+<anchor xml:id="__layer_title_8cs_source_1l00194"/>00194 
+<anchor xml:id="__layer_title_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016AD&#32;RID:&#32;5805</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00196"/>00196 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Transform&#32;titleActor;
+<anchor xml:id="__layer_title_8cs_source_1l00197"/>00197 
+<anchor xml:id="__layer_title_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016AE&#32;RID:&#32;5806</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00199"/>00199 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Image&#32;uiLight;
+<anchor xml:id="__layer_title_8cs_source_1l00200"/>00200 
+<anchor xml:id="__layer_title_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016AF&#32;RID:&#32;5807</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00202"/>00202 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;RawImage&#32;imageFog;
+<anchor xml:id="__layer_title_8cs_source_1l00203"/>00203 
+<anchor xml:id="__layer_title_8cs_source_1l00204"/>00204 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016B0&#32;RID:&#32;5808</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00205"/>00205 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;RawImage&#32;imageBG;
+<anchor xml:id="__layer_title_8cs_source_1l00206"/>00206 
+<anchor xml:id="__layer_title_8cs_source_1l00207"/>00207 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016B1&#32;RID:&#32;5809</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00208"/>00208 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;toggle;
+<anchor xml:id="__layer_title_8cs_source_1l00209"/>00209 
+<anchor xml:id="__layer_title_8cs_source_1l00210"/>00210 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040016B2&#32;RID:&#32;5810</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00211"/>00211 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;altTitle;
+<anchor xml:id="__layer_title_8cs_source_1l00212"/>00212 
+<anchor xml:id="__layer_title_8cs_source_1l00213"/>00213 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x02000B25&#32;RID:&#32;2853</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00214"/>00214 &#32;&#32;&#32;&#32;[Serializable]
+<anchor xml:id="__layer_title_8cs_source_1l00215"/><link linkend="_class_layer_title_1_1_title_type">00215</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_layer_title_1_1_title_type">TitleType</link>
+<anchor xml:id="__layer_title_8cs_source_1l00216"/>00216 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_title_8cs_source_1l00217"/>00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002CEA&#32;RID:&#32;11498</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00218"/>00218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Color&#32;light;
+<anchor xml:id="__layer_title_8cs_source_1l00219"/>00219 
+<anchor xml:id="__layer_title_8cs_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002CEB&#32;RID:&#32;11499</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Color&#32;fog;
+<anchor xml:id="__layer_title_8cs_source_1l00222"/>00222 
+<anchor xml:id="__layer_title_8cs_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002CEC&#32;RID:&#32;11500</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Sprite&#32;bg;
+<anchor xml:id="__layer_title_8cs_source_1l00225"/>00225 
+<anchor xml:id="__layer_title_8cs_source_1l00226"/>00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002CED&#32;RID:&#32;11501</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;BGMData&#32;bgm;
+<anchor xml:id="__layer_title_8cs_source_1l00228"/>00228 
+<anchor xml:id="__layer_title_8cs_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002CEE&#32;RID:&#32;11502</emphasis>
+<anchor xml:id="__layer_title_8cs_source_1l00230"/>00230 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;BGMData&#32;bgmTitle;
+<anchor xml:id="__layer_title_8cs_source_1l00231"/>00231 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_title_8cs_source_1l00232"/>00232 }
+</programlisting></section>

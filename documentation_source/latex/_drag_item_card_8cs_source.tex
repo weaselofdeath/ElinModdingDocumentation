@@ -1,0 +1,169 @@
+\doxysection{Drag\+Item\+Card.\+cs}
+\hypertarget{_drag_item_card_8cs_source}{}\label{_drag_item_card_8cs_source}\index{Elin/DragItemCard.cs@{Elin/DragItemCard.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x020005D2\ RID:\ 1490}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00005}\mbox{\hyperlink{class_drag_item_card}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_drag_item_card}{DragItemCard}}\ :\ \mbox{\hyperlink{class_drag_item}{DragItem}}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002909\ RID:\ 10505\ RVA:\ 0x000E7FD8\ File\ Offset:\ 0x000E61D8}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_drag_item_card}{DragItemCard}}(\mbox{\hyperlink{class_button_grid}{ButtonGrid}}\ \_button,\ \textcolor{keywordtype}{bool}\ setDragImage\ =\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ this.button\ =\ \_button;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ this.from\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_drag_item_card}{DragItemCard}}.\mbox{\hyperlink{class_drag_item_card_1_1_drag_info}{DragInfo}}(this.button);}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (setDragImage)}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.ui.hud.SetDragImage(this.button.icon,\ \textcolor{keyword}{null},\ \textcolor{keyword}{this}.button.mainText);}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00016}00016\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000BDD\ RID:\ 3037}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600290A\ RID:\ 10506\ RVA:\ 0x000E802C\ File\ Offset:\ 0x000E622C}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00020}00020\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ UIButton\ Button}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.button;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600290B\ RID:\ 10507\ RVA:\ 0x000E8034\ File\ Offset:\ 0x000E6234}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnStartDrag()}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00030}00030\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ this.from.invOwner.OnStartDrag(this.from);}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_layer_drag_grid}{LayerDragGrid}}.Instance\ \&\&\ \mbox{\hyperlink{class_layer_drag_grid}{LayerDragGrid}}.Instance.owner.ShouldShowGuide(\textcolor{keyword}{this}.from.thing))}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_drag_grid}{LayerDragGrid}}.Instance.CurrentButton.Attach(\textcolor{stringliteral}{"{}guide"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600290C\ RID:\ 10508\ RVA:\ 0x000E8095\ File\ Offset:\ 0x000E6295}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnEndDrag()}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00040}00040\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ WidgetEquip.dragEquip\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_widget_equip}{WidgetEquip}}.Redraw();}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_layer_drag_grid}{LayerDragGrid}}.Instance)}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_drag_grid}{LayerDragGrid}}.Instance.CurrentButton.Dettach(\textcolor{stringliteral}{"{}guide"{}});}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600290D\ RID:\ 10509\ RVA:\ 0x000E80C4\ File\ Offset:\ 0x000E62C4}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00050}00050\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ OnDrag(\textcolor{keywordtype}{bool}\ execute,\ \textcolor{keywordtype}{bool}\ cancel\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00051}00051\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_drag_item_card_1_1_drag_info}{DragItemCard.DragInfo}}\ dragInfo\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_drag_item_card}{DragItemCard}}.\mbox{\hyperlink{class_drag_item_card_1_1_drag_info}{DragInfo}}(InputModuleEX.GetComponentOf<\mbox{\hyperlink{class_button_grid}{ButtonGrid}}>());}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ this.from.invOwner.OnDrag(this.from,\ dragInfo,\ execute,\ cancel);}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flag\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.core.config.game.doubleClickToHold\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.ui.dragDuration\ <\ 0.35f\ \&\&\ dragInfo.button\ ==\ \textcolor{keyword}{this}.from.button\ \&\&\ \textcolor{keyword}{this}.from.thing\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ dragInfo.button.invOwner.TryHold(this.from.thing);}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ flag;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400172E\ RID:\ 5934}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}\ button;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400172F\ RID:\ 5935}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_drag_item_card_1_1_drag_info}{DragItemCard.DragInfo}}\ from;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001730\ RID:\ 5936}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00068}00068\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_drag_item_card_1_1_drag_info}{DragItemCard.DragInfo}}\ to;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000B38\ RID:\ 2872}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00071}\mbox{\hyperlink{class_drag_item_card_1_1_drag_info}{00071}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_drag_item_card_1_1_drag_info}{DragInfo}}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00072}00072\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06004356\ RID:\ 17238\ RVA:\ 0x00159784\ File\ Offset:\ 0x00157984}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_drag_item_card_1_1_drag_info}{DragInfo}}(\mbox{\hyperlink{class_button_grid}{ButtonGrid}}\ b)}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ this.button\ =\ b;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (b\ \&\&\ b.invOwner\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (b.card\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.thing\ =\ b.card.Thing;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.invX\ =\ this.thing.invX;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.invY\ =\ this.thing.invY;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.thing.isEquipped\ \&\&\ \textcolor{keyword}{this}.thing.GetRootCard()\ ==\ \textcolor{keyword}{this}.invOwner.owner)}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.equippedSlot\ =\ this.invOwner.owner.Chara.body.slots[this.thing.c\_equippedSlot\ -\/\ 1];}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.invX\ =\ b.index;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.invY\ =\ b.invOwner.destInvY;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170011E9\ RID:\ 4585}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06004357\ RID:\ 17239\ RVA:\ 0x00159867\ File\ Offset:\ 0x00157A67}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ List<Thing>\ grid}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.container.things.grid;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170011EA\ RID:\ 4586}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06004358\ RID:\ 17240\ RVA:\ 0x00159879\ File\ Offset:\ 0x00157A79}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_inv_owner}{InvOwner}}\ invOwner}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.button.invOwner;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170011EB\ RID:\ 4587}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06004359\ RID:\ 17241\ RVA:\ 0x00159886\ File\ Offset:\ 0x00157A86}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_card}{Card}}\ container}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.invOwner.Container;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170011EC\ RID:\ 4588}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600435A\ RID:\ 17242\ RVA:\ 0x00159893\ File\ Offset:\ 0x00157A93}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ BaseList\ list}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.button.GetComponentInParent<BaseList>();}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170011ED\ RID:\ 4589}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600435B\ RID:\ 17243\ RVA:\ 0x001598A0\ File\ Offset:\ 0x00157AA0}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ ContainerType\ ContainerType}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.container.trait.ContainerType;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002D1E\ RID:\ 11550}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}\ button;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002D1F\ RID:\ 11551}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_body_slot}{BodySlot}}\ equippedSlot;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002D20\ RID:\ 11552}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ invX;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002D21\ RID:\ 11553}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ invY;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002D22\ RID:\ 11554}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_thing}{Thing}}\ thing;}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00162}00162\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_drag_item_card_8cs_source_l00163}00163\ \}}
+
+\end{DoxyCode}

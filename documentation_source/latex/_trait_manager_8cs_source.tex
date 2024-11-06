@@ -1,0 +1,123 @@
+\doxysection{Trait\+Manager.\+cs}
+\hypertarget{_trait_manager_8cs_source}{}\label{_trait_manager_8cs_source}\index{Elin/TraitManager.cs@{Elin/TraitManager.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x020006A4\ RID:\ 1700}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00005}\mbox{\hyperlink{class_trait_manager}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_trait_manager}{TraitManager}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003160\ RID:\ 12640\ RVA:\ 0x001147C8\ File\ Offset:\ 0x001129C8}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnAddCard(\mbox{\hyperlink{class_card}{Card}}\ c)}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_trait}{Trait}}\ trait\ =\ c.trait;}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ this.typeMap.GetOrCreate(trait.GetType(),\ \textcolor{keyword}{null}).Add(c);}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (trait.IsAltar)}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ this.altars.Add(c);}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (trait.IsRestSpot)}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ this.restSpots.Add(c);}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (trait\ is\ \mbox{\hyperlink{class_trait_chair}{TraitChair}})}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ this.chairs.Add(c);}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (trait\ is\ \mbox{\hyperlink{class_trait_light_sun}{TraitLightSun}})}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ this.suns.Add(c);}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003161\ RID:\ 12641\ RVA:\ 0x00114844\ File\ Offset:\ 0x00112A44}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnRemoveCard(\mbox{\hyperlink{class_card}{Card}}\ c)}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00032}00032\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_trait}{Trait}}\ trait\ =\ c.trait;}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ this.typeMap[trait.GetType()].Remove(c);}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (trait.IsAltar)}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ this.altars.Remove(c);}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (trait.IsRestSpot)}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ this.restSpots.Remove(c);}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (trait\ is\ \mbox{\hyperlink{class_trait_chair}{TraitChair}})}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ this.chairs.Remove(c);}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (trait\ is\ \mbox{\hyperlink{class_trait_light_sun}{TraitLightSun}})}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ this.suns.Remove(c);}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003162\ RID:\ 12642\ RVA:\ 0x001148BF\ File\ Offset:\ 0x00112ABF}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00054}00054\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_thing}{Thing}}\ GetRandomThing<T>()\ where\ T\ :\ \mbox{\hyperlink{class_trait}{Trait}}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00055}00055\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_card}{Card}}\ card\ =\ this.GetTraitSet<T>().RandomItem<int,\ \mbox{\hyperlink{class_card}{Card}}>();}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (card\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ card.Thing;}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003163\ RID:\ 12643\ RVA:\ 0x001148D8\ File\ Offset:\ 0x00112AD8}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{public}\ List<T>\ List<T>(Func<T,\ bool>\ func\ =\ \textcolor{keyword}{null})\ where\ T\ :\ \mbox{\hyperlink{class_trait}{Trait}}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00066}00066\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_trait_set}{TraitSet}}\ traitSet\ =\ this.GetTraitSet<T>();}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ List<T>\ list\ =\ \textcolor{keyword}{new}\ List<T>();}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (func\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (Dictionary<int,\ Card>.ValueCollection.Enumerator\ enumerator\ =\ traitSet.Values.GetEnumerator())}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (enumerator.MoveNext())}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_card}{Card}}\ card\ =\ enumerator.Current;}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list.Add(card.trait\ as\ T);}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list;}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_card}{Card}}\ card2\ \textcolor{keywordflow}{in}\ traitSet.Values)}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (func(card2.trait\ as\ T))}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list.Add(card2.trait\ as\ T);}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list;}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00089}00089\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00091}00091\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003164\ RID:\ 12644\ RVA:\ 0x001149B8\ File\ Offset:\ 0x00112BB8}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00092}00092\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_trait_set}{TraitSet}}\ GetTraitSet<T>()\ where\ T\ :\ \mbox{\hyperlink{class_trait}{Trait}}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00093}00093\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.typeMap.GetOrCreate(typeof(T),\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00095}00095\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00097}00097\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003165\ RID:\ 12645\ RVA:\ 0x001149D0\ File\ Offset:\ 0x00112BD0}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00098}00098\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_trait_set}{TraitSet}}\ GetTraitSet(Type\ t)}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00099}00099\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.typeMap.GetOrCreate(t,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00103}00103\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001B4C\ RID:\ 6988}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00104}00104\ \ \ \ \ \textcolor{keyword}{public}\ Dictionary<Type,\ TraitSet>\ typeMap\ =\ \textcolor{keyword}{new}\ Dictionary<Type,\ TraitSet>();}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00106}00106\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001B4D\ RID:\ 6989}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00107}00107\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_trait_map}{TraitMap}}\ altars\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_trait_map}{TraitMap}}();}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00109}00109\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001B4E\ RID:\ 6990}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00110}00110\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_trait_map}{TraitMap}}\ restSpots\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_trait_map}{TraitMap}}();}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00112}00112\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001B4F\ RID:\ 6991}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00113}00113\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_trait_map}{TraitMap}}\ chairs\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_trait_map}{TraitMap}}();}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00115}00115\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001B50\ RID:\ 6992}}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00116}00116\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_trait_map}{TraitMap}}\ suns\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_trait_map}{TraitMap}}();}
+\DoxyCodeLine{\Hypertarget{_trait_manager_8cs_source_l00117}00117\ \}}
+
+\end{DoxyCode}

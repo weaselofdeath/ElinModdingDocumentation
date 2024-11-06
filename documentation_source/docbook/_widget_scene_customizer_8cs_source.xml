@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__widget_scene_customizer_8cs_source" xml:lang="en-US">
+<title>WidgetSceneCustomizer.cs</title>
+<indexterm><primary>Elin/WidgetSceneCustomizer.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__widget_scene_customizer_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>SFB;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00005"/>00005 <emphasis role="keyword">using&#32;</emphasis>UnityEngine.UI;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00006"/>00006 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00007"/>00007 <emphasis role="comment">//&#32;Token:&#32;0x02000633&#32;RID:&#32;1587</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00008"/><link linkend="_class_widget_scene_customizer">00008</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_widget_scene_customizer">WidgetSceneCustomizer</link>&#32;:&#32;<link linkend="_class_widget">Widget</link>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00009"/>00009 {
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002C86&#32;RID:&#32;11398&#32;RVA:&#32;0x000F9914&#32;File&#32;Offset:&#32;0x000F7B14</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnActivate()
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_map_config">MapConfig</link>&#32;conf&#32;=&#32;<link linkend="_class_e_mono">EMono</link>._map.config;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.ddLiquid.SetList&lt;<link linkend="_class_liquid_profile">LiquidProfile</link>&gt;(conf.idLiquid,&#32;this.liquids,&#32;(<link linkend="_class_liquid_profile">LiquidProfile</link>&#32;a,&#32;<emphasis role="keywordtype">int</emphasis>&#32;b)&#32;=&gt;&#32;a.name,&#32;delegate(<emphasis role="keywordtype">int</emphasis>&#32;a,&#32;<link linkend="_class_liquid_profile">LiquidProfile</link>&#32;b)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(conf.idLiquid&#32;!=&#32;b.name)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;conf.idLiquid&#32;=&#32;b.name;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;conf.colorLiquid&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.scene.ApplyZoneConfig();
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshColor();
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.ddRefraction.SetList&lt;<link linkend="_class_refraction_profile">RefractionProfile</link>&gt;(conf.idRefraction,&#32;this.refractions,&#32;(<link linkend="_class_refraction_profile">RefractionProfile</link>&#32;a,&#32;<emphasis role="keywordtype">int</emphasis>&#32;b)&#32;=&gt;&#32;a.name,&#32;delegate(<emphasis role="keywordtype">int</emphasis>&#32;a,&#32;<link linkend="_class_refraction_profile">RefractionProfile</link>&#32;b)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(conf.idRefraction&#32;!=&#32;b.name)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;conf.idRefraction&#32;=&#32;b.name;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.scene.ApplyZoneConfig();
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.ddLut.SetList&lt;<emphasis role="keywordtype">string</emphasis>&gt;(conf.idLut,&#32;this.luts,&#32;(<emphasis role="keywordtype">string</emphasis>&#32;a,&#32;<emphasis role="keywordtype">int</emphasis>&#32;b)&#32;=&gt;&#32;a,&#32;delegate(<emphasis role="keywordtype">int</emphasis>&#32;a,&#32;<emphasis role="keywordtype">string</emphasis>&#32;b)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(conf.idLut&#32;!=&#32;b)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;conf.idLut&#32;=&#32;b;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.scene.ApplyZoneConfig();
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.sliderLutBlend.SetSlider(conf.lutBlend,&#32;delegate(<emphasis role="keywordtype">float</emphasis>&#32;a)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;conf.lutBlend&#32;=&#32;a;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.scene.ApplyZoneConfig();
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;Lang.Get(<emphasis role="stringliteral">&quot;lutBlend&quot;</emphasis>)&#32;+&#32;<emphasis role="stringliteral">&quot;(&quot;</emphasis>&#32;+&#32;((int)(a&#32;*&#32;100f)).ToString()&#32;+&#32;<emphasis role="stringliteral">&quot;%)&quot;</emphasis>;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;-1,&#32;-1,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.sliderLutBrightness.SetSlider(conf.lutBrightness,&#32;delegate(<emphasis role="keywordtype">float</emphasis>&#32;a)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;conf.lutBrightness&#32;=&#32;a;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.scene.ApplyZoneConfig();
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;Lang.Get(<emphasis role="stringliteral">&quot;lutBrightness&quot;</emphasis>)&#32;+&#32;<emphasis role="stringliteral">&quot;(&quot;</emphasis>&#32;+&#32;((int)(a&#32;*&#32;100f)).ToString()&#32;+&#32;<emphasis role="stringliteral">&quot;%)&quot;</emphasis>;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;-1,&#32;-1,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.sliderLutContrast.SetSlider(conf.lutContrast,&#32;delegate(<emphasis role="keywordtype">float</emphasis>&#32;a)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;conf.lutContrast&#32;=&#32;a;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.scene.ApplyZoneConfig();
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;Lang.Get(<emphasis role="stringliteral">&quot;lutContrast&quot;</emphasis>)&#32;+&#32;<emphasis role="stringliteral">&quot;(&quot;</emphasis>&#32;+&#32;((int)(a&#32;*&#32;100f)).ToString()&#32;+&#32;<emphasis role="stringliteral">&quot;%)&quot;</emphasis>;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;-1,&#32;-1,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;List&lt;Texture2D&gt;&#32;list&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;List&lt;Texture2D&gt;(Resources.LoadAll&lt;Texture2D&gt;(<emphasis role="stringliteral">&quot;Scene/Profile/Lut/&quot;</emphasis>));
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list.Insert(0,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.sliderLut.SetList&lt;Texture2D&gt;(list.Find(delegate(Texture2D&#32;a)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!(a&#32;==&#32;<emphasis role="keyword">null</emphasis>))
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;conf.idLut&#32;==&#32;a.name;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;conf.idLut&#32;==&#32;<emphasis role="stringliteral">&quot;None&quot;</emphasis>;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}),&#32;list,&#32;delegate(<emphasis role="keywordtype">int</emphasis>&#32;a,&#32;Texture2D&#32;b)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;conf.idLut&#32;=&#32;((b&#32;==&#32;<emphasis role="keyword">null</emphasis>)&#32;?&#32;<emphasis role="stringliteral">&quot;None&quot;</emphasis>&#32;:&#32;b.name);
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.scene.ApplyZoneConfig();
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;delegate(Texture2D&#32;a)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!(a&#32;==&#32;<emphasis role="keyword">null</emphasis>))
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;a.name;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;None&quot;</emphasis>;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshColor();
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00081"/>00081 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002C87&#32;RID:&#32;11399&#32;RVA:&#32;0x000F9AEC&#32;File&#32;Offset:&#32;0x000F7CEC</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ShowPicker()
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_map_config">MapConfig</link>&#32;conf&#32;=&#32;<link linkend="_class_e_mono">EMono</link>._map.config;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_liquid_profile">LiquidProfile</link>&#32;prof&#32;=&#32;<link linkend="_class_liquid_profile">LiquidProfile</link>.Get(conf.idLiquid);
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_layer_color_picker">LayerColorPicker</link>&#32;layerColorPicker&#32;=&#32;<link linkend="_class_e_mono">EMono</link>.ui.AddLayer&lt;<link linkend="_class_layer_color_picker">LayerColorPicker</link>&gt;();
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SerializableColor&#32;colorLiquid&#32;=&#32;conf.colorLiquid;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;layerColorPicker.SetColor((colorLiquid&#32;!=&#32;<emphasis role="keyword">null</emphasis>)&#32;?&#32;colorLiquid.Get()&#32;:&#32;prof.modColor,&#32;prof.modColor,&#32;delegate(PickerState&#32;state,&#32;Color&#32;c)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;prof.Apply(<emphasis role="keyword">new</emphasis>&#32;Color?(c));
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(state&#32;==&#32;PickerState.Confirm)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;conf.colorLiquid&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;SerializableColor(c);
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshColor();
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(state&#32;==&#32;PickerState.Cancel)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.scene.ApplyZoneConfig();
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00104"/>00104 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002C88&#32;RID:&#32;11400&#32;RVA:&#32;0x000F9B74&#32;File&#32;Offset:&#32;0x000F7D74</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshColor()
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_liquid_profile">LiquidProfile</link>&#32;liquidProfile&#32;=&#32;<link linkend="_class_liquid_profile">LiquidProfile</link>.Get(<link linkend="_class_e_mono">EMono</link>._map.config.idLiquid);
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SerializableColor&#32;colorLiquid&#32;=&#32;<link linkend="_class_e_mono">EMono</link>._map.config.colorLiquid;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Color&#32;color&#32;=&#32;(colorLiquid&#32;!=&#32;<emphasis role="keyword">null</emphasis>)&#32;?&#32;colorLiquid.Get()&#32;:&#32;liquidProfile.modColor;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;color.a&#32;=&#32;1f;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.buttonColorPicker.icon.color&#32;=&#32;color;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00114"/>00114 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002C89&#32;RID:&#32;11401&#32;RVA:&#32;0x000F9BD4&#32;File&#32;Offset:&#32;0x000F7DD4</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickSave()
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.core.WaitForEndOfFrame(delegate
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;text&#32;=&#32;StandaloneFileBrowser.SaveFilePanel(<emphasis role="stringliteral">&quot;Save&#32;Zone&#32;Config&quot;</emphasis>,&#32;CorePath.SceneCustomizerSave,&#32;<emphasis role="stringliteral">&quot;new&#32;zone&#32;config&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;json&quot;</emphasis>);
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<emphasis role="keywordtype">string</emphasis>.IsNullOrEmpty(text))
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;IO.SaveFile(text,&#32;<link linkend="_class_e_mono">EMono</link>._map.config,&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00127"/>00127 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002C8A&#32;RID:&#32;11402&#32;RVA:&#32;0x000F9BFF&#32;File&#32;Offset:&#32;0x000F7DFF</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickLoad()
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.core.WaitForEndOfFrame(delegate
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>[]&#32;array&#32;=&#32;StandaloneFileBrowser.OpenFilePanel(<emphasis role="stringliteral">&quot;Load&#32;Zone&#32;Config&quot;</emphasis>,&#32;CorePath.SceneCustomizerSave,&#32;<emphasis role="stringliteral">&quot;json&quot;</emphasis>,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(array.Length&#32;!=&#32;0)
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono._map.config&#32;=&#32;IO.LoadFile&lt;<link linkend="_class_map_config">MapConfig</link>&gt;(array[0],&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.Reactivate();
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00141"/>00141 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002C8B&#32;RID:&#32;11403&#32;RVA:&#32;0x000F9C17&#32;File&#32;Offset:&#32;0x000F7E17</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickReset()
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EMono._map.config&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_map_config">MapConfig</link>();
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.Reactivate();
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00148"/>00148 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040018ED&#32;RID:&#32;6381</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIDropdown&#32;ddLiquid;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00151"/>00151 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040018EE&#32;RID:&#32;6382</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIDropdown&#32;ddRefraction;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00154"/>00154 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040018EF&#32;RID:&#32;6383</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIDropdown&#32;ddOverlay;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00157"/>00157 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040018F0&#32;RID:&#32;6384</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIDropdown&#32;ddLut;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00160"/>00160 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040018F1&#32;RID:&#32;6385</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;LiquidProfile&gt;&#32;liquids;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00163"/>00163 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040018F2&#32;RID:&#32;6386</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;RefractionProfile&gt;&#32;refractions;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00166"/>00166 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00167"/>00167 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040018F3&#32;RID:&#32;6387</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;OverlayProfile&gt;&#32;overlays;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00169"/>00169 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040018F4&#32;RID:&#32;6388</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;string&gt;&#32;luts;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00172"/>00172 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040018F5&#32;RID:&#32;6389</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIButton&#32;toggleGradientWater;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00175"/>00175 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00176"/>00176 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040018F6&#32;RID:&#32;6390</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIButton&#32;buttonColorPicker;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00178"/>00178 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00179"/>00179 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040018F7&#32;RID:&#32;6391</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Slider&#32;sliderLutBlend;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00181"/>00181 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00182"/>00182 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040018F8&#32;RID:&#32;6392</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Slider&#32;sliderLutBrightness;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00184"/>00184 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00185"/>00185 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040018F9&#32;RID:&#32;6393</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Slider&#32;sliderLutContrast;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00187"/>00187 
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00188"/>00188 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040018FA&#32;RID:&#32;6394</emphasis>
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UISlider&#32;sliderLut;
+<anchor xml:id="__widget_scene_customizer_8cs_source_1l00190"/>00190 }
+</programlisting></section>

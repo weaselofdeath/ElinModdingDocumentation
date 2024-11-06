@@ -1,0 +1,135 @@
+\doxysection{Hit\+Summary.\+cs}
+\hypertarget{_hit_summary_8cs_source}{}\label{_hit_summary_8cs_source}\index{Elin/HitSummary.cs@{Elin/HitSummary.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x020001AF\ RID:\ 431}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00006}\mbox{\hyperlink{class_hit_summary}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_hit_summary}{HitSummary}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000C5C\ RID:\ 3164\ RVA:\ 0x0005C5C4\ File\ Offset:\ 0x0005A7C4}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Clear()}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ this.hasFactory\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ this.money\ =\ (this.count\ =\ (this.countValid\ =\ 0));}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ this.targets.Clear();}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ this.groups.Clear();}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000C5D\ RID:\ 3165\ RVA:\ 0x0005C608\ File\ Offset:\ 0x0005A808}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetRecipe(\mbox{\hyperlink{class_recipe}{Recipe}}\ r)}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ this.recipe\ =\ r;}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ this.hasFactory\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ !=\ \textcolor{keyword}{null}\ \&\&\ !r.UseStock\ \&\&\ r.source.NeedFactory)}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_prop_set}{PropSet}}\ propSet\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.Installed.cardMap.TryGetValue(r.source.idFactory,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (propSet\ ==\ \textcolor{keyword}{null}\ ||\ propSet.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.hasFactory\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00030}00030\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000C5E\ RID:\ 3166\ RVA:\ 0x0005C670\ File\ Offset:\ 0x0005A870}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ CanExecute()}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00034}00034\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.debug.ignoreBuildRule)}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.hasFactory\ ||\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.GetCurrency(\textcolor{stringliteral}{"{}money"{}})\ <\ \textcolor{keyword}{this}.money)}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.screen.tileSelector.processing)}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.recipe\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_recipe}{Recipe}}.\mbox{\hyperlink{class_recipe_1_1_ingredient}{Ingredient}}\ ingredient\ in\ \textcolor{keyword}{this}.recipe.ingredients)}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!ingredient.optional)}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ingredient.thing\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ingredient.thing.Num\ <\ ingredient.req\ *\ \textcolor{keyword}{this}.countValid)}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000C5F\ RID:\ 3167\ RVA:\ 0x0005C740\ File\ Offset:\ 0x0005A940}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00069}00069\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Execute()}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00070}00070\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.debug.ignoreBuildRule)}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.pc.ModCurrency(-\/this.money,\ \textcolor{stringliteral}{"{}money"{}});}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.recipe\ ==\ \textcolor{keyword}{null}\ ||\ (this.recipe.UseStock\ \&\&\ !\textcolor{keyword}{this}.recipe.VirtualBlock))}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.recipe.RequireIngredients)}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_build_menu}{BuildMenu}}.Instance.info1.lastMats[this.recipe.id]\ =\ this.recipe.ingredients[0].mat;}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.recipe.tileType.CanInstaComplete\ ||\ \mbox{\hyperlink{class_e_class}{EClass}}.player.instaComplete)}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_recipe}{Recipe}}.\mbox{\hyperlink{class_recipe_1_1_ingredient}{Ingredient}}\ ingredient\ in\ \textcolor{keyword}{this}.recipe.ingredients)}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ thing\ =\ this.recipe.UseStock\ ?\ this.recipe.ingredients[0].thing\ :\ ingredient.RefreshThing();}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (thing\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.debug.enable)}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}no\ ing"{}});}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ ingredient.req\ *\ this.countValid;}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ (thing.Num\ >=\ num)\ ?\ num\ :\ thing.Num;}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.debug.godBuild\ ||\ \textcolor{keyword}{this}.recipe.UseStock)}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ thing.ModNum(-\/num2,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00106}00106\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000C1E\ RID:\ 3102}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00107}00107\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ money;}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00109}00109\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000C1F\ RID:\ 3103}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00110}00110\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ count;}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00112}00112\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000C20\ RID:\ 3104}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00113}00113\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ countValid;}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00115}00115\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000C21\ RID:\ 3105}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00116}00116\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_recipe}{Recipe}}\ recipe;}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00118}00118\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000C22\ RID:\ 3106}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00119}00119\ \ \ \ \ \textcolor{keyword}{public}\ List<IInspect>\ targets\ =\ \textcolor{keyword}{new}\ List<IInspect>();}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00121}00121\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000C23\ RID:\ 3107}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00122}00122\ \ \ \ \ \textcolor{keyword}{public}\ List<InspectGroup>\ groups\ =\ \textcolor{keyword}{new}\ List<InspectGroup>();}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00124}00124\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000C24\ RID:\ 3108}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00125}00125\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_thing}{Thing}}\ factory;}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00127}00127\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000C25\ RID:\ 3109}}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00128}00128\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ hasFactory;}
+\DoxyCodeLine{\Hypertarget{_hit_summary_8cs_source_l00129}00129\ \}}
+
+\end{DoxyCode}

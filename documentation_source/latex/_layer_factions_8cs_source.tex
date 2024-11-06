@@ -1,0 +1,118 @@
+\doxysection{Layer\+Factions.\+cs}
+\hypertarget{_layer_factions_8cs_source}{}\label{_layer_factions_8cs_source}\index{Elin/LayerFactions.cs@{Elin/LayerFactions.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x02000544\ RID:\ 1348}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00006}\mbox{\hyperlink{class_layer_factions}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_layer_factions}{LayerFactions}}\ :\ \mbox{\hyperlink{class_e_layer}{ELayer}}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600249E\ RID:\ 9374\ RVA:\ 0x000CE60A\ File\ Offset:\ 0x000CC80A}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ HeaderIsListOf(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600249F\ RID:\ 9375\ RVA:\ 0x000CE60D\ File\ Offset:\ 0x000CC80D}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnSwitchContent(Window\ window)}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (window.windowIndex\ !=\ 1)}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (window.idTab\ ==\ 2)}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ this.RefreshZones();}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ this.RefreshFactions();}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060024A0\ RID:\ 9376\ RVA:\ 0x000CE630\ File\ Offset:\ 0x000CC830}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshFactions()}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ UIList\ uilist\ =\ this.listFaction;}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ uilist.Clear();}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ uilist.callbacks\ =\ \textcolor{keyword}{new}\ UIList.Callback<\mbox{\hyperlink{class_faction}{Faction}},\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}>}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ onClick\ =\ delegate(\mbox{\hyperlink{class_faction}{Faction}}\ a,\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.info.SetFaction(a);}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ onInstantiate\ =\ delegate(\mbox{\hyperlink{class_faction}{Faction}}\ a,\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.SetSound(\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.SetMainText(a.name,\ (\textcolor{keyword}{this}.windows[1].idTab\ ==\ 0)\ ?\ \textcolor{keyword}{this}.spriteFaction\ :\ \textcolor{keyword}{this}.spriteFaith,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.SetSubText(a.TextType,\ 260,\ FontColor.Default,\ TextAnchor.MiddleRight);}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a.relation.SetTextHostility(b.button1.subText);}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.Build();}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.windows[1].idTab\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (Dictionary<string,\ Faction>.ValueCollection.Enumerator\ enumerator\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.game.factions.dictAll.Values.GetEnumerator())}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (enumerator.MoveNext())}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_faction}{Faction}}\ o\ =\ enumerator.Current;}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uilist.Add(o);}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ IL\_D9;}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_religion}{Religion}}\ o2\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_e_layer}{ELayer}}.game.religions.dictAll.Values)}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ uilist.Add(o2);}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ IL\_D9:}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ uilist.Refresh(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060024A1\ RID:\ 9377\ RVA:\ 0x000CE73C\ File\ Offset:\ 0x000CC93C}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00070}00070\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshZones()}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00071}00071\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ UIList\ uilist\ =\ this.listFaction;}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ uilist.Clear();}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ BaseList\ baseList\ =\ uilist;}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ UIList.Callback<\mbox{\hyperlink{class_spatial}{Spatial}},\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}>\ callback\ =\ \textcolor{keyword}{new}\ UIList.Callback<\mbox{\hyperlink{class_spatial}{Spatial}},\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}>();}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ callback.onClick\ =\ delegate(\mbox{\hyperlink{class_spatial}{Spatial}}\ a,\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(a\ is\ \mbox{\hyperlink{class_zone}{Zone}}))}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ this.info.SetZone(a\ as\ \mbox{\hyperlink{class_zone}{Zone}});}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ callback.onInstantiate\ =\ delegate(\mbox{\hyperlink{class_spatial}{Spatial}}\ a,\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ b.SetSound(\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ b.SetMainText(a.Name,\ \textcolor{keyword}{null},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ b.Build();}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ baseList.callbacks\ =\ callback;}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_spatial}{Spatial}}\ spatial\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_e_layer}{ELayer}}.game.spatials.map.Values)}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (spatial\ is\ \mbox{\hyperlink{class_zone}{Zone}}\ \&\&\ spatial.parent\ ==\ \mbox{\hyperlink{class_e_layer}{ELayer}}.pc.currentZone.Region)}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uilist.Add(spatial);}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ uilist.Refresh(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00099}00099\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00101}00101\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001415\ RID:\ 5141}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00102}00102\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ listFaction;}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00104}00104\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001416\ RID:\ 5142}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00105}00105\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_u_i_faction_info}{UIFactionInfo}}\ info;}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00107}00107\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001417\ RID:\ 5143}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00108}00108\ \ \ \ \ \textcolor{keyword}{public}\ Sprite\ spriteFaction;}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00110}00110\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001418\ RID:\ 5144}}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00111}00111\ \ \ \ \ \textcolor{keyword}{public}\ Sprite\ spriteFaith;}
+\DoxyCodeLine{\Hypertarget{_layer_factions_8cs_source_l00112}00112\ \}}
+
+\end{DoxyCode}

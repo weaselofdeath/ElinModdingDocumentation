@@ -1,0 +1,56 @@
+\doxysection{Designation\+List.\+cs}
+\hypertarget{_designation_list_8cs_source}{}\label{_designation_list_8cs_source}\index{Elin/DesignationList.cs@{Elin/DesignationList.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00003}00003\ \textcolor{comment}{//\ Token:\ 0x02000251\ RID:\ 593}}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00004}\mbox{\hyperlink{class_designation_list}{00004}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_designation_list}{DesignationList}}<T>\ :\ \mbox{\hyperlink{class_task_list}{TaskList}}<T>\ where\ T\ :\ \mbox{\hyperlink{class_task_designation}{TaskDesignation}}}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000453\ RID:\ 1107}}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06001062\ RID:\ 4194\ RVA:\ 0x00073363\ File\ Offset:\ 0x00071563}}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_task_manager_1_1_designations}{TaskManager.Designations}}\ Designations}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.tasks.designations;}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001063\ RID:\ 4195\ RVA:\ 0x00073374\ File\ Offset:\ 0x00071574}}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnAdd(T\ t)}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ base.OnAdd(t);}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ t.pos.ForeachMultiSize(t.W,\ t.H,\ delegate(\mbox{\hyperlink{class_point}{Point}}\ p,\ \textcolor{keywordtype}{bool}\ main)}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ this.Designations.mapAll.Add(p.index,\ t);}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ p.cell.GetOrCreateDetail().designation\ =\ t;}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001064\ RID:\ 4196\ RVA:\ 0x000733E2\ File\ Offset:\ 0x000715E2}}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00028}00028\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ TryAdd(T\ t)}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.CanAdd(t.pos)\ \&\&\ base.TryAdd(t);}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001065\ RID:\ 4197\ RVA:\ 0x00073400\ File\ Offset:\ 0x00071600}}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00034}00034\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ CanAdd(\mbox{\hyperlink{class_point}{Point}}\ p)}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00035}00035\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ p.IsValid\ \&\&\ !this.Designations.mapAll.ContainsKey(p.index);}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001066\ RID:\ 4198\ RVA:\ 0x00073425\ File\ Offset:\ 0x00071625}}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ Remove(T\ t)}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ base.Remove(t);}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ t.pos.ForeachMultiSize(t.W,\ t.H,\ delegate(\mbox{\hyperlink{class_point}{Point}}\ p,\ \textcolor{keywordtype}{bool}\ main)}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ this.Designations.mapAll.Remove(p.index);}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ p.cell.GetOrCreateDetail().designation\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ p.cell.TryDespawnDetail();}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_designation_list_8cs_source_l00050}00050\ \}}
+
+\end{DoxyCode}

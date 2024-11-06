@@ -1,0 +1,1137 @@
+.TH "Zone_Mifu" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Zone_Mifu
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBZone_SubTown\fP\&.
+.SS "Additional Inherited Members"
+
+
+Public Types inherited from \fBIInspect\fP
+.in +1c
+.ti -1c
+.RI "enum \fBNoteMode\fP { \fBDefault\fP, \fBRecipe\fP, \fBProduct\fP, \fBInfo\fP }"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBZone_SubTown\fP
+.in +1c
+.ti -1c
+.RI "override void \fBOnGenerateRooms\fP (\fBBaseMapGen\fP gen)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBZone\fP
+.in +1c
+.ti -1c
+.RI "virtual string \fBGetDungenID\fP ()"
+.br
+.ti -1c
+.RI "virtual string \fBGetNewZoneID\fP (int level)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "string \fBTextLevel\fP (int _lv)"
+.br
+.ti -1c
+.RI "override void \fBOnCreate\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnAfterCreate\fP ()"
+.br
+.ti -1c
+.RI "void \fBActivate\fP ()"
+.br
+.ti -1c
+.RI "void \fBRefreshHat\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnVisit\fP ()"
+.br
+.ti -1c
+.RI "void \fBRevive\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnRegenerate\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnActivate\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnBeforeDeactivate\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnDeactivate\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnBeforeSimulate\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnVisitNewMapOrRegenerate\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnAfterSimulate\fP ()"
+.br
+.ti -1c
+.RI "void \fBSimulate\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetSpawnPos\fP (\fBChara\fP c, ZoneTransition\&.EnterState destState=ZoneTransition\&.EnterState\&.Auto)"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetRandomVisitPos\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "void \fBAddGlobalCharasOnActivate\fP ()"
+.br
+.ti -1c
+.RI "void \fBDeactivate\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnKillGame\fP ()"
+.br
+.ti -1c
+.RI "void \fBUnloadMap\fP ()"
+.br
+.ti -1c
+.RI "void \fBClaimZone\fP (bool debug=false)"
+.br
+.ti -1c
+.RI "void \fBAbandonZone\fP ()"
+.br
+.ti -1c
+.RI "bool \fBCanDestroy\fP ()"
+.br
+.ti -1c
+.RI "override void \fB_OnBeforeSave\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnLoad\fP ()"
+.br
+.ti -1c
+.RI "override void \fBDestroy\fP ()"
+.br
+.ti -1c
+.RI "void \fBClearZones\fP (\fBZone\fP current=null)"
+.br
+.ti -1c
+.RI "void \fBOnChildNumChange\fP (\fBCard\fP c)"
+.br
+.ti -1c
+.RI "\fBICardParent\fP \fBGetRoot\fP ()"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBGetTopZone\fP ()"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBAddCardSplinkle\fP (\fBCard\fP t, \fBPoint\fP center, int radius=4)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBAddChara\fP (string id, int x, int z)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBAddThing\fP (string id, int x, int z)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBAddThing\fP (string id, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBAddCard\fP (\fBCard\fP t, \fBPoint\fP point)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBAddCard\fP (\fBCard\fP t)"
+.br
+.ti -1c
+.RI "\fBCard\fP \fBAddCard\fP (\fBCard\fP t, int x, int z)"
+.br
+.ti -1c
+.RI "void \fBRemoveCard\fP (\fBCard\fP t)"
+.br
+.ti -1c
+.RI "T \fBGetRandomSpot< T >\fP ()"
+.br
+.ti -1c
+.RI "bool \fBTryAddThingInSpot< T >\fP (\fBThing\fP t, bool useContainer=true, bool putRandomPosIfNoSpot=true)"
+.br
+.ti -1c
+.RI "List< \fBThing\fP > \fBTryListThingsInSpot< T >\fP (Func< \fBThing\fP, bool > func=null)"
+.br
+.ti -1c
+.RI "bool \fBTryAddThingInSharedContainer\fP (\fBThing\fP t, List< \fBThing\fP > containers=null, bool add=true, bool msg=false, \fBChara\fP chara=null, bool sharedOnly=true)"
+.br
+.ti -1c
+.RI "bool \fBTryAddThing\fP (\fBThing\fP target, \fBPoint\fP p, bool destroyIfFail=false)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBTryGetThingFromSharedContainer\fP (Func< \fBThing\fP, bool > func)"
+.br
+.ti -1c
+.RI "\fBThing\fP \fBTryGetRestock< T >\fP (string idCat)"
+.br
+.ti -1c
+.RI "\fBZoneProfile\fP \fBGetProfile\fP ()"
+.br
+.ti -1c
+.RI "void \fBCreateBP\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnCreateBP\fP ()"
+.br
+.ti -1c
+.RI "void \fBGenerate\fP ()"
+.br
+.ti -1c
+.RI "void \fBSpawnFollower\fP ()"
+.br
+.ti -1c
+.RI "void \fBSpawnAltar\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnGenerateMap\fP ()"
+.br
+.ti -1c
+.RI "void \fBTryGenerateOre\fP ()"
+.br
+.ti -1c
+.RI "void \fBTryGenerateEvolved\fP (bool force=false)"
+.br
+.ti -1c
+.RI "void \fBTryGenerateBigDaddy\fP ()"
+.br
+.ti -1c
+.RI "void \fBTryGenerateShrine\fP ()"
+.br
+.ti -1c
+.RI "void \fBResetHostility\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBGetSpawnPos\fP (SpawnPosition type, int tries=100)"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBSpawnMob\fP (\fBPoint\fP pos=null, \fBSpawnSetting\fP setting=null)"
+.br
+.ti -1c
+.RI "void \fBRefreshElectricity\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetElectricity\fP (bool cost=false)"
+.br
+.ti -1c
+.RI "void \fBSetBGM\fP (List< int > ids, bool refresh=true)"
+.br
+.ti -1c
+.RI "void \fBSetBGM\fP (int id=\-1, bool refresh=true)"
+.br
+.ti -1c
+.RI "void \fBRefreshPlaylist\fP ()"
+.br
+.ti -1c
+.RI "void \fBRefreshBGM\fP ()"
+.br
+.ti -1c
+.RI "Playlist \fBCreatePlaylist\fP (ref List< int > list, Playlist mold=null)"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBFindChara\fP (string id)"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBFindChara\fP (int uid)"
+.br
+.ti -1c
+.RI "int \fBGetDeepestLv\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetDeepestLv\fP (ref int max)"
+.br
+.ti -1c
+.RI "List< \fBElement\fP > \fBListLandFeats\fP ()"
+.br
+.ti -1c
+.RI "\fBZoneExportData\fP \fBImport\fP (string path)"
+.br
+.ti -1c
+.RI "void \fBExport\fP (string path, \fBPartialMap\fP partial=null, bool usermap=false)"
+.br
+.ti -1c
+.RI "void \fBExportDialog\fP (string dir=null)"
+.br
+.ti -1c
+.RI "void \fBImportDialog\fP (string dir=null)"
+.br
+.ti -1c
+.RI "void \fBExport\fP ()"
+.br
+.ti -1c
+.RI "void \fBWriteNote\fP (UINote n, Action< UINote > onWriteNote=null, IInspect\&.NoteMode mode=IInspect\&.NoteMode\&.Default, \fBRecipe\fP recipe=null)"
+.br
+.ti -1c
+.RI "void \fBOnInspect\fP ()"
+.br
+.ti -1c
+.RI "\fBChara\fP \fBAddRandomVisitor\fP (bool guest=false)"
+.br
+.ti -1c
+.RI "void \fBOnSimulateHour\fP (\fBVirtualDate\fP date)"
+.br
+.ti -1c
+.RI "void \fBOnSimulateDay\fP (\fBVirtualDate\fP date)"
+.br
+.ti -1c
+.RI "void \fBOnSimulateMonth\fP (\fBVirtualDate\fP date)"
+.br
+.ti -1c
+.RI "void \fBRainWater\fP ()"
+.br
+.ti -1c
+.RI "void \fBGrowPlants\fP (\fBVirtualDate\fP date)"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBGetZoneAt\fP (int _x, int _y)"
+.br
+.ti -1c
+.RI "bool \fBIsCrime\fP (\fBChara\fP c, \fBAct\fP act)"
+.br
+.ti -1c
+.RI "void \fBRefreshCriminal\fP ()"
+.br
+.ti -1c
+.RI "void \fBRefreshListCitizen\fP ()"
+.br
+.ti -1c
+.RI "void \fBModInfluence\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBModDevelopment\fP (int a)"
+.br
+.ti -1c
+.RI "void \fBUpdateQuests\fP (bool force=false)"
+.br
+.ti -1c
+.RI "int \fBCountMinions\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "int \fBGetSoilCost\fP ()"
+.br
+.ti -1c
+.RI "void \fBSpawnLostItems\fP ()"
+.br
+.ti -1c
+.RI "void \fBApplyBackerPet\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBSpatial\fP
+.in +1c
+.ti -1c
+.RI "int \fBGetInt\fP (int id, int? defaultInt=null)"
+.br
+.ti -1c
+.RI "void \fBAddInt\fP (int id, int value)"
+.br
+.ti -1c
+.RI "void \fBSetInt\fP (int id, int value=0)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "void \fBCreate\fP (string _id, int _x, int _y, int _icon)"
+.br
+.ti -1c
+.RI "void \fBRegister\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBSetMainFaction\fP (\fBFaction\fP f)"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBGetFirstZone\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnBeforeSave\fP ()"
+.br
+.ti -1c
+.RI "void \fB_OnLoad\fP ()"
+.br
+.ti -1c
+.RI "void \fBDeleteMapRecursive\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBAddChild\fP (\fBSpatial\fP child)"
+.br
+.ti -1c
+.RI "void \fBRemoveChild\fP (\fBSpatial\fP child)"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBFindDeepestZone\fP ()"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBFindZone\fP (int lv)"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBFindZone\fP (string _id)"
+.br
+.ti -1c
+.RI "virtual bool \fBCanKill\fP ()"
+.br
+.ti -1c
+.RI "int \fBDist\fP (\fBPoint\fP p)"
+.br
+.ti -1c
+.RI "int \fBDist\fP (\fBSpatial\fP s)"
+.br
+.ti -1c
+.RI "void \fBMakeGameObject\fP (GameObject parentGo)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBICardParent\fP
+
+Public Member Functions inherited from \fBIInspect\fP
+
+Static Public Member Functions inherited from \fBZone\fP
+.in +1c
+.ti -1c
+.RI "static bool \fBIsImportValid\fP (string path)"
+.br
+.in -1c
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+
+Public Attributes inherited from \fBZone\fP
+.in +1c
+.ti -1c
+.RI "\fBFactionBranch\fP \fBbranch\fP"
+.br
+.ti -1c
+.RI "HashSet< int > \fBcompletedQuests\fP = new HashSet<int>()"
+.br
+.ti -1c
+.RI "\fBZoneEventManager\fP \fBevents\fP = new \fBZoneEventManager\fP()"
+.br
+.ti -1c
+.RI "\fBElementContainerZone\fP \fBelements\fP = new \fBElementContainerZone\fP()"
+.br
+.ti -1c
+.RI "\fBMapBounds\fP \fBbounds\fP"
+.br
+.ti -1c
+.RI "Dictionary< int, string > \fBdictCitizen\fP = new Dictionary<int, string>()"
+.br
+.ti -1c
+.RI "\fBZoneInstance\fP \fBinstance\fP"
+.br
+.ti -1c
+.RI "List< int > \fBlandFeats\fP"
+.br
+.ti -1c
+.RI "\fBMap\fP \fBmap\fP"
+.br
+.ti -1c
+.RI "\fBMapSubset\fP \fBsubset\fP"
+.br
+.ti -1c
+.RI "\fBZoneBlueprint\fP \fBbp\fP"
+.br
+.ti -1c
+.RI "int \fBfileVariation\fP"
+.br
+.ti -1c
+.RI "bool \fBdirtyElectricity\fP"
+.br
+.ti -1c
+.RI "bool \fBisStarted\fP"
+.br
+.ti -1c
+.RI "bool \fBisSimulating\fP"
+.br
+.ti -1c
+.RI "int \fBtempDist\fP"
+.br
+.ti -1c
+.RI "\fBBiomeProfile\fP \fB_biome\fP"
+.br
+.in -1c
+
+Public Attributes inherited from \fBSpatial\fP
+.in +1c
+.ti -1c
+.RI "\fBSpatial\fP \fBparent\fP"
+.br
+.ti -1c
+.RI "string \fBid\fP"
+.br
+.ti -1c
+.RI "string \fBidUser\fP"
+.br
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.ti -1c
+.RI "string \fBidMainFaction\fP"
+.br
+.ti -1c
+.RI "string \fBidProfile\fP"
+.br
+.ti -1c
+.RI "string \fBidCurrentSubset\fP"
+.br
+.ti -1c
+.RI "string \fBidHat\fP"
+.br
+.ti -1c
+.RI "int[] \fB_ints\fP = new int[30]"
+.br
+.ti -1c
+.RI "List< \fBSpatial\fP > \fBchildren\fP = new List<\fBSpatial\fP>()"
+.br
+.ti -1c
+.RI "List< \fBSpatial\fP > \fBconnections\fP = new List<\fBSpatial\fP>()"
+.br
+.ti -1c
+.RI "Dictionary< int, int > \fBmapInt\fP = new Dictionary<int, int>()"
+.br
+.ti -1c
+.RI "bool \fBdestryoed\fP"
+.br
+.ti -1c
+.RI "bool \fBisImported\fP"
+.br
+.ti -1c
+.RI "BitArray32 \fBbits\fP"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBZone\fP
+.in +1c
+.ti -1c
+.RI "static bool \fBforceRegenerate\fP"
+.br
+.ti -1c
+.RI "static string \fBforceSubset\fP"
+.br
+.ti -1c
+.RI "static \fBCardRow\fP \fBsourceHat\fP"
+.br
+.ti -1c
+.RI "static int \fBokaerinko\fP = 0"
+.br
+.ti -1c
+.RI "static bool \fBignoreSpawnAnime\fP"
+.br
+.ti -1c
+.RI "static List< \fBThing\fP > \fBSuckers\fP = new List<\fBThing\fP>()"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+
+Protected Member Functions inherited from \fBSpatial\fP
+.in +1c
+.ti -1c
+.RI "\fBZone\fP \fB_FindZone\fP (string _id)"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBSpatial\fP
+.in +1c
+.ti -1c
+.RI "\fBPoint\fP \fB_regionPos\fP = new \fBPoint\fP()"
+.br
+.in -1c
+
+Static Package Functions inherited from \fBZone\fP
+
+Properties inherited from \fBZone_SubTown\fP
+.in +1c
+.ti -1c
+.RI "override bool \fBCanBeDeliverDestination\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBZone_Town\fP
+.in +1c
+.ti -1c
+.RI "override bool \fBIsTown\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsExplorable\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBCanDigUnderground\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBCanSpawnAdv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBAllowCriminal\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBZone_Civilized\fP
+.in +1c
+.ti -1c
+.RI "override bool \fBShouldRegenerate\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBHasLaw\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBAllowCriminal\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBZone\fP
+.in +1c
+.ti -1c
+.RI "\fBChara\fP \fBBoss\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "override int \fBDangerLv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBDisableRooms\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBHourSinceLastActive\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBMinsSinceLastActive\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBpathExport\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBBiomeProfile\fP \fBbiome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBIdBiome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBIDGenerator\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBTextWidgetDate\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "MapGenerator \fBGenerator\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBIdProfile\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBIDPlayList\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBIDPlaylistOverwrite\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBIDHat\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBIDBaseLandFeat\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBidExport\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBpathTemp\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBRegion\fP \fBRegion\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBZone\fP \fBParentZone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBActionMode\fP \fBDefaultActionMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBBlockBorderExit\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBExpireDays\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual ZoneTransition\&.EnterState \fBRegionEnterState\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual ZoneFeatureType \fBFeatureType\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBIDAmbience\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBIDSceneTemplate\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsFestival\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBIDSubset\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsTown\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanBeDeliverDestination\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCountDeepestLevel\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasLaw\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBMakeEnemiesNeutral\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBMakeTownProperties\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBAllowCriminal\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBAllowNewZone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBWillAutoSave\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBRegenerateOnEnter\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsSkyLevel\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsUserZone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanDigUnderground\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBLockExit\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanUnlockExit\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBMaxLv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBMinLv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBAddPrefix\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsNefia\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBPetFollow\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBRestrictBuild\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBKeepAllyDistance\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBMaxSpawn\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBMaxRespawn\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual float \fBRuinChance\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual float \fBOreChance\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual float \fBBigDaddyChance\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual float \fBEvolvedChance\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual float \fBShrineChance\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual float \fBPrespawnRate\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual float \fBRespawnRate\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBRespawnPerHour\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual float \fBChanceSpawnNeutral\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBGrowPlant\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBGrowWeed\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsExplorable\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsReturnLocation\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShouldMakeExit\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShouldRegenerate\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShouldAutoRevive\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBUseFog\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBRevealRoom\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBAlwaysLowblock\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBUseLight\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBStartLV\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBScaleMonsterLevel\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHiddenInRegionMap\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual FlockController\&.SpawnType \fBFlockType\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBNameSuffix\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBNameWithLevel\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBTextDeepestLv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBCanEnterBuildMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBCanEnterBuildModeAnywhere\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsPCFaction\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsStartZone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInstance\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsLoaded\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBBaseElectricity\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsActiveZone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBCanInspect\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBInspectName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBInspectPoint\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "Vector3 \fBInspectPosition\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBSpatial\fP
+.in +1c
+.ti -1c
+.RI "int \fB_bits\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBuid\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBicon\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBx\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBy\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBlastActive\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBidPrefix\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBlv\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBvisitCount\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdateExpire\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdateRevive\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fB_dangerLv\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdateRegenerate\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBinfluence\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBinvestment\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdevelopment\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBelectricity\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdateHat\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBuidBoss\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBdateQuest\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBversion\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisGenerated\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisShore\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisRandomSite\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisKnown\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisMapSaved\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisExternalZone\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisConquered\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisBeach\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBisPeace\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBFaction\fP \fBmainFaction\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBSourceZone\&.Row\fP \fBsource\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsPlayerFaction\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsClosed\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBmapX\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBmapY\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBDangerLv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBDangerLvFix\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual float \fBVolumeSea\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBShowDangerLv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanSpawnAdv\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "string \fBpathSave\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBName\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBNameSuffix\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsRegion\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanFastTravel\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "\fBEloMap\&.TileInfo\fP \fBTile\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsSnowZone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsSnowCovered\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBPoint\fP \fBRegionPos\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBisClaimable\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBSeed\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBIInspect\fP
+.SH "Detailed Description"
+.PP 
+Definition at line \fB4\fP of file \fBZone_Mifu\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

@@ -1,0 +1,226 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__layer_newspaper_8cs_source" xml:lang="en-US">
+<title>LayerNewspaper.cs</title>
+<indexterm><primary>Elin/LayerNewspaper.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__layer_newspaper_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>System.Linq;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>System.Runtime.CompilerServices;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00005"/>00005 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00006"/>00006 <emphasis role="keyword">using&#32;</emphasis>UnityEngine.UI;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00007"/>00007 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00008"/>00008 <emphasis role="comment">//&#32;Token:&#32;0x020005A4&#32;RID:&#32;1444</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00009"/><link linkend="_class_layer_newspaper">00009</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_layer_newspaper">LayerNewspaper</link>&#32;:&#32;<link linkend="_class_e_layer">ELayer</link>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00010"/>00010 {
+<anchor xml:id="__layer_newspaper_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000BB1&#32;RID:&#32;2993</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x0600279A&#32;RID:&#32;10138&#32;RVA:&#32;0x000E0348&#32;File&#32;Offset:&#32;0x000DE548</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_day_data">DayData</link>&#32;data
+<anchor xml:id="__layer_newspaper_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_e_layer">ELayer</link>.world.dayData;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00020"/>00020 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600279B&#32;RID:&#32;10139&#32;RVA:&#32;0x000E0354&#32;File&#32;Offset:&#32;0x000DE554</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnInit()
+<anchor xml:id="__layer_newspaper_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_layer">ELayer</link>.debug.enable)
+<anchor xml:id="__layer_newspaper_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;NewsList.dict&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_layer">ELayer</link>.world.CreateDayData();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.seed&#32;=&#32;(ELayer.debug.enable&#32;?&#32;-1&#32;:&#32;<link linkend="_class_e_layer">ELayer</link>.world.dayData.seed);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Rand.UseSeed(this.seed,&#32;delegate
+<anchor xml:id="__layer_newspaper_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.imageAdRight.sprite&#32;=&#32;this.spritesAd.RandomItem&lt;Sprite&gt;();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.imageAdRight.SetNativeSize();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="__layer_newspaper_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textDate.text&#32;=&#32;<emphasis role="stringliteral">&quot;news_date&quot;</emphasis>.lang(Lang.GetList(<emphasis role="stringliteral">&quot;monthEng&quot;</emphasis>)[<link linkend="_class_e_layer">ELayer</link>.world.date.month&#32;-&#32;1],&#32;<link linkend="_class_e_layer">ELayer</link>.world.date.day.ToString()&#32;??&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>,&#32;<link linkend="_class_e_layer">ELayer</link>.world.date.year.ToString()&#32;??&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;luck&#32;=&#32;(int)<link linkend="_class_e_layer">ELayer</link>.world.dayData.luck;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.textFortune.text&#32;=&#32;<emphasis role="stringliteral">&quot;news_tellLuck&quot;</emphasis>.lang(Lang.GetList(<emphasis role="stringliteral">&quot;dayLuck&quot;</emphasis>)[luck],&#32;Lang.GetList(<emphasis role="stringliteral">&quot;dayLuck2&quot;</emphasis>)[luck],&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>,&#32;<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshAD();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshChat();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshVote();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshWeather();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshNews();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshPage();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00045"/>00045 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600279C&#32;RID:&#32;10140&#32;RVA:&#32;0x000E0490&#32;File&#32;Offset:&#32;0x000DE690</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnClickPage()
+<anchor xml:id="__layer_newspaper_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.topPage&#32;=&#32;!this.topPage;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.buttonPage.mainText.SetText((this.topPage&#32;?&#32;<emphasis role="stringliteral">&quot;news_firstPage&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;news_secondPage&quot;</emphasis>).lang());
+<anchor xml:id="__layer_newspaper_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SE.Play(<emphasis role="stringliteral">&quot;click_scroll&quot;</emphasis>);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshPage();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00054"/>00054 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600279D&#32;RID:&#32;10141&#32;RVA:&#32;0x000E04E5&#32;File&#32;Offset:&#32;0x000DE6E5</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshPage()
+<anchor xml:id="__layer_newspaper_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.goTop.SetActive(this.topPage);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.goBack.SetActive(!this.topPage);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00061"/>00061 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600279E&#32;RID:&#32;10142&#32;RVA:&#32;0x000E050C&#32;File&#32;Offset:&#32;0x000DE70C</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshNews()
+<anchor xml:id="__layer_newspaper_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_layer_newspaper">LayerNewspaper</link>.&lt;RefreshNews&gt;d__28&#32;&lt;RefreshNews&gt;d__;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;RefreshNews&gt;d__.&lt;&gt;t__builder&#32;=&#32;AsyncVoidMethodBuilder.Create();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;RefreshNews&gt;d__.&lt;&gt;4__this&#32;=&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;RefreshNews&gt;d__.&lt;&gt;1__state&#32;=&#32;-1;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;RefreshNews&gt;d__.&lt;&gt;t__builder.Start&lt;<link linkend="_class_layer_newspaper">LayerNewspaper</link>.&lt;RefreshNews&gt;d__28&gt;(ref&#32;&lt;RefreshNews&gt;d__);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00071"/>00071 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0600279F&#32;RID:&#32;10143&#32;RVA:&#32;0x000E0544&#32;File&#32;Offset:&#32;0x000DE744</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshAD()
+<anchor xml:id="__layer_newspaper_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Rand.SetSeed(this.seed);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.moldAdBottom&#32;=&#32;this.layoutAdBottom.CreateMold(<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;num&#32;=&#32;this.layoutAdBottom.Rect().sizeDelta.x&#32;-&#32;20f;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;IList&lt;Sprite&gt;&#32;list&#32;=&#32;this.spritesSmallAd.Copy&lt;Sprite&gt;().Shuffle&lt;Sprite&gt;();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;list.Count;&#32;i++)
+<anchor xml:id="__layer_newspaper_8cs_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Sprite&#32;sprite&#32;=&#32;list[i];
+<anchor xml:id="__layer_newspaper_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;&gt;&#32;sprite.textureRect.width)
+<anchor xml:id="__layer_newspaper_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Image&#32;image&#32;=&#32;Util.Instantiate&lt;Image&gt;(this.moldAdBottom,&#32;this.layoutAdBottom);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num&#32;=&#32;num&#32;-&#32;sprite.textureRect.width&#32;-&#32;5f;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;image.sprite&#32;=&#32;sprite;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;image.SetNativeSize();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.layoutAdBottom.RebuildLayout(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Rand.SetSeed(-1);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00093"/>00093 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060027A0&#32;RID:&#32;10144&#32;RVA:&#32;0x000E0610&#32;File&#32;Offset:&#32;0x000DE810</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshChat()
+<anchor xml:id="__layer_newspaper_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_layer_newspaper">LayerNewspaper</link>.&lt;RefreshChat&gt;d__30&#32;&lt;RefreshChat&gt;d__;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;RefreshChat&gt;d__.&lt;&gt;t__builder&#32;=&#32;AsyncVoidMethodBuilder.Create();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;RefreshChat&gt;d__.&lt;&gt;4__this&#32;=&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;RefreshChat&gt;d__.&lt;&gt;1__state&#32;=&#32;-1;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;RefreshChat&gt;d__.&lt;&gt;t__builder.Start&lt;<link linkend="_class_layer_newspaper">LayerNewspaper</link>.&lt;RefreshChat&gt;d__30&gt;(ref&#32;&lt;RefreshChat&gt;d__);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00103"/>00103 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00104"/>00104 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060027A1&#32;RID:&#32;10145&#32;RVA:&#32;0x000E0648&#32;File&#32;Offset:&#32;0x000DE848</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshVote()
+<anchor xml:id="__layer_newspaper_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_layer_newspaper">LayerNewspaper</link>.&lt;RefreshVote&gt;d__31&#32;&lt;RefreshVote&gt;d__;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;RefreshVote&gt;d__.&lt;&gt;t__builder&#32;=&#32;AsyncVoidMethodBuilder.Create();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;RefreshVote&gt;d__.&lt;&gt;4__this&#32;=&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;RefreshVote&gt;d__.&lt;&gt;1__state&#32;=&#32;-1;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;RefreshVote&gt;d__.&lt;&gt;t__builder.Start&lt;<link linkend="_class_layer_newspaper">LayerNewspaper</link>.&lt;RefreshVote&gt;d__31&gt;(ref&#32;&lt;RefreshVote&gt;d__);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00113"/>00113 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060027A2&#32;RID:&#32;10146&#32;RVA:&#32;0x000E0680&#32;File&#32;Offset:&#32;0x000DE880</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshWeather()
+<anchor xml:id="__layer_newspaper_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;List&lt;<link linkend="_class_weather">Weather</link>.<link linkend="_class_weather_1_1_weather_forecast">WeatherForecast</link>&gt;&#32;list&#32;=&#32;<link linkend="_class_e_layer">ELayer</link>.world.weather.GetWeatherForecast();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BaseList&#32;baseList&#32;=&#32;this.listWeather;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIList.Callback&lt;<link linkend="_class_weather">Weather</link>.<link linkend="_class_weather_1_1_weather_forecast">WeatherForecast</link>,&#32;UIItem&gt;&#32;callback&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;UIList.Callback&lt;<link linkend="_class_weather">Weather</link>.<link linkend="_class_weather_1_1_weather_forecast">WeatherForecast</link>,&#32;UIItem&gt;();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onInstantiate&#32;=&#32;delegate(<link linkend="_class_weather">Weather</link>.<link linkend="_class_weather_1_1_weather_forecast">WeatherForecast</link>&#32;a,&#32;UIItem&#32;b)
+<anchor xml:id="__layer_newspaper_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;text&#32;=&#32;a.date.month.ToString()&#32;+&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>&#32;+&#32;a.date.day.ToString();
+<anchor xml:id="__layer_newspaper_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(KeyValuePair&lt;Weather.Condition,&#32;int&gt;&#32;keyValuePair&#32;<emphasis role="keywordflow">in</emphasis>&#32;from&#32;a&#32;<emphasis role="keywordflow">in</emphasis>&#32;a.cons
+<anchor xml:id="__layer_newspaper_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;orderby&#32;a.Value&#32;descending
+<anchor xml:id="__layer_newspaper_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;select&#32;a)
+<anchor xml:id="__layer_newspaper_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(b.image1.sprite&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__layer_newspaper_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.image1.sprite&#32;=&#32;<link linkend="_class_e_layer">ELayer</link>.core.refs.icons.weather[keyValuePair.Key];
+<anchor xml:id="__layer_newspaper_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(b.image2.sprite&#32;==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="__layer_newspaper_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.image2.sprite&#32;=&#32;<link linkend="_class_e_layer">ELayer</link>.core.refs.icons.weather[keyValuePair.Key];
+<anchor xml:id="__layer_newspaper_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.image2.SetActive(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.text1.text&#32;=&#32;text;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__layer_newspaper_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onList&#32;=&#32;delegate(UIList.SortMode&#32;m)
+<anchor xml:id="__layer_newspaper_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;7;&#32;i++)
+<anchor xml:id="__layer_newspaper_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(list.Count&#32;&gt;&#32;i&#32;&amp;&amp;&#32;list[i].cons.Count&#32;&gt;&#32;0)
+<anchor xml:id="__layer_newspaper_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__layer_newspaper_8cs_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.listWeather.Add(list[i]);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__layer_newspaper_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;baseList.callbacks&#32;=&#32;callback;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.listWeather.List(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__layer_newspaper_8cs_source_1l00151"/>00151 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__layer_newspaper_8cs_source_1l00152"/>00152 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040015FD&#32;RID:&#32;5629</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00154"/>00154 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textDate;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00155"/>00155 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040015FE&#32;RID:&#32;5630</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00157"/>00157 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textFortune;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00158"/>00158 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040015FF&#32;RID:&#32;5631</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00160"/>00160 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textVote;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00161"/>00161 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001600&#32;RID:&#32;5632</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00163"/>00163 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIText&#32;textVoteRemaining;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00164"/>00164 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001601&#32;RID:&#32;5633</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00166"/>00166 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIList&#32;listChat;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00167"/>00167 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001602&#32;RID:&#32;5634</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIList&#32;listWeather;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00170"/>00170 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001603&#32;RID:&#32;5635</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIList&#32;listVote;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00173"/>00173 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001604&#32;RID:&#32;5636</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00175"/>00175 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIList&#32;listNews;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00176"/>00176 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00177"/>00177 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001605&#32;RID:&#32;5637</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00178"/>00178 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Image&#32;imageHeadline;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00179"/>00179 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00180"/>00180 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001606&#32;RID:&#32;5638</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00181"/>00181 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Image&#32;imageAdRight;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00182"/>00182 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00183"/>00183 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001607&#32;RID:&#32;5639</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00184"/>00184 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Image&#32;moldAdBottom;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00185"/>00185 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00186"/>00186 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001608&#32;RID:&#32;5640</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00187"/>00187 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;Sprite&gt;&#32;spritesAd;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00188"/>00188 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00189"/>00189 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001609&#32;RID:&#32;5641</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00190"/>00190 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;Sprite&gt;&#32;spritesSmallAd;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00191"/>00191 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00192"/>00192 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400160A&#32;RID:&#32;5642</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00193"/>00193 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;Sprite&gt;&#32;spritesHeadline;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00194"/>00194 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00195"/>00195 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400160B&#32;RID:&#32;5643</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00196"/>00196 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;LayoutGroup&#32;layoutAdBottom;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00197"/>00197 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00198"/>00198 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400160C&#32;RID:&#32;5644</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00199"/>00199 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;LayoutGroup&#32;layoutPortrait;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00200"/>00200 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00201"/>00201 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400160D&#32;RID:&#32;5645</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00202"/>00202 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_portrait">Portrait</link>&#32;moldPortrait;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00203"/>00203 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00204"/>00204 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400160E&#32;RID:&#32;5646</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00205"/>00205 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;List&lt;string&gt;&#32;desiredNews;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00206"/>00206 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00207"/>00207 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400160F&#32;RID:&#32;5647</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00208"/>00208 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIButton&#32;buttonPage;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00209"/>00209 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00210"/>00210 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001610&#32;RID:&#32;5648</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00211"/>00211 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;GameObject&#32;goTop;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00212"/>00212 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00213"/>00213 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001611&#32;RID:&#32;5649</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00214"/>00214 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;GameObject&#32;goBack;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00215"/>00215 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00216"/>00216 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001612&#32;RID:&#32;5650</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00217"/>00217 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;topPage;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00218"/>00218 
+<anchor xml:id="__layer_newspaper_8cs_source_1l00219"/>00219 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001613&#32;RID:&#32;5651</emphasis>
+<anchor xml:id="__layer_newspaper_8cs_source_1l00220"/>00220 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;seed;
+<anchor xml:id="__layer_newspaper_8cs_source_1l00221"/>00221 }
+</programlisting></section>

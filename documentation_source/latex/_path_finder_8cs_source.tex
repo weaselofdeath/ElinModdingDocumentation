@@ -1,0 +1,471 @@
+\doxysection{Path\+Finder.\+cs}
+\hypertarget{_path_finder_8cs_source}{}\label{_path_finder_8cs_source}\index{Elin/Algorithms/PathFinder.cs@{Elin/Algorithms/PathFinder.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Runtime.InteropServices;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00006}00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_algorithms}{Algorithms}}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0200075C\ RID:\ 1884}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00009}00009\ \ \ \ \ [Serializable]}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00010}\mbox{\hyperlink{class_algorithms_1_1_path_finder}{00010}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_algorithms_1_1_path_finder}{PathFinder}}\ :\ \mbox{\hyperlink{interface_i_pathfinder}{IPathfinder}}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600366C\ RID:\ 13932}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ [DllImport(\textcolor{stringliteral}{"{}KERNEL32.DLL"{}},\ EntryPoint\ =\ \textcolor{stringliteral}{"{}RtlZeroMemory"{}})]}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ unsafe\ \textcolor{keyword}{static}\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ ZeroMemory(\textcolor{keywordtype}{byte}*\ destination,\ \textcolor{keywordtype}{int}\ length);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600366D\ RID:\ 13933\ RVA:\ 0x00127E58\ File\ Offset:\ 0x00126058}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Init(\mbox{\hyperlink{interface_i_pathfind_grid}{IPathfindGrid}}\ \_grid,\ \mbox{\hyperlink{class_algorithms_1_1_weight_cell}{WeightCell}}[,]\ \_weightMap,\ \textcolor{keywordtype}{int}\ size)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ this.grid\ =\ \_grid;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ this.weightMap\ =\ \_weightMap;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ this.mGridX\ =\ (int)((ushort)size);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ this.mGridZ\ =\ (int)((ushort)size);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ this.mGridXZ\ =\ this.mGridX\ *\ this.mGridZ;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.mCalcGrid\ ==\ \textcolor{keyword}{null}\ ||\ this.mCalcGrid.Length\ !=\ \textcolor{keyword}{this}.mGridXZ)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCalcGrid\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_algorithms_1_1_path_finder}{PathFinder}}.\mbox{\hyperlink{struct_algorithms_1_1_path_finder_1_1_path_finder_node_fast}{PathFinderNodeFast}}[this.mGridXZ];}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mOpen\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_algorithms_1_1_priority_queue_b}{PriorityQueueB<int>}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_algorithms_1_1_path_finder}{PathFinder}}.\mbox{\hyperlink{class_algorithms_1_1_path_finder_1_1_compare_p_f_node_matrix}{ComparePFNodeMatrix}}(\textcolor{keyword}{this}.mCalcGrid));}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600366E\ RID:\ 13934\ RVA:\ 0x00127ED8\ File\ Offset:\ 0x001260D8}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ FindPath(\mbox{\hyperlink{class_path_progress}{PathProgress}}\ path)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ this.moveType\ =\ path.moveType;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_FindPath(path);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (path.nodes.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_algorithms_1_1_path_finder_node}{PathFinderNode}}\ pathFinderNode\ =\ path.nodes[path.nodes.Count\ -\/\ 1];}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pathFinderNode.X\ ==\ path.startPoint.x\ \&\&\ pathFinderNode.Z\ ==\ path.startPoint.z)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path.nodes.RemoveAt(path.nodes.Count\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (path.nodes.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path.state\ =\ \mbox{\hyperlink{class_path_progress}{PathProgress}}.State.Fail;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ path.state\ =\ \mbox{\hyperlink{class_path_progress}{PathProgress}}.State.PathReady;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ path.nodeIndex\ =\ path.nodes.Count\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600366F\ RID:\ 13935\ RVA:\ 0x00127F8C\ File\ Offset:\ 0x0012618C}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \_FindPath(\mbox{\hyperlink{class_path_progress}{PathProgress}}\ path)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ lock\ (\textcolor{keyword}{this})}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ startPoint\ =\ path.startPoint;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ destPoint\ =\ path.destPoint;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path.nodes.Clear();}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mFound\ =\ (this.mStop\ =\ (this.mStopped\ =\ \textcolor{keyword}{false}));}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCloseNodeCounter\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mOpenNodeValue\ +=\ 2;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCloseNodeValue\ +=\ 2;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mOpen.Clear();}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mLocation\ =\ (this.mStartLocation\ =\ startPoint.z\ *\ this.mGridX\ +\ startPoint.x);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mEndLocation\ =\ destPoint.z\ *\ this.mGridX\ +\ destPoint.x;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.mLocation\ >=\ this.mCalcGrid.Length)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.debug)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}length\ over"{}});}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (this.mEndLocation\ !=\ this.mLocation)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCalcGrid[this.mLocation].G\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCalcGrid[this.mLocation].F\ =\ this.mHEstimate;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCalcGrid[this.mLocation].PX\ =\ (ushort)startPoint.x;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCalcGrid[this.mLocation].PZ\ =\ (ushort)startPoint.z;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCalcGrid[this.mLocation].Status\ =\ this.mOpenNodeValue;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mOpen.Push(this.mLocation);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (this.mOpen.Count\ >\ 0\ \&\&\ !\textcolor{keyword}{this}.mStop)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mLocation\ =\ this.mOpen.Pop();}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.mCalcGrid[this.mLocation].Status\ !=\ this.mCloseNodeValue)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mLocationX\ =\ (ushort)(this.mLocation\ \%\ this.mGridX);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mLocationZ\ =\ (ushort)(this.mLocation\ \%\ this.mGridXZ\ /\ this.mGridX);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.mLocation\ ==\ this.mEndLocation)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCalcGrid[this.mLocation].Status\ =\ this.mCloseNodeValue;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mFound\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.mCloseNodeCounter\ >\ path.searchLimit)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mStopped\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (path.searchLimit\ >\ 1000)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str\ =\ \textcolor{stringliteral}{"{}search\ limit:\ "{}};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ startPoint2\ =\ path.startPoint;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str2\ =\ (startPoint2\ !=\ \textcolor{keyword}{null})\ ?\ startPoint2.ToString()\ :\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str3\ =\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ destPoint2\ =\ path.destPoint;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(str\ +\ str2\ +\ str3\ +\ ((destPoint2\ !=\ \textcolor{keyword}{null})\ ?\ destPoint2.ToString()\ :\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.PunishChangeDirection)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mHoriz\ =\ (int)(this.mLocationX\ -\/\ this.mCalcGrid[this.mLocation].PX);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ (this.Diagonals\ ?\ 8\ :\ 4);\ i++)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mNewLocationX\ =\ this.mLocationX\ +\ (ushort)this.mDirection[i,\ 0];}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mNewLocationZ\ =\ this.mLocationZ\ +\ (ushort)this.mDirection[i,\ 1];}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mNewLocation\ =\ (int)this.mNewLocationZ\ *\ this.mGridX\ +\ (\textcolor{keywordtype}{int})this.mNewLocationX;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{int})this.mNewLocationX\ <\ this.mGridX\ \&\&\ (\textcolor{keywordtype}{int})this.mNewLocationZ\ <\ this.mGridZ\ \&\&\ (this.mCalcGrid[this.mNewLocation].Status\ !=\ this.mCloseNodeValue\ ||\ this.mReopenCloseNodes))}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (path.ignoreConnection\ \&\&\ \textcolor{keyword}{this}.mEndLocation\ ==\ \textcolor{keyword}{this}.mNewLocation)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\_weight\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ 4)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.index\ =\ ((this.mNewLocationZ\ <\ this.mLocationZ)\ ?\ 0\ :\ ((this.mNewLocationX\ >\ this.mLocationX)\ ?\ 1\ :\ ((this.mNewLocationZ\ >\ this.mLocationZ)\ ?\ 2\ :\ 3)));}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\_weight\ =\ this.weightMap[(int)this.mLocationX,\ (\textcolor{keywordtype}{int})this.mLocationZ].weights[this.index];}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mx\ =\ (int)(this.mLocationX\ +\ (ushort)this.mDirection[i,\ 0]);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mz\ =\ (int)this.mLocationZ;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.index\ =\ ((this.mz\ <\ (int)this.mLocationZ)\ ?\ 0\ :\ ((this.mx\ >\ (int)this.mLocationX)\ ?\ 1\ :\ ((this.mz\ >\ (int)this.mLocationZ)\ ?\ 2\ :\ 3)));}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\_weight\ =\ this.weightMap[(int)this.mLocationX,\ (\textcolor{keywordtype}{int})this.mLocationZ].weights[this.index];}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.weightMap[this.mx,\ this.mz].IsPathBlocked(this.moveType))}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\_weight\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\_weight\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.index\ =\ ((this.mz\ <\ (int)this.mNewLocationZ)\ ?\ 0\ :\ ((this.mx\ >\ (int)this.mNewLocationX)\ ?\ 1\ :\ ((this.mz\ >\ (int)this.mNewLocationZ)\ ?\ 2\ :\ 3)));}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\_weight\ =\ this.weightMap[(int)this.mNewLocationX,\ (\textcolor{keywordtype}{int})this.mNewLocationZ].weights[this.index];}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\_weight\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mx\ =\ (int)this.mLocationX;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mz\ =\ (int)(this.mLocationZ\ +\ (ushort)this.mDirection[i,\ 1]);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.index\ =\ ((this.mz\ <\ (int)this.mLocationZ)\ ?\ 0\ :\ ((this.mx\ >\ (int)this.mLocationX)\ ?\ 1\ :\ ((this.mz\ >\ (int)this.mLocationZ)\ ?\ 2\ :\ 3)));}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\_weight\ =\ this.weightMap[(int)this.mLocationX,\ (\textcolor{keywordtype}{int})this.mLocationZ].weights[this.index];}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.weightMap[this.mx,\ this.mz].IsPathBlocked(this.moveType))}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\_weight\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\_weight\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.index\ =\ ((this.mz\ <\ (int)this.mNewLocationZ)\ ?\ 0\ :\ ((this.mx\ >\ (int)this.mNewLocationX)\ ?\ 1\ :\ ((this.mz\ >\ (int)this.mNewLocationZ)\ ?\ 2\ :\ 3)));}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\_weight\ =\ this.weightMap[(int)this.mNewLocationX,\ (\textcolor{keywordtype}{int})this.mNewLocationZ].weights[this.index];}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.\_weight\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ IL\_A70;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.\_weight\ +=\ this.weightMap[(int)this.mLocationX,\ (\textcolor{keywordtype}{int})this.mLocationZ].baseWeight;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.mEndLocation\ !=\ this.mNewLocation\ \&\&\ this.weightMap[(\textcolor{keywordtype}{int})this.mNewLocationX,\ (\textcolor{keywordtype}{int})this.mNewLocationZ].IsPathBlocked(this.moveType))}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ IL\_A70;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mNewG\ =\ this.mCalcGrid[this.mLocation].G\ +\ (int)this.\_weight;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.PunishChangeDirection)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.mNewLocationX\ -\/\ this.mLocationX\ !=\ 0\ \&\&\ this.mHoriz\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mNewG\ +=\ Math.Abs((\textcolor{keywordtype}{int})this.mNewLocationX\ -\/\ destPoint.x)\ +\ Math.Abs((\textcolor{keywordtype}{int})this.mNewLocationZ\ -\/\ destPoint.z);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.mNewLocationZ\ -\/\ this.mLocationZ\ !=\ 0\ \&\&\ this.mHoriz\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mNewG\ +=\ Math.Abs((\textcolor{keywordtype}{int})this.mNewLocationX\ -\/\ destPoint.x)\ +\ Math.Abs((\textcolor{keywordtype}{int})this.mNewLocationZ\ -\/\ destPoint.z);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((this.mCalcGrid[this.mNewLocation].Status\ !=\ this.mOpenNodeValue\ \&\&\ this.mCalcGrid[this.mNewLocation].Status\ !=\ this.mCloseNodeValue)\ ||\ this.mCalcGrid[this.mNewLocation].G\ >\ this.mNewG)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCalcGrid[this.mNewLocation].PX\ =\ this.mLocationX;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCalcGrid[this.mNewLocation].PZ\ =\ this.mLocationZ;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCalcGrid[this.mNewLocation].G\ =\ this.mNewG;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (this.mFormula)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mH\ =\ this.mHEstimate\ *\ (Math.Abs((\textcolor{keywordtype}{int})this.mNewLocationX\ -\/\ destPoint.x)\ +\ Math.Abs((\textcolor{keywordtype}{int})\textcolor{keyword}{this}.mNewLocationZ\ -\/\ destPoint.z));}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ HeuristicFormula.MaxDXDY:}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mH\ =\ this.mHEstimate\ *\ Math.Max(Math.Abs((\textcolor{keywordtype}{int})\textcolor{keyword}{this}.mNewLocationX\ -\/\ destPoint.x),\ Math.Abs((\textcolor{keywordtype}{int})\textcolor{keyword}{this}.mNewLocationZ\ -\/\ destPoint.z));}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ HeuristicFormula.DiagonalShortCut:}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ Math.Min(Math.Abs((\textcolor{keywordtype}{int})\textcolor{keyword}{this}.mNewLocationX\ -\/\ destPoint.x),\ Math.Abs((\textcolor{keywordtype}{int})\textcolor{keyword}{this}.mNewLocationZ\ -\/\ destPoint.z));}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ Math.Abs((\textcolor{keywordtype}{int})this.mNewLocationX\ -\/\ destPoint.x)\ +\ Math.Abs((\textcolor{keywordtype}{int})this.mNewLocationZ\ -\/\ destPoint.z);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mH\ =\ this.mHEstimate\ *\ 2\ *\ num\ +\ this.mHEstimate\ *\ (num2\ -\/\ 2\ *\ num);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ HeuristicFormula.Euclidean:}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mH\ =\ (int)((\textcolor{keywordtype}{double})this.mHEstimate\ *\ Math.Sqrt(Math.Pow((\textcolor{keywordtype}{double})((\textcolor{keywordtype}{int})\textcolor{keyword}{this}.mNewLocationZ\ -\/\ destPoint.x),\ 2.0)\ +\ Math.Pow((\textcolor{keywordtype}{double})((\textcolor{keywordtype}{int})\textcolor{keyword}{this}.mNewLocationZ\ -\/\ destPoint.z),\ 2.0)));}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ HeuristicFormula.EuclideanNoSQR:}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mH\ =\ (int)((\textcolor{keywordtype}{double})this.mHEstimate\ *\ (Math.Pow((\textcolor{keywordtype}{double})((\textcolor{keywordtype}{int})\textcolor{keyword}{this}.mNewLocationX\ -\/\ destPoint.x),\ 2.0)\ +\ Math.Pow((\textcolor{keywordtype}{double})((\textcolor{keywordtype}{int})\textcolor{keyword}{this}.mNewLocationZ\ -\/\ destPoint.z),\ 2.0)));}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.TieBreaker)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num3\ =\ (int)this.mLocationX\ -\/\ destPoint.x;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num4\ =\ (int)this.mLocationZ\ -\/\ destPoint.z;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num5\ =\ startPoint.x\ -\/\ destPoint.x;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num6\ =\ startPoint.z\ -\/\ destPoint.z;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num7\ =\ Math.Abs(num3\ *\ num6\ -\/\ num5\ *\ num4);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mH\ =\ (int)((\textcolor{keywordtype}{double})this.mH\ +\ (\textcolor{keywordtype}{double})num7\ *\ 0.001);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCalcGrid[this.mNewLocation].F\ =\ this.mNewG\ +\ this.mH;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mOpen.Push(this.mNewLocation);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCalcGrid[this.mNewLocation].Status\ =\ this.mOpenNodeValue;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IL\_A70:;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCloseNodeCounter++;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mCalcGrid[this.mLocation].Status\ =\ this.mCloseNodeValue;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.mFound)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num8\ =\ destPoint.x;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num9\ =\ destPoint.z;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PathFinder.PathFinderNodeFast\ pathFinderNodeFast\ =\ this.mCalcGrid[destPoint.z\ *\ this.mGridX\ +\ destPoint.x];}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_algorithms_1_1_path_finder_node}{PathFinderNode}}\ pathFinderNode;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathFinderNode.G\ =\ pathFinderNodeFast.G;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathFinderNode.PX\ =\ (int)pathFinderNodeFast.PX;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathFinderNode.PZ\ =\ (int)pathFinderNodeFast.PZ;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathFinderNode.X\ =\ destPoint.x;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathFinderNode.Z\ =\ destPoint.z;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (pathFinderNode.X\ !=\ pathFinderNode.PX\ ||\ pathFinderNode.Z\ !=\ pathFinderNode.PZ)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path.nodes.Add(pathFinderNode);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num8\ =\ pathFinderNode.PX;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num9\ =\ pathFinderNode.PZ;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathFinderNodeFast\ =\ this.mCalcGrid[num9\ *\ this.mGridX\ +\ num8];}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathFinderNode.G\ =\ pathFinderNodeFast.G;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathFinderNode.PX\ =\ (int)pathFinderNodeFast.PX;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathFinderNode.PZ\ =\ (int)pathFinderNodeFast.PZ;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathFinderNode.X\ =\ num8;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathFinderNode.Z\ =\ num9;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path.nodes.Add(pathFinderNode);}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mStopped\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mStopped\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CF1\ RID:\ 7409}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00268}00268\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ debug;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CF2\ RID:\ 7410}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00271}00271\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ Diagonals;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CF3\ RID:\ 7411}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ PunishChangeDirection;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CF4\ RID:\ 7412}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ HeavyDiagonals\ =\ 1f;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CF5\ RID:\ 7413}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ TieBreaker;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CF6\ RID:\ 7414}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ HeuristicFormula\ mFormula\ =\ HeuristicFormula.Manhattan;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CF7\ RID:\ 7415}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00286}00286\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{interface_i_pathfind_grid}{IPathfindGrid}}\ grid;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CF8\ RID:\ 7416}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ mHEstimate\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CF9\ RID:\ 7417}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00292}00292\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_algorithms_1_1_priority_queue_b}{PriorityQueueB<int>}}\ mOpen;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00293}00293\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CFA\ RID:\ 7418}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00295}00295\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ mStop;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CFB\ RID:\ 7419}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ mStopped\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00300}00300\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CFC\ RID:\ 7420}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00301}00301\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ mHoriz;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00303}00303\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CFD\ RID:\ 7421}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00304}00304\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ mReopenCloseNodes\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00306}00306\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CFE\ RID:\ 7422}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00307}00307\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_algorithms_1_1_path_finder}{PathFinder}}.\mbox{\hyperlink{struct_algorithms_1_1_path_finder_1_1_path_finder_node_fast}{PathFinderNodeFast}}[]\ mCalcGrid;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CFF\ RID:\ 7423}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00310}00310\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{byte}\ mOpenNodeValue\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00312}00312\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D00\ RID:\ 7424}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00313}00313\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{byte}\ mCloseNodeValue\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00315}00315\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D01\ RID:\ 7425}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00316}00316\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ PathManager.MoveType\ moveType;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00318}00318\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D02\ RID:\ 7426}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00319}00319\ \ \ \ \ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00320}00320\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ total;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D03\ RID:\ 7427}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00323}00323\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ mH;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00325}00325\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D04\ RID:\ 7428}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00326}00326\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ mLocation;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00327}00327\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00328}00328\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D05\ RID:\ 7429}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00329}00329\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ mNewLocation;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00330}00330\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00331}00331\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D06\ RID:\ 7430}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00332}00332\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ ushort\ mLocationX;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00334}00334\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D07\ RID:\ 7431}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00335}00335\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ ushort\ mLocationZ;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00337}00337\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D08\ RID:\ 7432}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00338}00338\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ ushort\ mNewLocationX;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00339}00339\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00340}00340\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D09\ RID:\ 7433}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00341}00341\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ ushort\ mNewLocationZ;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00343}00343\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D0A\ RID:\ 7434}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00344}00344\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ mGridXZ;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00346}00346\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D0B\ RID:\ 7435}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00347}00347\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ mGridX;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00349}00349\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D0C\ RID:\ 7436}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00350}00350\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ mGridZ;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00351}00351\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00352}00352\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D0D\ RID:\ 7437}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00353}00353\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ mCloseNodeCounter;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00355}00355\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D0E\ RID:\ 7438}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00356}00356\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ mFound;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00358}00358\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D0F\ RID:\ 7439}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00359}00359\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ sbyte[,]\ mDirection\ =\ \textcolor{keyword}{new}\ sbyte[,]}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00360}00360\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0,}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/1}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1,}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0,}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/1,}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/1,}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/1}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1,}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/1}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/1,}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1,}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00392}00392\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00393}00393\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00394}00394\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00395}00395\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D10\ RID:\ 7440}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00396}00396\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ mEndLocation;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00397}00397\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00398}00398\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D11\ RID:\ 7441}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00399}00399\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ mStartLocation;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00401}00401\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D12\ RID:\ 7442}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00402}00402\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ mNewG;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00403}00403\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00404}00404\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D13\ RID:\ 7443}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00405}00405\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{byte}\ \_weight;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00406}00406\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00407}00407\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D14\ RID:\ 7444}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00408}00408\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_algorithms_1_1_weight_cell}{WeightCell}}[,]\ weightMap;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00409}00409\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00410}00410\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D15\ RID:\ 7445}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00411}00411\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ index;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00412}00412\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00413}00413\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D16\ RID:\ 7446}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00414}00414\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ mx;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00415}00415\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00416}00416\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001D17\ RID:\ 7447}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00417}00417\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ mz;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00418}00418\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00419}00419\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000C48\ RID:\ 3144}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00420}00420\ \ \ \ \ \ \ \ \ \textcolor{keyword}{internal}\ \textcolor{keyword}{struct\ }PathFinderNodeFast}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00421}00421\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00422}00422\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400309A\ RID:\ 12442}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ F;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00424}00424\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00425}00425\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400309B\ RID:\ 12443}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00426}00426\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ G;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00427}00427\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400309C\ RID:\ 12444}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00429}00429\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ ushort\ PX;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00430}00430\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00431}00431\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400309D\ RID:\ 12445}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00432}00432\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ ushort\ PZ;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00433}00433\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00434}00434\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400309E\ RID:\ 12446}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00435}00435\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{byte}\ Status;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00436}00436\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00437}00437\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00438}00438\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000C49\ RID:\ 3145}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00439}00439\ \ \ \ \ \ \ \ \ \textcolor{keyword}{internal}\ \textcolor{keyword}{class\ }ComparePFNodeMatrix\ :\ IComparer<int>}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00440}00440\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00441}00441\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060046DF\ RID:\ 18143\ RVA:\ 0x00162127\ File\ Offset:\ 0x00160327}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00442}00442\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ ComparePFNodeMatrix(\mbox{\hyperlink{class_algorithms_1_1_path_finder}{PathFinder}}.\mbox{\hyperlink{struct_algorithms_1_1_path_finder_1_1_path_finder_node_fast}{PathFinderNodeFast}}[]\ matrix)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00443}00443\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00444}00444\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mMatrix\ =\ matrix;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00445}00445\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00446}00446\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00447}00447\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060046E0\ RID:\ 18144\ RVA:\ 0x00162138\ File\ Offset:\ 0x00160338}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ Compare(\textcolor{keywordtype}{int}\ a,\ \textcolor{keywordtype}{int}\ b)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00450}00450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.mMatrix[a].F\ >\ this.mMatrix[b].F)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00451}00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00452}00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.mMatrix[a].F\ <\ this.mMatrix[b].F)}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00455}00455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00456}00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00457}00457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00458}00458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00459}00459\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00460}00460\ }
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00461}00461\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400309F\ RID:\ 12447}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00462}00462\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_algorithms_1_1_path_finder}{PathFinder}}.\mbox{\hyperlink{struct_algorithms_1_1_path_finder_1_1_path_finder_node_fast}{PathFinderNodeFast}}[]\ mMatrix;}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00463}00463\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00464}00464\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_path_finder_8cs_source_l00465}00465\ \}}
+
+\end{DoxyCode}

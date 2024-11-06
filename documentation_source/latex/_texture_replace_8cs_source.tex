@@ -1,0 +1,98 @@
+\doxysection{Texture\+Replace.\+cs}
+\hypertarget{_texture_replace_8cs_source}{}\label{_texture_replace_8cs_source}\index{Elin/TextureReplace.cs@{Elin/TextureReplace.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.IO;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x02000132\ RID:\ 306}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00006}\mbox{\hyperlink{class_texture_replace}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_texture_replace}{TextureReplace}}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170001C8\ RID:\ 456}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000831\ RID:\ 2097\ RVA:\ 0x000361EF\ File\ Offset:\ 0x000343EF}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ user}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.source\ ==\ \mbox{\hyperlink{class_texture_replace}{TextureReplace}}.Source.User;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00016}00016\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000832\ RID:\ 2098\ RVA:\ 0x000361FC\ File\ Offset:\ 0x000343FC}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ TryRefresh(\textcolor{keywordtype}{bool}\ force)}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!File.Exists(\textcolor{keyword}{this}.file.FullName))}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ DateTime\ lastWriteTime\ =\ File.GetLastWriteTime(this.file.FullName);}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ this.date.Year\ !=\ 1\ \&\&\ this.date.Equals(lastWriteTime);}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!flag\ ||\ force\ ||\ !this.tex)}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ this.Load(flag);}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ this.date\ =\ lastWriteTime;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000833\ RID:\ 2099\ RVA:\ 0x00036270\ File\ Offset:\ 0x00034470}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Load(\textcolor{keywordtype}{bool}\ dateMatched)}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.tex)}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ UnityEngine.Object.Destroy(this.tex);}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ this.tex\ =\ IO.LoadPNG(this.file.FullName,\ FilterMode.Point);}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ this.w\ =\ this.tex.width;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ this.h\ =\ this.tex.height;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ dstX\ =\ this.index\ \%\ 100\ *\ this.data.tileW;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ dstY\ =\ this.data.tex.height\ -\/\ this.index\ /\ 100\ *\ this.data.tileH\ -\/\ this.tex.height;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ Graphics.CopyTexture(this.tex,\ 0,\ 0,\ 0,\ 0,\ this.tex.width,\ \textcolor{keyword}{this}.tex.height,\ \textcolor{keyword}{this}.data.tex,\ 0,\ 0,\ dstX,\ dstY);}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000834\ RID:\ 2100\ RVA:\ 0x0003634B\ File\ Offset:\ 0x0003454B}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00050}00050\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ DestoryTex()}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00051}00051\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ UnityEngine.Object.Destroy(this.tex);}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400088E\ RID:\ 2190}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{public}\ DateTime\ date;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400088F\ RID:\ 2191}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{public}\ Texture2D\ tex;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000890\ RID:\ 2192}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{public}\ FileInfo\ file;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000891\ RID:\ 2193}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_texture_data}{TextureData}}\ data;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000892\ RID:\ 2194}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00068}00068\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ index;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000893\ RID:\ 2195}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00071}00071\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ w;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000894\ RID:\ 2196}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00074}00074\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ h;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000895\ RID:\ 2197}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00077}00077\ \ \ \ \ \textcolor{keyword}{public}\ TextureReplace.Source\ source;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000896\ RID:\ 2198}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00080}00080\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_texture_replace}{TextureReplace}}\ original;}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00082}00082\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000858\ RID:\ 2136}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00083}00083\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ Source}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00084}00084\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023AC\ RID:\ 9132}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ User,}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023AD\ RID:\ 9133}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ Mod,}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023AE\ RID:\ 9134}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ Local}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_texture_replace_8cs_source_l00092}00092\ \}}
+
+\end{DoxyCode}

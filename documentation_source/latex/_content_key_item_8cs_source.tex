@@ -1,0 +1,75 @@
+\doxysection{Content\+Key\+Item.\+cs}
+\hypertarget{_content_key_item_8cs_source}{}\label{_content_key_item_8cs_source}\index{Elin/ContentKeyItem.cs@{Elin/ContentKeyItem.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x02000587\ RID:\ 1415}}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00006}\mbox{\hyperlink{class_content_key_item}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_content_key_item}{ContentKeyItem}}\ :\ \mbox{\hyperlink{class_e_content}{EContent}}}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002702\ RID:\ 9986\ RVA:\ 0x000DD290\ File\ Offset:\ 0x000DB490}}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnSwitchContent(\textcolor{keywordtype}{int}\ idTab)}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ this.list.sortMode\ =\ UIList.SortMode.ByValue;}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ BaseList\ baseList\ =\ this.list;}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ UIList.Callback<\mbox{\hyperlink{class_source_key_item}{SourceKeyItem}}.\mbox{\hyperlink{class_source_key_item_1_1_row}{Row}},\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}>\ callback\ =\ \textcolor{keyword}{new}\ UIList.Callback<\mbox{\hyperlink{class_source_key_item}{SourceKeyItem}}.\mbox{\hyperlink{class_source_key_item_1_1_row}{Row}},\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}>();}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ callback.onInstantiate\ =\ delegate(\mbox{\hyperlink{class_source_key_item}{SourceKeyItem}}.\mbox{\hyperlink{class_source_key_item_1_1_row}{Row}}\ a,\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}\ b)}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ b.SetSound(\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ b.button1.mainText.SetText(a.GetName());}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ b.SetSubText(\mbox{\hyperlink{class_e_class}{EClass}}.player.CountKeyItem(a.id).ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ 260,\ FontColor.Default,\ TextAnchor.MiddleRight);}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ callback.onClick\ =\ delegate(\mbox{\hyperlink{class_source_key_item}{SourceKeyItem}}.\mbox{\hyperlink{class_source_key_item_1_1_row}{Row}}\ a,\ \mbox{\hyperlink{class_item_general}{ItemGeneral}}\ b)}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ this.SelectItem(a);}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ callback.onList\ =\ delegate(UIList.SortMode\ m)}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\textcolor{keywordtype}{int}\ num\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_e_class}{EClass}}.player.keyItems.Keys)}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.player.CountKeyItem(num)\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.list.Add(\mbox{\hyperlink{class_e_class}{EClass}}.sources.keyItems.map[num]);}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ baseList.callbacks\ =\ callback;}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ this.list.List(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ this.SelectItem(\mbox{\hyperlink{class_e_class}{EClass}}.sources.keyItems.rows[0]);}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002703\ RID:\ 9987\ RVA:\ 0x000DD32C\ File\ Offset:\ 0x000DB52C}}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SelectItem(\mbox{\hyperlink{class_source_key_item}{SourceKeyItem}}.\mbox{\hyperlink{class_source_key_item_1_1_row}{Row}}\ q)}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ this.textTitle.SetText(q.GetName());}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ detail\ =\ q.GetDetail();}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ this.textDetail.SetText(detail);}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ Sprite\ sprite\ =\ Resources.Load<Sprite>(\textcolor{stringliteral}{"{}Media/Graphics/Image/KeyItem/"{}}\ +\ q.alias);}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sprite)}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ this.imageItem.sprite\ =\ sprite;}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ this.imageItem.SetNativeSize();}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ this.imageItem.SetActive(sprite);}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ this.RebuildLayout(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400158A\ RID:\ 5514}}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{public}\ UIList\ list;}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400158B\ RID:\ 5515}}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textClient;}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400158C\ RID:\ 5516}}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textTitle;}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400158D\ RID:\ 5517}}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textDetail;}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400158E\ RID:\ 5518}}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00068}00068\ \ \ \ \ \textcolor{keyword}{public}\ Image\ imageItem;}
+\DoxyCodeLine{\Hypertarget{_content_key_item_8cs_source_l00069}00069\ \}}
+
+\end{DoxyCode}

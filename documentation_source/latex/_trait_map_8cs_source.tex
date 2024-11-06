@@ -1,0 +1,74 @@
+\doxysection{Trait\+Map.\+cs}
+\hypertarget{_trait_map_8cs_source}{}\label{_trait_map_8cs_source}\index{Elin/TraitMap.cs@{Elin/TraitMap.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x020006A3\ RID:\ 1699}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00006}\mbox{\hyperlink{class_trait_map}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_trait_map}{TraitMap}}\ :\ Dictionary<int,\ Trait>}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003159\ RID:\ 12633\ RVA:\ 0x001146FF\ File\ Offset:\ 0x001128FF}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Add(\mbox{\hyperlink{class_card}{Card}}\ c)}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ base.Add(c.uid,\ c.trait);}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600315A\ RID:\ 12634\ RVA:\ 0x00114713\ File\ Offset:\ 0x00112913}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Remove(\mbox{\hyperlink{class_card}{Card}}\ c)}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ base.Remove(c.uid);}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600315B\ RID:\ 12635\ RVA:\ 0x00114722\ File\ Offset:\ 0x00112922}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_card}{Card}}\ GetRandom()}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_trait}{Trait}}\ trait\ =\ this.RandomItem<int,\ Trait>();}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (trait\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ trait.owner;}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600315C\ RID:\ 12636\ RVA:\ 0x00114735\ File\ Offset:\ 0x00112935}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_card}{Card}}\ GetRandom(Func<Trait,\ bool>\ func)}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (func\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.GetRandom();}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_trait}{Trait}}\ trait\ =\ base.Values.Where(func).RandomItem<\mbox{\hyperlink{class_trait}{Trait}}>();}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (trait\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ trait.owner;}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600315D\ RID:\ 12637\ RVA:\ 0x00114760\ File\ Offset:\ 0x00112960}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_card}{Card}}\ GetRandomInstalled()}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (base.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_trait}{Trait}}\ trait\ =\ (from\ a\ in\ base.Values}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ where\ a.owner.placeState\ ==\ PlaceState.installed}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ select\ a).RandomItem<Trait>();}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (trait\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ trait.owner;}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600315E\ RID:\ 12638\ RVA:\ 0x001147B1\ File\ Offset:\ 0x001129B1}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ Contains(\mbox{\hyperlink{class_card}{Card}}\ c)}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ base.ContainsKey(c.uid);}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_map_8cs_source_l00068}00068\ \}}
+
+\end{DoxyCode}

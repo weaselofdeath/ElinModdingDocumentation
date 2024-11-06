@@ -1,0 +1,61 @@
+\doxysection{Item\+Quest.\+cs}
+\hypertarget{_item_quest_8cs_source}{}\label{_item_quest_8cs_source}\index{Elin/ItemQuest.cs@{Elin/ItemQuest.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x020005B6\ RID:\ 1462}}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00005}\mbox{\hyperlink{class_item_quest}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_item_quest}{ItemQuest}}\ :\ \mbox{\hyperlink{class_e_mono}{EMono}}}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002814\ RID:\ 10260\ RVA:\ 0x000E25F8\ File\ Offset:\ 0x000E07F8}}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetQuest(\mbox{\hyperlink{class_quest}{Quest}}\ q)}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ this.portrait.SetPerson(q.person);}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ this.button.mainText.text\ =\ (\mbox{\hyperlink{class_e_mono}{EMono}}.game.quests.list.Contains(q)\ ?\ \textcolor{stringliteral}{"{}questInProgress"{}}.lang().TagColor(FontColor.Good,\ \textcolor{keyword}{null})\ :\ \textcolor{stringliteral}{"{}"{}})\ +\ q.TitlePrefix\ +\ q.GetTitle();}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ this.button.subText.text\ =\ q.person.NameBraced;}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ this.textDate.SetText(\mbox{\hyperlink{class_date}{Date}}.GetText(q.Hours));}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ this.textDate.transform.parent.RebuildLayout(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ this.textReward.SetText(q.GetRewardText());}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ q.GetDetail(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quest_supply}{QuestSupply}}\ questSupply\ =\ q\ as\ \mbox{\hyperlink{class_quest_supply}{QuestSupply}};}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (questSupply\ !=\ \textcolor{keyword}{null}\ \&\&\ questSupply.GetDestThing()\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ text\ =\ \textcolor{stringliteral}{"{}questSupplyOwned"{}}.lang().TagColor(FontColor.Good,\ \textcolor{keyword}{null})\ +\ text;}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ this.textDetail.SetText(text);}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ this.imageNew.SetActive(q.isNew);}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ q.isNew\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ this.textDifficulty.SetText(\textcolor{stringliteral}{"{}★"{}}.Repeat(q.difficulty));}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ this.textDifficulty.SetActive(q.IsRandomQuest);}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ textExtra\ =\ q.TextExtra;}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ this.textDanger.SetActive(!textExtra.IsEmpty());}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ this.textDanger.SetText(textExtra);}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00030}00030\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001642\ RID:\ 5698}}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_portrait}{Portrait}}\ portrait;}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001643\ RID:\ 5699}}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ button;}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001644\ RID:\ 5700}}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textDetail;}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001645\ RID:\ 5701}}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textReward;}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00044}00044\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001646\ RID:\ 5702}}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textDate;}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001647\ RID:\ 5703}}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00048}00048\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textDifficulty;}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001648\ RID:\ 5704}}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00051}00051\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textDanger;}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001649\ RID:\ 5705}}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00054}00054\ \ \ \ \ \textcolor{keyword}{public}\ Image\ imageNew;}
+\DoxyCodeLine{\Hypertarget{_item_quest_8cs_source_l00055}00055\ \}}
+
+\end{DoxyCode}

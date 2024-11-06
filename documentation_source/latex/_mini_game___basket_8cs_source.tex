@@ -1,0 +1,64 @@
+\doxysection{Mini\+Game\+\_\+\+Basket.\+cs}
+\hypertarget{_mini_game___basket_8cs_source}{}\label{_mini_game___basket_8cs_source}\index{Elin/MiniGame\_Basket.cs@{Elin/MiniGame\_Basket.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x020005A0\ RID:\ 1440}}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00005}\mbox{\hyperlink{class_mini_game___basket}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mini_game___basket}{MiniGame\_Basket}}\ :\ \mbox{\hyperlink{class_mod_minigame}{ModMinigame}}<Shooter>}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000BAE\ RID:\ 2990}}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06002781\ RID:\ 10113\ RVA:\ 0x000DFC07\ File\ Offset:\ 0x000DDE07}}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id}}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Basket"{}};}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002782\ RID:\ 10114\ RVA:\ 0x000DFC10\ File\ Offset:\ 0x000DDE10}}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnActivate()}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.game)}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.prefab)}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.prefab\ =\ Resources.Load<Shooter>(\textcolor{stringliteral}{"{}Basket"{}});}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(this.prefab);}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ this.go\ =\ UnityEngine.Object.Instantiate<GameObject>(this.prefab.gameObject);}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(this.go);}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ this.game\ =\ this.go.GetComponentInChildren<Shooter>();}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ base.SetAudioMixer(this.go);}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ Shooter.game\ =\ \textcolor{keyword}{new}\ Game\_Basket}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ Deactivate\ =\ \textcolor{keyword}{new}\ Action(base.Deactivate),}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ OnPlay\ =\ \textcolor{keyword}{new}\ Func<int,\ bool>(base.OnPlay),}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ ModChangeCoin\ =\ delegate(\textcolor{keywordtype}{int}\ a)}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.balance.changeCoin\ +=\ a;}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ ModLastCoin\ =\ delegate(\textcolor{keywordtype}{int}\ a)}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.balance.lastCoin\ +=\ a;}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ LastCoin\ =\ (()\ =>\ this.balance.lastCoin)}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ EClass.scene.audioListener.enabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002783\ RID:\ 10115\ RVA:\ 0x000DFD04\ File\ Offset:\ 0x000DDF04}}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00050}00050\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnDeactivate()}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00051}00051\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ base.Kill();}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ EClass.scene.audioListener.enabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015ED\ RID:\ 5613}}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{public}\ Shooter\ prefab;}
+\DoxyCodeLine{\Hypertarget{_mini_game___basket_8cs_source_l00058}00058\ \}}
+
+\end{DoxyCode}

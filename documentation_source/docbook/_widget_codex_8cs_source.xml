@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__widget_codex_8cs_source" xml:lang="en-US">
+<title>WidgetCodex.cs</title>
+<indexterm><primary>Elin/WidgetCodex.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__widget_codex_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__widget_codex_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>System.Collections.Generic;
+<anchor xml:id="__widget_codex_8cs_source_1l00003"/>00003 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__widget_codex_8cs_source_1l00004"/>00004 <emphasis role="keyword">using&#32;</emphasis>UnityEngine.Events;
+<anchor xml:id="__widget_codex_8cs_source_1l00005"/>00005 <emphasis role="keyword">using&#32;</emphasis>UnityEngine.UI;
+<anchor xml:id="__widget_codex_8cs_source_1l00006"/>00006 
+<anchor xml:id="__widget_codex_8cs_source_1l00007"/>00007 <emphasis role="comment">//&#32;Token:&#32;0x020005F7&#32;RID:&#32;1527</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00008"/><link linkend="_class_widget_codex">00008</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_widget_codex">WidgetCodex</link>&#32;:&#32;<link linkend="_class_widget">Widget</link>
+<anchor xml:id="__widget_codex_8cs_source_1l00009"/>00009 {
+<anchor xml:id="__widget_codex_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x17000C1C&#32;RID:&#32;3100</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06002A2D&#32;RID:&#32;10797&#32;RVA:&#32;0x000ED517&#32;File&#32;Offset:&#32;0x000EB717</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;WidgetCodex.SearchType&#32;type
+<anchor xml:id="__widget_codex_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_widget_codex">WidgetCodex</link>.SearchType.Codex;
+<anchor xml:id="__widget_codex_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00019"/>00019 
+<anchor xml:id="__widget_codex_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002A2E&#32;RID:&#32;10798&#32;RVA:&#32;0x000ED51C&#32;File&#32;Offset:&#32;0x000EB71C</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnActivate()
+<anchor xml:id="__widget_codex_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.field.onValueChanged.AddListener(<emphasis role="keyword">new</emphasis>&#32;UnityAction&lt;string&gt;(this.Search));
+<anchor xml:id="__widget_codex_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.field.onSubmit.AddListener(<emphasis role="keyword">new</emphasis>&#32;UnityAction&lt;string&gt;(this.Search));
+<anchor xml:id="__widget_codex_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.lastSearch&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="__widget_codex_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Search(<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+<anchor xml:id="__widget_codex_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_e_mono">EMono</link>._zone.isStarted)
+<anchor xml:id="__widget_codex_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.field.Select();
+<anchor xml:id="__widget_codex_8cs_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00032"/>00032 
+<anchor xml:id="__widget_codex_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002A2F&#32;RID:&#32;10799&#32;RVA:&#32;0x000ED58C&#32;File&#32;Offset:&#32;0x000EB78C</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Clear()
+<anchor xml:id="__widget_codex_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.field.text&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>;
+<anchor xml:id="__widget_codex_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00038"/>00038 
+<anchor xml:id="__widget_codex_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002A30&#32;RID:&#32;10800&#32;RVA:&#32;0x000ED5A0&#32;File&#32;Offset:&#32;0x000EB7A0</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Search(<emphasis role="keywordtype">string</emphasis>&#32;s)
+<anchor xml:id="__widget_codex_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;s&#32;=&#32;s.ToLower();
+<anchor xml:id="__widget_codex_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.buttonClear.SetActive(this.field.text&#32;!=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+<anchor xml:id="__widget_codex_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(s&#32;==&#32;this.lastSearch)
+<anchor xml:id="__widget_codex_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__widget_codex_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_recipe_manager">RecipeManager</link>.BuildList();
+<anchor xml:id="__widget_codex_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HashSet&lt;Recipe&gt;&#32;hashSet&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;HashSet&lt;Recipe&gt;();
+<anchor xml:id="__widget_codex_8cs_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!s.IsEmpty())
+<anchor xml:id="__widget_codex_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">using</emphasis>&#32;(List&lt;RecipeSource&gt;.Enumerator&#32;enumerator&#32;=&#32;<link linkend="_class_recipe_manager">RecipeManager</link>.list.GetEnumerator())
+<anchor xml:id="__widget_codex_8cs_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(enumerator.MoveNext())
+<anchor xml:id="__widget_codex_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_recipe_source">RecipeSource</link>&#32;recipeSource&#32;=&#32;enumerator.Current;
+<anchor xml:id="__widget_codex_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!recipeSource.isChara&#32;&amp;&amp;&#32;!recipeSource.noListing&#32;&amp;&amp;&#32;!recipeSource.isBridgePillar&#32;&amp;&amp;&#32;(recipeSource.row.GetSearchName(<emphasis role="keyword">false</emphasis>).Contains(s)&#32;||&#32;recipeSource.row.GetSearchName(<emphasis role="keyword">true</emphasis>).Contains(s))&#32;&amp;&amp;&#32;(<link linkend="_class_e_mono">EMono</link>.player.recipes.knownRecipes.ContainsKey(recipeSource.id)&#32;||&#32;recipeSource.alwaysKnown))
+<anchor xml:id="__widget_codex_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hashSet.Add(<link linkend="_class_recipe">Recipe</link>.Create(recipeSource,&#32;-1,&#32;<emphasis role="keyword">null</emphasis>));
+<anchor xml:id="__widget_codex_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">goto</emphasis>&#32;IL_16D;
+<anchor xml:id="__widget_codex_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_recipe_source">RecipeSource</link>&#32;recipeSource2&#32;<emphasis role="keywordflow">in</emphasis>&#32;<link linkend="_class_recipe_manager">RecipeManager</link>.list)
+<anchor xml:id="__widget_codex_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!recipeSource2.isChara&#32;&amp;&amp;&#32;!recipeSource2.noListing&#32;&amp;&amp;&#32;!recipeSource2.isBridgePillar&#32;&amp;&amp;&#32;(<link linkend="_class_e_mono">EMono</link>.player.recipes.knownRecipes.ContainsKey(recipeSource2.id)&#32;||&#32;recipeSource2.alwaysKnown))
+<anchor xml:id="__widget_codex_8cs_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hashSet.Add(<link linkend="_class_recipe">Recipe</link>.Create(recipeSource2,&#32;-1,&#32;<emphasis role="keyword">null</emphasis>));
+<anchor xml:id="__widget_codex_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;IL_16D:
+<anchor xml:id="__widget_codex_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!hashSet.SetEquals(<emphasis role="keyword">this</emphasis>.recipes))
+<anchor xml:id="__widget_codex_8cs_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.recipes&#32;=&#32;hashSet;
+<anchor xml:id="__widget_codex_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.RefreshList();
+<anchor xml:id="__widget_codex_8cs_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.lastSearch&#32;=&#32;s;
+<anchor xml:id="__widget_codex_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00080"/>00080 
+<anchor xml:id="__widget_codex_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002A31&#32;RID:&#32;10801&#32;RVA:&#32;0x000ED758&#32;File&#32;Offset:&#32;0x000EB958</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RefreshList()
+<anchor xml:id="__widget_codex_8cs_source_1l00083"/>00083 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BaseList&#32;baseList&#32;=&#32;this.list;
+<anchor xml:id="__widget_codex_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UIList.Callback&lt;<link linkend="_class_recipe">Recipe</link>,&#32;<link linkend="_class_button_grid">ButtonGrid</link>&gt;&#32;callback&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;UIList.Callback&lt;<link linkend="_class_recipe">Recipe</link>,&#32;<link linkend="_class_button_grid">ButtonGrid</link>&gt;();
+<anchor xml:id="__widget_codex_8cs_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onClick&#32;=&#32;delegate(<link linkend="_class_recipe">Recipe</link>&#32;a,&#32;<link linkend="_class_button_grid">ButtonGrid</link>&#32;b)
+<anchor xml:id="__widget_codex_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__widget_codex_8cs_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onRedraw&#32;=&#32;delegate(<link linkend="_class_recipe">Recipe</link>&#32;a,&#32;<link linkend="_class_button_grid">ButtonGrid</link>&#32;b,&#32;<emphasis role="keywordtype">int</emphasis>&#32;i)
+<anchor xml:id="__widget_codex_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b.SetCraftRecipe(a,&#32;<link linkend="_class_button_grid">ButtonGrid</link>.Mode.RecipeGrid,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__widget_codex_8cs_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__widget_codex_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback.onList&#32;=&#32;delegate(UIList.SortMode&#32;m)
+<anchor xml:id="__widget_codex_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>&#32;(<link linkend="_class_recipe">Recipe</link>&#32;o&#32;<emphasis role="keywordflow">in</emphasis>&#32;this.recipes)
+<anchor xml:id="__widget_codex_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list.Add(o);
+<anchor xml:id="__widget_codex_8cs_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__widget_codex_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;baseList.callbacks&#32;=&#32;callback;
+<anchor xml:id="__widget_codex_8cs_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list.List();
+<anchor xml:id="__widget_codex_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.list.dsv.OnResize();
+<anchor xml:id="__widget_codex_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00104"/>00104 
+<anchor xml:id="__widget_codex_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002A32&#32;RID:&#32;10802&#32;RVA:&#32;0x000ED7EC&#32;File&#32;Offset:&#32;0x000EB9EC</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Update()
+<anchor xml:id="__widget_codex_8cs_source_1l00107"/>00107 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.count++;
+<anchor xml:id="__widget_codex_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(Input.GetKeyDown(KeyCode.Escape))
+<anchor xml:id="__widget_codex_8cs_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.Close();
+<anchor xml:id="__widget_codex_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EInput.Consume(<emphasis role="keyword">false</emphasis>,&#32;5);
+<anchor xml:id="__widget_codex_8cs_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__widget_codex_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;functionkeyDown&#32;=&#32;EInput.GetFunctionkeyDown();
+<anchor xml:id="__widget_codex_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.count&#32;&gt;&#32;10&#32;&amp;&amp;&#32;functionkeyDown&#32;!=&#32;-1)
+<anchor xml:id="__widget_codex_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_widget_hotbar">WidgetHotbar</link>&#32;hotbarExtra&#32;=&#32;<link linkend="_class_widget_hotbar">WidgetHotbar</link>.HotbarExtra;
+<anchor xml:id="__widget_codex_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(hotbarExtra)
+<anchor xml:id="__widget_codex_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_hot_item_widget">HotItemWidget</link>&#32;hotItemWidget&#32;=&#32;hotbarExtra.GetItem(functionkeyDown)&#32;as&#32;<link linkend="_class_hot_item_widget">HotItemWidget</link>;
+<anchor xml:id="__widget_codex_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(hotItemWidget&#32;!=&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;hotItemWidget.id&#32;==&#32;base.ID)
+<anchor xml:id="__widget_codex_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.Close();
+<anchor xml:id="__widget_codex_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EInput.Consume(<emphasis role="keyword">false</emphasis>,&#32;5);
+<anchor xml:id="__widget_codex_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__widget_codex_8cs_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(this.CheckClose())
+<anchor xml:id="__widget_codex_8cs_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;base.Close();
+<anchor xml:id="__widget_codex_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EInput.Consume(<emphasis role="keyword">false</emphasis>,&#32;1);
+<anchor xml:id="__widget_codex_8cs_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00136"/>00136 
+<anchor xml:id="__widget_codex_8cs_source_1l00137"/>00137 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06002A33&#32;RID:&#32;10803&#32;RVA:&#32;0x000ED886&#32;File&#32;Offset:&#32;0x000EBA86</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CheckClose()
+<anchor xml:id="__widget_codex_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__widget_codex_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00142"/>00142 
+<anchor xml:id="__widget_codex_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040017C6&#32;RID:&#32;6086</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00144"/>00144 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;InputField&#32;field;
+<anchor xml:id="__widget_codex_8cs_source_1l00145"/>00145 
+<anchor xml:id="__widget_codex_8cs_source_1l00146"/>00146 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040017C7&#32;RID:&#32;6087</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00147"/>00147 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_word_search">WordSearch</link>&#32;search&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_word_search">WordSearch</link>();
+<anchor xml:id="__widget_codex_8cs_source_1l00148"/>00148 
+<anchor xml:id="__widget_codex_8cs_source_1l00149"/>00149 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040017C8&#32;RID:&#32;6088</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00150"/>00150 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIDynamicList&#32;list;
+<anchor xml:id="__widget_codex_8cs_source_1l00151"/>00151 
+<anchor xml:id="__widget_codex_8cs_source_1l00152"/>00152 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040017C9&#32;RID:&#32;6089</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00153"/>00153 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;HashSet&lt;Recipe&gt;&#32;recipes&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;HashSet&lt;Recipe&gt;();
+<anchor xml:id="__widget_codex_8cs_source_1l00154"/>00154 
+<anchor xml:id="__widget_codex_8cs_source_1l00155"/>00155 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040017CA&#32;RID:&#32;6090</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00156"/>00156 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;lastSearch;
+<anchor xml:id="__widget_codex_8cs_source_1l00157"/>00157 
+<anchor xml:id="__widget_codex_8cs_source_1l00158"/>00158 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040017CB&#32;RID:&#32;6091</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00159"/>00159 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;UIButton&#32;buttonClear;
+<anchor xml:id="__widget_codex_8cs_source_1l00160"/>00160 
+<anchor xml:id="__widget_codex_8cs_source_1l00161"/>00161 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040017CC&#32;RID:&#32;6092</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00162"/>00162 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Transform&#32;transResult;
+<anchor xml:id="__widget_codex_8cs_source_1l00163"/>00163 
+<anchor xml:id="__widget_codex_8cs_source_1l00164"/>00164 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x040017CD&#32;RID:&#32;6093</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00165"/>00165 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;count;
+<anchor xml:id="__widget_codex_8cs_source_1l00166"/>00166 
+<anchor xml:id="__widget_codex_8cs_source_1l00167"/>00167 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x02000B65&#32;RID:&#32;2917</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">enum</emphasis>&#32;SearchType
+<anchor xml:id="__widget_codex_8cs_source_1l00169"/>00169 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__widget_codex_8cs_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002DC7&#32;RID:&#32;11719</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Codex,
+<anchor xml:id="__widget_codex_8cs_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04002DC8&#32;RID:&#32;11720</emphasis>
+<anchor xml:id="__widget_codex_8cs_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Search
+<anchor xml:id="__widget_codex_8cs_source_1l00174"/>00174 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__widget_codex_8cs_source_1l00175"/>00175 }
+</programlisting></section>

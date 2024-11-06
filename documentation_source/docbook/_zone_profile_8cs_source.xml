@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__zone_profile_8cs_source" xml:lang="en-US">
+<title>ZoneProfile.cs</title>
+<indexterm><primary>Elin/ZoneProfile.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__zone_profile_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__zone_profile_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__zone_profile_8cs_source_1l00003"/>00003 
+<anchor xml:id="__zone_profile_8cs_source_1l00004"/>00004 <emphasis role="comment">//&#32;Token:&#32;0x020006F6&#32;RID:&#32;1782</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00005"/><link linkend="_class_zone_profile">00005</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_zone_profile">ZoneProfile</link>&#32;:&#32;<link linkend="_class_e_scriptable">EScriptable</link>
+<anchor xml:id="__zone_profile_8cs_source_1l00006"/>00006 {
+<anchor xml:id="__zone_profile_8cs_source_1l00007"/>00007 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033E7&#32;RID:&#32;13287&#32;RVA:&#32;0x0011B825&#32;File&#32;Offset:&#32;0x00119A25</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_zone_profile">ZoneProfile</link>&#32;Load(<emphasis role="keywordtype">string</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>)
+<anchor xml:id="__zone_profile_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__zone_profile_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;Resources.Load&lt;<link linkend="_class_zone_profile">ZoneProfile</link>&gt;(<emphasis role="stringliteral">&quot;World/Zone/Profile/&quot;</emphasis>&#32;+&#32;<emphasis role="keywordtype">id</emphasis>.IsEmpty(<emphasis role="stringliteral">&quot;Default&quot;</emphasis>));
+<anchor xml:id="__zone_profile_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__zone_profile_8cs_source_1l00012"/>00012 
+<anchor xml:id="__zone_profile_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033E8&#32;RID:&#32;13288&#32;RVA:&#32;0x0011B841&#32;File&#32;Offset:&#32;0x00119A41</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Generate()
+<anchor xml:id="__zone_profile_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__zone_profile_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_zone_blueprint">ZoneBlueprint</link>&#32;zoneBlueprint&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_zone_blueprint">ZoneBlueprint</link>();
+<anchor xml:id="__zone_profile_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zoneBlueprint.Create();
+<anchor xml:id="__zone_profile_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zoneBlueprint.map&#32;=&#32;<link linkend="_class_e_class">EClass</link>._map;
+<anchor xml:id="__zone_profile_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zoneBlueprint.zoneProfile&#32;=&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="__zone_profile_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zoneBlueprint.GenerateMap(<link linkend="_class_e_class">EClass</link>._zone);
+<anchor xml:id="__zone_profile_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>._map.RevealAll(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__zone_profile_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__zone_profile_8cs_source_1l00023"/>00023 
+<anchor xml:id="__zone_profile_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033E9&#32;RID:&#32;13289&#32;RVA:&#32;0x0011B875&#32;File&#32;Offset:&#32;0x00119A75</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RerollBiome()
+<anchor xml:id="__zone_profile_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__zone_profile_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.seeds.biome++;
+<anchor xml:id="__zone_profile_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Generate();
+<anchor xml:id="__zone_profile_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__zone_profile_8cs_source_1l00030"/>00030 
+<anchor xml:id="__zone_profile_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033EA&#32;RID:&#32;13290&#32;RVA:&#32;0x0011B890&#32;File&#32;Offset:&#32;0x00119A90</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RerollBiomeSub()
+<anchor xml:id="__zone_profile_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__zone_profile_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.seeds.biomeSub++;
+<anchor xml:id="__zone_profile_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Generate();
+<anchor xml:id="__zone_profile_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__zone_profile_8cs_source_1l00037"/>00037 
+<anchor xml:id="__zone_profile_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x060033EB&#32;RID:&#32;13291&#32;RVA:&#32;0x0011B8AB&#32;File&#32;Offset:&#32;0x00119AAB</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;RerollBush()
+<anchor xml:id="__zone_profile_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__zone_profile_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.seeds.bush++;
+<anchor xml:id="__zone_profile_8cs_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.Generate();
+<anchor xml:id="__zone_profile_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__zone_profile_8cs_source_1l00044"/>00044 
+<anchor xml:id="__zone_profile_8cs_source_1l00045"/>00045 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C3B&#32;RID:&#32;7227</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_map_gen_variation">MapGenVariation</link>&#32;variation;
+<anchor xml:id="__zone_profile_8cs_source_1l00047"/>00047 
+<anchor xml:id="__zone_profile_8cs_source_1l00048"/>00048 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C3C&#32;RID:&#32;7228</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00049"/>00049 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_map_height">MapHeight</link>&#32;height;
+<anchor xml:id="__zone_profile_8cs_source_1l00050"/>00050 
+<anchor xml:id="__zone_profile_8cs_source_1l00051"/>00051 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C3D&#32;RID:&#32;7229</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00052"/>00052 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_zone_profile_1_1_seeds">ZoneProfile.Seeds</link>&#32;seeds;
+<anchor xml:id="__zone_profile_8cs_source_1l00053"/>00053 
+<anchor xml:id="__zone_profile_8cs_source_1l00054"/>00054 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C3E&#32;RID:&#32;7230</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00055"/>00055 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;size&#32;=&#32;200;
+<anchor xml:id="__zone_profile_8cs_source_1l00056"/>00056 
+<anchor xml:id="__zone_profile_8cs_source_1l00057"/>00057 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C3F&#32;RID:&#32;7231</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;sizeBounds;
+<anchor xml:id="__zone_profile_8cs_source_1l00059"/>00059 
+<anchor xml:id="__zone_profile_8cs_source_1l00060"/>00060 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C40&#32;RID:&#32;7232</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00061"/>00061 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;offsetX;
+<anchor xml:id="__zone_profile_8cs_source_1l00062"/>00062 
+<anchor xml:id="__zone_profile_8cs_source_1l00063"/>00063 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C41&#32;RID:&#32;7233</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00064"/>00064 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;offsetZ;
+<anchor xml:id="__zone_profile_8cs_source_1l00065"/>00065 
+<anchor xml:id="__zone_profile_8cs_source_1l00066"/>00066 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C42&#32;RID:&#32;7234</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00067"/>00067 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;blockHeight;
+<anchor xml:id="__zone_profile_8cs_source_1l00068"/>00068 
+<anchor xml:id="__zone_profile_8cs_source_1l00069"/>00069 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C43&#32;RID:&#32;7235</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;water;
+<anchor xml:id="__zone_profile_8cs_source_1l00071"/>00071 
+<anchor xml:id="__zone_profile_8cs_source_1l00072"/>00072 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C44&#32;RID:&#32;7236</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00073"/>00073 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;bushMod&#32;=&#32;2;
+<anchor xml:id="__zone_profile_8cs_source_1l00074"/>00074 
+<anchor xml:id="__zone_profile_8cs_source_1l00075"/>00075 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C45&#32;RID:&#32;7237</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00076"/>00076 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;extraShores;
+<anchor xml:id="__zone_profile_8cs_source_1l00077"/>00077 
+<anchor xml:id="__zone_profile_8cs_source_1l00078"/>00078 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C46&#32;RID:&#32;7238</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00079"/>00079 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;shoreHeight;
+<anchor xml:id="__zone_profile_8cs_source_1l00080"/>00080 
+<anchor xml:id="__zone_profile_8cs_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C47&#32;RID:&#32;7239</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00082"/>00082 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;biomeSubScale&#32;=&#32;5f;
+<anchor xml:id="__zone_profile_8cs_source_1l00083"/>00083 
+<anchor xml:id="__zone_profile_8cs_source_1l00084"/>00084 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C48&#32;RID:&#32;7240</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00085"/>00085 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isShore;
+<anchor xml:id="__zone_profile_8cs_source_1l00086"/>00086 
+<anchor xml:id="__zone_profile_8cs_source_1l00087"/>00087 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C49&#32;RID:&#32;7241</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;setShore&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__zone_profile_8cs_source_1l00089"/>00089 
+<anchor xml:id="__zone_profile_8cs_source_1l00090"/>00090 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C4A&#32;RID:&#32;7242</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00091"/>00091 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;noWater;
+<anchor xml:id="__zone_profile_8cs_source_1l00092"/>00092 
+<anchor xml:id="__zone_profile_8cs_source_1l00093"/>00093 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C4B&#32;RID:&#32;7243</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00094"/>00094 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;river&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__zone_profile_8cs_source_1l00095"/>00095 
+<anchor xml:id="__zone_profile_8cs_source_1l00096"/>00096 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C4C&#32;RID:&#32;7244</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00097"/>00097 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;useRootSize;
+<anchor xml:id="__zone_profile_8cs_source_1l00098"/>00098 
+<anchor xml:id="__zone_profile_8cs_source_1l00099"/>00099 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C4D&#32;RID:&#32;7245</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00100"/>00100 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;indoor;
+<anchor xml:id="__zone_profile_8cs_source_1l00101"/>00101 
+<anchor xml:id="__zone_profile_8cs_source_1l00102"/>00102 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C4E&#32;RID:&#32;7246</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00103"/>00103 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;clearEdge;
+<anchor xml:id="__zone_profile_8cs_source_1l00104"/>00104 
+<anchor xml:id="__zone_profile_8cs_source_1l00105"/>00105 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C4F&#32;RID:&#32;7247</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00106"/>00106 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;idSceneProfile;
+<anchor xml:id="__zone_profile_8cs_source_1l00107"/>00107 
+<anchor xml:id="__zone_profile_8cs_source_1l00108"/>00108 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C50&#32;RID:&#32;7248</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00109"/>00109 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;ZoneProfile.GenType&#32;genType;
+<anchor xml:id="__zone_profile_8cs_source_1l00110"/>00110 
+<anchor xml:id="__zone_profile_8cs_source_1l00111"/>00111 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04001C51&#32;RID:&#32;7249</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00112"/>00112 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;MapBG&#32;mapBG;
+<anchor xml:id="__zone_profile_8cs_source_1l00113"/>00113 
+<anchor xml:id="__zone_profile_8cs_source_1l00114"/>00114 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x02000C17&#32;RID:&#32;3095</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00115"/>00115 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">enum</emphasis>&#32;GenType
+<anchor xml:id="__zone_profile_8cs_source_1l00116"/>00116 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__zone_profile_8cs_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400301B&#32;RID:&#32;12315</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Default,
+<anchor xml:id="__zone_profile_8cs_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400301C&#32;RID:&#32;12316</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Sky,
+<anchor xml:id="__zone_profile_8cs_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400301D&#32;RID:&#32;12317</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Underground
+<anchor xml:id="__zone_profile_8cs_source_1l00123"/>00123 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__zone_profile_8cs_source_1l00124"/>00124 
+<anchor xml:id="__zone_profile_8cs_source_1l00125"/>00125 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x02000C18&#32;RID:&#32;3096</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00126"/>00126 &#32;&#32;&#32;&#32;[Serializable]
+<anchor xml:id="__zone_profile_8cs_source_1l00127"/><link linkend="_class_zone_profile_1_1_seeds">00127</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_zone_profile_1_1_seeds">Seeds</link>
+<anchor xml:id="__zone_profile_8cs_source_1l00128"/>00128 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__zone_profile_8cs_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400301E&#32;RID:&#32;12318</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;height;
+<anchor xml:id="__zone_profile_8cs_source_1l00131"/>00131 
+<anchor xml:id="__zone_profile_8cs_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x0400301F&#32;RID:&#32;12319</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;poi;
+<anchor xml:id="__zone_profile_8cs_source_1l00134"/>00134 
+<anchor xml:id="__zone_profile_8cs_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04003020&#32;RID:&#32;12320</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;biome;
+<anchor xml:id="__zone_profile_8cs_source_1l00137"/>00137 
+<anchor xml:id="__zone_profile_8cs_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04003021&#32;RID:&#32;12321</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;biomeSub;
+<anchor xml:id="__zone_profile_8cs_source_1l00140"/>00140 
+<anchor xml:id="__zone_profile_8cs_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04003022&#32;RID:&#32;12322</emphasis>
+<anchor xml:id="__zone_profile_8cs_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;bush;
+<anchor xml:id="__zone_profile_8cs_source_1l00143"/>00143 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__zone_profile_8cs_source_1l00144"/>00144 }
+</programlisting></section>

@@ -1,0 +1,123 @@
+\doxysection{Spatial\+Manager.\+cs}
+\hypertarget{_spatial_manager_8cs_source}{}\label{_spatial_manager_8cs_source}\index{Elin/SpatialManager.cs@{Elin/SpatialManager.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00006}00006\ \textcolor{comment}{//\ Token:\ 0x020006E5\ RID:\ 1765}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00007}\mbox{\hyperlink{class_spatial_manager}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_spatial_manager}{SpatialManager}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060032F4\ RID:\ 13044\ RVA:\ 0x00117C96\ File\ Offset:\ 0x00115E96}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ AssignUID(\mbox{\hyperlink{class_spatial}{Spatial}}\ s)}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ s.uid\ =\ this.uidNext;}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ this.uidNext++;}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ this.map.Add(s);}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060032F5\ RID:\ 13045\ RVA:\ 0x00117CBE\ File\ Offset:\ 0x00115EBE}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Remove(\mbox{\hyperlink{class_spatial}{Spatial}}\ s)}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (s.parent\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ s.parent.children.Remove(s);}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ this.map.Remove(s.uid);}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ this.listDestryoed.Add(s);}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060032F6\ RID:\ 13046\ RVA:\ 0x00117CF8\ File\ Offset:\ 0x00115EF8}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{public}\ T\ Find<T>(Func<T,\ bool>\ func)\ where\ T\ :\ \mbox{\hyperlink{class_zone}{Zone}}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00030}00030\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_spatial}{Spatial}}\ spatial\ \textcolor{keywordflow}{in}\ this.map.Values)}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ T\ t\ =\ spatial\ as\ T;}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\ !=\ \textcolor{keyword}{null}\ \&\&\ func(t))}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ t;}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordflow}{default}(T);}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060032F7\ RID:\ 13047\ RVA:\ 0x00117D74\ File\ Offset:\ 0x00115F74}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00043}00043\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_zone}{Zone}}\ Find(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00044}00044\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_spatial}{Spatial}}\ spatial\ \textcolor{keywordflow}{in}\ this.map.Values)}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (spatial\ is\ \mbox{\hyperlink{class_zone}{Zone}}\ \&\&\ spatial.id\ ==\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ spatial\ as\ \mbox{\hyperlink{class_zone}{Zone}};}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060032F8\ RID:\ 13048\ RVA:\ 0x00117DE8\ File\ Offset:\ 0x00115FE8}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_zone}{Zone}}\ Find(\textcolor{keywordtype}{int}\ uid)}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00057}00057\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.map.TryGetValue(uid,\ \textcolor{keyword}{null})\ as\ \mbox{\hyperlink{class_zone}{Zone}};}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x060032F9\ RID:\ 13049\ RVA:\ 0x00117DFC\ File\ Offset:\ 0x00115FFC}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{public}\ List<Zone>\ ListReturnLocations()}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00063}00063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.debug.returnAnywhere)}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (from\ \mbox{\hyperlink{class_zone}{Zone}}\ a\ in\ }
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ from\ a\ in\ this.map.Values}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ where\ a\ is\ \mbox{\hyperlink{class_zone}{Zone}}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ select\ a}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ where\ a\ !=\ \mbox{\hyperlink{class_e_class}{EClass}}.\_zone\ \&\&\ (a.IsReturnLocation\ ||\ a.IsPCFaction\ ||\ (!(a\ is\ \mbox{\hyperlink{class_zone___field}{Zone\_Field}})\ \&\&\ !a.IsInstance\ \&\&\ !a.isRandomSite))\ \&\&\ a.parent\ ==\ \mbox{\hyperlink{class_e_class}{EClass}}.world.region\ \&\&\ !a.source.tag.Contains(\textcolor{stringliteral}{"{}closed"{}})}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ select\ a).ToList<\mbox{\hyperlink{class_zone}{Zone}}>();}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (from\ \mbox{\hyperlink{class_zone}{Zone}}\ a\ in\ }
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ from\ a\ in\ this.map.Values}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ where\ a\ is\ \mbox{\hyperlink{class_zone}{Zone}}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ select\ a}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ where\ a\ !=\ \mbox{\hyperlink{class_e_class}{EClass}}.\_zone\ \&\&\ a.IsReturnLocation\ \&\&\ a.GetTopZone().visitCount\ >\ 0\ \&\&\ (a.GetTopZone().FindDeepestZone()\ ==\ a\ ||\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.homeZone\ ==\ a)}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ select\ a).ToList<\mbox{\hyperlink{class_zone}{Zone}}>();}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000F3B\ RID:\ 3899}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00082}00082\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x060032FA\ RID:\ 13050\ RVA:\ 0x00117ED0\ File\ Offset:\ 0x001160D0}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00083}00083\ \ \ \ \ \textcolor{keyword}{public}\ List<Zone>\ Zones}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00084}00084\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (from\ a\ in\ this.map.Values}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ where\ a\ is\ \mbox{\hyperlink{class_zone}{Zone}}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ select\ a).Cast<\mbox{\hyperlink{class_zone}{Zone}}>().ToList<Zone>();}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001BF9\ RID:\ 7161}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00094}00094\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00095}00095\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_spatial_manager_1_1_global_spatial_list}{SpatialManager.GlobalSpatialList}}\ map\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_spatial_manager}{SpatialManager}}.\mbox{\hyperlink{class_spatial_manager_1_1_global_spatial_list}{GlobalSpatialList}}();}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00097}00097\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001BFA\ RID:\ 7162}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00098}00098\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00099}00099\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ uidNext\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00101}00101\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001BFB\ RID:\ 7163}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00102}00102\ \ \ \ \ [JsonProperty]}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00103}00103\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_ranked_zone_manager}{RankedZoneManager}}\ ranks\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_ranked_zone_manager}{RankedZoneManager}}();}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00105}00105\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001BFC\ RID:\ 7164}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00106}00106\ \ \ \ \ \textcolor{keyword}{public}\ List<Spatial>\ listDestryoed\ =\ \textcolor{keyword}{new}\ List<Spatial>();}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000C0C\ RID:\ 3084}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00109}\mbox{\hyperlink{class_spatial_manager_1_1_global_spatial_list}{00109}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_spatial_manager_1_1_global_spatial_list}{GlobalSpatialList}}\ :\ Dictionary<int,\ Spatial>}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00110}00110\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600461A\ RID:\ 17946\ RVA:\ 0x00160BAA\ File\ Offset:\ 0x0015EDAA}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Add(\mbox{\hyperlink{class_spatial}{Spatial}}\ s)}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ base.Add(s.uid,\ s);}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00116}00116\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_spatial_manager_8cs_source_l00117}00117\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,53 @@
+\doxysection{Trait\+Gacha\+Ball.\+cs}
+\hypertarget{_trait_gacha_ball_8cs_source}{}\label{_trait_gacha_ball_8cs_source}\index{Elin/TraitGachaBall.cs@{Elin/TraitGachaBall.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00003}00003\ \textcolor{comment}{//\ Token:\ 0x0200040F\ RID:\ 1039}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00004}\mbox{\hyperlink{class_trait_gacha_ball}{00004}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_trait_gacha_ball}{TraitGachaBall}}\ :\ \mbox{\hyperlink{class_trait_item}{TraitItem}}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000943\ RID:\ 2371}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06001DC2\ RID:\ 7618\ RVA:\ 0x000AC72B\ File\ Offset:\ 0x000AA92B}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{string}\ LangUse}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}actContainer"{}};}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001DC3\ RID:\ 7619\ RVA:\ 0x000AC734\ File\ Offset:\ 0x000AA934}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ OnUse(\mbox{\hyperlink{class_chara}{Chara}}\ c)}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ TraitGacha.GachaType\ refVal\ =\ (\mbox{\hyperlink{class_trait_gacha}{TraitGacha}}.GachaType)this.owner.refVal;}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_spawn_list}{SpawnList}}\ spawnList;}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (refVal\ !=\ \mbox{\hyperlink{class_trait_gacha}{TraitGacha}}.GachaType.Plant)}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (refVal\ ==\ \mbox{\hyperlink{class_trait_gacha}{TraitGacha}}.GachaType.Furniture)}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spawnList\ =\ \mbox{\hyperlink{class_spawn_list_thing}{SpawnListThing}}.Get(\textcolor{stringliteral}{"{}gacha\_furniture"{}},\ (\mbox{\hyperlink{class_source_thing}{SourceThing}}.\mbox{\hyperlink{class_source_thing_1_1_row}{Row}}\ a)\ =>\ a.value\ <\ 5000\ \&\&\ a.Category.IsChildOf(\textcolor{stringliteral}{"{}furniture"{}}));}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spawnList\ =\ \mbox{\hyperlink{class_spawn_list_thing}{SpawnListThing}}.Get(\textcolor{stringliteral}{"{}gacha\_junk"{}},\ (\mbox{\hyperlink{class_source_thing}{SourceThing}}.\mbox{\hyperlink{class_source_thing_1_1_row}{Row}}\ a)\ =>\ a.Category.id\ ==\ \textcolor{stringliteral}{"{}junk"{}});}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ spawnList\ =\ \mbox{\hyperlink{class_spawn_list_thing}{SpawnListThing}}.Get(\textcolor{stringliteral}{"{}gacha\_plant"{}},\ (\mbox{\hyperlink{class_source_thing}{SourceThing}}.\mbox{\hyperlink{class_source_thing_1_1_row}{Row}}\ a)\ =>\ a.Category.id\ ==\ \textcolor{stringliteral}{"{}plantpot"{}});}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ Rand.SetSeed(this.owner.uid\ +\ \textcolor{keyword}{this}.owner.Num\ *\ 100\ +\ \mbox{\hyperlink{class_e_class}{EClass}}.world.date.day\ /\ 5\ *\ 1000);}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ thing\ =\ \mbox{\hyperlink{class_thing_gen}{ThingGen}}.Create(spawnList.Select(-\/1,\ -\/1).id,\ -\/1,\ -\/1);}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (refVal\ !=\ \mbox{\hyperlink{class_trait_gacha}{TraitGacha}}.GachaType.Plant)}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ thing.ChangeMaterial(\mbox{\hyperlink{class_e_class}{EClass}}.sources.materials.rows.RandomItemWeighted((\mbox{\hyperlink{class_source_material}{SourceMaterial}}.\mbox{\hyperlink{class_source_material_1_1_row}{Row}}\ m)\ =>\ (\textcolor{keywordtype}{float})m.chance));}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ Rand.SetSeed(-\/1);}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.player.DropReward(thing,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ this.owner.ModNum(-\/1,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_trait_gacha_ball_8cs_source_l00047}00047\ \}}
+
+\end{DoxyCode}

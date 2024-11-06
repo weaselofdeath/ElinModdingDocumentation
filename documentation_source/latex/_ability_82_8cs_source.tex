@@ -1,0 +1,60 @@
+\doxysection{Ability.2.cs}
+\hypertarget{_ability_82_8cs_source}{}\label{_ability_82_8cs_source}\index{Elin/Ability.2.cs@{Elin/Ability.2.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000303\ RID:\ 771}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00005}\mbox{\hyperlink{class_ability}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ability}{Ability}}\ :\ \mbox{\hyperlink{class_act}{Act}}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600180E\ RID:\ 6158\ RVA:\ 0x0009BEC8\ File\ Offset:\ 0x0009A0C8}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ CanLink(\mbox{\hyperlink{class_element_container}{ElementContainer}}\ owner)}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ owner.Card\ ==\ \textcolor{keyword}{null}\ \&\&\ !base.IsGlobalElement;}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00011}00011\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600180F\ RID:\ 6159\ RVA:\ 0x0009BEDD\ File\ Offset:\ 0x0009A0DD}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{int}\ GetSourceValue(\textcolor{keywordtype}{int}\ v,\ \textcolor{keywordtype}{int}\ lv,\ SourceValueType\ type)}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 10\ *\ (100\ +\ (lv\ -\/\ 1)\ *\ base.source.lvFactor\ /\ 10)\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00017}00017\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170006C0\ RID:\ 1728}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06001810\ RID:\ 6160\ RVA:\ 0x0009BEFA\ File\ Offset:\ 0x0009A0FA}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ CanPressRepeat}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ base.source.tag.Contains(\textcolor{stringliteral}{"{}repeat"{}});}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001811\ RID:\ 6161\ RVA:\ 0x0009BF14\ File\ Offset:\ 0x0009A114}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{int}\ GetPower(\mbox{\hyperlink{class_card}{Card}}\ c)}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ base.Value\ *\ 8\ +\ 50;}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!c.IsPC)}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ Mathf.Max(num,\ c.LV\ *\ 6\ +\ 30);}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ num\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.curve(num,\ 400,\ 100,\ 75);}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ is\ \mbox{\hyperlink{class_spell}{Spell}})}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ num\ *\ (100\ +\ c.Evalue(411))\ /\ 100;}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ num;}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00045}00045\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001812\ RID:\ 6162\ RVA:\ 0x0009BF74\ File\ Offset:\ 0x0009A174}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00046}00046\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnChangeValue()}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00047}00047\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_card}{Card}}\ card\ =\ this.owner.Card;}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (card\ !=\ \textcolor{keyword}{null}\ \&\&\ card.\_IsPC)}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_ability}{LayerAbility}}.SetDirty(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ability_82_8cs_source_l00054}00054\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,85 @@
+\doxysection{TCOrbit\+Thing.\+cs}
+\hypertarget{_t_c_orbit_thing_8cs_source}{}\label{_t_c_orbit_thing_8cs_source}\index{Elin/TCOrbitThing.cs@{Elin/TCOrbitThing.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000180\ RID:\ 384}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00005}\mbox{\hyperlink{class_t_c_orbit_thing}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_t_c_orbit_thing}{TCOrbitThing}}\ :\ \mbox{\hyperlink{class_t_c_orbit}{TCOrbit}}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000B12\ RID:\ 2834\ RVA:\ 0x000450D0\ File\ Offset:\ 0x000432D0}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnSetOwner()}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ this.owner\ =\ (base.owner\ as\ \mbox{\hyperlink{class_thing}{Thing}});}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_data}{RenderData}}\ data\ =\ this.owner.renderer.data;}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ this.goIcon.transform.SetLocalPositionY(data.offset.y\ +\ data.size.y\ +\ 0.32f);}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ this.RefreshAll();}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000B13\ RID:\ 2835\ RVA:\ 0x00045134\ File\ Offset:\ 0x00043334}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ Refresh()}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ this.timer\ +=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.timer\ >\ 0.2f)}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ this.timer\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ this.RefreshAll();}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.owner.isHidden\ ||\ \mbox{\hyperlink{class_e_mono}{EMono}}.pc.CanSee(\textcolor{keyword}{this}.owner))}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!base.gameObject.activeSelf)}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ base.gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ base.transform.position\ =\ this.owner.renderer.position;}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (base.gameObject.activeSelf)}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ base.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000B14\ RID:\ 2836\ RVA:\ 0x000451E4\ File\ Offset:\ 0x000433E4}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshAll()}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00042}00042\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_core_ref_1_1_orbit_icons}{CoreRef.OrbitIcons}}\ orbitIcons\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.core.refs.orbitIcons;}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ Emo2\ emo\ =\ Emo2.none;}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.owner.IsInstalled)}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.owner.isRestocking\ \&\&\ !\textcolor{keyword}{this}.owner.IsPCParty\ \&\&\ \textcolor{keyword}{this}.owner.trait.GetRestockedIcon()\ !=\ Emo2.none\ \&\&\ !(\mbox{\hyperlink{class_e_mono}{EMono}}.\_zone\ is\ \mbox{\hyperlink{class_zone___dungeon}{Zone\_Dungeon}}))}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ emo\ =\ this.owner.trait.GetRestockedIcon();}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ thing\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.player.currentHotItem.Thing;}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (((thing\ !=\ \textcolor{keyword}{null})\ ?\ thing.trait\ :\ \textcolor{keyword}{null})\ is\ \mbox{\hyperlink{class_trait_tool_shears}{TraitToolShears}}\ \&\&\ \textcolor{keyword}{this}.owner.CanBeSheared())}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ emo\ =\ Emo2.fur;}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ emo\ >\ Emo2.none;}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flag)}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ this.iconStatus.sprite\ =\ \mbox{\hyperlink{class_e_mono}{EMono}}.core.refs.spritesEmo[(int)emo];}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ this.iconStatus.SetActive(flag);}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A28\ RID:\ 2600}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00069}00069\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ goIcon;}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A29\ RID:\ 2601}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{public}\ SpriteRenderer\ iconStatus;}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A2A\ RID:\ 2602}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00075}00075\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_thing}{Thing}}\ owner;}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000A2B\ RID:\ 2603}}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00078}00078\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ timer;}
+\DoxyCodeLine{\Hypertarget{_t_c_orbit_thing_8cs_source_l00079}00079\ \}}
+
+\end{DoxyCode}

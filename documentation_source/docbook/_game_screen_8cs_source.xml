@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__game_screen_8cs_source" xml:lang="en-US">
+<title>GameScreen.cs</title>
+<indexterm><primary>Elin/GameScreen.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__game_screen_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__game_screen_8cs_source_1l00002"/>00002 <emphasis role="keyword">using&#32;</emphasis>UnityEngine;
+<anchor xml:id="__game_screen_8cs_source_1l00003"/>00003 
+<anchor xml:id="__game_screen_8cs_source_1l00004"/>00004 <emphasis role="comment">//&#32;Token:&#32;0x02000163&#32;RID:&#32;355</emphasis>
+<anchor xml:id="__game_screen_8cs_source_1l00005"/><link linkend="_class_game_screen">00005</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_game_screen">GameScreen</link>&#32;:&#32;<link linkend="_class_base_game_screen">BaseGameScreen</link>
+<anchor xml:id="__game_screen_8cs_source_1l00006"/>00006 {
+<anchor xml:id="__game_screen_8cs_source_1l00007"/>00007 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x170002A5&#32;RID:&#32;677</emphasis>
+<anchor xml:id="__game_screen_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(get)&#32;Token:&#32;0x06000A71&#32;RID:&#32;2673&#32;RVA:&#32;0x0003F29C&#32;File&#32;Offset:&#32;0x0003D49C</emphasis>
+<anchor xml:id="__game_screen_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsLocalMap
+<anchor xml:id="__game_screen_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_screen_8cs_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">get</emphasis>
+<anchor xml:id="__game_screen_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_screen_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__game_screen_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_screen_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_screen_8cs_source_1l00016"/>00016 
+<anchor xml:id="__game_screen_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000A72&#32;RID:&#32;2674&#32;RVA:&#32;0x0003F2A0&#32;File&#32;Offset:&#32;0x0003D4A0</emphasis>
+<anchor xml:id="__game_screen_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnActivate()
+<anchor xml:id="__game_screen_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_screen_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;indoor&#32;=&#32;<link linkend="_class_e_mono">EMono</link>._map.config.indoor;
+<anchor xml:id="__game_screen_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.moons[0].SetLocalPositionY((<emphasis role="keywordtype">float</emphasis>)this.moonLevel&#32;*&#32;-this.planeSpeed.y);
+<anchor xml:id="__game_screen_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.moons[1].SetLocalPositionY((<emphasis role="keywordtype">float</emphasis>)this.moonLevel&#32;*&#32;-this.planeSpeed.y&#32;+&#32;1.4f);
+<anchor xml:id="__game_screen_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Transform[]&#32;array&#32;=&#32;this.moons;
+<anchor xml:id="__game_screen_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;array.Length;&#32;i++)
+<anchor xml:id="__game_screen_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_screen_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array[i].SetActive(!indoor);
+<anchor xml:id="__game_screen_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_screen_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_mono">EMono</link>.scene.RefreshBG();
+<anchor xml:id="__game_screen_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_screen_8cs_source_1l00030"/>00030 
+<anchor xml:id="__game_screen_8cs_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000A73&#32;RID:&#32;2675&#32;RVA:&#32;0x0003F330&#32;File&#32;Offset:&#32;0x0003D530</emphasis>
+<anchor xml:id="__game_screen_8cs_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetUnitSize()
+<anchor xml:id="__game_screen_8cs_source_1l00033"/>00033 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__game_screen_8cs_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.tileAlign&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Vector2(this.tileSize.x&#32;*&#32;0.005f,&#32;<emphasis role="keyword">this</emphasis>.tileSize.y&#32;*&#32;0.005f);
+<anchor xml:id="__game_screen_8cs_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.tileWorldSize&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Vector2(this.tileSize.x&#32;*&#32;0.01f,&#32;<emphasis role="keyword">this</emphasis>.tileSize.y&#32;*&#32;0.01f);
+<anchor xml:id="__game_screen_8cs_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;x&#32;=&#32;this.tileSize.x;
+<anchor xml:id="__game_screen_8cs_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;num&#32;=&#32;100f&#32;/&#32;x;
+<anchor xml:id="__game_screen_8cs_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;num2&#32;=&#32;num&#32;*&#32;100f;
+<anchor xml:id="__game_screen_8cs_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;num3&#32;=&#32;num&#32;*&#32;100f&#32;/&#32;4f;
+<anchor xml:id="__game_screen_8cs_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.tileViewSize&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;Vector2(num2&#32;*&#32;0.01f,&#32;num3&#32;*&#32;0.01f);
+<anchor xml:id="__game_screen_8cs_source_1l00041"/>00041 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__game_screen_8cs_source_1l00042"/>00042 
+<anchor xml:id="__game_screen_8cs_source_1l00043"/>00043 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000931&#32;RID:&#32;2353</emphasis>
+<anchor xml:id="__game_screen_8cs_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;Transform[]&#32;moons;
+<anchor xml:id="__game_screen_8cs_source_1l00045"/>00045 
+<anchor xml:id="__game_screen_8cs_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x04000932&#32;RID:&#32;2354</emphasis>
+<anchor xml:id="__game_screen_8cs_source_1l00047"/>00047 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_render_data">RenderData</link>&#32;renderTempEQ;
+<anchor xml:id="__game_screen_8cs_source_1l00048"/>00048 }
+</programlisting></section>

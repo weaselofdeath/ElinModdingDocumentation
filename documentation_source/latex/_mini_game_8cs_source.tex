@@ -1,0 +1,208 @@
+\doxysection{Mini\+Game.\+cs}
+\hypertarget{_mini_game_8cs_source}{}\label{_mini_game_8cs_source}\index{Elin/MiniGame.cs@{Elin/MiniGame.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.IO;}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00006}00006\ \textcolor{comment}{//\ Token:\ 0x0200059E\ RID:\ 1438}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00007}\mbox{\hyperlink{class_mini_game}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mini_game}{MiniGame}}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002770\ RID:\ 10096\ RVA:\ 0x000DF7B4\ File\ Offset:\ 0x000DD9B4}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ RegisterMiniGame(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_mini_game}{MiniGame}}\ g,\ \textcolor{keywordtype}{string}\ \_path)}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ g.path\ =\ \textcolor{keyword}{new}\ FileInfo(\_path).DirectoryName;}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mini_game}{MiniGame}}.minigames[id]\ =\ g;}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Registered:"{}}\ +\ ((g\ !=\ \textcolor{keyword}{null})\ ?\ g.ToString()\ :\ \textcolor{keyword}{null})\ +\ \textcolor{stringliteral}{"{}\ at\ "{}}\ +\ g.path);}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002771\ RID:\ 10097\ RVA:\ 0x000DF808\ File\ Offset:\ 0x000DDA08}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Activate(\mbox{\hyperlink{class_mini_game}{MiniGame}}.Type\ type)}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_mini_game}{MiniGame}}.minigames.ContainsKey(\textcolor{stringliteral}{"{}Basket"{}}))}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mini_game}{MiniGame}}.minigames.Add(\textcolor{stringliteral}{"{}Basket"{}},\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_mini_game___basket}{MiniGame\_Basket}}());}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_mini_game}{MiniGame}}.minigames.ContainsKey(\textcolor{stringliteral}{"{}Blackjack"{}}))}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mini_game}{MiniGame}}.minigames.Add(\textcolor{stringliteral}{"{}Blackjack"{}},\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_mini_game___blackjack}{MiniGame\_Blackjack}}());}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Activating:"{}}\ +\ type.ToString());}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mini_game}{MiniGame}}\ miniGame\ =\ \mbox{\hyperlink{class_mini_game}{MiniGame}}.minigames.TryGetValue(type.ToString(),\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (miniGame\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_msg}{Msg}}.Say(\textcolor{stringliteral}{"{}minigame\_notSupported"{}});}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_mini_game}{LayerMiniGame}}\ layerMiniGame\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.ui.AddLayer<\mbox{\hyperlink{class_layer_mini_game}{LayerMiniGame}}>();}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ Debug.Log(layerMiniGame);}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ Debug.Log(miniGame);}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ miniGame.balance\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_mini_game}{MiniGame}}.\mbox{\hyperlink{class_mini_game_1_1_balance}{Balance}}();}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ layerMiniGame.mini\ =\ miniGame;}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ layerMiniGame.type\ =\ type;}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}aaa"{}});}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ layerMiniGame.Run();}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00045}00045\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000BAD\ RID:\ 2989}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06002772\ RID:\ 10098\ RVA:\ 0x000DF8E1\ File\ Offset:\ 0x000DDAE1}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002773\ RID:\ 10099\ RVA:\ 0x000DF8E8\ File\ Offset:\ 0x000DDAE8}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OnActivate()}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00057}00057\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002774\ RID:\ 10100\ RVA:\ 0x000DF8EA\ File\ Offset:\ 0x000DDAEA}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OnDeactivate()}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00062}00062\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00065}00065\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002775\ RID:\ 10101\ RVA:\ 0x000DF8EC\ File\ Offset:\ 0x000DDAEC}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00066}00066\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Deactivate()}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00067}00067\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ this.OnDeactivate();}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ Debug.Log(this.balance.lastCoin);}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ Debug.Log(this.balance.changeCoin);}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.balance.changeCoin\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.pc.ModCurrency(this.balance.changeCoin,\ \textcolor{stringliteral}{"{}casino\_coin"{}});}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_mini_game}{LayerMiniGame}}\ layer\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.ui.GetLayer<\mbox{\hyperlink{class_layer_mini_game}{LayerMiniGame}}>(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (layer\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ layer.mini\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ layer.Close();}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002776\ RID:\ 10102\ RVA:\ 0x000DF974\ File\ Offset:\ 0x000DDB74}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00084}00084\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetAudioMixer(GameObject\ go)}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00085}00085\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ AudioSource[]\ componentsInChildren\ =\ go.GetComponentsInChildren<AudioSource>();}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ componentsInChildren.Length;\ i++)}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ componentsInChildren[i].outputAudioMixerGroup\ =\ SoundManager.current.mixer.FindMatchingGroups(\textcolor{stringliteral}{"{}SFX"{}})[0];}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002777\ RID:\ 10103\ RVA:\ 0x000DF9B4\ File\ Offset:\ 0x000DDBB4}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00094}00094\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Say(\textcolor{keywordtype}{string}\ lang)}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00095}00095\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_msg}{Msg}}.Say(lang);}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00097}00097\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00099}00099\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002778\ RID:\ 10104\ RVA:\ 0x000DF9BD\ File\ Offset:\ 0x000DDBBD}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00100}00100\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ CanExit()}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00101}00101\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00103}00103\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00105}00105\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002779\ RID:\ 10105\ RVA:\ 0x000DF9C0\ File\ Offset:\ 0x000DDBC0}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00106}00106\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Exit()}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00107}00107\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_mini_game}{LayerMiniGame}}\ layer\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.ui.GetLayer<\mbox{\hyperlink{class_layer_mini_game}{LayerMiniGame}}>(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (layer\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ layer.Close();}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00116}00116\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600277A\ RID:\ 10106\ RVA:\ 0x000DF9D8\ File\ Offset:\ 0x000DDBD8}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00117}00117\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ OnPlay(\textcolor{keywordtype}{int}\ a)}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00118}00118\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_mini_game}{LayerMiniGame}}\ layer\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.ui.GetLayer<\mbox{\hyperlink{class_layer_mini_game}{LayerMiniGame}}>(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (layer)}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (layer.type)}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_mini_game}{MiniGame}}.Type.Slot:}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.pc.ModExp(134,\ 10);}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_mini_game}{MiniGame}}.Type.Blackjack:}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.pc.ModExp(135,\ 10);}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_mini_game}{MiniGame}}.Type.Basket:}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.pc.ModExp(108,\ 15);}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.pc.stamina.Mod(-\/a);}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.player.EndTurn(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !EClass.pc.isDead\ \&\&\ !\mbox{\hyperlink{class_e_class}{EClass}}.pc.IsDisabled;}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00138}00138\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00140}00140\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600277B\ RID:\ 10107\ RVA:\ 0x000DFA84\ File\ Offset:\ 0x000DDC84}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00141}00141\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ GetSlotReward(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ pay\ =\ 1,\ \textcolor{keywordtype}{int}\ bet\ =\ 1)}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00142}00142\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{id}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}ehe"{}},}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}wild"{}},}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}cat"{}},}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}larnneire"{}},}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}lomias"{}},}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}bread"{}}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \}.RandomItem<\textcolor{keywordtype}{string}>();}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ c\ =\ \mbox{\hyperlink{class_thing_gen}{ThingGen}}.Create(\textcolor{stringliteral}{"{}casino\_coin"{}},\ -\/1,\ -\/1).SetNum(pay\ *\ bet);}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_msg}{Msg}}.Say(\textcolor{stringliteral}{"{}slot\_win"{}},\ c,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00158}00158\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00160}00160\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015E6\ RID:\ 5606}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00161}00161\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ Dictionary<string,\ MiniGame>\ minigames\ =\ \textcolor{keyword}{new}\ Dictionary<string,\ MiniGame>();}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00163}00163\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015E7\ RID:\ 5607}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00164}00164\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_mini_game_1_1_balance}{MiniGame.Balance}}\ balance\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_mini_game}{MiniGame}}.\mbox{\hyperlink{class_mini_game_1_1_balance}{Balance}}();}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00166}00166\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015E8\ RID:\ 5608}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00167}00167\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ go;}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00169}00169\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015E9\ RID:\ 5609}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00170}00170\ \ \ \ \ \textcolor{keyword}{public}\ AssetBundle\ asset;}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00172}00172\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015EA\ RID:\ 5610}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00173}00173\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ path;}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00175}00175\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040015EB\ RID:\ 5611}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00176}00176\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ isActive;}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00178}00178\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000AE8\ RID:\ 2792}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00179}\mbox{\hyperlink{class_mini_game_1_1_balance}{00179}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mini_game_1_1_balance}{Balance}}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00180}00180\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002C39\ RID:\ 11321}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ lastCoin;}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002C3A\ RID:\ 11322}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ changeCoin;}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00186}00186\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00188}00188\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000AE9\ RID:\ 2793}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00189}00189\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ Type}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00190}00190\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002C3C\ RID:\ 11324}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ Slot,}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002C3D\ RID:\ 11325}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ Blackjack,}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002C3E\ RID:\ 11326}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ Scratch,}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002C3F\ RID:\ 11327}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ Basket,}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002C40\ RID:\ 11328}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ CoinDrop}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00201}00201\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mini_game_8cs_source_l00202}00202\ \}}
+
+\end{DoxyCode}

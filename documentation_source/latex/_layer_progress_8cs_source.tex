@@ -1,0 +1,155 @@
+\doxysection{Layer\+Progress.\+cs}
+\hypertarget{_layer_progress_8cs_source}{}\label{_layer_progress_8cs_source}\index{Elin/LayerProgress.cs@{Elin/LayerProgress.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Threading;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }DG.Tweening;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }DG.Tweening.Core;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }DG.Tweening.Plugins.Options;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00010}00010\ \textcolor{comment}{//\ Token:\ 0x020005B5\ RID:\ 1461}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00011}\mbox{\hyperlink{class_layer_progress}{00011}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_layer_progress}{LayerProgress}}\ :\ \mbox{\hyperlink{class_e_layer}{ELayer}}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00012}00012\ \{}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600280E\ RID:\ 10254\ RVA:\ 0x000E239C\ File\ Offset:\ 0x000E059C}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Init(\textcolor{keywordtype}{string}\ hint)}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ this.text.text\ =\ hint;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ LayerProgress.completed\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ LayerProgress.isActive\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ LayerProgress.progress\ =\ (this.value\ =\ 0f);}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ this.cg.alpha\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ this.cg.DOFade(1f,\ 0.1f).SetEase(Ease.InCubic).SetDelay(0.2f);}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600280F\ RID:\ 10255\ RVA:\ 0x000E240C\ File\ Offset:\ 0x000E060C}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.onCancel\ !=\ \textcolor{keyword}{null}\ \&\&\ Input.GetKeyDown(KeyCode.Escape))}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ LayerProgress.isActive\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ this.Close();}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ this.onCancel();}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ this.minTime\ -\/=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_layer_progress}{LayerProgress}}.progress\ <\ 0.9f)}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ LayerProgress.progress\ +=\ this.minProgress\ *\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ this.value\ =\ Mathf.Lerp(this.value,\ \mbox{\hyperlink{class_layer_progress}{LayerProgress}}.progress,\ Time.deltaTime\ *\ \textcolor{keyword}{this}.speed);}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.useUnitask\ \&\&\ this.unitask.Status\ ==\ UniTaskStatus.Succeeded)}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ LayerProgress.completed\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ this.bar.value\ =\ Mathf.Clamp(this.value,\ 0f,\ 1f);}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_layer_progress}{LayerProgress}}.completed\ \&\&\ \textcolor{keyword}{this}.minTime\ <\ 0f)}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ LayerProgress.progress\ =\ 1f;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ this.speed\ *=\ 5f;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ this.endTime\ -\/=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.endTime\ >\ 0f)}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ LayerProgress.isActive\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ this.Close();}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.onComplete\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.onComplete();}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002810\ RID:\ 10256\ RVA:\ 0x000E2544\ File\ Offset:\ 0x000E0744}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_layer_progress}{LayerProgress}}\ StartAsync(\textcolor{keywordtype}{string}\ text,\ UniTask<bool>\ task,\ Action\ onCancel\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_progress}{LayerProgress}}\ layerProgress\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer<\mbox{\hyperlink{class_layer_progress}{LayerProgress}}>();}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ layerProgress.Init(text);}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ layerProgress.useUnitask\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ layerProgress.unitask\ =\ task;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ layerProgress.onCancel\ =\ onCancel;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ layerProgress;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00072}00072\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002811\ RID:\ 10257\ RVA:\ 0x000E256C\ File\ Offset:\ 0x000E076C}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00075}00075\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_layer_progress}{LayerProgress}}\ Start(\textcolor{keywordtype}{string}\ text,\ Action\ onComplete\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00076}00076\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_progress}{LayerProgress}}\ layerProgress\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer<\mbox{\hyperlink{class_layer_progress}{LayerProgress}}>();}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ layerProgress.Init(text);}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ layerProgress.onComplete\ =\ onComplete;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ layerProgress;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002812\ RID:\ 10258\ RVA:\ 0x000E2588\ File\ Offset:\ 0x000E0788}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00084}00084\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Start(\textcolor{keywordtype}{string}\ text,\ Action\ thread,\ Action\ onComplete)}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00085}00085\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_layer}{ELayer}}.core.debug.dontUseThread)}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ thread();}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ onComplete();}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_progress}{LayerProgress}}\ layerProgress\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer<\mbox{\hyperlink{class_layer_progress}{LayerProgress}}>();}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ layerProgress.Init(text);}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ layerProgress.onComplete\ =\ onComplete;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ ThreadPool.QueueUserWorkItem(delegate(\textcolor{keywordtype}{object}\ a)}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ thread();}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ LayerProgress.completed\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00100}00100\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00102}00102\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001632\ RID:\ 5682}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00103}00103\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ completed;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00105}00105\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001633\ RID:\ 5683}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00106}00106\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ isActive;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001634\ RID:\ 5684}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00109}00109\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ progress;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00111}00111\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001635\ RID:\ 5685}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00112}00112\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ speed;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00114}00114\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001636\ RID:\ 5686}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00115}00115\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ minTime;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00117}00117\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001637\ RID:\ 5687}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00118}00118\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ endTime;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00120}00120\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001638\ RID:\ 5688}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00121}00121\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ minProgress;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00123}00123\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001639\ RID:\ 5689}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00124}00124\ \ \ \ \ \textcolor{keyword}{public}\ Slider\ bar;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00126}00126\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400163A\ RID:\ 5690}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00127}00127\ \ \ \ \ \textcolor{keyword}{public}\ Text\ text;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00129}00129\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400163B\ RID:\ 5691}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00130}00130\ \ \ \ \ \textcolor{keyword}{public}\ Action\ onComplete;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00132}00132\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400163C\ RID:\ 5692}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00133}00133\ \ \ \ \ \textcolor{keyword}{public}\ Func<bool>\ funcComplete;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00135}00135\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400163D\ RID:\ 5693}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00136}00136\ \ \ \ \ \textcolor{keyword}{public}\ UniTask<bool>\ unitask;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00138}00138\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400163E\ RID:\ 5694}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00139}00139\ \ \ \ \ \textcolor{keyword}{public}\ Action\ onCancel;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00141}00141\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400163F\ RID:\ 5695}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00142}00142\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ useUnitask;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00144}00144\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001640\ RID:\ 5696}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00145}00145\ \ \ \ \ \textcolor{keyword}{public}\ CanvasGroup\ cg;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00147}00147\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001641\ RID:\ 5697}}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00148}00148\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ value;}
+\DoxyCodeLine{\Hypertarget{_layer_progress_8cs_source_l00149}00149\ \}}
+
+\end{DoxyCode}

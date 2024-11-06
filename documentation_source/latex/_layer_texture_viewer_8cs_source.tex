@@ -1,0 +1,236 @@
+\doxysection{Layer\+Texture\+Viewer.\+cs}
+\hypertarget{_layer_texture_viewer_8cs_source}{}\label{_layer_texture_viewer_8cs_source}\index{Elin/LayerTextureViewer.cs@{Elin/LayerTextureViewer.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00006}00006\ \textcolor{comment}{//\ Token:\ 0x020005C3\ RID:\ 1475}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00007}\mbox{\hyperlink{class_layer_texture_viewer}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_layer_texture_viewer}{LayerTextureViewer}}\ :\ \mbox{\hyperlink{class_e_layer}{ELayer}}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002865\ RID:\ 10341\ RVA:\ 0x000E4570\ File\ Offset:\ 0x000E2770}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnInit()}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ this.windows[0].AddBottomSpace(20);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ this.windows[0].AddBottomButton(\textcolor{stringliteral}{"{}openUser"{}},\ delegate}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ Util.ShowExplorer(CorePath.user\ +\ \textcolor{stringliteral}{"{}Texture\ Replace/dummy.txt"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ this.windows[0].AddBottomButton(\textcolor{stringliteral}{"{}toggleSnowTexture"{}},\ delegate}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ SE.Tab();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ this.snow\ =\ !this.snow;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ this.OnSwitchContent(this.windows[0]);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002866\ RID:\ 10342\ RVA:\ 0x000E45EC\ File\ Offset:\ 0x000E27EC}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnSwitchContent(Window\ window)}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00027}00027\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ this.data\ =\ (\mbox{\hyperlink{class_e_layer}{ELayer}}.core.textures.texMap.TryGetValue(window.CurrentTab.idLang\ +\ (\textcolor{keyword}{this}.snow\ ?\ \textcolor{stringliteral}{"{}Snow"{}}\ :\ \textcolor{stringliteral}{"{}"{}}),\ \textcolor{keyword}{null})\ ??\ \mbox{\hyperlink{class_e_layer}{ELayer}}.core.textures.texMap[window.CurrentTab.idLang]);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ this.RefreshPage();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ this.scrollbarH.value\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ this.scrollvarV.value\ =\ 1f;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002867\ RID:\ 10343\ RVA:\ 0x000E4684\ File\ Offset:\ 0x000E2884}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshPage()}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ this.scale\ =\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id}\ =\ this.data.id;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{id}\ ==\ \textcolor{stringliteral}{"{}objS"{}}\ ||\ \textcolor{keywordtype}{id}\ ==\ \textcolor{stringliteral}{"{}objSS"{}}\ ||\ \textcolor{keywordtype}{id}\ ==\ \textcolor{stringliteral}{"{}objSSnow"{}}\ ||\ \textcolor{keywordtype}{id}\ ==\ \textcolor{stringliteral}{"{}objSSSnow"{}})}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ this.scale\ =\ 1f;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.zoom)}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ this.scale\ *=\ 2f;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.fixZoom)}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ this.scale\ /=\ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.canvasScaler.scaleFactor;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ this.imageTex.texture\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ this.imageTex.texture\ =\ this.data.tex;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ this.imageTex.rectTransform.sizeDelta\ =\ \textcolor{keyword}{new}\ Vector2((\textcolor{keywordtype}{float})this.data.tex.width\ *\ \textcolor{keyword}{this}.scale,\ (\textcolor{keywordtype}{float})\textcolor{keyword}{this}.data.tex.height\ *\ \textcolor{keyword}{this}.scale);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ this.imageTex.RebuildLayoutTo<Layer>();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (Image\ image\ \textcolor{keywordflow}{in}\ this.markers)}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ UnityEngine.Object.Destroy(image.gameObject);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ this.markers.Clear();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_texture_replace}{TextureReplace}}\ textureReplace\ \textcolor{keywordflow}{in}\ this.data.dictReplace.Values)}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ Image\ image2\ =\ Util.Instantiate<Image>(this.moldMarker,\ this.imageTex.transform.parent);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ image2.rectTransform.sizeDelta\ =\ \textcolor{keyword}{new}\ Vector2(((\textcolor{keywordtype}{float})Mathf.Max(textureReplace.w,\ \textcolor{keyword}{this}.data.tileW)\ +\ \textcolor{keyword}{this}.highlightSize\ *\ 2f)\ *\ \textcolor{keyword}{this}.scale,\ ((\textcolor{keywordtype}{float})Mathf.Max(textureReplace.h,\ \textcolor{keyword}{this}.data.tileH)\ +\ \textcolor{keyword}{this}.highlightSize\ *\ 2f)\ *\ \textcolor{keyword}{this}.scale);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ this.SetPos(image2,\ textureReplace.index\ \%\ 100,\ textureReplace.index\ /\ 100\ *\ -\/1,\ \textcolor{keyword}{this}.highlightSize,\ \textcolor{keyword}{this}.markerFix);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ image2.color\ =\ ((textureReplace.source\ ==\ \mbox{\hyperlink{class_texture_replace}{TextureReplace}}.Source.Local)\ ?\ this.colorLocal\ :\ ((textureReplace.source\ ==\ \mbox{\hyperlink{class_texture_replace}{TextureReplace}}.Source.User)\ ?\ this.colorUser\ :\ this.colorMod));}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ this.markers.Add(image2);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002868\ RID:\ 10344\ RVA:\ 0x000E4934\ File\ Offset:\ 0x000E2B34}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00071}00071\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetPos(Component\ r,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{float}\ size\ =\ 0f,\ Vector2\ posFix\ =\ \textcolor{keywordflow}{default}(Vector2))}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00072}00072\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ r.Rect().anchoredPosition\ =\ \textcolor{keyword}{new}\ Vector2((\textcolor{keywordtype}{float})(x\ *\ this.data.tileW)\ *\ \textcolor{keyword}{this}.scale\ *\ \textcolor{keyword}{this}.test.x\ -\/\ \textcolor{keyword}{this}.highlightSize\ *\ \textcolor{keyword}{this}.scale,\ (\textcolor{keywordtype}{float})(y\ *\ \textcolor{keyword}{this}.data.tileH)\ *\ \textcolor{keyword}{this}.scale\ *\ \textcolor{keyword}{this}.test.y\ +\ \textcolor{keyword}{this}.highlightSize\ *\ \textcolor{keyword}{this}.scale)\ +\ posFix;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002869\ RID:\ 10345\ RVA:\ 0x000E49B8\ File\ Offset:\ 0x000E2BB8}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00077}00077\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00078}00078\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ RectTransform\ rectTransform\ =\ this.imageTex.rectTransform;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ Vector2\ vector;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ RectTransformUtility.ScreenPointToLocalPointInRectangle(this.imageTex.rectTransform,\ Input.mousePosition,\ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.canvas.worldCamera,\ out\ vector);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ (int)vector.x\ /\ (\textcolor{keywordtype}{int})((float)this.data.tileW\ *\ this.scale);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ (int)vector.y\ /\ (\textcolor{keywordtype}{int})((float)this.data.tileH\ *\ this.scale);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (EInput.axis\ !=\ Vector2.zero)}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ this.sizeX\ =\ Mathf.Clamp(this.sizeX\ +\ (\textcolor{keywordtype}{int})EInput.axis.x,\ 1,\ 5);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ this.sizeY\ =\ Mathf.Clamp(this.sizeY\ +\ (\textcolor{keywordtype}{int})EInput.axis.y\ *\ -\/1,\ 1,\ 5);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ EInput.requireAxisReset\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (EInput.middleMouse.clicked)}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ SE.Tab();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ this.zoom\ =\ !this.zoom;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ this.RefreshPage();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ InputModuleEX.IsPointerOver(this.transMask);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ this.highlight.SetActive(flag);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flag)}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ this.highlight.rectTransform.sizeDelta\ =\ \textcolor{keyword}{new}\ Vector2(((\textcolor{keywordtype}{float})(this.data.tileW\ *\ \textcolor{keyword}{this}.sizeX)\ +\ \textcolor{keyword}{this}.highlightSize\ *\ 2f)\ *\ \textcolor{keyword}{this}.scale,\ ((\textcolor{keywordtype}{float})(\textcolor{keyword}{this}.data.tileH\ *\ \textcolor{keyword}{this}.sizeY)\ +\ \textcolor{keyword}{this}.highlightSize\ *\ 2f)\ *\ \textcolor{keyword}{this}.scale);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ this.SetPos(this.highlight,\ num,\ num2,\ this.highlightSize,\ \textcolor{keywordflow}{default}(Vector2));}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str\ =\ this.data.id\ +\ \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ Mathf.Abs(num2)\ *\ 100\ +\ num;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ str\ +=\ index.ToString();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ this.textHint.text\ =\ str\ +\ ((this.sizeX\ ==\ 1\ \&\&\ this.sizeY\ ==\ 1)\ ?\ \textcolor{stringliteral}{"{}"{}}\ :\ \textcolor{keywordtype}{string}.Concat(\textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}("{}},}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.sizeX.ToString(),}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}x"{}},}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.sizeY.ToString(),}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{})"{}}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \}));}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (EInput.leftMouse.clicked)}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UIContextMenu\ uicontextMenu\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.CreateContextMenuInteraction();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_texture_replace}{TextureReplace}}\ replace\ =\ this.data.dictReplace.TryGetValue(index,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (replace\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uicontextMenu.AddButton(\textcolor{stringliteral}{"{}open\_replace"{}},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Util.Run(replace.file.FullName);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (replace.source\ !=\ \mbox{\hyperlink{class_texture_replace}{TextureReplace}}.Source.Mod)}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uicontextMenu.AddButton(\textcolor{stringliteral}{"{}delete\_replace"{}},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.data.DeleteReplace(replace);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.data.ForceRefresh();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SE.Trash();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.RefreshPage();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uicontextMenu.AddButton(\textcolor{stringliteral}{"{}create\_replace"{}},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.data.CreateReplace(index,\ CorePath.user\ +\ \textcolor{stringliteral}{"{}Texture\ Replace/"{}},\ \mbox{\hyperlink{class_texture_replace}{TextureReplace}}.Source.User,\ \textcolor{keyword}{this}.sizeX,\ \textcolor{keyword}{this}.sizeY);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SE.Change();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.RefreshPage();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_layer}{ELayer}}.\_zone.isMapSaved\ \&\&\ (replace\ ==\ \textcolor{keyword}{null}\ ||\ replace.source\ !=\ \mbox{\hyperlink{class_texture_replace}{TextureReplace}}.Source.Local))}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uicontextMenu.AddButton(\textcolor{stringliteral}{"{}create\_replaceLocal"{}},\ delegate()}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ ELayer.\_zone.pathSave\ +\ \textcolor{stringliteral}{"{}Texture\ Replace"{}};}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IO.CreateDirectory(text);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.data.CreateReplace(index,\ text\ +\ \textcolor{stringliteral}{"{}/"{}},\ \mbox{\hyperlink{class_texture_replace}{TextureReplace}}.Source.Local,\ \textcolor{keyword}{this}.sizeX,\ \textcolor{keyword}{this}.sizeY);}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SE.Change();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.RefreshPage();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uicontextMenu.Show();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00163}00163\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00165}00165\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400168C\ RID:\ 5772}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00166}00166\ \ \ \ \ \textcolor{keyword}{public}\ RawImage\ imageTex;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00168}00168\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400168D\ RID:\ 5773}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00169}00169\ \ \ \ \ \textcolor{keyword}{public}\ Image\ highlight;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00171}00171\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400168E\ RID:\ 5774}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00172}00172\ \ \ \ \ \textcolor{keyword}{public}\ Image\ moldMarker;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00174}00174\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400168F\ RID:\ 5775}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00175}00175\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_texture_data}{TextureData}}\ data;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00177}00177\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001690\ RID:\ 5776}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00178}00178\ \ \ \ \ \textcolor{keyword}{public}\ UIScrollView\ view;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00180}00180\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001691\ RID:\ 5777}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00181}00181\ \ \ \ \ \textcolor{keyword}{public}\ Scrollbar\ scrollbarH;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00183}00183\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001692\ RID:\ 5778}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00184}00184\ \ \ \ \ \textcolor{keyword}{public}\ Scrollbar\ scrollvarV;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00186}00186\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001693\ RID:\ 5779}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00187}00187\ \ \ \ \ \textcolor{keyword}{public}\ UIText\ textHint;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00189}00189\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001694\ RID:\ 5780}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00190}00190\ \ \ \ \ \textcolor{keyword}{public}\ Transform\ transMask;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00192}00192\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001695\ RID:\ 5781}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00193}00193\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ scale;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00195}00195\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001696\ RID:\ 5782}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00196}00196\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ highlightSize;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00198}00198\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001697\ RID:\ 5783}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00199}00199\ \ \ \ \ \textcolor{keyword}{public}\ List<Image>\ markers\ =\ \textcolor{keyword}{new}\ List<Image>();}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00201}00201\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001698\ RID:\ 5784}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00202}00202\ \ \ \ \ \textcolor{keyword}{public}\ Vector2\ markerFix;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00204}00204\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001699\ RID:\ 5785}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00205}00205\ \ \ \ \ \textcolor{keyword}{public}\ Color\ colorUser;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00207}00207\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400169A\ RID:\ 5786}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00208}00208\ \ \ \ \ \textcolor{keyword}{public}\ Color\ colorMod;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00210}00210\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400169B\ RID:\ 5787}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00211}00211\ \ \ \ \ \textcolor{keyword}{public}\ Color\ colorLocal;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00213}00213\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400169C\ RID:\ 5788}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00214}00214\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ sizeX;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00216}00216\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400169D\ RID:\ 5789}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00217}00217\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ sizeY;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00219}00219\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400169E\ RID:\ 5790}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00220}00220\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ fixZoom;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00222}00222\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400169F\ RID:\ 5791}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00223}00223\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ snow;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00225}00225\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016A0\ RID:\ 5792}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00226}00226\ \ \ \ \ \textcolor{keyword}{public}\ Vector2\ test;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00228}00228\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040016A1\ RID:\ 5793}}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00229}00229\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ zoom;}
+\DoxyCodeLine{\Hypertarget{_layer_texture_viewer_8cs_source_l00230}00230\ \}}
+
+\end{DoxyCode}

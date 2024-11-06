@@ -1,0 +1,66 @@
+\doxysection{Zone\+Pre\+Enter\+Bout.\+cs}
+\hypertarget{_zone_pre_enter_bout_8cs_source}{}\label{_zone_pre_enter_bout_8cs_source}\index{Elin/ZonePreEnterBout.cs@{Elin/ZonePreEnterBout.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x0200074F\ RID:\ 1871}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00006}\mbox{\hyperlink{class_zone_pre_enter_bout}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_zone_pre_enter_bout}{ZonePreEnterBout}}\ :\ \mbox{\hyperlink{class_zone_pre_enter_event}{ZonePreEnterEvent}}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003641\ RID:\ 13889\ RVA:\ 0x00126A30\ File\ Offset:\ 0x00124C30}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ Execute()}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ Debug.Log(\mbox{\hyperlink{class_e_class}{EClass}}.\_zone);}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ Debug.Log(\mbox{\hyperlink{class_e_class}{EClass}}.\_map);}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ Debug.Log(\mbox{\hyperlink{class_e_class}{EClass}}.\_map.GetCenterPos());}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ point\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.GetCenterPos().GetNearestPoint(\textcolor{keyword}{false},\ \textcolor{keyword}{false},\ \textcolor{keyword}{true},\ \textcolor{keyword}{false})\ ??\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.GetCenterPos();}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ point2\ =\ point;}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str\ =\ (point2\ !=\ \textcolor{keyword}{null})\ ?\ point2.ToString()\ :\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ str2\ =\ \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chara}{Chara}}\ chara\ =\ this.target;}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ Debug.Log(str\ +\ str2\ +\ ((chara\ !=\ \textcolor{keyword}{null})\ ?\ chara.ToString()\ :\ \textcolor{keyword}{null}));}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.target\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}exception:\ Target\ is\ Null"{}});}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ this.target.MoveZone(\mbox{\hyperlink{class_e_class}{EClass}}.\_zone,\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_zone_transition}{ZoneTransition}}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ ZoneTransition.EnterState.Exact,}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ point.x,}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ point.z}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_zone.SetBGM(102,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ Debug.Log(this.target.pos);}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ List<Chara>\ list\ =\ \textcolor{keyword}{new}\ List<Chara>}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ this.target}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ EClass.pc.party.members.Count\ -\/\ 1;\ i++)}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chara}{Chara}}\ chara2\ =\ \mbox{\hyperlink{class_chara_gen}{CharaGen}}.CreateFromFilter(\textcolor{stringliteral}{"{}c\_neutral"{}},\ this.target.LV\ +\ 10,\ -\/1);}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(chara2);}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ chara2.ChangeRarity(Rarity.Superior);}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara2.LV\ <\ \textcolor{keyword}{this}.target.LV)}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chara2.SetLv(this.target.LV);}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.\_zone.AddCard(chara2,\ this.target.pos.GetNearestPoint(\textcolor{keyword}{false},\ \textcolor{keyword}{false},\ \textcolor{keyword}{true},\ \textcolor{keyword}{false})\ ??\ \textcolor{keyword}{this}.target.pos);}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ list.Add(chara2);}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ Debug.Log(list.Count);}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_chara}{Chara}}\ chara3\ \textcolor{keywordflow}{in}\ list)}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ chara3.c\_originalHostility\ =\ (chara3.hostility\ =\ Hostility.Enemy);}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ chara3.SetEnemy(\mbox{\hyperlink{class_e_class}{EClass}}.pc);}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ chara3.HealAll();}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001CA6\ RID:\ 7334}}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_chara}{Chara}}\ target;}
+\DoxyCodeLine{\Hypertarget{_zone_pre_enter_bout_8cs_source_l00060}00060\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,852 @@
+\doxysection{Button\+Grid.\+cs}
+\hypertarget{_button_grid_8cs_source}{}\label{_button_grid_8cs_source}\index{Elin/ButtonGrid.cs@{Elin/ButtonGrid.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00006}00006\ \textcolor{comment}{//\ Token:\ 0x02000503\ RID:\ 1283}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00007}\mbox{\hyperlink{class_button_grid}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_button_grid}{ButtonGrid}}\ :\ UIButton,\ \mbox{\hyperlink{interface_i_mouse_hint}{IMouseHint}},\ \mbox{\hyperlink{interface_i_pref_image}{IPrefImage}}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000B0A\ RID:\ 2826}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600224C\ RID:\ 8780\ RVA:\ 0x000BECE6\ File\ Offset:\ 0x000BCEE6}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_color_profile}{ColorProfile}}\ Colors}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00012}00012\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Core.Instance.Colors;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00017}00017\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000B0B\ RID:\ 2827}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600224D\ RID:\ 8781\ RVA:\ 0x000BECF2\ File\ Offset:\ 0x000BCEF2}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_card}{Card}}\ \mbox{\hyperlink{class_card}{Card}}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.card\ ==\ \textcolor{keyword}{null}\ ||\ this.card.isDestroyed)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.card;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000B0C\ RID:\ 2828}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600224E\ RID:\ 8782\ RVA:\ 0x000BED11\ File\ Offset:\ 0x000BCF11}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{float}\ extFixY}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0f;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600224F\ RID:\ 8783\ RVA:\ 0x000BED18\ File\ Offset:\ 0x000BCF18}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{string}\ ToString()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00045}00045\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_card}{Card}}\ card\ =\ this.card;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (card\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ card.ToString();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002250\ RID:\ 8784\ RVA:\ 0x000BED2B\ File\ Offset:\ 0x000BCF2B}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00055}00055\ \ \ \ \ \textcolor{keyword}{public}\ T\ Attach<T>(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{bool}\ rightAttach\ =\ \textcolor{keyword}{true})\ where\ T\ :\ Component}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00056}00056\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.Attach(\textcolor{keywordtype}{id},\ rightAttach).GetComponent<T>();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002251\ RID:\ 8785\ RVA:\ 0x000BED3C\ File\ Offset:\ 0x000BCF3C}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{public}\ Transform\ Attach(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{bool}\ rightAttach\ =\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00062}00062\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ Transform\ transform\ =\ PoolManager.Spawn<Transform>(\textcolor{stringliteral}{"{}attach\_"{}}\ +\ id,\ \textcolor{stringliteral}{"{}UI/Element/Grid/Attach/"{}}\ +\ id,\ base.transform);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ this.listAttach.Add(transform);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rightAttach)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ RectTransform\ rectTransform\ =\ transform.Rect();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ rectTransform.anchoredPosition\ =\ \textcolor{keyword}{new}\ Vector2(rectTransform.anchoredPosition.x,\ (\textcolor{keywordtype}{float})(-\/8\ -\/\ 8\ *\ \textcolor{keyword}{this}.rightAttachCount));}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ transform.tag\ =\ \textcolor{stringliteral}{"{}RightAttach"{}};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ this.rightAttachCount++;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ transform.name\ =\ id;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ transform;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002252\ RID:\ 8786\ RVA:\ 0x000BEDC4\ File\ Offset:\ 0x000BCFC4}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00077}00077\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Dettach(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00078}00078\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ this.listAttach.ForeachReverse(delegate(Transform\ t)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t.name\ ==\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t.tag.Contains(\textcolor{stringliteral}{"{}RightAttach"{}}))}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.rightAttachCount-\/-\/;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.listAttach.Remove(t);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PoolManager.Despawn(t);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002253\ RID:\ 8787\ RVA:\ 0x000BEDFC\ File\ Offset:\ 0x000BCFFC}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00094}00094\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Reset()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00095}00095\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ base.image.color\ =\ Color.white;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.listAttach.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (Transform\ c\ \textcolor{keywordflow}{in}\ this.listAttach)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PoolManager.Despawn(c);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ this.listAttach.Clear();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.icon)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ this.icon.enabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ this.rightAttachCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00110}00110\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00112}00112\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002254\ RID:\ 8788\ RVA:\ 0x000BEE98\ File\ Offset:\ 0x000BD098}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00113}00113\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnDestroy()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00114}00114\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.listAttach.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ this.Reset();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ this.rightAttachCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00120}00120\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00122}00122\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002255\ RID:\ 8789\ RVA:\ 0x000BEEB8\ File\ Offset:\ 0x000BD0B8}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00123}00123\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetBodySlot(\mbox{\hyperlink{class_body_slot}{BodySlot}}\ b,\ \mbox{\hyperlink{class_inv_owner}{InvOwner}}\ owner)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00124}00124\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ this.SetCardGrid(b.thing,\ owner);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ this.imageCheck.sprite\ =\ SpriteSheet.Get(\textcolor{stringliteral}{"{}Media/Graphics/Icon/Element/"{}},\ \textcolor{stringliteral}{"{}eq\_"{}}\ +\ b.element.alias);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ this.imageCheck.SetNativeSize();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ this.imageCheck.SetAlpha((b.thing\ ==\ \textcolor{keyword}{null})\ ?\ 1f\ :\ 0.4f);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00129}00129\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00131}00131\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002256\ RID:\ 8790\ RVA:\ 0x000BEF26\ File\ Offset:\ 0x000BD126}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00132}00132\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Redraw()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00133}00133\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ this.SetCardGrid(this.card,\ this.invOwner);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00135}00135\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00137}00137\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002257\ RID:\ 8791\ RVA:\ 0x000BEF3C\ File\ Offset:\ 0x000BD13C}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00138}00138\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetCardGrid(\mbox{\hyperlink{class_card}{Card}}\ c,\ \mbox{\hyperlink{class_inv_owner}{InvOwner}}\ owner\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00139}00139\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (owner\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ this.invOwner\ =\ owner;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ !=\ \textcolor{keyword}{null}\ \&\&\ !c.isDestroyed)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ base.interactable\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ this.SetCard(c,\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode.Grid,\ delegate(UINote\ n)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inv_owner}{InvOwner}}\ invOwner\ =\ this.invOwner;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (invOwner\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ invOwner.OnWriteNote(\textcolor{keyword}{this},\ n);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ this.onRightClick\ =\ delegate()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.ui.AllowInventoryInteractions)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.invOwner\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ InvOwner.clickTimer\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ this.invOwner.OnRightClick(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ UIButton.onPressed\ =\ delegate()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.invOwner.OnRightPressed(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ EInput.Consume(\textcolor{keyword}{false},\ 1);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ UIButton.TryShowTip(\textcolor{keyword}{null},\ \textcolor{keyword}{true},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ this.SetOnClick(delegate}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_class}{EClass}}.ui.AllowInventoryInteractions)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inv_owner}{InvOwner}}\ invOwner\ =\ this.invOwner;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (invOwner\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ invOwner.OnClick(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ EInput.Consume(\textcolor{keyword}{false},\ 1);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ UIButton.TryShowTip(\textcolor{keyword}{null},\ \textcolor{keyword}{true},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00190}00190\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00192}00192\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002258\ RID:\ 8792\ RVA:\ 0x000BEFA0\ File\ Offset:\ 0x000BD1A0}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00193}00193\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetCard(\mbox{\hyperlink{class_card}{Card}}\ c,\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode\ mode\ =\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode.Default,\ Action<UINote>\ onWriteNote\ =\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00194}00194\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.<>c\_\_DisplayClass25\_0\ CS\$<>8\_\_locals1\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.<>c\_\_DisplayClass25\_0();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.<>4\_\_this\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.c\ =\ c;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.onWriteNote\ =\ onWriteNote;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ this.Reset();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.refs\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.core.refs.buttonAssets;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ this.card\ =\ CS\$<>8\_\_locals1.c;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.<>c\_\_DisplayClass25\_0\ CS\$<>8\_\_locals2\ =\ CS\$<>8\_\_locals1;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inv_owner}{InvOwner}}\ invOwner\ =\ this.invOwner;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals2.showNew\ =\ (invOwner\ !=\ \textcolor{keyword}{null}\ \&\&\ invOwner.ShowNew);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c\ !=\ \textcolor{keyword}{null}\ \&\&\ !CS\$<>8\_\_locals1.c.isDestroyed)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ base.SetTooltip(\textcolor{stringliteral}{"{}note"{}},\ delegate(UITooltip\ t)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c.isNew)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.c.isNew\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ base.<SetCard>g\_\_RefreshBG|0();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.c.WriteNote(t.note,\ CS\$<>8\_\_locals1.onWriteNote,\ \mbox{\hyperlink{interface_i_inspect}{IInspect}}.NoteMode.Default,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.<>4\_\_this.ing\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t.note.Space(0,\ 1);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t.note.AddText(\textcolor{stringliteral}{"{}mark\_ing"{}}.lang()\ +\ (CS\$<>8\_\_locals1.<>4\_\_this.ing.optional\ ?\ \textcolor{stringliteral}{"{}opIngredient"{}}\ :\ \textcolor{stringliteral}{"{}reqIng"{}}).lang(CS\$<>8\_\_locals1.<>4\_\_this.ing.GetName(),\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}),\ FontColor.DontChange);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.c.SetImage(this.icon);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c\ ==\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.held\ \&\&\ CS\$<>8\_\_locals1.c.invY\ !=\ 1)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}held"{}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c.trait\ is\ \mbox{\hyperlink{class_trait_ability}{TraitAbility}}\ \&\&\ (CS\$<>8\_\_locals1.c.trait\ as\ \mbox{\hyperlink{class_trait_ability}{TraitAbility}}).CanUse(\mbox{\hyperlink{class_e_class}{EClass}}.pc))}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach<Image>(\textcolor{stringliteral}{"{}target\_self"{}},\ \textcolor{keyword}{true}).sprite\ =\ (CS\$<>8\_\_locals1.c.trait\ as\ \mbox{\hyperlink{class_trait_ability}{TraitAbility}}).act.TargetType.IconType;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.core.config.test.showRefIcon\ \&\&\ CS\$<>8\_\_locals1.c.IsIdentified)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_source_element_1_1_row}{SourceElement.Row}}\ refElement\ =\ CS\$<>8\_\_locals1.c.trait.GetRefElement();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (refElement\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (refElement.GetSprite())}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Image\ image\ =\ this.Attach<Image>(\textcolor{stringliteral}{"{}reficon"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refElement.SetImage(image);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Sprite\ refSprite\ =\ CS\$<>8\_\_locals1.c.trait.GetRefSprite();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (refSprite)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Image\ image2\ =\ this.Attach<Image>(\textcolor{stringliteral}{"{}reficon"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ image2.sprite\ =\ refSprite;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ image2.color\ =\ Color.white;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c.qualityTier\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach<Image>(\textcolor{stringliteral}{"{}quality"{}},\ \textcolor{keyword}{false}).sprite\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.core.refs.icons.quality[Mathf.Clamp(CS\$<>8\_\_locals1.c.qualityTier\ -\/\ 1,\ 0,\ \mbox{\hyperlink{class_e_class}{EClass}}.core.refs.icons.quality.Count\ -\/\ 1)];}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c.c\_equippedSlot\ !=\ 0\ \&\&\ \textcolor{keyword}{this}.invOwner\ !=\ \textcolor{keyword}{null}\ \&\&\ \textcolor{keyword}{this}.invOwner.owner.isChara\ \&\&\ !\textcolor{keyword}{this}.invOwner.owner.IsPC)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}equip"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c.isNPCProperty\ ||\ CS\$<>8\_\_locals1.c.isGifted)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}npcProperty"{}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ !=\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode.Search)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.c.trait.OnSetCardGrid(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (mode)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode.Default:}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Color\ c2\ =\ this.Colors.Skin.textUnidentified;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c.IsIdentified)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (CS\$<>8\_\_locals1.c.blessedState)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BlessedState.Doomed:}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c2\ =\ this.Colors.Skin.textDoomed;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ IL\_544;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BlessedState.Cursed:}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c2\ =\ this.Colors.Skin.textCursed;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ IL\_544;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BlessedState.Blessed:}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c2\ =\ this.Colors.Skin.textBlessed;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ IL\_544;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c2\ =\ this.Colors.Skin.textIdentified;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IL\_544:}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.mainText.SetText(CS\$<>8\_\_locals1.c.Name,\ c2);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.subText)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.subText.SetText(Lang.\_weight(CS\$<>8\_\_locals1.c.ChildrenAndSelfWeight,\ \textcolor{keyword}{true},\ 0));}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode.Grid:}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode.Search:}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.<SetCard>g\_\_RefreshBG|0();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c.IsContainer\ \&\&\ CS\$<>8\_\_locals1.c.c\_indexContainerIcon\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}icon\_container"{}},\ \textcolor{keyword}{false}).GetComponent<Image>().sprite\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.core.refs.spritesContainerIcon[CS\$<>8\_\_locals1.c.c\_indexContainerIcon];}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c.IsIdentified)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BlessedState\ blessedState\ =\ CS\$<>8\_\_locals1.c.blessedState;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (blessedState\ !=\ BlessedState.Normal)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}status\_"{}}\ +\ blessedState.ToString(),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}status\_unidentified"{}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c.IsDecayed)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}rotten"{}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c.IsRotting)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}rotting"{}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.c.trait.SetMainText(this.mainText,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode.Search)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_card}{Card}}\ rootCard\ =\ CS\$<>8\_\_locals1.c.GetRootCard();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rootCard\ !=\ \mbox{\hyperlink{class_e_class}{EClass}}.pc)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach((rootCard\ ==\ CS\$<>8\_\_locals1.c)\ ?\ \textcolor{stringliteral}{"{}searched"{}}\ :\ \textcolor{stringliteral}{"{}searched\_container"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode.Ingredient:}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c.IsIdentified)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BlessedState\ blessedState2\ =\ CS\$<>8\_\_locals1.c.blessedState;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (blessedState2\ !=\ BlessedState.Normal)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}status\_"{}}\ +\ blessedState2.ToString(),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}status\_unidentified"{}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c.IsDecayed)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}rotten"{}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c.IsRotting)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}rotting"{}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CS\$<>8\_\_locals1.c.c\_isImportant)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00358}00358\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}important"{}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00362}00362\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00363}00363\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ !=\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode.Ingredient)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00364}00364\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.<SetCard>g\_\_RefreshBG|0();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ this.icon.sprite\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.core.refs.icons.trans;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ this.mainText.text\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.subText)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.subText.text\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00372}00372\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00373}00373\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00374}00374\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ this.icon.sprite\ =\ Core.Instance.refs.spriteNoIng;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00376}00376\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00377}00377\ \ \ \ \ \ \ \ \ this.icon.SetNativeSize();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00378}00378\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.invOwner\ ==\ \textcolor{keyword}{null}\ ||\ !this.invOwner.AlwaysShowTooltip\ ||\ CS\$<>8\_\_locals1.onWriteNote\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00379}00379\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ base.SetTooltip(\textcolor{keyword}{null},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00382}00382\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00383}00383\ \ \ \ \ \ \ \ \ base.SetTooltip(\textcolor{stringliteral}{"{}note"{}},\ delegate(UITooltip\ t)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00384}00384\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ CS\$<>8\_\_locals1.onWriteNote(t.note);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00386}00386\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00387}00387\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00388}00388\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00389}00389\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002259\ RID:\ 8793\ RVA:\ 0x000BF5D7\ File\ Offset:\ 0x000BD7D7}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00390}00390\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetArea(\mbox{\hyperlink{class_area}{Area}}\ a)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00391}00391\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00392}00392\ \ \ \ \ \ \ \ \ this.Reset();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00393}00393\ \ \ \ \ \ \ \ \ this.icon.sprite\ =\ SpriteSheet.Get(\textcolor{stringliteral}{"{}icon\_area"{}});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00394}00394\ \ \ \ \ \ \ \ \ this.icon.SetNativeSize();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00395}00395\ \ \ \ \ \ \ \ \ this.mainText.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00396}00396\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00397}00397\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00398}00398\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600225A\ RID:\ 8794\ RVA:\ 0x000BF60B\ File\ Offset:\ 0x000BD80B}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00399}00399\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetItem(\mbox{\hyperlink{class_grid_item}{GridItem}}\ i)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00400}00400\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00401}00401\ \ \ \ \ \ \ \ \ this.Reset();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00402}00402\ \ \ \ \ \ \ \ \ this.mainText.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00403}00403\ \ \ \ \ \ \ \ \ i.SetButton(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00404}00404\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00405}00405\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00406}00406\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600225B\ RID:\ 8795\ RVA:\ 0x000BF626\ File\ Offset:\ 0x000BD826}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00407}00407\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetObject(\textcolor{keywordtype}{object}\ o)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00408}00408\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00409}00409\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (o\ is\ \mbox{\hyperlink{class_area}{Area}})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00410}00410\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ this.SetArea(o\ as\ \mbox{\hyperlink{class_area}{Area}});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00412}00412\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00413}00413\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00414}00414\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (o\ is\ \mbox{\hyperlink{class_card}{Card}})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00415}00415\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ this.SetCard(o\ as\ \mbox{\hyperlink{class_card}{Card}},\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode.Default,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00417}00417\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00418}00418\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00419}00419\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00420}00420\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600225C\ RID:\ 8796\ RVA:\ 0x000BF654\ File\ Offset:\ 0x000BD854}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00421}00421\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetDummy()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00422}00422\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00423}00423\ \ \ \ \ \ \ \ \ this.Reset();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00424}00424\ \ \ \ \ \ \ \ \ this.icon.enabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00425}00425\ \ \ \ \ \ \ \ \ this.mainText.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00426}00426\ \ \ \ \ \ \ \ \ base.onClick.RemoveAllListeners();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00427}00427\ \ \ \ \ \ \ \ \ base.onClick.AddListener(delegate()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00428}00428\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00429}00429\ \ \ \ \ \ \ \ \ \ \ \ \ SE.BeepSmall();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00430}00430\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00431}00431\ \ \ \ \ \ \ \ \ this.tooltip.enable\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00432}00432\ \ \ \ \ \ \ \ \ base.image.color\ =\ \textcolor{keyword}{new}\ Color(1f,\ 1f,\ 1f,\ 0.3f);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00433}00433\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00434}00434\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00435}00435\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600225D\ RID:\ 8797\ RVA:\ 0x000BF6E4\ File\ Offset:\ 0x000BD8E4}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00436}00436\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ SetDragParent(IDragParent\ p)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00437}00437\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00438}00438\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00439}00439\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00440}00440\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600225E\ RID:\ 8798\ RVA:\ 0x000BF6E8\ File\ Offset:\ 0x000BD8E8}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00441}00441\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetIngredient(\mbox{\hyperlink{class_recipe}{Recipe}}\ r,\ \mbox{\hyperlink{class_recipe}{Recipe}}.\mbox{\hyperlink{class_recipe_1_1_ingredient}{Ingredient}}\ \_ing)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00442}00442\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00443}00443\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_ing.id.IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00444}00444\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00445}00445\ \ \ \ \ \ \ \ \ \ \ \ \ this.SetDummy();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00446}00446\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00447}00447\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00448}00448\ \ \ \ \ \ \ \ \ this.mainText.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00449}00449\ \ \ \ \ \ \ \ \ base.image.color\ =\ Color.white;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00450}00450\ \ \ \ \ \ \ \ \ this.ing\ =\ \_ing;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00451}00451\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.ing.thing\ !=\ \textcolor{keyword}{null}\ \&\&\ (\textcolor{keyword}{this}.ing.thing.isDestroyed\ ||\ \textcolor{keyword}{this}.ing.thing.Num\ ==\ 0))}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00452}00452\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ this.ing.thing\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00454}00454\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00455}00455\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ thing\ =\ this.ing.thing;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00456}00456\ \ \ \ \ \ \ \ \ this.SetCard(thing,\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode.Ingredient,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00457}00457\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ !=\ \textcolor{keyword}{null}\ \&\&\ r.source.colorIng\ !=\ 0\ \&\&\ r.ingredients\ !=\ \textcolor{keyword}{null}\ \&\&\ r.ingredients.Count\ >\ 0\ \&\&\ r.ingredients.IndexOf(\_ing)\ ==\ r.source.colorIng)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00458}00458\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00459}00459\ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}ing\_color"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00460}00460\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00461}00461\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.ing.optional)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00462}00462\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00463}00463\ \ \ \ \ \ \ \ \ \ \ \ \ UIButton\ componentInChildren\ =\ this.Attach(\textcolor{stringliteral}{"{}ing\_option"{}},\ \textcolor{keyword}{false}).GetComponentInChildren<UIButton>(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00464}00464\ \ \ \ \ \ \ \ \ \ \ \ \ componentInChildren.SetActive(this.ing.thing\ !=\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00465}00465\ \ \ \ \ \ \ \ \ \ \ \ \ componentInChildren.SetOnClick(delegate}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00467}00467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SE.Trash();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.ing.thing\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.SetIngredient(r,\ \_ing);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.OnChangeIngredient();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00471}00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_layer_craft}{LayerCraft}}.Instance)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_craft}{LayerCraft}}.Instance.OnChangeIngredient();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00476}00476\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00477}00477\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_hit_summary}{HitSummary}}\ summary\ =\ Core.Instance.screen.tileSelector.summary;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00478}00478\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ (thing\ ==\ \textcolor{keyword}{null})\ ?\ 0\ :\ thing.Num;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00479}00479\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ summary.countValid;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00480}00480\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num2\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00481}00481\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00482}00482\ \ \ \ \ \ \ \ \ \ \ \ \ num2\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00483}00483\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00484}00484\ \ \ \ \ \ \ \ \ num2\ *=\ this.ing.req;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00485}00485\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.ing.optional\ \&\&\ num\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00486}00486\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ num2\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00488}00488\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00489}00489\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ num\ <\ num2\ \&\&\ !this.ing.optional;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00490}00490\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ (num.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}}).TagColor(this.Colors.colorIngPredict)\ +\ (\textcolor{stringliteral}{"{}\ -\/"{}}\ +\ num2.ToString()).TagColor(flag\ ?\ this.Colors.colorIngCost\ :\ \textcolor{keyword}{this}.Colors.colorIngReq);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00491}00491\ \ \ \ \ \ \ \ \ this.mainText.text\ =\ text;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00492}00492\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (thing\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00493}00493\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00494}00494\ \ \ \ \ \ \ \ \ \ \ \ \ base.SetTooltip(\textcolor{stringliteral}{"{}note"{}},\ delegate(UITooltip\ tt)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00495}00495\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00496}00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tt.note.Clear();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00497}00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tt.note.Space(16,\ 1);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00498}00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tt.note.AddText(\textcolor{stringliteral}{"{}mark\_ing"{}}.lang()\ +\ (this.ing.optional\ ?\ \textcolor{stringliteral}{"{}opIngredient"{}}\ :\ \textcolor{stringliteral}{"{}noIngredient"{}}).lang(\_ing.GetName(),\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null}),\ \textcolor{keyword}{this}.ing.optional\ ?\ FontColor.Good\ :\ FontColor.Bad);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tt.note.Build();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.sources.cards.map[this.ing.IdThing].SetImage(this.icon,\ \textcolor{keyword}{null},\ 0,\ \textcolor{keyword}{true},\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ this.icon.SetAlpha(0.5f);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00504}00504\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00505}00505\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (thing.GetRootCard()\ !=\ \mbox{\hyperlink{class_e_class}{EClass}}.pc)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00506}00506\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}pcInv"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00508}00508\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00509}00509\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00510}00510\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00511}00511\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600225F\ RID:\ 8799\ RVA:\ 0x000BF994\ File\ Offset:\ 0x000BDB94}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00512}00512\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetIngredient(\mbox{\hyperlink{class_recipe}{Recipe}}\ r,\ \mbox{\hyperlink{class_thing}{Thing}}\ t)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00513}00513\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00514}00514\ \ \ \ \ \ \ \ \ this.SetCard(t,\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode.Ingredient,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00515}00515\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ t.Num;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00516}00516\ \ \ \ \ \ \ \ \ this.mainText.text\ =\ (num.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00517}00517\ \ \ \ \ \ \ \ \ this.mainText.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00518}00518\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t.GetRootCard()\ !=\ \mbox{\hyperlink{class_e_class}{EClass}}.pc)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00519}00519\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00520}00520\ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}pcInv"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00521}00521\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00522}00522\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00523}00523\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00524}00524\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002260\ RID:\ 8800\ RVA:\ 0x000BF9F4\ File\ Offset:\ 0x000BDBF4}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00525}00525\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetRecipeVariation(\mbox{\hyperlink{class_u_i_recipe_info}{UIRecipeInfo}}.\mbox{\hyperlink{class_u_i_recipe_info_1_1_recipe_variation}{RecipeVariation}}\ a)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00526}00526\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00527}00527\ \ \ \ \ \ \ \ \ this.Reset();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00528}00528\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe}{Recipe}}\ recipe\ =\ a.recipe;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00529}00529\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recipe.UseStock\ \&\&\ !recipe.VirtualBlock\ \&\&\ recipe.ingredients[0].thing\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00530}00530\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00531}00531\ \ \ \ \ \ \ \ \ \ \ \ \ recipe.ingredients[0].thing.SetImage(this.icon,\ a.dir,\ recipe.ingredients[0].thing.idSkin);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00532}00532\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00533}00533\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00534}00534\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00535}00535\ \ \ \ \ \ \ \ \ \ \ \ \ recipe.renderRow.SetImage(this.icon,\ \textcolor{keyword}{null},\ recipe.renderRow.GetColorInt(recipe.GetColorMaterial()),\ \textcolor{keyword}{true},\ a.dir,\ recipe.idSkin);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00536}00536\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00537}00537\ \ \ \ \ \ \ \ \ this.mainText.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00538}00538\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00539}00539\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00540}00540\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002261\ RID:\ 8801\ RVA:\ 0x000BFAA7\ File\ Offset:\ 0x000BDCA7}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00541}00541\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetRecipe()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00542}00542\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00543}00543\ \ \ \ \ \ \ \ \ this.SetRecipe(this.recipe);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00544}00544\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00545}00545\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00546}00546\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002262\ RID:\ 8802\ RVA:\ 0x000BFAB5\ File\ Offset:\ 0x000BDCB5}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00547}00547\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetRecipe(\mbox{\hyperlink{class_area}{Area}}\ a)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00548}00548\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00549}00549\ \ \ \ \ \ \ \ \ this.Reset();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00550}00550\ \ \ \ \ \ \ \ \ this.area\ =\ a;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00551}00551\ \ \ \ \ \ \ \ \ this.icon.sprite\ =\ Core.Instance.refs.spriteArea;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00552}00552\ \ \ \ \ \ \ \ \ this.icon.SetNativeSize();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00553}00553\ \ \ \ \ \ \ \ \ this.mainText.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00554}00554\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00555}00555\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00556}00556\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002263\ RID:\ 8803\ RVA:\ 0x000BFAF8\ File\ Offset:\ 0x000BDCF8}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00557}00557\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetRecipe(\mbox{\hyperlink{class_recipe}{Recipe}}\ r)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00558}00558\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00559}00559\ \ \ \ \ \ \ \ \ this.Reset();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00560}00560\ \ \ \ \ \ \ \ \ this.recipe\ =\ r;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00561}00561\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r.UseStock)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00562}00562\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00563}00563\ \ \ \ \ \ \ \ \ \ \ \ \ this.recipe.ingredients[0].RefreshThing();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00564}00564\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ thing\ =\ this.recipe.ingredients[0].thing;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00565}00565\ \ \ \ \ \ \ \ \ \ \ \ \ this.mainText.SetText(thing.Num.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}},\ SkinManager.CurrentColors.buttonGrid);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00566}00566\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r.VirtualBlock)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00567}00567\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00568}00568\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.renderRow.SetImage(this.icon,\ \textcolor{keyword}{null},\ r.GetDefaultColor(),\ \textcolor{keyword}{true},\ 0,\ thing.idSkin);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00569}00569\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00570}00570\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00571}00571\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00572}00572\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ thing.SetImage(this.icon);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00573}00573\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00574}00574\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00575}00575\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00576}00576\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00577}00577\ \ \ \ \ \ \ \ \ \ \ \ \ r.renderRow.SetImage(this.icon,\ \textcolor{keyword}{null},\ r.GetDefaultColor(),\ \textcolor{keyword}{true},\ 0,\ r.idSkin);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00578}00578\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00579}00579\ \ \ \ \ \ \ \ \ this.mainText.SetActive(r.UseStock);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00580}00580\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r.UseStock)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00581}00581\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00582}00582\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ thing2\ =\ r.ingredients[0].thing;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00583}00583\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (((thing2\ !=\ \textcolor{keyword}{null})\ ?\ thing2.GetRootCard()\ :\ \textcolor{keyword}{null})\ !=\ \mbox{\hyperlink{class_e_class}{EClass}}.pc)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00584}00584\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00585}00585\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Attach(\textcolor{stringliteral}{"{}pcInv"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00586}00586\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00587}00587\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00588}00588\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00589}00589\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00590}00590\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002264\ RID:\ 8804\ RVA:\ 0x000BFC1C\ File\ Offset:\ 0x000BDE1C}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00591}00591\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshCraftable()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00592}00592\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00593}00593\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing_stack}{ThingStack}}\ thingStack\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.pc.things.GetThingStack(this.recipe.GetIdThing(),\ \textcolor{keyword}{this}.recipe.GetRefVal());}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00594}00594\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ this.recipe.IsCraftable();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00595}00595\ \ \ \ \ \ \ \ \ this.mainText.SetText(this.recipe.Name,\ flag\ ?\ FontColor.Good\ :\ FontColor.Bad);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00596}00596\ \ \ \ \ \ \ \ \ this.subText.text\ =\ (thingStack.count.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00597}00597\ \ \ \ \ \ \ \ \ this.recipe.SetTextDifficulty(this.subText2);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00598}00598\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00599}00599\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00600}00600\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002265\ RID:\ 8805\ RVA:\ 0x000BFCA8\ File\ Offset:\ 0x000BDEA8}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00601}00601\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetCraftRecipe(\mbox{\hyperlink{class_recipe}{Recipe}}\ r,\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode\ mode,\ \textcolor{keywordtype}{bool}\ tooltip\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00602}00602\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00603}00603\ \ \ \ \ \ \ \ \ this.Reset();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00604}00604\ \ \ \ \ \ \ \ \ this.recipe\ =\ r;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00605}00605\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode.Recipe)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00606}00606\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00607}00607\ \ \ \ \ \ \ \ \ \ \ \ \ this.RefreshCraftable();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00608}00608\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00609}00609\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00610}00610\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00611}00611\ \ \ \ \ \ \ \ \ \ \ \ \ this.mainText.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00612}00612\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00613}00613\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_card}{RecipeCard}}\ rCard\ =\ r\ as\ \mbox{\hyperlink{class_recipe_card}{RecipeCard}};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00614}00614\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rCard\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00615}00615\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00616}00616\ \ \ \ \ \ \ \ \ \ \ \ \ r.SetImage(this.icon);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00617}00617\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00618}00618\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00619}00619\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00620}00620\ \ \ \ \ \ \ \ \ \ \ \ \ r.SetImage(this.icon);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00621}00621\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00622}00622\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tooltip)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00623}00623\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00624}00624\ \ \ \ \ \ \ \ \ \ \ \ \ Action<UINote>\ <>9\_\_1;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00625}00625\ \ \ \ \ \ \ \ \ \ \ \ \ base.SetTooltip(\textcolor{stringliteral}{"{}note"{}},\ delegate(UITooltip\ t)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00626}00626\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00627}00627\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r.ingredients.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00628}00628\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00629}00629\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.BuildIngredientList();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00630}00630\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00631}00631\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.player.recipes.hoveredRecipes.Add(r.id);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00632}00632\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.Dettach(\textcolor{stringliteral}{"{}recipe\_new"{}});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00633}00633\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rCard\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00634}00634\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00635}00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode.RecipeGrid\ \&\&\ rCard.\_mold\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00636}00636\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00637}00637\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_card_blueprint}{CardBlueprint}}.SetNormalRarity(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00638}00638\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rCard.\_mold\ =\ \mbox{\hyperlink{class_thing_gen}{ThingGen}}.Create(r.id,\ -\/1,\ -\/1);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00639}00639\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00640}00640\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_card}{Card}}\ mold\ =\ rCard.Mold;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00641}00641\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UINote\ note\ =\ t.note;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00642}00642\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Action<UINote>\ onWriteNote;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00643}00643\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((onWriteNote\ =\ <>9\_\_1)\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00644}00644\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00645}00645\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ onWriteNote\ =\ (<>9\_\_1\ =\ delegate(UINote\ n)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00646}00646\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00647}00647\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.Space(0,\ 1);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00648}00648\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.WriteReqMat(n,\ r);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00649}00649\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00650}00650\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00651}00651\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mold.WriteNote(note,\ onWriteNote,\ \mbox{\hyperlink{interface_i_inspect}{IInspect}}.NoteMode.Product,\ r);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00652}00652\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00653}00653\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00654}00654\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UINote\ note2\ =\ t.note;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00655}00655\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ note2.Clear();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00656}00656\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ note2.AddHeaderCard(r.GetName(),\ \textcolor{keyword}{this}.icon.sprite);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00657}00657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (!r.GetDetail().IsEmpty())}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00658}00658\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00659}00659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ note2.AddText(r.GetDetail(),\ FontColor.DontChange);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00660}00660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00661}00661\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{this}.WriteReqMat(note2,\ r);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00662}00662\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t.note.Build();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00663}00663\ \ \ \ \ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00664}00664\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00665}00665\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00666}00666\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00667}00667\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002266\ RID:\ 8806\ RVA:\ 0x000BFD58\ File\ Offset:\ 0x000BDF58}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00668}00668\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ WriteReqMat(UINote\ n,\ \mbox{\hyperlink{class_recipe}{Recipe}}\ r)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00669}00669\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00670}00670\ \ \ \ \ \ \ \ \ r.WriteReqFactory(n,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00671}00671\ \ \ \ \ \ \ \ \ r.WriteReqSkill(n);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00672}00672\ \ \ \ \ \ \ \ \ n.AddHeaderTopic(\textcolor{stringliteral}{"{}reqMat"{}},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00673}00673\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_recipe}{Recipe}}.\mbox{\hyperlink{class_recipe_1_1_ingredient}{Ingredient}}\ ingredient\ in\ r.ingredients)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00674}00674\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00675}00675\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.Stocked.ListThingStack(ingredient,\ StockSearchMode.AroundPC).count;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00676}00676\ \ \ \ \ \ \ \ \ \ \ \ \ Color\ c\ =\ (count\ >=\ ingredient.req)\ ?\ SkinManager.CurrentColors.textGood\ :\ SkinManager.CurrentColors.textBad;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00677}00677\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ \textcolor{keywordtype}{string}.Concat(\textcolor{keyword}{new}\ \textcolor{keywordtype}{string}[]}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00678}00678\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00679}00679\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}<color="{}},}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00680}00680\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c.ToHex(),}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00681}00681\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}>"{}},}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00682}00682\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ingredient.GetName(),}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00683}00683\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ x\ "{}},}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00684}00684\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ingredient.req.ToString(),}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00685}00685\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ ("{}},}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00686}00686\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count.ToString(),}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00687}00687\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{})</color>"{}}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00688}00688\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00689}00689\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ingredient.optional)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00690}00690\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00691}00691\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text\ =\ \textcolor{stringliteral}{"{}opIngredient"{}}.lang(text,\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00692}00692\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00693}00693\ \ \ \ \ \ \ \ \ \ \ \ \ n.AddText(text,\ FontColor.DontChange).text1.SetSize(-\/1);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00694}00694\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00695}00695\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00696}00696\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00697}00697\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002267\ RID:\ 8807\ RVA:\ 0x000BFE8C\ File\ Offset:\ 0x000BE08C}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00698}00698\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ ShowMouseHintLeft()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00699}00699\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00700}00700\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.invOwner\ !=\ \textcolor{keyword}{null}\ \&\&\ this.card\ !=\ \textcolor{keyword}{null}\ \&\&\ (this.invOwner.CanShiftClick(\textcolor{keyword}{this},\ \textcolor{keyword}{false})\ ||\ this.invOwner.CanCtrlClick(\textcolor{keyword}{this})\ ||\ \textcolor{keyword}{this}.invOwner.CanAltClick(\textcolor{keyword}{this}));}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00701}00701\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00702}00702\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00703}00703\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002268\ RID:\ 8808\ RVA:\ 0x000BFECC\ File\ Offset:\ 0x000BE0CC}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00704}00704\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ GetTextMouseHintLeft()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00705}00705\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00706}00706\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.invOwner.CanShiftClick(\textcolor{keyword}{this},\ \textcolor{keyword}{false}))}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00707}00707\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00708}00708\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.invOwner.GetTextShiftClick(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00709}00709\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00710}00710\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.invOwner.CanCtrlClick(\textcolor{keyword}{this}))}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00711}00711\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00712}00712\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.invOwner.GetTextCtrlClick(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00713}00713\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00714}00714\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.invOwner.CanAltClick(\textcolor{keyword}{this}))}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00715}00715\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00716}00716\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00717}00717\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00718}00718\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.invOwner.GetTextAltClick(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00719}00719\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00720}00720\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00721}00721\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002269\ RID:\ 8809\ RVA:\ 0x000BFF30\ File\ Offset:\ 0x000BE130}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00722}00722\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ ShowMouseHintRight()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00723}00723\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00724}00724\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.invOwner\ !=\ \textcolor{keyword}{null}\ \&\&\ this.card\ !=\ \textcolor{keyword}{null}\ \&\&\ this.invOwner.AllowAutouse;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00725}00725\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00726}00726\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00727}00727\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600226A\ RID:\ 8810\ RVA:\ 0x000BFF4F\ File\ Offset:\ 0x000BE14F}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00728}00728\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ GetTextMouseHintRight()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00729}00729\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00730}00730\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.invOwner.GetAutoUseLang(\textcolor{keyword}{this})\ ??\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00731}00731\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00732}00732\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00733}00733\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600226B\ RID:\ 8811\ RVA:\ 0x000BFF68\ File\ Offset:\ 0x000BE168}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00734}00734\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_render_row}{RenderRow}}\ GetRenderRow()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00735}00735\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00736}00736\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.refObj\ is\ \mbox{\hyperlink{class_render_row}{RenderRow}})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00737}00737\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00738}00738\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{class_render_row}{RenderRow}})this.refObj;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00739}00739\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00740}00740\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.recipe\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00741}00741\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00742}00742\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.recipe.renderRow;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00743}00743\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00744}00744\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.card\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00745}00745\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00746}00746\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00747}00747\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00748}00748\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.card.sourceCard;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00749}00749\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00750}00750\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00751}00751\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600226C\ RID:\ 8812\ RVA:\ 0x000BFFB8\ File\ Offset:\ 0x000BE1B8}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00752}00752\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ OnRefreshPref()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00753}00753\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00754}00754\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_row}{RenderRow}}\ renderRow\ =\ this.refObj\ as\ \mbox{\hyperlink{class_render_row}{RenderRow}};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00755}00755\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (renderRow\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00756}00756\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00757}00757\ \ \ \ \ \ \ \ \ \ \ \ \ renderRow.SetImage(this.icon,\ \textcolor{keyword}{null},\ 0,\ \textcolor{keyword}{false},\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00758}00758\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00759}00759\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.recipe\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00760}00760\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00761}00761\ \ \ \ \ \ \ \ \ \ \ \ \ this.SetRecipe(this.recipe);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00762}00762\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00763}00763\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00764}00764\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.card\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00765}00765\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00766}00766\ \ \ \ \ \ \ \ \ \ \ \ \ this.SetCard(this.card,\ \mbox{\hyperlink{class_button_grid}{ButtonGrid}}.Mode.Default,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00767}00767\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00768}00768\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00769}00769\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00770}00770\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600226D\ RID:\ 8813\ RVA:\ 0x000C0010\ File\ Offset:\ 0x000BE210}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00771}00771\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ CanMiddleClick()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00772}00772\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00773}00773\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.invOwner\ !=\ \textcolor{keyword}{null}\ \&\&\ this.card\ !=\ \textcolor{keyword}{null}\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.ui.AllowInventoryInteractions;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00774}00774\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00775}00775\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00776}00776\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600226E\ RID:\ 8814\ RVA:\ 0x000C0030\ File\ Offset:\ 0x000BE230}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00777}00777\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnMiddleClick()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00778}00778\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00779}00779\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_thing}{Thing}}\ t\ =\ this.card.Thing;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00780}00780\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inv_owner}{InvOwner}}\ o\ =\ this.invOwner;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00781}00781\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (EInput.middleMouse.clicked\ \&\&\ o.AllowContext)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00782}00782\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00783}00783\ \ \ \ \ \ \ \ \ \ \ \ \ o.ShowContextMenu(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00784}00784\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00785}00785\ \ \ \ \ \ \ \ \ EInput.middleMouse.pressedLongAction\ =\ delegate()}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00786}00786\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00787}00787\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.ui.AllowInventoryInteractions\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.core.config.game.holdMiddleButtonToHold\ \&\&\ o.TryHold(t))}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00788}00788\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00789}00789\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(t.trait\ is\ \mbox{\hyperlink{class_trait_ability}{TraitAbility}})\ \&\&\ t.trait.IsTool)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00790}00790\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00791}00791\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HotItemHeld.disableTool\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00792}00792\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00793}00793\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.ui.contextMenu.isActive)}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00794}00794\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00795}00795\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.ui.contextMenu.currentMenu.Hide();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00796}00796\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00797}00797\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EInput.Consume(\textcolor{keyword}{false},\ 1);}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00798}00798\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00799}00799\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00800}00800\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00801}00801\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00802}00802\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040011D4\ RID:\ 4564}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00803}00803\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_area}{Area}}\ area;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00804}00804\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00805}00805\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040011D5\ RID:\ 4565}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00806}00806\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_recipe}{Recipe}}\ recipe;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00807}00807\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00808}00808\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040011D6\ RID:\ 4566}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00809}00809\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_recipe_1_1_ingredient}{Recipe.Ingredient}}\ ing;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00810}00810\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00811}00811\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040011D7\ RID:\ 4567}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00812}00812\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_card}{Card}}\ card;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00813}00813\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00814}00814\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040011D8\ RID:\ 4568}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00815}00815\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ index;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00816}00816\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00817}00817\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040011D9\ RID:\ 4569}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00818}00818\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_inv_owner}{InvOwner}}\ invOwner;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00819}00819\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00820}00820\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040011DA\ RID:\ 4570}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00821}00821\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ keepBg;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00822}00822\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00823}00823\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040011DB\ RID:\ 4571}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00824}00824\ \ \ \ \ [NonSerialized]}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00825}00825\ \ \ \ \ \textcolor{keyword}{public}\ List<Transform>\ listAttach\ =\ \textcolor{keyword}{new}\ List<Transform>();}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00826}00826\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00827}00827\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040011DC\ RID:\ 4572}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00828}00828\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ rightAttachCount;}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00829}00829\ }
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00830}00830\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000A0B\ RID:\ 2571}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00831}00831\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ Mode}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00832}00832\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00833}00833\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002974\ RID:\ 10612}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00834}00834\ \ \ \ \ \ \ \ \ Default,}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00835}00835\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002975\ RID:\ 10613}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00836}00836\ \ \ \ \ \ \ \ \ Grid,}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00837}00837\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002976\ RID:\ 10614}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00838}00838\ \ \ \ \ \ \ \ \ Ingredient,}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00839}00839\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002977\ RID:\ 10615}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00840}00840\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe}{Recipe}},}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00841}00841\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002978\ RID:\ 10616}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00842}00842\ \ \ \ \ \ \ \ \ RecipeGrid,}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00843}00843\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04002979\ RID:\ 10617}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00844}00844\ \ \ \ \ \ \ \ \ Search}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00845}00845\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_button_grid_8cs_source_l00846}00846\ \}}
+
+\end{DoxyCode}

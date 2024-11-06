@@ -1,0 +1,116 @@
+\doxysection{AI\+\_\+\+Haul\+Resource.\+cs}
+\hypertarget{_a_i___haul_resource_8cs_source}{}\label{_a_i___haul_resource_8cs_source}\index{Elin/AI\_HaulResource.cs@{Elin/AI\_HaulResource.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x02000262\ RID:\ 610}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00006}\mbox{\hyperlink{class_a_i___haul_resource}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_a_i___haul_resource}{AI\_HaulResource}}\ :\ \mbox{\hyperlink{class_task_point}{TaskPoint}}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001130\ RID:\ 4400\ RVA:\ 0x000775BB\ File\ Offset:\ 0x000757BB}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ IEnumerable<\mbox{\hyperlink{class_a_i_act}{AIAct}}.Status>\ Run()}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag;}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ flag\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2;}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ this.recipe.ingredients.Count;\ i\ =\ num2\ +\ 1)}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_1_1_ingredient}{Recipe.Ingredient}}\ ing\ =\ this.recipe.ingredients[i];}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.reqs[i]\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ing.thing\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ing.RefreshThing();}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ing.thing\ ==\ \textcolor{keyword}{null}\ ||\ ing.thing.isDestroyed)}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ing.thing\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ this.Cancel();}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.HoldingResource(ing))}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ base.DoGrab(ing.thing,\ \textcolor{keyword}{this}.reqs[i],\ \textcolor{keyword}{false},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.target\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (;;)}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ objPos\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_point}{Point}}\ blockPos\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.pos.ForeachMultiSize(this.recipe.W,\ \textcolor{keyword}{this}.recipe.H,\ delegate(\mbox{\hyperlink{class_point}{Point}}\ p,\ \textcolor{keywordtype}{bool}\ main)}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p.HasObj\ \&\&\ !p.HasMinableBlock\ \&\&\ !\textcolor{keyword}{this}.recipe.tileType.AllowObj)}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ objPos\ =\ p.Copy();}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p.HasBlock\ \&\&\ !\textcolor{keyword}{this}.recipe.tileType.CanBuiltOnBlock)}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ blockPos\ =\ p.Copy();}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (blockPos\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ base.Do(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_mine}{TaskMine}}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ blockPos}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (objPos\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ base.Do(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_cut}{TaskCut}}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ objPos}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ base.DoGoto(this.pos,\ this.destDist,\ this.destIgnoreConnection,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ base.DoGoto(this.target,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.reqs[i]\ >\ 0\ \&\&\ this.HoldingResource(ing))}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ Mathf.Min(this.reqs[i],\ this.owner.held.Num);}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.reqs[i]\ -\/=\ num;}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.resources.Add(this.owner.SplitHeld(num)\ as\ \mbox{\hyperlink{class_thing}{Thing}});}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.owner.PlaySound(\textcolor{stringliteral}{"{}build\_resource"{}},\ 1f,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flag\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num2\ =\ i;}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!flag);}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06001131\ RID:\ 4401\ RVA:\ 0x000775CC\ File\ Offset:\ 0x000757CC}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00094}00094\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ HoldingResource(\mbox{\hyperlink{class_recipe}{Recipe}}.\mbox{\hyperlink{class_recipe_1_1_ingredient}{Ingredient}}\ ing)}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00095}00095\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.owner\ !=\ \textcolor{keyword}{null}\ \&\&\ this.owner.held\ !=\ \textcolor{keyword}{null}\ \&\&\ this.owner.held.id\ ==\ ing.id\ \&\&\ (ing.mat\ ==\ -\/1\ ||\ this.owner.held.material.id\ ==\ ing.mat)\ \&\&\ (ing.refVal\ ==\ -\/1\ ||\ \textcolor{keyword}{this}.owner.held.refVal\ ==\ ing.refVal);}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00097}00097\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00099}00099\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000DE2\ RID:\ 3554}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00100}00100\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_recipe}{Recipe}}\ recipe;}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00102}00102\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000DE3\ RID:\ 3555}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00103}00103\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_thing}{Thing}}\ target;}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00105}00105\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000DE4\ RID:\ 3556}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00106}00106\ \ \ \ \ \textcolor{keyword}{public}\ List<Thing>\ resources;}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000DE5\ RID:\ 3557}}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00109}00109\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}[]\ reqs;}
+\DoxyCodeLine{\Hypertarget{_a_i___haul_resource_8cs_source_l00110}00110\ \}}
+
+\end{DoxyCode}

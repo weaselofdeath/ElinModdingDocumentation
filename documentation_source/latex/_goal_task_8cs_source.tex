@@ -1,0 +1,125 @@
+\doxysection{Goal\+Task.\+cs}
+\hypertarget{_goal_task_8cs_source}{}\label{_goal_task_8cs_source}\index{Elin/GoalTask.cs@{Elin/GoalTask.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000237\ RID:\ 567}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00005}\mbox{\hyperlink{class_goal_task}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_goal_task}{GoalTask}}\ :\ \mbox{\hyperlink{class_goal}{Goal}}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x1700041B\ RID:\ 1051}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000FDA\ RID:\ 4058\ RVA:\ 0x00072053\ File\ Offset:\ 0x00070253}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_task_manager_1_1_designations}{TaskManager.Designations}}\ Designations}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.tasks.designations;}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000FDB\ RID:\ 4059\ RVA:\ 0x00072064\ File\ Offset:\ 0x00070264}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ IEnumerable<\mbox{\hyperlink{class_a_i_act}{AIAct}}.Status>\ Run()}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.manual)}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ base.Do(this.task,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ base.Success(\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(2)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ base.Do(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_a_i___clean}{AI\_Clean}}(),\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(3)\ ==\ 0\ \&\&\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.props.deconstructing.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ base.Do(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_a_i___deconstruct}{AI\_Deconstruct}}(),\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ this.area\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ this.taskList\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.TryAssignDesignations())}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_a_i_act}{AIAct}}.Status.Running;}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.TryAssignAreaTask())}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ this.Cancel();}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ base.Do(this.task,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (this.taskList\ !=\ \textcolor{keyword}{null}\ \&\&\ (this.TryAssignTask(1)\ ||\ this.TryAssignTask(3)\ ||\ this.TryAssignTask(9)));}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000FDC\ RID:\ 4060\ RVA:\ 0x00072074\ File\ Offset:\ 0x00070274}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00052}00052\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ TryAssignAreaTask()}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00053}00053\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_area}{Area}}\ area\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_e_class}{EClass}}.\_map.rooms.listArea)}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.TryAssignAreaTask(area))}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.area\ =\ area;}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.taskList\ =\ area.taskList;}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000FDD\ RID:\ 4061\ RVA:\ 0x000720EC\ File\ Offset:\ 0x000702EC}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00067}00067\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ TryAssignAreaTask(\mbox{\hyperlink{class_area}{Area}}\ a)}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00068}00068\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ this.task\ =\ a.taskList.GetTask(this.owner,\ -\/1);}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.task\ !=\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000FDE\ RID:\ 4062\ RVA:\ 0x00072110\ File\ Offset:\ 0x00070310}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00074}00074\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ TryAssignDesignations()}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00075}00075\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_manager_1_1_designations}{TaskManager.Designations}}\ designations\ =\ this.Designations;}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(2)\ ==\ 0\ \&\&\ \textcolor{keyword}{this}.TryAssignTask(designations.moveInstalled))\ ||\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(2)\ ==\ 0\ \&\&\ this.TryAssignTask(designations.cut))\ ||\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(2)\ ==\ 0\ \&\&\ this.TryAssignTask(designations.harvest))\ ||\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(2)\ ==\ 0\ \&\&\ this.TryAssignTask(designations.mine))\ ||\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(2)\ ==\ 0\ \&\&\ this.TryAssignTask(designations.dig))\ ||\ (\mbox{\hyperlink{class_e_class}{EClass}}.rnd(2)\ ==\ 0\ \&\&\ this.TryAssignTask(designations.build));}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000FDF\ RID:\ 4063\ RVA:\ 0x000721B5\ File\ Offset:\ 0x000703B5}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00081}00081\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ TryAssignTask(\mbox{\hyperlink{class_task_list}{TaskList}}\ list)}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00082}00082\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ this.task\ =\ list.GetTask(this.owner,\ -\/1);}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.task\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ this.taskList\ =\ list;}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000FE0\ RID:\ 4064\ RVA:\ 0x000721DC\ File\ Offset:\ 0x000703DC}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00093}00093\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ TryAssignTask(\textcolor{keywordtype}{int}\ radius)}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00094}00094\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.area\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ this.task\ =\ this.taskList.GetTask(this.owner,\ radius);}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.task\ !=\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.area.isDestroyed)}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ this.task\ =\ this.taskList.GetTask(this.owner,\ radius);}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.task\ !=\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000D95\ RID:\ 3477}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00109}00109\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_task}{Task}}\ task;}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00111}00111\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000D96\ RID:\ 3478}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00112}00112\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_area}{Area}}\ area;}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00114}00114\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000D97\ RID:\ 3479}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00115}00115\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ manual;}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00117}00117\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04000D98\ RID:\ 3480}}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00118}00118\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_task_list}{TaskList}}\ taskList;}
+\DoxyCodeLine{\Hypertarget{_goal_task_8cs_source_l00119}00119\ \}}
+
+\end{DoxyCode}

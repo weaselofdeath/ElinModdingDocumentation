@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__quest_fiama_lock_8cs_source" xml:lang="en-US">
+<title>QuestFiamaLock.cs</title>
+<indexterm><primary>Elin/QuestFiamaLock.cs</primary></indexterm>
+<programlisting linenumbering="unnumbered"><anchor xml:id="__quest_fiama_lock_8cs_source_1l00001"/>00001 <emphasis role="keyword">using&#32;</emphasis>System;
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00002"/>00002 
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00003"/>00003 <emphasis role="comment">//&#32;Token:&#32;0x020000DD&#32;RID:&#32;221</emphasis>
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00004"/><link linkend="_class_quest_fiama_lock">00004</link> <emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_quest_fiama_lock">QuestFiamaLock</link>&#32;:&#32;<link linkend="_class_quest_progression">QuestProgression</link>
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00005"/>00005 {
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00006"/>00006 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000618&#32;RID:&#32;1560&#32;RVA:&#32;0x00028420&#32;File&#32;Offset:&#32;0x00026620</emphasis>
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00007"/>00007 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CanUpdateOnTalk(<link linkend="_class_chara">Chara</link>&#32;c)
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00008"/>00008 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00009"/>00009 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;this.phase&#32;==&#32;0;
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00010"/>00010 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00011"/>00011 
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Token:&#32;0x06000619&#32;RID:&#32;1561&#32;RVA:&#32;0x0002842C&#32;File&#32;Offset:&#32;0x0002662C</emphasis>
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">override</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnStart()
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00014"/>00014 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>.player.DropReward(<link linkend="_class_thing_gen">ThingGen</link>.Create(<emphasis role="stringliteral">&quot;lockpick&quot;</emphasis>,&#32;-1,&#32;-1),&#32;<emphasis role="keyword">false</emphasis>).c_charges&#32;=&#32;12;
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_thing">Thing</link>&#32;thing&#32;=&#32;<link linkend="_class_e_class">EClass</link>.player.DropReward(<link linkend="_class_thing_gen">ThingGen</link>.Create(<emphasis role="stringliteral">&quot;1171&quot;</emphasis>,&#32;-1,&#32;-1),&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.ChangeMaterial(<emphasis role="stringliteral">&quot;willow&quot;</emphasis>);
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.c_lockLv&#32;=&#32;50;
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.c_lockedHard&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.things.DestroyAll(<emphasis role="keyword">null</emphasis>);
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.AddCard(<link linkend="_class_thing_gen">ThingGen</link>.Create(<emphasis role="stringliteral">&quot;1172&quot;</emphasis>,&#32;-1,&#32;-1));
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.AddCard(<link linkend="_class_thing_gen">ThingGen</link>.Create(<emphasis role="stringliteral">&quot;amulet_begger&quot;</emphasis>,&#32;-1,&#32;-1));
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.AddCard(<link linkend="_class_thing_gen">ThingGen</link>.Create(<emphasis role="stringliteral">&quot;_meat&quot;</emphasis>,&#32;-1,&#32;-1).MakeFoodFrom(<emphasis role="stringliteral">&quot;begger&quot;</emphasis>)).MaxDecay++;
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;thing.Install();
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_e_class">EClass</link>._zone.events.Add(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_zone_event_begger_chest">ZoneEventBeggerChest</link>
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uidChest&#32;=&#32;thing.uid
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;},&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00029"/>00029 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__quest_fiama_lock_8cs_source_1l00030"/>00030 }
+</programlisting></section>

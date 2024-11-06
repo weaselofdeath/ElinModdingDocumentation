@@ -1,0 +1,215 @@
+\doxysection{Net.\+cs}
+\hypertarget{_net_8cs_source}{}\label{_net_8cs_source}\index{Elin/Net.cs@{Elin/Net.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.IO;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks.CompilerServices;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }Newtonsoft.Json.Linq;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00010}00010\ \textcolor{comment}{//\ Token:\ 0x02000134\ RID:\ 308}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00011}\mbox{\hyperlink{class_net}{00011}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_net}{Net}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00012}00012\ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x170001CA\ RID:\ 458}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06000839\ RID:\ 2105\ RVA:\ 0x000363C3\ File\ Offset:\ 0x000345C3}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ ShowNetError}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ EClass.core.config.test.showNetError\ ||\ \mbox{\hyperlink{class_e_class}{EClass}}.debug.enable;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600083A\ RID:\ 2106\ RVA:\ 0x000363E8\ File\ Offset:\ 0x000345E8}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ ShowVote(\textcolor{keywordtype}{string}\ logs)}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ StringReader\ stringReader\ =\ \textcolor{keyword}{new}\ StringReader(logs);}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{string}\ message\ =\ stringReader.ReadLine();\ message\ !=\ \textcolor{keyword}{null};\ message\ =\ stringReader.ReadLine())}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(message);}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600083B\ RID:\ 2107\ RVA:\ 0x00036418\ File\ Offset:\ 0x00034618}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00034}00034\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ ShowChat(\textcolor{keywordtype}{string}\ logs)}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00035}00035\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (JToken\ jtoken\ \textcolor{keywordflow}{in}\ ((JArray)JsonConvert.DeserializeObject(logs)))}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_net_1_1_chat_log}{Net.ChatLog}}\ chatLog\ =\ jtoken.ToObject<\mbox{\hyperlink{class_net}{Net}}.\mbox{\hyperlink{class_net_1_1_chat_log}{ChatLog}}>();}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(chatLog.name\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ chatLog.msg);}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600083C\ RID:\ 2108\ RVA:\ 0x00036484\ File\ Offset:\ 0x00034684}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ UniTask<bool>\ UploadFile(\textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{string}\ password,\ \textcolor{keywordtype}{string}\ name,\ \textcolor{keywordtype}{string}\ title,\ \textcolor{keywordtype}{string}\ path,\ \textcolor{keywordtype}{string}\ idLang)}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00045}00045\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_net}{Net}}.<UploadFile>d\_\_13\ <UploadFile>d\_\_;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ <UploadFile>d\_\_.<>t\_\_builder\ =\ AsyncUniTaskMethodBuilder<bool>.Create();}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ <UploadFile>d\_\_.id\ =\ id;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ <UploadFile>d\_\_.password\ =\ password;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ <UploadFile>d\_\_.name\ =\ name;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ <UploadFile>d\_\_.title\ =\ title;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ <UploadFile>d\_\_.path\ =\ path;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ <UploadFile>d\_\_.idLang\ =\ idLang;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ <UploadFile>d\_\_.<>1\_\_state\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ <UploadFile>d\_\_.<>t\_\_builder.Start<\mbox{\hyperlink{class_net}{Net}}.<UploadFile>d\_\_13>(ref\ <UploadFile>d\_\_);}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ return\ <UploadFile>d\_\_.<>t\_\_builder.Task;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00059}00059\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600083D\ RID:\ 2109\ RVA:\ 0x000364F4\ File\ Offset:\ 0x000346F4}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00060}00060\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ UniTask<FileInfo>\ DownloadFile(\mbox{\hyperlink{class_net}{Net}}.\mbox{\hyperlink{class_net_1_1_download_meta}{DownloadMeta}}\ item,\ \textcolor{keywordtype}{string}\ path,\ \textcolor{keywordtype}{string}\ idLang)}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00061}00061\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_net}{Net}}.<DownloadFile>d\_\_15\ <DownloadFile>d\_\_;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ <DownloadFile>d\_\_.<>t\_\_builder\ =\ AsyncUniTaskMethodBuilder<FileInfo>.Create();}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ <DownloadFile>d\_\_.item\ =\ item;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ <DownloadFile>d\_\_.path\ =\ path;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ <DownloadFile>d\_\_.idLang\ =\ idLang;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ <DownloadFile>d\_\_.<>1\_\_state\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ <DownloadFile>d\_\_.<>t\_\_builder.Start<\mbox{\hyperlink{class_net}{Net}}.<DownloadFile>d\_\_15>(ref\ <DownloadFile>d\_\_);}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ return\ <DownloadFile>d\_\_.<>t\_\_builder.Task;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600083E\ RID:\ 2110\ RVA:\ 0x00036548\ File\ Offset:\ 0x00034748}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ UniTask<List<\mbox{\hyperlink{class_net}{Net}}.\mbox{\hyperlink{class_net_1_1_download_meta}{DownloadMeta}}>>\ GetFileList(\textcolor{keywordtype}{string}\ idLang)}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00074}00074\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_net}{Net}}.<GetFileList>d\_\_16\ <GetFileList>d\_\_;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ <GetFileList>d\_\_.<>t\_\_builder\ =\ AsyncUniTaskMethodBuilder<List<\mbox{\hyperlink{class_net}{Net}}.\mbox{\hyperlink{class_net_1_1_download_meta}{DownloadMeta}}>>.Create();}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ <GetFileList>d\_\_.idLang\ =\ idLang;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ <GetFileList>d\_\_.<>1\_\_state\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ <GetFileList>d\_\_.<>t\_\_builder.Start<\mbox{\hyperlink{class_net}{Net}}.<GetFileList>d\_\_16>(ref\ <GetFileList>d\_\_);}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ return\ <GetFileList>d\_\_.<>t\_\_builder.Task;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600083F\ RID:\ 2111\ RVA:\ 0x0003658C\ File\ Offset:\ 0x0003478C}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00084}00084\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ UniTask<bool>\ SendVote(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{string}\ idLang)}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00085}00085\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_net}{Net}}.<SendVote>d\_\_17\ <SendVote>d\_\_;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ <SendVote>d\_\_.<>t\_\_builder\ =\ AsyncUniTaskMethodBuilder<bool>.Create();}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ <SendVote>d\_\_.id\ =\ id;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ <SendVote>d\_\_.idLang\ =\ idLang;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ <SendVote>d\_\_.<>1\_\_state\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ <SendVote>d\_\_.<>t\_\_builder.Start<\mbox{\hyperlink{class_net}{Net}}.<SendVote>d\_\_17>(ref\ <SendVote>d\_\_);}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ return\ <SendVote>d\_\_.<>t\_\_builder.Task;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00095}00095\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000840\ RID:\ 2112\ RVA:\ 0x000365D8\ File\ Offset:\ 0x000347D8}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00096}00096\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ UniTask<List<\mbox{\hyperlink{class_net}{Net}}.\mbox{\hyperlink{class_net_1_1_vote_log}{VoteLog}}>>\ GetVote(\textcolor{keywordtype}{string}\ idLang)}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00097}00097\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_net}{Net}}.<GetVote>d\_\_18\ <GetVote>d\_\_;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ <GetVote>d\_\_.<>t\_\_builder\ =\ AsyncUniTaskMethodBuilder<List<\mbox{\hyperlink{class_net}{Net}}.\mbox{\hyperlink{class_net_1_1_vote_log}{VoteLog}}>>.Create();}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ <GetVote>d\_\_.idLang\ =\ idLang;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ <GetVote>d\_\_.<>1\_\_state\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ <GetVote>d\_\_.<>t\_\_builder.Start<\mbox{\hyperlink{class_net}{Net}}.<GetVote>d\_\_18>(ref\ <GetVote>d\_\_);}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ return\ <GetVote>d\_\_.<>t\_\_builder.Task;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00106}00106\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000841\ RID:\ 2113\ RVA:\ 0x0003661C\ File\ Offset:\ 0x0003481C}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00107}00107\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ UniTask<bool>\ SendChat(\textcolor{keywordtype}{string}\ name,\ \textcolor{keywordtype}{string}\ msg,\ ChatCategory\ cat,\ \textcolor{keywordtype}{string}\ idLang)}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00108}00108\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_net}{Net}}.<SendChat>d\_\_19\ <SendChat>d\_\_;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ <SendChat>d\_\_.<>t\_\_builder\ =\ AsyncUniTaskMethodBuilder<bool>.Create();}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ <SendChat>d\_\_.name\ =\ name;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ <SendChat>d\_\_.msg\ =\ msg;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ <SendChat>d\_\_.cat\ =\ cat;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ <SendChat>d\_\_.idLang\ =\ idLang;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ <SendChat>d\_\_.<>1\_\_state\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ <SendChat>d\_\_.<>t\_\_builder.Start<\mbox{\hyperlink{class_net}{Net}}.<SendChat>d\_\_19>(ref\ <SendChat>d\_\_);}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ return\ <SendChat>d\_\_.<>t\_\_builder.Task;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00118}00118\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00120}00120\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06000842\ RID:\ 2114\ RVA:\ 0x00036678\ File\ Offset:\ 0x00034878}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00121}00121\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ UniTask<List<\mbox{\hyperlink{class_net}{Net}}.\mbox{\hyperlink{class_net_1_1_chat_log}{ChatLog}}>>\ GetChat(ChatCategory\ cat,\ \textcolor{keywordtype}{string}\ idLang)}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00122}00122\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_net}{Net}}.<GetChat>d\_\_20\ <GetChat>d\_\_;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ <GetChat>d\_\_.<>t\_\_builder\ =\ AsyncUniTaskMethodBuilder<List<\mbox{\hyperlink{class_net}{Net}}.\mbox{\hyperlink{class_net_1_1_chat_log}{ChatLog}}>>.Create();}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ <GetChat>d\_\_.idLang\ =\ idLang;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ <GetChat>d\_\_.<>1\_\_state\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ <GetChat>d\_\_.<>t\_\_builder.Start<\mbox{\hyperlink{class_net}{Net}}.<GetChat>d\_\_20>(ref\ <GetChat>d\_\_);}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ return\ <GetChat>d\_\_.<>t\_\_builder.Task;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00129}00129\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00131}00131\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400089A\ RID:\ 2202}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00132}00132\ \ \ \ \ \textcolor{keyword}{public}\ List<\mbox{\hyperlink{class_net}{Net}}.\mbox{\hyperlink{class_net_1_1_chat_log}{ChatLog}}>\ chatList;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00134}00134\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400089B\ RID:\ 2203}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00135}00135\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ urlScript\ =\ \textcolor{stringliteral}{"{}http://ylva.php.xdomain.jp/script/"{}};}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00137}00137\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400089C\ RID:\ 2204}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00138}00138\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ urlChat\ =\ \textcolor{stringliteral}{"{}http://ylva.php.xdomain.jp/script/chat/"{}};}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00140}00140\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400089D\ RID:\ 2205}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00141}00141\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ urlVote\ =\ \textcolor{stringliteral}{"{}http://ylva.php.xdomain.jp/script/vote/"{}};}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00143}00143\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400089E\ RID:\ 2206}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00144}00144\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ urlUpload\ =\ \textcolor{stringliteral}{"{}http://ylva.php.xdomain.jp/script/uploader/"{}};}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00146}00146\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0400089F\ RID:\ 2207}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00147}00147\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ isUploading;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00149}00149\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x02000859\ RID:\ 2137}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00150}\mbox{\hyperlink{class_net_1_1_chat_log}{00150}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_net_1_1_chat_log}{ChatLog}}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00151}00151\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023AF\ RID:\ 9135}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ name;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023B0\ RID:\ 9136}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ msg;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00157}00157\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00159}00159\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0200085A\ RID:\ 2138}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00160}\mbox{\hyperlink{class_net_1_1_vote_log}{00160}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_net_1_1_vote_log}{VoteLog}}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00161}00161\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023B1\ RID:\ 9137}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ name;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023B2\ RID:\ 9138}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ count;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023B3\ RID:\ 9139}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ index;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023B4\ RID:\ 9140}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ time;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00173}00173\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00175}00175\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0200085B\ RID:\ 2139}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00176}\mbox{\hyperlink{class_net_1_1_download_meta}{00176}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_net_1_1_download_meta}{DownloadMeta}}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00177}00177\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06003A06\ RID:\ 14854\ RVA:\ 0x00133E98\ File\ Offset:\ 0x00132098}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ IsValidVersion()}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !global::Version.Get(this.version).IsBelow(\mbox{\hyperlink{class_e_class}{EClass}}.core.versionMoongate);}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023B5\ RID:\ 9141}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ name;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023B6\ RID:\ 9142}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ title;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023B7\ RID:\ 9143}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ id;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023B8\ RID:\ 9144}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ path;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023B9\ RID:\ 9145}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ date;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023BA\ RID:\ 9146}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ version;}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00201}00201\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00203}00203\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0200085C\ RID:\ 2140}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00204}\mbox{\hyperlink{class_net_1_1_download_cahce}{00204}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_net_1_1_download_cahce}{DownloadCahce}}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00205}00205\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040023BB\ RID:\ 9147}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Dictionary<string,\ string>\ items\ =\ \textcolor{keyword}{new}\ Dictionary<string,\ string>();}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00208}00208\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_net_8cs_source_l00209}00209\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,356 @@
+\doxysection{Layer\+Edit\+House.\+cs}
+\hypertarget{_layer_edit_house_8cs_source}{}\label{_layer_edit_house_8cs_source}\index{Elin/LayerEditHouse.cs@{Elin/LayerEditHouse.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.IO;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }SFB;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00008}00008\ \textcolor{comment}{//\ Token:\ 0x0200053D\ RID:\ 1341}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00009}\mbox{\hyperlink{class_layer_edit_house}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_layer_edit_house}{LayerEditHouse}}\ :\ \mbox{\hyperlink{class_e_layer}{ELayer}}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000B1B\ RID:\ 2843}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x0600244D\ RID:\ 9293\ RVA:\ 0x000CC7D4\ File\ Offset:\ 0x000CA9D4}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_trait_house_board_1_1_data}{TraitHouseBoard.Data}}\ data}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.board.data;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600244E\ RID:\ 9294\ RVA:\ 0x000CC7E1\ File\ Offset:\ 0x000CA9E1}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnInit()}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ this.windows[0].AddBottomButton(\textcolor{stringliteral}{"{}save"{}},\ delegate}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_layer}{ELayer}}.core.WaitForEndOfFrame(delegate}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ StandaloneFileBrowser.SaveFilePanel(\textcolor{stringliteral}{"{}Save\ Template"{}},\ CorePath.LotTemplate,\ \textcolor{stringliteral}{"{}new\ house"{}},\ \textcolor{stringliteral}{"{}tpl"{}});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{string}.IsNullOrEmpty(text))}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IO.SaveFile(text,\ this.board.data,\ \textcolor{keyword}{false},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.RefreshTemplates();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600244F\ RID:\ 9295\ RVA:\ 0x000CC808\ File\ Offset:\ 0x000CAA08}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SetBoard(\mbox{\hyperlink{class_trait_house_board}{TraitHouseBoard}}\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00040}00040\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_build_menu}{BuildMenu}}.Instance)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_build_menu}{BuildMenu}}.Instance.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ ELayer.screen.tileMap.usingHouseBoard\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ this.board\ =\ b2;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ this.ddRoofStyle.SetList<\mbox{\hyperlink{class_roof_style}{RoofStyle}}>(this.data.idRoofStyle,\ \mbox{\hyperlink{class_e_layer}{ELayer}}.screen.tileMap.roofStyles,\ (\mbox{\hyperlink{class_roof_style}{RoofStyle}}\ a,\ \textcolor{keywordtype}{int}\ b)\ =>\ a.GetName(b).lang(),\ delegate(\textcolor{keywordtype}{int}\ a,\ \mbox{\hyperlink{class_roof_style}{RoofStyle}}\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ this.data.idRoofStyle\ =\ a;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ this.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ this.RefreshBlockList();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ this.toggleReverse.SetToggle(this.data.reverse,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ this.data.reverse\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ this.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ this.toggleAltRoof.SetToggle(this.data.altRoof,\ delegate(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ this.data.altRoof\ =\ on;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ this.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ List<int>\ blocks\ =\ \textcolor{keyword}{new}\ List<int>();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ blocks.Add(0);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_source_obj}{SourceObj}}.\mbox{\hyperlink{class_source_obj_1_1_row}{Row}}\ row\ in\ \mbox{\hyperlink{class_e_layer}{ELayer}}.sources.objs.rows)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.tileType\ ==\ \mbox{\hyperlink{class_tile_type}{TileType}}.Roof\ \&\&\ !row.tag.Contains(\textcolor{stringliteral}{"{}hidden"{}}))}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ blocks.Add(row.id);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ blocks.IndexOf(this.data.idRoofTile);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ ==\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ this.sliderRoof.SetList<\textcolor{keywordtype}{int}>(num,\ blocks,\ delegate(\textcolor{keywordtype}{int}\ a,\ \textcolor{keywordtype}{int}\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ this.data.idRoofTile\ =\ b;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ this.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \},\ (\textcolor{keywordtype}{int}\ a)\ =>\ blocks.IndexOf(a).ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ List<int>\ ramps\ =\ \textcolor{keyword}{new}\ List<int>();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_source_block}{SourceBlock}}.\mbox{\hyperlink{class_source_block_1_1_row}{Row}}\ row2\ in\ \mbox{\hyperlink{class_e_layer}{ELayer}}.sources.blocks.rows)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row2.tileType\ ==\ \mbox{\hyperlink{class_tile_type}{TileType}}.Stairs\ ||\ row2.tileType\ ==\ \mbox{\hyperlink{class_tile_type}{TileType}}.Slope)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ramps.Add(row2.id);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num2\ =\ ramps.IndexOf(this.data.idRamp);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num2\ ==\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ num2\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ this.sliderRamp.SetList<\textcolor{keywordtype}{int}>(num2,\ ramps,\ delegate(\textcolor{keywordtype}{int}\ a,\ \textcolor{keywordtype}{int}\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ this.data.idRamp\ =\ b;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ this.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \},\ (\textcolor{keywordtype}{int}\ a)\ =>\ ramps.IndexOf(a).ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ this.sliderWallHeight.SetSlider((\textcolor{keywordtype}{float})this.data.height,\ delegate(\textcolor{keywordtype}{float}\ a)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ this.data.height\ =\ (int)a;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ this.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \},\ 1,\ 20,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ this.sliderHeightFix.SetSlider((\textcolor{keywordtype}{float})this.data.heightFix,\ delegate(\textcolor{keywordtype}{float}\ a)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ this.data.heightFix\ =\ (int)a;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ this.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \},\ 0,\ 60,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ this.sliderDecoFix.SetSlider((\textcolor{keywordtype}{float})this.data.decoFix,\ delegate(\textcolor{keywordtype}{float}\ a)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ this.data.decoFix\ =\ (int)a;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ this.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \},\ -\/20,\ 20,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ this.sliderDecoFix2.SetSlider((\textcolor{keywordtype}{float})this.data.decoFix2,\ delegate(\textcolor{keywordtype}{float}\ a)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ this.data.decoFix2\ =\ (int)a;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ this.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \},\ -\/20,\ 400,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ this.sliderDeco.SetSlider((\textcolor{keywordtype}{float})this.data.idDeco,\ delegate(\textcolor{keywordtype}{float}\ a)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ this.data.idDeco\ =\ (int)a;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ this.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \},\ 0,\ this.maxWallDeco,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ this.sliderDeco2.SetSlider((\textcolor{keywordtype}{float})this.data.idDeco2,\ delegate(\textcolor{keywordtype}{float}\ a)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ this.data.idDeco2\ =\ (int)a;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ this.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a.ToString()\ ??\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \},\ 0,\ this.maxWallDeco,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.first)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ this.RefreshTemplates();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ this.RefreshBlockList();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ this.first\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00142}00142\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00144}00144\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002450\ RID:\ 9296\ RVA:\ 0x000CCBA0\ File\ Offset:\ 0x000CADA0}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00145}00145\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ RefreshBlockList()}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00146}00146\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.screen.tileMap.roofStyles[this.data.idRoofStyle].type\ !=\ \mbox{\hyperlink{class_roof_style}{RoofStyle}}.Type.FlatFloor;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ List<int>\ blocks\ =\ \textcolor{keyword}{new}\ List<int>();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flag)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (List<\mbox{\hyperlink{class_source_block}{SourceBlock}}.\mbox{\hyperlink{class_source_block_1_1_row}{Row}}>.Enumerator\ enumerator\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.sources.blocks.rows.GetEnumerator())}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (enumerator.MoveNext())}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_source_block_1_1_row}{SourceBlock.Row}}\ row\ =\ enumerator.Current;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.tileType\ ==\ \mbox{\hyperlink{class_tile_type}{TileType}}.Block)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ blocks.Add(row.id);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ IL\_E2;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_source_floor}{SourceFloor}}.\mbox{\hyperlink{class_source_floor_1_1_row}{Row}}\ row2\ in\ \mbox{\hyperlink{class_e_layer}{ELayer}}.sources.floors.rows)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ blocks.Add(row2.id);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ IL\_E2:}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ blocks.IndexOf(this.data.idBlock);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ ==\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ this.sliderBlock.SetList<\textcolor{keywordtype}{int}>(num,\ blocks,\ delegate(\textcolor{keywordtype}{int}\ a,\ \textcolor{keywordtype}{int}\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ this.data.idBlock\ =\ b;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ this.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \},\ (\textcolor{keywordtype}{int}\ a)\ =>\ blocks.IndexOf(a).ToString()\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ this.buttonColorRoof.icon.color\ =\ IntColor.FromInt(this.data.colRoof);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ Action<PickerState,\ Color>\ <>9\_\_6;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ this.buttonColorRoof.SetOnClick(delegate}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_color_picker}{LayerColorPicker}}\ layerColorPicker\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer<\mbox{\hyperlink{class_layer_color_picker}{LayerColorPicker}}>();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ Color\ startColor\ =\ IntColor.FromInt(this.data.colRoof);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ Color\ resetColor\ =\ IntColor.FromInt(this.data.colRoof);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ Action<PickerState,\ Color>\ onChangeColor;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((onChangeColor\ =\ <>9\_\_6)\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ onChangeColor\ =\ (<>9\_\_6\ =\ delegate(PickerState\ state,\ Color\ c)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.data.colRoof\ =\ IntColor.ToInt(c);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.buttonColorRoof.icon.color\ =\ c;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.board.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ layerColorPicker.SetColor(startColor,\ resetColor,\ onChangeColor);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ this.buttonColorBlock.icon.color\ =\ IntColor.FromInt(this.data.colBlock);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ Action<PickerState,\ Color>\ <>9\_\_7;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ this.buttonColorBlock.SetOnClick(delegate}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_color_picker}{LayerColorPicker}}\ layerColorPicker\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer<\mbox{\hyperlink{class_layer_color_picker}{LayerColorPicker}}>();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ Color\ startColor\ =\ IntColor.FromInt(this.data.colBlock);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ Color\ resetColor\ =\ IntColor.FromInt(this.data.colBlock);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ Action<PickerState,\ Color>\ onChangeColor;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((onChangeColor\ =\ <>9\_\_7)\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ onChangeColor\ =\ (<>9\_\_7\ =\ delegate(PickerState\ state,\ Color\ c)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.data.colBlock\ =\ IntColor.ToInt(c);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.buttonColorBlock.icon.color\ =\ c;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.board.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ layerColorPicker.SetColor(startColor,\ resetColor,\ onChangeColor);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ this.buttonColorDeco.icon.color\ =\ IntColor.FromInt(this.data.colDeco);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ Action<PickerState,\ Color>\ <>9\_\_8;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ this.buttonColorDeco.SetOnClick(delegate}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_color_picker}{LayerColorPicker}}\ layerColorPicker\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer<\mbox{\hyperlink{class_layer_color_picker}{LayerColorPicker}}>();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ Color\ startColor\ =\ IntColor.FromInt(this.data.colDeco);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ Color\ resetColor\ =\ IntColor.FromInt(this.data.colDeco);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ Action<PickerState,\ Color>\ onChangeColor;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((onChangeColor\ =\ <>9\_\_8)\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ onChangeColor\ =\ (<>9\_\_8\ =\ delegate(PickerState\ state,\ Color\ c)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.data.colDeco\ =\ IntColor.ToInt(c);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.buttonColorDeco.icon.color\ =\ c;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.board.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ layerColorPicker.SetColor(startColor,\ resetColor,\ onChangeColor);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ this.buttonColorDeco2.icon.color\ =\ IntColor.FromInt(this.data.colDeco2);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ Action<PickerState,\ Color>\ <>9\_\_9;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ this.buttonColorDeco2.SetOnClick(delegate}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_layer_color_picker}{LayerColorPicker}}\ layerColorPicker\ =\ \mbox{\hyperlink{class_e_layer}{ELayer}}.ui.AddLayer<\mbox{\hyperlink{class_layer_color_picker}{LayerColorPicker}}>();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ Color\ startColor\ =\ IntColor.FromInt(this.data.colDeco2);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ Color\ resetColor\ =\ IntColor.FromInt(this.data.colDeco2);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ Action<PickerState,\ Color>\ onChangeColor;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((onChangeColor\ =\ <>9\_\_9)\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ onChangeColor\ =\ (<>9\_\_9\ =\ delegate(PickerState\ state,\ Color\ c)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.data.colDeco2\ =\ IntColor.ToInt(c);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.buttonColorDeco2.icon.color\ =\ c;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.board.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ layerColorPicker.SetColor(startColor,\ resetColor,\ onChangeColor);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00255}00255\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00257}00257\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002451\ RID:\ 9297\ RVA:\ 0x000CCDE4\ File\ Offset:\ 0x000CAFE4}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00258}00258\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ RefreshTemplates()}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00259}00259\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ FileInfo[]\ list\ =\ (from\ a\ in\ \textcolor{keyword}{new}\ DirectoryInfo(CorePath.LotTemplate).GetFiles()}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ where\ a.Name.EndsWith(\textcolor{stringliteral}{"{}.tpl"{}})}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ select\ a).ToArray<FileInfo>();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ this.ddTemplate.SetList<FileInfo>(0,\ list,\ (FileInfo\ a,\ \textcolor{keywordtype}{int}\ b)\ =>\ a.Name,\ delegate(\textcolor{keywordtype}{int}\ a,\ FileInfo\ b)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ this.board.data\ =\ IO.LoadFile<\mbox{\hyperlink{class_trait_house_board}{TraitHouseBoard}}.\mbox{\hyperlink{class_trait_house_board_1_1_data}{Data}}>(b.FullName,\ \textcolor{keyword}{false},\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ this.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ this.SetBoard(this.board);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00268}00268\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00269}00269\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00271}00271\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002452\ RID:\ 9298\ RVA:\ 0x000CCE63\ File\ Offset:\ 0x000CB063}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00272}00272\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ ApplyData()}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00273}00273\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ this.board.ApplyData();}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ this.toggleAltRoof.SetActive(this.board.data.idRoofTile\ !=\ 0);}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00276}00276\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00278}00278\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002453\ RID:\ 9299\ RVA:\ 0x000CCE8E\ File\ Offset:\ 0x000CB08E}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00279}00279\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnKill()}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00280}00280\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ ELayer.screen.tileMap.usingHouseBoard\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_build_menu}{BuildMenu}}.Instance)}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_build_menu}{BuildMenu}}.Instance.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00286}00286\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00288}00288\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013BA\ RID:\ 5050}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00289}00289\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_trait_house_board}{TraitHouseBoard}}\ board;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00291}00291\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013BB\ RID:\ 5051}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00292}00292\ \ \ \ \ \textcolor{keyword}{public}\ UISlider\ sliderBlock;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00293}00293\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00294}00294\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013BC\ RID:\ 5052}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00295}00295\ \ \ \ \ \textcolor{keyword}{public}\ UISlider\ sliderRoof;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00297}00297\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013BD\ RID:\ 5053}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00298}00298\ \ \ \ \ \textcolor{keyword}{public}\ UISlider\ sliderRamp;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00300}00300\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013BE\ RID:\ 5054}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00301}00301\ \ \ \ \ \textcolor{keyword}{public}\ UISlider\ sliderWallHeight;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00303}00303\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013BF\ RID:\ 5055}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00304}00304\ \ \ \ \ \textcolor{keyword}{public}\ UISlider\ sliderHeightFix;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00306}00306\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013C0\ RID:\ 5056}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00307}00307\ \ \ \ \ \textcolor{keyword}{public}\ UISlider\ sliderDeco;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00309}00309\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013C1\ RID:\ 5057}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00310}00310\ \ \ \ \ \textcolor{keyword}{public}\ UISlider\ sliderDeco2;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00312}00312\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013C2\ RID:\ 5058}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00313}00313\ \ \ \ \ \textcolor{keyword}{public}\ UISlider\ sliderDecoFix;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00315}00315\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013C3\ RID:\ 5059}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00316}00316\ \ \ \ \ \textcolor{keyword}{public}\ UISlider\ sliderDecoFix2;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00318}00318\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013C4\ RID:\ 5060}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00319}00319\ \ \ \ \ \textcolor{keyword}{public}\ UIDropdown\ ddRoofStyle;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00321}00321\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013C5\ RID:\ 5061}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00322}00322\ \ \ \ \ \textcolor{keyword}{public}\ UIDropdown\ ddTemplate;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00324}00324\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013C6\ RID:\ 5062}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00325}00325\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleReverse;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00326}00326\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00327}00327\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013C7\ RID:\ 5063}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00328}00328\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleAltRoof;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00330}00330\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013C8\ RID:\ 5064}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00331}00331\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonColorRoof;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00333}00333\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013C9\ RID:\ 5065}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00334}00334\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonColorBlock;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00335}00335\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00336}00336\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013CA\ RID:\ 5066}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00337}00337\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonColorDeco;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00339}00339\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013CB\ RID:\ 5067}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00340}00340\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ buttonColorDeco2;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00341}00341\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00342}00342\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013CC\ RID:\ 5068}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00343}00343\ \ \ \ \ \textcolor{keyword}{public}\ UIButton\ toggleAtrium;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00345}00345\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013CD\ RID:\ 5069}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00346}00346\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ maxWallDeco;}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00348}00348\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040013CE\ RID:\ 5070}}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00349}00349\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ first\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_layer_edit_house_8cs_source_l00350}00350\ \}}
+
+\end{DoxyCode}

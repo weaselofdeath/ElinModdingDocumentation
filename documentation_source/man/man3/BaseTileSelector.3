@@ -1,0 +1,354 @@
+.TH "BaseTileSelector" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BaseTileSelector
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBEMono\fP\&.
+.PP
+Inherited by \fBTileSelector\fP, and \fBTileSelectorElona\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBSelectType\fP { \fBSingle\fP, \fBMultiple\fP, \fBNone\fP }"
+.br
+.ti -1c
+.RI "enum \fBHitType\fP { \fBNone\fP, \fBDefault\fP, \fBFloor\fP, \fBBlock\fP, \fBInspect\fP }"
+.br
+.ti -1c
+.RI "enum \fBBoxType\fP { \fBBox\fP, \fBFence\fP }"
+.br
+.ti -1c
+.RI "enum \fBProcessMode\fP { \fBRender\fP, \fBPrpcess\fP, \fBSummary\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBOnChangeActionMode\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnRenderTile\fP (\fBPoint\fP point, HitResult result, bool shouldHide)"
+.br
+.ti -1c
+.RI "void \fBOnUpdate\fP ()"
+.br
+.ti -1c
+.RI "void \fBTryProcessTiles\fP (\fBPoint\fP _end)"
+.br
+.ti -1c
+.RI "void \fBProcessTiles\fP (\fBPoint\fP start, \fBPoint\fP end, BaseTileSelector\&.ProcessMode processMode)"
+.br
+.ti -1c
+.RI "void \fBProcessFillTiles\fP (\fBPoint\fP start, BaseTileSelector\&.ProcessMode processMode)"
+.br
+.ti -1c
+.RI "bool \fBIsInRange\fP (int x, int z, \fBPoint\fP end)"
+.br
+.ti -1c
+.RI "unsafe void \fBRefreshMouseInfo\fP (bool force=false)"
+.br
+.ti -1c
+.RI "void \fBExecuteSummary\fP ()"
+.br
+.ti -1c
+.RI "void \fBRefreshSummary\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "BaseTileSelector\&.HitType \fBinspectHitType\fP"
+.br
+.ti -1c
+.RI "bool \fBinspectorHighlight\fP"
+.br
+.ti -1c
+.RI "\fBHitSummary\fP \fBsummary\fP = new \fBHitSummary\fP()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBstart\fP"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBtemp\fP = new \fBPoint\fP()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBlastPoint\fP = new \fBPoint\fP()"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBlastClickPoint\fP = new \fBPoint\fP()"
+.br
+.ti -1c
+.RI "bool \fBprocessing\fP"
+.br
+.ti -1c
+.RI "bool \fBautoClick\fP"
+.br
+.ti -1c
+.RI "bool \fBfirstInMulti\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBActionMode\fP \fBmode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "BaseTileSelector\&.SelectType \fBselectType\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "BaseTileSelector\&.HitType \fBhitType\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "BaseTileSelector\&.BoxType \fBboxType\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBhitW\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBhitH\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBmultisize\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBWidth\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "int \fBHeight\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEMono\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Static Public Member Functions inherited from \fBEMono\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEMono\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB5\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum BaseTileSelector\&.BoxType"
+
+.PP
+Definition at line \fB584\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "enum BaseTileSelector\&.HitType"
+
+.PP
+Definition at line \fB569\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "enum BaseTileSelector\&.ProcessMode"
+
+.PP
+Definition at line \fB593\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "enum BaseTileSelector\&.SelectType"
+
+.PP
+Definition at line \fB558\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void BaseTileSelector\&.ExecuteSummary ()"
+
+.PP
+Definition at line \fB497\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "bool BaseTileSelector\&.IsInRange (int x, int z, \fBPoint\fP end)"
+
+.PP
+Definition at line \fB388\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "void BaseTileSelector\&.OnChangeActionMode ()"
+
+.PP
+Definition at line \fB114\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "virtual void BaseTileSelector\&.OnRenderTile (\fBPoint\fP point, HitResult result, bool shouldHide)\fR [virtual]\fP"
+
+.PP
+Definition at line \fB121\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "void BaseTileSelector\&.OnUpdate ()"
+
+.PP
+Definition at line \fB126\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "void BaseTileSelector\&.ProcessFillTiles (\fBPoint\fP start, BaseTileSelector\&.ProcessMode processMode)"
+
+.PP
+Definition at line \fB346\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "void BaseTileSelector\&.ProcessTiles (\fBPoint\fP start, \fBPoint\fP end, BaseTileSelector\&.ProcessMode processMode)"
+
+.PP
+Definition at line \fB282\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "unsafe void BaseTileSelector\&.RefreshMouseInfo (bool force = \fRfalse\fP)"
+
+.PP
+Definition at line \fB416\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "void BaseTileSelector\&.RefreshSummary ()"
+
+.PP
+Definition at line \fB510\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "void BaseTileSelector\&.TryProcessTiles (\fBPoint\fP _end)"
+
+.PP
+Definition at line \fB240\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool BaseTileSelector\&.autoClick"
+
+.PP
+Definition at line \fB552\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "bool BaseTileSelector\&.firstInMulti"
+
+.PP
+Definition at line \fB555\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "BaseTileSelector\&.HitType BaseTileSelector\&.inspectHitType"
+
+.PP
+Definition at line \fB522\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "bool BaseTileSelector\&.inspectorHighlight"
+
+.PP
+Definition at line \fB525\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "\fBPoint\fP BaseTileSelector\&.lastClickPoint = new \fBPoint\fP()"
+
+.PP
+Definition at line \fB544\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "\fBPoint\fP BaseTileSelector\&.lastPoint = new \fBPoint\fP()"
+
+.PP
+Definition at line \fB540\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "bool BaseTileSelector\&.processing"
+
+.PP
+Definition at line \fB548\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "\fBPoint\fP BaseTileSelector\&.start"
+
+.PP
+Definition at line \fB532\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "\fBHitSummary\fP BaseTileSelector\&.summary = new \fBHitSummary\fP()"
+
+.PP
+Definition at line \fB528\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "\fBPoint\fP BaseTileSelector\&.temp = new \fBPoint\fP()"
+
+.PP
+Definition at line \fB536\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "BaseTileSelector\&.BoxType BaseTileSelector\&.boxType\fR [get]\fP"
+
+.PP
+Definition at line \fB39\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "int BaseTileSelector\&.Height\fR [get]\fP"
+
+.PP
+Definition at line \fB97\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "int BaseTileSelector\&.hitH\fR [get]\fP"
+
+.PP
+Definition at line \fB59\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "BaseTileSelector\&.HitType BaseTileSelector\&.hitType\fR [get]\fP"
+
+.PP
+Definition at line \fB29\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "int BaseTileSelector\&.hitW\fR [get]\fP"
+
+.PP
+Definition at line \fB49\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "\fBActionMode\fP BaseTileSelector\&.mode\fR [get]\fP"
+
+.PP
+Definition at line \fB9\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "bool BaseTileSelector\&.multisize\fR [get]\fP"
+
+.PP
+Definition at line \fB69\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "BaseTileSelector\&.SelectType BaseTileSelector\&.selectType\fR [get]\fP"
+
+.PP
+Definition at line \fB19\fP of file \fBBaseTileSelector\&.cs\fP\&.
+.SS "int BaseTileSelector\&.Width\fR [get]\fP"
+
+.PP
+Definition at line \fB79\fP of file \fBBaseTileSelector\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

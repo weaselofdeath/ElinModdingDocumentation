@@ -1,0 +1,389 @@
+.TH "QuestManager" 3 "Elin Modding Docs Doc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QuestManager
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBEClass\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQuest\fP \fBAdd\fP (string id, string idGlobalChara=null)"
+.br
+.ti -1c
+.RI "\fBQuest\fP \fBStart\fP (string id, string idGlobalChara)"
+.br
+.ti -1c
+.RI "\fBQuest\fP \fBStart\fP (string id, \fBChara\fP c=null, bool assignQuest=true)"
+.br
+.ti -1c
+.RI "\fBQuest\fP \fBStart\fP (\fBQuest\fP q)"
+.br
+.ti -1c
+.RI "void \fBRemove\fP (\fBQuest\fP q)"
+.br
+.ti -1c
+.RI "void \fBRemoveGlobal\fP (\fBQuest\fP q)"
+.br
+.ti -1c
+.RI "void \fBRemoveAll\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "void \fBComplete\fP (\fBQuest\fP q)"
+.br
+.ti -1c
+.RI "bool \fBOnShowDialog\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "void \fBOnAdvanceHour\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsStarted< T >\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetPhase< T >\fP ()"
+.br
+.ti -1c
+.RI "T \fBGet< T >\fP ()"
+.br
+.ti -1c
+.RI "\fBQuest\fP \fBGet\fP (string id)"
+.br
+.ti -1c
+.RI "\fBQuest\fP \fBGet\fP (int uid)"
+.br
+.ti -1c
+.RI "\fBQuest\fP \fBGetGlobal\fP (string id)"
+.br
+.ti -1c
+.RI "bool \fBIsCompleted\fP (string id)"
+.br
+.ti -1c
+.RI "int \fBCountNew\fP ()"
+.br
+.ti -1c
+.RI "int \fBCountRandomQuest\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateJournal\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsDeliverTarget\fP (\fBChara\fP c)"
+.br
+.ti -1c
+.RI "void \fBAddQuestAsh\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddQuestFiama\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHasFarAwayEscort\fP (bool execute=false)"
+.br
+.ti -1c
+.RI "void \fBOnEnterZone\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "List< \fBQuest\fP > \fBlist\fP = new List<\fBQuest\fP>()"
+.br
+.ti -1c
+.RI "List< \fBQuest\fP > \fBglobalList\fP = new List<\fBQuest\fP>()"
+.br
+.ti -1c
+.RI "HashSet< string > \fBcompletedIDs\fP = new HashSet<string>()"
+.br
+.ti -1c
+.RI "HashSet< string > \fBcompletedTypes\fP = new HashSet<string>()"
+.br
+.ti -1c
+.RI "int \fBuid\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBMaxRandomQuest\fP = 5"
+.br
+.in -1c
+
+Static Public Attributes inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBCore\fP \fBcore\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBQuestMain\fP \fBMain\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "new \fBQuestHome\fP \fBHome\fP\fR [get]\fP"
+.br
+.in -1c
+
+Properties inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static \fBGame\fP \fBgame\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static bool \fBAdvMode\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBPlayer\fP \fBplayer\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBChara\fP \fBpc\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBUI\fP \fBui\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBMap\fP \fB_map\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBZone\fP \fB_zone\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFactionBranch\fP \fBBranchOrHomeBranch\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBHome\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBFaction\fP \fBWilds\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBScene\fP \fBscene\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBBaseGameScreen\fP \fBscreen\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameSetting\fP \fBsetting\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBGameData\fP \fBgamedata\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBColorProfile\fP \fBColors\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBWorld\fP \fBworld\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBsources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBSourceManager\fP \fBeditorSources\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static SoundManager \fBSound\fP\fR [get]\fP"
+.br
+.ti -1c
+.RI "static \fBCoreDebug\fP \fBdebug\fP\fR [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Static Public Member Functions inherited from \fBEClass\fP
+.in +1c
+.ti -1c
+.RI "static int \fBrnd\fP (int a)"
+.br
+.ti -1c
+.RI "static int \fBcurve\fP (int a, int start, int step, int rate=75)"
+.br
+.ti -1c
+.RI "static int \fBrndHalf\fP (int a)"
+.br
+.ti -1c
+.RI "static float \fBrndf\fP (float a)"
+.br
+.ti -1c
+.RI "static int \fBrndSqrt\fP (int a)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBCard\fP c)"
+.br
+.ti -1c
+.RI "static void \fBWait\fP (float a, \fBPoint\fP p)"
+.br
+.ti -1c
+.RI "static int \fBBigger\fP (int a, int b)"
+.br
+.ti -1c
+.RI "static int \fBSmaller\fP (int a, int b)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB7\fP of file \fBQuestManager\&.cs\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQuest\fP QuestManager\&.Add (string id, string idGlobalChara = \fRnull\fP)"
+
+.PP
+Definition at line \fB30\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "void QuestManager\&.AddQuestAsh ()"
+
+.PP
+Definition at line \fB271\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "void QuestManager\&.AddQuestFiama ()"
+
+.PP
+Definition at line \fB282\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "void QuestManager\&.Complete (\fBQuest\fP q)"
+
+.PP
+Definition at line \fB101\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "int QuestManager\&.CountNew ()"
+
+.PP
+Definition at line \fB214\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "int QuestManager\&.CountRandomQuest ()"
+
+.PP
+Definition at line \fB231\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "\fBQuest\fP QuestManager\&.Get (int uid)"
+
+.PP
+Definition at line \fB182\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "\fBQuest\fP QuestManager\&.Get (string id)"
+
+.PP
+Definition at line \fB169\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "T QuestManager\&.Get< T > ()"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fI\fBQuest\fP\fP
+.PP
+Definition at line \fB156\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "\fBQuest\fP QuestManager\&.GetGlobal (string id)"
+
+.PP
+Definition at line \fB195\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "int QuestManager\&.GetPhase< T > ()"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fI\fBQuest\fP\fP
+.PP
+Definition at line \fB139\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "bool QuestManager\&.HasFarAwayEscort (bool execute = \fRfalse\fP)"
+
+.PP
+Definition at line \fB292\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "bool QuestManager\&.IsCompleted (string id)"
+
+.PP
+Definition at line \fB208\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "bool QuestManager\&.IsDeliverTarget (\fBChara\fP c)"
+
+.PP
+Definition at line \fB255\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "bool QuestManager\&.IsStarted< T > ()"
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fI\fBQuest\fP\fP
+.PP
+Definition at line \fB133\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "void QuestManager\&.OnAdvanceHour ()"
+
+.PP
+Definition at line \fB120\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "void QuestManager\&.OnEnterZone ()"
+
+.PP
+Definition at line \fB323\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "bool QuestManager\&.OnShowDialog (\fBChara\fP c)"
+
+.PP
+Definition at line \fB107\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "void QuestManager\&.Remove (\fBQuest\fP q)"
+
+.PP
+Definition at line \fB72\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "void QuestManager\&.RemoveAll (\fBChara\fP c)"
+
+.PP
+Definition at line \fB84\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "void QuestManager\&.RemoveGlobal (\fBQuest\fP q)"
+
+.PP
+Definition at line \fB78\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "\fBQuest\fP QuestManager\&.Start (\fBQuest\fP q)"
+
+.PP
+Definition at line \fB56\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "\fBQuest\fP QuestManager\&.Start (string id, \fBChara\fP c = \fRnull\fP, bool assignQuest = \fRtrue\fP)"
+
+.PP
+Definition at line \fB50\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "\fBQuest\fP QuestManager\&.Start (string id, string idGlobalChara)"
+
+.PP
+Definition at line \fB43\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "void QuestManager\&.UpdateJournal ()"
+
+.PP
+Definition at line \fB248\fP of file \fBQuestManager\&.cs\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "HashSet<string> QuestManager\&.completedIDs = new HashSet<string>()"
+
+.PP
+Definition at line \fB344\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "HashSet<string> QuestManager\&.completedTypes = new HashSet<string>()"
+
+.PP
+Definition at line \fB348\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "List<\fBQuest\fP> QuestManager\&.globalList = new List<\fBQuest\fP>()"
+
+.PP
+Definition at line \fB340\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "List<\fBQuest\fP> QuestManager\&.list = new List<\fBQuest\fP>()"
+
+.PP
+Definition at line \fB336\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "const int QuestManager\&.MaxRandomQuest = 5\fR [static]\fP"
+
+.PP
+Definition at line \fB332\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "int QuestManager\&.uid"
+
+.PP
+Definition at line \fB352\fP of file \fBQuestManager\&.cs\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "new \fBQuestHome\fP QuestManager\&.Home\fR [get]\fP"
+
+.PP
+Definition at line \fB21\fP of file \fBQuestManager\&.cs\fP\&.
+.SS "\fBQuestMain\fP QuestManager\&.Main\fR [get]\fP"
+
+.PP
+Definition at line \fB11\fP of file \fBQuestManager\&.cs\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Elin Modding Docs Doc from the source code\&.

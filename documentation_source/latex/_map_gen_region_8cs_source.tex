@@ -1,0 +1,76 @@
+\doxysection{Map\+Gen\+Region.\+cs}
+\hypertarget{_map_gen_region_8cs_source}{}\label{_map_gen_region_8cs_source}\index{Elin/MapGenRegion.cs@{Elin/MapGenRegion.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }CreativeSpore.SuperTilemapEditor;}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00005}00005\ \textcolor{comment}{//\ Token:\ 0x02000672\ RID:\ 1650}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00006}\mbox{\hyperlink{class_map_gen_region}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_map_gen_region}{MapGenRegion}}\ :\ \mbox{\hyperlink{class_base_map_gen}{BaseMapGen}}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000D1B\ RID:\ 3355}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06002E45\ RID:\ 11845\ RVA:\ 0x0010524F\ File\ Offset:\ 0x0010344F}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_map_gen_region}{MapGenRegion}}\ Instance}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_map_gen_region}{MapGenRegion}}\ result;}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((result\ =\ \mbox{\hyperlink{class_map_gen_region}{MapGenRegion}}.\_Instance)\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ (MapGenRegion.\_Instance\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_map_gen_region}{MapGenRegion}}());}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002E46\ RID:\ 11846\ RVA:\ 0x00105268\ File\ Offset:\ 0x00103468}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ OnGenerateTerrain()}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_class}{EClass}}.scene.elomapActor.Initialize(this.zone.Region.elomap);}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_elo_map}{EloMap}}\ elomap\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.scene.elomapActor.elomap;}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ base.SetSize(Mathf.Max(elomap.w,\ elomap.h),\ 10);}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ this.map.CreateNew(this.Size,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ elomap.h;\ i++)}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ elomap.w;\ j++)}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elomap.cells[j,\ i];}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ gridX\ =\ elomap.minX\ +\ j;}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ gridY\ =\ elomap.minY\ +\ i;}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.map.cells[j,\ i].isSeen\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ base.SetFloor(j,\ i,\ 66,\ 43,\ 0);}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (STETilemap\ stetilemap\ \textcolor{keywordflow}{in}\ elomap.group.Tilemaps)}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(stetilemap\ ==\ elomap.fogmap)\ \&\&\ !(stetilemap\ ==\ elomap.cloudmap))}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ tileIdFromTileData\ =\ Tileset.GetTileIdFromTileData(stetilemap.GetTileData(gridX,\ gridY));}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_source_global_tile_1_1_row}{SourceGlobalTile.Row}}\ row\ =\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.globalTiles.tileAlias.TryGetValue(tileIdFromTileData,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.map.cells[j,\ i].impassable\ =\ (row.attribs[0]\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.floor\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ base.SetFloor(j,\ i,\ \mbox{\hyperlink{class_e_class}{EClass}}.sources.floors.rows[row.floor].DefaultMaterial.id,\ row.floor,\ 0);}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Tileset.GetTileIdFromTileData(elomap.cloudmap.GetTileData(gridX,\ gridY))\ <\ 1000)}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this.map.cells[j,\ i].impassable\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ this.map.poiMap.Reset();}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ this.map.SetZone(this.zone);}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ this.map.config.idSceneProfile\ =\ \textcolor{stringliteral}{"{}region"{}};}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ this.map.RefreshAllTiles();}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001A43\ RID:\ 6723}}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00069}00069\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_map_gen_region}{MapGenRegion}}\ \_Instance;}
+\DoxyCodeLine{\Hypertarget{_map_gen_region_8cs_source_l00070}00070\ \}}
+
+\end{DoxyCode}

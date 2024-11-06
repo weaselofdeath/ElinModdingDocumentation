@@ -1,0 +1,74 @@
+\doxysection{Logical\+Point\+Manager.\+cs}
+\hypertarget{_logical_point_manager_8cs_source}{}\label{_logical_point_manager_8cs_source}\index{Elin/LogicalPointManager.cs@{Elin/LogicalPointManager.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x02000682\ RID:\ 1666}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00005}\mbox{\hyperlink{class_logical_point_manager}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_logical_point_manager}{LogicalPointManager}}\ :\ \mbox{\hyperlink{class_e_class}{EClass}}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002EDC\ RID:\ 11996\ RVA:\ 0x00106DA7\ File\ Offset:\ 0x00104FA7}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_logical_point}{LogicalPoint}}\ Create()}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00011}00011\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x17000D5A\ RID:\ 3418}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ (get)\ Token:\ 0x06002EDD\ RID:\ 11997\ RVA:\ 0x00106DAA\ File\ Offset:\ 0x00104FAA}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ AllowBlock}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002EDE\ RID:\ 11998\ RVA:\ 0x00106DB0\ File\ Offset:\ 0x00104FB0}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_logical_point}{LogicalPoint}}\ GetOrCreate(\mbox{\hyperlink{class_point}{Point}}\ point)}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!point.IsValid)}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ point.index;}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logical_point}{LogicalPoint}}\ logicalPoint\ =\ this.dict.TryGetValue(index,\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logicalPoint\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this.AllowBlock\ \&\&\ point.cell.HasBlock)}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ logicalPoint\ =\ this.Create();}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ logicalPoint.Set(point);}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ this.list.Add(logicalPoint);}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ this.dict.Add(index,\ logicalPoint);}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logicalPoint;}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002EDF\ RID:\ 11999\ RVA:\ 0x00106E1E\ File\ Offset:\ 0x0010501E}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_logical_point}{LogicalPoint}}\ Refresh(\mbox{\hyperlink{class_point}{Point}}\ point)}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this.GetOrCreate(point);}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x06002EE0\ RID:\ 12000\ RVA:\ 0x00106E28\ File\ Offset:\ 0x00105028}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Remove(\textcolor{keywordtype}{int}\ key)}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00054}00054\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logical_point}{LogicalPoint}}\ item\ =\ this.dict[key];}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ this.list.Remove(item);}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ this.dict.Remove(key);}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001A58\ RID:\ 6744}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{public}\ List<LogicalPoint>\ list\ =\ \textcolor{keyword}{new}\ List<LogicalPoint>();}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001A59\ RID:\ 6745}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{public}\ Dictionary<int,\ LogicalPoint>\ dict\ =\ \textcolor{keyword}{new}\ Dictionary<int,\ LogicalPoint>();}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x04001A5A\ RID:\ 6746}}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00067}00067\ \ \ \ \ \textcolor{keyword}{public}\ HashSet<Point>\ refreshList\ =\ \textcolor{keyword}{new}\ HashSet<Point>();}
+\DoxyCodeLine{\Hypertarget{_logical_point_manager_8cs_source_l00068}00068\ \}}
+
+\end{DoxyCode}

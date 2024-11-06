@@ -1,0 +1,45 @@
+\doxysection{Rigid\+Move.\+cs}
+\hypertarget{_rigid_move_8cs_source}{}\label{_rigid_move_8cs_source}\index{Elin/RigidMove.cs@{Elin/RigidMove.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00004}00004\ \textcolor{comment}{//\ Token:\ 0x0200051E\ RID:\ 1310}}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00005}\mbox{\hyperlink{class_rigid_move}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_rigid_move}{RigidMove}}\ :\ \mbox{\hyperlink{class_rigid_update}{RigidUpdate}}}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x0600231E\ RID:\ 8990\ RVA:\ 0x000C5B8C\ File\ Offset:\ 0x000C3D8C}}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ OnFixedUpdate()}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.rb.velocity.y\ >\ 0.3f\ ||\ \textcolor{keyword}{this}.rb.velocity.y\ <\ -\/0.3f)}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ this.time\ +=\ \mbox{\hyperlink{class_rigid_update}{RigidUpdate}}.delta;}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ this.dir.x\ =\ (float)(this.flip\ ?\ -\/1\ :\ 1);}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ this.rb.transform.position\ =\ this.rb.transform.position\ +\ this.dir\ *\ this.force;}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.rb.transform.position.x\ >\ \mbox{\hyperlink{class_rigid_update}{RigidUpdate}}.rightX)}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ this.flip\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this.rb.transform.position.x\ <\ \mbox{\hyperlink{class_rigid_update}{RigidUpdate}}.leftX)}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ this.flip\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012A7\ RID:\ 4775}}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ force;}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012A8\ RID:\ 4776}}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ flip;}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012A9\ RID:\ 4777}}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ time;}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ Token:\ 0x040012AA\ RID:\ 4778}}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{private}\ Vector3\ dir\ =\ \textcolor{keyword}{new}\ Vector3(1f,\ 0f,\ 0f);}
+\DoxyCodeLine{\Hypertarget{_rigid_move_8cs_source_l00039}00039\ \}}
+
+\end{DoxyCode}
