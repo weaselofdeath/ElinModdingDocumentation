@@ -28,3 +28,6 @@ Some Modding documentation for creating BepInEx mods
 <p style="text-align:center;">Elin Wiki: <a target="_blank" rel="noopener noreferrer" href="https://ylvapedia.wiki/wiki/Main_Page">https://ylvapedia.wiki/wiki/Main_Page</a></p>
 <p style="text-align:center;">dnSpy - A .NET Debugger and Assembly Editor: <a target="_blank" rel="noopener noreferrer" href="https://github.com/dnSpy/dnSpy">https://github.com/dnSpy/dnSpy</a></p>
 <p style="text-align:center;">Doxygen - Automated Doc Generator: <a target="_blank" rel="noopener noreferrer" href="https://www.doxygen.nl/index.html">https://www.doxygen.nl/index.html</a></p>
+
+<hr>
+Possibly helpful documentation on creating Unity mods: https://steamcommunity.com/sharedfiles/filedetails/?id=2106187116
