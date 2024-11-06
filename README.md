@@ -1,6 +1,7 @@
 # ElinModdingDocumentation
-Some Modding documentation for creating BepInEx mods
-View the Github Page for this repo here: https://weaselofdeath.github.io/ElinModdingDocumentation/
+Some Modding documentation for creating BepInEx mods.
+
+<p>View the Github Page for this repo here: https://weaselofdeath.github.io/ElinModdingDocumentation/</p>
 
 <figure class="image"><a href="https://store.steampowered.com/app/2135150/Elin/" target="_blank" rel="noopener noreferrer"><img style="aspect-ratio:460/215;" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2135150/header.jpg?t=1730447205" width="460" height="215"></a></figure>
 <p style="text-align:center;">Documentation built upon Elin version <code><strong>EA 23.15</strong></code></p>
